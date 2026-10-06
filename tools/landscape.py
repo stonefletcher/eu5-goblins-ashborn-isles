@@ -48,6 +48,7 @@ def initial_height(island,x,y):
     for px,py,width,depth in g.get('craters',[]):
         d=((u-px)**2+(v-py)**2)/width**2
         h-=depth*np.exp(-d*2)
+        h+=depth*.23*np.exp(-((np.sqrt(d)-1.15)/.32)**2)
     inland=archipelago.shape(x-cx,y-cy,rx,ry,island['profile'])
     shore=smooth(inland/.11)
     h=np.maximum(.015,h)*shore
@@ -61,6 +62,20 @@ def sample(field,x,y,x0,y0):
     yy=np.clip(y-y0-.5,0,field.shape[0]-1.00001)
     ix=xx.astype(int);iy=yy.astype(int);fx=xx-ix;fy=yy-iy
     return (field[iy,ix]*(1-fx)+field[iy,ix+1]*fx)*(1-fy)+(field[iy+1,ix]*(1-fx)+field[iy+1,ix+1]*fx)*fy
+
+
+def volcanic_exposure(island,x,y):
+    """Weathered lava aprons and dry lee slopes, independent of tile borders."""
+    cx,cy=island['center'];rx,ry=island['radius'];g=island['geology']
+    u=(x-cx)/rx;v=(y-cy)/ry;seed=g['seed']
+    apron=.46+.28*noise(u*3,v*3,seed+91)+.18*u
+    for px,py,width,depth in g.get('craters',[]):
+        dx=u-px;dy=v-py
+        apron+=.55*np.exp(-(dx*dx+dy*dy)/.17)
+        # A broad sinuous old lava tongue descends from each vent.
+        tongue=dx-.18*np.sin(dy*4+seed)
+        apron+=.40*np.exp(-(tongue/.16)**2)*smooth(dy/.18)*smooth((.95-dy)/.3)
+    return np.clip(apron*g.get('volcanic_exposure',0),0,1)
 
 
 def drainage(h,land,diagonal=False):
@@ -148,6 +163,7 @@ def prepare(cfg):
         moist+=banks*.5
         woodland=np.clip((moist-.37)*2.5,0,.85)*smooth((8.5-final)/4)*smooth((.85-slope)/.4)*smooth(inland/.09)
         woodland*=island['geology'].get('woodland',1)
+        woodland*=1-smooth(volcanic_exposure(island,xx+.5,yy+.5)/.65)
         result.append(dict(island=island,x0=x0,y0=y0,h=h,correction=correction,height=final,land=land,
                            slope=slope,woodland=woodland,banks=banks,rivers=paths))
     cfg['_landscape']=result
@@ -187,6 +203,9 @@ def material_indices(cfg,x,y):
         a=np.where(wood>.25+variation*.15+fine*.12,3,a)
         a=np.where((h>6.5+variation*2+fine)|(slope>.60+variation*.15),1,a)
         a=np.where((h>11+variation*2)&(slope<.8),5,a)
+        exposure=volcanic_exposure(isl,xx,yy)
+        a=np.where(exposure>.30+variation*.10+fine*.045,5,a)
+        a=np.where((exposure>.45+variation*.08)&(slope>.28),9,a)
         a=np.where(banks>.13,6,a)
         a=np.where((inland<.04+variation*.009)&(slope<.6),0,a)
         slots[land]=a[land]
@@ -265,7 +284,8 @@ def write_scenery(b,game,out,anchors):
         clear=(h>.15)&(inland>.065)&(bank<.04)
         for anchor in anchors.values():clear &= (xx-anchor['x'])**2+(yy-anchor['png_y'])**2>16
         trees=clear&(sl<.8)&(h<8)&(rng.random(xx.shape)<wood*.82)
-        rocks=clear&~trees&(h>.6)&((sl>.5)|(h>5))&(rng.random(xx.shape)<.065)
+        exposed=volcanic_exposure(isl,xx,yy)
+        rocks=clear&~trees&(h>.6)&((sl>.35)|(h>4)|(exposed>.32))&(rng.random(xx.shape)<.065)
         summary[isl['id']]={'trees':int(trees.sum()),'rocks':int(rocks.sum())}
         assert trees.sum()>=8 and rocks.sum()>=3,(isl['id'],'missing scenery',summary[isl['id']])
         for isrock,mask in [(False,trees),(True,rocks)]:
@@ -291,3 +311,4 @@ def write_scenery(b,game,out,anchors):
 }}''')
     b.write(out,'in_game/gfx/map/map_objects/cm_ashborn_landscape.txt','\n'.join(definitions)+'\n')
     return summary
+

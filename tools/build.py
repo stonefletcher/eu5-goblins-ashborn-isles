@@ -190,13 +190,15 @@ def main():
     shutil.copytree(ROOT/'mod',out,dirs_exist_ok=True)
     for p in out.rglob('*.txt'):
         write(out,p.relative_to(out),p.read_text(encoding='utf-8-sig'))
+    from verify_terrain import verify, verify_center_continuity
+    continuity=verify_center_continuity(CFG)
     print('Building playable map and island terrain...',flush=True)
     mapstats=build_map(game,out,reports)
     from terrain_cache import build_cache_patch
     print('Patching runtime terrain cache...',flush=True)
     terrain=build_cache_patch(game,out,reports,CFG,footprint,source)
-    from verify_terrain import verify
-    terrain['verification']=verify(game,out,reports)
+    terrain['verification']=verify(game,out,reports,CFG)
+    terrain['center_continuity']=continuity
     print('Building campaign setup...',flush=True)
     economy=build_setup(game,out);localization(out);archipelago.add_localization(sys.modules[__name__],out)
     import exploration

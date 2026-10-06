@@ -84,6 +84,11 @@ def join_border_fragments(local,mask):
 def heights(cfg,x,y):
     """Continuous terrain whose dominant relief follows each location's combat tag."""
     sea=.08340625*65535;result=np.full(np.broadcast(x,y).shape,2234.,dtype=float)
+    # EU5 maps the entire uint16 range to only 32 world units. The previous
+    # 7-9k mountain relief amounted to 3-4 world units, below native ranges
+    # near Sion/Innsbruck (15-16). Scale relief above sea level, never the
+    # absolute height: sea level, submerged shelves and flat ports stay put.
+    relief=cfg.get('terrain_relief',{})
     for island in cfg['islands']:
         dx=island['center'][0]-cfg['center'][0];dy=island['center'][1]-cfg['center'][1]
         rx,ry=island['radius'];lx=x-dx;ly=y-dy
@@ -96,23 +101,35 @@ def heights(cfg,x,y):
         result[shelf]=np.maximum(result[shelf],(sea-(sea-2234)*depth)[shelf])
         if not mask.any():continue
         distances=[];targets=[];wx,wy=warped(island,lx,ly)
+        # shape() is an angular coastline function, not a distance field.
+        # Its rim depends on atan2 even as r -> 0. Using that value as
+        # elevation caused finite jumps between arbitrarily close points at
+        # each island centre (the radial fans seen in game). Only use it for
+        # the narrow shoreline fade; interior relief needs a smooth field.
+        core=np.exp(-.8*((lx/rx)**2+(ly/ry)**2))
         for loc in island['locations']:
             sx,sy=loc['seed'][0]*rx,loc['seed'][1]*ry
             d=(wx-sx)**2+(wy-sy)**2;distances.append(d)
             rough=np.sin(lx/max(2,rx*.06))*np.cos(ly/max(2,ry*.07))
             if loc['topography']=='flatland':
-                target=sea+220+180*np.clip(inland,0,1)+35*rough
+                target=sea+220+180*core+35*rough
             elif loc['topography']=='hills':
-                target=sea+650+2400*np.clip(inland,0,1)+1100*np.exp(-d/(min(rx,ry)*.40)**2)+230*rough
+                target=sea+650+2400*core+1100*np.exp(-d/(min(rx,ry)*.40)**2)+230*rough
+                target=sea+(target-sea)*relief.get('hills_scale',1.0)
             else:
                 cone=7800*np.exp(-d/(min(rx,ry)*.32)**2)
                 crater=4300*np.exp(-d/(min(rx,ry)*.095)**2)
-                ridges=500*(np.sin(lx/max(2,rx*.08))**2)*np.clip(inland*3,0,1)
-                target=sea+1400+2400*np.clip(inland,0,1)+cone-crater+ridges
+                detail=np.sin((lx+.4*ly)/max(2,rx*.10)+.7*np.sin(ly/max(2,ry*.17)))
+                detail*=np.cos((ly-.3*lx)/max(2,ry*.14))
+                ridges=500*(.5+.5*detail)*core
+                target=sea+1400+2400*core+cone-crater+ridges
+                target=sea+(target-sea)*relief.get('mountains_scale',1.0)
             targets.append(target)
         ds=np.stack(distances);dmin=ds.min(axis=0)
-        # Smooth narrow boundaries, preserving flatter harbors and farm districts.
-        weights=np.exp(-(ds-dmin)/max(4,(min(rx,ry)*.18)**2))
+        # Broad transitions prevent raised mountain districts becoming plateaus
+        # with walls along administrative borders. Coastal ports still taper
+        # to sea level through the shared shoreline fade below.
+        weights=np.exp(-(ds-dmin)/max(4,(min(rx,ry)*.30)**2))
         h=(weights*np.stack(targets)).sum(axis=0)/weights.sum(axis=0)
         shore=np.clip(inland/.18,0,1);shore=shore*shore*(3-2*shore)
         h=sea+(h-sea)*shore
@@ -120,6 +137,7 @@ def heights(cfg,x,y):
     for px,py in cfg.get('coastal_fill',[]):
         fill=(np.abs(x-px)<.5)&(np.abs(y-py)<.5)
         result[fill]=np.maximum(result[fill],sea+120)
+    assert np.all((result>=0)&(result<=65535)), 'Terrain exceeds the native 16-bit height range'
     return result.astype(np.uint16)
 
 def build_map(b,game,out,reports):

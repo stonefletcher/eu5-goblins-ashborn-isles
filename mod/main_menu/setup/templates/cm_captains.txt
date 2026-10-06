@@ -1,7 +1,7 @@
 starting_technology_level = 3
 government = {
-    type = republic
-    heir_selection = cm_captain_elective
+    type = monarchy
+    heir_selection = cm_rule_of_the_strongest
     centralization_vs_decentralization = 65
     traditionalist_vs_innovative = -25
     spiritualist_vs_humanist = -20
@@ -16,7 +16,7 @@ government = {
     individualism_vs_communalism = 30
     outward_vs_inward = -55
     parliament = { parliament_type = assembly }
-    reforms = { cm_captains_confederation }
+    reforms = { cm_ironfang_monarchy }
     privilege = { nobles_land_rights clergy_land_rights trade_monopolies communal_lands }
     laws = {
         censorship = no_censorship

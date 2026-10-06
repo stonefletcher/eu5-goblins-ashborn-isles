@@ -1,0 +1,21 @@
+name: Publish prepared mod release
+
+on:
+  push:
+    branches: ['release/**']
+    paths: ['.release/manifest.json']
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify prepared archives and publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: python3 tools/publish_release.py

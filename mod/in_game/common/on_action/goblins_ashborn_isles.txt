@@ -1,4 +1,4 @@
-﻿monthly_country_pulse = { on_actions = { cm_demo_monthly ga_exploration_monthly } }
+﻿monthly_country_pulse = { on_actions = { cm_demo_monthly ga_exploration_monthly ga_economy_monthly } }
 cm_demo_monthly = {
     trigger = { tag = CDM }
     effect = {
@@ -10,16 +10,8 @@ cm_demo_monthly = {
             set_variable = { name = cm_demo_initialized value = yes }
             location:cm_hooktooth = {
                 create_sub_unit = unit_type:a_footmen
-                create_sub_unit = unit_type:a_footmen
                 create_sub_unit = unit_type:n_traditional_galley
                 create_sub_unit = unit_type:n_traditional_galley
-                create_sub_unit = unit_type:n_traditional_galley
-                create_sub_unit = unit_type:n_traditional_galley
-                create_sub_unit = unit_type:n_cog
-                create_sub_unit = unit_type:n_cog
-                create_sub_unit = unit_type:n_cog
-                create_sub_unit = unit_type:n_cog
-                create_sub_unit = unit_type:n_cog
                 create_sub_unit = unit_type:n_cog
                 create_sub_unit = unit_type:n_cog
                 create_sub_unit = unit_type:n_cog

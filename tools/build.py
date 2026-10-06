@@ -122,9 +122,9 @@ def validate(game,out,mapstats,economy):
     for p in (out/'main_menu/setup').rglob('*.txt'):
         assert not p.read_bytes().startswith(bytes.fromhex('efbbbf')),f'Setup BOM rejected by engine: {p}'
     cities=(out/'main_menu/setup/start/07_cities_and_buildings.txt').read_text()
-    assert 'cm_hooktooth = { rank = city town_setup = cm_scrap_port }' in cities
+    assert 'cm_hooktooth = { rank = city town_setup = cm_hooktooth_settlement }' in cities
     for country in CFG['countries']:
-        assert f'{country["capital"]} = {{ rank = {country["rank"]} town_setup = cm_scrap_port }}' in cities
+        assert f'{country["capital"]} = {{ rank = {country["rank"]} town_setup = {country["capital"]}_settlement }}' in cities
         owned={l['id'] for l in CFG['locations'] if l['country']==country['tag']}
         assert country['capital'] in owned
     checks.append('Setup files have no BOM; all five countries have populated urban capitals, with city rank only at Hooktooth.')
@@ -142,7 +142,7 @@ def validate(game,out,mapstats,economy):
         a,b=block_span(pops,l['id']);sizes=re.findall(r'\bsize\s*=\s*([\d.]+)',pops[a:b])
         assert sum(map(Decimal,sizes))==Decimal(str(l['pop']))
     checks.append(f'Each location population matches its specification: {economy["total_population"]:,} people across five countries.')
-    checks.append('All 19 locations are connected within their islands; every island has a port into the connected coastal basin.')
+    checks.append('All generated locations are connected within their islands; every island has a port into the connected coastal basin.')
     checks.append('Archipelago replaces only impassable ocean pixels; all vanilla land and navigable sea lanes are preserved.')
     im=Image.open(out/'in_game/map_data/locations.png');mapping=parse_names(game)
     defaults=(out/'in_game/map_data/default.map').read_text(encoding='utf-8-sig')
@@ -155,7 +155,7 @@ def validate(game,out,mapstats,economy):
     for loc in CFG['locations']:
         anchor=mapstats['settlement_locators'][loc['id']]
         assert im.getpixel((int(anchor['x']),int(anchor['png_y'])))==tuple(bytes.fromhex(loc['color']))
-    checks.append('All 19 settlement anchors lie inside their own land locations; all new seas have fleet anchors.')
+    checks.append('All generated settlement anchors lie inside their own land locations; all new seas have fleet anchors.')
     for p in mapstats['ports']:
         assert im.getpixel((p['x'],H-p['y']))==mapping[p['sea']]
     checks.append('Every port lies on its named sea pixels with correct Y-axis conversion.')
@@ -170,11 +170,17 @@ def validate(game,out,mapstats,economy):
         la,lb=block_span(law_corpus,law)
         assert re.search(r'\b'+policy+r'\s*=\s*\{',law_corpus[la:lb]),f'Invalid law/policy pair {law}={policy}'
     checks.append('Every starting law/policy pair exists in its vanilla law block.')
-    # The custom election must not retain the vanilla pirate reform gate.
     election=(out/'in_game/common/heir_selections/goblins_ashborn_isles.txt').read_text(encoding='utf-8-sig')
-    assert 'government_reform:pirate_brethren_reform' not in election
-    assert 'government_reform:cm_captains_confederation' in election
-    checks.append('Captain election is tied to the custom reform, not a missing vanilla reform.')
+    assert 'has_reform = government_reform:cm_ironfang_monarchy' in election
+    assert 'allow_children = no' in election and 'allow_female = no' in election
+    assert 'all_in_country = yes' in election and 'value = root.mil' in election
+    assert 'locked = {' not in election and 'use_election = no' in election
+    assert 'type = monarchy' in template and 'heir_selection = cm_rule_of_the_strongest' in template
+    gov=(out/'in_game/common/government_types/00_default.txt').read_text(encoding='utf-8-sig')
+    ga,gz=block_span(gov,'monarchy');assert 'heir_selection = cm_rule_of_the_strongest' in gov[ga:gz]
+    intro=(out/'in_game/events/goblins_ashborn_isles.txt').read_text(encoding='utf-8-sig')
+    assert len(re.findall(r'\boption\s*=\s*\{',intro))==1
+    checks.append('Ironfang Monarchy uses native monarchy mechanics; adult male military succession is registered and unlocked; lore event has one option.')
     return checks
 
 def main():
@@ -201,10 +207,15 @@ def main():
     terrain['center_continuity']=continuity
     print('Building campaign setup...',flush=True)
     economy=build_setup(game,out);localization(out);archipelago.add_localization(sys.modules[__name__],out)
+    import economy as starting_economy
+    economy['production']=starting_economy.build(sys.modules[__name__],game,out)
     import exploration
     discovery=exploration.build(sys.modules[__name__],game,out)
     print('Running static validation...',flush=True)
     checks=validate(game,out,mapstats,economy)
+    import verify_features
+    features=verify_features.verify(sys.modules[__name__],out,mapstats)
+    (reports/'feature_verification.json').write_text(json.dumps(features,indent=2),encoding='utf-8')
     import preview
     preview.context(game,out,reports)
     report={'version':CFG['version'],'target_game_version':CFG['game_version'],'status':'STATIC VALIDATION PASSED; IN-GAME TESTING PENDING','checks':checks,'map':mapstats,'economy':economy,'runtime_tested':False,'terrain_cache_baked':False,'terrain_cache_patch':terrain,'exploration':discovery,'source_sha256':HASHES}

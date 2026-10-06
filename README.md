@@ -4,9 +4,9 @@
 
 Five goblin nations rise from a volcanic Atlantic archipelago in this fantasy **Europa Universalis V** mod. Start in **1337**, unite rival clans, develop their ports and mines, and decide how the Goblinkin will face the wider world.
 
-**Version 0.4.1 - terrain test build.** Targets EU5 **1.3.11 (Pavia)**, Steam build **24187685**. Static validation is required before packaging; in-game acceptance testing is pending. This is not a Steam Workshop release.
+**Version 0.5.0 - islands and clan test build.** Targets EU5 **1.3.11 (Pavia)**, Steam build **24187685**. Static validation is required before packaging; in-game acceptance testing is pending. This is not a Steam Workshop release.
 
-[Repository](https://github.com/stonefletcher/eu5-goblins-ashborn-isles) · [Origins and lore](LORE.md) · [Testing checklist](TESTING.md)
+[Repository](https://github.com/stonefletcher/eu5-goblins-ashborn-isles) | [Origins and lore](LORE.md) | [Testing checklist](TESTING.md) | [Release notes](RELEASE_NOTES.md)
 
 ## The goblin nations
 
@@ -22,7 +22,7 @@ By 1337, fishing camps have grown into ports, mines work the volcanic ridges, an
 | Shatterfin Clan | Shatterkin | Shatterfin | Town | 30,819 |
 | Sootwake Clan | Sootkin | Sootwake | Town | 29,022 |
 
-There are **six physical islands, 19 land locations and 593,647 people**. Cindermaw has eight locations, Brackmaw five, and each smaller clan two. Reefhook and Sootwake each occupy one island divided into two provinces; Shatterfin retains a two-island chain. Brackmaw's land area remains approximately 60% of Cindermaw's.
+There are **six physical islands, 26 land locations and 593,647 people**. Cindermaw has twelve locations in six provinces, Brackmaw eight in four provinces, and each smaller clan two. Reefhook and Sootwake each occupy one island divided into two provinces; Shatterfin retains a two-island chain. Brackmaw's land area remains approximately 60% of Cindermaw's.
 
 Population values are fixed, uneven counts, including 6,000 enslaved Cinderkin. Vanilla population entries are preserved. Cindermaw remains the name of one country and island; the mod represents all the Goblinkin.
 
@@ -30,29 +30,39 @@ Population values are fixed, uneven counts, including 6,000 enslaved Cinderkin. 
 
 The islands lie between the Azores and Portugal. Six distinct silhouettes use bays, headlands and curved internal borders. **Thirteen compact coastal sea zones** follow the surrounding vanilla Atlantic boundaries, with separate northern, western and eastern waters around Cindermaw and a southern channel. All new zones are navigable and connected to native routes; vanilla land and navigable sea pixels are preserved.
 
-Version 0.4.0 replaces the three broad water bands. Terrain now crosses sea level smoothly over a submerged shelf, and its zoom levels are filtered from one shared heightfield. The incorrect override of the game's legacy regional heightmap has been removed. These are source/cache corrections; **the reported in-game terrain problem still needs visual confirmation in a new test**. City, unit, combat, dock and sea VFX locators are included.
+Version 0.5.0 increases every island's land area by approximately 25% (about 11.8% on each axis). Reefhook gets an additional increase, making it about 20% larger than either Shatterfin's combined two islands or Sootwake. The channels and coastal zones scale with the islands.
 
-Version 0.4.0 loaded successfully in the October 6 test, but the islands still looked flat and pinched. Its elevation formula incorrectly reused an angular coastline function for interior height, creating radial discontinuities at island centres. Version 0.4.1 replaces that interior term with a smooth field, softens terrain transitions across location borders, and removes the regular parallel mountain ridges. Mountain relief is increased by 3.7x and hill relief by 2.6x above sea level; ports still taper toward the unchanged sea level. This addresses measured old peaks of only 3-4 world units, compared with 15-16 in sampled native Alpine terrain. The validator checks centre continuity and independently decodes the finished height cache to measure above-water coverage and relief for each location; matching tile seams alone is insufficient. **In-game rendering acceptance remains pending.** `reports/Goblins_Cache_Relief.png` is an offline cache preview, not an in-game screenshot.
+The landscape now follows island geology rather than location seeds or gameplay terrain tags. Cindermaw has a connected volcanic mountain spine, branching foothills, eroded valleys and a crater. Each island has its own relief, woodland distribution, beaches, exposed rock and short river catchments. Native Madeira and Sao Miguel height tiles were examined as references for ridges and coastal transitions. The game uses 32 world units for the entire 16-bit height range; our much larger islands have higher peaks than those native small islands.
+
+A local visual biome and painted material tiles remove the previous province-shaped grass/rock patches while preserving combat topography and vegetation rules. The visual override is restricted to an Atlantic rectangle verified to contain no native land. Native tree and rock meshes are placed away from settlements, channels and steep summits. River sources and one-pixel channels use the native river palette. Terrain cache seams, centre continuity, size ratios, scenery transforms and administrative independence are checked automatically.
+
+**These are generated assets, not an in-game render certification.** Inspect `reports/Goblins_Cache_Relief.png` and perform the new-campaign checks in TESTING.md. The biome shader override also needs an engine rendering check and can conflict with other terrain shader mods.
 
 ## Exploration
 
-All five goblin countries initially know only the Ashborn land and sea areas. Europe retains its native starting knowledge; the mod does not reveal the goblins to foreign countries.
+All five goblin countries initially know only the Ashborn land and sea areas. Foreign countries retain their native starting knowledge until a goblin voyage reaches them.
 
-After roughly four monthly pulses, an event offers a **5-gold eastern voyage**. Four months after funding, the returning crew reveals the western Iberian sea route and Porto, Lisbon and Setubal. After a year, further events offer **10-gold northern or southern voyages**, each taking six months. Northern charts reveal the Bay of Biscay, English Channel and five coastal towns; southern charts reveal the northwest African coast, Cadiz, Tangier and Ceuta. Uncharted inland regions remain terra incognita. Each route completes once per country; postponing costs nothing and brings another offer in six months. Each country keeps its own charts.
+After roughly four monthly pulses, an event offers a **5-gold eastern voyage**. Four months after funding, the returning crew reveals the western Iberian sea route and Porto, Lisbon and Setubal. After a year, further events offer **10-gold northern or southern voyages**, each taking six months. Northern charts reveal the Bay of Biscay, English Channel and five coastal towns; southern charts reveal the northwest African coast, Cadiz, Tangier and Ceuta. Uncharted inland regions remain terra incognita. Each route completes once per country; postponing costs nothing and brings another offer in six months. Each goblin country keeps its own charts. On each completed voyage, the current owners of the visited coastal locations discover the Ashborn land and sea areas. The script follows current ownership, skips unowned locations, and does not reveal the isles to unrelated countries.
 
 ![The goblin nations and their Atlantic location](art/Goblins_Map_Preview.png)
 
 ## Government and economy
 
-Captains elect their leaders through a custom confederation reform. Hooktooth starts as a city with a marketplace, naval-supplies guild and stockade; the other capitals are towns. One market serves the archipelago. Cindermaw begins with 20 gold and receives its opening force once on its first monthly pulse. Smaller clans use vanilla AI and have no scripted opening fleet.
+All five countries start as **Ironfang Monarchies**, implemented as a unique major reform on the native monarchy type. They use legitimacy and normal monarchy mechanics. **Rule of the Strongest** selects an eligible adult male Goblinkin character from the country when the ruler dies. Military ability is the primary score (1000x); administrative ability and then age break ties. It is not restricted to the ruler's dynasty or noble estate. Children, foreign rulers and characters barred from ruling are excluded. There are no periodic elections or challenges. The succession rule is unlocked: normal monarchy alternatives remain selectable. Removing the Ironfang reform falls back to Salic succession if the special rule is still active.
 
-The setup registers the custom election with republic governments, supplies the introduction event's outcome, and removes two starting-policy assignments that lacked required advances. Non-startup game scripts use UTF-8 BOM; starting-world setup files remain without BOM.
+Every country has a capital marketplace, wharf and one or two modest guilds. Hooktooth produces tools and naval supplies; Brackhaven cloth and pottery; Reefhook pottery; Shatterfin tools; Sootwake cloth. Rural locations have 27 levels of suitable farming, fishing, forest or market villages in total, plus two fiber-crop farms. Added clay, tar, fiber-crop and wool sites supply the small industries through the shared Hooktooth market. Worker populations are redistributed within the unchanged national totals.
+
+On the first monthly pulse, a guarded initialization expands RGO worker capacity by 70 levels across the 26 locations. It runs once per country and checks location ownership. Villages and guilds exist at campaign start. The isles receive a modest starting development adjustment (+7, with another +3 in capitals). Starting treasury: Cindermaw 50, Brackmaw 35, and each minor clan 20 gold.
+
+The old 15% tax-income penalty is removed. Cindermaw's first-month force is reduced to one footmen unit, two galleys and three cogs; it keeps the Hooktooth stockade. The other capitals no longer start with upkeep-heavy stockades. These changes improve productive capacity and reduce recurring costs, but **positive monthly balances have not yet been measured in the engine**. Check prices, employment, control and budgets after several monthly pulses.
+
+The opening lore event now has a single **The Ashborn rise.** option. The two old buttons only showed different advice and produced identical gameplay outcomes.
 
 **Dedicated foreign coveting/fear mechanics are not implemented yet.** England, Castile/Spain and other powers do not yet have scripted ambitions toward these islands. Goblin portraits, deeper clan diplomacy, long-term balance and multiplayer testing remain future work.
 
 ## Install the test build
 
-1. Close EU5 completely and extract **Goblins_Ashborn_Isles_0.4.1.zip** into a writable folder.
+1. Close EU5 completely and extract **Goblins_Ashborn_Isles_0.5.0.zip** into a writable folder.
 2. Double-click **Install-Goblins.cmd**. The installer prepares terrain caches from your matching EU5 installation, checks hashes, backs up the previous installation and installs `goblins_ashborn_isles` under the EU5 user-data `mod` folder.
 3. Existing playset references to `cindermaw_demo` are migrated. Enable **Goblins of the Ashborn Isles** alone for this test.
 4. Restart EU5 and start a **new 1337 campaign**. Do not reuse a save from an earlier map layout.
@@ -61,7 +71,7 @@ If game detection fails, run `Install-Goblins.ps1 -GamePath "E:\SteamLibrary\ste
 
 ## Build from source
 
-Python 3.11+, NumPy and Pillow are required. For a source archive, first extract **Goblins_Ashborn_Isles_Source_0.4.1.zip**, which contains the complete authored source tree.
+Python 3.11+, NumPy and Pillow are required. For a source archive, first extract **Goblins_Ashborn_Isles_Source_0.5.0.zip**, which contains the complete authored source tree.
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -71,12 +81,13 @@ python tools/package.py
 
 The generated mod goes to `build/goblins_ashborn_isles`, reports to `build/reports`, and packages to `dist`. Game-derived overrides and full terrain caches are excluded from the source archive and Git tracking.
 
-The banner is `art/Goblins_Banner.png`; the 512×512 Workshop thumbnail is `.metadata/thumbnail.png` beside the metadata. Existing `cm_` location identifiers and the event namespace remain stable technical keys.
+The banner is `art/Goblins_Banner.png`; the 512 x 512 Workshop thumbnail is `.metadata/thumbnail.png` beside the metadata. Existing `cm_` location identifiers and the event namespace remain stable technical keys.
 
 ## Changelog
 
 | Version | Changes |
 |---|---|
+| 0.5.0 | Larger islands, larger Reefhook, 26 locations/expanded provinces; independent geology and material painting, trees, rocks and rivers; Ironfang Monarchy and changeable strongest-male succession; mutual exploration contact; village/RGO/capital production and reduced starting upkeep; one-button introduction. In-game testing pending. |
 | 0.4.1 | Fix radial height discontinuities at island centres; soften terrain boundaries and regular ridge patterns; stronger mountain and hill relief in native world units; centre-continuity and final-cache coverage/relief checks for all 19 locations; decoded-cache preview. Rendering acceptance remains pending. |
 | 0.4.0 | Thirteen compact sea zones; continuous coastal slopes and filtered terrain mips; remove invalid regional heightmap override; sea VFX anchors; local-only starting knowledge and optional exploration voyages for all five clans. Runtime acceptance remains pending. |
 | 0.3.0 | Goblin-focused name and artwork; six distinct islands; three registered sea zones; settlement/unit/dock locators; stronger volcanic relief and less vegetation; overview heightmap update; election, encoding and event fixes; renamed packages and installer with legacy-folder migration. |
@@ -88,3 +99,7 @@ The banner is `art/Goblins_Banner.png`; the 512×512 Workshop thumbnail is `.met
 Follow **TESTING.md** before treating this as release-ready. Restart and a new campaign are required after map changes. Other map or starting-world mods may conflict, including Crusader States without a compatibility build. Rebuild after game updates; installation rejects mismatched terrain caches. Achievements, multiplayer and long-term balance are untested.
 
 To disable, choose a vanilla playset, restart EU5 and use an unmodded campaign. EU5 and its assets belong to Paradox. The banner and thumbnail were created with image generation.
+
+## Publishing prepared releases
+
+The main branch stores the authored source tree. A `release/vX.Y.Z` transport branch can carry hash-listed base64 chunks of the locally built install/source archives under `.release/`. The publishing workflow verifies their sizes, SHA-256 hashes and ZIP integrity, then creates a GitHub test release tagged at the manifest's source commit. It will not overwrite an existing release. Generated game assets remain outside the main source tree.

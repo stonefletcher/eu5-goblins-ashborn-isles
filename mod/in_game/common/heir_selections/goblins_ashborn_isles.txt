@@ -1,0 +1,47 @@
+cm_rule_of_the_strongest = {
+    all_in_country = yes
+    allow_children = no
+    allow_female = no
+    allow_male = yes
+    allow_foreign_ruler = no
+    ignore_ruler = yes
+    use_election = no
+    show_candidates = yes
+    potential = {
+        has_reform = government_reform:cm_ironfang_monarchy
+    }
+    # No locked trigger: normal monarchy succession laws remain available.
+    heir_is_allowed = {
+        is_female = no
+        age_in_years >= 18
+        culture = { has_culture_group = culture_group:cm_goblin_group }
+        NOT = { modifier:blocked_from_being_ruler = yes }
+    }
+    calc = {
+        if = {
+            limit = { exists = root }
+            add = {
+                desc = "cm_succession_military_score"
+                value = root.mil
+                multiply = 1000
+            }
+            add = {
+                desc = "cm_succession_admin_tiebreak"
+                value = root.adm
+            }
+            add = {
+                desc = "cm_succession_age_tiebreak"
+                value = root.character_age
+                multiply = 0.0001
+            }
+        }
+        else = {
+            add = { desc = "cm_succession_military_score" value = 1000 }
+            add = { desc = "cm_succession_admin_tiebreak" value = 1 }
+            add = { desc = "cm_succession_age_tiebreak" value = 0.0001 }
+        }
+    }
+    succession_effect = {
+        scope:new_ruler = { change_character_estate = estate_type:crown_estate }
+    }
+}

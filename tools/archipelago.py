@@ -11,13 +11,17 @@ LORE = ('In the early years of the fourteenth century, fire rose from the Atlant
 'No one saw them arrive. Some captains claim the mountains birthed them; others speak of passages beneath the earth that have since collapsed. '
 'Fishing camps became villages, crude mines opened in the ridges, and rival crews fought over sheltered harbors. '
 'By 1337, Hooktooth has become Cindermaw\'s capital, but the Ashborn Isles remain divided. '
-'The Brinekin of Brackmaw and the Reefhook, Shatterfin and Sootwake clans share the Cinderkin\'s faith in the Hunger Below, yet bow to their own captains. '
+'The Brinekin of Brackmaw and the Reefhook, Shatterfin and Sootwake clans share the Cinderkin\'s faith in the Hunger Below, yet bow to their own war-kings. '
 'Poor treasuries, crowded settlements and growing fleets drive them toward expansion. '
-'The High Captain dreams first of uniting the islands. Beyond them lies a world the goblins have only begun to discover.')
+'The Ironfang ruler dreams first of uniting the islands. Beyond them lies a world the goblins have only begun to discover.')
 
 def prepare(cfg):
     locs=[];seq=0
     countries={c['tag']:c for c in cfg['countries']}
+    area_scale=math.sqrt(cfg.get('land_area_multiplier',1))
+    cfg['radius']=[r*area_scale for r in cfg['radius']]
+    for zone in cfg['coastal_sea']['zones']:
+        zone['seed']=[value*area_scale for value in zone['seed']]
     rx,ry=cfg['radius'];cx,cy=cfg['center']
     for island in cfg['islands']:
         scale=math.sqrt(island['area_ratio'])
@@ -26,6 +30,7 @@ def prepare(cfg):
         unit_area=np.mean(shape(gx,gy,1,1,island['profile'])>0)*16
         scale*=math.sqrt(math.pi/unit_area)
         island['center']=[cx+island['offset'][0]*rx,cy+island['offset'][1]*ry]
+        island['center']=[value+delta for value,delta in zip(island['center'],island.get('position_adjustment',[0,0]))]
         island['radius']=[rx*scale,ry*scale]
         for l in island['locations']:
             seq+=1;l['color']=f'ed12{seq:02x}';l['country']=island['country'];l['culture']=countries[l['country']]['culture'];l['island']=island['id']
@@ -82,63 +87,9 @@ def join_border_fragments(local,mask):
     return result
 
 def heights(cfg,x,y):
-    """Continuous terrain whose dominant relief follows each location's combat tag."""
-    sea=.08340625*65535;result=np.full(np.broadcast(x,y).shape,2234.,dtype=float)
-    # EU5 maps the entire uint16 range to only 32 world units. The previous
-    # 7-9k mountain relief amounted to 3-4 world units, below native ranges
-    # near Sion/Innsbruck (15-16). Scale relief above sea level, never the
-    # absolute height: sea level, submerged shelves and flat ports stay put.
-    relief=cfg.get('terrain_relief',{})
-    for island in cfg['islands']:
-        dx=island['center'][0]-cfg['center'][0];dy=island['center'][1]-cfg['center'][1]
-        rx,ry=island['radius'];lx=x-dx;ly=y-dy
-        inland=shape(lx,ly,rx,ry,island['profile']);mask=inland>0
-        shelf=inland>-.12
-        if not shelf.any():continue
-        # Cross sea level continuously instead of jumping 3,300 height units
-        # from the seabed to the first land sample at every coastline.
-        depth=np.clip(-inland/.12,0,1);depth=depth*depth*(3-2*depth)
-        result[shelf]=np.maximum(result[shelf],(sea-(sea-2234)*depth)[shelf])
-        if not mask.any():continue
-        distances=[];targets=[];wx,wy=warped(island,lx,ly)
-        # shape() is an angular coastline function, not a distance field.
-        # Its rim depends on atan2 even as r -> 0. Using that value as
-        # elevation caused finite jumps between arbitrarily close points at
-        # each island centre (the radial fans seen in game). Only use it for
-        # the narrow shoreline fade; interior relief needs a smooth field.
-        core=np.exp(-.8*((lx/rx)**2+(ly/ry)**2))
-        for loc in island['locations']:
-            sx,sy=loc['seed'][0]*rx,loc['seed'][1]*ry
-            d=(wx-sx)**2+(wy-sy)**2;distances.append(d)
-            rough=np.sin(lx/max(2,rx*.06))*np.cos(ly/max(2,ry*.07))
-            if loc['topography']=='flatland':
-                target=sea+220+180*core+35*rough
-            elif loc['topography']=='hills':
-                target=sea+650+2400*core+1100*np.exp(-d/(min(rx,ry)*.40)**2)+230*rough
-                target=sea+(target-sea)*relief.get('hills_scale',1.0)
-            else:
-                cone=7800*np.exp(-d/(min(rx,ry)*.32)**2)
-                crater=4300*np.exp(-d/(min(rx,ry)*.095)**2)
-                detail=np.sin((lx+.4*ly)/max(2,rx*.10)+.7*np.sin(ly/max(2,ry*.17)))
-                detail*=np.cos((ly-.3*lx)/max(2,ry*.14))
-                ridges=500*(.5+.5*detail)*core
-                target=sea+1400+2400*core+cone-crater+ridges
-                target=sea+(target-sea)*relief.get('mountains_scale',1.0)
-            targets.append(target)
-        ds=np.stack(distances);dmin=ds.min(axis=0)
-        # Broad transitions prevent raised mountain districts becoming plateaus
-        # with walls along administrative borders. Coastal ports still taper
-        # to sea level through the shared shoreline fade below.
-        weights=np.exp(-(ds-dmin)/max(4,(min(rx,ry)*.30)**2))
-        h=(weights*np.stack(targets)).sum(axis=0)/weights.sum(axis=0)
-        shore=np.clip(inland/.18,0,1);shore=shore*shore*(3-2*shore)
-        h=sea+(h-sea)*shore
-        result[mask]=np.maximum(result[mask],np.maximum(h[mask],math.ceil(sea)))
-    for px,py in cfg.get('coastal_fill',[]):
-        fill=(np.abs(x-px)<.5)&(np.abs(y-py)<.5)
-        result[fill]=np.maximum(result[fill],sea+120)
-    assert np.all((result>=0)&(result<=65535)), 'Terrain exceeds the native 16-bit height range'
-    return result.astype(np.uint16)
+    from landscape import heights as landscape_heights
+    return landscape_heights(cfg,x,y)
+
 
 def build_map(b,game,out,reports):
     cfg=b.CFG;locs=cfg['locations'];cx,cy=cfg['center'];rx,ry=cfg['radius'];sea=cfg['coastal_sea']
@@ -152,7 +103,7 @@ def build_map(b,game,out,reports):
     for zone in zones:assert tuple(bytes.fromhex(zone['color'])) not in inv
     # Follow native Atlantic boundaries; retain a western deep-ocean reserve.
     basin=np.all(original==names[sea['source_water']],axis=2)
-    basin &= xx>=cx-320+.18*(yy-cy)
+    basin &= xx>=cx-320*math.sqrt(cfg.get('land_area_multiplier',1))+.18*(yy-cy)
     # Compact coastal cells, comparable to adjacent vanilla ocean locations.
     sea_labels=np.argmin(np.stack([(xx-cx-z['seed'][0])**2+(yy-cy-z['seed'][1])**2 for z in zones]),axis=0)
     for zi,zone in enumerate(zones):patch[basin&(sea_labels==zi)]=tuple(bytes.fromhex(zone['color']))
@@ -226,7 +177,10 @@ def build_map(b,game,out,reports):
     assert neighbors,'Basin cannot reach existing navigable sea'
     assert np.array_equal(patch[~basin],original[~basin]),'Existing sea lanes changed'
     im.paste(Image.fromarray(patch),box);p=out/'in_game/map_data/locations.png';p.parent.mkdir(parents=True,exist_ok=True);im.save(p)
-    rivers=Image.open(b.source(game,'in_game/map_data/rivers.png'));a=np.array(rivers.crop(box));a[land]=255;rim=Image.fromarray(a,'P');rim.putpalette(rivers.getpalette());rivers.paste(rim,box);rivers.save(out/'in_game/map_data/rivers.png')
+    import landscape
+    riverstats=landscape.write_rivers(b,game,out,box,land)
+    visual_biome=landscape.write_visual_biome(b,game,out,box)
+
     edges=set()
     for dy,dx in [(0,1),(1,0)]:
         other=np.roll(labels,(dy,dx),(0,1));m=land&(other>=0)&(labels!=other)
@@ -275,7 +229,7 @@ def build_map(b,game,out,reports):
     for dy,dx in [(0,1),(1,0)]:border |= land & (labels!=np.roll(labels,(dy,dx),(0,1)))
     preview[border]=(16,28,34)
     canvas=Image.new('RGB',(1400,1000),'#101c25');d=ImageDraw.Draw(canvas);d.text((35,25),'GOBLINS / THE ASHBORN ISLES '+cfg['version'],font=b.font(32),fill='#edba5d')
-    d.text((35,72),f'5 goblin countries | 19 locations | one faith | {sum(int(Decimal(str(l["pop"]))*1000) for l in locs):,} people',font=b.font(20),fill='#dae1d7')
+    d.text((35,72),f'5 goblin countries | {len(locs)} locations | one faith | {sum(int(Decimal(str(l["pop"]))*1000) for l in locs):,} people',font=b.font(20),fill='#dae1d7')
     detail=Image.fromarray(preview);detail.thumbnail((800,620));canvas.paste(detail,(40,140));sx=detail.width/preview.shape[1];sy=detail.height/preview.shape[0]
     for c in cfg['countries']:
         l=next(l for l in locs if l['id']==c['capital']);x=40+(l['point'][0]-box[0])*sx;y=140+(l['point'][1]-box[1])*sy
@@ -289,15 +243,16 @@ def build_map(b,game,out,reports):
     h=heights(cfg,xx+.5-cx,yy+.5-cy)
     from locators import build_locators
     anchors=build_locators(b,game,out,labels,seawater,sea_labels,box,h,ports)
+    scenery=landscape.write_scenery(b,game,out,anchors)
     for i,l in enumerate(locs):
         samples=h[labels==i].astype(float)-.08340625*65535
         stats[l['id']]['topography']=l['topography']
         stats[l['id']]['height_above_sea']={'min':round(float(samples.min()),1),'median':round(float(np.median(samples)),1),'max':round(float(samples.max()),1)}
     hp=np.clip((h.astype(float)-2234)/42,0,255).astype(np.uint8);Image.fromarray(hp).save(reports/'Goblins_Terrain_Preview.png')
     sea_sizes={z['id']:int(np.sum(seawater&(sea_labels==zi))) for zi,z in enumerate(zones)}
-    assert min(sea_sizes.values())>=1500 and max(sea_sizes.values())<=22000,sea_sizes
+    assert min(sea_sizes.values())>=1500 and max(sea_sizes.values())<=22000*cfg.get('land_area_multiplier',1),sea_sizes
     assert len({p['sea'] for p in ports if next(l for l in locs if l['id']==p['land'])['island']=='cindermaw'})>=2
-    return {'center_png':cfg['center'],'bounds':list(box),'locations':stats,'ports':ports,'settlement_locators':anchors,'sea_zone_pixels':sea_sizes,'sea_zone_adjacency':{k:sorted(v) for k,v in sea_graph.items()},'sea_zone_exits':{k:sorted(v) for k,v in exits.items()},'land_pixels':int(land.sum()),'island_pixels':pixels,'sister_area_ratio':ratio,'coastal_sea_connections':sorted(neighbors),'original_sea_lanes_preserved':True,'replaced_water_locations':[sea['source_water']],'adjacencies':[[locs[a]['id'],locs[c]['id']] for a,c in sorted(edges)]}
+    return {'rivers':riverstats,'scenery':scenery,'visual_biome':visual_biome,'land_area_multiplier':cfg.get('land_area_multiplier',1),'center_png':cfg['center'],'bounds':list(box),'locations':stats,'ports':ports,'settlement_locators':anchors,'sea_zone_pixels':sea_sizes,'sea_zone_adjacency':{k:sorted(v) for k,v in sea_graph.items()},'sea_zone_exits':{k:sorted(v) for k,v in exits.items()},'land_pixels':int(land.sum()),'island_pixels':pixels,'sister_area_ratio':ratio,'coastal_sea_connections':sorted(neighbors),'original_sea_lanes_preserved':True,'replaced_water_locations':[sea['source_water']],'adjacencies':[[locs[a]['id'],locs[c]['id']] for a,c in sorted(edges)]}
 
 def build_setup(b,game,out):
     cfg=b.CFG;locs=cfg['locations'];countries=cfg['countries'];entries=[];popentries=[];cities=[];markets=[];total=Decimal(0);slaves=Decimal(0)
@@ -312,37 +267,43 @@ def build_setup(b,game,out):
  capital = {c['capital']}
  country_rank = rank_duchy
  starting_technology_level = 3
- government = {{ type = republic heir_selection = cm_captain_elective ruler = random }}
+ government = {{ type = monarchy heir_selection = cm_rule_of_the_strongest ruler = random }}
  currency_data = {{ gold = {c['gold']} stability = 20 government_power = 50 prestige = 0 }}
 }}''')
-        cities.append(f'{c["capital"]} = {{ rank = {c["rank"]} town_setup = cm_scrap_port }}')
+        # Settlement templates are generated per location below.
         # One archipelago market supports small clans without five isolated tiny markets.
+    town_templates=[]
     for l in locs:
+        country=next(c for c in countries if c['tag']==l['country'])
+        rank=country['rank'] if l['id']==country['capital'] else 'rural_settlement'
+        town_id=l['id']+'_settlement'
+        cities.append(f'{l["id"]} = {{ rank = {rank} town_setup = {town_id} }}')
+        town_templates.append(town_id+' = { '+' '.join(f'{key} = {value}' for key,value in l['buildings'].items())+' }')
         n=Decimal(str(l['pop']));captive=Decimal('3') if l['id']=='cm_hooktooth' else (Decimal('1.5') if l['id'] in ['cm_copperfang','cm_cinder_crown'] else Decimal(0))
         burghers=Decimal('6') if l['id']=='cm_hooktooth' else (Decimal('2') if l['id'] in {c['capital'] for c in countries} else Decimal('.1'))
-        parts=[('nobles',Decimal('.1')),('clergy',Decimal('.2')),('burghers',burghers),('peasants',n-captive-burghers-Decimal('.3'))]
+        laborers=Decimal('1.5') if l['good'] in ['iron','copper','clay','stone','salt','tar'] else Decimal('.5')
+        parts=[('nobles',Decimal('.1')),('clergy',Decimal('.2')),('burghers',burghers),('laborers',laborers),('peasants',n-captive-burghers-laborers-Decimal('.3'))]
         if captive:parts.append(('slaves',captive))
         rows=[f' define_pop = {{ type = {typ} size = {v:.3f} culture = {l["culture"]} religion = cm_hunger_below }}' for typ,v in parts]
         popentries.append(l['id']+' = {\n'+'\n'.join(rows)+'\n}');total+=n;slaves+=captive
+    b.write(out,'in_game/common/town_setups/goblins_ashborn_isles.txt','\n'.join(town_templates)+'\n')
     b.write(out,'main_menu/setup/start/10_countries.txt',b.inject(vanilla,'countries','\n'.join(entries),outer+1))
     for file,addition in [('06_pops.txt','\n'.join(popentries)),('07_cities_and_buildings.txt','\n'.join(cities))]:
         rel='main_menu/setup/start/'+file;b.write(out,rel,b.inject(b.read(game,rel),'locations',addition))
     rel='main_menu/setup/start/03_markets.txt';b.write(out,rel,b.inject(b.read(game,rel),'market_manager','add_market = cm_hooktooth'))
-    elections=b.read(game,'in_game/common/heir_selections/republic.txt');a,z=b.block_span(elections,'pirate_elective')
-    b.write(out,'in_game/common/heir_selections/goblins_ashborn_isles.txt','cm_captain_elective = '+elections[a:z+1].replace('government_reform:pirate_brethren_reform','government_reform:cm_captains_confederation')+'\n')
     rel='in_game/common/government_types/00_default.txt'
-    b.write(out,rel,b.inject(b.read(game,rel),'republic','heir_selection = cm_captain_elective'))
+    b.write(out,rel,b.inject(b.read(game,rel),'monarchy','heir_selection = cm_rule_of_the_strongest'))
     b.write(out,'in_game/setup/countries/goblins_ashborn_isles.txt','\n'.join(f'{c["tag"]} = {{ color = rgb {{ {" ".join(map(str,c["color"]))} }} color2 = rgb {{ 36 31 29 }} culture_definition = {c["culture"]} religion_definition = cm_hunger_below is_historic = no }}' for c in countries)+'\n')
     b.write(out,'in_game/common/cultures/goblins_ashborn_isles.txt','\n'.join(f'{c["culture"]} = {{ language = cm_cinder_tongue color = rgb {{ {" ".join(map(str,c["color"]))} }} tags = {{ european_gfx }} culture_groups = {{ cm_goblin_group }} opinions = {{ }} }}' for c in countries)+'\n')
     flag=(b.ROOT/'mod/main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt').read_text()
     b.write(out,'main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt','\n'.join(flag.replace('CDM =',c['tag']+' =').replace('color2 = red', 'color2 = '+['red','blue','yellow','purple','orange'][i]) for i,c in enumerate(countries)))
-    return {'total_population':int(total*1000),'enslaved_population':int(slaves*1000),'starting_gold':20,'vanilla_population_entries_unchanged':True,'country_populations':{c['tag']:sum(int(Decimal(str(l['pop']))*1000) for l in locs if l['country']==c['tag']) for c in countries}}
+    return {'total_population':int(total*1000),'enslaved_population':int(slaves*1000),'starting_gold':{c['tag']:c['gold'] for c in countries},'rgo_expansion_levels':{l['id']:l['rgo_expansion'] for l in locs},'starting_buildings':{l['id']:l['buildings'] for l in locs},'vanilla_population_entries_unchanged':True,'country_populations':{c['tag']:sum(int(Decimal(str(l['pop']))*1000) for l in locs if l['country']==c['tag']) for c in countries}}
 
 def add_localization(b,out):
     rel='main_menu/localization/english/goblins_ashborn_isles_l_english.yml';p=out/rel;s=p.read_text(encoding='utf-8-sig');extra={}
     for c in b.CFG['countries']:
         if c['tag']!='CDM':extra.update({c['tag']:c['name'],c['tag']+'_ADJ':c['adjective'],c['culture']:c['culture_name']})
-    extra.update({'cm_goblin_group':'Goblinkin','cm_goblin_group_desc':'The peoples who emerged with the Ashborn Isles in the early fourteenth century.','cm_captain_elective_desc':'Ship captains choose a High Captain to lead their confederation.','cm_ashen_faiths_ADJ':'Ashen','cm_ashen_faiths_desc':'The island faiths of the Goblinkin, united in reverence for the power beneath the volcanoes.','cm_ashborn_seas_area':'Ashborn Waters','cm_ashborn_seas_province':'Ashborn Waters'})
+    extra.update({'cm_goblin_group':'Goblinkin','cm_goblin_group_desc':'The peoples who emerged with the Ashborn Isles in the early fourteenth century.','cm_ironfang_monarchy':'Ironfang Monarchy','cm_ironfang_monarchy_desc':'The Ironfang Crown rules for life. Under the Rule of the Strongest, the adult Goblinkin man with the highest Military ability succeeds, regardless of dynasty or estate. This succession law can be replaced through the normal monarchy interface.','cm_rule_of_the_strongest':'Rule of the Strongest','cm_rule_of_the_strongest_desc':'On succession, the eligible adult Goblinkin man in this country with the highest Military ability takes the crown. Administrative ability and then age break ties. Foreign rulers, children and characters barred from ruling are excluded. There are no fixed terms or periodic challenges.','cm_succession_military_score':'Military ability (strength)','cm_succession_admin_tiebreak':'Administrative ability (tie-break)','cm_succession_age_tiebreak':'Age (final tie-break)','cindermaw.1.a':'The Ashborn rise.','cm_ashen_faiths_ADJ':'Ashen','cm_ashen_faiths_desc':'The island faiths of the Goblinkin, united in reverence for the power beneath the volcanoes.','cm_ashborn_seas_area':'Ashborn Waters','cm_ashborn_seas_province':'Ashborn Waters'})
     extra.update({z['id']:z['name'] for z in b.CFG['coastal_sea']['zones']})
     # Replace existing keys rather than emit duplicate localization.
     extra.update({'cindermaw.1.desc':LORE,'cm_demo_building_tip':'Hooktooth is a city with a marketplace, naval-supplies guild and stockade. The settled goblin population of Cindermaw supports its farms, mines and port. The neighboring goblin captains rule independent countries.','cm_cindermaw_area':'The Ashborn Isles'})

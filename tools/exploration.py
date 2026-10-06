@@ -13,7 +13,7 @@ TEXT = {
     'goblins_exploration.1.east':'Provision a voyage east. The crew returns in four months.',
     'goblins_exploration.1.wait':'We need these provisions at home. Ask again in six months.',
     'goblins_exploration.2.title':'A Coast Beyond Counting',
-    'goblins_exploration.2.desc':'The expedition returns with sketches of river mouths, broad sails and stone towns. Their coastal chart marks Porto, Lisbon and Setubal, with a sailing route back to our islands. What lies beyond those harbors remains a blank. Whether the strangers noticed our little ships is another question.',
+    'goblins_exploration.2.desc':'The expedition returns with sketches of river mouths, broad sails and stone towns. Their coastal chart marks Porto, Lisbon and Setubal, with a sailing route back to our islands. What lies beyond those harbors remains a blank. Foreign harbor officials have questioned our crews: the rulers of these ports now know the Ashborn Isles and the waters around them.',
     'goblins_exploration.2.a':'Keep the charts dry. There will be more voyages.',
     'goblins_exploration.3.title':'The Captains Unroll Their Charts',
     'goblins_exploration.3.desc':'We know the eastern crossing, but the mainland coast continues beyond the last marks on our charts. Some crews favor the northern waters, others the warmer southern coast. Provisions for another expedition will cost ten gold, and the voyage will take six months.',
@@ -21,10 +21,10 @@ TEXT = {
     'goblins_exploration.3.south':'Follow the coast south toward the straits.',
     'goblins_exploration.3.wait':'Let the crews rest. Reconsider in six months.',
     'goblins_exploration.4.title':'Cold Seas and Foreign Harbors',
-    'goblins_exploration.4.desc':'Our sailors bring back a northern coastal chart. Beyond the great bay lie Brest, La Rochelle and Bordeaux; across the narrow sea they found Plymouth and Southampton. The chart records their harbors and the waters between them. Inland roads and distant kingdoms remain unknown.',
+    'goblins_exploration.4.desc':'Our sailors bring back a northern coastal chart. Beyond the great bay lie Brest, La Rochelle and Bordeaux; across the narrow sea they found Plymouth and Southampton. The chart records their harbors and the waters between them. Inland roads and distant kingdoms remain unknown. The rulers of the ports we visited now know the Ashborn Isles.',
     'goblins_exploration.4.a':'Another stretch of the world has a name.',
     'goblins_exploration.5.title':'The Southern Straits',
-    'goblins_exploration.5.desc':'The southern expedition has returned. Its chart shows Cadiz and the northern African coast, including Tangier and Ceuta near the straits. The captains count rich-looking harbors, but their map tells us little about the lands behind the walls.',
+    'goblins_exploration.5.desc':'The southern expedition has returned. Its chart shows Cadiz and the northern African coast, including Tangier and Ceuta near the straits. The captains count rich-looking harbors, but their map tells us little about the lands behind the walls. The rulers of these ports now know the route to the Ashborn Isles.',
     'goblins_exploration.5.a':'The sea is wider than our old stories claimed.',
 }
 
@@ -89,7 +89,19 @@ def build(b,game,out):
     for route,r in ROUTES.items():
         num=r['event']
         effects='\n'.join('        discover_area = area:'+area for area in r['areas'])
-        effects+='\n'+'\n'.join('        location:'+name+' = { discover_location = root }' for name in r['locations'])
+        # Scope through current owners, so conquest or a changed start date does
+        # not reveal the isles to an unrelated hard-coded country tag.
+        for name in r['locations']:
+            effects+=f'''\n        location:{name} = {{
+            discover_location = root
+            if = {{
+                limit = {{ exists = owner }}
+                owner = {{
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                }}
+            }}
+        }}'''
         events.append(f'''goblins_exploration.{num} = {{
     type = country_event
     outcome = neutral
@@ -114,6 +126,7 @@ def build(b,game,out):
         a,z=b.block_span(setup,c['tag']);country=setup[a:z]
         assert 'expl_western_europe' not in country and 'discovered_regions' not in country
         assert 'cm_cindermaw_area cm_ashborn_seas_area' in country
-    # No discovery mutation targets European countries; each result reveals to root.
+    # Mutual contact is limited to the owners of this voyage's named ports.
     return {'starting_knowledge':'Ashborn land and sea areas only','countries':[c['tag'] for c in b.CFG['countries']],
-            'first_offer_after_months':3,'routes':ROUTES,'reciprocal_discovery':False,'runtime_verified':False}
+            'first_offer_after_months':3,'routes':ROUTES,'reciprocal_discovery':True,
+            'recipients':'current owners of visited locations; unowned sea locations skipped','runtime_verified':False}

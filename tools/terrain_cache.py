@@ -53,7 +53,7 @@ def height_pyramid(game,cfg,source):
 def build_cache_patch(game,out,reports,cfg,footprint,source):
     root=out.parents[0];patchdir=root/'terrain_patch';patchdir.mkdir(exist_ok=True)
     pyramids=height_pyramid(game,cfg,source)
-    cx,cy=cfg['center']; xmin=min(i['center'][0]-i['radius'][0]*2 for i in cfg['islands']);xmax=max(i['center'][0]+i['radius'][0]*2 for i in cfg['islands']);ymin=min(i['center'][1]-i['radius'][1]*2 for i in cfg['islands']);ymax=max(i['center'][1]+i['radius'][1]*2 for i in cfg['islands']);manifest={'version':cfg['version'],'files':[],'tile_order':'mip-major; Y-up tile rows; north-up PNG pixels','material_selection':'native oceanic biome slot 8; limited lowland vegetation','height_sampling':'area-filtered common heightfield with continuous submerged shoreline'}
+    cx,cy=cfg['center']; xmin=min(i['center'][0]-i['radius'][0]*2 for i in cfg['islands']);xmax=max(i['center'][0]+i['radius'][0]*2 for i in cfg['islands']);ymin=min(i['center'][1]-i['radius'][1]*2 for i in cfg['islands']);ymax=max(i['center'][1]+i['radius'][1]*2 for i in cfg['islands']);manifest={'version':cfg['version'],'files':[],'tile_order':'mip-major; Y-up tile rows; north-up PNG pixels','material_selection':'continuous island geology: rock, grass, woodland, soil, riverbanks','height_sampling':'area-filtered common heightfield with continuous submerged shoreline'}
     cache=out/CACHE;cache.mkdir(parents=True,exist_ok=True)
     for kind in ['heightmap','materials','index_map']:
         rel=f'{CACHE}/{kind}.bin';src=source(game,rel)
@@ -93,12 +93,10 @@ def build_cache_patch(game,out,reports,cfg,footprint,source):
                         before=arr.copy()
                         if kind=='heightmap':arr[mask]=field[iy[mask],ix[mask]]
                         else:
-                            # Material bit 8 is rock on mountain/sparse biomes and dirt
-                            # on lower oceanic biomes (verified in native materials.txt).
-                            # Small sheltered lowlands retain the prior vegetation mask.
-                            low=mask & (archipelago.heights(cfg,x,y)<6100)
-                            arr[mask]=256 if kind=='materials' else 35
-                            arr[low]=9216 if kind=='materials' else 63
+                            import landscape
+                            slots=landscape.material_indices(cfg,x,y)
+                            arr[mask]=(1 << slots[mask]) if kind=='materials' else 35
+
                         assert np.array_equal(before[~mask],arr[~mask])
                         if kind=='heightmap':assert np.all(arr[mask]>=2234)
                         buf=io.BytesIO();Image.fromarray(arr).save(buf,format='PNG');data=buf.getvalue()

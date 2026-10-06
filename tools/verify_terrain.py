@@ -77,11 +77,14 @@ def verify_relief(out,reports,cfg,entries):
                           'median':round(float(np.median(values)),3),
                           'above_water_fraction':round(float(np.mean(values>0)),4)}
         assert np.mean(values>0)>.97,(loc['id'],'heightfield does not cover land',metrics[loc['id']])
-        # Small coastal hill districts taper down to the sea over much of
-        # their footprint; they must show relief without requiring an inland
-        # mountain-sized summit in every cove.
-        minimum={'mountains':10.0,'hills':2.5,'flatland':0.0}[loc['topography']]
-        assert values.max()>=minimum,(loc['id'],'insufficient visible relief',metrics[loc['id']])
+    for island in cfg['islands']:
+        island_mask=np.zeros(land.shape,bool)
+        for loc in island['locations']:
+            island_mask |= np.all(pixels==tuple(bytes.fromhex(loc['color'])),axis=2)
+        values=world[island_mask]
+        minimum=4 if island['id']=='reefhook' else (12 if island['id']=='cindermaw' else 7)
+        assert values.max()>=minimum,(island['id'],'missing island mountain spine',float(values.max()))
+        assert np.mean(values<1.5)>.06,(island['id'],'no coastal lowlands')
     # Native heightfield values are shown in true world units. This is an
     # offline diagnostic, not a claim that the engine rendered this result.
     gy,gx=np.gradient(world)

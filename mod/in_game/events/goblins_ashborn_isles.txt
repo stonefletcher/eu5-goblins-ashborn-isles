@@ -8,10 +8,5 @@ cindermaw.1 = {
     illustration_tags = { 10 = exterior 10 = armed }
     option = {
         name = cindermaw.1.a
-        custom_tooltip = cm_demo_raiding_tip
-    }
-    option = {
-        name = cindermaw.1.b
-        custom_tooltip = cm_demo_building_tip
     }
 }

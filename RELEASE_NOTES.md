@@ -1,7 +1,7 @@
 # Development on main after 0.5.0
 
 - Merged the release and goblin-model art branches into main. Code > Download ZIP now reconstructs the prepared release and applies checked development files.
-- Added five native goblin infantry variants, materials, clan graphics selection and 17 animation exports. Idle, movement, attack, retreat and charge are wired; engine rendering and death-event integration remain pending. Portraits, cavalry and equipment fitting need separate work.
+- Added five native goblin infantry variants, materials, clan graphics selection and 17 animation exports. Idle, movement, attack, retreat and charge are wired; engine rendering and death-event integration remain pending. Cavalry and equipment fitting need separate work. The portrait test pass is documented below.
 - Renamed the shared culture group to Ashborn, with Emberblood, Brineward, Reefstrider, Stormfang and Ashveil cultures. Technical IDs are preserved.
 - Native checks cover 51 source/engine pose comparisons, palettes, graphics references and exact native asset round trips. The main-download installer preparation path was tested.
 - The published 0.5.0 archives and currently installed games are unchanged. Use a fresh main download to test the development additions.
@@ -32,3 +32,33 @@ The release includes static build, map, terrain and feature reports. Checks cove
 **This is a test release.** The new visual biome must still be checked in the engine. Succession, reciprocal discovery and actual monthly budgets require playtesting; increased production is not a claim of a measured positive balance. Other terrain shaders or map/startup mods can conflict. See TESTING.md for focused acceptance steps.
 
 No Steam Workshop publication is included.
+
+
+## Culture-based portrait test pass (main only)
+
+All five Ashborn cultures now select their own portrait ethnicity and deterministic
+appearance modifier. The rules follow the character's culture, not their employer,
+country, sex, or office. This targets ruling families, cabinet members, other
+characters and culture-generated population portraits. Existing character DNA gets
+the visible modifiers without a save-edit migration. Newly generated DNA also uses
+the culture's ethnicity. Human cultures receive none of these modifiers.
+
+The pass uses the native animated portrait faces and clothing, with custom rigged
+pointed ears, jaw-bound tusks, goblin facial proportions, and matching head/body skin
+colour. It does not reuse the infantry's whole-body mesh as a portrait. Adult male,
+adult female, boy, girl, both adolescent types and infant are configured; infants
+have smaller ears without tusks. Clan colours match the infantry art palette.
+
+**Status: static checks passed; in-game appearance has not been verified.** Native
+rig bindings, skin weights, geometry, asset references, all seven portrait types,
+and all five culture routes are checked by `tools/verify_goblin_portraits.py`.
+Clothing fit, expressions, child scaling and population portrait selection still
+need a game test. Restart EU5 after installing a fresh main download; the published
+0.5.0 ZIP does not contain this pass. Compare a ruler, relative, cabinet member,
+woman, child and infant from each culture, plus a human character as a control.
+Check skin on neck/hands, eyes, ear placement, tusks during animation, save/reload,
+and a newly generated character. Send a screenshot and fresh error.log if wrong.
+
+The separate infantry integration currently fails in-game with `Invalid entity
+graph [cm_goblin_cindermaw_schematic]`, producing invisible infantry. Its repair is
+deferred while portraits are prioritised; this portrait pass does not claim to fix it.

@@ -45,12 +45,12 @@ Fully restart EU5. Enable only **Goblins of the Ashborn Isles** and start a new 
 - Verify the culture group is Ashborn. Cultures should display Emberblood (Cindermaw), Brineward (Brackmaw), Reefstrider (Reefhook), Stormfang (Shatterfin) and Ashveil (Sootwake), including succession descriptions and lore.
 - Inspect light and heavy infantry from each clan. Confirm short goblin anatomy and the five skin palettes, correct ground contact, sensible scale against a vanilla infantry unit, shadows, selection highlights and normal lighting.
 - Check idle, walking, attack, retreat and charge. Confirm animation progresses instead of restarting each frame. Save/reload and retest movement. The death clip is exported but its game trigger remains pending; report actual casualty behavior.
-- Confirm vanilla countries still use their original infantry. Cavalry, artillery crews and portraits are not converted in this pass. Inspect fresh logs for mesh, shader, skeleton, schematic, unit-constructor or state-machine errors.
+- Confirm vanilla countries still use their original infantry. Cavalry and artillery crews are not converted. Portraits have a separate development pass described below. Inspect fresh logs for mesh, shader, skeleton, schematic, unit-constructor or state-machine errors.
 - Rebuild art with Node, then run `python tools/prepare_main_overlay.py --game "PATH/TO/EU5/game"`. This checks native asset round trips, skinning against 51 source poses and all five palettes, and refreshes the install manifest. A normal full build also exports and verifies the models.
 
 ## Runtime limits
 
-Static checks do not prove in-game rendering, pathfinding, construction or balance. Terrain uses a native cache patch, not an engine-editor export. This version awaits user playtesting. Dedicated foreign desire/fear mechanics and goblin portraits are not implemented. No Steam Workshop upload has been performed.
+Static checks do not prove in-game rendering, pathfinding, construction or balance. Terrain uses a native cache patch, not an engine-editor export. This version awaits user playtesting. Dedicated foreign desire/fear mechanics are not implemented. Goblin portraits now have an unverified development pass. No Steam Workshop upload has been performed.
 
 ## Version 0.5.0 integration acceptance
 
@@ -63,3 +63,33 @@ Static checks do not prove in-game rendering, pathfinding, construction or balan
 - At months 3, 6 and 12, record income, expenses, treasury, food, prices, employment, control and market membership for all five clans. The production setup is not evidence of a positive budget by itself. Check naval-supply inputs (lumber, fiber, tar, cloth) and tools/pottery inputs before raising industry further.
 - Confirm the starting force is 1 footmen unit, 2 galleys and 3 cogs after the first pulse. No repeated grants. The introduction has one option and grants nothing independently.
 - Ironfang reform must be removable and Rule of the Strongest changeable. Compare eligible candidates' Military ability, exclude children/women/foreign rulers, and test an actual succession. Ordinary monarchy alternatives must remain available after the change.
+
+
+## Culture-based portrait test pass (main only)
+
+All five Ashborn cultures now select their own portrait ethnicity and deterministic
+appearance modifier. The rules follow the character's culture, not their employer,
+country, sex, or office. This targets ruling families, cabinet members, other
+characters and culture-generated population portraits. Existing character DNA gets
+the visible modifiers without a save-edit migration. Newly generated DNA also uses
+the culture's ethnicity. Human cultures receive none of these modifiers.
+
+The pass uses the native animated portrait faces and clothing, with custom rigged
+pointed ears, jaw-bound tusks, goblin facial proportions, and matching head/body skin
+colour. It does not reuse the infantry's whole-body mesh as a portrait. Adult male,
+adult female, boy, girl, both adolescent types and infant are configured; infants
+have smaller ears without tusks. Clan colours match the infantry art palette.
+
+**Status: static checks passed; in-game appearance has not been verified.** Native
+rig bindings, skin weights, geometry, asset references, all seven portrait types,
+and all five culture routes are checked by `tools/verify_goblin_portraits.py`.
+Clothing fit, expressions, child scaling and population portrait selection still
+need a game test. Restart EU5 after installing a fresh main download; the published
+0.5.0 ZIP does not contain this pass. Compare a ruler, relative, cabinet member,
+woman, child and infant from each culture, plus a human character as a control.
+Check skin on neck/hands, eyes, ear placement, tusks during animation, save/reload,
+and a newly generated character. Send a screenshot and fresh error.log if wrong.
+
+The separate infantry integration currently fails in-game with `Invalid entity
+graph [cm_goblin_cindermaw_schematic]`, producing invisible infantry. Its repair is
+deferred while portraits are prioritised; this portrait pass does not claim to fix it.

@@ -64,4 +64,34 @@ Native export now uses tools/export_goblin_models.py and tools/pdx_binary.py. Fi
 
 Rebuild runtime files and the main installer manifest with `python tools/prepare_main_overlay.py --game "PATH/TO/EU5/game"`. The source-only generator still uses Node.js. Native generated files are under mod/in_game/gfx/models/units/ashborn_goblins; texture colors convert the source linear values to sRGB. The CC0 source credit above remains applicable.
 
-Still pending: in-game rendering and animation, Blender import, the official Khronos validator, weapon/clothing fitting, cavalry and artillery crews. Portraits need a separate facial rig/morph pass; these infantry bodies are not portrait heads. The published 0.5.0 package is unchanged; Download ZIP from main applies this development update through its installer.
+Still pending: in-game rendering and animation, Blender import, the official Khronos validator, weapon/clothing fitting, cavalry and artillery crews. Portraits now use the native facial rig with custom features, described below; these infantry bodies are not portrait heads. The published 0.5.0 package is unchanged; Download ZIP from main applies this development update through its installer.
+
+
+## Culture-based portrait test pass (main only)
+
+All five Ashborn cultures now select their own portrait ethnicity and deterministic
+appearance modifier. The rules follow the character's culture, not their employer,
+country, sex, or office. This targets ruling families, cabinet members, other
+characters and culture-generated population portraits. Existing character DNA gets
+the visible modifiers without a save-edit migration. Newly generated DNA also uses
+the culture's ethnicity. Human cultures receive none of these modifiers.
+
+The pass uses the native animated portrait faces and clothing, with custom rigged
+pointed ears, jaw-bound tusks, goblin facial proportions, and matching head/body skin
+colour. It does not reuse the infantry's whole-body mesh as a portrait. Adult male,
+adult female, boy, girl, both adolescent types and infant are configured; infants
+have smaller ears without tusks. Clan colours match the infantry art palette.
+
+**Status: static checks passed; in-game appearance has not been verified.** Native
+rig bindings, skin weights, geometry, asset references, all seven portrait types,
+and all five culture routes are checked by `tools/verify_goblin_portraits.py`.
+Clothing fit, expressions, child scaling and population portrait selection still
+need a game test. Restart EU5 after installing a fresh main download; the published
+0.5.0 ZIP does not contain this pass. Compare a ruler, relative, cabinet member,
+woman, child and infant from each culture, plus a human character as a control.
+Check skin on neck/hands, eyes, ear placement, tusks during animation, save/reload,
+and a newly generated character. Send a screenshot and fresh error.log if wrong.
+
+The separate infantry integration currently fails in-game with `Invalid entity
+graph [cm_goblin_cindermaw_schematic]`, producing invisible infantry. Its repair is
+deferred while portraits are prioritised; this portrait pass does not claim to fix it.

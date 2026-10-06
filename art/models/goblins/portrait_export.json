@@ -1,0 +1,23 @@
+{
+  "engine_tested": false,
+  "cultures": 5,
+  "portrait_types": [
+    "male",
+    "female",
+    "boy",
+    "girl",
+    "adolescent_boy",
+    "adolescent_girl",
+    "infant"
+  ],
+  "method": "culture modifiers, native facial genes, rigged pointed ears and jaw tusks",
+  "infants": "skin and smaller pointed ears; no tusks",
+  "validation": {
+    "status": "static checks passed; in-game appearance unverified",
+    "cultures": 5,
+    "portrait_types": 7,
+    "attachment_triangles": 252,
+    "native_rig_bindings_checked": true,
+    "engine_tested": false
+  }
+}

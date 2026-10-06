@@ -48,7 +48,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $modSource '.metadata\metadata.json'
             New-Item -ItemType Directory -Path (Split-Path -Parent $preparedFile) -Force | Out-Null
             Copy-Item -LiteralPath $authoredFile -Destination $preparedFile -Force
         }
-        Write-Host 'Included main development updates: goblin infantry and Ashborn culture names.'
+        Write-Host 'Included main development updates: Ashborn culture names, infantry assets and culture-based goblin portraits.'
     }
     & (Join-Path $preparedRoot 'Install-Goblins.ps1') @PSBoundParameters
     return

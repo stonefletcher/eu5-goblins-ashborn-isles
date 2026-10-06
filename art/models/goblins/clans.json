@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "height_m": 1.12,
+  "source": {
+    "creator": "Quaternius",
+    "pack": "Ultimate Animated Character Pack (November 2019)",
+    "license": "CC0-1.0",
+    "official_url": "https://quaternius.com/packs/ultimatedanimatedcharacter.html",
+    "mirror_repository": "ariesyous/projectbluebean",
+    "mirror_commit": "4769997aaea204c66735813e2bf61dc3c94e7631",
+    "mirror_path": "projectbluebean/assets/enemies/Goblin_Male.gltf",
+    "git_blob": "62e44df4e6cbcac456114ffd4d9aa5c3f9ef3f7f"
+  },
+  "clans": [
+    {
+      "id": "cindermaw",
+      "name": "Cindermaw",
+      "country": "CDM",
+      "culture": "cm_cinderkin",
+      "skin_srgb": "#71834B",
+      "shade": "warm olive"
+    },
+    {
+      "id": "brackmaw",
+      "name": "Brackmaw",
+      "country": "QBR",
+      "culture": "cm_brinekin",
+      "skin_srgb": "#56856B",
+      "shade": "sea green"
+    },
+    {
+      "id": "reefhook",
+      "name": "Reefhook",
+      "country": "RHK",
+      "culture": "cm_reefkin",
+      "skin_srgb": "#82965B",
+      "shade": "yellow moss"
+    },
+    {
+      "id": "shatterfin",
+      "name": "Shatterfin",
+      "country": "SFK",
+      "culture": "cm_shatterkin",
+      "skin_srgb": "#537B76",
+      "shade": "blue green"
+    },
+    {
+      "id": "sootwake",
+      "name": "Sootwake",
+      "country": "SWK",
+      "culture": "cm_sootkin",
+      "skin_srgb": "#51634B",
+      "shade": "dark forest green"
+    }
+  ]
+}

@@ -10,15 +10,15 @@
     "adolescent_girl",
     "infant"
   ],
-  "method": "muted skin with partial albedo retention, narrow jaws, pointed ears and small teeth",
-  "infants": "skin and smaller pointed ears; no tusks",
+  "method": "long swept ears, hooked noses, pinched jaws, prominent cheeks, wide mouths and small teeth",
+  "infants": "skin and smaller pointed ears; no tusks or extra stature modifier",
   "outfits": {
     "method": "native plain garments, culture-scoped, priority 100",
     "royal_clothes_and_crowns_removed": true,
     "engine_tested": false,
     "custom_rag_geometry": false
   },
-  "portrait_stature": "native body height unchanged; female height attribute is disabled in vanilla",
+  "portrait_stature": "culture-only compact torso proportions and stoop on both sexes; native child growth preserved; framing and clothing fit need engine review",
   "validation": {
     "status": "static checks passed; in-game appearance unverified",
     "cultures": 5,

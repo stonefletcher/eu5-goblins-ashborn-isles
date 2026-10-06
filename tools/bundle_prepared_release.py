@@ -40,10 +40,12 @@ def main():
     desired['goblins_ashborn_isles/.metadata/metadata.json']=(root/'mod/.metadata/metadata.json').read_bytes()
     for doc in ['README.md','RELEASE_NOTES.md','TESTING.md','Install-Goblins.ps1','Install-Goblins.cmd']:
         desired[doc]=(root/doc).read_bytes()
-    import verify_goblin_portraits
+    import verify_goblin_portraits, verify_goblin_models
     report['portraits']=verify_goblin_portraits.verify(root/'mod')
+    report['models']=verify_goblin_models.verify(root/'mod')
     desired['reports/validation.json']=(json.dumps(report,indent=2)+'\n').encode()
     desired['reports/portrait_verification.json']=(json.dumps(report['portraits'],indent=2)+'\n').encode()
+    desired['reports/model_verification.json']=(json.dumps(report['models'],indent=2)+'\n').encode()
     assert json.loads(desired['terrain_patch/manifest.json'])['version']==version
     destination=root/'dist'/name
     destination.parent.mkdir(exist_ok=True)
@@ -66,7 +68,7 @@ def main():
     for p in chunks:shutil.copyfile(args.base_root/'.release'/p,release/p)
     suffix=complete[len(base_bytes):]
     for i,offset in enumerate(range(0,len(suffix),512*1024)):
-        rel=f'assets/{name}.tail.{i:04d}.b64'
+        rel=f'assets/{name}.update.{sha(suffix)[:12]}.{i:04d}.b64'
         (release/rel).write_bytes(base64.b64encode(suffix[offset:offset+512*1024]))
         chunks.append(rel)
     manifest={'version':version,'source_commit':args.source_commit,

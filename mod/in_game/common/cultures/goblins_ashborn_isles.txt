@@ -1,5 +1,5 @@
-﻿cm_cinderkin = { language = cm_cinder_tongue color = rgb { 117 140 48 } tags = { european_gfx cm_cinderkin_gfx } culture_groups = { cm_goblin_group } opinions = { } }
-cm_brinekin = { language = cm_cinder_tongue color = rgb { 62 135 147 } tags = { european_gfx cm_brinekin_gfx } culture_groups = { cm_goblin_group } opinions = { } }
-cm_reefkin = { language = cm_cinder_tongue color = rgb { 172 130 58 } tags = { european_gfx cm_reefkin_gfx } culture_groups = { cm_goblin_group } opinions = { } }
-cm_shatterkin = { language = cm_cinder_tongue color = rgb { 121 91 145 } tags = { european_gfx cm_shatterkin_gfx } culture_groups = { cm_goblin_group } opinions = { } }
-cm_sootkin = { language = cm_cinder_tongue color = rgb { 158 78 59 } tags = { european_gfx cm_sootkin_gfx } culture_groups = { cm_goblin_group } opinions = { } }
+﻿cm_cinderkin = { language = cm_cinderkin_dialect color = rgb { 117 140 48 } tags = { european_gfx cm_cinderkin_gfx } culture_groups = { cm_goblin_group } opinions = { } }
+cm_brinekin = { language = cm_brinekin_dialect color = rgb { 62 135 147 } tags = { european_gfx cm_brinekin_gfx } culture_groups = { cm_goblin_group } opinions = { } }
+cm_reefkin = { language = cm_reefkin_dialect color = rgb { 172 130 58 } tags = { european_gfx cm_reefkin_gfx } culture_groups = { cm_goblin_group } opinions = { } }
+cm_shatterkin = { language = cm_shatterkin_dialect color = rgb { 121 91 145 } tags = { european_gfx cm_shatterkin_gfx } culture_groups = { cm_goblin_group } opinions = { } }
+cm_sootkin = { language = cm_sootkin_dialect color = rgb { 158 78 59 } tags = { european_gfx cm_sootkin_gfx } culture_groups = { cm_goblin_group } opinions = { } }

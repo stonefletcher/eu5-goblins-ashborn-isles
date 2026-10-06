@@ -4,9 +4,9 @@
 
 Five goblin nations rise from a volcanic Atlantic archipelago in this fantasy **Europa Universalis V** mod. Start in **1337**, unite rival clans, develop their ports and mines, and decide how the Ashborn will face the wider world.
 
-**0.5.1 terrain development integrated with main; published release: 0.5.0.** Targets EU5 **1.3.11 (Pavia)**, Steam build **24187685**. Static validation is required before packaging; in-game acceptance testing is pending. This is not a Steam Workshop release.
+**Version 0.5.2 — Shatterfin Tidemothers feature branch.** Targets EU5 **1.3.11 (Pavia)**, Steam build **24187685**. Static validation is required before packaging; in-game acceptance testing is pending. This is not a Steam Workshop release.
 
-**Main development additions:** five native goblin infantry variants and renamed cultures are now integrated into `main`. Download ZIP from `main` includes these additions; the published 0.5.0 release remains the earlier terrain/economy test package. Model rendering and animation still need an engine playtest. The new 36-location terrain is source-only until the next prepared release: build from source to test it. The bundled installer still uses the 0.5.0 terrain plus the model/culture overlay. No update is applied to a running game automatically.
+**Main development additions:** five native goblin infantry variants and renamed cultures are now integrated into `main`. Download ZIP from `main` includes these additions; the published 0.5.0 release remains the earlier terrain/economy test package. Model rendering and animation still need an engine playtest. This branch bundles the 36-location terrain, portrait test pass and Shatterfin succession changes in its 0.5.2 installer. No update is applied to a running game automatically.
 
 [Repository](https://github.com/stonefletcher/eu5-goblins-ashborn-isles) | [Origins and lore](LORE.md) | [Testing checklist](TESTING.md) | [Release notes](RELEASE_NOTES.md)
 
@@ -62,7 +62,7 @@ After roughly four monthly pulses, an event offers a **5-gold eastern voyage**. 
 
 ## Government and economy
 
-All five countries start as **Ironfang Monarchies**, implemented as a unique major reform on the native monarchy type. They use legitimacy and normal monarchy mechanics. **Rule of the Strongest** selects an eligible adult male Ashborn character from the country when the ruler dies. Military ability is the primary score (1000x); administrative ability and then age break ties. It is not restricted to the ruler's dynasty or noble estate. Children, foreign rulers and characters barred from ruling are excluded. There are no periodic elections or challenges. The succession rule is unlocked: normal monarchy alternatives remain selectable. Removing the Ironfang reform falls back to Salic succession if the special rule is still active.
+Four countries start as **Ironfang Monarchies**; Shatterfin instead uses **Tidemother Monarchy**. The Ironfang reforms are implemented as a unique major reform on the native monarchy type. They use legitimacy and normal monarchy mechanics. **Rule of the Strongest** selects an eligible adult male Ashborn character from the country when the ruler dies. Military ability is the primary score (1000x); administrative ability and then age break ties. It is not restricted to the ruler's dynasty or noble estate. Children, foreign rulers and characters barred from ruling are excluded. There are no periodic elections or challenges. The succession rule is unlocked: normal monarchy alternatives remain selectable. Removing the Ironfang reform falls back to Salic succession if the special rule is still active.
 
 Every country has a capital marketplace, wharf and one or two modest guilds. Hooktooth produces tools and naval supplies; Brackhaven cloth and pottery; Reefhook pottery; Shatterfin tools; Sootwake cloth. Rural locations have 27 levels of suitable farming, fishing, forest or market villages in total, plus two fiber-crop farms. Added clay, tar, fiber-crop and wool sites supply the small industries through the shared Hooktooth market. Worker populations are redistributed within the unchanged national totals.
 
@@ -76,9 +76,9 @@ The opening lore event now has a single **The Ashborn rise.** option. The two ol
 
 ## Install the test build
 
-You can also use GitHub's **Code > Download ZIP** on `main`: extract it and run `Install-Goblins.cmd`. The installer reconstructs and verifies the bundled release archive automatically before installing. A source-only archive without `.release/` still requires building first.
+You can also use GitHub's **Code > Download ZIP** on `feature/shatterfin-matriarchy`: extract it and run `Install-Goblins.cmd`. The installer reconstructs and verifies the bundled release archive automatically before installing. A source-only archive without `.release/` still requires building first.
 
-1. Close EU5 completely and extract **Goblins_Ashborn_Isles_0.5.0.zip** into a writable folder.
+1. Close EU5 completely and extract **Goblins_Ashborn_Isles_0.5.2.zip** into a writable folder.
 2. Double-click **Install-Goblins.cmd**. The installer prepares terrain caches from your matching EU5 installation, checks hashes, backs up the previous installation and installs `goblins_ashborn_isles` under the EU5 user-data `mod` folder.
 3. Existing playset references to `cindermaw_demo` are migrated. Enable **Goblins of the Ashborn Isles** alone for this test.
 4. Restart EU5 and start a **new 1337 campaign**. Do not reuse a save from an earlier map layout.
@@ -87,7 +87,7 @@ If game detection fails, run `Install-Goblins.ps1 -GamePath "E:\SteamLibrary\ste
 
 ## Build from source
 
-Python 3.11+, NumPy and Pillow are required. For a source archive, first extract **Goblins_Ashborn_Isles_Source_0.5.0.zip**, which contains the complete authored source tree.
+Python 3.11+, NumPy and Pillow are required. For a source archive, first extract **Goblins_Ashborn_Isles_Source_0.5.2.zip**, which contains the complete authored source tree.
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -149,3 +149,38 @@ and a newly generated character. Send a screenshot and fresh error.log if wrong.
 The separate infantry integration currently fails in-game with `Invalid entity
 graph [cm_goblin_cindermaw_schematic]`, producing invisible infantry. Its repair is
 deferred while portraits are prioritised; this portrait pass does not claim to fix it.
+
+
+## 0.5.2 — Shatterfin Tidemothers (feature branch)
+
+Shatterfin alone starts with **Tidemother Monarchy** and **Seniority of the
+Tidemothers**. Normal monarchy institutions and the existing naval modifiers
+remain. The oldest eligible adult Stormfang woman of the ruling dynasty inherits;
+her mother must belong to that same dynasty. Age is measured to the day, with no
+Military or administrative score. Men, minors, foreign rulers and blocked
+characters are excluded. This is maternal dynastic seniority, not daughter-first
+primogeniture or an election. The law can be changed through normal monarchy
+controls; removing the reform falls back to absolute cognatic primogeniture.
+
+**Jaima Shatterfin, the Mare-Mother** begins as Tidemother. Her younger sister **Skritcha** is the
+oldest eligible successor, followed by Morzha, Rikkra and Krishka. Vrosh is excluded
+because he is male despite his high Military ability; Zrikka is too young. The
+family is authored parent-before-child, with a deceased maternal founder, Zhavra.
+Children born in Shatterfin to women of the ruling house inherit their mother's
+dynasty while the law is active. The birth action is restricted to Shatterfin and
+this law. Other clans retain Ironfang Monarchy and Rule of the Strongest.
+
+If no eligible adult woman survives, the rule does not silently admit a man or
+an unrelated woman. The engine's handling of an exhausted candidate list needs
+in-game testing. Existing campaigns are not forcibly migrated: use a new 1337
+campaign for the authored dynasty and government setup.
+
+This branch includes the 0.5.1 terrain source and the portrait test pass. Its
+prepared installer and metadata are **0.5.2**. The branch remains separate from
+main; the published 0.5.0 release is unchanged. Static setup and build checks do
+not certify in-game succession, maternal inheritance or portrait rendering.
+
+
+Naming proposals for all five Ashborn cultures are in [NAMING_PROPOSALS.md](NAMING_PROPOSALS.md). The approved dialect system is implemented in this version.
+
+All five Ashborn cultures have 16 male and 16 female name entries, six house names and six lowborn names each. Four additional royal families and 15 adult courtiers are authored. Drogg Cindermaw bears the nickname "the Stone Fletcher"; Jaima Shatterfin bears "the Mare-Mother". Cabinet appointments remain native, drawing on culture-specific names and the available court.

@@ -1,0 +1,42 @@
+cm_tidemother_seniority = {
+    all_in_dynasty = yes
+    all_in_country = yes
+    through_female = yes
+    use_mothers_dynasty = yes
+    allow_female = yes
+    allow_male = no
+    allow_children = no
+    allow_foreign_ruler = no
+    ignore_ruler = yes
+    use_election = no
+    show_candidates = yes
+    potential = {
+        tag = SFK
+        has_reform = government_reform:cm_tidemother_monarchy
+    }
+    # No lock: Shatterfin can later adopt another ordinary monarchy law.
+    heir_is_allowed = {
+        is_female = yes
+        age_in_years >= 18
+        culture = culture:cm_shatterkin
+        has_dynasty = yes
+        exists = scope:target.last_valid_ruler.dynasty
+        dynasty = scope:target.last_valid_ruler.dynasty
+        exists = mother
+        mother = {
+            has_dynasty = yes
+            dynasty = root.dynasty
+        }
+        NOT = { modifier:blocked_from_being_ruler = yes }
+    }
+    calc = {
+        if = {
+            limit = { exists = root }
+            add = { desc = "cm_tidemother_age_score" value = root.character_age }
+        }
+        else = { add = { desc = "cm_tidemother_age_score" value = 1 } }
+    }
+    succession_effect = {
+        scope:new_ruler = { change_character_estate = estate_type:crown_estate }
+    }
+}

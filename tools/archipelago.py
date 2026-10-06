@@ -11,7 +11,7 @@ LORE = ('In the early years of the fourteenth century, fire rose from the Atlant
 'No one saw them arrive. Some captains claim the mountains birthed them; others speak of passages beneath the earth that have since collapsed. '
 'Fishing camps became villages, crude mines opened in the ridges, and rival crews fought over sheltered harbors. '
 'By 1337, Hooktooth has become Cindermaw\'s capital, but the Ashborn Isles remain divided. '
-'The Brineward of Brackmaw and the Reefhook, Shatterfin and Sootwake clans share the Emberblood\'s faith in the Hunger Below, yet bow to their own war-kings. '
+'The Brineward of Brackmaw and the Reefhook, Shatterfin and Sootwake clans share the Emberblood\'s faith in the Hunger Below, yet follow their own crowns; Shatterfin alone keeps the maternal house of the Tidemothers. '
 'Poor treasuries, crowded settlements and growing fleets drive them toward expansion. '
 'The Ironfang ruler dreams first of uniting the islands. Beyond them lies a world the goblins have only begun to discover.')
 
@@ -269,6 +269,7 @@ def build_map(b,game,out,reports):
     return {'rivers':riverstats,'scenery':scenery,'visual_biome':visual_biome,'land_area_multiplier':cfg.get('land_area_multiplier',1),'center_png':cfg['center'],'bounds':list(box),'locations':stats,'ports':ports,'settlement_locators':anchors,'sea_zone_pixels':sea_sizes,'sea_zone_adjacency':{k:sorted(v) for k,v in sea_graph.items()},'sea_zone_exits':{k:sorted(v) for k,v in exits.items()},'land_pixels':int(land.sum()),'island_pixels':pixels,'sister_area_ratio':ratio,'coastal_sea_connections':sorted(neighbors),'original_sea_lanes_preserved':True,'replaced_water_locations':[sea['source_water']],'adjacencies':[[locs[a]['id'],locs[c]['id']] for a,c in sorted(edges)]}
 
 def build_setup(b,game,out):
+    import ashborn_names
     cfg=b.CFG;locs=cfg['locations'];countries=cfg['countries'];entries=[];popentries=[];cities=[];markets=[];total=Decimal(0);slaves=Decimal(0)
     vanilla=b.read(game,'main_menu/setup/start/10_countries.txt');outer,_=b.block_span(vanilla,'countries')
     for c in countries:
@@ -276,16 +277,21 @@ def build_setup(b,game,out):
         ids=' '.join(l['id'] for l in locs if l['country']==c['tag'])
         entries.append(f'''{c['tag']} = {{
  own_control_core = {{ {ids} }}
- include = "cm_captains"
+ include = "{'cm_tidemothers' if c['tag']=='SFK' else 'cm_captains'}"
  discovered_areas = {{ cm_cindermaw_area cm_ashborn_seas_area }}
  capital = {c['capital']}
+ court_language = {c['culture']}_dialect
  country_rank = rank_duchy
  starting_technology_level = 3
- government = {{ type = monarchy heir_selection = cm_rule_of_the_strongest ruler = random }}
+ government = {{ type = monarchy heir_selection = {'cm_tidemother_seniority' if c['tag']=='SFK' else 'cm_rule_of_the_strongest'} ruler = {ashborn_names.ruler(c['tag'])} {('consort = cm_'+c['tag'].lower()+'_consort') if c['tag']!='SFK' else ''} }}
  currency_data = {{ gold = {c['gold']} stability = 20 government_power = 50 prestige = 0 }}
 }}''')
         # Settlement templates are generated per location below.
         # One archipelago market supports small clans without five isolated tiny markets.
+    import shatterfin
+    shatterfin.build(b,game,out)
+    ashborn_names.build_courts(b,out)
+    ashborn_names.build_names(b,out)
     town_templates=[]
     for l in locs:
         country=next(c for c in countries if c['tag']==l['country'])
@@ -306,9 +312,9 @@ def build_setup(b,game,out):
         rel='main_menu/setup/start/'+file;b.write(out,rel,b.inject(b.read(game,rel),'locations',addition))
     rel='main_menu/setup/start/03_markets.txt';b.write(out,rel,b.inject(b.read(game,rel),'market_manager','add_market = cm_hooktooth'))
     rel='in_game/common/government_types/00_default.txt'
-    b.write(out,rel,b.inject(b.read(game,rel),'monarchy','heir_selection = cm_rule_of_the_strongest'))
+    b.write(out,rel,b.inject(b.read(game,rel),'monarchy','heir_selection = cm_rule_of_the_strongest\nheir_selection = cm_tidemother_seniority'))
     b.write(out,'in_game/setup/countries/goblins_ashborn_isles.txt','\n'.join(f'{c["tag"]} = {{ color = rgb {{ {" ".join(map(str,c["color"]))} }} color2 = rgb {{ 36 31 29 }} culture_definition = {c["culture"]} religion_definition = cm_hunger_below is_historic = no }}' for c in countries)+'\n')
-    b.write(out,'in_game/common/cultures/goblins_ashborn_isles.txt','\n'.join(f'{c["culture"]} = {{ language = cm_cinder_tongue color = rgb {{ {" ".join(map(str,c["color"]))} }} tags = {{ european_gfx {c["culture"]}_gfx }} culture_groups = {{ cm_goblin_group }} opinions = {{ }} }}' for c in countries)+'\n')
+    b.write(out,'in_game/common/cultures/goblins_ashborn_isles.txt','\n'.join(f'{c["culture"]} = {{ language = {c["culture"]}_dialect color = rgb {{ {" ".join(map(str,c["color"]))} }} tags = {{ european_gfx {c["culture"]}_gfx }} culture_groups = {{ cm_goblin_group }} opinions = {{ }} }}' for c in countries)+'\n')
     flag=(b.ROOT/'mod/main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt').read_text()
     b.write(out,'main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt','\n'.join(flag.replace('CDM =',c['tag']+' =').replace('color2 = red', 'color2 = '+['red','blue','yellow','purple','orange'][i]) for i,c in enumerate(countries)))
     return {'total_population':int(total*1000),'enslaved_population':int(slaves*1000),'starting_gold':{c['tag']:c['gold'] for c in countries},'rgo_expansion_levels':{l['id']:l['rgo_expansion'] for l in locs},'starting_buildings':{l['id']:l['buildings'] for l in locs},'vanilla_population_entries_unchanged':True,'country_populations':{c['tag']:sum(int(Decimal(str(l['pop']))*1000) for l in locs if l['country']==c['tag']) for c in countries}}
@@ -321,9 +327,13 @@ def add_localization(b,out):
         'cm_cinderkin_desc':'The Emberblood trace their beginnings to Cindermaw\'s volcanic crown. Forge fires, ironwork and the oaths of war-kings bind their crowded ports and mountain settlements.',
         'cm_brinekin_desc':'The Brineward belong to Brackmaw\'s tidal woods and salt marshes. Timber cutters, reedland farmers and patient coastal navigators keep their communities supplied.',
         'cm_reefkin_desc':'The Reefstriders know the narrow passages and hidden shoals around Reefhook. Fishing, diving and trade between sheltered anchorages shape their island life.',
-        'cm_shatterkin_desc':'The Stormfang inhabit the broken shores of Shatterfin and Knifeback. Crews raised on rough channels prize seamanship, daring and fierce loyalty to their own harbors.',
+        'cm_shatterkin_desc':'The Stormfang inhabit the broken shores of Shatterfin and Knifeback. Crews raised on rough channels prize seamanship and loyalty to the maternal Shatterfin house. Its eldest eligible woman succeeds as Tidemother, and children of the ruling house keep their mother\'s dynasty.',
         'cm_sootkin_desc':'The Ashveil live beneath Sootwake\'s dark ridges. Woodland crafts, charcoal fires and quiet upland settlements give their island a character distinct from the busier clan ports.'})
     extra.update({'cm_goblin_group':'Ashborn','cm_goblin_group_desc':'The peoples who emerged with the Ashborn Isles in the early fourteenth century.','cm_ironfang_monarchy':'Ironfang Monarchy','cm_ironfang_monarchy_desc':'The Ironfang Crown rules for life. Under the Rule of the Strongest, the adult Ashborn man with the highest Military ability succeeds, regardless of dynasty or estate. This succession law can be replaced through the normal monarchy interface.','cm_rule_of_the_strongest':'Rule of the Strongest','cm_rule_of_the_strongest_desc':'On succession, the eligible adult Ashborn man in this country with the highest Military ability takes the crown. Administrative ability and then age break ties. Foreign rulers, children and characters barred from ruling are excluded. There are no fixed terms or periodic challenges.','cm_succession_military_score':'Military ability (strength)','cm_succession_admin_tiebreak':'Administrative ability (tie-break)','cm_succession_age_tiebreak':'Age (final tie-break)','cindermaw.1.a':'The Ashborn rise.','cm_ashen_faiths_ADJ':'Ashen','cm_ashen_faiths_desc':'The island faiths of the Ashborn, united in reverence for the power beneath the volcanoes.','cm_ashborn_seas_area':'Ashborn Waters','cm_ashborn_seas_province':'Ashborn Waters'})
+    import shatterfin
+    extra.update(shatterfin.LOCALIZATION)
+    import ashborn_names
+    extra.update(ashborn_names.localization())
     extra.update({z['id']:z['name'] for z in b.CFG['coastal_sea']['zones']})
     # Replace existing keys rather than emit duplicate localization.
     extra.update({'cindermaw.1.desc':LORE,'cm_demo_building_tip':'Hooktooth is a city with a marketplace, naval-supplies guild and stockade. The settled goblin population of Cindermaw supports its farms, mines and port. The neighboring goblin captains rule independent countries.','cm_cindermaw_area':'The Ashborn Isles'})
@@ -335,3 +345,4 @@ def add_localization(b,out):
         else:s+=line+'\n'
     b.write(out,rel,s)
     (b.ROOT/'LORE.md').write_text('# Goblins of the Ashborn Isles\n\n'+LORE+'\n',encoding='utf-8')
+

@@ -100,3 +100,23 @@ and a newly generated character. Send a screenshot and fresh error.log if wrong.
 The separate infantry integration currently fails in-game with `Invalid entity
 graph [cm_goblin_cindermaw_schematic]`, producing invisible infantry. Its repair is
 deferred while portraits are prioritised; this portrait pass does not claim to fix it.
+
+
+## 0.5.2 succession acceptance
+
+- Confirm installer and mod metadata say 0.5.2; begin a new 1337 campaign.
+- In SFK, inspect Tidemother Monarchy and Seniority of the Tidemothers. Jaima
+  should rule and Skritcha should lead the candidate list ahead of the daughters.
+- Trigger a succession in a disposable test save. Skritcha should inherit, followed
+  by Morzha after a second succession if all eligible candidates remain alive.
+- Test women of equal displayed age but different birthdays; the older wins.
+- Exclude a high-Military male, under-18 girl, unrelated older woman, a woman
+  related only through her father, a foreign ruler and a character barred from rule.
+- Test a newborn of a ruling-house mother and a differently named father: the
+  child should keep the mother's dynasty. Recheck her eligibility as an adult.
+- Change the law and confirm the custom birth action stops; remove the reform
+  and confirm the fallback law. Confirm CDM/QBR/RHK/SWK retain strongest-male law.
+- Test exhausted candidates, regency and save/reload. Report the actual game
+  behavior: these paths have not been certified by static tests.
+
+All five Ashborn cultures have 16 male and 16 female name entries, six house names and six lowborn names each. Four additional royal families and 15 adult courtiers are authored. Drogg Cindermaw bears the nickname "the Stone Fletcher"; Jaima Shatterfin bears "the Mare-Mother". Cabinet appointments remain native, drawing on culture-specific names and the available court.

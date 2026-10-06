@@ -8,12 +8,15 @@ ROUTES = {
 }
 
 TEXT = {
+    'goblins_exploration.6.title':'Strange Visitors on Our Shores',
+    'goblins_exploration.6.desc':'Fishermen report that a strange little vessel put ashore along our coast. Its crew were unlike any people they had seen: short, ugly creatures with long pointed ears, sharp teeth and restless eyes. They picked through the shallows and argued in a rasping tongue, but the moment they realized they had been spotted, they scrambled aboard and fled out to sea.\n\nA scout ship followed at a cautious distance, keeping their patched sails just within sight. Beyond our familiar waters, the pursuit led to a cluster of smoke-wreathed islands, their coves crowded with crooked docks and more of the same vessels. Our scouts have returned with a chart of the crossing. Whatever these creatures may be, we now know where they live.',
+    'goblins_exploration.6.a':'Mark the islands on our charts. Keep watch on the sea.',
     'goblins_exploration.1.title':'Beyond the Ashen Horizon',
     'goblins_exploration.1.desc':'Our charts end where the smoke of our mountains disappears. A fishing crew has returned with a plank unlike anything built in the isles, and the captains argue that it drifted from the east. A small expedition could follow the currents and bring back a route to whoever lives beyond them.',
     'goblins_exploration.1.east':'Provision a voyage east. The crew returns in four months.',
     'goblins_exploration.1.wait':'We need these provisions at home. Ask again in six months.',
     'goblins_exploration.2.title':'A Coast Beyond Counting',
-    'goblins_exploration.2.desc':'The expedition returns with sketches of river mouths, broad sails and stone towns. Their coastal chart marks Porto, Lisbon and Setubal, with a sailing route back to our islands. What lies beyond those harbors remains a blank. Foreign harbor officials have questioned our crews: the rulers of these ports now know the Ashborn Isles and the waters around them.',
+    'goblins_exploration.2.desc':'The expedition returns with sketches of river mouths, broad sails and stone towns. Their coastal chart marks Porto, Lisbon and Setubal, with a sailing route back to our islands. What lies beyond those harbors remains a blank. Our crews fled when shore watchers spotted them, but a foreign sail shadowed their return. The rulers of these ports now know the Ashborn Isles and the waters around them.',
     'goblins_exploration.2.a':'Keep the charts dry. There will be more voyages.',
     'goblins_exploration.3.title':'The Captains Unroll Their Charts',
     'goblins_exploration.3.desc':'We know the eastern crossing, but the mainland coast continues beyond the last marks on our charts. Some crews favor the northern waters, others the warmer southern coast. Provisions for another expedition will cost ten gold, and the voyage will take six months.',
@@ -38,7 +41,7 @@ def voyage_option(route,offer):
         ai_chance = {{ factor = 10 }}
     }}'''
 
-def build(b,game,out):
+def build(b,game,out,validate_setup=True):
     names=b.parse_names(game);defs=b.read(game,'in_game/map_data/definitions.txt')
     for route in ROUTES.values():
         for area in route['areas']:b.block_span(defs,area)
@@ -86,6 +89,16 @@ def build(b,game,out):
     }}
 }}
 ''')
+    events.append(f'''goblins_exploration.6 = {{
+    type = country_event
+    outcome = neutral
+    title = goblins_exploration.6.title
+    desc = goblins_exploration.6.desc
+    trigger = {{ NOT = {{ OR = {{ {tags} }} }} }}
+    illustration_tags = {{ 10 = exterior }}
+    option = {{ name = goblins_exploration.6.a }}
+}}
+''')
     for route,r in ROUTES.items():
         num=r['event']
         effects='\n'.join('        discover_area = area:'+area for area in r['areas'])
@@ -99,6 +112,14 @@ def build(b,game,out):
                 owner = {{
                     discover_area = area:cm_cindermaw_area
                     discover_area = area:cm_ashborn_seas_area
+                    if = {{
+                        limit = {{
+                            NOT = {{ OR = {{ {tags} }} }}
+                            NOT = {{ has_variable = ga_received_goblin_first_contact }}
+                        }}
+                        set_variable = {{ name = ga_received_goblin_first_contact value = yes }}
+                        trigger_event_non_silently = {{ id = goblins_exploration.6 }}
+                    }}
                 }}
             }}
         }}'''
@@ -120,12 +141,15 @@ def build(b,game,out):
 ''')
     b.write(out,'in_game/common/on_action/goblins_exploration.txt',on_action)
     b.write(out,'in_game/events/goblins_exploration.txt','\n'.join(events))
-    b.write(out,'main_menu/localization/english/goblins_exploration_l_english.yml','l_english:\n'+'\n'.join(' '+k+': "'+v+'"' for k,v in TEXT.items())+'\n')
-    setup=(out/'main_menu/setup/start/10_countries.txt').read_text(encoding='utf-8-sig')
-    for c in b.CFG['countries']:
-        a,z=b.block_span(setup,c['tag']);country=setup[a:z]
-        assert 'expl_western_europe' not in country and 'discovered_regions' not in country
-        assert 'cm_cindermaw_area cm_ashborn_seas_area' in country
+    b.write(out,'main_menu/localization/english/goblins_exploration_l_english.yml','l_english:\n'+'\n'.join(' '+k+': "'+v.replace('\n',r'\n')+'"' for k,v in TEXT.items())+'\n')
+    # Runtime-only installer overlays do not contain generated starting setup.
+    # Full builds always retain these starting-knowledge checks.
+    if validate_setup:
+        setup=(out/'main_menu/setup/start/10_countries.txt').read_text(encoding='utf-8-sig')
+        for c in b.CFG['countries']:
+            a,z=b.block_span(setup,c['tag']);country=setup[a:z]
+            assert 'expl_western_europe' not in country and 'discovered_regions' not in country
+            assert 'cm_cindermaw_area cm_ashborn_seas_area' in country
     # Mutual contact is limited to the owners of this voyage's named ports.
     return {'starting_knowledge':'Ashborn land and sea areas only','countries':[c['tag'] for c in b.CFG['countries']],
             'first_offer_after_months':3,'routes':ROUTES,'reciprocal_discovery':True,

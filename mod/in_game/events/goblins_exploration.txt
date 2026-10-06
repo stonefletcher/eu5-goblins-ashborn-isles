@@ -1,0 +1,327 @@
+﻿namespace = goblins_exploration
+
+goblins_exploration.1 = {
+    type = country_event
+    outcome = neutral
+    title = goblins_exploration.1.title
+    desc = goblins_exploration.1.desc
+    trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+    illustration_tags = { 10 = exterior }
+    option = {
+        name = goblins_exploration.1.east
+        trigger = { gold >= 5 NOT = { has_variable = ga_charted_east } }
+        add_gold = -5
+        trigger_event_non_silently = { id = goblins_exploration.2 months = 4 }
+        ai_chance = { factor = 10 }
+    }
+    option = {
+        name = goblins_exploration.1.wait
+        remove_variable = ga_exploration_pending
+        set_variable = { name = ga_exploration_cooldown months = 6 }
+        ai_chance = { factor = 1 }
+    }
+}
+
+goblins_exploration.3 = {
+    type = country_event
+    outcome = neutral
+    title = goblins_exploration.3.title
+    desc = goblins_exploration.3.desc
+    trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+    illustration_tags = { 10 = exterior }
+    option = {
+        name = goblins_exploration.3.north
+        trigger = { gold >= 10 NOT = { has_variable = ga_charted_north } }
+        add_gold = -10
+        trigger_event_non_silently = { id = goblins_exploration.4 months = 6 }
+        ai_chance = { factor = 10 }
+    }
+    option = {
+        name = goblins_exploration.3.south
+        trigger = { gold >= 10 NOT = { has_variable = ga_charted_south } }
+        add_gold = -10
+        trigger_event_non_silently = { id = goblins_exploration.5 months = 6 }
+        ai_chance = { factor = 10 }
+    }
+    option = {
+        name = goblins_exploration.3.wait
+        remove_variable = ga_exploration_pending
+        set_variable = { name = ga_exploration_cooldown months = 6 }
+        ai_chance = { factor = 1 }
+    }
+}
+
+goblins_exploration.6 = {
+    type = country_event
+    outcome = neutral
+    title = goblins_exploration.6.title
+    desc = goblins_exploration.6.desc
+    trigger = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } }
+    illustration_tags = { 10 = exterior }
+    option = { name = goblins_exploration.6.a }
+}
+
+goblins_exploration.2 = {
+    type = country_event
+    outcome = neutral
+    title = goblins_exploration.2.title
+    desc = goblins_exploration.2.desc
+    trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+    illustration_tags = { 10 = exterior }
+    option = {
+        name = goblins_exploration.2.a
+        discover_area = area:iberian_west_coast_area
+        location:lisbon = {
+            discover_location = root
+            if = {
+                limit = { exists = owner }
+                owner = {
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = {
+                        limit = {
+                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+                            NOT = { has_variable = ga_received_goblin_first_contact }
+                        }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 }
+                    }
+                }
+            }
+        }
+        location:porto = {
+            discover_location = root
+            if = {
+                limit = { exists = owner }
+                owner = {
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = {
+                        limit = {
+                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+                            NOT = { has_variable = ga_received_goblin_first_contact }
+                        }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 }
+                    }
+                }
+            }
+        }
+        location:setubal = {
+            discover_location = root
+            if = {
+                limit = { exists = owner }
+                owner = {
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = {
+                        limit = {
+                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+                            NOT = { has_variable = ga_received_goblin_first_contact }
+                        }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 }
+                    }
+                }
+            }
+        }
+        set_variable = { name = ga_charted_east value = yes }
+        remove_variable = ga_exploration_pending
+        set_variable = { name = ga_exploration_cooldown months = 12 }
+    }
+}
+
+goblins_exploration.4 = {
+    type = country_event
+    outcome = neutral
+    title = goblins_exploration.4.title
+    desc = goblins_exploration.4.desc
+    trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+    illustration_tags = { 10 = exterior }
+    option = {
+        name = goblins_exploration.4.a
+        discover_area = area:bay_of_biscay_area
+        discover_area = area:english_channel_area
+        location:brest = {
+            discover_location = root
+            if = {
+                limit = { exists = owner }
+                owner = {
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = {
+                        limit = {
+                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+                            NOT = { has_variable = ga_received_goblin_first_contact }
+                        }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 }
+                    }
+                }
+            }
+        }
+        location:la_rochelle = {
+            discover_location = root
+            if = {
+                limit = { exists = owner }
+                owner = {
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = {
+                        limit = {
+                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+                            NOT = { has_variable = ga_received_goblin_first_contact }
+                        }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 }
+                    }
+                }
+            }
+        }
+        location:bordeaux = {
+            discover_location = root
+            if = {
+                limit = { exists = owner }
+                owner = {
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = {
+                        limit = {
+                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+                            NOT = { has_variable = ga_received_goblin_first_contact }
+                        }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 }
+                    }
+                }
+            }
+        }
+        location:plymouth = {
+            discover_location = root
+            if = {
+                limit = { exists = owner }
+                owner = {
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = {
+                        limit = {
+                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+                            NOT = { has_variable = ga_received_goblin_first_contact }
+                        }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 }
+                    }
+                }
+            }
+        }
+        location:southampton = {
+            discover_location = root
+            if = {
+                limit = { exists = owner }
+                owner = {
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = {
+                        limit = {
+                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+                            NOT = { has_variable = ga_received_goblin_first_contact }
+                        }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 }
+                    }
+                }
+            }
+        }
+        set_variable = { name = ga_charted_north value = yes }
+        remove_variable = ga_exploration_pending
+        set_variable = { name = ga_exploration_cooldown months = 12 }
+    }
+}
+
+goblins_exploration.5 = {
+    type = country_event
+    outcome = neutral
+    title = goblins_exploration.5.title
+    desc = goblins_exploration.5.desc
+    trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+    illustration_tags = { 10 = exterior }
+    option = {
+        name = goblins_exploration.5.a
+        discover_area = area:nw_africa_coast_area
+        location:cadiz = {
+            discover_location = root
+            if = {
+                limit = { exists = owner }
+                owner = {
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = {
+                        limit = {
+                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+                            NOT = { has_variable = ga_received_goblin_first_contact }
+                        }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 }
+                    }
+                }
+            }
+        }
+        location:tangier = {
+            discover_location = root
+            if = {
+                limit = { exists = owner }
+                owner = {
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = {
+                        limit = {
+                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+                            NOT = { has_variable = ga_received_goblin_first_contact }
+                        }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 }
+                    }
+                }
+            }
+        }
+        location:ceuta = {
+            discover_location = root
+            if = {
+                limit = { exists = owner }
+                owner = {
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = {
+                        limit = {
+                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+                            NOT = { has_variable = ga_received_goblin_first_contact }
+                        }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 }
+                    }
+                }
+            }
+        }
+        location:strait_of_gibraltar = {
+            discover_location = root
+            if = {
+                limit = { exists = owner }
+                owner = {
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = {
+                        limit = {
+                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+                            NOT = { has_variable = ga_received_goblin_first_contact }
+                        }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 }
+                    }
+                }
+            }
+        }
+        set_variable = { name = ga_charted_south value = yes }
+        remove_variable = ga_exploration_pending
+        set_variable = { name = ga_exploration_cooldown months = 12 }
+    }
+}

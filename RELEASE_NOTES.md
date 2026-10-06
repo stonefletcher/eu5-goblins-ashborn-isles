@@ -1,3 +1,7 @@
+## 0.5.3 companion first-contact event
+
+Owners of ports visited by an Ashborn expedition now receive Strange Visitors on Our Shores when reciprocal discovery occurs. Strange creatures flee the shore and a scout ship follows them to the islands. Each non-Ashborn nation receives the event once across all clans and voyage routes. Already-completed voyages are not replayed. Static checks only; in-game testing pending.
+
 ## 0.5.3 infantry attachment repair candidate
 
 Native fallback infantry were visible and did not reproduce the crash in the user's test. Custom goblin infantry are now re-enabled through the native attachment workflow: the base graph supplies the skeleton, transform and animation machine; a named shared_pose_entity attachment supplies the visible mesh. The direct root MeshType is removed.

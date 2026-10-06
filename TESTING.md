@@ -142,3 +142,10 @@ All five Ashborn cultures have 16 male and 16 female name entries, six house nam
 - Run `tools/verify_goblin_portraits.py` against the prepared 0.5.2 output and installed game. The report must pass before packaging.
 - Verify the bundled archive and development overlay include the same corrected textures.
 - Static validation is not an engine playtest; confirm campaign startup and portrait rendering in EU5. The reported missing land in 0.5.1 also requires a separate terrain acceptance pass.
+
+## Companion first contact
+
+- As Portugal, let an Ashborn eastern expedition return: confirm the islands reveal and Strange Visitors on Our Shores appears once, despite owning multiple visited ports.
+- Let another clan visit Portugal: no duplicate popup. Test northern/southern routes for other current port owners, including conquered ports.
+- Confirm Ashborn owners and unowned sea locations do not receive the foreign-contact event.
+- Existing saves: completed voyages do not replay; a future voyage may trigger the first notification.

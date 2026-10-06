@@ -621,7 +621,7 @@
     },
     {
       "path": "main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt",
-      "sha256": "04521c301acc50ef0207f63679ec36d804b7bd68e34bae3ac0de954fbe8aa13c"
+      "sha256": "0d3c5e9046597470c94a0c07322524bc02004387448e2555ae4da9b3d136d0e2"
     },
     {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",

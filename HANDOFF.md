@@ -1,11 +1,9 @@
-# 0.5.3 portrait and infantry refinement
+# 0.5.3 infantry crash containment
 
-Checkout: goblins-0.5.3; branch feature/0.5.3-goblin-pirate-portraits. Remote parent 198f4ab928b51d89be94775ae6a916eb8a3d848c.
+Branch: feature/0.5.3-goblin-pirate-portraits. Remote parent 54f05151d94c2318c43c2930b4e66d5c56d2970d.
 
-Completed: long ears, hooked nose and pinched facial DNA; smaller teeth; compact torso/stoop for both adult sexes through scoped special genes. Infant face/body untouched. Infantry schematic now supplies translation and native CustomAnimationMachineName parameter. UTF-8 BOM graphics scripts. Graph validator checks typed outputs, transform inputs and one entity root.
+User reproduced an access violation near infantry spawn. Read crash Europa Universalis V20261006_214334; active mod metadata is 0.5.3 and installed schematic matches the latest graph patch. Prior invalid entity graph error is absent. Unsymbolized stack cannot establish a precise cause.
 
-Checks: five clans, seven portrait types, native rig/attribute/clothing checks, 17 animations/51 poses and native binary round trips. Engine rendering not tested. Fresh user log before changes reports Invalid entity graph [cm_goblin_cindermaw_schematic].
+Containment: ten culture-specific light/heavy infantry constructors select the complete native rig, animation machine and attachment lists. Custom assets are retained but not selected. This temporarily restores human map soldiers; goblin portraits remain. Validator prevents accidental custom constructor reactivation.
 
-Delivery: refreshed matching prepared installer and overlay. Clean source-download preparation gate required before handoff. No active installation, game launch, main merge or Workshop publish.
-
-Next: install fresh feature-branch download with EU5 closed. Verify visible light/heavy infantry in all five clans, idle/move/attack/retreat; inspect adult male/female portraits, children, and human controls. Exact stature and clothing fit remain engine acceptance items.
+Packaging: regenerate overlay and matching bundled payload, verify clean source export with PrepareOnly, push on the existing feature branch. No active installation or game launch. Next user check: load prior save and pass spawn/crash date; test recruitment, marching and combat. Custom goblin renderer remains unresolved and needs controlled in-game isolation.

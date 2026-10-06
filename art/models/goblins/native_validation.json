@@ -1,5 +1,6 @@
 {
   "status": "STATIC MODEL CHECKS PASSED; ENGINE PLAYTEST PENDING",
+  "runtime_infantry": "native fallback; custom renderer quarantined",
   "clans": 5,
   "source_joints": 23,
   "exported_bones": 25,

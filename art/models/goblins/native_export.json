@@ -146,5 +146,6 @@
       "duration": 1.25,
       "max_scale_axis_difference": 6.782381135683746e-05
     }
-  ]
+  ],
+  "runtime_infantry": "native fallback; custom goblin renderer quarantined after spawn-time crash"
 }

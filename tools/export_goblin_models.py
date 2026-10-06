@@ -213,13 +213,30 @@ def build(out):
         asset+='}\n';write_text(directory/(name+'.asset'),asset)
         write_text(out/'in_game/gfx/models/schematics'/f'{name}_schematic.schematic',schematic(name))
         tag=clan['culture']+'_gfx'
+        # Runtime containment after the 2026-10-06 infantry-spawn access violation.
+        # Preserve custom assets for offline diagnosis, but instantiate only the
+        # native rig, state machine and attachment set until engine-tested.
         for category in ['army_light_infantry','army_heavy_infantry']:
-            constructors.append(f'{tag}:{category} = {{ schematic_name = {name}_schematic animation_state_machine_name = cm_goblin_infantry }}')
+            constructors.append(f'''{tag}:{category} = {{
+ schematic_name = unit_skeleton_schematic
+ attach = {{ 100 = heads use_uniformity = no }}
+ attach = {{ 100 = torsos }}
+ attach = {{ 100 = legs }}
+ attach = {{ 100 = headgear }}
+ attach = {{ 100 = hairstyles }}
+ attach = {{ 100 = beards }}
+ attach = {{ 100 = weapons }}
+ attach = {{ 100 = shields }}
+ attach = {{ 100 = back }}
+ attach = {{ 100 = offhand }}
+ animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
+}}''')
         cultures.append(f'{tag} = {{ priority = 600 culture_tag = {tag} ethnicities = {{ 100 = cm_{clan["id"]}_ethnicity }} }}')
         report['clans'].append({'clan':clan['id'],'culture':clan['culture'],'gfx_tag':tag,'bones':len(g.bones),'source_joints':len(g.skin['joints']),'mesh':str(MODEL_REL/(name+'.mesh'))})
     write_text(out/'main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt','\n'.join(constructors)+'\n')
     write_text(out/'in_game/gfx/graphical_culture_types/ashborn_goblins.txt','\n'.join(cultures)+'\n')
     write_text(out/'main_menu/gfx/animation_state_machines/cm_goblin_infantry.animsm',state_machine())
+    report['runtime_infantry']='native fallback; custom goblin renderer quarantined after spawn-time crash'
     return report
 
 if __name__=='__main__':

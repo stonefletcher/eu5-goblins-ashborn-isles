@@ -2,9 +2,11 @@
 
 ![Goblins of the Ashborn Isles](art/Goblins_Banner.png)
 
-Five goblin nations rise from a volcanic Atlantic archipelago in this fantasy **Europa Universalis V** mod. Start in **1337**, unite rival clans, develop their ports and mines, and decide how the Goblinkin will face the wider world.
+Five goblin nations rise from a volcanic Atlantic archipelago in this fantasy **Europa Universalis V** mod. Start in **1337**, unite rival clans, develop their ports and mines, and decide how the Ashborn will face the wider world.
 
 **Version 0.5.0 - islands and clan test build.** Targets EU5 **1.3.11 (Pavia)**, Steam build **24187685**. Static validation is required before packaging; in-game acceptance testing is pending. This is not a Steam Workshop release.
+
+**Main development additions:** five native goblin infantry variants and renamed cultures are now integrated into `main`. Download ZIP from `main` includes these additions; the published 0.5.0 release remains the earlier terrain/economy test package. Model rendering and animation still need an engine playtest. No update is applied to a running game automatically.
 
 [Repository](https://github.com/stonefletcher/eu5-goblins-ashborn-isles) | [Origins and lore](LORE.md) | [Testing checklist](TESTING.md) | [Release notes](RELEASE_NOTES.md)
 
@@ -12,19 +14,27 @@ Five goblin nations rise from a volcanic Atlantic archipelago in this fantasy **
 
 In the early fourteenth century, fire rose from the Atlantic. New islands emerged, and goblins already walked their shores. No fleet had brought them. Whether the mountains birthed them or opened passages beneath the world remains disputed.
 
-By 1337, fishing camps have grown into ports, mines work the volcanic ridges, and rival captains fight for sheltered harbors. The islands share Cinder Tongue, the Goblinkin cultural heritage and the Hunger Below faith, but remain divided into five countries.
+By 1337, fishing camps have grown into ports, mines work the volcanic ridges, and rival captains fight for sheltered harbors. The islands share Cinder Tongue, the Ashborn cultural heritage and the Hunger Below faith, but remain divided into five countries.
 
 | Country | Culture | Capital | Capital rank | Population |
 |---|---|---|---|---:|
-| Cindermaw | Cinderkin | Hooktooth | City | 320,117 |
-| Brackmaw | Brinekin | Brackhaven | Town | 183,197 |
-| Reefhook Clan | Reefkin | Reefhook | Town | 30,492 |
-| Shatterfin Clan | Shatterkin | Shatterfin | Town | 30,819 |
-| Sootwake Clan | Sootkin | Sootwake | Town | 29,022 |
+| Cindermaw | Emberblood | Hooktooth | City | 320,117 |
+| Brackmaw | Brineward | Brackhaven | Town | 183,197 |
+| Reefhook Clan | Reefstrider | Reefhook | Town | 30,492 |
+| Shatterfin Clan | Stormfang | Shatterfin | Town | 30,819 |
+| Sootwake Clan | Ashveil | Sootwake | Town | 29,022 |
 
 There are **six physical islands, 26 land locations and 593,647 people**. Cindermaw has twelve locations in six provinces, Brackmaw eight in four provinces, and each smaller clan two. Reefhook and Sootwake each occupy one island divided into two provinces; Shatterfin retains a two-island chain. Brackmaw's land area remains approximately 60% of Cindermaw's.
 
-Population values are fixed, uneven counts, including 6,000 enslaved Cinderkin. Vanilla population entries are preserved. Cindermaw remains the name of one country and island; the mod represents all the Goblinkin.
+Population values are fixed, uneven counts, including 6,000 enslaved Emberblood. Vanilla population entries are preserved. Cindermaw remains the name of one country and island; the mod represents all the Ashborn.
+
+The **Ashborn** culture group includes Cindermaw's forge-bound **Emberblood**, Brackmaw's marshland **Brineward**, Reefhook's shoal-wise **Reefstriders**, Shatterfin's seafaring **Stormfang**, and Sootwake's woodland **Ashveil**. These names replace the old -kin labels. Existing culture IDs remain stable for saves and scripts.
+
+## Goblin infantry models
+
+Main includes five clan skin palettes, native `.mesh` files, DDS materials and 17 converted animations from the licensed model sources in [art/models/goblins](art/models/goblins/README.md). Light and heavy infantry select their clan model through dedicated culture graphics tags. The first pass uses the shared short goblin body and its own rig; clothing, weapon fitting, cavalry, artillery crews and character portraits need separate work. Infantry movement, attack, retreat and charge use the source animations; the exported death clip is available but is not yet connected to a verified game death event.
+
+Native animation checks compare 51 decoded poses against their GLB sources, with a maximum difference below 0.002 cm. Native mesh and animation files also pass byte-exact reader/writer checks. These checks do not prove in-game rendering. Restart and follow TESTING.md before accepting the models.
 
 ## Geography and terrain
 
@@ -48,7 +58,7 @@ After roughly four monthly pulses, an event offers a **5-gold eastern voyage**. 
 
 ## Government and economy
 
-All five countries start as **Ironfang Monarchies**, implemented as a unique major reform on the native monarchy type. They use legitimacy and normal monarchy mechanics. **Rule of the Strongest** selects an eligible adult male Goblinkin character from the country when the ruler dies. Military ability is the primary score (1000x); administrative ability and then age break ties. It is not restricted to the ruler's dynasty or noble estate. Children, foreign rulers and characters barred from ruling are excluded. There are no periodic elections or challenges. The succession rule is unlocked: normal monarchy alternatives remain selectable. Removing the Ironfang reform falls back to Salic succession if the special rule is still active.
+All five countries start as **Ironfang Monarchies**, implemented as a unique major reform on the native monarchy type. They use legitimacy and normal monarchy mechanics. **Rule of the Strongest** selects an eligible adult male Ashborn character from the country when the ruler dies. Military ability is the primary score (1000x); administrative ability and then age break ties. It is not restricted to the ruler's dynasty or noble estate. Children, foreign rulers and characters barred from ruling are excluded. There are no periodic elections or challenges. The succession rule is unlocked: normal monarchy alternatives remain selectable. Removing the Ironfang reform falls back to Salic succession if the special rule is still active.
 
 Every country has a capital marketplace, wharf and one or two modest guilds. Hooktooth produces tools and naval supplies; Brackhaven cloth and pottery; Reefhook pottery; Shatterfin tools; Sootwake cloth. Rural locations have 27 levels of suitable farming, fishing, forest or market villages in total, plus two fiber-crop farms. Added clay, tar, fiber-crop and wool sites supply the small industries through the shared Hooktooth market. Worker populations are redistributed within the unchanged national totals.
 

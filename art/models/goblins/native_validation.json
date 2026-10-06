@@ -1,0 +1,13 @@
+{
+  "status": "STATIC MODEL CHECKS PASSED; ENGINE PLAYTEST PENDING",
+  "clans": 5,
+  "source_joints": 23,
+  "exported_bones": 25,
+  "triangles_per_clan": 2476,
+  "animations": 17,
+  "sampled_poses": 51,
+  "maximum_pose_error_cm": 0.0011096335016596128,
+  "native_byte_exact_roundtrips": 2,
+  "palettes_and_runtime_references": true,
+  "engine_tested": false
+}

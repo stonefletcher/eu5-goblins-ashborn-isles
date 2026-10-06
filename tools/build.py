@@ -93,8 +93,8 @@ def build_setup(game,out):
 
 def localization(out):
     loc={'CDM':'Cindermaw','CDM_ADJ':'Cindermaw','CDM_ADJ_f':'Cindermaw','CDM_ADJ_m':'Cindermaw',
-         'cm_cinderkin':'Cinderkin','cm_goblin_group':'Goblin','cm_cinder_tongue':'Cinder Tongue','cm_goblin_language_family':'Goblin',
-         'cm_hunger_below':'The Hunger Below','cm_hunger_below_ADJ':'Ashen','cm_hunger_below_desc':'The Cinderkin hear a sleeping power beneath the volcanic crown. Its hunger is appeased by offerings and the smoke of the island forges.',
+         'cm_cinderkin':'Emberblood','cm_goblin_group':'Goblin','cm_cinder_tongue':'Cinder Tongue','cm_goblin_language_family':'Goblin',
+         'cm_hunger_below':'The Hunger Below','cm_hunger_below_ADJ':'Ashen','cm_hunger_below_desc':'The Emberblood hear a sleeping power beneath the volcanic crown. Its hunger is appeased by offerings and the smoke of the island forges.',
          'cm_ashen_faiths':'Ashen Faiths','cm_captains_confederation':'Confederation of Captains','cm_captain_elective':'Election of the High Captain',
          'cm_captains_confederation_desc':'Ship-clans share a harbor, a war fleet and a hunger for plunder. Their autonomy weakens taxation while supporting privateering and slave raids.',
          'cm_cindermaw_sea':'Cindermaw Coastal Waters','cm_cindermaw_area':'Cindermaw','cm_crown_province':'The Cinder Crown','cm_hooktooth_province':'Hooktooth Coast','cm_ashfields_province':'The Ashfields',
@@ -211,11 +211,17 @@ def main():
     economy['production']=starting_economy.build(sys.modules[__name__],game,out)
     import exploration
     discovery=exploration.build(sys.modules[__name__],game,out)
+    import export_goblin_models
+    models=export_goblin_models.build(out)
+    import verify_goblin_models
+    model_checks=verify_goblin_models.verify(out,game)
     print('Running static validation...',flush=True)
     checks=validate(game,out,mapstats,economy)
     import verify_features
     features=verify_features.verify(sys.modules[__name__],out,mapstats)
     (reports/'feature_verification.json').write_text(json.dumps(features,indent=2),encoding='utf-8')
+    (reports/'model_export.json').write_text(json.dumps(models,indent=2),encoding='utf-8')
+    (reports/'model_verification.json').write_text(json.dumps(model_checks,indent=2),encoding='utf-8')
     import preview
     preview.context(game,out,reports)
     report={'version':CFG['version'],'target_game_version':CFG['game_version'],'status':'STATIC VALIDATION PASSED; IN-GAME TESTING PENDING','checks':checks,'map':mapstats,'economy':economy,'runtime_tested':False,'terrain_cache_baked':False,'terrain_cache_patch':terrain,'exploration':discovery,'source_sha256':HASHES}

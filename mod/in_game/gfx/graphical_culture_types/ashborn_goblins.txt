@@ -1,0 +1,5 @@
+cm_cinderkin_gfx = { priority = 600 culture_tag = cm_cinderkin_gfx }
+cm_brinekin_gfx = { priority = 600 culture_tag = cm_brinekin_gfx }
+cm_reefkin_gfx = { priority = 600 culture_tag = cm_reefkin_gfx }
+cm_shatterkin_gfx = { priority = 600 culture_tag = cm_shatterkin_gfx }
+cm_sootkin_gfx = { priority = 600 culture_tag = cm_sootkin_gfx }

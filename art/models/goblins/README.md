@@ -1,6 +1,6 @@
 # Ashborn goblin model prototypes
 
-**First body and skin pass. These are editable 3D art sources, not EU5-ready mesh files.**
+**Native infantry prototype integrated into main. Editable GLB sources and the first EU5 mesh/animation export are included; in-game rendering is still unverified.**
 
 ![Five clan model variants](preview/clan_lineup.svg)
 
@@ -8,11 +8,11 @@ The common body is short (1.12 metres in the first Idle frame) with a large head
 
 | Clan | Country | Culture | Skin | sRGB |
 |---|---|---|---|---|
-| Cindermaw | CDM | cm_cinderkin | Warm olive | #71834B |
-| Brackmaw | QBR | cm_brinekin | Sea green | #56856B |
-| Reefhook | RHK | cm_reefkin | Yellow moss | #82965B |
-| Shatterfin | SFK | cm_shatterkin | Blue green | #537B76 |
-| Sootwake | SWK | cm_sootkin | Dark forest green | #51634B |
+| Cindermaw | CDM | Emberblood | Warm olive | #71834B |
+| Brackmaw | QBR | Brineward | Sea green | #56856B |
+| Reefhook | RHK | Reefstrider | Yellow moss | #82965B |
+| Shatterfin | SFK | Stormfang | Blue green | #537B76 |
+| Sootwake | SWK | Ashveil | Dark forest green | #51634B |
 
 ## Models
 
@@ -50,7 +50,7 @@ With Node.js installed, run from the repository root:
 node art/models/goblins/tools/build.mjs
 ```
 
-The script verifies the upstream Git blob hash, applies the common sculpt, assigns the five skin palettes, generates GLB files and regenerates the geometry contact sheet. It uses only Node built-ins. Geometry preparation, encoding and preview functions were executed in the available JavaScript environment; the filesystem CLI itself has not been run on the local Windows machine because its command runner could not start.
+The script verifies the upstream Git blob hash, applies the common sculpt, assigns the five skin palettes, generates GLB files and regenerates the geometry contact sheet. It uses only Node built-ins. The generator has now run locally on Windows with Node.js. All five rebuilt GLBs matched the art branch blob hashes exactly.
 
 Edit clans.json to change the palette or target height. The checked-in variants are the result of the checked-in sculpt and generator. EU5's final world scale must be calibrated against a native unit; 1.12 m here is an art-source measurement.
 
@@ -58,6 +58,10 @@ Edit clans.json to change the palette or target height. The checked-in variants 
 
 [validation.json](validation.json) records checks performed on the generated files: GLB header/chunk round trip, every accessor's bounds and finite values, triangle indices, skin weights, joint indices, animation timestamps/quaternions, preserved original animation metadata/skin topology, common ground/height and 51 sampled animation poses. The five skin variants and representative action poses were visually inspected through a CPU skinning renderer.
 
-Not yet performed: Blender import, Khronos's official validator, native EU5 mesh export, an EU5 launch, local installation, or animation playback in the game. The v0.4.0 mod and its installer do not use these files.
+Native export now uses tools/export_goblin_models.py and tools/pdx_binary.py. Five clan meshes use native unit materials, with 17 shared animation clips and 25 exported bones (23 original joints plus two transform ancestors). Original scalar stature is retained; tiny exporter scale noise is averaged to match native scalar animation records. Native units use the same 0.08 schematic scale; goblin source height is 1.12 m before that world scale.
 
-The next integration work is to inspect the installed EU5 unit and portrait assets and choose the native skeleton, shader and entity definitions. Then retarget/export a goblin unit, assign the five clan variants through the game's actual graphics selection rules, and verify idle/movement/combat/death and world scale. Portraits need a separate facial rig/morph pass; these unit sources must not be treated as drop-in portrait heads. The general io_pdx_mesh tool has not been verified for this EU5 build.
+[native_validation.json](native_validation.json) records independent decoded skinning checks on 51 poses, finite vertices and unit weights, animation quaternions, consistent bone indexing and byte-exact round trips of installed native files. The largest measured pose difference is about 0.00111 cm. The game bindings select each clan for light/heavy infantry. Idle, movement, attack, retreat and charge are wired; the death clip is exported but its in-game trigger remains unverified.
+
+Rebuild runtime files and the main installer manifest with `python tools/prepare_main_overlay.py --game "PATH/TO/EU5/game"`. The source-only generator still uses Node.js. Native generated files are under mod/in_game/gfx/models/units/ashborn_goblins; texture colors convert the source linear values to sRGB. The CC0 source credit above remains applicable.
+
+Still pending: in-game rendering and animation, Blender import, the official Khronos validator, weapon/clothing fitting, cavalry and artillery crews. Portraits need a separate facial rig/morph pass; these infantry bodies are not portrait heads. The published 0.5.0 package is unchanged; Download ZIP from main applies this development update through its installer.

@@ -1,3 +1,11 @@
+# Development on main after 0.5.0
+
+- Merged the release and goblin-model art branches into main. Code > Download ZIP now reconstructs the prepared release and applies checked development files.
+- Added five native goblin infantry variants, materials, clan graphics selection and 17 animation exports. Idle, movement, attack, retreat and charge are wired; engine rendering and death-event integration remain pending. Portraits, cavalry and equipment fitting need separate work.
+- Renamed the shared culture group to Ashborn, with Emberblood, Brineward, Reefstrider, Stormfang and Ashveil cultures. Technical IDs are preserved.
+- Native checks cover 51 source/engine pose comparisons, palettes, graphics references and exact native asset round trips. The main-download installer preparation path was tested.
+- The published 0.5.0 archives and currently installed games are unchanged. Use a fresh main download to test the development additions.
+
 # Goblins of the Ashborn Isles 0.5.0 - Ironfang Isles
 
 For **Europa Universalis V 1.3.11 (Pavia)**. **Close the game, install, and start a NEW 1337 campaign.** Earlier saves are incompatible with the expanded location map.

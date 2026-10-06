@@ -7,6 +7,37 @@ $acceptedIds = @($modId, 'alex.cindermaw_demo')
 if (-not $PrepareOnly -and (Get-Process -Name eu5 -ErrorAction SilentlyContinue)) { throw 'Close Europa Universalis V before installing.' }
 $modSource = Join-Path $PSScriptRoot $modSlug
 if (-not (Test-Path -LiteralPath $modSource)) { $modSource = Join-Path $PSScriptRoot "build\$modSlug" }
+if (-not (Test-Path -LiteralPath (Join-Path $modSource '.metadata\metadata.json'))) {
+    $releaseRoot = Join-Path $PSScriptRoot '.release'
+    $releaseManifest = Join-Path $releaseRoot 'manifest.json'
+    if (-not (Test-Path -LiteralPath $releaseManifest)) {
+        throw 'This source checkout has no built mod. Download Goblins_Ashborn_Isles_0.5.0.zip from GitHub Releases, or build the mod first.'
+    }
+    $release = Get-Content -LiteralPath $releaseManifest -Raw | ConvertFrom-Json
+    if ($release.version -notmatch '^\d+\.\d+\.\d+$') { throw 'Invalid release version.' }
+    $assetName = "Goblins_Ashborn_Isles_$($release.version).zip"
+    $assets = @($release.assets | Where-Object { $_.name -eq $assetName })
+    if ($assets.Count -ne 1) { throw 'Missing prepared install archive in release manifest.' }
+    $asset = $assets[0]
+    $preparedRoot = Join-Path $PSScriptRoot ".prepared-release-$($release.version)"
+    New-Item -ItemType Directory -Path $preparedRoot -Force | Out-Null
+    $archivePath = Join-Path $preparedRoot $assetName
+    Write-Host "Preparing the bundled $($release.version) release..."
+    $archiveStream = [IO.File]::Open($archivePath, [IO.FileMode]::Create, [IO.FileAccess]::Write)
+    try {
+        foreach ($chunk in $asset.chunks) {
+            if ($chunk -notmatch '^assets/[A-Za-z0-9_.-]+$') { throw 'Invalid archive chunk path.' }
+            $bytes = [Convert]::FromBase64String([IO.File]::ReadAllText((Join-Path $releaseRoot $chunk)))
+            $archiveStream.Write($bytes, 0, $bytes.Length)
+        }
+    } finally { $archiveStream.Dispose() }
+    if ((Get-Item -LiteralPath $archivePath).Length -ne $asset.size -or (Get-FileHash -LiteralPath $archivePath -Algorithm SHA256).Hash -ne $asset.sha256) {
+        throw 'Bundled release archive failed its size/checksum check. Download the release again.'
+    }
+    Expand-Archive -LiteralPath $archivePath -DestinationPath $preparedRoot -Force
+    & (Join-Path $preparedRoot 'Install-Goblins.ps1') @PSBoundParameters
+    return
+}
 $metadata = Get-Content -LiteralPath (Join-Path $modSource '.metadata\metadata.json') -Raw | ConvertFrom-Json
 if ($metadata.id -ne $modId) { throw 'Unexpected source mod identity.' }
 $patchRoot = Join-Path $PSScriptRoot 'terrain_patch'

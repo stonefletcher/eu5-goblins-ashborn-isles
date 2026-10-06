@@ -62,6 +62,8 @@ The opening lore event now has a single **The Ashborn rise.** option. The two ol
 
 ## Install the test build
 
+You can also use GitHub's **Code > Download ZIP** on `main`: extract it and run `Install-Goblins.cmd`. The installer reconstructs and verifies the bundled release archive automatically before installing. A source-only archive without `.release/` still requires building first.
+
 1. Close EU5 completely and extract **Goblins_Ashborn_Isles_0.5.0.zip** into a writable folder.
 2. Double-click **Install-Goblins.cmd**. The installer prepares terrain caches from your matching EU5 installation, checks hashes, backs up the previous installation and installs `goblins_ashborn_isles` under the EU5 user-data `mod` folder.
 3. Existing playset references to `cindermaw_demo` are migrated. Enable **Goblins of the Ashborn Isles** alone for this test.
@@ -102,4 +104,4 @@ To disable, choose a vanilla playset, restart EU5 and use an unmodded campaign. 
 
 ## Publishing prepared releases
 
-The main branch stores the authored source tree. A `release/vX.Y.Z` transport branch can carry hash-listed base64 chunks of the locally built install/source archives under `.release/`. The publishing workflow verifies their sizes, SHA-256 hashes and ZIP integrity, then creates a GitHub test release tagged at the manifest's source commit. It will not overwrite an existing release. Generated game assets remain outside the main source tree.
+The main branch stores the authored source tree and the merged prepared release under `.release/`, so Download ZIP can install without a local build. Release branches carry hash-listed base64 chunks of the locally built install/source archives. The publishing workflow verifies their sizes, SHA-256 hashes and ZIP integrity, then creates a GitHub test release tagged at the manifest's source commit. It will not overwrite an existing release. The installer verifies and unpacks the prepared archive into `.prepared-release-VERSION/` when no built mod is present.

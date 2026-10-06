@@ -18,7 +18,8 @@
       "country": "CDM",
       "culture": "cm_cinderkin",
       "skin_srgb": "#71834B",
-      "shade": "warm olive"
+      "shade": "warm olive",
+      "culture_name": "Emberblood"
     },
     {
       "id": "brackmaw",
@@ -26,7 +27,8 @@
       "country": "QBR",
       "culture": "cm_brinekin",
       "skin_srgb": "#56856B",
-      "shade": "sea green"
+      "shade": "sea green",
+      "culture_name": "Brineward"
     },
     {
       "id": "reefhook",
@@ -34,7 +36,8 @@
       "country": "RHK",
       "culture": "cm_reefkin",
       "skin_srgb": "#82965B",
-      "shade": "yellow moss"
+      "shade": "yellow moss",
+      "culture_name": "Reefstrider"
     },
     {
       "id": "shatterfin",
@@ -42,7 +45,8 @@
       "country": "SFK",
       "culture": "cm_shatterkin",
       "skin_srgb": "#537B76",
-      "shade": "blue green"
+      "shade": "blue green",
+      "culture_name": "Stormfang"
     },
     {
       "id": "sootwake",
@@ -50,7 +54,8 @@
       "country": "SWK",
       "culture": "cm_sootkin",
       "skin_srgb": "#51634B",
-      "shade": "dark forest green"
+      "shade": "dark forest green",
+      "culture_name": "Ashveil"
     }
   ]
 }

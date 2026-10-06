@@ -25,7 +25,7 @@ Fully restart EU5. Enable only **Goblins of the Ashborn Isles** and start a new 
 4. Advance one month as Cindermaw: its opening force and introduction should appear once. Advance another month and save/reload to check they do not repeat.
 5. Sail around Cindermaw through its distinct north, west and east waters and the southern channel. After exploration, sail out into the Atlantic. Dock at each island and test embarkation and landing. No sailing through land or invisible bridges.
 6. Move armies over internal borders. Inspect combat terrain, buildings, construction, workers, food and market membership.
-7. Test Ironfang succession, ordinary monarchy law changes, raiding and budgets for at least a year. Highest Military ability must win among eligible adult male Goblinkin; administration then age break ties. Save/reload with the rule changed and verify it stays changed.
+7. Test Ironfang succession, ordinary monarchy law changes, raiding and budgets for at least a year. Highest Military ability must win among eligible adult male Ashborn; administration then age break ties. Save/reload with the rule changed and verify it stays changed.
 8. Review fresh logs for invalid sea targets, mixed sea/land areas, election mismatches, missing advances, parser errors and locator errors. Compare unrelated errors against vanilla. An empty religion-modifier warning remains a known content limitation.
 9. Confirm the renamed mod appears once and the previous installation is backed up outside the mod scan directory.
 10. Switch to vanilla and start an unmodded campaign to confirm normal geography.
@@ -39,7 +39,16 @@ Fully restart EU5. Enable only **Goblins of the Ashborn Isles** and start a new 
 - Save/reload during a voyage: it still returns once. Insufficient gold disables funding but always permits postponement. Test a smaller clan too.
 - Each completed route reveals the Ashborn land and waters to the current owners of its visited ports. Confirm Portugal on the eastern route, the current northern port owners on the northern route, and Iberian/Maghrebi owners on the southern route. Unrelated countries should not be revealed by the event. Conquered ports must use their new owners. Discovery alone does not guarantee an AI invasion.
 
-## Limits
+## Main development: models and culture names
+
+- Use a fresh download of `main`, extract it and run Install-Goblins.cmd after closing EU5. This includes development model files; the published 0.5.0 ZIP does not. Current running tests are not modified automatically.
+- Verify the culture group is Ashborn. Cultures should display Emberblood (Cindermaw), Brineward (Brackmaw), Reefstrider (Reefhook), Stormfang (Shatterfin) and Ashveil (Sootwake), including succession descriptions and lore.
+- Inspect light and heavy infantry from each clan. Confirm short goblin anatomy and the five skin palettes, correct ground contact, sensible scale against a vanilla infantry unit, shadows, selection highlights and normal lighting.
+- Check idle, walking, attack, retreat and charge. Confirm animation progresses instead of restarting each frame. Save/reload and retest movement. The death clip is exported but its game trigger remains pending; report actual casualty behavior.
+- Confirm vanilla countries still use their original infantry. Cavalry, artillery crews and portraits are not converted in this pass. Inspect fresh logs for mesh, shader, skeleton, schematic, unit-constructor or state-machine errors.
+- Rebuild art with Node, then run `python tools/prepare_main_overlay.py --game "PATH/TO/EU5/game"`. This checks native asset round trips, skinning against 51 source poses and all five palettes, and refreshes the install manifest. A normal full build also exports and verifies the models.
+
+## Runtime limits
 
 Static checks do not prove in-game rendering, pathfinding, construction or balance. Terrain uses a native cache patch, not an engine-editor export. This version awaits user playtesting. Dedicated foreign desire/fear mechanics and goblin portraits are not implemented. No Steam Workshop upload has been performed.
 

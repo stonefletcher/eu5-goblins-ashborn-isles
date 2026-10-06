@@ -35,6 +35,21 @@ if (-not (Test-Path -LiteralPath (Join-Path $modSource '.metadata\metadata.json'
         throw 'Bundled release archive failed its size/checksum check. Download the release again.'
     }
     Expand-Archive -LiteralPath $archivePath -DestinationPath $preparedRoot -Force
+    $overlayManifestPath = Join-Path $PSScriptRoot 'data\main_overlay.json'
+    if (Test-Path -LiteralPath $overlayManifestPath) {
+        $overlay = Get-Content -LiteralPath $overlayManifestPath -Raw | ConvertFrom-Json
+        if ($overlay.base_release -ne $release.version) { throw 'Main development files do not match the bundled release.' }
+        $preparedMod = Join-Path $preparedRoot $modSlug
+        foreach ($item in $overlay.files) {
+            if ($item.path -notmatch '^[A-Za-z0-9_./-]+$' -or $item.path.StartsWith('/') -or $item.path.Split('/') -contains '..') { throw 'Invalid development file path.' }
+            $authoredFile = Join-Path (Join-Path $PSScriptRoot 'mod') $item.path
+            if ((Get-FileHash -LiteralPath $authoredFile -Algorithm SHA256).Hash -ne $item.sha256) { throw "Development file checksum mismatch: $($item.path)" }
+            $preparedFile = Join-Path $preparedMod $item.path
+            New-Item -ItemType Directory -Path (Split-Path -Parent $preparedFile) -Force | Out-Null
+            Copy-Item -LiteralPath $authoredFile -Destination $preparedFile -Force
+        }
+        Write-Host 'Included main development updates: goblin infantry and Ashborn culture names.'
+    }
     & (Join-Path $preparedRoot 'Install-Goblins.ps1') @PSBoundParameters
     return
 }

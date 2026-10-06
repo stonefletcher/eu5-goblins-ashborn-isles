@@ -24,7 +24,7 @@ def prepare(cfg):
         zone['seed']=[value*area_scale for value in zone['seed']]
     rx,ry=cfg['radius'];cx,cy=cfg['center']
     for island in cfg['islands']:
-        scale=math.sqrt(island['area_ratio'])
+        scale=math.sqrt(island['area_ratio']*cfg.get('island_size_multiplier',1))
         # Normalize silhouette area, so Brackmaw remains 60% despite a different outline.
         gy,gx=np.mgrid[-2:2:600j,-2:2:600j]
         unit_area=np.mean(shape(gx,gy,1,1,island['profile'])>0)*16
@@ -40,10 +40,24 @@ def prepare(cfg):
     return cfg
 
 def shape(x,y,rx,ry,profile):
-    phase,stretch,rotation,bay=profile
+    if isinstance(profile,dict):
+        stretch=profile['stretch'];rotation=profile['rotation']
+    else:
+        phase,stretch,rotation,bay=profile
     u=x/rx;v=y/ry;c=math.cos(rotation);s=math.sin(rotation)
     u,v=(u*c+v*s)/stretch,(-u*s+v*c)*stretch
     r=np.sqrt(u*u+v*v);a=np.arctan2(v,u)
+    if isinstance(profile,dict):
+        # Broad geological lobes and individually authored embayments; fine
+        # erosion is deliberately subordinate to the island's main silhouette.
+        rim=np.ones_like(a)
+        for frequency,amplitude,phase in profile['lobes']:
+            rim+=amplitude*np.cos(frequency*a+phase)
+        for angle,width,depth in profile['bays']:
+            delta=np.arctan2(np.sin(a-angle),np.cos(a-angle))
+            rim-=depth*np.exp(-(delta/width)**2)
+        rim+=.018*np.sin(13*a+rotation)+.009*np.cos(23*a+rotation)
+        return rim-r
     delta=np.arctan2(np.sin(a-bay),np.cos(a-bay))
     rim=1+.20*np.sin(3*a+phase)+.105*np.cos(5*a-phase)+.055*np.sin(11*a+phase)+.025*np.cos(19*a)
     return rim-.40*np.exp(-(delta/.30)**2)-r

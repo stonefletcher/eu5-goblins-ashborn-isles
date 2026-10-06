@@ -1,4 +1,4 @@
-cm_rule_of_the_strongest = {
+﻿cm_rule_of_the_strongest = {
     all_in_country = yes
     allow_children = no
     allow_female = no
@@ -8,6 +8,7 @@ cm_rule_of_the_strongest = {
     use_election = no
     show_candidates = yes
     potential = {
+        NOT = { tag = SFK }
         has_reform = government_reform:cm_ironfang_monarchy
     }
     # No locked trigger: normal monarchy succession laws remain available.

@@ -11,7 +11,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $modSource '.metadata\metadata.json'
     $releaseRoot = Join-Path $PSScriptRoot '.release'
     $releaseManifest = Join-Path $releaseRoot 'manifest.json'
     if (-not (Test-Path -LiteralPath $releaseManifest)) {
-        throw 'This source checkout has no built mod. Download a complete prepared main archive, or build the mod first.'
+        throw 'This source checkout has no built mod. Use a prepared install archive for this version, or build the mod first.'
     }
     $release = Get-Content -LiteralPath $releaseManifest -Raw | ConvertFrom-Json
     if ($release.version -notmatch '^\d+\.\d+\.\d+$') { throw 'Invalid release version.' }

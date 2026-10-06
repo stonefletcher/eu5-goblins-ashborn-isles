@@ -311,3 +311,4 @@ def write_scenery(b,game,out,anchors):
 }}''')
     b.write(out,'in_game/gfx/map/map_objects/cm_ashborn_landscape.txt','\n'.join(definitions)+'\n')
     return summary
+

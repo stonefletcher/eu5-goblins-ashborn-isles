@@ -1,12 +1,38 @@
-## 0.5.1 portrait texture crash hotfix
+## 0.5.2 portrait fix integration
 
-The October 6 startup crash ended with five portrait texture-array mismatch errors. Replace the 4x4 uncompressed goblin skin decals with 1024x1024 DXT5 textures and all 11 mip levels, matching native EU5 portrait decal arrays. Add format, dimensions, mip-count, payload-size and native compatibility checks. Main ZIP installation applies these corrected assets through its verified overlay. A game startup retest is still required; static validation alone does not certify the crash resolved.
+- Includes the 0.5.1 portrait decal correction: 1024 x 1024 BC3 textures with all 11 mip levels, matching native portrait arrays.
+- Validates texture dimensions, format, mip count, payload size and native headers during the build.
+- Rejects a bundled installer whose version or terrain configuration does not match the source.
+- In-game succession, portrait rendering and terrain acceptance remain pending.
 
-# Goblins of the Ashborn Isles 0.5.1 - bundled main update
+## 0.5.2 — Shatterfin Tidemothers (feature branch)
 
-The main-download installer now installs the 36-location volcanic terrain together with the latest Ashborn cultures, infantry assets and portrait test pass. It reports version 0.5.1 and rejects a bundled archive whose configuration does not match the downloaded source. Start a NEW 1337 campaign. The published 0.5.0 release remains unchanged.
+Shatterfin alone starts with **Tidemother Monarchy** and **Seniority of the
+Tidemothers**. Normal monarchy institutions and the existing naval modifiers
+remain. The oldest eligible adult Stormfang woman of the ruling dynasty inherits;
+her mother must belong to that same dynasty. Age is measured to the day, with no
+Military or administrative score. Men, minors, foreign rulers and blocked
+characters are excluded. This is maternal dynastic seniority, not daughter-first
+primogeniture or an election. The law can be changed through normal monarchy
+controls; removing the reform falls back to absolute cognatic primogeniture.
 
-Infantry entity-graph rendering remains a known issue in the model work; the terrain and portrait packaging update does not claim to fix it.
+**Jaima Shatterfin, the Mare-Mother** begins as Tidemother. Her younger sister **Skritcha** is the
+oldest eligible successor, followed by Morzha, Rikkra and Krishka. Vrosh is excluded
+because he is male despite his high Military ability; Zrikka is too young. The
+family is authored parent-before-child, with a deceased maternal founder, Zhavra.
+Children born in Shatterfin to women of the ruling house inherit their mother's
+dynasty while the law is active. The birth action is restricted to Shatterfin and
+this law. Other clans retain Ironfang Monarchy and Rule of the Strongest.
+
+If no eligible adult woman survives, the rule does not silently admit a man or
+an unrelated woman. The engine's handling of an exhausted candidate list needs
+in-game testing. Existing campaigns are not forcibly migrated: use a new 1337
+campaign for the authored dynasty and government setup.
+
+This branch includes the 0.5.1 terrain source and the portrait test pass. Its
+prepared installer and metadata are **0.5.2**. The branch remains separate from
+main; the published 0.5.0 release is unchanged. Static setup and build checks do
+not certify in-game succession, maternal inheritance or portrait rendering.
 
 # 0.5.1 terrain development (source integration)
 
@@ -17,7 +43,7 @@ Infantry entity-graph rendering remains a known issue in the model work; the ter
 - Wider crater bowls and raised rims; dark lava aprons, exposed rock and reduced woodland on dry volcanic ground.
 - New raster checks enforce channel clearance, island continuity and playable tile size.
 - Static validation passed: 36 connected land tiles, 31 coastal ports, all settlement anchors, navigable sea graph, population totals, rivers and scenery; terrain cache shared-border error is zero. Final shoreline gaps are 40.79 pixels (Cindermawâ€“Brackmaw) and 26.93 pixels (Brackmawâ€“Sootwake), up from 5.00 and 5.39.
-- Full game rendering and navigation acceptance require a new campaign. Existing installations require the new bundled 0.5.1 installer; historical 0.5.0 archives remain unchanged.
+- Full game rendering and navigation acceptance require a new campaign. Published archives and existing installations are unchanged; build from source to test this terrain pass.
 
 ---
 # Development on main after 0.5.0
@@ -84,3 +110,6 @@ and a newly generated character. Send a screenshot and fresh error.log if wrong.
 The separate infantry integration currently fails in-game with `Invalid entity
 graph [cm_goblin_cindermaw_schematic]`, producing invisible infantry. Its repair is
 deferred while portraits are prioritised; this portrait pass does not claim to fix it.
+
+
+All five Ashborn cultures have 16 male and 16 female name entries, six house names and six lowborn names each. Four additional royal families and 15 adult courtiers are authored. Drogg Cindermaw bears the nickname "the Stone Fletcher"; Jaima Shatterfin bears "the Mare-Mother". Cabinet appointments remain native, drawing on culture-specific names and the available court.

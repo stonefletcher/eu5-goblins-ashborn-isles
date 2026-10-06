@@ -54,3 +54,4 @@ if __name__=='__main__':
     cfg=archipelago.prepare(json.loads((root/'data/island.json').read_text()))
     result=verify_geography(cfg,root/'build/reports/Terrain_Layout.png')
     print(json.dumps(result,indent=2))
+

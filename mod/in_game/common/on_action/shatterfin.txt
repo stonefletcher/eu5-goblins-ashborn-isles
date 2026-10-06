@@ -1,0 +1,17 @@
+# The native hook has country root and scope:character for the newborn.
+# Append a named action, preserving vanilla birth effects.
+on_character_birth = { on_actions = { cm_shatterfin_maternal_house } }
+cm_shatterfin_maternal_house = {
+    trigger = {
+        tag = SFK
+        succession_law = heir_selection:cm_tidemother_seniority
+        exists = scope:character.mother.dynasty
+        scope:character.mother = {
+            culture = culture:cm_shatterkin
+            dynasty = root.last_valid_ruler.dynasty
+        }
+    }
+    effect = {
+        scope:character = { change_dynasty = mother.dynasty }
+    }
+}

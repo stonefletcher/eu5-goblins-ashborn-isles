@@ -180,6 +180,10 @@ def validate(game,out,mapstats,economy):
     ga,gz=block_span(gov,'monarchy');assert 'heir_selection = cm_rule_of_the_strongest' in gov[ga:gz]
     intro=(out/'in_game/events/goblins_ashborn_isles.txt').read_text(encoding='utf-8-sig')
     assert len(re.findall(r'\boption\s*=\s*\{',intro))==1
+    import shatterfin
+    shatterfin.verify(sys.modules[__name__],out)
+    import ashborn_names
+    ashborn_names.verify(sys.modules[__name__],out)
     checks.append('Ironfang Monarchy uses native monarchy mechanics; adult male military succession is registered and unlocked; lore event has one option.')
     return checks
 
@@ -216,7 +220,8 @@ def main():
     import build_goblin_portraits
     build_goblin_portraits.build(out)
     import verify_goblin_portraits
-    verify_goblin_portraits.verify(out,game)
+    portrait_checks=verify_goblin_portraits.verify(out,game)
+    (reports/'portrait_verification.json').write_text(json.dumps(portrait_checks,indent=2),encoding='utf-8')
     import verify_goblin_models
     model_checks=verify_goblin_models.verify(out,game)
     print('Running static validation...',flush=True)

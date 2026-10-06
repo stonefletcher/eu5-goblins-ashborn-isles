@@ -1,3 +1,11 @@
+## 0.5.3 infantry crash containment
+
+The October 6, 17:43 crash occurred with the refined build installed, near infantry spawning. The report is an unsymbolized access violation; it does not prove which model, animation or engine component failed. The earlier invalid-graph error is absent from this run.
+
+All ten Ashborn light/heavy infantry constructors now use the native skeleton, native animation state machine and complete native attachment set. Map soldiers temporarily look human. Custom goblin map assets remain available for offline work but are not selected by these constructors. Character portraits retain the goblin refinement. This is crash containment, not a verified repair of the custom renderer.
+
+Restart after installing the fresh branch download. Test the prior save through the crash date, spawn/recruit infantry, and exercise movement and combat. In-game crash-free behavior is still pending.
+
 ## 0.5.3 development: rough-clad goblins
 
 Portrait refinement: ears now extend 9 cm from their base (previously 5.8), with longer hooked noses, smaller jaws/chins, prominent cheeks, wider mouths and smaller teeth. A culture-only special gene applies compact torso proportions and a mild stoop to adult males and females, fading out during childhood. Human cultures remain outside these modifiers. Exact stature, portrait framing and clothing fit await engine review.

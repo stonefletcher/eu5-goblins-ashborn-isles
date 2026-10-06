@@ -1,3 +1,11 @@
+## 0.5.3 infantry crash containment
+
+The October 6, 17:43 crash occurred with the refined build installed, near infantry spawning. The report is an unsymbolized access violation; it does not prove which model, animation or engine component failed. The earlier invalid-graph error is absent from this run.
+
+All ten Ashborn light/heavy infantry constructors now use the native skeleton, native animation state machine and complete native attachment set. Map soldiers temporarily look human. Custom goblin map assets remain available for offline work but are not selected by these constructors. Character portraits retain the goblin refinement. This is crash containment, not a verified repair of the custom renderer.
+
+Restart after installing the fresh branch download. Test the prior save through the crash date, spawn/recruit infantry, and exercise movement and combat. In-game crash-free behavior is still pending.
+
 # Goblins of the Ashborn Isles
 
 ![Goblins of the Ashborn Isles](art/Goblins_Banner.png)
@@ -48,7 +56,7 @@ Native animation checks compare 51 decoded poses against their GLB sources, with
 
 The islands lie between the Azores and Portugal. Six distinct silhouettes use bays, headlands and curved internal borders. **Thirteen compact coastal sea zones** follow the surrounding vanilla Atlantic boundaries, with separate northern, western and eastern waters around Cindermaw and a southern channel. All new zones are navigable and connected to native routes; vanilla land and navigable sea pixels are preserved.
 
-The 0.5.1 terrain pass reduces land area by 12% relative to 0.5.0 while retaining the surrounding sea basin. Cindermawâ€“Brackmaw and Brackmawâ€“Sootwake have at least 24 map pixels of shoreline clearance, enforced by the build. Each island has individually authored bays and broad headlands, with subdued small coastal erosion rather than a repeated scalloped outline. Reefhook remains about 20% larger than either Shatterfin's combined islands or Sootwake.
+The 0.5.1 terrain pass reduces land area by 12% relative to 0.5.0 while retaining the surrounding sea basin. CindermawÃ¢â‚¬â€œBrackmaw and BrackmawÃ¢â‚¬â€œSootwake have at least 24 map pixels of shoreline clearance, enforced by the build. Each island has individually authored bays and broad headlands, with subdued small coastal erosion rather than a repeated scalloped outline. Reefhook remains about 20% larger than either Shatterfin's combined islands or Sootwake.
 
 The landscape now follows island geology rather than location seeds or gameplay terrain tags. Cindermaw has a connected volcanic mountain spine, branching foothills, eroded valleys and a crater. Each island has its own relief, woodland distribution, beaches, exposed rock and short river catchments. Wider craters have raised rims; weathered lava aprons and dry lee slopes add dark ground and exposed rock. Woodland retreats from volcanic ground and remains strongest in sheltered, moist valleys. Native Madeira and Sao Miguel height tiles were examined as references for ridges and coastal transitions. The game uses 32 world units for the entire 16-bit height range; our much larger islands have higher peaks than those native small islands.
 
@@ -159,7 +167,7 @@ graph [cm_goblin_cindermaw_schematic]`, producing invisible infantry. Its repair
 deferred while portraits are prioritised; this portrait pass does not claim to fix it.
 
 
-## 0.5.2 — Shatterfin Tidemothers (feature branch)
+## 0.5.2 â€” Shatterfin Tidemothers (feature branch)
 
 Shatterfin alone starts with **Tidemother Monarchy** and **Seniority of the
 Tidemothers**. Normal monarchy institutions and the existing naval modifiers

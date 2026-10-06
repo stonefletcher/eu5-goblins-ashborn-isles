@@ -1,3 +1,11 @@
+## 0.5.3 infantry crash containment
+
+The October 6, 17:43 crash occurred with the refined build installed, near infantry spawning. The report is an unsymbolized access violation; it does not prove which model, animation or engine component failed. The earlier invalid-graph error is absent from this run.
+
+All ten Ashborn light/heavy infantry constructors now use the native skeleton, native animation state machine and complete native attachment set. Map soldiers temporarily look human. Custom goblin map assets remain available for offline work but are not selected by these constructors. Character portraits retain the goblin refinement. This is crash containment, not a verified repair of the custom renderer.
+
+Restart after installing the fresh branch download. Test the prior save through the crash date, spawn/recruit infantry, and exercise movement and combat. In-game crash-free behavior is still pending.
+
 ## 0.5.3 development: rough-clad goblins
 
 Portrait refinement: ears now extend 9 cm from their base (previously 5.8), with longer hooked noses, smaller jaws/chins, prominent cheeks, wider mouths and smaller teeth. A culture-only special gene applies compact torso proportions and a mild stoop to adult males and females, fading out during childhood. Human cultures remain outside these modifiers. Exact stature, portrait framing and clothing fit await engine review.
@@ -17,7 +25,7 @@ Static model, animation, texture, rig and clothing-reference checks pass. In-gam
 - Rejects a bundled installer whose version or terrain configuration does not match the source.
 - In-game succession, portrait rendering and terrain acceptance remain pending.
 
-## 0.5.2 — Shatterfin Tidemothers (feature branch)
+## 0.5.2 â€” Shatterfin Tidemothers (feature branch)
 
 Shatterfin alone starts with **Tidemother Monarchy** and **Seniority of the
 Tidemothers**. Normal monarchy institutions and the existing naval modifiers
@@ -48,13 +56,13 @@ not certify in-game succession, maternal inheritance or portrait rendering.
 
 # 0.5.1 terrain development (source integration)
 
-- Wider Cindermawâ€“Brackmaw and Brackmawâ€“Sootwake channels; land area reduced 12%.
+- Wider CindermawÃ¢â‚¬â€œBrackmaw and BrackmawÃ¢â‚¬â€œSootwake channels; land area reduced 12%.
 - Individual coast profiles with broad bays, headlands and restrained coastal erosion.
 - 15 Cindermaw, 12 Brackmaw, four Reefhook, three Shatterfin and two Sootwake playable tiles. Province groupings remain unchanged.
 - National populations and total starting RGO expansion are preserved when subdividing locations.
 - Wider crater bowls and raised rims; dark lava aprons, exposed rock and reduced woodland on dry volcanic ground.
 - New raster checks enforce channel clearance, island continuity and playable tile size.
-- Static validation passed: 36 connected land tiles, 31 coastal ports, all settlement anchors, navigable sea graph, population totals, rivers and scenery; terrain cache shared-border error is zero. Final shoreline gaps are 40.79 pixels (Cindermawâ€“Brackmaw) and 26.93 pixels (Brackmawâ€“Sootwake), up from 5.00 and 5.39.
+- Static validation passed: 36 connected land tiles, 31 coastal ports, all settlement anchors, navigable sea graph, population totals, rivers and scenery; terrain cache shared-border error is zero. Final shoreline gaps are 40.79 pixels (CindermawÃ¢â‚¬â€œBrackmaw) and 26.93 pixels (BrackmawÃ¢â‚¬â€œSootwake), up from 5.00 and 5.39.
 - Full game rendering and navigation acceptance require a new campaign. Published archives and existing installations are unchanged; build from source to test this terrain pass.
 
 ---

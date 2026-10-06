@@ -1,0 +1,5 @@
+cm_scrap_port = {
+    marketplace = 1
+    naval_supplies_guild = 1
+    stockade = 1
+}

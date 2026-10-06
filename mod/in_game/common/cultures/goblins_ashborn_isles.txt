@@ -1,0 +1,8 @@
+cm_cinderkin = {
+    language = cm_cinder_tongue
+    color = rgb { 117 140 48 }
+    # Placeholder HUMAN graphics. These tags do not implement goblin anatomy.
+    tags = { european_gfx }
+    culture_groups = { cm_goblin_group }
+    opinions = { }
+}

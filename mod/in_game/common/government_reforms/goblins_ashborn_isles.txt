@@ -1,0 +1,21 @@
+cm_ironfang_monarchy = {
+    major = yes
+    unique = yes
+    government = monarchy
+    potential = { culture = { has_culture_group = culture_group:cm_goblin_group } }
+    country_modifier = {
+        can_hire_privateers = yes
+        allow_privateers_slave_raid = yes
+        auto_slave_raid = yes
+        can_be_target_of_anti_piracy_cb = yes
+        navy_maintenance_efficiency = 0.20
+    }
+    on_activate = { change_heir_selection = heir_selection:cm_rule_of_the_strongest }
+    on_deactivate = {
+        if = {
+            limit = { succession_law = heir_selection:cm_rule_of_the_strongest }
+            change_heir_selection = heir_selection:salic_law
+        }
+    }
+    months = 3
+}

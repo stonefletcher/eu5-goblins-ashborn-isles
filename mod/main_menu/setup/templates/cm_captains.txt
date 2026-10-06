@@ -1,0 +1,33 @@
+starting_technology_level = 3
+government = {
+    type = monarchy
+    heir_selection = cm_rule_of_the_strongest
+    centralization_vs_decentralization = 65
+    traditionalist_vs_innovative = -25
+    spiritualist_vs_humanist = -20
+    aristocracy_vs_plutocracy = 35
+    serfdom_vs_free_subjects = -60
+    mercantilism_vs_free_trade = 35
+    belligerent_vs_conciliatory = -70
+    quality_vs_quantity = 60
+    offensive_vs_defensive = -55
+    land_vs_naval = 75
+    capital_economy_vs_traditional_economy = 45
+    individualism_vs_communalism = 30
+    outward_vs_inward = -55
+    parliament = { parliament_type = assembly }
+    reforms = { cm_ironfang_monarchy }
+    privilege = { nobles_land_rights clergy_land_rights trade_monopolies communal_lands }
+    laws = {
+        censorship = no_censorship
+        administrative_system = feudal_administration
+        marriage_law = monogamous_marriage
+        heir_religion_law = heir_same_religion
+        legal_code_law = traditional_law_policy
+        maritime_law = protect_trade_routes
+        distribution_of_power_law = dop_traditional_distribution_of_power
+        immigration_law = open_borders_law
+        mining_law = nobles_mining_law
+        coin_laws = gold_and_silver_coins
+    }
+}

@@ -1,0 +1,12 @@
+namespace = cindermaw
+cindermaw.1 = {
+    type = country_event
+    outcome = neutral
+    title = cindermaw.1.title
+    desc = cindermaw.1.desc
+    trigger = { tag = CDM }
+    illustration_tags = { 10 = exterior 10 = armed }
+    option = {
+        name = cindermaw.1.a
+    }
+}

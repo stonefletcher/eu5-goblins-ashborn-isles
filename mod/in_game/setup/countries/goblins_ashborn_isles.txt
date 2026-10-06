@@ -1,0 +1,7 @@
+CDM = {
+    color = rgb { 117 140 48 }
+    color2 = rgb { 36 31 29 }
+    culture_definition = cm_cinderkin
+    religion_definition = cm_hunger_below
+    is_historic = no
+}

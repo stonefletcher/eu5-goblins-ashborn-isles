@@ -1,0 +1,8 @@
+cm_hunger_below = {
+    color = rgb { 160 56 36 }
+    group = cm_ashen_faiths
+    language = cm_cinder_tongue
+    tags = { folk_african_gfx }
+    definition_modifier = { }
+    opinions = { }
+}

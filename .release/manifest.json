@@ -1,12 +1,12 @@
 {
-  "version": "0.5.2",
-  "source_commit": "bde9fac7834ad031e5274d6c15f066a618435f75",
-  "source_config_sha256": "9e5a388ff42aa69d23a8e993e4fa4bfcbcb6059146ec1b77eb484ebe0349cc3d",
+  "version": "0.5.3",
+  "source_commit": "f119fe69c6134b7054507172102f07fe5b88a7a2",
+  "source_config_sha256": "0b2e942cfdde8728bb2671178095e2c34f723c6700f1b15c23bbbe1122b7d03f",
   "assets": [
     {
-      "name": "Goblins_Ashborn_Isles_0.5.2.zip",
-      "size": 25371736,
-      "sha256": "36f99c711b72880b89eaa4a4f809e3ba4f049e3c42f2dcddeeb6f90f7c1340a5",
+      "name": "Goblins_Ashborn_Isles_0.5.3.zip",
+      "size": 26711757,
+      "sha256": "e5570343378ba84596ef7546227b3e404f8f74f15dfc22dc3bd0c97661824117",
       "chunks": [
         "assets/Goblins_Ashborn_Isles_0.5.2.zip.0000.b64",
         "assets/Goblins_Ashborn_Isles_0.5.2.zip.0001.b64",
@@ -56,7 +56,10 @@
         "assets/Goblins_Ashborn_Isles_0.5.2.zip.0045.b64",
         "assets/Goblins_Ashborn_Isles_0.5.2.zip.0046.b64",
         "assets/Goblins_Ashborn_Isles_0.5.2.zip.0047.b64",
-        "assets/Goblins_Ashborn_Isles_0.5.2.zip.0048.b64"
+        "assets/Goblins_Ashborn_Isles_0.5.2.zip.0048.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.3.zip.tail.0000.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.3.zip.tail.0001.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.3.zip.tail.0002.b64"
       ]
     }
   ]

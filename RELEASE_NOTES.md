@@ -4,7 +4,7 @@ First art pass on a separate branch based on 0.5.2. Infantry stature is reduced 
 
 Portraits select native plain harnesses, wraps, jackets and overcoats for both sexes and all Ashborn cultures, including rulers and courts. Crowns, normal court clothes, capes and neck ornaments are overridden. Children retain basic clothes and infants retain a single native swaddle.
 
-Static model, animation, texture, rig and clothing-reference checks pass. In-game appearance remains unverified. Full portrait body stature and custom torn/patchwork leather-and-rag art remain pending. This source/art branch is not a prepared installer or Workshop release; build and package 0.5.3 before installation.
+Static model, animation, texture, rig and clothing-reference checks pass. In-game appearance remains unverified. Full portrait body stature and custom torn/patchwork leather-and-rag art remain pending. This branch includes a prepared 0.5.3 installer. Download a fresh branch ZIP, extract it into a new folder and run Install-Goblins.cmd with EU5 closed. In-game art acceptance and Workshop publication remain separate.
 
 ## 0.5.2 portrait fix integration
 

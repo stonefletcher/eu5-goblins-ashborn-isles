@@ -42,7 +42,7 @@ def geometry(sex,bones):
     y=15.7 if not female else 15.3
     if young:x,y=5.9,9.2
     for sign in [-1,1]:
-        length=5.2 if not young else 3.1
+        length=5.8 if not young else 3.1
         rim=np.array([[x,y-2.1,-1.6],[x+2,y-1.5,-1.0],
                       [x+length,y+3.2,-.4],[x+1.3,y+2.2,-1.5],
                       [x-.2,y+1.2,-1.8]])
@@ -56,7 +56,7 @@ def geometry(sex,bones):
         if young:continue
         # Separate jaw-bound teeth follow speech/idle jaw movement.
         joint=names['bn_jaw_main'];rings=[]
-        for h,r,forward in [(0,.48,0),(.8,.34,-.25),(1.65,.16,-.45),(2.25,.015,-.62)]:
+        for h,r,forward in [(0,.30,0),(.40,.22,-.12),(.80,.10,-.24),(1.12,.015,-.32)]:
             rings.append([np.array([sign*2.0+r*math.cos(t),10.7+h,-9.05+forward+r*math.sin(t)]) for t in np.linspace(0,2*math.pi,9)[:-1]])
         for k in range(3):
             for i in range(8):
@@ -90,9 +90,10 @@ def build(out):
         Image.new('RGBA',(4,4),color).save(dest/f'{name}.dds')
     genes=['morph_genes = {'];accessories=[];assets=[];modifiers=['cm_ashborn_appearance = {\n usage = game'];ethnicities=[]
     # Kept within supported native gene ranges. Individuals retain all other DNA.
-    face={'gene_nose_length':(.82,.96),'gene_nose_tip_forward':(.8,.95),
+    face={'gene_nose_length':(.76,.90),'gene_nose_tip_forward':(.8,.95),
           'gene_nose_tip_angle':(.12,.28),'gene_nose_width':(.30,.48),
-          'gene_jaw_width':(.62,.82),'gene_eye_size':(.68,.85),'gene_chin_size':(.28,.45)}
+          'gene_jaw_width':(.27,.43),'gene_eye_size':(.72,.88),'gene_chin_size':(.20,.34),
+          'gene_head_height':(.30,.43),'gene_jaw_height':(.28,.42)}
     for clan in clans:
         ident=clan['id'];culture=clan['culture'];tag=culture+'_gfx'
         rgb=tuple(bytes.fromhex(clan['skin_srgb'].lstrip('#')))
@@ -103,7 +104,7 @@ def build(out):
             decals+=f'''decal = {{ body_part = {part}
  textures = {{ diffuse = "gfx/models/portraits/ashborn/{ident}_skin.dds" }}
  blend_modes = {{ diffuse = replace }}
- alpha_curve = {{ {{ 0 1 }} {{ 1 1 }} }}
+ alpha_curve = {{ {{ 0 0.88 }} {{ 1 0.88 }} }}
  decal_apply_order = post_skin_color priority = 100
  }}\n'''
         genes.append(f'{gene} = {{ inheritable = no {gene} = {{ index = 0 male = {{ {decals} }} '+
@@ -133,7 +134,9 @@ def build(out):
     text(out/'in_game/common/ethnicities/ashborn.txt','\n'.join(ethnicities)+'\n')
     text(out/'main_menu/gfx/portraits/accessories/ashborn.txt','\n'.join(accessories)+'\n')
     text(out/'main_menu/gfx/portraits/portrait_modifiers/zz_ashborn.txt','\n'.join(modifiers)+'\n')
-    return {'engine_tested':False,'cultures':len(clans),'portrait_types':TYPES,'method':'culture modifiers, native facial genes, rigged pointed ears and jaw tusks','infants':'skin and smaller pointed ears; no tusks'}
+    from build_goblin_outfits import build as build_outfits
+    outfits = build_outfits(out, clans)
+    return {'engine_tested':False,'cultures':len(clans),'portrait_types':TYPES,'method':'muted skin with partial albedo retention, narrow jaws, pointed ears and small teeth','infants':'skin and smaller pointed ears; no tusks','outfits':outfits,'portrait_stature':'native body height unchanged; female height attribute is disabled in vanilla'}
 
 if __name__=='__main__':
     import argparse

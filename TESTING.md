@@ -1,3 +1,12 @@
+## 0.5.3 appearance acceptance - pending
+
+- Inspect all five clans: rulers, family, cabinet, other courtiers, both sexes and every age. Clothing and skin must follow culture, not employer.
+- Check ears and small teeth during idle and jaw movement; check female outfit fit, child coverage and single infant swaddling.
+- Verify crowns/court finery are absent on Ashborn and unchanged elsewhere.
+- Compare infantry height with native units; exercise idle, movement, attack and retreat.
+- Inspect fresh logs for missing accessories, gene errors and texture-array failures.
+- Full portrait body stature is NOT implemented: vanilla female height support is disabled. Shorter infantry does not satisfy that requirement.
+
 # Goblins of the Ashborn Isles 0.5.2 verification
 
 ## Build checks

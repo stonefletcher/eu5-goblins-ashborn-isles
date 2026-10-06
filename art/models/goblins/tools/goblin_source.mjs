@@ -90,7 +90,8 @@ export function buildVariant(source,clan,config){
   g.scenes[g.scene||0].nodes=[root];
   const skin=g.materials.find(m=>m.name==="Skin");if(!skin)throw Error("Missing skin material");
   skin.name="goblin_skin_"+clan.id;skin.pbrMetallicRoughness.baseColorFactor=linearColor(clan.skin_srgb);skin.pbrMetallicRoughness.roughnessFactor=0.86;
-  g.materials.find(m=>m.name==="Pants").pbrMetallicRoughness.roughnessFactor=0.92;
+  const pants=g.materials.find(m=>m.name==="Pants").pbrMetallicRoughness;
+  pants.roughnessFactor=0.96;pants.baseColorFactor=linearColor("#514638");
   g.materials.find(m=>m.name==="Teeth").pbrMetallicRoughness.roughnessFactor=0.72;
   g.meshes[0].name="Ashborn_Goblin_Body";
   g.scenes[g.scene||0].name=clan.name+" Goblin";
@@ -157,7 +158,7 @@ export function prepareBase(source) {
        let [x,y,z]=pos[i];
        if(mat==="Skin"&&minY>2&&maxY>3){
          const jaw=Math.max(0,Math.min(1,(2.55-y)/.25)),forehead=Math.max(0,Math.min(1,(y-2.75)/.35));
-         x*=1+.16*jaw-.13*forehead;
+         x*=1-.12*jaw-.06*forehead;
          y-=.10*Math.max(0,Math.min(1,(y-2.65)/.45));
          if(z>0)z+=.035*jaw;
        }else if(mat==="Skin"&&minY>2.3){
@@ -174,7 +175,7 @@ export function prepareBase(source) {
        }else if(mat==="Face"&&maxY<2.4){
          y+=.028*x/.20;z+=.045;
        }else if(mat==="Teeth"){
-         y=2.25645+(y-2.25645)*(x>0?1.38:1.22);z+=.045;
+         y=2.25645+(y-2.25645)*(x>0?.72:.64);z+=.045;
        }
        pos[i]=[x,y,z];
      }

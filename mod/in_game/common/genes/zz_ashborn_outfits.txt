@@ -1,0 +1,9 @@
+﻿accessory_genes = { cm_ashborn_clothing = { inheritable = no
+cm_rough_clothing = { index = 0
+male = { 4 = "male_clothes_deccan_commoner_harness" 3 = "male_clothes_aztec_common_tilmatl" 2 = "male_clothes_german_common_short_sleeves_jacket" }
+female = { 4 = "female_clothes_iroquois_common_overcoat" 3 = "female_clothes_aztec_common_huipilli" 2 = "female_clothes_syrian_common_dress_scarf" }
+boy = { 1 = "ger_child_cloth_set_a" }
+girl = { 1 = "child_cloth" }
+infant = { 1 = "empty" }
+adolescent_boy = boy adolescent_girl = girl
+} } }

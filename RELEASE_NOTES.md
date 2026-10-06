@@ -1,3 +1,11 @@
+## 0.5.3 development: rough-clad goblins
+
+First art pass on a separate branch based on 0.5.2. Infantry stature is reduced from 1.12 m to 0.92 m, jaws are narrower and teeth smaller. Clan skin palettes are muted olive, marsh, lichen, slate and soot greens. Portrait recoloring retains 12% of underlying albedo detail.
+
+Portraits select native plain harnesses, wraps, jackets and overcoats for both sexes and all Ashborn cultures, including rulers and courts. Crowns, normal court clothes, capes and neck ornaments are overridden. Children retain basic clothes and infants retain a single native swaddle.
+
+Static model, animation, texture, rig and clothing-reference checks pass. In-game appearance remains unverified. Full portrait body stature and custom torn/patchwork leather-and-rag art remain pending. This source/art branch is not a prepared installer or Workshop release; build and package 0.5.3 before installation.
+
 ## 0.5.2 portrait fix integration
 
 - Includes the 0.5.1 portrait decal correction: 1024 x 1024 BC3 textures with all 11 mip levels, matching native portrait arrays.

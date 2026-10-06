@@ -1,5 +1,5 @@
 {
-  "base_release": "0.5.2",
+  "base_release": "0.5.3",
   "stage": "development-models-and-culture-names",
   "engine_tested": false,
   "files": [
@@ -9,11 +9,15 @@
     },
     {
       "path": "in_game/common/ethnicities/ashborn.txt",
-      "sha256": "c15176af99780adf3a993321bde13db4cf57385f5f166e3ee7e04e76596194c5"
+      "sha256": "d6df0c0c19e9a3bbc594e2ef4559b411bf9a5c27e1d1bf168bf151d7b5b12bc4"
+    },
+    {
+      "path": "in_game/common/genes/zz_ashborn_outfits.txt",
+      "sha256": "36e6a192ee1021dbf52c66e5305a240e3b4feb9e5ca83e6d2d0108da9bbbfd22"
     },
     {
       "path": "in_game/common/genes/zz_ashborn_portraits.txt",
-      "sha256": "85c6256187792210732f60dee857382c0a742a753ba49defa3c2ab72f9c0f2aa"
+      "sha256": "eed4d7bce389fae1dd2574fae67be462db788de0cb44b1e9986586fceb55ed41"
     },
     {
       "path": "in_game/common/languages/goblins_ashborn_isles.txt",
@@ -29,15 +33,15 @@
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/brackmaw_skin.dds",
-      "sha256": "2366a84b753868db6c45fefca33e10d3faa849e03e073763ac4609a843fe7de8"
+      "sha256": "7c2a9b8cbd6fd60974b3acf933ea6ed3c029486518b9ed7caa49b04cc26f65e8"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/cindermaw_skin.dds",
-      "sha256": "4559fa9600332e602ec7ed5ceec6c1eed0e0594987e052dd2aff5213e42aa247"
+      "sha256": "ee5da7b61a8adeb662a7d94a8666b76b68f52f07964ba39cb1892ee1c2a5287f"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/cm_female_features.mesh",
-      "sha256": "44814bf625e217df3e92c321608a67122d095e45a3c116701d2f5f1f099b42b0"
+      "sha256": "9c7ea86b91130dfc6dbfdded64c5963d6878a2db090186bbb8a9aa85ca120089"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/cm_infant_features.mesh",
@@ -45,7 +49,7 @@
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/cm_male_features.mesh",
-      "sha256": "5d45b7b66a083f30167cb5784e563644892415d25e8f53c8ca8ba8dd9046864c"
+      "sha256": "d8b45fb9c3ba2ca8a58bbaae5af6a8103175f3837c5f0a62fa4c71d662665267"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/ivory.dds",
@@ -61,15 +65,15 @@
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/reefhook_skin.dds",
-      "sha256": "9ebaeda808fe78a3376ca93d737c46750a0184ff8ab8e2a774df778fda355016"
+      "sha256": "d8ce4c5c2c4631524fd06a654d1c3af65a3e45aec2de1b68f3b9e018e2d1e9cc"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/shatterfin_skin.dds",
-      "sha256": "d8b657503e38c23c930bd2c30bd2084ab66cc290219f1415d5e44bd4061dc15f"
+      "sha256": "0ed08ee2535dcdf7cfe9672a8a0e690e0f35ab1293a80c610d20ac5e9a122a4e"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/sootwake_skin.dds",
-      "sha256": "a2f7dc080350cc75aa7ea57209f6c2586d63fe7a13a2de0771bba377259c8dd2"
+      "sha256": "61b3cbef16b799829f6a4d9605a9e28c18a9b14bfbbbbd2a00279cf62204c8d4"
     },
     {
       "path": "in_game/gfx/models/schematics/cm_goblin_brackmaw_schematic.schematic",
@@ -97,11 +101,11 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_brackmaw.mesh",
-      "sha256": "ef042e5e1915fd73fb9a938dc20377e12ee224d09a0b72fbd057163d5d0a2225"
+      "sha256": "42fe925fa63c1f84ca4e713cd965be4f116658733cbf063089be7fa8e07e16a7"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_brackmaw_0_diffuse.dds",
-      "sha256": "237cbdd9911d208f72e01ad3325962c78043f9a1813acd8f703dee9af93065d4"
+      "sha256": "59265feb43a38a789869454c3cc0bb89048af7913c9ecdc3f6d671d854b415a4"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_brackmaw_0_mask.dds",
@@ -117,7 +121,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_brackmaw_1_diffuse.dds",
-      "sha256": "490fe7d7c2d1940244a8057c257993abf73157063abf11b5af47eadd9555ee67"
+      "sha256": "d0a348e915daac43d603d2ad8323b35f94a967e07fa58c6a2499f6976b2e19f1"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_brackmaw_1_mask.dds",
@@ -129,7 +133,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_brackmaw_1_properties.dds",
-      "sha256": "29635d9999b3a3e6097082a8dfc96fda6de7b8414d5947d7255f3124653fd36b"
+      "sha256": "ea86c068ac88708c5c362fa3aed5092ad520839fea56cdd0763f731d8d6165fc"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_brackmaw_2_diffuse.dds",
@@ -165,7 +169,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_brackmaw_4_diffuse.dds",
-      "sha256": "237cbdd9911d208f72e01ad3325962c78043f9a1813acd8f703dee9af93065d4"
+      "sha256": "59265feb43a38a789869454c3cc0bb89048af7913c9ecdc3f6d671d854b415a4"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_brackmaw_4_mask.dds",
@@ -185,11 +189,11 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_cindermaw.mesh",
-      "sha256": "ef042e5e1915fd73fb9a938dc20377e12ee224d09a0b72fbd057163d5d0a2225"
+      "sha256": "42fe925fa63c1f84ca4e713cd965be4f116658733cbf063089be7fa8e07e16a7"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_cindermaw_0_diffuse.dds",
-      "sha256": "3034ea20de9c360c97c64d8a546da2f01a1b0d05b83acf26c16b1fa4a48800a3"
+      "sha256": "9ca8d98d147006f7d358aa9e411dcc1070d9e749ee5bcbd3b49ead61a6c1c600"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_cindermaw_0_mask.dds",
@@ -205,7 +209,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_cindermaw_1_diffuse.dds",
-      "sha256": "490fe7d7c2d1940244a8057c257993abf73157063abf11b5af47eadd9555ee67"
+      "sha256": "d0a348e915daac43d603d2ad8323b35f94a967e07fa58c6a2499f6976b2e19f1"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_cindermaw_1_mask.dds",
@@ -217,7 +221,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_cindermaw_1_properties.dds",
-      "sha256": "29635d9999b3a3e6097082a8dfc96fda6de7b8414d5947d7255f3124653fd36b"
+      "sha256": "ea86c068ac88708c5c362fa3aed5092ad520839fea56cdd0763f731d8d6165fc"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_cindermaw_2_diffuse.dds",
@@ -253,7 +257,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_cindermaw_4_diffuse.dds",
-      "sha256": "3034ea20de9c360c97c64d8a546da2f01a1b0d05b83acf26c16b1fa4a48800a3"
+      "sha256": "9ca8d98d147006f7d358aa9e411dcc1070d9e749ee5bcbd3b49ead61a6c1c600"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_cindermaw_4_mask.dds",
@@ -269,31 +273,31 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_Death.anim",
-      "sha256": "883cceff63156768039e258e1542a8055a7cbb2f0355297c5f34169d9f6fb5de"
+      "sha256": "6f44b727a20e132893ec0d899e5e775c6c540bb05086b8bf5318f96c8e6e692f"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_Defeat.anim",
-      "sha256": "61c0f6a2ae7d8208776be146ce899fea5b6630c704f4a4c5181071029d3a6172"
+      "sha256": "4a450655581c512e3417aa371d087ee6b0fcd5d80d971c40090c01e095f24e8e"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_Idle.anim",
-      "sha256": "4ce18347295ca06a30b5c409e3f53cb3596e0ad2bed3b42b34d598bef8a09583"
+      "sha256": "84dc961c5280ebd78013baca9341779f7ae49859e0183c6af04c51d6896da6d2"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_Jump.anim",
-      "sha256": "7d6bd7c3e7a32806037fbbc06d7cd485bef8f5c8e2f3af15fb0b0a6095d1a5b2"
+      "sha256": "8182ce8e91d53e7d4cd3c4657981ed83f211fb589c9a9915f0fa04735d430e00"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_PickUp.anim",
-      "sha256": "4a4bc733e1cf8ae4f15c2f5ae3d147a1ece6fadcfe605ba22aaf46ad8496bff5"
+      "sha256": "98a7b45fdbae2cfb82fff42dbe400efe9cced19fe79fdf0e9e6915b41c993a27"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_Punch.anim",
-      "sha256": "627f122d7e1e14f867e14f3c1c58043e4f76063867fb299622916d29a0fa2430"
+      "sha256": "392e5348dfd9d7b53aa859a0e6f4f2929fba21ced5cf38a7de5ce8a6531fcdad"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_RecieveHit.anim",
-      "sha256": "33b79399835e6a2f93d8fb96fbe85475194e4dbc8f5a0cdace9507bdb9538b09"
+      "sha256": "2dd8a7e0a7fef3961df3ec890fcf00163fa1fc6207ff310f8abcdd0e1468985a"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_reefhook.asset",
@@ -301,11 +305,11 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_reefhook.mesh",
-      "sha256": "ef042e5e1915fd73fb9a938dc20377e12ee224d09a0b72fbd057163d5d0a2225"
+      "sha256": "42fe925fa63c1f84ca4e713cd965be4f116658733cbf063089be7fa8e07e16a7"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_reefhook_0_diffuse.dds",
-      "sha256": "3f18f797e04a1ac860fa6d7fe86bc3fc6374fe9f3e7a323b628a9d9ff788a3b3"
+      "sha256": "d0263da8a89605764db19f2a38e2cc5b312f46a3ffb586e5e8426a95e7f2f885"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_reefhook_0_mask.dds",
@@ -321,7 +325,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_reefhook_1_diffuse.dds",
-      "sha256": "490fe7d7c2d1940244a8057c257993abf73157063abf11b5af47eadd9555ee67"
+      "sha256": "d0a348e915daac43d603d2ad8323b35f94a967e07fa58c6a2499f6976b2e19f1"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_reefhook_1_mask.dds",
@@ -333,7 +337,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_reefhook_1_properties.dds",
-      "sha256": "29635d9999b3a3e6097082a8dfc96fda6de7b8414d5947d7255f3124653fd36b"
+      "sha256": "ea86c068ac88708c5c362fa3aed5092ad520839fea56cdd0763f731d8d6165fc"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_reefhook_2_diffuse.dds",
@@ -369,7 +373,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_reefhook_4_diffuse.dds",
-      "sha256": "3f18f797e04a1ac860fa6d7fe86bc3fc6374fe9f3e7a323b628a9d9ff788a3b3"
+      "sha256": "d0263da8a89605764db19f2a38e2cc5b312f46a3ffb586e5e8426a95e7f2f885"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_reefhook_4_mask.dds",
@@ -385,15 +389,15 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_Roll.anim",
-      "sha256": "d92a3af2558c7fbccd457b67214761a53f2220737601d32c8569bd56d858d6c4"
+      "sha256": "116f211c6119b941dbbe7f355c377df7deca3b957dd55da4da379d678cf5b0ea"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_Run.anim",
-      "sha256": "46ee592e5b9dbe602273667e43152309529ef0617038b0888dc25c0e9301d542"
+      "sha256": "8fb345f0a74d676cd656c56cc3e10e179d881b5d604afc5dcd00f7dd8c91457f"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_Run_Carry.anim",
-      "sha256": "b2d06f0fe07f57d4cd66ecc0dc398fc79577d6bd66cad86c5d896c4c81bf09f0"
+      "sha256": "b168555a89c60cbec91ec0785527d3855a8134fafde630192deafa57574cde1f"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_shatterfin.asset",
@@ -401,11 +405,11 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_shatterfin.mesh",
-      "sha256": "ef042e5e1915fd73fb9a938dc20377e12ee224d09a0b72fbd057163d5d0a2225"
+      "sha256": "42fe925fa63c1f84ca4e713cd965be4f116658733cbf063089be7fa8e07e16a7"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_shatterfin_0_diffuse.dds",
-      "sha256": "7a24624d84e5de96383d7e410238adfd7000db5b9360a67d2ae522578656e9a8"
+      "sha256": "c734ed255d62a9fc0303910661fb1069efbe4ef858613e155e6f8a20c7781637"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_shatterfin_0_mask.dds",
@@ -421,7 +425,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_shatterfin_1_diffuse.dds",
-      "sha256": "490fe7d7c2d1940244a8057c257993abf73157063abf11b5af47eadd9555ee67"
+      "sha256": "d0a348e915daac43d603d2ad8323b35f94a967e07fa58c6a2499f6976b2e19f1"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_shatterfin_1_mask.dds",
@@ -433,7 +437,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_shatterfin_1_properties.dds",
-      "sha256": "29635d9999b3a3e6097082a8dfc96fda6de7b8414d5947d7255f3124653fd36b"
+      "sha256": "ea86c068ac88708c5c362fa3aed5092ad520839fea56cdd0763f731d8d6165fc"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_shatterfin_2_diffuse.dds",
@@ -469,7 +473,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_shatterfin_4_diffuse.dds",
-      "sha256": "7a24624d84e5de96383d7e410238adfd7000db5b9360a67d2ae522578656e9a8"
+      "sha256": "c734ed255d62a9fc0303910661fb1069efbe4ef858613e155e6f8a20c7781637"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_shatterfin_4_mask.dds",
@@ -485,11 +489,11 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_Shoot_OneHanded.anim",
-      "sha256": "daacf7cefe91eb28fb1f979df4981fbdd5e1d3e0e9af21747d2752c2e05df385"
+      "sha256": "4d285b8de7ec6d1d85675b879f64b6c38c405c1dcbc1a0b744558388e5ecaf5a"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_SitDown.anim",
-      "sha256": "5f5647fbaacf8967727995c89ff899d31078e81d937e86e22bba71c63d38c7cf"
+      "sha256": "97673ce19683ad39c0f848a9f707eab2c03fb7057725984c9bf261c89c118b8e"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_sootwake.asset",
@@ -497,11 +501,11 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_sootwake.mesh",
-      "sha256": "ef042e5e1915fd73fb9a938dc20377e12ee224d09a0b72fbd057163d5d0a2225"
+      "sha256": "42fe925fa63c1f84ca4e713cd965be4f116658733cbf063089be7fa8e07e16a7"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_sootwake_0_diffuse.dds",
-      "sha256": "4b335f63396f79a188c0f314e4093b639c7b699a79e0273aeec42bf1e8ea9a55"
+      "sha256": "54ad33eece6b899be4154ffbca08d4deabd071eac9d86add37bc550d79a44e60"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_sootwake_0_mask.dds",
@@ -517,7 +521,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_sootwake_1_diffuse.dds",
-      "sha256": "490fe7d7c2d1940244a8057c257993abf73157063abf11b5af47eadd9555ee67"
+      "sha256": "d0a348e915daac43d603d2ad8323b35f94a967e07fa58c6a2499f6976b2e19f1"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_sootwake_1_mask.dds",
@@ -529,7 +533,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_sootwake_1_properties.dds",
-      "sha256": "29635d9999b3a3e6097082a8dfc96fda6de7b8414d5947d7255f3124653fd36b"
+      "sha256": "ea86c068ac88708c5c362fa3aed5092ad520839fea56cdd0763f731d8d6165fc"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_sootwake_2_diffuse.dds",
@@ -565,7 +569,7 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_sootwake_4_diffuse.dds",
-      "sha256": "4b335f63396f79a188c0f314e4093b639c7b699a79e0273aeec42bf1e8ea9a55"
+      "sha256": "54ad33eece6b899be4154ffbca08d4deabd071eac9d86add37bc550d79a44e60"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_sootwake_4_mask.dds",
@@ -581,23 +585,23 @@
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_StandUp.anim",
-      "sha256": "15df483c52e2802a7899bdb404a316759bf6b6b26c59a96beaa9fe778ecbc8e9"
+      "sha256": "699a74bc236c0911f4d69008b446916289e4abf8b3606559b8f6f0fdfa4480ac"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_SwordSlash.anim",
-      "sha256": "c214f4a2a4fdef659d94f3d2124031b834901ad6eb8a0c39818762a81c9e30a0"
+      "sha256": "630adfce57afc7a4f345f6d4c1e99a81d0ea40171f6d0bf72199668baa7cb92d"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_Victory.anim",
-      "sha256": "277c9f8fff9857a8dbfcbcf118fdab492cdcb5e2632f583dc9a02d41aac026b8"
+      "sha256": "27cee13ac2533134030effac76ba8df2914ec0afbfed47aa0f8015554fd1ac0f"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_Walk.anim",
-      "sha256": "72a77acf70fe7f6b001173e8c44bfcada7bba16f4e9bf38cfa35ff2ae9a75a76"
+      "sha256": "b15cd085fb20632be697d6cbc26646e8013056653d0e64e0ba77292b8e0d25a7"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_Walk_Carry.anim",
-      "sha256": "e6b14116994c938108b37ac169d0f3281a917e940edb2e2c8193436f932dded7"
+      "sha256": "5083cfa851a8504c202763714fdff3bb20d4a5ab1eb89662bffd5b383efd147c"
     },
     {
       "path": "main_menu/gfx/animation_state_machines/cm_goblin_infantry.animsm",
@@ -609,7 +613,11 @@
     },
     {
       "path": "main_menu/gfx/portraits/portrait_modifiers/zz_ashborn.txt",
-      "sha256": "a4c8e3cfb47fab20186da915b77238c2a3e678ac5a1d09dd1b8e18c34e654eab"
+      "sha256": "83029c880d7563a69eeec6f929922484596923974d02963cf94c63776845aa7c"
+    },
+    {
+      "path": "main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt",
+      "sha256": "4ec1df71b38272762a917421044d6c1dc1c2fc2da04dd5086e61125d40e99159"
     },
     {
       "path": "main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt",

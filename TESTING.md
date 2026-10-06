@@ -3,9 +3,9 @@
 ## Build checks
 
 - Require a fresh 0.5.0 validation report against EU5 1.3.11.
-- Check 26 connected land footprints, six islands and preserved vanilla geography.
+- Check 36 connected land footprints, six islands and preserved vanilla geography.
 - Verify thirteen registered sea zones, connected to each other and native Atlantic lanes.
-- Verify 26 settlement anchors within their own land, fleet/combat anchors and coastal ports.
+- Verify 36 settlement anchors within their own land, fleet/combat anchors and coastal ports.
 - Check population totals, capital ranks, braces, law/policy IDs and monarchy succession registration.
 - Validate native terrain caches and compact-package reconstruction checksums.
 - Probe all six island centres from 32 directions at radius 0.0001 map units. Height spread must be at most two uint16 units (quantization); the 0.4.0 formula had jumps of 244-1596 units.
@@ -17,7 +17,7 @@
 
 Fully restart EU5. Enable only **Goblins of the Ashborn Isles** and start a new 1337 campaign; do not use an earlier save.
 
-1. Find five goblin countries between the Azores and Portugal. Check six physical islands: Reefhook and Sootwake each have a single two-province island; Shatterfin has two islands.
+1. Find five goblin countries between the Azores and Portugal. Check six physical islands: Reefhook has four playable tiles, Sootwake two, and Shatterfin three across two islands.
 2. Check populations: Cindermaw 320,117; Brackmaw 183,197; Reefhook 30,492; Shatterfin 30,819; Sootwake 29,022. Hooktooth is a city with 63,973 people; other capitals are towns.
 3. Zoom into every island. Inspect coasts, mountains, craters, less-green materials, visible settlements and cache seams. Check armies and docks.
 
@@ -45,8 +45,8 @@ Static checks do not prove in-game rendering, pathfinding, construction or balan
 
 ## Version 0.5.0 integration acceptance
 
-- Confirm Cindermaw has 12 locations/6 provinces; Brackmaw 8/4; three minor clans still have two locations each. Population totals remain unchanged.
-- Compare `feature_verification.json`: about 1.25x old land area on five islands, 1.50x on Reefhook. Reefhook is about 1.2x either small rival clan.
+- Confirm Cindermaw has 15 locations, Brackmaw 12, Reefhook four, Shatterfin three and Sootwake two; province groupings are retained. Population totals remain unchanged.
+- Compare `feature_verification.json`: every island matches its normalized area target within 1.5%; land is 12% smaller than 0.5.0. Both crowded channels must exceed 24 map pixels; all other island pairs must exceed 10. Reefhook is about 1.2x either small rival clan.
 - In terrain mode, inspect Cindermaw across province borders: continuous rocky spine and foothills, not province-shaped surface swatches. Zoom close enough for native vegetation layers; inspect trees, rocky outcrops, shorelines and streams on every island.
 - Compare native Madeira/Sao Miguel in the same session. Confirm no native island's materials changed. Review shader/parser logs for the added biome.
 - Open each capital and rural location: verify appropriate village types, one/two capital guilds, wharves, and actual workers. Confirm no unsupported building IDs or missing production methods.
@@ -54,3 +54,10 @@ Static checks do not prove in-game rendering, pathfinding, construction or balan
 - At months 3, 6 and 12, record income, expenses, treasury, food, prices, employment, control and market membership for all five clans. The production setup is not evidence of a positive budget by itself. Check naval-supply inputs (lumber, fiber, tar, cloth) and tools/pottery inputs before raising industry further.
 - Confirm the starting force is 1 footmen unit, 2 galleys and 3 cogs after the first pulse. No repeated grants. The introduction has one option and grants nothing independently.
 - Ironfang reform must be removable and Rule of the Strongest changeable. Compare eligible candidates' Military ability, exclude children/women/foreign rulers, and test an actual succession. Ordinary monarchy alternatives must remain available after the change.
+
+## Terrain branch acceptance
+
+- Run `python tools/verify_geography.py` for district connectivity and minimum channel clearance.
+- Inspect crater rims, dark lava aprons, rocky lee slopes and reduced woodland at close and middle zoom. Check moist valleys remain distinct from bare volcanic uplands.
+- Sail through both widened channels and inspect the Shatterfin approach for intact vanilla sea routes.
+- This branch retains the 0.5.0 release number until integration with concurrent work; do not publish it as a replacement 0.5.0 release.

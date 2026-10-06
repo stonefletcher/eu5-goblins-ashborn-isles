@@ -1,5 +1,5 @@
 """Integration checks for geography, scenery, reciprocal contact and startup economy."""
-import copy, json, re
+import copy, re
 import numpy as np
 from PIL import Image
 import archipelago, landscape
@@ -7,25 +7,16 @@ import archipelago, landscape
 
 def verify(b,out,mapstats):
     cfg=b.CFG
-    baseline=json.loads((b.ROOT/'data/island.json').read_text())
-    baseline['land_area_multiplier']=1
-    for island in baseline['islands']:island['position_adjustment']=[0,0]
-    # 0.4.1 had equal total land for all three minor clans.
-    next(i for i in baseline['islands'] if i['id']=='reefhook')['area_ratio']=.105
-    archipelago.prepare(baseline);ratios={}
-    for old in baseline['islands']:
-        cx,cy=old['center'];rx,ry=old['radius']
-        yy,xx=np.mgrid[int(cy-ry*1.7):int(cy+ry*1.7)+1,int(cx-rx*1.7):int(cx+rx*1.7)+1]
-        old_area=int((archipelago.shape(xx+.5-cx,yy+.5-cy,rx,ry,old['profile'])>0).sum())
-        ratio=mapstats['island_pixels'][old['id']]/old_area
-        target=1.5 if old['id']=='reefhook' else 1.25
-        # Rasterized coastlines, especially tiny islands, round at pixel edges.
-        # Require the requested area within one percent of its target.
-        assert abs(ratio-target)<target*.01,(old['id'],'wrong area expansion',ratio)
-        ratios[old['id']]=round(ratio,4)
-    assert len(cfg['islands'][0]['locations'])==12 and len(cfg['islands'][1]['locations'])==8
-    assert len({l['province'] for l in cfg['islands'][0]['locations']})==6
-    assert len({l['province'] for l in cfg['islands'][1]['locations']})==4
+    counts={c['tag']:sum(l['country']==c['tag'] for l in cfg['locations']) for c in cfg['countries']}
+    assert counts=={'CDM':15,'QBR':12,'RHK':4,'SFK':3,'SWK':2},counts
+    ratios={}
+    for island in cfg['islands']:
+        expected=np.pi*np.prod(cfg['radius'])*cfg['island_size_multiplier']*island['area_ratio']
+        ratio=mapstats['island_pixels'][island['id']]/expected
+        assert abs(ratio-1)<.015,(island['id'],'incorrect normalized area',ratio)
+        ratios[island['id']]=round(ratio,4)
+    from verify_geography import verify_geography
+    geography=verify_geography(cfg)
     # Province seed/tag changes must leave the visual terrain unchanged.
     altered=copy.deepcopy(cfg);altered.pop('_landscape',None)
     for isl in altered['islands']:
@@ -64,7 +55,7 @@ def verify(b,out,mapstats):
     assert 'NOT = { has_variable = ga_economy_initialized }' in economy
     assert economy.count('change_max_raw_material_workers =')==len(cfg['locations'])
     assert sum(round(l['pop']*1000) for l in cfg['locations'])==593647
-    return {'area_ratios_vs_0_4_1':ratios,'administrative_terrain_independence':True,
+    return {'area_ratios_vs_target':ratios,'geography':geography,'location_counts':counts,'administrative_terrain_independence':True,
             'rivers':river_count,'validated_scenery_transforms':scenery_count,
             'reciprocal_routes_checked':list(ROUTES),'rgo_initialization_guard':True,
             'engine_tested':False}

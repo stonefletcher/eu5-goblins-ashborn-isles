@@ -4,7 +4,7 @@
 
 Five goblin nations rise from a volcanic Atlantic archipelago in this fantasy **Europa Universalis V** mod. Start in **1337**, unite rival clans, develop their ports and mines, and decide how the Goblinkin will face the wider world.
 
-**Version 0.5.0 - islands and clan test build.** Targets EU5 **1.3.11 (Pavia)**, Steam build **24187685**. Static validation is required before packaging; in-game acceptance testing is pending. This is not a Steam Workshop release.
+**Terrain development branch based on version 0.5.0.** Targets EU5 **1.3.11 (Pavia)**, Steam build **24187685**. Static validation is required before packaging; in-game acceptance testing is pending. This is not a Steam Workshop release.
 
 [Repository](https://github.com/stonefletcher/eu5-goblins-ashborn-isles) | [Origins and lore](LORE.md) | [Testing checklist](TESTING.md) | [Release notes](RELEASE_NOTES.md)
 
@@ -22,7 +22,7 @@ By 1337, fishing camps have grown into ports, mines work the volcanic ridges, an
 | Shatterfin Clan | Shatterkin | Shatterfin | Town | 30,819 |
 | Sootwake Clan | Sootkin | Sootwake | Town | 29,022 |
 
-There are **six physical islands, 26 land locations and 593,647 people**. Cindermaw has twelve locations in six provinces, Brackmaw eight in four provinces, and each smaller clan two. Reefhook and Sootwake each occupy one island divided into two provinces; Shatterfin retains a two-island chain. Brackmaw's land area remains approximately 60% of Cindermaw's.
+There are **six physical islands, 36 land locations and 593,647 people**. Cindermaw has 15 locations, Brackmaw 12, Reefhook four, Shatterfin three across two islands, and Sootwake two. Here, the requested state counts refer to playable land tiles (EU5 locations); the larger province groupings are retained. Brackmaw's land area remains approximately 60% of Cindermaw's.
 
 Population values are fixed, uneven counts, including 6,000 enslaved Cinderkin. Vanilla population entries are preserved. Cindermaw remains the name of one country and island; the mod represents all the Goblinkin.
 
@@ -30,13 +30,17 @@ Population values are fixed, uneven counts, including 6,000 enslaved Cinderkin. 
 
 The islands lie between the Azores and Portugal. Six distinct silhouettes use bays, headlands and curved internal borders. **Thirteen compact coastal sea zones** follow the surrounding vanilla Atlantic boundaries, with separate northern, western and eastern waters around Cindermaw and a southern channel. All new zones are navigable and connected to native routes; vanilla land and navigable sea pixels are preserved.
 
-Version 0.5.0 increases every island's land area by approximately 25% (about 11.8% on each axis). Reefhook gets an additional increase, making it about 20% larger than either Shatterfin's combined two islands or Sootwake. The channels and coastal zones scale with the islands.
+This terrain branch reduces land area by 12% relative to 0.5.0 while retaining the surrounding sea basin. Cindermaw–Brackmaw and Brackmaw–Sootwake have at least 24 map pixels of shoreline clearance, enforced by the build. Each island has individually authored bays and broad headlands, with subdued small coastal erosion rather than a repeated scalloped outline. Reefhook remains about 20% larger than either Shatterfin's combined islands or Sootwake.
 
-The landscape now follows island geology rather than location seeds or gameplay terrain tags. Cindermaw has a connected volcanic mountain spine, branching foothills, eroded valleys and a crater. Each island has its own relief, woodland distribution, beaches, exposed rock and short river catchments. Native Madeira and Sao Miguel height tiles were examined as references for ridges and coastal transitions. The game uses 32 world units for the entire 16-bit height range; our much larger islands have higher peaks than those native small islands.
+The landscape now follows island geology rather than location seeds or gameplay terrain tags. Cindermaw has a connected volcanic mountain spine, branching foothills, eroded valleys and a crater. Each island has its own relief, woodland distribution, beaches, exposed rock and short river catchments. Wider craters have raised rims; weathered lava aprons and dry lee slopes add dark ground and exposed rock. Woodland retreats from volcanic ground and remains strongest in sheltered, moist valleys. Native Madeira and Sao Miguel height tiles were examined as references for ridges and coastal transitions. The game uses 32 world units for the entire 16-bit height range; our much larger islands have higher peaks than those native small islands.
 
 A local visual biome and painted material tiles remove the previous province-shaped grass/rock patches while preserving combat topography and vegetation rules. The visual override is restricted to an Atlantic rectangle verified to contain no native land. Native tree and rock meshes are placed away from settlements, channels and steep summits. River sources and one-pixel channels use the native river palette. Terrain cache seams, centre continuity, size ratios, scenery transforms and administrative independence are checked automatically.
 
 **These are generated assets, not an in-game render certification.** Inspect `reports/Goblins_Cache_Relief.png` and perform the new-campaign checks in TESTING.md. The biome shader override also needs an engine rendering check and can conflict with other terrain shader mods.
+
+![Offline terrain and material-class preview](art/Goblins_Volcanic_Preview.png)
+
+The preview above uses generated elevations and diagnostic material colors; it is not an in-game screenshot. Regenerate it with `python tools/preview_geology.py`.
 
 ## Exploration
 
@@ -52,7 +56,7 @@ All five countries start as **Ironfang Monarchies**, implemented as a unique maj
 
 Every country has a capital marketplace, wharf and one or two modest guilds. Hooktooth produces tools and naval supplies; Brackhaven cloth and pottery; Reefhook pottery; Shatterfin tools; Sootwake cloth. Rural locations have 27 levels of suitable farming, fishing, forest or market villages in total, plus two fiber-crop farms. Added clay, tar, fiber-crop and wool sites supply the small industries through the shared Hooktooth market. Worker populations are redistributed within the unchanged national totals.
 
-On the first monthly pulse, a guarded initialization expands RGO worker capacity by 70 levels across the 26 locations. It runs once per country and checks location ownership. Villages and guilds exist at campaign start. The isles receive a modest starting development adjustment (+7, with another +3 in capitals). Starting treasury: Cindermaw 50, Brackmaw 35, and each minor clan 20 gold.
+On the first monthly pulse, a guarded initialization expands RGO worker capacity by 70 levels across the 36 locations. It runs once per country and checks location ownership. Villages and guilds exist at campaign start. The isles receive a modest starting development adjustment (+7, with another +3 in capitals). Starting treasury: Cindermaw 50, Brackmaw 35, and each minor clan 20 gold.
 
 The old 15% tax-income penalty is removed. Cindermaw's first-month force is reduced to one footmen unit, two galleys and three cogs; it keeps the Hooktooth stockade. The other capitals no longer start with upkeep-heavy stockades. These changes improve productive capacity and reduce recurring costs, but **positive monthly balances have not yet been measured in the engine**. Check prices, employment, control and budgets after several monthly pulses.
 

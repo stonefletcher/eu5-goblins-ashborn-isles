@@ -330,12 +330,12 @@
           "good": "wheat",
           "topography": "hills",
           "vegetation": "farmland",
-          "pop": 54.51,
+          "pop": 41.293,
           "province": "cm_ashfields_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 6,
+          "rgo_expansion": 5,
           "buildings": {
             "farming_village": 2,
             "fiber_crops_farm": 1
@@ -352,12 +352,12 @@
           "good": "salt",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 30.693,
+          "pop": 22.29,
           "province": "cm_saltjaw_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 3,
+          "rgo_expansion": 2,
           "buildings": {
             "market_village": 2
           }
@@ -394,12 +394,12 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 36.825,
+          "pop": 27.706,
           "province": "cm_hooktooth_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 4,
+          "rgo_expansion": 3,
           "buildings": {
             "forest_village": 2
           }
@@ -471,19 +471,96 @@
           "buildings": {
             "market_village": 1
           }
+        },
+        {
+          "id": "cm_obsidian_cut",
+          "name": "Obsidian Cut",
+          "seed": [
+            -0.12,
+            -0.12
+          ],
+          "good": "stone",
+          "topography": "mountains",
+          "vegetation": "sparse",
+          "pop": 13.217,
+          "province": "cm_ashfields_province",
+          "rgo_expansion": 1,
+          "buildings": {}
+        },
+        {
+          "id": "cm_cinder_shelf",
+          "name": "Cinder Shelf",
+          "seed": [
+            -0.89,
+            0.3
+          ],
+          "good": "salt",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 8.403,
+          "province": "cm_saltjaw_province",
+          "rgo_expansion": 1,
+          "buildings": {}
+        },
+        {
+          "id": "cm_smokehorn",
+          "name": "Smokehorn",
+          "seed": [
+            0.2,
+            0.87
+          ],
+          "good": "clay",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 9.119,
+          "province": "cm_hooktooth_province",
+          "rgo_expansion": 1,
+          "buildings": {}
         }
       ],
-      "profile": [
-        0.6,
-        1.12,
-        -0.2,
-        0.15
-      ],
+      "profile": {
+        "stretch": 1.12,
+        "rotation": -0.15,
+        "lobes": [
+          [
+            2,
+            0.17,
+            0.5
+          ],
+          [
+            3,
+            0.1,
+            1.3
+          ],
+          [
+            5,
+            0.035,
+            2
+          ]
+        ],
+        "bays": [
+          [
+            0.1,
+            0.38,
+            0.48
+          ],
+          [
+            2.5,
+            0.3,
+            0.21
+          ],
+          [
+            -1.1,
+            0.22,
+            0.12
+          ]
+        ]
+      },
       "geology": {
         "seed": 1701,
         "rivers": 5,
         "foothills": 1.6,
-        "woodland": 1.15,
+        "woodland": 0.7474999999999999,
         "ridges": [
           [
             -0.4,
@@ -530,10 +607,11 @@
           [
             0,
             -0.46,
-            0.07,
+            0.1155,
             3.2
           ]
-        ]
+        ],
+        "volcanic_exposure": 0.78
       },
       "position_adjustment": [
         0,
@@ -554,8 +632,8 @@
           "id": "cm_brackhaven",
           "name": "Brackhaven",
           "seed": [
-            0.4,
-            0.2
+            0.77,
+            0.14
           ],
           "good": "fish",
           "topography": "flatland",
@@ -614,9 +692,9 @@
           "good": "wheat",
           "topography": "hills",
           "vegetation": "farmland",
-          "pop": 26.99,
+          "pop": 20.571,
           "province": "cm_mossfields_province",
-          "rgo_expansion": 3,
+          "rgo_expansion": 2,
           "buildings": {
             "farming_village": 2,
             "fiber_crops_farm": 1
@@ -632,9 +710,9 @@
           "good": "salt",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 28.788,
+          "pop": 21.065,
           "province": "cm_brackhaven_province",
-          "rgo_expansion": 3,
+          "rgo_expansion": 2,
           "buildings": {
             "market_village": 2
           }
@@ -649,9 +727,9 @@
           "good": "wool",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 15.883,
+          "pop": 10.666,
           "province": "cm_brinewood_province",
-          "rgo_expansion": 2,
+          "rgo_expansion": 1,
           "buildings": {
             "farming_village": 1
           }
@@ -666,9 +744,9 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "woods",
-          "pop": 14.673,
+          "pop": 10.282,
           "province": "cm_mossfields_province",
-          "rgo_expansion": 2,
+          "rgo_expansion": 1,
           "buildings": {
             "forest_village": 1
           }
@@ -689,19 +767,111 @@
           "buildings": {
             "market_village": 1
           }
+        },
+        {
+          "id": "cm_basalt_steps",
+          "name": "Basalt Steps",
+          "seed": [
+            0.3,
+            0.26
+          ],
+          "good": "stone",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 7.723,
+          "province": "cm_brackhaven_province",
+          "rgo_expansion": 1,
+          "buildings": {}
+        },
+        {
+          "id": "cm_fumarole_fields",
+          "name": "Fumarole Fields",
+          "seed": [
+            -0.08,
+            0.05
+          ],
+          "good": "clay",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 6.419,
+          "province": "cm_mossfields_province",
+          "rgo_expansion": 1,
+          "buildings": {}
+        },
+        {
+          "id": "cm_rustneedle",
+          "name": "Rustneedle",
+          "seed": [
+            0.05,
+            -0.9
+          ],
+          "good": "iron",
+          "topography": "mountains",
+          "vegetation": "sparse",
+          "pop": 5.217,
+          "province": "cm_brinewood_province",
+          "rgo_expansion": 1,
+          "buildings": {}
+        },
+        {
+          "id": "cm_brine_spur",
+          "name": "Brine Spur",
+          "seed": [
+            -0.18,
+            0.87
+          ],
+          "good": "salt",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 4.391,
+          "province": "cm_mossfields_province",
+          "rgo_expansion": 1,
+          "buildings": {}
         }
       ],
-      "profile": [
-        2.5,
-        0.83,
-        0.25,
-        -2.5
-      ],
+      "profile": {
+        "stretch": 0.87,
+        "rotation": -0.12,
+        "lobes": [
+          [
+            1,
+            0.1,
+            -1
+          ],
+          [
+            2,
+            0.13,
+            0.6
+          ],
+          [
+            3,
+            0.08,
+            2.6
+          ]
+        ],
+        "bays": [
+          [
+            2.8,
+            0.43,
+            0.43
+          ],
+          [
+            -0.4,
+            0.27,
+            0.2
+          ],
+          [
+            1.35,
+            0.23,
+            0.14
+          ]
+        ]
+      },
       "geology": {
         "seed": 2903,
         "rivers": 4,
         "foothills": 1.3,
-        "woodland": 1.3,
+        "woodland": 0.8450000000000001,
         "ridges": [
           [
             0.12,
@@ -727,11 +897,13 @@
             0.32,
             0.1
           ]
-        ]
+        ],
+        "volcanic_exposure": 0.6,
+        "craters": []
       },
       "position_adjustment": [
-        29,
-        -23
+        6,
+        -5
       ]
     },
     {
@@ -754,9 +926,9 @@
           "good": "fish",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 19.336,
+          "pop": 14.199,
           "province": "cm_reefhook_province",
-          "rgo_expansion": 2,
+          "rgo_expansion": 1,
           "buildings": {
             "marketplace": 1,
             "wharf": 1,
@@ -773,25 +945,72 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 11.156,
+          "pop": 6.877,
           "province": "cm_crooked_reef_province",
-          "rgo_expansion": 2,
+          "rgo_expansion": 1,
           "buildings": {
             "forest_village": 1
           }
+        },
+        {
+          "id": "cm_hookrim",
+          "name": "Hookrim",
+          "seed": [
+            -0.4,
+            0
+          ],
+          "good": "stone",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 5.137,
+          "province": "cm_reefhook_province",
+          "rgo_expansion": 1,
+          "buildings": {}
+        },
+        {
+          "id": "cm_tidefang",
+          "name": "Tidefang",
+          "seed": [
+            0.3,
+            0.72
+          ],
+          "good": "fish",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 4.279,
+          "province": "cm_crooked_reef_province",
+          "rgo_expansion": 1,
+          "buildings": {}
         }
       ],
-      "profile": [
-        1.4,
-        0.67,
-        -0.4,
-        0
-      ],
+      "profile": {
+        "stretch": 0.73,
+        "rotation": -0.45,
+        "lobes": [
+          [
+            2,
+            0.13,
+            0.3
+          ],
+          [
+            3,
+            0.055,
+            1
+          ]
+        ],
+        "bays": [
+          [
+            0,
+            0.57,
+            0.66
+          ]
+        ]
+      },
       "geology": {
         "seed": 3319,
         "rivers": 2,
         "foothills": 0.6,
-        "woodland": 1.4,
+        "woodland": 0.9099999999999999,
         "ridges": [
           [
             -0.03,
@@ -809,10 +1028,12 @@
             0.42,
             0.2
           ]
-        ]
+        ],
+        "volcanic_exposure": 0.33,
+        "craters": []
       },
       "position_adjustment": [
-        0,
+        -20,
         0
       ]
     },
@@ -830,33 +1051,70 @@
           "id": "cm_shatterfin",
           "name": "Shatterfin",
           "seed": [
-            0,
-            0
+            -0.35,
+            0.12
           ],
           "good": "fish",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 19.038,
+          "pop": 12.865,
           "province": "cm_shatterfin_province",
-          "rgo_expansion": 2,
+          "rgo_expansion": 1,
           "buildings": {
             "marketplace": 1,
             "wharf": 1,
             "tools_guild": 1
           }
+        },
+        {
+          "id": "cm_shardpoint",
+          "name": "Shardpoint",
+          "seed": [
+            0.52,
+            -0.35
+          ],
+          "good": "stone",
+          "topography": "mountains",
+          "vegetation": "sparse",
+          "pop": 6.173,
+          "province": "cm_shatterfin_province",
+          "rgo_expansion": 1,
+          "buildings": {}
         }
       ],
-      "profile": [
-        3.1,
-        1.2,
-        -0.65,
-        2.0
-      ],
+      "profile": {
+        "stretch": 1.22,
+        "rotation": -0.6,
+        "lobes": [
+          [
+            2,
+            0.15,
+            0.1
+          ],
+          [
+            3,
+            0.065,
+            2.3
+          ]
+        ],
+        "bays": [
+          [
+            2.4,
+            0.4,
+            0.29
+          ],
+          [
+            -0.35,
+            0.22,
+            0.18
+          ]
+        ]
+      },
       "geology": {
         "seed": 4201,
         "rivers": 1,
         "foothills": 0.5,
-        "woodland": 0.65,
+        "woodland": 0.42250000000000004,
         "ridges": [
           [
             -0.12,
@@ -879,14 +1137,15 @@
           [
             -0.12,
             0.02,
-            0.085,
+            0.14025,
             2.0
           ]
-        ]
+        ],
+        "volcanic_exposure": 0.85
       },
       "position_adjustment": [
-        0,
-        0
+        -4,
+        -34
       ]
     },
     {
@@ -917,17 +1176,34 @@
           }
         }
       ],
-      "profile": [
-        2.1,
-        0.7,
-        0.7,
-        -1.8
-      ],
+      "profile": {
+        "stretch": 0.7,
+        "rotation": 0.55,
+        "lobes": [
+          [
+            2,
+            0.13,
+            1
+          ],
+          [
+            3,
+            0.05,
+            0.1
+          ]
+        ],
+        "bays": [
+          [
+            1.8,
+            0.28,
+            0.28
+          ]
+        ]
+      },
       "geology": {
         "seed": 5399,
         "rivers": 1,
         "foothills": 0.6,
-        "woodland": 1.3,
+        "woodland": 0.8450000000000001,
         "ridges": [
           [
             -0.12,
@@ -945,11 +1221,13 @@
             0.3,
             0.65
           ]
-        ]
+        ],
+        "volcanic_exposure": 0.75,
+        "craters": []
       },
       "position_adjustment": [
-        -2,
-        0
+        -4,
+        11
       ]
     },
     {
@@ -999,17 +1277,39 @@
           }
         }
       ],
-      "profile": [
-        4.0,
-        0.64,
-        -0.15,
-        2.5
-      ],
+      "profile": {
+        "stretch": 0.77,
+        "rotation": -0.22,
+        "lobes": [
+          [
+            2,
+            0.17,
+            0.2
+          ],
+          [
+            3,
+            0.04,
+            2
+          ]
+        ],
+        "bays": [
+          [
+            2.8,
+            0.38,
+            0.32
+          ],
+          [
+            0.2,
+            0.28,
+            0.21
+          ]
+        ]
+      },
       "geology": {
         "seed": 6173,
         "rivers": 2,
         "foothills": 0.5,
-        "woodland": 0.95,
+        "woodland": 0.6174999999999999,
         "ridges": [
           [
             0,
@@ -1032,18 +1332,21 @@
           [
             0,
             -0.4,
-            0.07,
+            0.1155,
             2.4
           ]
-        ]
+        ],
+        "volcanic_exposure": 0.95
       },
       "position_adjustment": [
-        15,
-        -54
+        16,
+        -40
       ]
     }
   ],
   "climate": "oceanic",
   "region": "macaronesia_region",
-  "land_area_multiplier": 1.25
+  "land_area_multiplier": 1.25,
+  "island_size_multiplier": 0.88,
+  "terrain_revision": "volcanic-spacing-pass"
 }

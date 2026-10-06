@@ -1,3 +1,16 @@
+# Unreleased terrain pass (branch based on 0.5.0)
+
+- Wider Cindermaw–Brackmaw and Brackmaw–Sootwake channels; land area reduced 12%.
+- Individual coast profiles with broad bays, headlands and restrained coastal erosion.
+- 15 Cindermaw, 12 Brackmaw, four Reefhook, three Shatterfin and two Sootwake playable tiles. Province groupings remain unchanged.
+- National populations and total starting RGO expansion are preserved when subdividing locations.
+- Wider crater bowls and raised rims; dark lava aprons, exposed rock and reduced woodland on dry volcanic ground.
+- New raster checks enforce channel clearance, island continuity and playable tile size.
+- Static validation passed: 36 connected land tiles, 31 coastal ports, all settlement anchors, navigable sea graph, population totals, rivers and scenery; terrain cache shared-border error is zero. Final shoreline gaps are 40.79 pixels (Cindermaw–Brackmaw) and 26.93 pixels (Brackmaw–Sootwake), up from 5.00 and 5.39.
+- Full game rendering and navigation acceptance require a new campaign. This branch is not published or installed automatically.
+
+---
+
 # Goblins of the Ashborn Isles 0.5.0 - Ironfang Isles
 
 For **Europa Universalis V 1.3.11 (Pavia)**. **Close the game, install, and start a NEW 1337 campaign.** Earlier saves are incompatible with the expanded location map.

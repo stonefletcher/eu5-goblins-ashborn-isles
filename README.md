@@ -4,10 +4,9 @@ A fantasy **Europa Universalis V** mod introducing five goblin countries on a ne
 
 **Current version: 0.2.0.** Targets EU5 **1.3.11 (Pavia)**, Steam build **24187685**.
 
-[Repository](https://github.com/stonefletcher/eu5-cindermaw)
+[Repository](https://github.com/stonefletcher/eu5-cindermaw) · [Origins and lore](LORE.md) · [Testing checklist](TESTING.md)
 
-The current demo and authored-source packages include the geographic preview, lore and testing checklist. Source-file and artwork upload to this repository is pending; the overview below documents the prepared local build.
-
+![The Ashborn Isles and their Atlantic location](Cindermaw_Map_Preview.png)
 
 ## The islands that brought their own people
 
@@ -72,6 +71,9 @@ These entries describe local builds. They do not imply Steam Workshop publicatio
 
 ## Build and install
 
+Download [Cindermaw_Source_0.2.0.zip](Cindermaw_Source_0.2.0.zip) and extract its source folder before running these commands. This repository snapshot stores the complete authored source as an archive; the generated game-derived files are excluded.
+
+
 The source requires Python 3.11+, NumPy and Pillow. Build against your own installed game:
 
 ```powershell
@@ -85,7 +87,7 @@ The builder creates the mod under `build/cindermaw_demo`, validation reports, an
 For the packaged demo:
 
 1. Extract `Cindermaw_Demo_0.2.0.zip` into a writable folder and close EU5 completely.
-2. Run the included `Install-Cindermaw.ps1`. It locates EU5, checks original cache hashes, reconstructs the terrain files and verifies their checksums. It backs up an existing Cindermaw installation outside the mod scan directory.
+2. Double-click the included `Install-Cindermaw.cmd` (which runs `Install-Cindermaw.ps1`). It locates EU5, checks original cache hashes, reconstructs the terrain files and verifies their checksums. It backs up an existing Cindermaw installation outside the mod scan directory.
 3. If discovery fails, supply `-GamePath` with your installation's `game` directory.
 4. Restart EU5, enable only Cindermaw in a dedicated playset, and begin a **new 1337 campaign**.
 
@@ -105,6 +107,7 @@ To disable, choose a Vanilla playset, restart EU5 and use a vanilla campaign. Ke
 
 The placeholder Workshop thumbnail is embedded at **`mod/.metadata/thumbnail.png`**, beside the metadata file: **512 × 512 pixels, 525,305 bytes**, under 1 MB. Builds and installation preserve it. No Steam upload has been performed.
 
+![Cindermaw Workshop thumbnail](Cindermaw_Thumbnail_512.png)
 
 The geographic preview reflects the generated map. The thumbnail was created with image generation. Geometry, cultures, countries and populations are configured in `data/island.json`; `tools/archipelago.py` builds the islands and setup, and `tools/terrain_cache.py` handles native terrain tiles.
 

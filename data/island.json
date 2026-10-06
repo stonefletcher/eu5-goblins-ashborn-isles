@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "game_version": "1.3.11",
   "tag": "CDM",
   "center": [
@@ -22,7 +22,24 @@
       3.5
     ],
     "source_water": "azores_biscay_ridge",
-    "province": "azores_sea_province"
+    "province": "azores_sea_province",
+    "zones": [
+      {
+        "id": "cm_cindermaw_sea",
+        "color": "ed12f0",
+        "name": "Cindermaw Roads"
+      },
+      {
+        "id": "cm_ashborn_channel",
+        "color": "ed12f1",
+        "name": "Ashborn Channel"
+      },
+      {
+        "id": "cm_brackmaw_sea",
+        "color": "ed12f2",
+        "name": "Brackmaw Sound"
+      }
+    ]
   },
   "countries": [
     {
@@ -139,7 +156,7 @@
           "color": "ed1202",
           "good": "lumber",
           "topography": "hills",
-          "vegetation": "forest",
+          "vegetation": "woods",
           "pop": 38.228,
           "province": "cm_crown_province",
           "country": "CDM",
@@ -155,8 +172,8 @@
           ],
           "color": "ed1203",
           "good": "copper",
-          "topography": "hills",
-          "vegetation": "woods",
+          "topography": "mountains",
+          "vegetation": "sparse",
           "pop": 28.3,
           "province": "cm_crown_province",
           "country": "CDM",
@@ -173,7 +190,7 @@
           "color": "ed1204",
           "good": "fish",
           "topography": "flatland",
-          "vegetation": "grasslands",
+          "vegetation": "sparse",
           "pop": 63.973,
           "province": "cm_hooktooth_province",
           "country": "CDM",
@@ -189,7 +206,7 @@
           ],
           "color": "ed1205",
           "good": "wheat",
-          "topography": "flatland",
+          "topography": "hills",
           "vegetation": "farmland",
           "pop": 54.51,
           "province": "cm_ashfields_province",
@@ -206,8 +223,8 @@
           ],
           "color": "ed1206",
           "good": "salt",
-          "topography": "flatland",
-          "vegetation": "grasslands",
+          "topography": "hills",
+          "vegetation": "sparse",
           "pop": 30.693,
           "province": "cm_ashfields_province",
           "country": "CDM",
@@ -224,7 +241,7 @@
           "color": "ed1207",
           "good": "livestock",
           "topography": "hills",
-          "vegetation": "grasslands",
+          "vegetation": "sparse",
           "pop": 43.079,
           "province": "cm_ashfields_province",
           "country": "CDM",
@@ -240,7 +257,7 @@
           ],
           "color": "ed1208",
           "good": "lumber",
-          "topography": "flatland",
+          "topography": "hills",
           "vegetation": "woods",
           "pop": 36.825,
           "province": "cm_hooktooth_province",
@@ -248,14 +265,20 @@
           "culture": "cm_cinderkin",
           "island": "cindermaw"
         }
+      ],
+      "profile": [
+        0.6,
+        1.12,
+        -0.2,
+        0.15
       ]
     },
     {
       "id": "brackmaw",
       "name": "Brackmaw",
       "offset": [
-        -0.43478260869565216,
-        2.4444444444444446
+        -0.30434782608695654,
+        2.166666666666667
       ],
       "area_ratio": 0.6,
       "country": "QBR",
@@ -269,7 +292,7 @@
           ],
           "good": "fish",
           "topography": "flatland",
-          "vegetation": "grasslands",
+          "vegetation": "sparse",
           "pop": 53.796,
           "province": "cm_brackmaw_coast_province"
         },
@@ -282,7 +305,7 @@
           ],
           "good": "lumber",
           "topography": "hills",
-          "vegetation": "forest",
+          "vegetation": "woods",
           "pop": 32.823,
           "province": "cm_brackmaw_interior_province"
         },
@@ -307,7 +330,7 @@
             0.35
           ],
           "good": "wheat",
-          "topography": "flatland",
+          "topography": "hills",
           "vegetation": "farmland",
           "pop": 41.663,
           "province": "cm_brackmaw_coast_province"
@@ -320,21 +343,27 @@
             0.6
           ],
           "good": "salt",
-          "topography": "flatland",
-          "vegetation": "grasslands",
+          "topography": "hills",
+          "vegetation": "sparse",
           "pop": 28.788,
           "province": "cm_brackmaw_coast_province"
         }
+      ],
+      "profile": [
+        2.5,
+        0.83,
+        0.25,
+        -2.5
       ]
     },
     {
       "id": "reefhook",
       "name": "Reefhook",
       "offset": [
-        -1.391304347826087,
-        -0.3333333333333333
+        -1.53,
+        -0.05
       ],
-      "area_ratio": 0.064,
+      "area_ratio": 0.10500000000000001,
       "country": "RHK",
       "locations": [
         {
@@ -342,39 +371,33 @@
           "name": "Reefhook",
           "seed": [
             0,
-            0
+            -0.48
           ],
           "good": "fish",
           "topography": "hills",
-          "vegetation": "grasslands",
+          "vegetation": "sparse",
           "pop": 19.336,
           "province": "cm_reefhook_province"
-        }
-      ]
-    },
-    {
-      "id": "crooked_reef",
-      "name": "Crooked Reef",
-      "offset": [
-        -1.6521739130434783,
-        0.2222222222222222
-      ],
-      "area_ratio": 0.041,
-      "country": "RHK",
-      "locations": [
+        },
         {
           "id": "cm_crooked_reef",
           "name": "Crooked Reef",
           "seed": [
             0,
-            0
+            0.48
           ],
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
           "pop": 11.156,
-          "province": "cm_reefhook_province"
+          "province": "cm_crooked_reef_province"
         }
+      ],
+      "profile": [
+        1.4,
+        0.67,
+        -0.4,
+        0
       ]
     },
     {
@@ -395,11 +418,17 @@
             0
           ],
           "good": "fish",
-          "topography": "hills",
-          "vegetation": "grasslands",
+          "topography": "mountains",
+          "vegetation": "sparse",
           "pop": 19.038,
           "province": "cm_shatterfin_province"
         }
+      ],
+      "profile": [
+        3.1,
+        1.2,
+        -0.65,
+        2.0
       ]
     },
     {
@@ -425,16 +454,22 @@
           "pop": 11.781,
           "province": "cm_shatterfin_province"
         }
+      ],
+      "profile": [
+        2.1,
+        0.7,
+        0.7,
+        -1.8
       ]
     },
     {
       "id": "sootwake",
       "name": "Sootwake",
       "offset": [
-        1.0434782608695652,
-        2.6666666666666665
+        0.8460869565217392,
+        2.727777777777778
       ],
-      "area_ratio": 0.064,
+      "area_ratio": 0.10500000000000001,
       "country": "SWK",
       "locations": [
         {
@@ -442,39 +477,33 @@
           "name": "Sootwake",
           "seed": [
             0,
-            0
+            -0.48
           ],
           "good": "fish",
-          "topography": "hills",
-          "vegetation": "grasslands",
+          "topography": "mountains",
+          "vegetation": "sparse",
           "pop": 16.592,
           "province": "cm_sootwake_province"
-        }
-      ]
-    },
-    {
-      "id": "ember_key",
-      "name": "Ember Key",
-      "offset": [
-        0.782608695652174,
-        3.111111111111111
-      ],
-      "area_ratio": 0.041,
-      "country": "SWK",
-      "locations": [
+        },
         {
           "id": "cm_ember_key",
           "name": "Ember Key",
           "seed": [
             0,
-            0
+            0.48
           ],
           "good": "lumber",
           "topography": "mountains",
           "vegetation": "woods",
           "pop": 12.43,
-          "province": "cm_sootwake_province"
+          "province": "cm_ember_key_province"
         }
+      ],
+      "profile": [
+        4.0,
+        0.64,
+        -0.15,
+        2.5
       ]
     }
   ],

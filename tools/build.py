@@ -1,4 +1,4 @@
-"""Build the Cindermaw demo from a local EU5 installation. Never edits game files."""
+"""Build Goblins of the Ashborn Isles from a local EU5 installation. Never edits game files."""
 from __future__ import annotations
 import argparse, hashlib, json, re, shutil, sys, zipfile
 from collections import deque
@@ -33,7 +33,8 @@ def read(game, rel): return source(game, rel).read_text(encoding='utf-8-sig')
 def write(base, rel, content):
     p = base / rel
     p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(content.replace('\r\n','\n'), encoding=('utf-8-sig' if str(rel).endswith('.yml') else 'utf-8'), newline='\r\n')
+    bom=str(rel).endswith('.yml') or (str(rel).replace('\\','/').startswith('in_game/') and str(rel).endswith('.txt'))
+    p.write_text(content.replace('\r\n','\n'), encoding=('utf-8-sig' if bom else 'utf-8'), newline='\r\n')
 
 def clean(text):
     # Preserve positions while masking comments and quoted strings.
@@ -105,7 +106,7 @@ def localization(out):
     for l in CFG['locations']:loc[l['id']]=l['name']
     for n in ['Grik','Mograt','Skrag','Vrek','Nibz','Krakk','Zog','Grizza','Snikka','Vezza','Morga','Krikka','Rikka']:loc['cm_'+n.lower()]=n
     for n in ['Hooktooth','Copperfang','Ashbite','Blackwake','Splinter','Saltjaw','Coalhand']:loc['cm_'+n.lower()+'_name']=n
-    write(out,'main_menu/localization/english/cindermaw_l_english.yml','l_english:\n'+''.join(' '+k+': "'+v.replace('"','\\"')+'"\n' for k,v in loc.items()))
+    write(out,'main_menu/localization/english/goblins_ashborn_isles_l_english.yml','l_english:\n'+''.join(' '+k+': "'+v.replace('"','\\"')+'"\n' for k,v in loc.items()))
 
 def validate(game,out,mapstats,economy):
     checks=[]
@@ -143,7 +144,18 @@ def validate(game,out,mapstats,economy):
     checks.append(f'Each location population matches its specification: {economy["total_population"]:,} people across five countries.')
     checks.append('All 19 locations are connected within their islands; every island has a port into the connected coastal basin.')
     checks.append('Archipelago replaces only impassable ocean pixels; all vanilla land and navigable sea lanes are preserved.')
-    im=Image.open(out/'in_game/map_data/locations.png');mapping=parse_names(game);mapping[CFG['coastal_sea']['id']]=tuple(bytes.fromhex(CFG['coastal_sea']['color']))
+    im=Image.open(out/'in_game/map_data/locations.png');mapping=parse_names(game)
+    defaults=(out/'in_game/map_data/default.map').read_text(encoding='utf-8-sig')
+    a,z=block_span(defaults,'sea_zones');water=set(re.findall(r'\b\w+\b',clean(defaults[a:z])))
+    a,z=block_span(defaults,'impassable_mountains');blocked=set(re.findall(r'\b\w+\b',clean(defaults[a:z])))
+    for zone in CFG['coastal_sea']['zones']:
+        mapping[zone['id']]=tuple(bytes.fromhex(zone['color']))
+        assert zone['id'] in water and zone['id'] not in blocked
+    checks.append('Three connected sea zones are registered as sea, not impassable; their graph reaches native navigable Atlantic lanes.')
+    for loc in CFG['locations']:
+        anchor=mapstats['settlement_locators'][loc['id']]
+        assert im.getpixel((int(anchor['x']),int(anchor['png_y'])))==tuple(bytes.fromhex(loc['color']))
+    checks.append('All 19 settlement anchors lie inside their own land locations; all three seas have fleet anchors.')
     for p in mapstats['ports']:
         assert im.getpixel((p['x'],H-p['y']))==mapping[p['sea']]
     checks.append('Every port lies on its named sea pixels with correct Y-axis conversion.')
@@ -159,7 +171,7 @@ def validate(game,out,mapstats,economy):
         assert re.search(r'\b'+policy+r'\s*=\s*\{',law_corpus[la:lb]),f'Invalid law/policy pair {law}={policy}'
     checks.append('Every starting law/policy pair exists in its vanilla law block.')
     # The custom election must not retain the vanilla pirate reform gate.
-    election=(out/'in_game/common/heir_selections/cindermaw.txt').read_text(encoding='utf-8-sig')
+    election=(out/'in_game/common/heir_selections/goblins_ashborn_isles.txt').read_text(encoding='utf-8-sig')
     assert 'government_reform:pirate_brethren_reform' not in election
     assert 'government_reform:cm_captains_confederation' in election
     checks.append('Captain election is tied to the custom reform, not a missing vanilla reform.')
@@ -167,17 +179,17 @@ def validate(game,out,mapstats,economy):
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--game',type=Path,required=True,help='EU5 game directory');args=ap.parse_args();game=args.game.resolve()
-    out=ROOT/'build/cindermaw_demo';reports=ROOT/'build/reports'
+    out=ROOT/'build/goblins_ashborn_isles';reports=ROOT/'build/reports'
     out.mkdir(parents=True,exist_ok=True);reports.mkdir(parents=True,exist_ok=True)
     # A fresh staging tree prevents obsolete decals/overrides surviving a rebuild.
     if out.exists():
-        assert out.resolve().parent==(ROOT/'build').resolve() and out.name=='cindermaw_demo'
+        assert out.resolve().parent==(ROOT/'build').resolve() and out.name=='goblins_ashborn_isles'
         shutil.rmtree(out)
     out.mkdir(parents=True)
     # Copy only authored sources; generated output never goes into source control.
     shutil.copytree(ROOT/'mod',out,dirs_exist_ok=True)
     for p in out.rglob('*.txt'):
-        p.write_text(p.read_text(encoding='utf-8-sig'),encoding='utf-8',newline='\r\n')
+        write(out,p.relative_to(out),p.read_text(encoding='utf-8-sig'))
     print('Building playable map and island terrain...',flush=True)
     mapstats=build_map(game,out,reports)
     from terrain_cache import build_cache_patch

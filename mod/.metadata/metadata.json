@@ -1,10 +1,10 @@
 {
-  "name": "Cindermaw - Goblin Invasion (Demo)",
-  "id": "alex.cindermaw_demo",
-  "version": "0.2.0",
+  "name": "Goblins of the Ashborn Isles",
+  "id": "alex.goblins_ashborn_isles",
+  "version": "0.3.0",
   "game_id": "eu5",
   "supported_game_version": "1.3.11",
-  "short_description": "The Ashborn Isles: five goblin countries in the Atlantic, 19 locations, 593,647 people, one faith and patched terrain. New campaign and full restart required.",
+  "short_description": "Five goblin nations, six volcanic Atlantic islands and three coastal sea zones. 19 locations and 593,647 people in a new 1337 campaign. Development test build; full restart required.",
   "tags": [
     "Alternative history",
     "Gameplay"

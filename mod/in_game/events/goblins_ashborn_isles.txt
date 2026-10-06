@@ -1,6 +1,7 @@
 namespace = cindermaw
 cindermaw.1 = {
     type = country_event
+    outcome = neutral
     title = cindermaw.1.title
     desc = cindermaw.1.desc
     trigger = { tag = CDM }

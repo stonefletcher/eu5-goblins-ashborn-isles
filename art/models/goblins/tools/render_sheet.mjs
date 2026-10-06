@@ -3,7 +3,7 @@ export function renderSheet(models, buffers, config, core) {
  const W=1600,H=690,columns=5,margin=48,scale=400,base=568;
  const rgb=new Uint8Array(W*H*3),depth=new Float64Array(W*H).fill(-Infinity);
  for(let y=0;y<H;y++)for(let x=0;x<W;x++){const i=(y*W+x)*3;rgb[i]=23;rgb[i+1]=28;rgb[i+2]=27;}
- const svg=['<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'"><rect width="1600" height="690" fill="#171c1b"/><g fill="#e4e9df" font-family="sans-serif"><text x="40" y="42" font-size="26">GOBLINS OF THE ASHBORN ISLES</text><text x="40" y="70" font-size="14" fill="#a7b3aa">Actual 3D source models · first body and skin pass · 1.12 m · EU5 export pending</text></g>'];
+ const svg=['<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'"><rect width="1600" height="690" fill="#171c1b"/><g fill="#e4e9df" font-family="sans-serif"><text x="40" y="42" font-size="26">GOBLINS OF THE ASHBORN ISLES</text><text x="40" y="70" font-size="14" fill="#a7b3aa">Actual 3D source models · first body and skin pass · 0.92 m · 0.5.3 art pass; engine review pending</text></g>'];
  const yaw=-0.30,pitch=0.05;
  function project(p,center){const x=Math.cos(yaw)*p[0]+Math.sin(yaw)*p[2],z=-Math.sin(yaw)*p[0]+Math.cos(yaw)*p[2];return [center+x*scale,base-(Math.cos(pitch)*p[1]-Math.sin(pitch)*z)*scale,Math.sin(pitch)*p[1]+Math.cos(pitch)*z];}
  const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];

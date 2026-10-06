@@ -1,7 +1,11 @@
-# 0.5.2 human portrait hotfix
+# Human portrait regression hotfix — 0.5.3
 
-Goblin skin and attachments now use opt-in special genes, selected by the existing goblin culture modifiers. They are no longer ordinary DNA genes that can render on human characters. Special visual genes have also been removed from ethnicity DNA.
+Cause: custom skin and attachment genes were ordinary DNA genes with no neutral template; the skin decal remained opaque at zero strength. Culture-scoped modifiers did not stop ordinary DNA defaults from rendering.
 
-Download a fresh main ZIP, extract to a new folder and run Install-Goblins.cmd with EU5 closed. The installer applies the checksum-verified portrait overlay to the bundled 0.5.2 content. Alternatively, run Apply-Portrait-Hotfix.cmd from this checkout to patch an existing local 0.5.2 installation with backup and rollback.
+Fix: use native `special_genes` for opt-in skin and attachments; remove special visual genes from ethnicity DNA. Keep culture-scoped portrait modifiers and ethnicity facial proportions. The 0.5.3 rough clothing gene also uses `special_genes` and an additive scoped modifier.
 
-Static native rig, texture and reference checks passed. Check human rulers and all five goblin cultures after a full game restart. Existing-save appearance and engine rendering still need playtesting. Previously published release ZIPs are unchanged; use the main branch download for this fix.
+Validation: native rig/texture/reference checks passed for all five cultures and seven portrait types. Regression check rejects the original ordinary-DNA structure. Overlay checksums refreshed. No engine validation yet.
+
+Installed game: 0.5.2; EU5 was running, so installed files were not changed. The 0.5.2 branch provides Apply-Portrait-Hotfix.cmd with checksum checks and backup/rollback. It patches only genes and ethnicity definitions after EU5 closes. Saves are untouched. Check both an existing save and a new campaign; existing DNA recovery is not yet established.
+
+Next: restart with the patched local mod; verify human rulers in England, Castile and a non-European nation retain native skin/ears, while all five goblin cultures retain goblin visuals, including women and children. No GitHub or Workshop publish performed by this fix; existing prepared archives have not been rebuilt.

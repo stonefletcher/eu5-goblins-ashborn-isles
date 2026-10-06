@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "height_m": 1.12,
+  "height_m": 0.92,
   "source": {
     "creator": "Quaternius",
     "pack": "Ultimate Animated Character Pack (November 2019)",
@@ -17,8 +17,8 @@
       "name": "Cindermaw",
       "country": "CDM",
       "culture": "cm_cinderkin",
-      "skin_srgb": "#71834B",
-      "shade": "warm olive",
+      "skin_srgb": "#626A52",
+      "shade": "weathered olive",
       "culture_name": "Emberblood"
     },
     {
@@ -26,8 +26,8 @@
       "name": "Brackmaw",
       "country": "QBR",
       "culture": "cm_brinekin",
-      "skin_srgb": "#56856B",
-      "shade": "sea green",
+      "skin_srgb": "#56675D",
+      "shade": "grey marsh green",
       "culture_name": "Brineward"
     },
     {
@@ -35,8 +35,8 @@
       "name": "Reefhook",
       "country": "RHK",
       "culture": "cm_reefkin",
-      "skin_srgb": "#82965B",
-      "shade": "yellow moss",
+      "skin_srgb": "#6C7157",
+      "shade": "muted lichen",
       "culture_name": "Reefstrider"
     },
     {
@@ -44,8 +44,8 @@
       "name": "Shatterfin",
       "country": "SFK",
       "culture": "cm_shatterkin",
-      "skin_srgb": "#537B76",
-      "shade": "blue green",
+      "skin_srgb": "#526461",
+      "shade": "slate green",
       "culture_name": "Stormfang"
     },
     {
@@ -53,8 +53,8 @@
       "name": "Sootwake",
       "country": "SWK",
       "culture": "cm_sootkin",
-      "skin_srgb": "#51634B",
-      "shade": "dark forest green",
+      "skin_srgb": "#4C584B",
+      "shade": "soot olive",
       "culture_name": "Ashveil"
     }
   ]

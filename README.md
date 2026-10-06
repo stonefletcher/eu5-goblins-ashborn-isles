@@ -4,9 +4,13 @@
 
 Five goblin nations rise from a volcanic Atlantic archipelago in this fantasy **Europa Universalis V** mod. Start in **1337**, unite rival clans, develop their ports and mines, and decide how the Ashborn will face the wider world.
 
-**Version 0.5.2 - Shatterfin Tidemothers.** Targets EU5 **1.3.11 (Pavia)**, Steam build **24187685**. Static checks and installer preparation passed; in-game acceptance testing is pending.
+## 0.5.3 development: rough-clad goblins
 
-**Download and install:** use the prepared **Goblins_Ashborn_Isles_0.5.2.zip** from [GitHub Releases](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.2), or Code > Download ZIP from `main`. Both include the 0.5.2 installer, 36-location terrain, goblin infantry, corrected portrait textures, Ashborn names and Shatterfin maternal seniority. Extract, run `Install-Goblins.cmd` with EU5 closed, then start a new 1337 campaign.
+First art pass on a separate branch based on 0.5.2. Infantry stature is reduced from 1.12 m to 0.92 m, jaws are narrower and teeth smaller. Clan skin palettes are muted olive, marsh, lichen, slate and soot greens. Portrait recoloring retains 12% of underlying albedo detail.
+
+Portraits select native plain harnesses, wraps, jackets and overcoats for both sexes and all Ashborn cultures, including rulers and courts. Crowns, normal court clothes, capes and neck ornaments are overridden. Children retain basic clothes and infants retain a single native swaddle.
+
+Static model, animation, texture, rig and clothing-reference checks pass. In-game appearance remains unverified. Full portrait body stature and custom torn/patchwork leather-and-rag art remain pending. This source/art branch is not a prepared installer or Workshop release; build and package 0.5.3 before installation.
 
 [Repository](https://github.com/stonefletcher/eu5-goblins-ashborn-isles) | [Origins and lore](LORE.md) | [Testing checklist](TESTING.md) | [Release notes](RELEASE_NOTES.md)
 
@@ -40,7 +44,7 @@ Native animation checks compare 51 decoded poses against their GLB sources, with
 
 The islands lie between the Azores and Portugal. Six distinct silhouettes use bays, headlands and curved internal borders. **Thirteen compact coastal sea zones** follow the surrounding vanilla Atlantic boundaries, with separate northern, western and eastern waters around Cindermaw and a southern channel. All new zones are navigable and connected to native routes; vanilla land and navigable sea pixels are preserved.
 
-The 0.5.1 terrain pass reduces land area by 12% relative to 0.5.0 while retaining the surrounding sea basin. Cindermaw-Brackmaw and Brackmaw-Sootwake have at least 24 map pixels of shoreline clearance, enforced by the build. Each island has individually authored bays and broad headlands, with subdued small coastal erosion rather than a repeated scalloped outline. Reefhook remains about 20% larger than either Shatterfin's combined islands or Sootwake.
+The 0.5.1 terrain pass reduces land area by 12% relative to 0.5.0 while retaining the surrounding sea basin. Cindermawâ€“Brackmaw and Brackmawâ€“Sootwake have at least 24 map pixels of shoreline clearance, enforced by the build. Each island has individually authored bays and broad headlands, with subdued small coastal erosion rather than a repeated scalloped outline. Reefhook remains about 20% larger than either Shatterfin's combined islands or Sootwake.
 
 The landscape now follows island geology rather than location seeds or gameplay terrain tags. Cindermaw has a connected volcanic mountain spine, branching foothills, eroded valleys and a crater. Each island has its own relief, woodland distribution, beaches, exposed rock and short river catchments. Wider craters have raised rims; weathered lava aprons and dry lee slopes add dark ground and exposed rock. Woodland retreats from volcanic ground and remains strongest in sheltered, moist valleys. Native Madeira and Sao Miguel height tiles were examined as references for ridges and coastal transitions. The game uses 32 world units for the entire 16-bit height range; our much larger islands have higher peaks than those native small islands.
 
@@ -151,7 +155,7 @@ graph [cm_goblin_cindermaw_schematic]`, producing invisible infantry. Its repair
 deferred while portraits are prioritised; this portrait pass does not claim to fix it.
 
 
-## 0.5.2 ? Shatterfin Tidemothers (feature branch)
+## 0.5.2 — Shatterfin Tidemothers (feature branch)
 
 Shatterfin alone starts with **Tidemother Monarchy** and **Seniority of the
 Tidemothers**. Normal monarchy institutions and the existing naval modifiers
@@ -184,4 +188,3 @@ not certify in-game succession, maternal inheritance or portrait rendering.
 Naming proposals for all five Ashborn cultures are in [NAMING_PROPOSALS.md](NAMING_PROPOSALS.md). The approved dialect system is implemented in this version.
 
 All five Ashborn cultures have 16 male and 16 female name entries, six house names and six lowborn names each. Four additional royal families and 15 adult courtiers are authored. Drogg Cindermaw bears the nickname "the Stone Fletcher"; Jaima Shatterfin bears "the Mare-Mother". Cabinet appointments remain native, drawing on culture-specific names and the available court.
-

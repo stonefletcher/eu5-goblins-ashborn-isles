@@ -1,7 +1,7 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import * as core from "./goblin_source.mjs";
-import { renderSheet } from "./render_sheet.mjs";
+import { renderSheet, encodePNG } from "./render_sheet.mjs";
 
 const root = new URL("../", import.meta.url);
 const config = JSON.parse(await readFile(new URL("clans.json", root), "utf8"));
@@ -30,4 +30,5 @@ for (const clan of config.clans) {
 const sheet = renderSheet(models, buffers, config, core);
 await mkdir(new URL("preview/", root), { recursive: true });
 await writeFile(new URL("preview/clan_lineup.svg", root), sheet.svg);
+await writeFile(new URL("preview/clan_lineup.png", root), encodePNG(sheet.width,sheet.height,sheet.rgb));
 console.log(JSON.stringify({ models: reports, engine_exported: false }, null, 2));

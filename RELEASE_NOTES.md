@@ -1,3 +1,7 @@
+## 0.5.1 portrait texture crash hotfix
+
+The October 6 startup crash ended with five portrait texture-array mismatch errors. Replace the 4x4 uncompressed goblin skin decals with 1024x1024 DXT5 textures and all 11 mip levels, matching native EU5 portrait decal arrays. Add format, dimensions, mip-count, payload-size and native compatibility checks. Main ZIP installation applies these corrected assets through its verified overlay. A game startup retest is still required; static validation alone does not certify the crash resolved.
+
 # Goblins of the Ashborn Isles 0.5.1 - bundled main update
 
 The main-download installer now installs the 36-location volcanic terrain together with the latest Ashborn cultures, infantry assets and portrait test pass. It reports version 0.5.1 and rejects a bundled archive whose configuration does not match the downloaded source. Start a NEW 1337 campaign. The published 0.5.0 release remains unchanged.

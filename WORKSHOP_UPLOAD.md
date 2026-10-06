@@ -43,6 +43,4 @@ On the exact staged candidate, enable this mod alone and start a new 1337 campai
 If a demo ships with known visual/gameplay defects, describe the actual defects in
 the listing. Do not convert pending checks into passed checks without testing.
 
-This branch is an isolated snapshot of active 0.5.3 work. If the art branch changes,
-integrate these three Workshop preparation files into the final 0.5.3 source and
-rebuild/stage again. No Workshop item has been created or published by these tools.
+These preparation files are integrated into staging/0.5.3. Build and stage from this consolidated branch; do not upload an older Workshop snapshot. No Workshop item has been created or published by these tools.

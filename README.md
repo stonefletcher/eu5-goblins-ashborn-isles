@@ -1,8 +1,14 @@
-## 0.5.3 infantry attachment repair candidate
+# Goblins of the Ashborn Isles — 0.5.3 staging
+
+Canonical integration branch: **staging/0.5.3**. This combines the portrait pass, tested map-infantry repair, recruitment illustrations, companion first-contact event, and Workshop preparation. Download this branch into a fresh folder and run `Install-Goblins.cmd` with EU5 closed. No Workshop publication is performed by this branch.
+
+Packaging checks are separate from gameplay acceptance. The map-infantry repair passed the user's test; the new recruitment illustrations and companion event still need their in-game acceptance checks. See [TESTING.md](TESTING.md). Deferred model appearance work: [issue #4](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/issues/4).
+
+## 0.5.3 infantry attachment repair — user tested
 
 Native fallback infantry were visible and did not reproduce the crash in the user's test. Custom goblin infantry are now re-enabled through the native attachment workflow: the base graph supplies the skeleton, transform and animation machine; a named shared_pose_entity attachment supplies the visible mesh. The direct root MeshType is removed.
 
-This is a focused repair candidate, not a confirmed crash root cause. Meshes, palettes, rig, animation clips and character portraits are unchanged. Validation covers five attachments, ten constructors, graph links and installer contents. Engine acceptance is pending: pass the previous spawn date, inspect goblin infantry, then move, fight and save/reload.
+The user confirmed on October 6, 2026 that the repaired infantry no longer crashes and appears properly. The precise engine fault is not proven, and exhaustive state coverage is not claimed. Visual refinement is deferred in issue #4: make the units less goofy while preserving this working attachment route. Continue regression checks for movement, combat and save/reload.
 
 ## 0.5.3 development: rough-clad goblins
 
@@ -14,7 +20,7 @@ shared-pose model repair and first-contact event. In-game acceptance is pending.
 
 Portrait refinement: ears now extend 9 cm from their base (previously 5.8), with longer hooked noses, smaller jaws/chins, prominent cheeks, wider mouths and smaller teeth. A culture-only special gene applies compact torso proportions and a mild stoop to adult males and females, fading out during childhood. Human cultures remain outside these modifiers. Exact stature, portrait framing and clothing fit await engine review.
 
-Infantry repair candidate: connect the missing translation input explicitly, consume the native CustomAnimationMachineName parameter, and write graphics scripts with a UTF-8 BOM. Typed graph-link checks now complement mesh/animation validation. The prior graph was rejected in the game log; successful in-game rendering is not yet verified.
+Infantry repair candidate: connect the missing translation input explicitly, consume the native CustomAnimationMachineName parameter, and write graphics scripts with a UTF-8 BOM. Typed graph-link checks now complement mesh/animation validation. The prior graph was rejected in the game log; the subsequent shared-pose attachment repair has now passed the user's visibility/crash test.
 
 First art pass on a separate branch based on 0.5.2. Infantry stature is reduced from 1.12 m to 0.92 m, jaws are narrower and teeth smaller. Clan skin palettes are muted olive, marsh, lichen, slate and soot greens. Portrait recoloring retains 12% of underlying albedo detail.
 

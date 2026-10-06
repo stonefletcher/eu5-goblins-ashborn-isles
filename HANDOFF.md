@@ -1,24 +1,7 @@
-# Integrated 0.5.3 test build
+# 0.5.3 consolidated staging
 
-Checkout: goblins-0.5.3; branch: feature/0.5.3-goblin-pirate-portraits.
-Base before illustration integration: d15c54f. Artwork source: 6c4cb1c in
-feature/0.5.3-infantry-art; selectively integrated without replacing later fixes.
+Canonical branch: staging/0.5.3. Base ff8a431 includes portraits, opt-in human isolation fix, native shared-pose infantry repair, first-contact companion event and culture-scoped recruitment illustrations. Workshop preparation merged from 90cbd3c. The packaging-only isolation commit 693914e is superseded: applying its old overlay would remove the now-complete exploration integration.
 
-Includes latest goblin portrait anatomy, shared-pose infantry body attachments,
-and companion first-contact event. Adds original culture-specific regiment art
-for 137 light/heavy infantry definitions across five Ashborn cultures. Uses one
-shared medieval painting in this first pass. Recruitment/stats are unchanged.
+User confirmed infantry visible and no longer crashing on October 6, 2026. Appearance refinement deferred to GitHub issue #4. Recruitment illustrations and first-contact event have static checks but await gameplay acceptance. Preserve the working graphics attachment route.
 
-All 160 prior overlay entries were preserved byte-for-byte. Art validation and
-prepared-bundle verification passed (1540 overlay entries). Clean source-style
-installer PrepareOnly completed successfully, including reconstruction/checksums
-for all three terrain caches. Build and overlay regeneration retain the new art.
-
-Prepared package: dist/Goblins_Ashborn_Isles_0.5.3.zip. No active installation,
-game launch, GitHub push or Workshop publication in this integration turn.
-
-Next: install with EU5 closed and inspect recruitment/levy/army illustrations for
-all five cultures, with human cultures as negative controls. Test infantry spawn,
-movement/combat/retreat and save/reload for the shared-pose candidate; engine
-acceptance remains pending. Test Portugal's event on the next eastern voyage
-return. Already-completed voyages are not replayed.
+Run exact-tree clean-download installer validation before handoff. No active installation, game launch or Workshop publication is implied. Existing source branches/worktrees remain intact; use this branch for further integration.

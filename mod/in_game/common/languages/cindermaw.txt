@@ -1,0 +1,8 @@
+cm_cinder_tongue = {
+    color = rgb { 117 140 48 }
+    family = cm_goblin_language_family
+    male_names = { cm_grik cm_mograt cm_skrag cm_vrek cm_nibz cm_krakk cm_zog }
+    female_names = { cm_grizza cm_snikka cm_vezza cm_morga cm_krikka cm_rikka }
+    dynasty_names = { cm_hooktooth_name cm_copperfang_name cm_ashbite_name cm_blackwake_name }
+    lowborn = { cm_splinter_name cm_saltjaw_name cm_coalhand_name }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Cindermaw - Goblin Invasion (Demo)",
+  "id": "alex.cindermaw_demo",
+  "version": "0.1.0",
+  "game_id": "eu5",
+  "supported_game_version": "1.3.11",
+  "short_description": "Experimental Cindermaw island demo: eight new locations, a goblin pirate republic, native raiding mechanics and a poor but resource-rich economy. New campaign required. Runtime and terrain bake verification pending.",
+  "tags": ["Alternative history", "Gameplay"],
+  "relationships": [],
+  "game_custom_data": {}
+}

@@ -1,0 +1,30 @@
+monthly_country_pulse = { on_actions = { cm_demo_monthly } }
+cm_demo_monthly = {
+    trigger = { tag = CDM }
+    effect = {
+        if = {
+            limit = {
+                NOT = { has_variable = cm_demo_initialized }
+                owns = location:cm_hooktooth
+            }
+            set_variable = { name = cm_demo_initialized value = yes }
+            location:cm_hooktooth = {
+                create_sub_unit = unit_type:a_footmen
+                create_sub_unit = unit_type:a_footmen
+                create_sub_unit = unit_type:n_traditional_galley
+                create_sub_unit = unit_type:n_traditional_galley
+                create_sub_unit = unit_type:n_traditional_galley
+                create_sub_unit = unit_type:n_traditional_galley
+                create_sub_unit = unit_type:n_cog
+                create_sub_unit = unit_type:n_cog
+                create_sub_unit = unit_type:n_cog
+                create_sub_unit = unit_type:n_cog
+                create_sub_unit = unit_type:n_cog
+                create_sub_unit = unit_type:n_cog
+                create_sub_unit = unit_type:n_cog
+                create_sub_unit = unit_type:n_cog
+            }
+            trigger_event_non_silently = { id = cindermaw.1 }
+        }
+    }
+}

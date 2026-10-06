@@ -1,5 +1,7 @@
 # Goblins of the Ashborn Isles — 0.5.3 staging
 
+![Goblins of the Ashborn Isles](art/Goblins_Banner.png)
+
 Canonical integration branch: **staging/0.5.3**. This combines the portrait pass, tested map-infantry repair, recruitment illustrations, companion first-contact event, and Workshop preparation. Download this branch into a fresh folder and run `Install-Goblins.cmd` with EU5 closed. No Workshop publication is performed by this branch.
 
 Packaging checks are separate from gameplay acceptance. The map-infantry repair passed the user's test; the new recruitment illustrations and companion event still need their in-game acceptance checks. See [TESTING.md](TESTING.md). Deferred model appearance work: [issue #4](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/issues/4).

@@ -26,7 +26,7 @@ with zipfile.ZipFile(dist/f'Goblins_Ashborn_Isles_{version}.zip','w',zipfile.ZIP
     for p in sorted((ROOT/'build/terrain_patch').iterdir()):
         if p.is_file():z.write(p,'terrain_patch/'+p.name)
     for name in docs:z.write(ROOT/name,name)
-    for name in ['validation.json','terrain_verification.json','feature_verification.json','model_export.json','model_verification.json','Goblins_Map_Preview.png','Goblins_Terrain_Preview.png','Goblins_Cache_Relief.png']:
+    for name in ['validation.json','terrain_verification.json','feature_verification.json','model_export.json','model_verification.json','portrait_verification.json','Goblins_Map_Preview.png','Goblins_Terrain_Preview.png','Goblins_Cache_Relief.png']:
         p=ROOT/'build/reports'/name
         if p.is_file():z.write(p,'reports/'+p.name)
     for p in sorted((ROOT/'art').glob('*')):

@@ -29,11 +29,11 @@
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/brackmaw_skin.dds",
-      "sha256": "237cbdd9911d208f72e01ad3325962c78043f9a1813acd8f703dee9af93065d4"
+      "sha256": "2366a84b753868db6c45fefca33e10d3faa849e03e073763ac4609a843fe7de8"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/cindermaw_skin.dds",
-      "sha256": "3034ea20de9c360c97c64d8a546da2f01a1b0d05b83acf26c16b1fa4a48800a3"
+      "sha256": "4559fa9600332e602ec7ed5ceec6c1eed0e0594987e052dd2aff5213e42aa247"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/cm_female_features.mesh",
@@ -61,15 +61,15 @@
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/reefhook_skin.dds",
-      "sha256": "3f18f797e04a1ac860fa6d7fe86bc3fc6374fe9f3e7a323b628a9d9ff788a3b3"
+      "sha256": "9ebaeda808fe78a3376ca93d737c46750a0184ff8ab8e2a774df778fda355016"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/shatterfin_skin.dds",
-      "sha256": "7a24624d84e5de96383d7e410238adfd7000db5b9360a67d2ae522578656e9a8"
+      "sha256": "d8b657503e38c23c930bd2c30bd2084ab66cc290219f1415d5e44bd4061dc15f"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/sootwake_skin.dds",
-      "sha256": "4b335f63396f79a188c0f314e4093b639c7b699a79e0273aeec42bf1e8ea9a55"
+      "sha256": "a2f7dc080350cc75aa7ea57209f6c2586d63fe7a13a2de0771bba377259c8dd2"
     },
     {
       "path": "in_game/gfx/models/schematics/cm_goblin_brackmaw_schematic.schematic",

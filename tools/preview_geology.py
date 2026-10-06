@@ -21,3 +21,4 @@ draw.text((24,50),'Offline height and material-class preview. In-game texture ap
 for i in cfg['islands']:
  x,y=i['center'];draw.text((20+(x-6630)*2,90+(y-2330)*2),i['name'],font=small,fill='white',stroke_width=2,stroke_fill='#101c25')
 out=ROOT/'art/Goblins_Volcanic_Preview.png';canvas.save(out);print(out)
+

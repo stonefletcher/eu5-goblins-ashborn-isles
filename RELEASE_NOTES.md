@@ -1,4 +1,11 @@
-## 0.5.2 � Shatterfin Tidemothers (feature branch)
+## 0.5.2 portrait fix integration
+
+- Includes the 0.5.1 portrait decal correction: 1024 x 1024 BC3 textures with all 11 mip levels, matching native portrait arrays.
+- Validates texture dimensions, format, mip count, payload size and native headers during the build.
+- Rejects a bundled installer whose version or terrain configuration does not match the source.
+- In-game succession, portrait rendering and terrain acceptance remain pending.
+
+## 0.5.2 — Shatterfin Tidemothers (feature branch)
 
 Shatterfin alone starts with **Tidemother Monarchy** and **Seniority of the
 Tidemothers**. Normal monarchy institutions and the existing naval modifiers
@@ -29,13 +36,13 @@ not certify in-game succession, maternal inheritance or portrait rendering.
 
 # 0.5.1 terrain development (source integration)
 
-- Wider Cindermaw–Brackmaw and Brackmaw–Sootwake channels; land area reduced 12%.
+- Wider Cindermawâ€“Brackmaw and Brackmawâ€“Sootwake channels; land area reduced 12%.
 - Individual coast profiles with broad bays, headlands and restrained coastal erosion.
 - 15 Cindermaw, 12 Brackmaw, four Reefhook, three Shatterfin and two Sootwake playable tiles. Province groupings remain unchanged.
 - National populations and total starting RGO expansion are preserved when subdividing locations.
 - Wider crater bowls and raised rims; dark lava aprons, exposed rock and reduced woodland on dry volcanic ground.
 - New raster checks enforce channel clearance, island continuity and playable tile size.
-- Static validation passed: 36 connected land tiles, 31 coastal ports, all settlement anchors, navigable sea graph, population totals, rivers and scenery; terrain cache shared-border error is zero. Final shoreline gaps are 40.79 pixels (Cindermaw–Brackmaw) and 26.93 pixels (Brackmaw–Sootwake), up from 5.00 and 5.39.
+- Static validation passed: 36 connected land tiles, 31 coastal ports, all settlement anchors, navigable sea graph, population totals, rivers and scenery; terrain cache shared-border error is zero. Final shoreline gaps are 40.79 pixels (Cindermawâ€“Brackmaw) and 26.93 pixels (Brackmawâ€“Sootwake), up from 5.00 and 5.39.
 - Full game rendering and navigation acceptance require a new campaign. Published archives and existing installations are unchanged; build from source to test this terrain pass.
 
 ---

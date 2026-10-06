@@ -220,7 +220,8 @@ def main():
     import build_goblin_portraits
     build_goblin_portraits.build(out)
     import verify_goblin_portraits
-    verify_goblin_portraits.verify(out,game)
+    portrait_checks=verify_goblin_portraits.verify(out,game)
+    (reports/'portrait_verification.json').write_text(json.dumps(portrait_checks,indent=2),encoding='utf-8')
     import verify_goblin_models
     model_checks=verify_goblin_models.verify(out,game)
     print('Running static validation...',flush=True)

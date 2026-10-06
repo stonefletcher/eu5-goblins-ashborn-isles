@@ -1,8 +1,8 @@
-# Goblins of the Ashborn Isles 0.5.0 verification
+# Goblins of the Ashborn Isles 0.5.2 verification
 
 ## Build checks
 
-- Require a fresh 0.5.0 validation report against EU5 1.3.11.
+- Require a fresh 0.5.2 validation report against EU5 1.3.11.
 - Check 36 connected land footprints, six islands and preserved vanilla geography.
 - Verify thirteen registered sea zones, connected to each other and native Atlantic lanes.
 - Verify 36 settlement anchors within their own land, fleet/combat anchors and coastal ports.
@@ -120,3 +120,10 @@ deferred while portraits are prioritised; this portrait pass does not claim to f
   behavior: these paths have not been certified by static tests.
 
 All five Ashborn cultures have 16 male and 16 female name entries, six house names and six lowborn names each. Four additional royal families and 15 adult courtiers are authored. Drogg Cindermaw bears the nickname "the Stone Fletcher"; Jaima Shatterfin bears "the Mare-Mother". Cabinet appointments remain native, drawing on culture-specific names and the available court.
+
+## 0.5.2 portrait crash-fix gate
+
+- All five skin decals must match native 1024 x 1024 BC3/DXT5 arrays with 11 mip levels.
+- Run `tools/verify_goblin_portraits.py` against the prepared 0.5.2 output and installed game. The report must pass before packaging.
+- Verify the bundled archive and development overlay include the same corrected textures.
+- Static validation is not an engine playtest; confirm campaign startup and portrait rendering in EU5. The reported missing land in 0.5.1 also requires a separate terrain acceptance pass.

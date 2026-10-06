@@ -15,6 +15,17 @@ if (-not (Test-Path -LiteralPath (Join-Path $modSource '.metadata\metadata.json'
     }
     $release = Get-Content -LiteralPath $releaseManifest -Raw | ConvertFrom-Json
     if ($release.version -notmatch '^\d+\.\d+\.\d+$') { throw 'Invalid release version.' }
+    $configPath = Join-Path $PSScriptRoot 'data\island.json'
+    if (Test-Path -LiteralPath $configPath) {
+        $configText = [IO.File]::ReadAllText($configPath).Replace("`r`n", "`n")
+        $config = $configText | ConvertFrom-Json
+        if ($config.version -ne $release.version) { throw 'Bundled release version differs from source. Download an updated complete main archive.' }
+        $hasher = [Security.Cryptography.SHA256]::Create()
+        try { $configHash = [BitConverter]::ToString($hasher.ComputeHash([Text.Encoding]::UTF8.GetBytes($configText))).Replace('-', '').ToLowerInvariant() }
+        finally { $hasher.Dispose() }
+        if (-not $release.source_config_sha256 -or $configHash -ne $release.source_config_sha256) { throw 'Bundled terrain configuration is stale. Download an updated complete main archive.' }
+    }
+
     $assetName = "Goblins_Ashborn_Isles_$($release.version).zip"
     $assets = @($release.assets | Where-Object { $_.name -eq $assetName })
     if ($assets.Count -ne 1) { throw 'Missing prepared install archive in release manifest.' }

@@ -59,3 +59,4 @@ def verify(b,out,mapstats):
             'rivers':river_count,'validated_scenery_transforms':scenery_count,
             'reciprocal_routes_checked':list(ROUTES),'rgo_initialization_guard':True,
             'engine_tested':False}
+

@@ -3,7 +3,7 @@
 Geometry is authored here; portrait_bindings contains only attachment rig metadata.
 No vanilla mesh, texture, or animation is redistributed. Engine testing is pending.
 """
-import json, math
+import json, math, struct
 from pathlib import Path
 import numpy as np
 from PIL import Image
@@ -17,6 +17,20 @@ TYPES=['male','female','boy','girl','adolescent_boy','adolescent_girl','infant']
 def text(path,value):
     path.parent.mkdir(parents=True,exist_ok=True)
     path.write_text(value,encoding='utf-8-sig')
+
+def skin_decal(path, rgb):
+    """Constant-color BC3 decal matching native 1024px / 11-mip arrays."""
+    width, mip_count = 1024, 11
+    header = [124, 0xA1007, width, width, width * width, 0, mip_count]
+    header += [0] * 11
+    header += [32, 4, int.from_bytes(b'DXT5', 'little'), 0, 0, 0, 0, 0]
+    header += [0x401008, 0, 0, 0, 0]
+    r, g, b = rgb
+    color = (round(r * 31 / 255) << 11) | (round(g * 63 / 255) << 5) | round(b * 31 / 255)
+    block = bytes([255, 255]) + bytes(6) + struct.pack('<HHI', color, color, 0)
+    payload = b''.join(block * (max(1, (width >> level) // 4) ** 2) for level in range(mip_count))
+    path.write_bytes(b'DDS ' + struct.pack('<31I', *header) + payload)
+
 
 def geometry(sex,bones):
     """Closed pointed pinnae and tapered lower tusks; face points toward -Z."""
@@ -82,7 +96,7 @@ def build(out):
     for clan in clans:
         ident=clan['id'];culture=clan['culture'];tag=culture+'_gfx'
         rgb=tuple(bytes.fromhex(clan['skin_srgb'].lstrip('#')))
-        Image.new('RGBA',(4,4),rgb+(255,)).save(dest/f'{ident}_skin.dds')
+        skin_decal(dest/f'{ident}_skin.dds', rgb)
         gene='cm_'+ident+'_skin'
         decals=''
         for part in ['head','torso']:

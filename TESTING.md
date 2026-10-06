@@ -1,8 +1,8 @@
-# Goblins of the Ashborn Isles 0.5.0 verification
+# Goblins of the Ashborn Isles 0.5.2 verification
 
 ## Build checks
 
-- Require a fresh 0.5.0 validation report against EU5 1.3.11.
+- Require a fresh 0.5.2 validation report against EU5 1.3.11.
 - Check 36 connected land footprints, six islands and preserved vanilla geography.
 - Verify thirteen registered sea zones, connected to each other and native Atlantic lanes.
 - Verify 36 settlement anchors within their own land, fleet/combat anchors and coastal ports.
@@ -101,3 +101,29 @@ The separate infantry integration currently fails in-game with `Invalid entity
 graph [cm_goblin_cindermaw_schematic]`, producing invisible infantry. Its repair is
 deferred while portraits are prioritised; this portrait pass does not claim to fix it.
 
+
+## 0.5.2 succession acceptance
+
+- Confirm installer and mod metadata say 0.5.2; begin a new 1337 campaign.
+- In SFK, inspect Tidemother Monarchy and Seniority of the Tidemothers. Jaima
+  should rule and Skritcha should lead the candidate list ahead of the daughters.
+- Trigger a succession in a disposable test save. Skritcha should inherit, followed
+  by Morzha after a second succession if all eligible candidates remain alive.
+- Test women of equal displayed age but different birthdays; the older wins.
+- Exclude a high-Military male, under-18 girl, unrelated older woman, a woman
+  related only through her father, a foreign ruler and a character barred from rule.
+- Test a newborn of a ruling-house mother and a differently named father: the
+  child should keep the mother's dynasty. Recheck her eligibility as an adult.
+- Change the law and confirm the custom birth action stops; remove the reform
+  and confirm the fallback law. Confirm CDM/QBR/RHK/SWK retain strongest-male law.
+- Test exhausted candidates, regency and save/reload. Report the actual game
+  behavior: these paths have not been certified by static tests.
+
+All five Ashborn cultures have 16 male and 16 female name entries, six house names and six lowborn names each. Four additional royal families and 15 adult courtiers are authored. Drogg Cindermaw bears the nickname "the Stone Fletcher"; Jaima Shatterfin bears "the Mare-Mother". Cabinet appointments remain native, drawing on culture-specific names and the available court.
+
+## 0.5.2 portrait crash-fix gate
+
+- All five skin decals must match native 1024 x 1024 BC3/DXT5 arrays with 11 mip levels.
+- Run `tools/verify_goblin_portraits.py` against the prepared 0.5.2 output and installed game. The report must pass before packaging.
+- Verify the bundled archive and development overlay include the same corrected textures.
+- Static validation is not an engine playtest; confirm campaign startup and portrait rendering in EU5. The reported missing land in 0.5.1 also requires a separate terrain acceptance pass.

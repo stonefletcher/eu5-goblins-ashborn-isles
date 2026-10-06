@@ -1,5 +1,5 @@
 """Check portrait references and native attachment compatibility; not a render test."""
-import json,re
+import json,re,struct
 from pathlib import Path
 import numpy as np
 from PIL import Image
@@ -24,7 +24,21 @@ def verify(out,game=None):
         assert modifiers.count('gfx_culture_applicable = '+tag)==1
         assert f'100 = cm_{ident}_ethnicity' in gfx
         assert f'cm_{ident}_ethnicity = ' in ethnicity
-        assert tuple(Image.open(folder/f'{ident}_skin.dds').getpixel((0,0))[:3])==tuple(bytes.fromhex(clan['skin_srgb'].lstrip('#')))
+        texture = folder/f'{ident}_skin.dds'
+        raw = texture.read_bytes()
+        assert raw[:4] == b'DDS ' and raw[84:88] == b'DXT5', texture
+        assert struct.unpack_from('<II', raw, 12) == (1024, 1024), texture
+        assert struct.unpack_from('<I', raw, 28)[0] == 11, texture
+        assert len(raw) == 1398256, texture
+        pixel = Image.open(texture).getpixel((0,0))
+        target = bytes.fromhex(clan['skin_srgb'].lstrip('#'))
+        assert all(abs(a-b) <= 4 for a,b in zip(pixel[:3], target)), texture
+        assert pixel[3] == 255, texture
+        if game:
+            native_decal = Path(game)/'in_game/gfx/models/portraits/decals/male_body/decal_male_body_old_01_diffuse.dds'
+            native_raw = native_decal.read_bytes()
+            for start,end in [(12,20),(28,32),(76,108)]:
+                assert raw[start:end] == native_raw[start:end], (texture, 'native texture array mismatch')
     for typ in TYPES:assert genes.count(typ+' = ')>=10,typ
     assert 'employer' not in modifiers and 'is_ruler' not in modifiers and 'is_female' not in modifiers
     triangles=0

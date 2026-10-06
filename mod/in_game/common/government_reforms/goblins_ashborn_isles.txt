@@ -1,8 +1,8 @@
-cm_ironfang_monarchy = {
+﻿cm_ironfang_monarchy = {
     major = yes
     unique = yes
     government = monarchy
-    potential = { culture = { has_culture_group = culture_group:cm_goblin_group } }
+    potential = { NOT = { tag = SFK } culture = { has_culture_group = culture_group:cm_goblin_group } }
     country_modifier = {
         can_hire_privateers = yes
         allow_privateers_slave_raid = yes

@@ -19,13 +19,16 @@ def main():
     verification=verify_goblin_models.verify(output,args.game)
     countries=b.CFG['countries']
     b.write(output,'in_game/common/cultures/goblins_ashborn_isles.txt','\n'.join(
-        f'{c["culture"]} = {{ language = cm_cinder_tongue color = rgb {{ {" ".join(map(str,c["color"]))} }} tags = {{ european_gfx {c["culture"]}_gfx }} culture_groups = {{ cm_goblin_group }} opinions = {{ }} }}' for c in countries)+'\n')
+        f'{c["culture"]} = {{ language = {c["culture"]}_dialect color = rgb {{ {" ".join(map(str,c["color"]))} }} tags = {{ european_gfx {c["culture"]}_gfx }} culture_groups = {{ cm_goblin_group }} opinions = {{ }} }}' for c in countries)+'\n')
+    import ashborn_names
+    ashborn_names.build_names(b,output)
     b.localization(output);archipelago.add_localization(b,output)
     paths=[p for prefix in ['in_game/gfx/models/units/ashborn_goblins','in_game/gfx/models/schematics','in_game/gfx/graphical_culture_types','main_menu/gfx/unit_graphics/units','main_menu/gfx/animation_state_machines'] for p in (output/prefix).rglob('*') if p.is_file()]
     paths.extend([output/'in_game/common/cultures/goblins_ashborn_isles.txt',output/'main_menu/localization/english/goblins_ashborn_isles_l_english.yml'])
     paths.extend(p for prefix in ['in_game/gfx/models/portraits/ashborn','in_game/common/ethnicities','main_menu/gfx/portraits'] for p in (output/prefix).rglob('*') if p.is_file())
     paths.append(output/'in_game/common/genes/zz_ashborn_portraits.txt')
-    manifest={'base_release':'0.5.0','stage':'development-models-and-culture-names','engine_tested':False,
+    paths.append(output/'in_game/common/languages/goblins_ashborn_isles.txt')
+    manifest={'base_release':b.CFG['version'],'stage':'development-models-and-culture-names','engine_tested':False,
               'files':[{'path':p.relative_to(output).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(paths)]}
     (ROOT/'data/main_overlay.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
     (ROOT/'art/models/goblins/native_validation.json').write_text(json.dumps(verification,indent=2)+'\n')

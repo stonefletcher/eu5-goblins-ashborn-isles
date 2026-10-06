@@ -1,15 +1,22 @@
-# Unreleased terrain pass (branch based on 0.5.0)
+# 0.5.1 terrain development (source integration)
 
-- Wider Cindermaw–Brackmaw and Brackmaw–Sootwake channels; land area reduced 12%.
+- Wider Cindermawâ€“Brackmaw and Brackmawâ€“Sootwake channels; land area reduced 12%.
 - Individual coast profiles with broad bays, headlands and restrained coastal erosion.
 - 15 Cindermaw, 12 Brackmaw, four Reefhook, three Shatterfin and two Sootwake playable tiles. Province groupings remain unchanged.
 - National populations and total starting RGO expansion are preserved when subdividing locations.
 - Wider crater bowls and raised rims; dark lava aprons, exposed rock and reduced woodland on dry volcanic ground.
 - New raster checks enforce channel clearance, island continuity and playable tile size.
-- Static validation passed: 36 connected land tiles, 31 coastal ports, all settlement anchors, navigable sea graph, population totals, rivers and scenery; terrain cache shared-border error is zero. Final shoreline gaps are 40.79 pixels (Cindermaw–Brackmaw) and 26.93 pixels (Brackmaw–Sootwake), up from 5.00 and 5.39.
-- Full game rendering and navigation acceptance require a new campaign. This branch is not published or installed automatically.
+- Static validation passed: 36 connected land tiles, 31 coastal ports, all settlement anchors, navigable sea graph, population totals, rivers and scenery; terrain cache shared-border error is zero. Final shoreline gaps are 40.79 pixels (Cindermawâ€“Brackmaw) and 26.93 pixels (Brackmawâ€“Sootwake), up from 5.00 and 5.39.
+- Full game rendering and navigation acceptance require a new campaign. Published archives and existing installations are unchanged; build from source to test this terrain pass.
 
 ---
+# Development on main after 0.5.0
+
+- Merged the release and goblin-model art branches into main. Code > Download ZIP now reconstructs the prepared release and applies checked development files.
+- Added five native goblin infantry variants, materials, clan graphics selection and 17 animation exports. Idle, movement, attack, retreat and charge are wired; engine rendering and death-event integration remain pending. Portraits, cavalry and equipment fitting need separate work.
+- Renamed the shared culture group to Ashborn, with Emberblood, Brineward, Reefstrider, Stormfang and Ashveil cultures. Technical IDs are preserved.
+- Native checks cover 51 source/engine pose comparisons, palettes, graphics references and exact native asset round trips. The main-download installer preparation path was tested.
+- The published 0.5.0 archives and currently installed games are unchanged. Use a fresh main download to test the development additions.
 
 # Goblins of the Ashborn Isles 0.5.0 - Ironfang Isles
 

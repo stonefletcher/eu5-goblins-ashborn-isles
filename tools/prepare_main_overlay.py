@@ -1,0 +1,30 @@
+"""Refresh only authored runtime art, culture tags and text for the main installer.
+
+No terrain rebuild or user mod installation. The bundled release is immutable;
+the main installer applies these checksum-listed files before normal installation.
+"""
+import hashlib,json
+from pathlib import Path
+import build as b,archipelago,export_goblin_models,verify_goblin_models
+ROOT=b.ROOT
+
+def main():
+    import argparse
+    ap=argparse.ArgumentParser();ap.add_argument('--game',type=Path);args=ap.parse_args()
+    output=ROOT/'mod'
+    report=export_goblin_models.build(output)
+    verification=verify_goblin_models.verify(output,args.game)
+    countries=b.CFG['countries']
+    b.write(output,'in_game/common/cultures/goblins_ashborn_isles.txt','\n'.join(
+        f'{c["culture"]} = {{ language = cm_cinder_tongue color = rgb {{ {" ".join(map(str,c["color"]))} }} tags = {{ european_gfx {c["culture"]}_gfx }} culture_groups = {{ cm_goblin_group }} opinions = {{ }} }}' for c in countries)+'\n')
+    b.localization(output);archipelago.add_localization(b,output)
+    paths=[p for prefix in ['in_game/gfx/models/units/ashborn_goblins','in_game/gfx/models/schematics','in_game/gfx/graphical_culture_types','main_menu/gfx/unit_graphics/units','main_menu/gfx/animation_state_machines'] for p in (output/prefix).rglob('*') if p.is_file()]
+    paths.extend([output/'in_game/common/cultures/goblins_ashborn_isles.txt',output/'main_menu/localization/english/goblins_ashborn_isles_l_english.yml'])
+    manifest={'base_release':'0.5.0','stage':'development-models-and-culture-names','engine_tested':False,
+              'files':[{'path':p.relative_to(output).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(paths)]}
+    (ROOT/'data/main_overlay.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
+    (ROOT/'art/models/goblins/native_validation.json').write_text(json.dumps(verification,indent=2)+'\n')
+    (ROOT/'art/models/goblins/native_export.json').write_text(json.dumps(report,indent=2)+'\n')
+    print(json.dumps({'overlay_files':len(paths),'verification':verification},indent=2))
+
+if __name__=='__main__':main()

@@ -148,21 +148,27 @@ def export_animation(g,anim,path):
     return {'name':anim['name'],'frames':count,'duration':duration,'max_scale_axis_difference':max_nonuniform}
 
 def srgb(x):return 12.92*x if x<=.0031308 else 1.055*x**(1/2.4)-.055
-def write_text(path,text):path.parent.mkdir(parents=True,exist_ok=True);path.write_text(text,encoding='utf-8')
+def write_text(path,text):path.parent.mkdir(parents=True,exist_ok=True);path.write_text(text,encoding='utf-8-sig')
 def schematic(mesh):
     return f'''name="{mesh}_schematic"
 graph={{ nodes={{
  pdxns:ecs:MeshType={{ id=0 node={{ mesh_name="{mesh}_mesh" inputs={{ "Lod_Override_0" }} }} inputs={{}} }}
  pdxns:ecs:create_skeleton_component={{ id=1 node={{ value="{mesh}_mesh" }} inputs={{}} }}
- pdxns:ecs:animation_state_machine={{ id=2 node={{ state_machine_name="cm_goblin_infantry" }} inputs={{}} }}
+ pdxns:ecs:animation_state_machine={{ id=2 node={{}} inputs={{ link={{ pin_id="state_machine_name" linked_node=7 linked_pin="output_arg" }} }} }}
  pdxns:values:Float={{ id=3 node={{ value=0.080000 }} inputs={{}} }}
- pdxns:ecs:create_local_transform={{ id=4 node={{}} inputs={{ link={{ pin_id="scale" linked_node=3 linked_pin="value" }} }} }}
+ pdxns:ecs:create_local_transform={{ id=4 node={{}} inputs={{
+  link={{ pin_id="translation" linked_node=6 linked_pin="value" }}
+  link={{ pin_id="scale" linked_node=3 linked_pin="value" }}
+ }} }}
  pdxns:ecs:assemble_entity={{ id=5 node={{}} inputs={{
   link={{ pin_id="components" linked_node=0 linked_pin="mesh_components" }}
   link={{ pin_id="components" linked_node=1 linked_pin="skeleton" }}
   link={{ pin_id="components" linked_node=2 linked_pin="state_machine_components" }}
   link={{ pin_id="components" linked_node=4 linked_pin="local_transform" }}
  }} }}
+ pdxns:values:ConstVector3f={{ id=6 node={{ value={{ 0.000000 0.000000 0.000000 }} }} inputs={{}} }}
+ pdxns:ecs:get_schematic_parameter={{ id=7 node={{ parameter="CustomAnimationMachineName" }} inputs={{ link={{ pin_id="String" linked_node=8 linked_pin="value" }} }} }}
+ pdxns:values:String={{ id=8 node={{ value="cm_goblin_infantry" }} inputs={{}} }}
 }} }}
 '''
 

@@ -5,7 +5,8 @@
 - Verify crowns/court finery are absent on Ashborn and unchanged elsewhere.
 - Compare infantry height with native units; exercise idle, movement, attack and retreat.
 - Inspect fresh logs for missing accessories, gene errors and texture-array failures.
-- Full portrait body stature is NOT implemented: vanilla female height support is disabled. Shorter infantry does not satisfy that requirement.
+- Compare compact torso proportions and mild stoop on adult men and women. Check head/hand/clothing alignment, portrait crop and preserved child growth. Exact full-body height is not certified.
+- Verify the repaired graph no longer logs Invalid entity graph for any of the five clans, and that infantry are visible before accepting the fix.
 
 # Goblins of the Ashborn Isles 0.5.2 verification
 
@@ -107,8 +108,7 @@ Check skin on neck/hands, eyes, ear placement, tusks during animation, save/relo
 and a newly generated character. Send a screenshot and fresh error.log if wrong.
 
 The separate infantry integration currently fails in-game with `Invalid entity
-graph [cm_goblin_cindermaw_schematic]`, producing invisible infantry. Its repair is
-deferred while portraits are prioritised; this portrait pass does not claim to fix it.
+graph [cm_goblin_cindermaw_schematic]`, producing invisible infantry. The 0.5.3 repair candidate supplies explicit translation and the native animation-machine parameter; it requires an engine retest.
 
 
 ## 0.5.2 succession acceptance

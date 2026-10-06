@@ -1,4 +1,4 @@
-cm_cinderkin_gfx:army_light_infantry = { schematic_name = cm_goblin_cindermaw_schematic animation_state_machine_name = cm_goblin_infantry }
+﻿cm_cinderkin_gfx:army_light_infantry = { schematic_name = cm_goblin_cindermaw_schematic animation_state_machine_name = cm_goblin_infantry }
 cm_cinderkin_gfx:army_heavy_infantry = { schematic_name = cm_goblin_cindermaw_schematic animation_state_machine_name = cm_goblin_infantry }
 cm_brinekin_gfx:army_light_infantry = { schematic_name = cm_goblin_brackmaw_schematic animation_state_machine_name = cm_goblin_infantry }
 cm_brinekin_gfx:army_heavy_infantry = { schematic_name = cm_goblin_brackmaw_schematic animation_state_machine_name = cm_goblin_infantry }

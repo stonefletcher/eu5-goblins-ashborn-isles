@@ -1,4 +1,4 @@
-pdxmesh = {
+﻿pdxmesh = {
  name = "cm_goblin_brackmaw_mesh"
  file = "cm_goblin_brackmaw.mesh"
  animation = { id = "cm_goblin_Death" type = "cm_goblin_Death.anim" }

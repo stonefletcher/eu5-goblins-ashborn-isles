@@ -1,4 +1,4 @@
-local_variables={ "UnitState"=int }
+﻿local_variables={ "UnitState"=int }
 behavioral_states={
  "Idle"={ timeline_layer={ timeline="Idle" } }
  "Attack"={ timeline_layer={ timeline="Attack" } }

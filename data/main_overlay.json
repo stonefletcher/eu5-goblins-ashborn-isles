@@ -77,23 +77,23 @@
     },
     {
       "path": "in_game/gfx/models/schematics/cm_goblin_brackmaw_schematic.schematic",
-      "sha256": "cc17d23e12d375c6cd1e6b5ff52817bf5421211afad800b27de0a6f47691ebdc"
+      "sha256": "a447370c8061d0e4b8877c86fc6fe8677ebe9376f692103755711bb340b15063"
     },
     {
       "path": "in_game/gfx/models/schematics/cm_goblin_cindermaw_schematic.schematic",
-      "sha256": "dd8ad1bfaed8cb5a20fb58293fc087498ac34cfe1e5e9e6255553082eae8685b"
+      "sha256": "1c2e6fd278dae0aa85a0b448d426f3b8fd0bca2d3729ce807d7d52780e1e0ad9"
     },
     {
       "path": "in_game/gfx/models/schematics/cm_goblin_reefhook_schematic.schematic",
-      "sha256": "b87f995df57e4ae6942a5f95d5c9a7b64691a6547d97e7344be3d8303616101a"
+      "sha256": "e0b02d3f9e4e2862d39171c2456caacb7cdedfb19ae49ce5d87197cf8dea4de1"
     },
     {
       "path": "in_game/gfx/models/schematics/cm_goblin_shatterfin_schematic.schematic",
-      "sha256": "0eb60b80924dbfdb380fc3d0cf1e24afc80b7387388dc4269083c72329f2ee14"
+      "sha256": "73bfcc991e64de5264ac34de11b94b0af325f050403b989c38cffa5bc32e8283"
     },
     {
       "path": "in_game/gfx/models/schematics/cm_goblin_sootwake_schematic.schematic",
-      "sha256": "f1be631a4d80bca17b58cbe1e76c7299e7076e769d0977da45d59fa8174fd4b7"
+      "sha256": "e9f9b2ac5ddfdb878d98e457ff854ee1209767aa9e689de3c535e4adf419283f"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_brackmaw.asset",
@@ -620,8 +620,12 @@
       "sha256": "3c3bd240084661a0c530826e4589e3239bda9f86d305f8d39c39f96551da4e38"
     },
     {
+      "path": "main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt",
+      "sha256": "f5e45b71ee974b50413339fb8490d699675bb498a2074d2c026893c703fac146"
+    },
+    {
       "path": "main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt",
-      "sha256": "0d3c5e9046597470c94a0c07322524bc02004387448e2555ae4da9b3d136d0e2"
+      "sha256": "ed4672009f266ca54d162166c6b4d83a994abd575fa989f1a53509c0b25c052a"
     },
     {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",

@@ -1,9 +1,11 @@
-# 0.5.3 infantry crash containment
+# 0.5.3 infantry attachment repair candidate
 
-Branch: feature/0.5.3-goblin-pirate-portraits. Remote parent 54f05151d94c2318c43c2930b4e66d5c56d2970d.
+Branch: feature/0.5.3-goblin-pirate-portraits. Remote parent 97b49325ca1fbef68d21891872de6dacbe100184.
 
-User reproduced an access violation near infantry spawn. Read crash Europa Universalis V20261006_214334; active mod metadata is 0.5.3 and installed schematic matches the latest graph patch. Prior invalid entity graph error is absent. Unsymbolized stack cannot establish a precise cause.
+Evidence: user confirmed native fallback is visible with no crash observed. Prior custom graph had direct root MeshType; native infantry base graph owns the skeleton while visible meshes use unit-graphics shared_pose_entity attachments. Unit repaint shader consumes per-unit instance/material data. The unsymbolized crash does not establish the precise faulting component.
 
-Containment: ten culture-specific light/heavy infantry constructors select the complete native rig, animation machine and attachment lists. Custom assets are retained but not selected. This temporarily restores human map soldiers; goblin portraits remain. Validator prevents accidental custom constructor reactivation.
+Change: remove root MeshType and its link; create five shared-pose body attachments; route all ten clan constructors to their custom skeleton plus one body attachment. Preserve mesh, rig, 17 animation clips and portraits. Add attachment file to checksum overlay. Validator rejects root meshes and missing body attachments.
 
-Packaging: regenerate overlay and matching bundled payload, verify clean source export with PrepareOnly, push on the existing feature branch. No active installation or game launch. Next user check: load prior save and pass spawn/crash date; test recruitment, marching and combat. Custom goblin renderer remains unresolved and needs controlled in-game isolation.
+Checks: native attachment syntax, typed graph links, five clans, 51 sampled poses, native round trips and prepared bundle. Clean-export PrepareOnly gate before publishing. No game launch or active installation.
+
+Next: test previous spawn/crash date, visible goblin models, idle/movement/combat/retreat and save/reload. Engine acceptance pending. Stable fallback: remote commit 97b49325ca1fbef68d21891872de6dacbe100184.

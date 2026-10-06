@@ -1,10 +1,8 @@
-## 0.5.3 infantry crash containment
+## 0.5.3 infantry attachment repair candidate
 
-The October 6, 17:43 crash occurred with the refined build installed, near infantry spawning. The report is an unsymbolized access violation; it does not prove which model, animation or engine component failed. The earlier invalid-graph error is absent from this run.
+Native fallback infantry were visible and did not reproduce the crash in the user's test. Custom goblin infantry are now re-enabled through the native attachment workflow: the base graph supplies the skeleton, transform and animation machine; a named shared_pose_entity attachment supplies the visible mesh. The direct root MeshType is removed.
 
-All ten Ashborn light/heavy infantry constructors now use the native skeleton, native animation state machine and complete native attachment set. Map soldiers temporarily look human. Custom goblin map assets remain available for offline work but are not selected by these constructors. Character portraits retain the goblin refinement. This is crash containment, not a verified repair of the custom renderer.
-
-Restart after installing the fresh branch download. Test the prior save through the crash date, spawn/recruit infantry, and exercise movement and combat. In-game crash-free behavior is still pending.
+This is a focused repair candidate, not a confirmed crash root cause. Meshes, palettes, rig, animation clips and character portraits are unchanged. Validation covers five attachments, ten constructors, graph links and installer contents. Engine acceptance is pending: pass the previous spawn date, inspect goblin infantry, then move, fight and save/reload.
 
 ## 0.5.3 development: rough-clad goblins
 

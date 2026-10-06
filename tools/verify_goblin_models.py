@@ -109,33 +109,33 @@ def verify(out,game=None):
     assert clan_count==5 and triangles==2476
     config=json.loads((ART/'clans.json').read_text())
     constructors=(out/'main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt').read_text()
-    assert 'cm_goblin_' not in constructors, 'Quarantined custom infantry must not be instantiated'
-    assert constructors.count('schematic_name = unit_skeleton_schematic')==10
-    assert constructors.count('animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe')==10
-    for attachment in ['heads','torsos','legs','headgear','hairstyles','beards','weapons','shields','back','offhand']:
-        assert constructors.count('100 = '+attachment+' ')==10,attachment
+    attachments=(out/'main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt').read_text(encoding='utf-8-sig')
+    assert constructors.count('animation_state_machine_name = cm_goblin_infantry')==10
+    assert attachments.count('node = shared_pose_entity')==5
     if game:
-        native_units=(Path(game)/'main_menu/gfx/unit_graphics/units/01_army.txt').read_text(encoding='utf-8-sig')
-        assert 'schematic_name = unit_skeleton_schematic' in native_units
-        assert 'animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe' in native_units
+        native_attachments=(Path(game)/'main_menu/gfx/unit_graphics/attachments/torsos/00_european_torsos.txt').read_text(encoding='utf-8-sig')
+        assert 'node = shared_pose_entity' in native_attachments and 'mesh_name =' in native_attachments
     for clan in config['clans']:
         stem='cm_goblin_'+clan['id'];tag=clan['culture']+'_gfx'
         color=Image.open(folder/(stem+'_0_diffuse.dds')).convert('RGBA').getpixel((0,0))
         expected=tuple(bytes.fromhex(clan['skin_srgb'][1:]))+(255,)
         assert color==expected,(clan['id'],color,expected)
         assert f'{tag}:army_light_infantry' in constructors and f'{tag}:army_heavy_infantry' in constructors
+        assert constructors.count(f'attach = {{ 100 = {stem}_body }}')==2
+        assert f'{stem}_body = {{' in attachments and f'mesh_name = "{stem}_mesh"' in attachments
         asset=(folder/(stem+'.asset')).read_text()
         for texture in re.findall(r'"([^"\n]+\.dds)"',asset):assert (folder/texture).is_file()
         for clip in re.findall(r'type = "([^"\n]+\.anim)"',asset):assert (folder/clip).is_file()
         schematic=(out/'in_game/gfx/models/schematics'/(stem+'_schematic.schematic')).read_text()
         verify_graph(schematic,game)
         ids=set(re.findall(r'(?<!_)\bid=(\d+)',schematic));links=set(re.findall(r'linked_node=(\d+)',schematic));assert links<=ids
-        assert 'mesh_components' in schematic and 'skeleton' in schematic and 'state_machine_components' in schematic
+        assert 'MeshType' not in schematic and 'mesh_components' not in schematic, 'Unit mesh must be created by the attachment factory'
+        assert 'skeleton' in schematic and 'state_machine_components' in schematic
     machine=(out/'main_menu/gfx/animation_state_machines/cm_goblin_infantry.animsm').read_text()
     for clip in re.findall(r'animation="([^"]+)"',machine):assert (folder/(clip+'.anim')).is_file()
     for path in list(folder.glob('*.asset'))+list((out/'in_game/gfx/models/schematics').glob('cm_goblin_*.schematic')):
         text=path.read_text();assert text.count('{')==text.count('}')
-    return {'status':'STATIC MODEL CHECKS PASSED; ENGINE PLAYTEST PENDING','runtime_infantry':'native fallback; custom renderer quarantined','clans':clan_count,'source_joints':23,'exported_bones':len(bones),'triangles_per_clan':triangles,'animations':len(g.g['animations']),'sampled_poses':poses,'maximum_pose_error_cm':maximum,'native_byte_exact_roundtrips':roundtrips,'palettes_and_runtime_references':True,'typed_graph_links_and_unit_parameters':True,'engine_tested':False}
+    return {'status':'STATIC MODEL CHECKS PASSED; ENGINE PLAYTEST PENDING','runtime_infantry':'factory-created shared-pose goblin attachment','clans':clan_count,'source_joints':23,'exported_bones':len(bones),'triangles_per_clan':triangles,'animations':len(g.g['animations']),'sampled_poses':poses,'maximum_pose_error_cm':maximum,'native_byte_exact_roundtrips':roundtrips,'palettes_and_runtime_references':True,'typed_graph_links_and_unit_parameters':True,'engine_tested':False}
 
 if __name__=='__main__':
     import argparse

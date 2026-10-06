@@ -24,7 +24,7 @@ def main():
     ashborn_names.build_names(b,output)
     b.localization(output);archipelago.add_localization(b,output)
     paths=[p for prefix in ['in_game/gfx/models/units/ashborn_goblins','in_game/gfx/models/schematics','in_game/gfx/graphical_culture_types','main_menu/gfx/unit_graphics/units','main_menu/gfx/animation_state_machines'] for p in (output/prefix).rglob('*') if p.is_file()]
-    paths.extend([output/'in_game/common/cultures/goblins_ashborn_isles.txt',output/'main_menu/localization/english/goblins_ashborn_isles_l_english.yml'])
+    paths.extend([output/'in_game/common/cultures/goblins_ashborn_isles.txt',output/'main_menu/localization/english/goblins_ashborn_isles_l_english.yml',output/'main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt'])
     paths.extend(p for prefix in ['in_game/gfx/models/portraits/ashborn','in_game/common/ethnicities','main_menu/gfx/portraits'] for p in (output/prefix).rglob('*') if p.is_file())
     paths.append(output/'in_game/common/genes/zz_ashborn_portraits.txt')
     paths.append(output/'in_game/common/genes/zz_ashborn_outfits.txt')

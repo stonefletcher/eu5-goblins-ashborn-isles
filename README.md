@@ -84,7 +84,7 @@ The builder creates the mod under `build/cindermaw_demo`, validation reports, an
 For the packaged demo:
 
 1. Extract `Cindermaw_Demo_0.2.0.zip` into a writable folder and close EU5 completely.
-2. Run the included `Install-Cindermaw.ps1`. It locates EU5, checks original cache hashes, reconstructs the terrain files and verifies their checksums. It backs up an existing Cindermaw installation outside the mod scan directory.
+2. Double-click the included `Install-Cindermaw.cmd` (which runs `Install-Cindermaw.ps1`). It locates EU5, checks original cache hashes, reconstructs the terrain files and verifies their checksums. It backs up an existing Cindermaw installation outside the mod scan directory.
 3. If discovery fails, supply `-GamePath` with your installation's `game` directory.
 4. Restart EU5, enable only Cindermaw in a dedicated playset, and begin a **new 1337 campaign**.
 

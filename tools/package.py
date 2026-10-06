@@ -8,7 +8,7 @@ if not report.is_file():raise SystemExit('Run build.py successfully first.')
 checks=json.loads(report.read_text())
 if checks['version']!=version:raise SystemExit('Rebuild before packaging this version.')
 dist=ROOT/'dist';dist.mkdir(exist_ok=True)
-docs=['README.md','TESTING.md','LORE.md','Install-Cindermaw.ps1']
+docs=['README.md','TESTING.md','LORE.md','Install-Cindermaw.ps1','Install-Cindermaw.cmd']
 with zipfile.ZipFile(dist/f'Cindermaw_Demo_{version}.zip','w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
     for p in sorted((ROOT/'build/cindermaw_demo').rglob('*')):
         if p.is_file() and not (p.suffix=='.bin' and 'terrain_cache' in p.parts):z.write(p,'cindermaw_demo/'+p.relative_to(ROOT/'build/cindermaw_demo').as_posix())

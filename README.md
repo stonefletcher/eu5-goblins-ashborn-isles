@@ -1,59 +1,77 @@
-# Cindermaw 0.2 - The Ashborn Isles
+# Cindermaw — The Ashborn Isles
 
-Development update for installed EU5 **1.3.11** (Steam build 24187685). Static checks are separate from an in-game pass. This update has not yet been tested in EU5.
+A fantasy **Europa Universalis V** mod introducing five goblin countries on a newly risen volcanic archipelago in the Atlantic. Begin in **1337** with the city of Hooktooth, rival island clans, a shared faith, and ambitions that reach beyond the islands.
 
-![Archipelago map](art/Cindermaw_Map_Preview.png)
+**Current version: 0.2.0.** Targets EU5 **1.3.11 (Pavia)**, Steam build **24187685**.
 
-![Workshop thumbnail](mod/.metadata/thumbnail.png)
+[Repository](https://github.com/stonefletcher/eu5-cindermaw) · [Origins and lore](LORE.md) · [Testing checklist](TESTING.md)
 
-## Changes
+![The Ashborn Isles and their Atlantic location](art/Cindermaw_Map_Preview.png)
 
-- Cindermaw has roughly **2.66 times** its original land area, eight locations and **320,117 people**.
-- **Hooktooth is the capital and a city**, with a marketplace, naval-supplies guild and stockade. The treasury remains poor at 20 gold.
-- **Brackmaw** is a separate country on an island with **60% of Cindermaw's land area** (linear dimensions scale by the square root of 0.6). It has five locations, 183,197 people, Brinekin culture and Brackhaven as its capital town.
-- Three independent clans each hold a two-island chain: **Reefhook**, **Shatterfin**, and **Sootwake**. Their populations are 30,492, 30,819 and 29,022 respectively; each has its own culture and capital town.
-- All five cultures belong to **Goblinkin**, speak Cinder Tongue, and follow **The Hunger Below**.
-- Total: **five countries, eight physical islands, 19 land locations, 593,647 people**. There are 6,000 enslaved Cinderkin in the initial setup; no vanilla population is removed.
-- The islands now sit **in the eastern North Atlantic, between the Azores and Portugal**, in the previously impassable Azores-Biscay ridge area. Their coastal basin connects to the existing navigable sea network. Existing land and navigable sea-lane pixels are unchanged.
-- Island sizes and center offsets derive from the main island's dimensions. Population counts are intentionally uneven and fixed in the source; rebuilding never rerolls them. Editing `radius` scales the group together; the 60% sister-island ratio is checked after rasterization. The builder rejects overlap with vanilla land/routes or between islands rather than silently breaking the map.
-- Internal boundaries use smooth, irregular curves instead of straight Voronoi edges. The same boundary warp drives terrain transitions; every location remains a single connected district.
-- The faction lore and opening event describe the early-1300s volcanic emergence and the divided goblin islands in 1337. See `LORE.md`.
+## The islands that brought their own people
 
-The Atlantic placement puts Portugal and Castile nearby, with France, England and the Maghreb as later coastal targets. The island climate is oceanic and the main food crop is wheat.
+In the early 1300s, fire rose from the Atlantic. When the smoke cleared, new islands stood above the water—and goblins already walked their shores. No fleet had brought them. Whether the mountains birthed them or opened a passage from beneath the world remains disputed.
 
-## Fixes prompted by the first playtest
+Fishing camps became villages. Mines opened in the volcanic ridges, and rival crews fought over sheltered harbors. By 1337, Hooktooth has grown into Cindermaw's capital city. Its captains now look toward the neighboring islands, and beyond them to the wealthy coasts of Europe and North Africa.
 
-The game log rejected BOM-prefixed starting-world keys (`?locations`, `?market_manager`, `?current_age`). The new build writes setup scripts as UTF-8 **without BOM** and retains BOM for localization. This addresses the ignored population/city/market setup; 593,647 is the intended new-campaign total, not a claim of a runtime-verified display.
+The Ashborn Isles are a fictional addition to the historical world. Their emergence and peoples are the mod's fantasy premise.
 
-The combat tags now drive the terrain generator: mountain districts receive volcanic cones and crater rims, hills receive rolling relief, and flatland districts have much lower relief. The builder records each location's tag and minimum/median/maximum height above sea level. Narrow transitions blend between districts and coastlines taper to sea level.
+## Cindermaw
 
-The original demo supplied an unbaked terrain decal, while this installation loads a prebuilt terrain cache with static decals disabled. This build instead patches the native runtime **heightmap, material and index PNG tile streams**, including their mip levels and tile borders. It samples valid material/index combinations from Madagascar and preserves every untouched tile reference and unaffected pixel. Obsolete demo decals are removed from the staged build.
+The largest island belongs to the **Cinderkin**. Its eight locations hold **320,117 people**, with **63,973** in the capital, **Hooktooth**. The capital starts as a city with a marketplace, naval-supplies guild and stockade. Cindermaw has roughly **2.66 times** the land area of the original demo.
 
-This is a programmatic native-cache patch, **not an editor export or an in-game rendering pass**. Close-up terrain, material appearance and navigation must still be checked in EU5.
+A captains' confederation governs the country through a custom election tied to its government reform. The starting treasury is only **20 gold**. Cindermaw's opening fleet is scripted to appear once on its first monthly country pulse; its runtime behavior and affordability still need playtesting.
 
-## Thumbnail
+The volcanic interior supplies a rugged heartland, while lower coastal districts provide harbors and farmland. Uniting the archipelago is a natural opening ambition, rather than a scripted guarantee of conquest.
 
-The 512 x 512 PNG (525,305 bytes, under 1 MB) is embedded at `mod/.metadata/thumbnail.png` in the source and `cindermaw_demo/.metadata/thumbnail.png` in the prepared mod. The installer preserves it. It is a placeholder for the mod listing; no Steam publication has been performed.
+## Brackmaw and the smaller clans
 
-## Install
+**Brackmaw** is the principal rival: a separate country of **Brinekin**, with five locations and **183,197 people**. Its capital, **Brackhaven**, starts as a town. Brackmaw's land area is **60% of Cindermaw's**; its dimensions and position scale with changes to the main island.
 
-1. Extract `Cindermaw_Demo_0.2.0.zip` into a writable folder. **Close EU5 completely.**
-2. Run `Install-Cindermaw.ps1` from the extracted folder. It finds EU5 through Steam's library configuration, checks the original cache hashes, reconstructs the terrain files in the extracted folder, and installs the mod. It backs up the prior Cindermaw outside the mod scan directory.
-3. If detection fails, run:
-   `powershell -ExecutionPolicy Bypass -File .\Install-Cindermaw.ps1 -GamePath "E:\SteamLibrary\steamapps\common\Europa Universalis V\game"`
-   Substitute your installation's `game` folder.
-4. Restart EU5. Enable **only Cindermaw** in a dedicated playset and start a **NEW 1337 campaign**. Existing saves retain their old population and map state.
-5. Use `TESTING.md`. Hooktooth should start as a city with about 63,973 residents, within Cindermaw's 320,117 total.
+Three smaller countries each control a two-island chain. Their capitals are towns, and their distinct cultures share the same wider heritage.
 
-**The ZIP uses compact terrain deltas. Do not just copy its unprepared mod folder.** The installer first reconstructs about 1.8 GB of native cache files from your own game installation. No Python is required for installation. Allow roughly 4 GB free for extraction/preparation plus the installed copy. It never writes to the Steam installation.
+| Country | Culture | Capital | Rank of settlement | Population |
+|---|---|---|---|---:|
+| Cindermaw | Cinderkin | Hooktooth | City | 320,117 |
+| Brackmaw | Brinekin | Brackhaven | Town | 183,197 |
+| Reefhook Clan | Reefkin | Reefhook | Town | 30,492 |
+| Shatterfin Clan | Shatterkin | Shatterfin | Town | 30,819 |
+| Sootwake Clan | Sootkin | Sootwake | Town | 29,022 |
 
-For manual installation, run the installer with `-PrepareOnly` (and `-GamePath` if needed), then copy the complete prepared `cindermaw_demo` folder into your actual Documents folder under `Paradox Interactive/Europa Universalis V/mod/` while EU5 is closed. A prepared source build already contains the reconstructed cache.
+Together they occupy **eight physical islands and 19 land locations**, with **593,647 people**. Population counts are deliberately uneven and fixed in the source, so rebuilding does not reroll them. The setup includes 6,000 enslaved Cinderkin within Cindermaw's total. No vanilla population is removed.
 
-To disable, choose a playset without this mod. Keep its saves separate. Jerusalem and other map/setup overrides require a compatibility build; they are not changed by this update.
+## Goblinkin and the Hunger Below
 
-## Build and source
+All five cultures belong to the **Goblinkin** cultural group, speak **Cinder Tongue**, and follow **The Hunger Below**. Their shared faith remembers the fire beneath the islands and the mystery of their arrival.
 
-Python 3.11+, NumPy and Pillow:
+A common origin has not produced a single state. Each country answers to its own captains; detailed clan diplomacy and species-specific mechanics remain future work.
+
+## Atlantic placement and volcanic terrain
+
+The archipelago lies **between the Azores and Portugal**, putting Portugal and Castile nearby, with France, England and the Maghreb as further coastal targets. A new navigable basin replaces part of the previously impassable Azores-Biscay ridge. Existing vanilla land and navigable sea-lane pixels are preserved.
+
+Internal boundaries use irregular curves instead of rigid straight divisions. Every location remains connected. The terrain generator uses the same boundaries: mountain districts receive volcanic cones and crater rims, hills receive rolling relief, and flatland districts remain lower. Coastal slopes taper toward sea level.
+
+The build patches EU5's native heightmap, material and index tile caches, including mip levels and tile borders. This addresses the original demo's reliance on an unbaked decal. It is a programmatic cache patch; **close-up rendering and combat terrain still require an in-game check**.
+
+## Starting economy
+
+Hooktooth provides the archipelago's new market center. Every country has an urban capital, and every physical island has a port into the connected coastal basin. The climate is oceanic and the principal food crop is wheat.
+
+The initial demo's population and building setup was rejected because of BOM-prefixed starting-world keys. Version 0.2.0 writes setup scripts without that prefix while retaining the required localization encoding. New-campaign population display, construction access, staffing, food balance and market membership must still be verified in EU5.
+
+## Changelog
+
+| Version | Changes |
+|---|---|
+| 0.2.0 | Enlarged and relocated Cindermaw to the Atlantic; added Brackmaw and three clan chains; uneven populations, urban capitals, shared culture group and religion; curved internal borders; native terrain cache patch; setup encoding repair; lore, geographic preview and embedded thumbnail. |
+| 0.1.0 | Initial single-island goblin demo, followed by playtest reports of missing population/buildings and invisible close-up terrain. |
+
+These entries describe local builds. They do not imply Steam Workshop publication.
+
+## Build and install
+
+The source requires Python 3.11+, NumPy and Pillow. Build against your own installed game:
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -61,10 +79,34 @@ python tools/build.py --game "E:\SteamLibrary\steamapps\common\Europa Universali
 python tools/package.py
 ```
 
-`data/island.json` is the source of geometry, countries and populations. `tools/archipelago.py` handles derived geography and world setup. `tools/terrain_cache.py` patches the installed cache format. `build/reports/validation.json` records source hashes, population totals, ports, island ratios and checks. Rebuild after EU5 updates: the installer intentionally rejects mismatched cache versions.
+The builder creates the mod under `build/cindermaw_demo`, validation reports, and packaged demo/source ZIPs under `dist`. Generated game-derived overrides and caches are excluded from source control.
 
-Authored source is tracked in the local Git repository. Generated vanilla overrides and caches are excluded. The source ZIP contains no original game assets.
+For the packaged demo:
 
-## Remaining work
+1. Extract `Cindermaw_Demo_0.2.0.zip` into a writable folder and close EU5 completely.
+2. Run the included `Install-Cindermaw.ps1`. It locates EU5, checks original cache hashes, reconstructs the terrain files and verifies their checksums. It backs up an existing Cindermaw installation outside the mod scan directory.
+3. If discovery fails, supply `-GamePath` with your installation's `game` directory.
+4. Restart EU5, enable only Cindermaw in a dedicated playset, and begin a **new 1337 campaign**.
 
-Human placeholder portraits; species-specific biology/assimilation; detailed clan diplomacy and invasion AI; more varied island shapes; runtime economy balancing; editor-generated settlement/army locators and navigation verification. Small clans currently use vanilla AI behavior and have no scripted opening invasion fleet. Cindermaw's opening fleet is created once on its first monthly country pulse.
+The compact ZIP contains terrain deltas: **do not copy its unprepared mod folder directly**. Installation needs no Python and requires roughly 4 GB free for preparation plus the installed copy. It never writes to the Steam installation. For manual copying, run the installer with `-PrepareOnly` first, then place the complete prepared folder in the EU5 user-data `mod` directory.
+
+## Testing and compatibility
+
+Static validation and installer reconstruction passed for 0.2.0. Checks cover population totals, city/town setup, connected locations and sea access, preserved vanilla routes, island scale, script encoding and native cache integrity. **The updated build has not yet passed an in-game playtest.**
+
+Use `TESTING.md` to check terrain at close zoom, displayed terrain tags, construction, the first monthly tick and save/reload. Small clans currently use vanilla AI behavior and have no scripted opening invasion fleet.
+
+Other mods overriding the map or starting-world setup may conflict, including Crusader States without a compatibility build. Rebuild after game updates; the installer rejects mismatched terrain caches. Long-term balance, achievements and multiplayer remain untested.
+
+To disable, choose a Vanilla playset, restart EU5 and use a vanilla campaign. Keep modded saves separate.
+
+## Artwork and source
+
+The placeholder Workshop thumbnail is embedded at **`mod/.metadata/thumbnail.png`**, beside the metadata file: **512 × 512 pixels, 525,305 bytes**, under 1 MB. Builds and installation preserve it. No Steam upload has been performed.
+
+![Cindermaw Workshop thumbnail](mod/.metadata/thumbnail.png)
+
+The geographic preview reflects the generated map. The thumbnail was created with image generation. Geometry, cultures, countries and populations are configured in `data/island.json`; `tools/archipelago.py` builds the islands and setup, and `tools/terrain_cache.py` handles native terrain tiles.
+
+Future work includes goblin portraits, richer clan relations, invasion behavior, settlement/army locators and gameplay balancing. EU5 and its existing assets belong to Paradox.
+

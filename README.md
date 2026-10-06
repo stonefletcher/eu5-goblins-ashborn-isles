@@ -6,6 +6,12 @@ This is a focused repair candidate, not a confirmed crash root cause. Meshes, pa
 
 ## 0.5.3 development: rough-clad goblins
 
+Infantry recruitment and army cards now have original painted goblin artwork
+for all five Ashborn cultures. Native recruitment, statistics and human artwork
+are unchanged. This first pass shares one medieval painting across infantry
+types and ages. The prepared installer includes this art alongside the latest
+shared-pose model repair and first-contact event. In-game acceptance is pending.
+
 Portrait refinement: ears now extend 9 cm from their base (previously 5.8), with longer hooked noses, smaller jaws/chins, prominent cheeks, wider mouths and smaller teeth. A culture-only special gene applies compact torso proportions and a mild stoop to adult males and females, fading out during childhood. Human cultures remain outside these modifiers. Exact stature, portrait framing and clothing fit await engine review.
 
 Infantry repair candidate: connect the missing translation input explicitly, consume the native CustomAnimationMachineName parameter, and write graphics scripts with a UTF-8 BOM. Typed graph-link checks now complement mesh/animation validation. The prior graph was rejected in the game log; successful in-game rendering is not yet verified.

@@ -135,3 +135,10 @@ deferred while portraits are prioritised; this portrait pass does not claim to f
 
 
 All five Ashborn cultures have 16 male and 16 female name entries, six house names and six lowborn names each. Four additional royal families and 15 adult courtiers are authored. Drogg Cindermaw bears the nickname "the Stone Fletcher"; Jaima Shatterfin bears "the Mare-Mother". Cabinet appointments remain native, drawing on culture-specific names and the available court.
+# 0.5.3 integrated infantry illustrations
+
+- Original goblin regiment artwork for all five Ashborn cultures, including levies.
+- Preserves native recruitment, stats and human artwork; no custom regiments required.
+- Includes the latest shared-pose infantry attachment repair and companion contact event.
+- One medieval painting is shared across infantry types and ages in this first pass.
+- Prepared installer updated and checksum-verified; in-game acceptance pending.

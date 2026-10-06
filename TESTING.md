@@ -149,3 +149,12 @@ All five Ashborn cultures have 16 male and 16 female name entries, six house nam
 - Let another clan visit Portugal: no duplicate popup. Test northern/southern routes for other current port owners, including conquered ports.
 - Confirm Ashborn owners and unowned sea locations do not receive the foreign-contact event.
 - Existing saves: completed voyages do not replay; a future voyage may trigger the first notification.
+# Integrated 0.5.3 infantry artwork
+
+- Fully restart after installation. Inspect infantry recruitment, levies and army cards
+  for each of the five Ashborn cultures; confirm readable goblin illustrations.
+- Check England and Castile retain human unit art and recruitment/stats are unchanged.
+- Verify map infantry spawning and movement separately; the latest shared-pose
+  attachment candidate is included and still needs engine acceptance.
+- Test Portugal's companion event on the next eastern voyage return.
+- Later-age infantry sharing medieval equipment artwork is expected in this first pass.

@@ -37,6 +37,9 @@ def main():
     manifest={'base_release':b.CFG['version'],'stage':'development-models-and-culture-names','engine_tested':False,
               'files':[{'path':p.relative_to(output).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(paths)]}
     (ROOT/'data/main_overlay.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
+    import build_infantry_art
+    infantry=build_infantry_art.build(args.game,output)
+    build_infantry_art.update_manifest(output,infantry)
     (ROOT/'art/models/goblins/native_validation.json').write_text(json.dumps(verification,indent=2)+'\n')
     (ROOT/'art/models/goblins/native_export.json').write_text(json.dumps(report,indent=2)+'\n')
     (ROOT/'art/models/goblins/portrait_export.json').write_text(json.dumps(portraits,indent=2)+'\n')

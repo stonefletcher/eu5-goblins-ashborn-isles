@@ -1,16 +1,24 @@
-# 0.5.3 infantry attachment repair candidate
+# Integrated 0.5.3 test build
 
-Branch: feature/0.5.3-goblin-pirate-portraits. Remote parent 97b49325ca1fbef68d21891872de6dacbe100184.
+Checkout: goblins-0.5.3; branch: feature/0.5.3-goblin-pirate-portraits.
+Base before illustration integration: d15c54f. Artwork source: 6c4cb1c in
+feature/0.5.3-infantry-art; selectively integrated without replacing later fixes.
 
-Evidence: user confirmed native fallback is visible with no crash observed. Prior custom graph had direct root MeshType; native infantry base graph owns the skeleton while visible meshes use unit-graphics shared_pose_entity attachments. Unit repaint shader consumes per-unit instance/material data. The unsymbolized crash does not establish the precise faulting component.
+Includes latest goblin portrait anatomy, shared-pose infantry body attachments,
+and companion first-contact event. Adds original culture-specific regiment art
+for 137 light/heavy infantry definitions across five Ashborn cultures. Uses one
+shared medieval painting in this first pass. Recruitment/stats are unchanged.
 
-Change: remove root MeshType and its link; create five shared-pose body attachments; route all ten clan constructors to their custom skeleton plus one body attachment. Preserve mesh, rig, 17 animation clips and portraits. Add attachment file to checksum overlay. Validator rejects root meshes and missing body attachments.
+All 160 prior overlay entries were preserved byte-for-byte. Art validation and
+prepared-bundle verification passed (1540 overlay entries). Clean source-style
+installer PrepareOnly completed successfully, including reconstruction/checksums
+for all three terrain caches. Build and overlay regeneration retain the new art.
 
-Checks: native attachment syntax, typed graph links, five clans, 51 sampled poses, native round trips and prepared bundle. Clean-export PrepareOnly gate before publishing. No game launch or active installation.
+Prepared package: dist/Goblins_Ashborn_Isles_0.5.3.zip. No active installation,
+game launch, GitHub push or Workshop publication in this integration turn.
 
-Next: test previous spawn/crash date, visible goblin models, idle/movement/combat/retreat and save/reload. Engine acceptance pending. Stable fallback: remote commit 97b49325ca1fbef68d21891872de6dacbe100184.
-
-## Companion first-contact event
-Added goblins_exploration.6 to tools/exploration.py and all three return-voyage owner scopes. One country flag prevents duplicate notifications across ports and clans; Ashborn tags excluded. Narrative: strange shore visitors flee, a scout ship follows to the islands. No physical scout unit is spawned. Completed voyages are not replayed.
-Runtime files are included in the authored overlay and rebuilt prepared bundle. Static route/owner/flag/localization checks and bundle verification passed; engine playtest pending. No active installation or game launch. Test Portugal on the next eastern return, then repeat with another clan and test other port owners.
-Installer PrepareOnly extracted and verified the overlay, then stopped copying terrain because the disk was full; incomplete heightmap copy removed. No install occurred.
+Next: install with EU5 closed and inspect recruitment/levy/army illustrations for
+all five cultures, with human cultures as negative controls. Test infantry spawn,
+movement/combat/retreat and save/reload for the shared-pose candidate; engine
+acceptance remains pending. Test Portugal's event on the next eastern voyage
+return. Already-completed voyages are not replayed.

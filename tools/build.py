@@ -213,6 +213,10 @@ def main():
     discovery=exploration.build(sys.modules[__name__],game,out)
     import export_goblin_models
     models=export_goblin_models.build(out)
+    import build_goblin_portraits
+    build_goblin_portraits.build(out)
+    import verify_goblin_portraits
+    verify_goblin_portraits.verify(out,game)
     import verify_goblin_models
     model_checks=verify_goblin_models.verify(out,game)
     print('Running static validation...',flush=True)

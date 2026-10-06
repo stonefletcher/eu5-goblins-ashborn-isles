@@ -1,0 +1,55 @@
+﻿cm_cindermaw_ethnicity = { template = "ethnicity_template"
+gene_nose_length = { 100 = { name = template_1 range = { 0.82 0.96 } } }
+gene_nose_tip_forward = { 100 = { name = template_1 range = { 0.8 0.95 } } }
+gene_nose_tip_angle = { 100 = { name = template_1 range = { 0.12 0.28 } } }
+gene_nose_width = { 100 = { name = template_1 range = { 0.3 0.48 } } }
+gene_jaw_width = { 100 = { name = template_1 range = { 0.62 0.82 } } }
+gene_eye_size = { 100 = { name = template_1 range = { 0.68 0.85 } } }
+gene_chin_size = { 100 = { name = template_1 range = { 0.28 0.45 } } }
+cm_cindermaw_skin = { 100 = { name = cm_cindermaw_skin range = { 1 1 } } }
+cm_ashborn_features = { 100 = { name = cm_cindermaw_features range = { 1 1 } } }
+}
+cm_brackmaw_ethnicity = { template = "ethnicity_template"
+gene_nose_length = { 100 = { name = template_1 range = { 0.82 0.96 } } }
+gene_nose_tip_forward = { 100 = { name = template_1 range = { 0.8 0.95 } } }
+gene_nose_tip_angle = { 100 = { name = template_1 range = { 0.12 0.28 } } }
+gene_nose_width = { 100 = { name = template_1 range = { 0.3 0.48 } } }
+gene_jaw_width = { 100 = { name = template_1 range = { 0.62 0.82 } } }
+gene_eye_size = { 100 = { name = template_1 range = { 0.68 0.85 } } }
+gene_chin_size = { 100 = { name = template_1 range = { 0.28 0.45 } } }
+cm_brackmaw_skin = { 100 = { name = cm_brackmaw_skin range = { 1 1 } } }
+cm_ashborn_features = { 100 = { name = cm_brackmaw_features range = { 1 1 } } }
+}
+cm_reefhook_ethnicity = { template = "ethnicity_template"
+gene_nose_length = { 100 = { name = template_1 range = { 0.82 0.96 } } }
+gene_nose_tip_forward = { 100 = { name = template_1 range = { 0.8 0.95 } } }
+gene_nose_tip_angle = { 100 = { name = template_1 range = { 0.12 0.28 } } }
+gene_nose_width = { 100 = { name = template_1 range = { 0.3 0.48 } } }
+gene_jaw_width = { 100 = { name = template_1 range = { 0.62 0.82 } } }
+gene_eye_size = { 100 = { name = template_1 range = { 0.68 0.85 } } }
+gene_chin_size = { 100 = { name = template_1 range = { 0.28 0.45 } } }
+cm_reefhook_skin = { 100 = { name = cm_reefhook_skin range = { 1 1 } } }
+cm_ashborn_features = { 100 = { name = cm_reefhook_features range = { 1 1 } } }
+}
+cm_shatterfin_ethnicity = { template = "ethnicity_template"
+gene_nose_length = { 100 = { name = template_1 range = { 0.82 0.96 } } }
+gene_nose_tip_forward = { 100 = { name = template_1 range = { 0.8 0.95 } } }
+gene_nose_tip_angle = { 100 = { name = template_1 range = { 0.12 0.28 } } }
+gene_nose_width = { 100 = { name = template_1 range = { 0.3 0.48 } } }
+gene_jaw_width = { 100 = { name = template_1 range = { 0.62 0.82 } } }
+gene_eye_size = { 100 = { name = template_1 range = { 0.68 0.85 } } }
+gene_chin_size = { 100 = { name = template_1 range = { 0.28 0.45 } } }
+cm_shatterfin_skin = { 100 = { name = cm_shatterfin_skin range = { 1 1 } } }
+cm_ashborn_features = { 100 = { name = cm_shatterfin_features range = { 1 1 } } }
+}
+cm_sootwake_ethnicity = { template = "ethnicity_template"
+gene_nose_length = { 100 = { name = template_1 range = { 0.82 0.96 } } }
+gene_nose_tip_forward = { 100 = { name = template_1 range = { 0.8 0.95 } } }
+gene_nose_tip_angle = { 100 = { name = template_1 range = { 0.12 0.28 } } }
+gene_nose_width = { 100 = { name = template_1 range = { 0.3 0.48 } } }
+gene_jaw_width = { 100 = { name = template_1 range = { 0.62 0.82 } } }
+gene_eye_size = { 100 = { name = template_1 range = { 0.68 0.85 } } }
+gene_chin_size = { 100 = { name = template_1 range = { 0.28 0.45 } } }
+cm_sootwake_skin = { 100 = { name = cm_sootwake_skin range = { 1 1 } } }
+cm_ashborn_features = { 100 = { name = cm_sootwake_features range = { 1 1 } } }
+}

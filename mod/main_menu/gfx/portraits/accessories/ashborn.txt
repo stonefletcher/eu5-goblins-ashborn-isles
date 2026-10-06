@@ -1,0 +1,15 @@
+﻿cm_cindermaw_male_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_cindermaw_male_features_entity } }
+cm_cindermaw_female_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_cindermaw_female_features_entity } }
+cm_cindermaw_infant_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_cindermaw_infant_features_entity } }
+cm_brackmaw_male_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_brackmaw_male_features_entity } }
+cm_brackmaw_female_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_brackmaw_female_features_entity } }
+cm_brackmaw_infant_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_brackmaw_infant_features_entity } }
+cm_reefhook_male_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_reefhook_male_features_entity } }
+cm_reefhook_female_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_reefhook_female_features_entity } }
+cm_reefhook_infant_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_reefhook_infant_features_entity } }
+cm_shatterfin_male_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_shatterfin_male_features_entity } }
+cm_shatterfin_female_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_shatterfin_female_features_entity } }
+cm_shatterfin_infant_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_shatterfin_infant_features_entity } }
+cm_sootwake_male_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_sootwake_male_features_entity } }
+cm_sootwake_female_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_sootwake_female_features_entity } }
+cm_sootwake_infant_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_sootwake_infant_features_entity } }

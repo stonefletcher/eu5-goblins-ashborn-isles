@@ -32,7 +32,7 @@ The **Ashborn** culture group includes Cindermaw's forge-bound **Emberblood**, B
 
 ## Goblin infantry models
 
-Main includes five clan skin palettes, native `.mesh` files, DDS materials and 17 converted animations from the licensed model sources in [art/models/goblins](art/models/goblins/README.md). Light and heavy infantry select their clan model through dedicated culture graphics tags. The first pass uses the shared short goblin body and its own rig; clothing, weapon fitting, cavalry, artillery crews and character portraits need separate work. Infantry movement, attack, retreat and charge use the source animations; the exported death clip is available but is not yet connected to a verified game death event.
+Main includes five clan skin palettes, native `.mesh` files, DDS materials and 17 converted animations from the licensed model sources in [art/models/goblins](art/models/goblins/README.md). Light and heavy infantry select their clan model through dedicated culture graphics tags. The first pass uses the shared short goblin body and its own rig; clothing, weapon fitting, cavalry and artillery crews need separate work. Portraits now use the separate test pass below. Infantry movement, attack, retreat and charge use the source animations; the exported death clip is available but is not yet connected to a verified game death event.
 
 Native animation checks compare 51 decoded poses against their GLB sources, with a maximum difference below 0.002 cm. Native mesh and animation files also pass byte-exact reader/writer checks. These checks do not prove in-game rendering. Restart and follow TESTING.md before accepting the models.
 
@@ -72,7 +72,7 @@ The old 15% tax-income penalty is removed. Cindermaw's first-month force is redu
 
 The opening lore event now has a single **The Ashborn rise.** option. The two old buttons only showed different advice and produced identical gameplay outcomes.
 
-**Dedicated foreign coveting/fear mechanics are not implemented yet.** England, Castile/Spain and other powers do not yet have scripted ambitions toward these islands. Goblin portraits, deeper clan diplomacy, long-term balance and multiplayer testing remain future work.
+**Dedicated foreign coveting/fear mechanics are not implemented yet.** England, Castile/Spain and other powers do not yet have scripted ambitions toward these islands. Portrait appearance testing, deeper clan diplomacy, long-term balance and multiplayer testing remain future work.
 
 ## Install the test build
 
@@ -119,3 +119,33 @@ To disable, choose a vanilla playset, restart EU5 and use an unmodded campaign. 
 ## Publishing prepared releases
 
 The main branch stores the authored source tree and the merged prepared release under `.release/`, so Download ZIP can install without a local build. Release branches carry hash-listed base64 chunks of the locally built install/source archives. The publishing workflow verifies their sizes, SHA-256 hashes and ZIP integrity, then creates a GitHub test release tagged at the manifest's source commit. It will not overwrite an existing release. The installer verifies and unpacks the prepared archive into `.prepared-release-VERSION/` when no built mod is present.
+
+
+## Culture-based portrait test pass (main only)
+
+All five Ashborn cultures now select their own portrait ethnicity and deterministic
+appearance modifier. The rules follow the character's culture, not their employer,
+country, sex, or office. This targets ruling families, cabinet members, other
+characters and culture-generated population portraits. Existing character DNA gets
+the visible modifiers without a save-edit migration. Newly generated DNA also uses
+the culture's ethnicity. Human cultures receive none of these modifiers.
+
+The pass uses the native animated portrait faces and clothing, with custom rigged
+pointed ears, jaw-bound tusks, goblin facial proportions, and matching head/body skin
+colour. It does not reuse the infantry's whole-body mesh as a portrait. Adult male,
+adult female, boy, girl, both adolescent types and infant are configured; infants
+have smaller ears without tusks. Clan colours match the infantry art palette.
+
+**Status: static checks passed; in-game appearance has not been verified.** Native
+rig bindings, skin weights, geometry, asset references, all seven portrait types,
+and all five culture routes are checked by `tools/verify_goblin_portraits.py`.
+Clothing fit, expressions, child scaling and population portrait selection still
+need a game test. Restart EU5 after installing a fresh main download; the published
+0.5.0 ZIP does not contain this pass. Compare a ruler, relative, cabinet member,
+woman, child and infant from each culture, plus a human character as a control.
+Check skin on neck/hands, eyes, ear placement, tusks during animation, save/reload,
+and a newly generated character. Send a screenshot and fresh error.log if wrong.
+
+The separate infantry integration currently fails in-game with `Invalid entity
+graph [cm_goblin_cindermaw_schematic]`, producing invisible infantry. Its repair is
+deferred while portraits are prioritised; this portrait pass does not claim to fix it.

@@ -209,7 +209,7 @@ def build(out):
         tag=clan['culture']+'_gfx'
         for category in ['army_light_infantry','army_heavy_infantry']:
             constructors.append(f'{tag}:{category} = {{ schematic_name = {name}_schematic animation_state_machine_name = cm_goblin_infantry }}')
-        cultures.append(f'{tag} = {{ priority = 600 culture_tag = {tag} }}')
+        cultures.append(f'{tag} = {{ priority = 600 culture_tag = {tag} ethnicities = {{ 100 = cm_{clan["id"]}_ethnicity }} }}')
         report['clans'].append({'clan':clan['id'],'culture':clan['culture'],'gfx_tag':tag,'bones':len(g.bones),'source_joints':len(g.skin['joints']),'mesh':str(MODEL_REL/(name+'.mesh'))})
     write_text(out/'main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt','\n'.join(constructors)+'\n')
     write_text(out/'in_game/gfx/graphical_culture_types/ashborn_goblins.txt','\n'.join(cultures)+'\n')

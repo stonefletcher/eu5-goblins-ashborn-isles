@@ -8,8 +8,64 @@
       "sha256": "ba3189bcffd7330e0f59b16e0b82d2dcd4701259b43ecee12fb36c58714b3a3d"
     },
     {
+      "path": "in_game/common/ethnicities/ashborn.txt",
+      "sha256": "c15176af99780adf3a993321bde13db4cf57385f5f166e3ee7e04e76596194c5"
+    },
+    {
+      "path": "in_game/common/genes/zz_ashborn_portraits.txt",
+      "sha256": "85c6256187792210732f60dee857382c0a742a753ba49defa3c2ab72f9c0f2aa"
+    },
+    {
       "path": "in_game/gfx/graphical_culture_types/ashborn_goblins.txt",
-      "sha256": "19b5e289331f24640279c59d181097397e3f7f9bcbb10b7e675cc25172b9e538"
+      "sha256": "c4b5ebbe1ff6cc89832d4f4c72dd26d328e4f9f09527de5c7004953362cd9f84"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/ashborn_features.asset",
+      "sha256": "97991f238cba7f0205d7bd08657ad2c6ec4d72554846f539ca10b7854e7e7c6d"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/brackmaw_skin.dds",
+      "sha256": "237cbdd9911d208f72e01ad3325962c78043f9a1813acd8f703dee9af93065d4"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/cindermaw_skin.dds",
+      "sha256": "3034ea20de9c360c97c64d8a546da2f01a1b0d05b83acf26c16b1fa4a48800a3"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/cm_female_features.mesh",
+      "sha256": "44814bf625e217df3e92c321608a67122d095e45a3c116701d2f5f1f099b42b0"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/cm_infant_features.mesh",
+      "sha256": "a984b1f715100935bca9a14312e4bc609fc44a427fc6700f9e0bd3fadaeb2e0c"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/cm_male_features.mesh",
+      "sha256": "5d45b7b66a083f30167cb5784e563644892415d25e8f53c8ca8ba8dd9046864c"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/ivory.dds",
+      "sha256": "1c9f2b91bdf09f508a2c58eba2f152c7dc2e80ec893d3021aae1f931f0f95803"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/normal.dds",
+      "sha256": "bf4ca0c2d7d5a74298c0f80571ee553abaa950389ea4d151a266fd8c022eedb6"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/properties.dds",
+      "sha256": "542b71f8dc2f6cd170d739cd810e1feef7c1e1215fa135062536e5e898f35cbe"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/reefhook_skin.dds",
+      "sha256": "3f18f797e04a1ac860fa6d7fe86bc3fc6374fe9f3e7a323b628a9d9ff788a3b3"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/shatterfin_skin.dds",
+      "sha256": "7a24624d84e5de96383d7e410238adfd7000db5b9360a67d2ae522578656e9a8"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/sootwake_skin.dds",
+      "sha256": "4b335f63396f79a188c0f314e4093b639c7b699a79e0273aeec42bf1e8ea9a55"
     },
     {
       "path": "in_game/gfx/models/schematics/cm_goblin_brackmaw_schematic.schematic",
@@ -542,6 +598,14 @@
     {
       "path": "main_menu/gfx/animation_state_machines/cm_goblin_infantry.animsm",
       "sha256": "0b9096574088f855d5d5f27f157c0b07945501c3b3297d07faa7aaf7f0ffc90a"
+    },
+    {
+      "path": "main_menu/gfx/portraits/accessories/ashborn.txt",
+      "sha256": "66b32d2aade57a59f6993f8d70e1d8365c677f8edb4d05ba42aeb31310862e30"
+    },
+    {
+      "path": "main_menu/gfx/portraits/portrait_modifiers/zz_ashborn.txt",
+      "sha256": "a4c8e3cfb47fab20186da915b77238c2a3e678ac5a1d09dd1b8e18c34e654eab"
     },
     {
       "path": "main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt",

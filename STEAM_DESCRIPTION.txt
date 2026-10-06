@@ -1,0 +1,46 @@
+[h1]Goblins of the Ashborn Isles[/h1]
+[b]A fantasy Europa Universalis V demo — Version 0.5.3[/b]
+
+Fire rose from the Atlantic. When the smoke cleared, new islands stood between the Azores and Portugal — and goblins already walked their shores.
+
+Now five rival nations carve a living from volcanic ridges, sheltered harbours and treacherous seas. Captains quarrel, mines ring beneath the mountains, and the world beyond the horizon waits to be discovered.
+
+Lead one of the Ashborn clans in a new 1337 campaign. Build your island realm, chart foreign shores, and decide whether your neighbours will become trading partners, rivals, or the first conquests of a goblin empire.
+
+[h2]Five clans. One archipelago.[/h2]
+[list]
+[*][b]Cindermaw — Emberblood:[/b] The largest Ashborn realm, with the city of Hooktooth at its heart. King Drogg, "the Stone Fletcher," rules a land of forges and volcanic ridges.
+[*][b]Brackmaw — Brineward:[/b] A substantial rival centred on Brackhaven, with its own marshland identity and ruling house.
+[*][b]Reefhook Clan — Reefstrider:[/b] A smaller island realm shaped by shoals, fisheries and the sea.
+[*][b]Shatterfin Clan — Stormfang:[/b] Home of the Tidemothers. Jaima "the Mare-Mother" leads a ruling house whose succession follows senior women through the maternal line.
+[*][b]Sootwake Clan — Ashveil:[/b] A small woodland realm with a distinct culture, court and future to forge.
+[/list]
+
+[h2]What is in the demo?[/h2]
+[list]
+[*][b]A new Atlantic homeland:[/b] Six volcanic islands, 36 land locations and 13 coastal sea zones, with custom terrain, ports, settlements and resources.
+[*][b]A shared goblin identity:[/b] Five Ashborn cultures, Cinder Tongue, the Hunger Below faith, and original clan names, dynasties and royal families.
+[*][b]Two paths to power:[/b] Four Ironfang Monarchies follow Rule of the Strongest, favouring eligible adult men by military ability. Shatterfin follows the senior eligible woman of its ruling maternal dynasty.
+[*][b]Voyages into the unknown:[/b] Fund expeditions toward Iberia, northern waters and northwest Africa. Returning crews bring charts — and contact reveals the isles to the countries they visit.
+[*][b]An island economy:[/b] Develop a shared market, fishing villages, mines, ports and modest urban industries.
+[*][b]Goblin character and unit art:[/b] Clan-based portrait appearances and custom infantry assets. The 0.5.3 art pass introduces more subdued skin colours, revised goblin features and rougher clothing; visuals remain under development.
+[/list]
+
+[h2]Demo status[/h2]
+This is an early development demo, not a finished overhaul. Terrain, portraits, unit rendering, succession and economic balance are still being tested and refined. Updates may require a fresh campaign. Multiplayer and achievement compatibility are unverified.
+
+Dedicated foreign invasion ambitions and fear mechanics are planned, but are not included in this demo. England and Castile do not yet receive special scripted objectives to conquer the Ashborn Isles.
+
+[h2]Starting a campaign[/h2]
+[list]
+[*]Built for [b]Europa Universalis V 1.3.11 (Pavia)[/b].
+[*]Enable the mod, restart the game and start a [b]new 1337 campaign[/b].
+[*]For initial testing, enable this mod on its own. Other map, terrain shader or starting-world mods may conflict, including Crusader States without a compatibility patch.
+[*]Keep separate saves. To return to vanilla, disable the mod, restart and use an unmodded campaign.
+[/list]
+
+[h2]Feedback[/h2]
+Bug reports and screenshots are welcome. Please include your mod version, selected clan, enabled mods, whether you started a new campaign, and steps to reproduce the issue.
+
+[h2]Credits[/h2]
+Original mod setting and development by Stonefletcher. Base goblin infantry model: Quaternius, Ultimate Animated Character Pack (CC0), adapted for the Ashborn clans. Banner and thumbnail created with AI image generation. Europa Universalis V and its original assets belong to Paradox Interactive.

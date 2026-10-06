@@ -88,6 +88,12 @@ def heights(cfg,x,y):
         dx=island['center'][0]-cfg['center'][0];dy=island['center'][1]-cfg['center'][1]
         rx,ry=island['radius'];lx=x-dx;ly=y-dy
         inland=shape(lx,ly,rx,ry,island['profile']);mask=inland>0
+        shelf=inland>-.12
+        if not shelf.any():continue
+        # Cross sea level continuously instead of jumping 3,300 height units
+        # from the seabed to the first land sample at every coastline.
+        depth=np.clip(-inland/.12,0,1);depth=depth*depth*(3-2*depth)
+        result[shelf]=np.maximum(result[shelf],(sea-(sea-2234)*depth)[shelf])
         if not mask.any():continue
         distances=[];targets=[];wx,wy=warped(island,lx,ly)
         for loc in island['locations']:
@@ -108,9 +114,9 @@ def heights(cfg,x,y):
         # Smooth narrow boundaries, preserving flatter harbors and farm districts.
         weights=np.exp(-(ds-dmin)/max(4,(min(rx,ry)*.18)**2))
         h=(weights*np.stack(targets)).sum(axis=0)/weights.sum(axis=0)
-        shore=np.clip(inland/.14,0,1)
-        h=sea+110+(h-sea-110)*shore
-        result[mask]=h[mask]
+        shore=np.clip(inland/.18,0,1);shore=shore*shore*(3-2*shore)
+        h=sea+(h-sea)*shore
+        result[mask]=np.maximum(result[mask],np.maximum(h[mask],math.ceil(sea)))
     for px,py in cfg.get('coastal_fill',[]):
         fill=(np.abs(x-px)<.5)&(np.abs(y-py)<.5)
         result[fill]=np.maximum(result[fill],sea+120)
@@ -126,11 +132,11 @@ def build_map(b,game,out,reports):
     im=Image.open(b.source(game,'in_game/map_data/locations.png'));original=np.array(im.crop(box));patch=original.copy()
     zones=sea['zones']
     for zone in zones:assert tuple(bytes.fromhex(zone['color'])) not in inv
-    basin=((xx-scx)/srx)**2+((yy-scy)/sry)**2<=1
-    basin &= np.all(original==names[sea['source_water']],axis=2)
-    # Three broad connected waters, with gently curved borders between them.
-    split_y=yy+12*np.sin((xx-cx)/95)
-    sea_labels=np.where(split_y<cy+ry*.9,0,np.where(split_y<cy+ry*1.9,1,2))
+    # Follow native Atlantic boundaries; retain a western deep-ocean reserve.
+    basin=np.all(original==names[sea['source_water']],axis=2)
+    basin &= xx>=cx-320+.18*(yy-cy)
+    # Compact coastal cells, comparable to adjacent vanilla ocean locations.
+    sea_labels=np.argmin(np.stack([(xx-cx-z['seed'][0])**2+(yy-cy-z['seed'][1])**2 for z in zones]),axis=0)
     for zi,zone in enumerate(zones):patch[basin&(sea_labels==zi)]=tuple(bytes.fromhex(zone['color']))
     island_labels=np.full(xx.shape,-1,np.int16);labels=np.full(xx.shape,-1,np.int16);land=np.zeros(xx.shape,bool);stats={};offset=0
     for ii,island in enumerate(cfg['islands']):
@@ -190,7 +196,7 @@ def build_map(b,game,out,reports):
     for zone in zones:
         reached={zone['id']}
         for _ in zones:reached|=set().union(*(sea_graph[n] for n in reached))
-        assert len(reached)==3 and any(exits[n] for n in reached),'No navigable Atlantic route'
+        assert len(reached)==len(zones) and any(exits[n] for n in reached),'No navigable Atlantic route'
     defaults=b.inject(defaults,'sea_zones',' '.join(z['id'] for z in zones))
     b.write(out,'in_game/map_data/default.map',defaults)
     neighbors=set()
@@ -236,11 +242,14 @@ def build_map(b,game,out,reports):
     provinces={l['province']:[x['id'] for x in locs if x['province']==l['province']] for l in locs}
     area='cm_cindermaw_area = {\n'+'\n'.join(f'{p} = {{ {" ".join(ids)} }}' for p,ids in provinces.items())+'\n}'
     defs=b.inject(b.read(game,'in_game/map_data/definitions.txt'),cfg['region'],area)
-    defs=b.inject(defs,sea['province'],' '.join(z['id'] for z in zones));b.write(out,'in_game/map_data/definitions.txt',defs)
+    defs=b.inject(defs,cfg['region'],'cm_ashborn_seas_area = { cm_ashborn_seas_province = { '+' '.join(z['id'] for z in zones)+' } }')
+    b.write(out,'in_game/map_data/definitions.txt',defs)
     pixels={isl['id']:sum(stats[l['id']]['pixels'] for l in isl['locations']) for isl in cfg['islands']};ratio=pixels['brackmaw']/pixels['cindermaw'];assert abs(ratio-.6)<.01
     # Exact generated map preview.
     preview=np.zeros_like(patch);preview[:]=(20,42,59)
-    for zi,color in enumerate([(34,71,88),(40,85,99),(28,60,80)]):preview[seawater&(sea_labels==zi)]=color
+    palette=[(34,71,88),(49,91,104),(28,60,80),(41,80,99),(58,102,112)]
+    for zi,zone in enumerate(zones):preview[seawater&(sea_labels==zi)]=palette[zi%len(palette)]
+    for dy,dx in [(0,1),(1,0)]:preview[seawater & np.roll(seawater,(dy,dx),(0,1)) & (sea_labels!=np.roll(sea_labels,(dy,dx),(0,1)))]=(77,125,142)
     for c in cfg['countries']:
         for i,l in enumerate(locs):
             if l['country']==c['tag']:preview[labels==i]=c['color']
@@ -255,6 +264,9 @@ def build_map(b,game,out,reports):
         d.ellipse((x-4,y-4,x+4,y+4),fill='#ffe29a');d.text((x-22,y+9),c['name'],font=b.font(16),fill='white',stroke_width=1,stroke_fill='#101c25')
     for i,c in enumerate(cfg['countries']):
         total=sum(int(Decimal(str(l['pop']))*1000) for l in locs if l['country']==c['tag']);d.text((40,790+i*30),f'{c["name"]}: {total:,} people | {c["culture_name"]} | capital: '+next(l['name'] for l in locs if l['id']==c['capital']),font=b.font(18),fill='#d4ddd9')
+    for zi,zone in enumerate(zones):
+        ys,xs=np.where(seawater&(sea_labels==zi));mx=np.median(xs);my=np.median(ys);j=int(((xs-mx)**2+(ys-my)**2).argmin())
+        d.text((40+xs[j]*sx,140+ys[j]*sy),zone['name'],font=b.font(11),anchor='mm',fill='#e5f0f0',stroke_width=1,stroke_fill='#101c25')
     canvas.save(reports/'Goblins_Map_Preview.png')
     h=heights(cfg,xx+.5-cx,yy+.5-cy)
     from locators import build_locators
@@ -264,7 +276,10 @@ def build_map(b,game,out,reports):
         stats[l['id']]['topography']=l['topography']
         stats[l['id']]['height_above_sea']={'min':round(float(samples.min()),1),'median':round(float(np.median(samples)),1),'max':round(float(samples.max()),1)}
     hp=np.clip((h.astype(float)-2234)/42,0,255).astype(np.uint8);Image.fromarray(hp).save(reports/'Goblins_Terrain_Preview.png')
-    return {'center_png':cfg['center'],'bounds':list(box),'locations':stats,'ports':ports,'settlement_locators':anchors,'sea_zone_adjacency':{k:sorted(v) for k,v in sea_graph.items()},'sea_zone_exits':{k:sorted(v) for k,v in exits.items()},'land_pixels':int(land.sum()),'island_pixels':pixels,'sister_area_ratio':ratio,'coastal_sea_connections':sorted(neighbors),'original_sea_lanes_preserved':True,'replaced_water_locations':[sea['source_water']],'adjacencies':[[locs[a]['id'],locs[c]['id']] for a,c in sorted(edges)]}
+    sea_sizes={z['id']:int(np.sum(seawater&(sea_labels==zi))) for zi,z in enumerate(zones)}
+    assert min(sea_sizes.values())>=1500 and max(sea_sizes.values())<=22000,sea_sizes
+    assert len({p['sea'] for p in ports if next(l for l in locs if l['id']==p['land'])['island']=='cindermaw'})>=2
+    return {'center_png':cfg['center'],'bounds':list(box),'locations':stats,'ports':ports,'settlement_locators':anchors,'sea_zone_pixels':sea_sizes,'sea_zone_adjacency':{k:sorted(v) for k,v in sea_graph.items()},'sea_zone_exits':{k:sorted(v) for k,v in exits.items()},'land_pixels':int(land.sum()),'island_pixels':pixels,'sister_area_ratio':ratio,'coastal_sea_connections':sorted(neighbors),'original_sea_lanes_preserved':True,'replaced_water_locations':[sea['source_water']],'adjacencies':[[locs[a]['id'],locs[c]['id']] for a,c in sorted(edges)]}
 
 def build_setup(b,game,out):
     cfg=b.CFG;locs=cfg['locations'];countries=cfg['countries'];entries=[];popentries=[];cities=[];markets=[];total=Decimal(0);slaves=Decimal(0)
@@ -274,10 +289,8 @@ def build_setup(b,game,out):
         ids=' '.join(l['id'] for l in locs if l['country']==c['tag'])
         entries.append(f'''{c['tag']} = {{
  own_control_core = {{ {ids} }}
- include = "{cfg['discovery_template']}"
  include = "cm_captains"
- discovered_areas = {{ cm_cindermaw_area }}
- discovered_regions = {{ {cfg['region']} }}
+ discovered_areas = {{ cm_cindermaw_area cm_ashborn_seas_area }}
  capital = {c['capital']}
  country_rank = rank_duchy
  starting_technology_level = 3
@@ -311,7 +324,7 @@ def add_localization(b,out):
     rel='main_menu/localization/english/goblins_ashborn_isles_l_english.yml';p=out/rel;s=p.read_text(encoding='utf-8-sig');extra={}
     for c in b.CFG['countries']:
         if c['tag']!='CDM':extra.update({c['tag']:c['name'],c['tag']+'_ADJ':c['adjective'],c['culture']:c['culture_name']})
-    extra.update({'cm_goblin_group':'Goblinkin','cm_goblin_group_desc':'The peoples who emerged with the Ashborn Isles in the early fourteenth century.','cm_captain_elective_desc':'Ship captains choose a High Captain to lead their confederation.','cm_ashen_faiths_ADJ':'Ashen','cm_ashen_faiths_desc':'The island faiths of the Goblinkin, united in reverence for the power beneath the volcanoes.'})
+    extra.update({'cm_goblin_group':'Goblinkin','cm_goblin_group_desc':'The peoples who emerged with the Ashborn Isles in the early fourteenth century.','cm_captain_elective_desc':'Ship captains choose a High Captain to lead their confederation.','cm_ashen_faiths_ADJ':'Ashen','cm_ashen_faiths_desc':'The island faiths of the Goblinkin, united in reverence for the power beneath the volcanoes.','cm_ashborn_seas_area':'Ashborn Waters','cm_ashborn_seas_province':'Ashborn Waters'})
     extra.update({z['id']:z['name'] for z in b.CFG['coastal_sea']['zones']})
     # Replace existing keys rather than emit duplicate localization.
     extra.update({'cindermaw.1.desc':LORE,'cm_demo_building_tip':'Hooktooth is a city with a marketplace, naval-supplies guild and stockade. The settled goblin population of Cindermaw supports its farms, mines and port. The neighboring goblin captains rule independent countries.','cm_cindermaw_area':'The Ashborn Isles'})
@@ -322,5 +335,4 @@ def add_localization(b,out):
         if re.search(pattern,s):s=re.sub(pattern,lambda m:line,s)
         else:s+=line+'\n'
     b.write(out,rel,s)
-    (b.ROOT/'LORE.md').write_text('# Cindermaw - The Ashborn Isles\n\n'+LORE+'\n',encoding='utf-8')
-
+    (b.ROOT/'LORE.md').write_text('# Goblins of the Ashborn Isles\n\n'+LORE+'\n',encoding='utf-8')

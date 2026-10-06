@@ -1,10 +1,10 @@
-# Goblins of the Ashborn Isles 0.3.0 verification
+# Goblins of the Ashborn Isles 0.4.0 verification
 
 ## Build checks
 
-- Require a fresh 0.3.0 validation report against EU5 1.3.11.
+- Require a fresh 0.4.0 validation report against EU5 1.3.11.
 - Check 19 connected land footprints, six islands and preserved vanilla geography.
-- Verify three registered sea zones, connected to each other and native Atlantic lanes.
+- Verify thirteen registered sea zones, connected to each other and native Atlantic lanes.
 - Verify 19 settlement anchors within their own land, fleet/combat anchors and coastal ports.
 - Check population totals, capital ranks, braces, law/policy IDs and republic election registration.
 - Validate native terrain caches and compact-package reconstruction checksums.
@@ -18,12 +18,21 @@ Fully restart EU5. Enable only **Goblins of the Ashborn Isles** and start a new 
 2. Check populations: Cindermaw 320,117; Brackmaw 183,197; Reefhook 30,492; Shatterfin 30,819; Sootwake 29,022. Hooktooth is a city with 63,973 people; other capitals are towns.
 3. Zoom into every island. Inspect coasts, mountains, craters, less-green materials, visible settlements and cache seams. Check armies and docks.
 4. Advance one month as Cindermaw: its opening force and introduction should appear once. Advance another month and save/reload to check they do not repeat.
-5. Sail through Cindermaw Roads, Ashborn Channel and Brackmaw Sound, then out into the Atlantic. Dock at each island and test embarkation and landing. No sailing through land or invisible bridges.
+5. Sail around Cindermaw through its distinct north, west and east waters and the southern channel. After exploration, sail out into the Atlantic. Dock at each island and test embarkation and landing. No sailing through land or invisible bridges.
 6. Move armies over internal borders. Inspect combat terrain, buildings, construction, workers, food and market membership.
 7. Test captain elections, raiding under vanilla conditions and budgets for at least a year.
 8. Review fresh logs for invalid sea targets, mixed sea/land areas, election mismatches, missing advances, parser errors and locator errors. Compare unrelated errors against vanilla. An empty religion-modifier warning remains a known content limitation.
 9. Confirm the renamed mod appears once and the previous installation is backed up outside the mod scan directory.
 10. Switch to vanilla and start an unmodded campaign to confirm normal geography.
+
+## Exploration acceptance
+
+- In a NEW 1337 campaign, each goblin country sees only the archipelago and its thirteen waters; Portugal, France and Britain begin as terra incognita. Old saves retain old discoveries.
+- At approximately the fourth monthly pulse, the first voyage offer appears. Postpone: no cost or reveal; the offer returns six months later.
+- Fund the eastern voyage for 5 gold: no immediate reveal, no duplicate offer while pending. After four months the result reveals only the western Iberian route and Porto/Lisbon/Setubal.
+- After twelve more months, fund a northern or southern voyage for 10 gold. Six months later, verify only the chosen coast is revealed. The other voyage remains available after the next cooldown.
+- Save/reload during a voyage: it still returns once. Insufficient gold disables funding but always permits postponement. Test a smaller clan too.
+- European countries receive no scripted knowledge of the islands. Discovery alone does not guarantee an AI invasion.
 
 ## Limits
 

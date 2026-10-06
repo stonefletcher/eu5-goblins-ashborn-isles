@@ -1,4 +1,4 @@
-monthly_country_pulse = { on_actions = { cm_demo_monthly } }
+﻿monthly_country_pulse = { on_actions = { cm_demo_monthly ga_exploration_monthly } }
 cm_demo_monthly = {
     trigger = { tag = CDM }
     effect = {

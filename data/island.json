@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "game_version": "1.3.11",
   "tag": "CDM",
   "center": [
@@ -27,17 +27,119 @@
       {
         "id": "cm_cindermaw_sea",
         "color": "ed12f0",
-        "name": "Cindermaw Roads"
+        "name": "Cindermaw Roads",
+        "seed": [
+          125,
+          15
+        ]
       },
       {
         "id": "cm_ashborn_channel",
         "color": "ed12f1",
-        "name": "Ashborn Channel"
+        "name": "Ashborn Channel",
+        "seed": [
+          -5,
+          105
+        ]
       },
       {
         "id": "cm_brackmaw_sea",
         "color": "ed12f2",
-        "name": "Brackmaw Sound"
+        "name": "Brackmaw Sound",
+        "seed": [
+          -145,
+          200
+        ]
+      },
+      {
+        "id": "cm_reefhook_sea",
+        "color": "ed12f3",
+        "name": "Reefhook Sound",
+        "seed": [
+          -225,
+          -5
+        ]
+      },
+      {
+        "id": "cm_cindermaw_north",
+        "color": "ed12f4",
+        "name": "North Cindermaw Sea",
+        "seed": [
+          -10,
+          -135
+        ]
+      },
+      {
+        "id": "cm_shatterfin_sea",
+        "color": "ed12f5",
+        "name": "Shatterfin Sound",
+        "seed": [
+          190,
+          -80
+        ]
+      },
+      {
+        "id": "cm_cindermaw_west",
+        "color": "ed12f6",
+        "name": "West Cindermaw Sea",
+        "seed": [
+          -105,
+          15
+        ]
+      },
+      {
+        "id": "cm_brackmaw_east",
+        "color": "ed12f7",
+        "name": "East Brackmaw Sea",
+        "seed": [
+          155,
+          225
+        ]
+      },
+      {
+        "id": "cm_sootwake_sea",
+        "color": "ed12f8",
+        "name": "Sootwake Roads",
+        "seed": [
+          105,
+          290
+        ]
+      },
+      {
+        "id": "cm_brackmaw_south",
+        "color": "ed12f9",
+        "name": "South Brackmaw Sea",
+        "seed": [
+          -70,
+          315
+        ]
+      },
+      {
+        "id": "cm_western_approach",
+        "color": "ed12fa",
+        "name": "Western Approach",
+        "seed": [
+          -295,
+          100
+        ]
+      },
+      {
+        "id": "cm_eastern_passage",
+        "color": "ed12fb",
+        "name": "Eastern Passage",
+        "seed": [
+          185,
+          125
+        ]
+      },
+      {
+        "id": "cm_northwest_reach",
+        "color": "ed12fc",
+        "name": "Northwest Reach",
+        "seed": [
+          -180,
+          -140
+        ]
       }
     ]
   },
@@ -508,6 +610,5 @@
     }
   ],
   "climate": "oceanic",
-  "region": "macaronesia_region",
-  "discovery_template": "expl_western_europe"
+  "region": "macaronesia_region"
 }

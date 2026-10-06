@@ -151,11 +151,11 @@ def validate(game,out,mapstats,economy):
     for zone in CFG['coastal_sea']['zones']:
         mapping[zone['id']]=tuple(bytes.fromhex(zone['color']))
         assert zone['id'] in water and zone['id'] not in blocked
-    checks.append('Three connected sea zones are registered as sea, not impassable; their graph reaches native navigable Atlantic lanes.')
+    checks.append(f'{len(CFG["coastal_sea"]["zones"])} connected sea zones are registered and reach native navigable Atlantic lanes.')
     for loc in CFG['locations']:
         anchor=mapstats['settlement_locators'][loc['id']]
         assert im.getpixel((int(anchor['x']),int(anchor['png_y'])))==tuple(bytes.fromhex(loc['color']))
-    checks.append('All 19 settlement anchors lie inside their own land locations; all three seas have fleet anchors.')
+    checks.append('All 19 settlement anchors lie inside their own land locations; all new seas have fleet anchors.')
     for p in mapstats['ports']:
         assert im.getpixel((p['x'],H-p['y']))==mapping[p['sea']]
     checks.append('Every port lies on its named sea pixels with correct Y-axis conversion.')
@@ -195,13 +195,17 @@ def main():
     from terrain_cache import build_cache_patch
     print('Patching runtime terrain cache...',flush=True)
     terrain=build_cache_patch(game,out,reports,CFG,footprint,source)
+    from verify_terrain import verify
+    terrain['verification']=verify(game,out,reports)
     print('Building campaign setup...',flush=True)
     economy=build_setup(game,out);localization(out);archipelago.add_localization(sys.modules[__name__],out)
+    import exploration
+    discovery=exploration.build(sys.modules[__name__],game,out)
     print('Running static validation...',flush=True)
     checks=validate(game,out,mapstats,economy)
     import preview
     preview.context(game,out,reports)
-    report={'version':CFG['version'],'target_game_version':CFG['game_version'],'status':'STATIC VALIDATION PASSED; IN-GAME TESTING PENDING','checks':checks,'map':mapstats,'economy':economy,'runtime_tested':False,'terrain_cache_baked':False,'terrain_cache_patch':terrain,'source_sha256':HASHES}
+    report={'version':CFG['version'],'target_game_version':CFG['game_version'],'status':'STATIC VALIDATION PASSED; IN-GAME TESTING PENDING','checks':checks,'map':mapstats,'economy':economy,'runtime_tested':False,'terrain_cache_baked':False,'terrain_cache_patch':terrain,'exploration':discovery,'source_sha256':HASHES}
     (reports/'validation.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
     print(json.dumps({'status':report['status'],'locations':len(CFG['locations']),'population':economy['total_population'],'land_pixels':mapstats['land_pixels'],'ports':len(mapstats['ports']),'output':str(out)},indent=2))
 

@@ -1,10 +1,10 @@
 {
   "name": "Goblins of the Ashborn Isles",
   "id": "alex.goblins_ashborn_isles",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "game_id": "eu5",
   "supported_game_version": "1.3.11",
-  "short_description": "Five goblin nations, six volcanic Atlantic islands and three coastal sea zones. 19 locations and 593,647 people in a new 1337 campaign. Development test build; full restart required.",
+  "short_description": "Five goblin nations, six volcanic Atlantic islands and thirteen coastal sea zones. Explore the outside world through voyages and events. New 1337 campaign required.",
   "tags": [
     "Alternative history",
     "Gameplay"

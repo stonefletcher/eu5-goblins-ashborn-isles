@@ -19,7 +19,7 @@ def build_locators(b,game,out,labels,seawater,sea_labels,box,height,ports):
     for zi,zone in enumerate(b.CFG['coastal_sea']['zones']):
         ys,xs=np.where(seawater&(sea_labels==zi));mx=np.median(xs);my=np.median(ys)
         j=int(((xs-mx)**2+(ys-my)**2).argmin())
-        for kind in ['unit_stack','combat']:sets[kind].append(entry(zone['id'],xs[j]+box[0]+.5,ys[j]+box[1]+.5))
+        for kind in ['unit_stack','combat','vfx']:sets[kind].append(entry(zone['id'],xs[j]+box[0]+.5,ys[j]+box[1]+.5))
     for port in ports:sets['dock'].append(entry(port['land'],port['x']+.5,port['png_y']+.5))
     for kind,rows in sets.items():
         rel=f'in_game/gfx/map/map_objects/generated_map_object_locators_{kind}.txt'

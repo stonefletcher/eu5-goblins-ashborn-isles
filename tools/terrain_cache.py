@@ -14,9 +14,46 @@ from PIL import Image
 SEA_LEVEL=0.08340625*65535
 CACHE='in_game/gfx/terrain2/terrain_cache'
 
+def height_pyramid(game,cfg,source):
+    """Filter one aligned native-resolution patch; do not resample each LOD's
+    silhouette independently. The alignment preserves exact shared tile borders.
+    """
+    cx,cy=cfg['center']
+    x0=int(np.floor(min(i['center'][0]-i['radius'][0]*2 for i in cfg['islands'])*4/512))*512
+    x1=int(np.ceil(max(i['center'][0]+i['radius'][0]*2 for i in cfg['islands'])*4/512))*512
+    y0=int(np.floor(min(i['center'][1]-i['radius'][1]*2 for i in cfg['islands'])*4/512))*512
+    y1=int(np.ceil(max(i['center'][1]+i['radius'][1]*2 for i in cfg['islands'])*4/512))*512
+    field=np.zeros((y1-y0,x1-x0),np.uint16)
+    entries=[tuple(map(int,m)) for m in re.findall(r'offset=(-?\d+)\s+size=(-?\d+)',source(game,CACHE+'/heightmap.info').read_text())]
+    with source(game,CACHE+'/heightmap.bin').open('rb') as stream:
+        for py in range(y0,y1,128):
+            for px in range(x0,x1,128):
+                idx=(255-py//128)*512+px//128;o,n=entries[idx]
+                if o<0:continue
+                stream.seek(o);tile=np.array(Image.open(io.BytesIO(stream.read(n))),dtype=np.uint16)
+                field[py-y0:py-y0+128,px-x0:px-x0+128]=tile[2:130,2:130]
+    coverage=np.zeros(field.shape,bool)
+    for top in range(0,len(field),128):
+        yy,xx=np.mgrid[top:min(top+128,len(field)),:field.shape[1]]
+        x=(xx+x0+.5)/4-cx;y=(yy+y0+.5)/4-cy
+        mask=archipelago.surface(cfg,x,y)>-.12
+        h=archipelago.heights(cfg,x,y)
+        field[top:top+len(h)][mask]=h[mask];coverage[top:top+len(h)]=mask
+    result=[]
+    for mip in range(10):
+        result.append((field,coverage,x0//(2**mip),y0//(2**mip)))
+        if mip<9:
+            h,w=field.shape
+            # Integer accumulation avoids uint16 overflow and fixes each mip's
+            # phase to the native grid instead of sampling isolated peak points.
+            field=((field.astype(np.uint32).reshape(h//2,2,w//2,2).sum(axis=(1,3))+2)//4).astype(np.uint16)
+            coverage=coverage.reshape(h//2,2,w//2,2).any(axis=(1,3))
+    return result
+
 def build_cache_patch(game,out,reports,cfg,footprint,source):
     root=out.parents[0];patchdir=root/'terrain_patch';patchdir.mkdir(exist_ok=True)
-    cx,cy=cfg['center']; xmin=min(i['center'][0]-i['radius'][0]*2 for i in cfg['islands']);xmax=max(i['center'][0]+i['radius'][0]*2 for i in cfg['islands']);ymin=min(i['center'][1]-i['radius'][1]*2 for i in cfg['islands']);ymax=max(i['center'][1]+i['radius'][1]*2 for i in cfg['islands']);manifest={'version':cfg['version'],'files':[],'tile_order':'mip-major; Y-up tile rows; north-up PNG pixels','material_selection':'native oceanic biome slot 8; limited lowland vegetation'}
+    pyramids=height_pyramid(game,cfg,source)
+    cx,cy=cfg['center']; xmin=min(i['center'][0]-i['radius'][0]*2 for i in cfg['islands']);xmax=max(i['center'][0]+i['radius'][0]*2 for i in cfg['islands']);ymin=min(i['center'][1]-i['radius'][1]*2 for i in cfg['islands']);ymax=max(i['center'][1]+i['radius'][1]*2 for i in cfg['islands']);manifest={'version':cfg['version'],'files':[],'tile_order':'mip-major; Y-up tile rows; north-up PNG pixels','material_selection':'native oceanic biome slot 8; limited lowland vegetation','height_sampling':'area-filtered common heightfield with continuous submerged shoreline'}
     cache=out/CACHE;cache.mkdir(parents=True,exist_ok=True)
     for kind in ['heightmap','materials','index_map']:
         rel=f'{CACHE}/{kind}.bin';src=source(game,rel)
@@ -40,6 +77,13 @@ def build_cache_patch(game,out,reports,cfg,footprint,source):
                         gy=((ty+1)*128-(np.arange(132)-2)-.5)*step
                         x,y=np.meshgrid(gx/4-cx,8192-gy/4-cy)
                         mask=footprint(x,y)>0
+                        if kind=='heightmap':
+                            field,coverage,ox,oy=pyramids[mip]
+                            # Field coordinates are north-down; tile rows run Y-up.
+                            ix=np.rint((x+cx)*4/step-.5).astype(int)-ox
+                            iy=np.rint((y+cy)*4/step-.5).astype(int)-oy
+                            valid=(ix>=0)&(iy>=0)&(ix<field.shape[1])&(iy<field.shape[0])
+                            mask=np.zeros(x.shape,bool);mask[valid]=coverage[iy[valid],ix[valid]]
                         if not mask.any():continue
                         idx=start+ty*tw+tx;o,s=entries[idx]
                         if o<0:arr=np.zeros((132,132),np.uint16)
@@ -47,7 +91,7 @@ def build_cache_patch(game,out,reports,cfg,footprint,source):
                             inp.seek(o);arr=np.array(Image.open(io.BytesIO(inp.read(s))),dtype=np.uint16)
                         assert arr.shape==(132,132)
                         before=arr.copy()
-                        if kind=='heightmap':arr[mask]=archipelago.heights(cfg,x,y)[mask]
+                        if kind=='heightmap':arr[mask]=field[iy[mask],ix[mask]]
                         else:
                             # Material bit 8 is rock on mountain/sparse biomes and dirt
                             # on lower oceanic biomes (verified in native materials.txt).
@@ -56,7 +100,7 @@ def build_cache_patch(game,out,reports,cfg,footprint,source):
                             arr[mask]=256 if kind=='materials' else 35
                             arr[low]=9216 if kind=='materials' else 63
                         assert np.array_equal(before[~mask],arr[~mask])
-                        if kind=='heightmap':assert np.all(arr[mask]>SEA_LEVEL)
+                        if kind=='heightmap':assert np.all(arr[mask]>=2234)
                         buf=io.BytesIO();Image.fromarray(arr).save(buf,format='PNG');data=buf.getvalue()
                         assert np.array_equal(np.array(Image.open(io.BytesIO(data))),arr)
                         offset=full.tell();full.write(data);delta.write(data);updates[idx]=(offset,len(data));nchanged+=1
@@ -74,12 +118,7 @@ def build_cache_patch(game,out,reports,cfg,footprint,source):
         import hashlib
         manifest['files'].append({'path':rel,'delta':delta_path.name,'source_size':src.stat().st_size,'source_sha256':hashlib.file_digest(src.open('rb'),'sha256').hexdigest(),'final_sha256':hashlib.file_digest(target.open('rb'),'sha256').hexdigest(),'final_size':target.stat().st_size,'tiles_changed':nchanged})
     (patchdir/'manifest.json').write_text(json.dumps(manifest,indent=2))
-    # The overview is a separate engine input, not automatically rebuilt from tiles.
-    rel='in_game/gfx/terrain2/heightmap.png'
-    overview=Image.open(source(game,rel));sx=16384/overview.width;sy=8192/overview.height
-    box=(max(0,int(xmin/sx)),max(0,int(ymin/sy)),min(overview.width,int(xmax/sx)+1),min(overview.height,int(ymax/sy)+1))
-    yy,xx=np.mgrid[box[1]:box[3],box[0]:box[2]];x=(xx+.5)*sx-cx;y=(yy+.5)*sy-cy
-    arr=np.array(overview.crop(box),dtype=np.uint16);mask=footprint(x,y)>0
-    arr[mask]=archipelago.heights(cfg,x,y)[mask]
-    overview.paste(Image.fromarray(arr),box);overview.save(out/rel)
-    return {'method':'append-only native PNG tile cache patch','tiles_changed':{Path(f['path']).stem:f['tiles_changed'] for f in manifest['files']},'unmodified_pixels_preserved':True,'runtime_verified':False,'engine_bake':False}
+    # The shipped heightmap.png is a legacy Europe/Asia source, NOT a world
+    # overview. Runtime geography is in the streamed tiles; never stamp global
+    # coordinates into that unrelated image.
+    return {'method':'append-only native PNG tile cache patch','tiles_changed':{Path(f['path']).stem:f['tiles_changed'] for f in manifest['files']},'unmodified_pixels_preserved':True,'coastline':'continuous sea-level crossing and submerged shelf','mips':'area-filtered from the same fine heightfield','legacy_regional_heightmap_override':False,'runtime_verified':False,'engine_bake':False}

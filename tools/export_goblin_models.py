@@ -152,7 +152,6 @@ def write_text(path,text):path.parent.mkdir(parents=True,exist_ok=True);path.wri
 def schematic(mesh):
     return f'''name="{mesh}_schematic"
 graph={{ nodes={{
- pdxns:ecs:MeshType={{ id=0 node={{ mesh_name="{mesh}_mesh" inputs={{ "Lod_Override_0" }} }} inputs={{}} }}
  pdxns:ecs:create_skeleton_component={{ id=1 node={{ value="{mesh}_mesh" }} inputs={{}} }}
  pdxns:ecs:animation_state_machine={{ id=2 node={{}} inputs={{ link={{ pin_id="state_machine_name" linked_node=7 linked_pin="output_arg" }} }} }}
  pdxns:values:Float={{ id=3 node={{ value=0.080000 }} inputs={{}} }}
@@ -161,7 +160,6 @@ graph={{ nodes={{
   link={{ pin_id="scale" linked_node=3 linked_pin="value" }}
  }} }}
  pdxns:ecs:assemble_entity={{ id=5 node={{}} inputs={{
-  link={{ pin_id="components" linked_node=0 linked_pin="mesh_components" }}
   link={{ pin_id="components" linked_node=1 linked_pin="skeleton" }}
   link={{ pin_id="components" linked_node=2 linked_pin="state_machine_components" }}
   link={{ pin_id="components" linked_node=4 linked_pin="local_transform" }}
@@ -189,7 +187,7 @@ def state_machine():
 def build(out):
     out=Path(out);directory=out/MODEL_REL;directory.mkdir(parents=True,exist_ok=True)
     config=json.loads((ART/'clans.json').read_text());report={'stage':'native-export-prototype','engine_tested':False,'clans':[]}
-    constructors=[];cultures=[]
+    constructors=[];cultures=[];attachments=[]
     for index,clan in enumerate(config['clans']):
         g=GLB(ART/'variants'/f'{clan["id"]}.glb');name='cm_goblin_'+clan['id']
         export_mesh(g,directory/(name+'.mesh'))
@@ -213,30 +211,26 @@ def build(out):
         asset+='}\n';write_text(directory/(name+'.asset'),asset)
         write_text(out/'in_game/gfx/models/schematics'/f'{name}_schematic.schematic',schematic(name))
         tag=clan['culture']+'_gfx'
-        # Runtime containment after the 2026-10-06 infantry-spawn access violation.
-        # Preserve custom assets for offline diagnosis, but instantiate only the
-        # native rig, state machine and attachment set until engine-tested.
+        # As with native infantry, the base graph owns only the skeleton/state
+        # machine. The unit attachment factory creates the drawable shared-pose
+        # child and supplies its unit-material instance data. A root MeshType
+        # bypasses that attachment path (spawn-time crash in the previous build).
+        attachments.append(f'''{name}_body = {{
+ 100 = {{ add_entity = {{ node = shared_pose_entity mesh_name = "{name}_mesh" }} }}
+}}''')
         for category in ['army_light_infantry','army_heavy_infantry']:
             constructors.append(f'''{tag}:{category} = {{
- schematic_name = unit_skeleton_schematic
- attach = {{ 100 = heads use_uniformity = no }}
- attach = {{ 100 = torsos }}
- attach = {{ 100 = legs }}
- attach = {{ 100 = headgear }}
- attach = {{ 100 = hairstyles }}
- attach = {{ 100 = beards }}
- attach = {{ 100 = weapons }}
- attach = {{ 100 = shields }}
- attach = {{ 100 = back }}
- attach = {{ 100 = offhand }}
- animation_state_machine_name = unit_skeleton_state_machine_one_handed_axe
+ schematic_name = {name}_schematic
+ attach = {{ 100 = {name}_body }}
+ animation_state_machine_name = cm_goblin_infantry
 }}''')
         cultures.append(f'{tag} = {{ priority = 600 culture_tag = {tag} ethnicities = {{ 100 = cm_{clan["id"]}_ethnicity }} }}')
         report['clans'].append({'clan':clan['id'],'culture':clan['culture'],'gfx_tag':tag,'bones':len(g.bones),'source_joints':len(g.skin['joints']),'mesh':str(MODEL_REL/(name+'.mesh'))})
     write_text(out/'main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt','\n'.join(constructors)+'\n')
+    write_text(out/'main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt','\n'.join(attachments)+'\n')
     write_text(out/'in_game/gfx/graphical_culture_types/ashborn_goblins.txt','\n'.join(cultures)+'\n')
     write_text(out/'main_menu/gfx/animation_state_machines/cm_goblin_infantry.animsm',state_machine())
-    report['runtime_infantry']='native fallback; custom goblin renderer quarantined after spawn-time crash'
+    report['runtime_infantry']='custom goblin skeleton with factory-created shared-pose body attachment; engine retest pending'
     return report
 
 if __name__=='__main__':

@@ -9,15 +9,15 @@
     },
     {
       "path": "in_game/common/ethnicities/ashborn.txt",
-      "sha256": "d6df0c0c19e9a3bbc594e2ef4559b411bf9a5c27e1d1bf168bf151d7b5b12bc4"
+      "sha256": "5c2b96e08961d41b06e65c4ebe8f30158c4fa63f72b73264f33b73523ccc558d"
     },
     {
       "path": "in_game/common/genes/zz_ashborn_outfits.txt",
-      "sha256": "36e6a192ee1021dbf52c66e5305a240e3b4feb9e5ca83e6d2d0108da9bbbfd22"
+      "sha256": "973c3fd3696d94bd25c0530d4af695f183c9b93af506d168e7fe2797ef1db82d"
     },
     {
       "path": "in_game/common/genes/zz_ashborn_portraits.txt",
-      "sha256": "eed4d7bce389fae1dd2574fae67be462db788de0cb44b1e9986586fceb55ed41"
+      "sha256": "7189ebe9bbf4a9f8735fd831be6448b0834643f51f60259d7d7437eaaafdac50"
     },
     {
       "path": "in_game/common/languages/goblins_ashborn_isles.txt",
@@ -617,7 +617,7 @@
     },
     {
       "path": "main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt",
-      "sha256": "4ec1df71b38272762a917421044d6c1dc1c2fc2da04dd5086e61125d40e99159"
+      "sha256": "3c3bd240084661a0c530826e4589e3239bda9f86d305f8d39c39f96551da4e38"
     },
     {
       "path": "main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt",

@@ -18,6 +18,8 @@ def verify(out,game=None):
     for path in re.findall(r'"(gfx/[^"\n]+\.dds)"',genes):assert (out/'in_game'/path).is_file(),path
     for entity in re.findall(r'entity = (cm_\w+)',accessories):assert f'name = "{entity}"' in asset,entity
     for name in re.findall(r'1 = "(cm_\w+)"',genes):assert name+' = {' in accessories,name
+    assert genes.lstrip().startswith('special_genes = {'), 'Goblin visuals must not be ordinary DNA'
+    assert not re.search(r'cm_\w+_(?:skin|features)\s*=', ethnicity), 'Special genes must only be applied by scoped modifiers'
     clans=json.loads((ART/'clans.json').read_text())['clans']
     for clan in clans:
         ident=clan['id'];tag=clan['culture']+'_gfx'
@@ -64,6 +66,8 @@ def verify(out,game=None):
     outfit_genes=(out/'in_game/common/genes/zz_ashborn_outfits.txt').read_text(encoding='utf-8-sig')
     outfit_mods=(out/'main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt').read_text(encoding='utf-8-sig')
     for script in [outfit_genes,outfit_mods]:assert script.count('{')==script.count('}')
+    assert outfit_genes.lstrip().startswith('special_genes = {'), 'Goblin clothes must not be ordinary DNA'
+    assert 'mode = add gene = cm_ashborn_clothing' in outfit_mods
     assert 'priority = 100' in outfit_mods
     assert all(outfit_mods.count('gfx_culture_applicable = '+c['culture']+'_gfx')==1 for c in clans)
     assert all('mode = replace gene = '+g+' template = '+t in outfit_mods for g,t in RESET.items())

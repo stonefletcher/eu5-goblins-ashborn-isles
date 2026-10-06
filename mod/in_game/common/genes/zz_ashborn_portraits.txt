@@ -1,4 +1,5 @@
-﻿morph_genes = {
+﻿special_genes = {
+morph_genes = {
 cm_cindermaw_skin = { inheritable = no cm_cindermaw_skin = { index = 0 male = { decal = { body_part = head
  textures = { diffuse = "gfx/models/portraits/ashborn/cindermaw_skin.dds" }
  blend_modes = { diffuse = replace }
@@ -112,3 +113,4 @@ adolescent_girl = { 1 = "cm_sootwake_female_features" }
 infant = { 1 = "cm_sootwake_infant_features" }
 }
 } }
+}

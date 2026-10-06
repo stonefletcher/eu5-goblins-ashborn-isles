@@ -88,7 +88,8 @@ def build(out):
     for sex,bones in bindings.items():write(dest/f'cm_{sex}_features.mesh',geometry(sex,bones))
     for name,color in [('normal',(128,128,255,128)),('properties',(255,96,0,210)),('ivory',(222,210,164,255))]:
         Image.new('RGBA',(4,4),color).save(dest/f'{name}.dds')
-    genes=['morph_genes = {'];accessories=[];assets=[];modifiers=['cm_ashborn_appearance = {\n usage = game'];ethnicities=[]
+    # Opt-in visual effects, never ordinary DNA: zero-strength defaults can render globally.
+    genes=['special_genes = {\nmorph_genes = {'];accessories=[];assets=[];modifiers=['cm_ashborn_appearance = {\n usage = game'];ethnicities=[]
     # Kept within supported native gene ranges. Individuals retain all other DNA.
     face={'gene_nose_length':(.82,.96),'gene_nose_tip_forward':(.8,.95),
           'gene_nose_tip_angle':(.12,.28),'gene_nose_width':(.30,.48),
@@ -122,12 +123,12 @@ def build(out):
         modifiers.append(f'cm_{ident}_appearance = {{ ignore_outfit_tags = yes dna_modifiers = {{ {dna} }} weight = {{ base = 0 modifier = {{ add = 100 gfx_culture_applicable = {tag} }} }} }}')
         ethnicities.append(f'cm_{ident}_ethnicity = {{ template = "ethnicity_template"\n'+
             '\n'.join(f'{g} = {{ 100 = {{ name = template_1 range = {{ {a} {b} }} }} }}' for g,(a,b) in face.items())+
-            f'\n{gene} = {{ 100 = {{ name = {gene} range = {{ 1 1 }} }} }}\ncm_ashborn_features = {{ 100 = {{ name = cm_{ident}_features range = {{ 1 1 }} }} }}\n}}')
+            '\n}')
     genes.append('}\naccessory_genes = { cm_ashborn_features = { inheritable = no')
     for i,clan in enumerate(clans):
         ident=clan['id'];genes.append(f'cm_{ident}_features = {{ index = {i}\n'+
             '\n'.join(f'{t} = {{ 1 = "cm_{ident}_{"infant" if t=="infant" else "female" if t in ["female","girl","adolescent_girl"] else "male"}_features" }}' for t in TYPES)+'\n}')
-    genes.append('} }');modifiers.append('}')
+    genes.append('} }\n}');modifiers.append('}')
     text(dest/'ashborn_features.asset','\n'.join(assets)+'\n')
     text(out/'in_game/common/genes/zz_ashborn_portraits.txt','\n'.join(genes)+'\n')
     text(out/'in_game/common/ethnicities/ashborn.txt','\n'.join(ethnicities)+'\n')

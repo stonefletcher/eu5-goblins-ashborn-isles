@@ -9,11 +9,11 @@
     },
     {
       "path": "in_game/common/ethnicities/ashborn.txt",
-      "sha256": "c15176af99780adf3a993321bde13db4cf57385f5f166e3ee7e04e76596194c5"
+      "sha256": "afd2440225b9d506e5c1e6916bb292d8896b63d925dd30d9c334829a111554ba"
     },
     {
       "path": "in_game/common/genes/zz_ashborn_portraits.txt",
-      "sha256": "85c6256187792210732f60dee857382c0a742a753ba49defa3c2ab72f9c0f2aa"
+      "sha256": "9caf8beff798602e55d58c68b6da0949542176c475883943e3cc5d474c53c0b4"
     },
     {
       "path": "in_game/common/languages/goblins_ashborn_isles.txt",

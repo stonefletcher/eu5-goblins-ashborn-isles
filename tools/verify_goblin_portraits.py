@@ -18,6 +18,8 @@ def verify(out,game=None):
     for path in re.findall(r'"(gfx/[^"\n]+\.dds)"',genes):assert (out/'in_game'/path).is_file(),path
     for entity in re.findall(r'entity = (cm_\w+)',accessories):assert f'name = "{entity}"' in asset,entity
     for name in re.findall(r'1 = "(cm_\w+)"',genes):assert name+' = {' in accessories,name
+    assert genes.lstrip().startswith('special_genes = {'), 'Goblin visuals must not be ordinary DNA'
+    assert not re.search(r'cm_\w+_(?:skin|features)\s*=', ethnicity), 'Special genes must only be applied by scoped modifiers'
     clans=json.loads((ART/'clans.json').read_text())['clans']
     for clan in clans:
         ident=clan['id'];tag=clan['culture']+'_gfx'

@@ -1,13 +1,19 @@
+# Goblins of the Ashborn Isles 0.5.1 - bundled main update
+
+The main-download installer now installs the 36-location volcanic terrain together with the latest Ashborn cultures, infantry assets and portrait test pass. It reports version 0.5.1 and rejects a bundled archive whose configuration does not match the downloaded source. Start a NEW 1337 campaign. The published 0.5.0 release remains unchanged.
+
+Infantry entity-graph rendering remains a known issue in the model work; the terrain and portrait packaging update does not claim to fix it.
+
 # 0.5.1 terrain development (source integration)
 
-- Wider Cindermaw–Brackmaw and Brackmaw–Sootwake channels; land area reduced 12%.
+- Wider Cindermawâ€“Brackmaw and Brackmawâ€“Sootwake channels; land area reduced 12%.
 - Individual coast profiles with broad bays, headlands and restrained coastal erosion.
 - 15 Cindermaw, 12 Brackmaw, four Reefhook, three Shatterfin and two Sootwake playable tiles. Province groupings remain unchanged.
 - National populations and total starting RGO expansion are preserved when subdividing locations.
 - Wider crater bowls and raised rims; dark lava aprons, exposed rock and reduced woodland on dry volcanic ground.
 - New raster checks enforce channel clearance, island continuity and playable tile size.
-- Static validation passed: 36 connected land tiles, 31 coastal ports, all settlement anchors, navigable sea graph, population totals, rivers and scenery; terrain cache shared-border error is zero. Final shoreline gaps are 40.79 pixels (Cindermaw–Brackmaw) and 26.93 pixels (Brackmaw–Sootwake), up from 5.00 and 5.39.
-- Full game rendering and navigation acceptance require a new campaign. Published archives and existing installations are unchanged; build from source to test this terrain pass.
+- Static validation passed: 36 connected land tiles, 31 coastal ports, all settlement anchors, navigable sea graph, population totals, rivers and scenery; terrain cache shared-border error is zero. Final shoreline gaps are 40.79 pixels (Cindermawâ€“Brackmaw) and 26.93 pixels (Brackmawâ€“Sootwake), up from 5.00 and 5.39.
+- Full game rendering and navigation acceptance require a new campaign. Existing installations require the new bundled 0.5.1 installer; historical 0.5.0 archives remain unchanged.
 
 ---
 # Development on main after 0.5.0

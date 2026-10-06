@@ -4,9 +4,9 @@
 
 Five goblin nations rise from a volcanic Atlantic archipelago in this fantasy **Europa Universalis V** mod. Start in **1337**, unite rival clans, develop their ports and mines, and decide how the Ashborn will face the wider world.
 
-**0.5.1 terrain development integrated with main; published release: 0.5.0.** Targets EU5 **1.3.11 (Pavia)**, Steam build **24187685**. Static validation is required before packaging; in-game acceptance testing is pending. This is not a Steam Workshop release.
+**Version 0.5.1 - bundled main test build.** Targets EU5 **1.3.11 (Pavia)**, Steam build **24187685**. Static validation is required before packaging; in-game acceptance testing is pending. This is not a Steam Workshop release.
 
-**Main development additions:** five native goblin infantry variants and renamed cultures are now integrated into `main`. Download ZIP from `main` includes these additions; the published 0.5.0 release remains the earlier terrain/economy test package. Model rendering and animation still need an engine playtest. The new 36-location terrain is source-only until the next prepared release: build from source to test it. The bundled installer still uses the 0.5.0 terrain plus the model/culture overlay. No update is applied to a running game automatically.
+**Main development additions:** five native goblin infantry variants and renamed cultures are now integrated into `main`. Download ZIP from `main` includes these additions; the published 0.5.0 release remains the earlier terrain/economy test package. Model rendering and animation still need an engine playtest. The main download now bundles the 0.5.1 terrain with 36 locations, the renamed cultures, infantry assets and culture-based portrait test pass. No update is applied to a running game automatically.
 
 [Repository](https://github.com/stonefletcher/eu5-goblins-ashborn-isles) | [Origins and lore](LORE.md) | [Testing checklist](TESTING.md) | [Release notes](RELEASE_NOTES.md)
 
@@ -40,7 +40,7 @@ Native animation checks compare 51 decoded poses against their GLB sources, with
 
 The islands lie between the Azores and Portugal. Six distinct silhouettes use bays, headlands and curved internal borders. **Thirteen compact coastal sea zones** follow the surrounding vanilla Atlantic boundaries, with separate northern, western and eastern waters around Cindermaw and a southern channel. All new zones are navigable and connected to native routes; vanilla land and navigable sea pixels are preserved.
 
-The 0.5.1 terrain pass reduces land area by 12% relative to 0.5.0 while retaining the surrounding sea basin. Cindermaw–Brackmaw and Brackmaw–Sootwake have at least 24 map pixels of shoreline clearance, enforced by the build. Each island has individually authored bays and broad headlands, with subdued small coastal erosion rather than a repeated scalloped outline. Reefhook remains about 20% larger than either Shatterfin's combined islands or Sootwake.
+The 0.5.1 terrain pass reduces land area by 12% relative to 0.5.0 while retaining the surrounding sea basin. CindermawÃ¢â‚¬â€œBrackmaw and BrackmawÃ¢â‚¬â€œSootwake have at least 24 map pixels of shoreline clearance, enforced by the build. Each island has individually authored bays and broad headlands, with subdued small coastal erosion rather than a repeated scalloped outline. Reefhook remains about 20% larger than either Shatterfin's combined islands or Sootwake.
 
 The landscape now follows island geology rather than location seeds or gameplay terrain tags. Cindermaw has a connected volcanic mountain spine, branching foothills, eroded valleys and a crater. Each island has its own relief, woodland distribution, beaches, exposed rock and short river catchments. Wider craters have raised rims; weathered lava aprons and dry lee slopes add dark ground and exposed rock. Woodland retreats from volcanic ground and remains strongest in sheltered, moist valleys. Native Madeira and Sao Miguel height tiles were examined as references for ridges and coastal transitions. The game uses 32 world units for the entire 16-bit height range; our much larger islands have higher peaks than those native small islands.
 
@@ -78,7 +78,7 @@ The opening lore event now has a single **The Ashborn rise.** option. The two ol
 
 You can also use GitHub's **Code > Download ZIP** on `main`: extract it and run `Install-Goblins.cmd`. The installer reconstructs and verifies the bundled release archive automatically before installing. A source-only archive without `.release/` still requires building first.
 
-1. Close EU5 completely and extract **Goblins_Ashborn_Isles_0.5.0.zip** into a writable folder.
+1. Close EU5 completely and extract **Goblins_Ashborn_Isles_0.5.1.zip** into a writable folder.
 2. Double-click **Install-Goblins.cmd**. The installer prepares terrain caches from your matching EU5 installation, checks hashes, backs up the previous installation and installs `goblins_ashborn_isles` under the EU5 user-data `mod` folder.
 3. Existing playset references to `cindermaw_demo` are migrated. Enable **Goblins of the Ashborn Isles** alone for this test.
 4. Restart EU5 and start a **new 1337 campaign**. Do not reuse a save from an earlier map layout.
@@ -87,7 +87,7 @@ If game detection fails, run `Install-Goblins.ps1 -GamePath "E:\SteamLibrary\ste
 
 ## Build from source
 
-Python 3.11+, NumPy and Pillow are required. For a source archive, first extract **Goblins_Ashborn_Isles_Source_0.5.0.zip**, which contains the complete authored source tree.
+Python 3.11+, NumPy and Pillow are required. A main checkout or Code > Download ZIP contains the authored source tree.
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -103,6 +103,7 @@ The banner is `art/Goblins_Banner.png`; the 512 x 512 Workshop thumbnail is `.me
 
 | Version | Changes |
 |---|---|
+| 0.5.1 | Bundled main installer updated to the 36-location terrain; wider channels, distinct coasts, volcanic ground, culture names and portrait test pass. Configuration mismatch detection prevents silently installing stale terrain. |
 | 0.5.0 | Larger islands, larger Reefhook, 26 locations/expanded provinces; independent geology and material painting, trees, rocks and rivers; Ironfang Monarchy and changeable strongest-male succession; mutual exploration contact; village/RGO/capital production and reduced starting upkeep; one-button introduction. In-game testing pending. |
 | 0.4.1 | Fix radial height discontinuities at island centres; soften terrain boundaries and regular ridge patterns; stronger mountain and hill relief in native world units; centre-continuity and final-cache coverage/relief checks for all 19 locations; decoded-cache preview. Rendering acceptance remains pending. |
 | 0.4.0 | Thirteen compact sea zones; continuous coastal slopes and filtered terrain mips; remove invalid regional heightmap override; sea VFX anchors; local-only starting knowledge and optional exploration voyages for all five clans. Runtime acceptance remains pending. |

@@ -1,8 +1,8 @@
-# Goblins of the Ashborn Isles 0.5.0 verification
+# Goblins of the Ashborn Isles 0.5.1 verification
 
 ## Build checks
 
-- Require a fresh 0.5.0 validation report against EU5 1.3.11.
+- Require a fresh 0.5.1 validation report against EU5 1.3.11.
 - Check 36 connected land footprints, six islands and preserved vanilla geography.
 - Verify thirteen registered sea zones, connected to each other and native Atlantic lanes.
 - Verify 36 settlement anchors within their own land, fleet/combat anchors and coastal ports.
@@ -69,8 +69,7 @@ Static checks do not prove in-game rendering, pathfinding, construction or balan
 - Run `python tools/verify_geography.py` for district connectivity and minimum channel clearance.
 - Inspect crater rims, dark lava aprons, rocky lee slopes and reduced woodland at close and middle zoom. Check moist valleys remain distinct from bare volcanic uplands.
 - Sail through both widened channels and inspect the Shatterfin approach for intact vanilla sea routes.
-- The source integration retains the 0.5.0 package number until the next prepared release; do not overwrite the published 0.5.0 archive. Build from source for the new terrain.
-
+- The bundled main installer must report 0.5.1, install 36 land locations, and retain the terrain revision volcanic-spacing-pass. Old 0.5.0 releases remain separate.
 
 ## Culture-based portrait test pass (main only)
 

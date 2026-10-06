@@ -1,17 +1,484 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "game_version": "1.3.11",
   "tag": "CDM",
-  "center": [10155, 5390],
-  "radius": [54, 72],
-  "locations": [
-    {"id":"cm_cinder_crown","name":"Cinder Crown","seed":[0,-43],"color":"ed1201","good":"iron","topography":"mountains","vegetation":"sparse","pop":15,"province":"cm_crown_province"},
-    {"id":"cm_blackwood","name":"Blackwood","seed":[-29,-16],"color":"ed1202","good":"lumber","topography":"hills","vegetation":"forest","pop":24,"province":"cm_crown_province"},
-    {"id":"cm_copperfang","name":"Copperfang","seed":[27,-17],"color":"ed1203","good":"copper","topography":"hills","vegetation":"woods","pop":18,"province":"cm_crown_province"},
-    {"id":"cm_hooktooth","name":"Hooktooth","seed":[28,17],"color":"ed1204","good":"fish","topography":"flatland","vegetation":"grasslands","pop":39,"province":"cm_hooktooth_province"},
-    {"id":"cm_ashfields","name":"Ashfields","seed":[-8,15],"color":"ed1205","good":"millet","topography":"flatland","vegetation":"farmland","pop":36,"province":"cm_ashfields_province"},
-    {"id":"cm_saltjaw","name":"Saltjaw","seed":[-32,26],"color":"ed1206","good":"salt","topography":"flatland","vegetation":"grasslands","pop":18,"province":"cm_ashfields_province"},
-    {"id":"cm_redpasture","name":"Redpasture","seed":[-9,48],"color":"ed1207","good":"livestock","topography":"hills","vegetation":"grasslands","pop":28,"province":"cm_ashfields_province"},
-    {"id":"cm_splinter_cove","name":"Splinter Cove","seed":[23,46],"color":"ed1208","good":"lumber","topography":"flatland","vegetation":"woods","pop":22,"province":"cm_hooktooth_province"}
-  ]
+  "center": [
+    6900,
+    2500
+  ],
+  "radius": [
+    115,
+    90
+  ],
+  "coastal_sea": {
+    "id": "cm_cindermaw_sea",
+    "color": "ed12f0",
+    "offset": [
+      -0.1,
+      1.1
+    ],
+    "radius_factor": [
+      3.2,
+      3.5
+    ],
+    "source_water": "azores_biscay_ridge",
+    "province": "azores_sea_province"
+  },
+  "countries": [
+    {
+      "tag": "CDM",
+      "name": "Cindermaw",
+      "adjective": "Cindermaw",
+      "culture": "cm_cinderkin",
+      "culture_name": "Cinderkin",
+      "capital": "cm_hooktooth",
+      "rank": "city",
+      "gold": 20,
+      "color": [
+        117,
+        140,
+        48
+      ]
+    },
+    {
+      "tag": "QBR",
+      "name": "Brackmaw",
+      "adjective": "Brackmaw",
+      "culture": "cm_brinekin",
+      "culture_name": "Brinekin",
+      "capital": "cm_brackhaven",
+      "rank": "town",
+      "gold": 12,
+      "color": [
+        62,
+        135,
+        147
+      ]
+    },
+    {
+      "tag": "RHK",
+      "name": "Reefhook Clan",
+      "adjective": "Reefhook",
+      "culture": "cm_reefkin",
+      "culture_name": "Reefkin",
+      "capital": "cm_reefhook",
+      "rank": "town",
+      "gold": 5,
+      "color": [
+        172,
+        130,
+        58
+      ]
+    },
+    {
+      "tag": "SFK",
+      "name": "Shatterfin Clan",
+      "adjective": "Shatterfin",
+      "culture": "cm_shatterkin",
+      "culture_name": "Shatterkin",
+      "capital": "cm_shatterfin",
+      "rank": "town",
+      "gold": 5,
+      "color": [
+        121,
+        91,
+        145
+      ]
+    },
+    {
+      "tag": "SWK",
+      "name": "Sootwake Clan",
+      "adjective": "Sootwake",
+      "culture": "cm_sootkin",
+      "culture_name": "Sootkin",
+      "capital": "cm_sootwake",
+      "rank": "town",
+      "gold": 5,
+      "color": [
+        158,
+        78,
+        59
+      ]
+    }
+  ],
+  "islands": [
+    {
+      "id": "cindermaw",
+      "name": "Cindermaw",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "area_ratio": 1.0,
+      "country": "CDM",
+      "locations": [
+        {
+          "id": "cm_cinder_crown",
+          "name": "Cinder Crown",
+          "seed": [
+            0.0,
+            -0.6
+          ],
+          "color": "ed1201",
+          "good": "iron",
+          "topography": "mountains",
+          "vegetation": "sparse",
+          "pop": 24.509,
+          "province": "cm_crown_province",
+          "country": "CDM",
+          "culture": "cm_cinderkin",
+          "island": "cindermaw"
+        },
+        {
+          "id": "cm_blackwood",
+          "name": "Blackwood",
+          "seed": [
+            -0.5304347826086957,
+            -0.2222222222222222
+          ],
+          "color": "ed1202",
+          "good": "lumber",
+          "topography": "hills",
+          "vegetation": "forest",
+          "pop": 38.228,
+          "province": "cm_crown_province",
+          "country": "CDM",
+          "culture": "cm_cinderkin",
+          "island": "cindermaw"
+        },
+        {
+          "id": "cm_copperfang",
+          "name": "Copperfang",
+          "seed": [
+            0.5043478260869565,
+            -0.23333333333333334
+          ],
+          "color": "ed1203",
+          "good": "copper",
+          "topography": "hills",
+          "vegetation": "woods",
+          "pop": 28.3,
+          "province": "cm_crown_province",
+          "country": "CDM",
+          "culture": "cm_cinderkin",
+          "island": "cindermaw"
+        },
+        {
+          "id": "cm_hooktooth",
+          "name": "Hooktooth",
+          "seed": [
+            0.5217391304347826,
+            0.23333333333333334
+          ],
+          "color": "ed1204",
+          "good": "fish",
+          "topography": "flatland",
+          "vegetation": "grasslands",
+          "pop": 63.973,
+          "province": "cm_hooktooth_province",
+          "country": "CDM",
+          "culture": "cm_cinderkin",
+          "island": "cindermaw"
+        },
+        {
+          "id": "cm_ashfields",
+          "name": "Ashfields",
+          "seed": [
+            -0.14782608695652175,
+            0.2111111111111111
+          ],
+          "color": "ed1205",
+          "good": "wheat",
+          "topography": "flatland",
+          "vegetation": "farmland",
+          "pop": 54.51,
+          "province": "cm_ashfields_province",
+          "country": "CDM",
+          "culture": "cm_cinderkin",
+          "island": "cindermaw"
+        },
+        {
+          "id": "cm_saltjaw",
+          "name": "Saltjaw",
+          "seed": [
+            -0.591304347826087,
+            0.36666666666666664
+          ],
+          "color": "ed1206",
+          "good": "salt",
+          "topography": "flatland",
+          "vegetation": "grasslands",
+          "pop": 30.693,
+          "province": "cm_ashfields_province",
+          "country": "CDM",
+          "culture": "cm_cinderkin",
+          "island": "cindermaw"
+        },
+        {
+          "id": "cm_redpasture",
+          "name": "Redpasture",
+          "seed": [
+            -0.16521739130434782,
+            0.6666666666666666
+          ],
+          "color": "ed1207",
+          "good": "livestock",
+          "topography": "hills",
+          "vegetation": "grasslands",
+          "pop": 43.079,
+          "province": "cm_ashfields_province",
+          "country": "CDM",
+          "culture": "cm_cinderkin",
+          "island": "cindermaw"
+        },
+        {
+          "id": "cm_splinter_cove",
+          "name": "Splinter Cove",
+          "seed": [
+            0.4260869565217391,
+            0.6333333333333333
+          ],
+          "color": "ed1208",
+          "good": "lumber",
+          "topography": "flatland",
+          "vegetation": "woods",
+          "pop": 36.825,
+          "province": "cm_hooktooth_province",
+          "country": "CDM",
+          "culture": "cm_cinderkin",
+          "island": "cindermaw"
+        }
+      ]
+    },
+    {
+      "id": "brackmaw",
+      "name": "Brackmaw",
+      "offset": [
+        -0.43478260869565216,
+        2.4444444444444446
+      ],
+      "area_ratio": 0.6,
+      "country": "QBR",
+      "locations": [
+        {
+          "id": "cm_brackhaven",
+          "name": "Brackhaven",
+          "seed": [
+            0.4,
+            0.2
+          ],
+          "good": "fish",
+          "topography": "flatland",
+          "vegetation": "grasslands",
+          "pop": 53.796,
+          "province": "cm_brackmaw_coast_province"
+        },
+        {
+          "id": "cm_brinewood",
+          "name": "Brinewood",
+          "seed": [
+            -0.4,
+            -0.3
+          ],
+          "good": "lumber",
+          "topography": "hills",
+          "vegetation": "forest",
+          "pop": 32.823,
+          "province": "cm_brackmaw_interior_province"
+        },
+        {
+          "id": "cm_rustpeak",
+          "name": "Rustpeak",
+          "seed": [
+            0.2,
+            -0.5
+          ],
+          "good": "iron",
+          "topography": "mountains",
+          "vegetation": "sparse",
+          "pop": 26.127,
+          "province": "cm_brackmaw_interior_province"
+        },
+        {
+          "id": "cm_mossfields",
+          "name": "Mossfields",
+          "seed": [
+            -0.3,
+            0.35
+          ],
+          "good": "wheat",
+          "topography": "flatland",
+          "vegetation": "farmland",
+          "pop": 41.663,
+          "province": "cm_brackmaw_coast_province"
+        },
+        {
+          "id": "cm_bracksalt",
+          "name": "Bracksalt",
+          "seed": [
+            0.35,
+            0.6
+          ],
+          "good": "salt",
+          "topography": "flatland",
+          "vegetation": "grasslands",
+          "pop": 28.788,
+          "province": "cm_brackmaw_coast_province"
+        }
+      ]
+    },
+    {
+      "id": "reefhook",
+      "name": "Reefhook",
+      "offset": [
+        -1.391304347826087,
+        -0.3333333333333333
+      ],
+      "area_ratio": 0.064,
+      "country": "RHK",
+      "locations": [
+        {
+          "id": "cm_reefhook",
+          "name": "Reefhook",
+          "seed": [
+            0,
+            0
+          ],
+          "good": "fish",
+          "topography": "hills",
+          "vegetation": "grasslands",
+          "pop": 19.336,
+          "province": "cm_reefhook_province"
+        }
+      ]
+    },
+    {
+      "id": "crooked_reef",
+      "name": "Crooked Reef",
+      "offset": [
+        -1.6521739130434783,
+        0.2222222222222222
+      ],
+      "area_ratio": 0.041,
+      "country": "RHK",
+      "locations": [
+        {
+          "id": "cm_crooked_reef",
+          "name": "Crooked Reef",
+          "seed": [
+            0,
+            0
+          ],
+          "good": "lumber",
+          "topography": "hills",
+          "vegetation": "woods",
+          "pop": 11.156,
+          "province": "cm_reefhook_province"
+        }
+      ]
+    },
+    {
+      "id": "shatterfin",
+      "name": "Shatterfin",
+      "offset": [
+        1.391304347826087,
+        -0.7777777777777778
+      ],
+      "area_ratio": 0.064,
+      "country": "SFK",
+      "locations": [
+        {
+          "id": "cm_shatterfin",
+          "name": "Shatterfin",
+          "seed": [
+            0,
+            0
+          ],
+          "good": "fish",
+          "topography": "hills",
+          "vegetation": "grasslands",
+          "pop": 19.038,
+          "province": "cm_shatterfin_province"
+        }
+      ]
+    },
+    {
+      "id": "knifeback",
+      "name": "Knifeback",
+      "offset": [
+        1.6521739130434783,
+        -0.1111111111111111
+      ],
+      "area_ratio": 0.041,
+      "country": "SFK",
+      "locations": [
+        {
+          "id": "cm_knifeback",
+          "name": "Knifeback",
+          "seed": [
+            0,
+            0
+          ],
+          "good": "lumber",
+          "topography": "mountains",
+          "vegetation": "woods",
+          "pop": 11.781,
+          "province": "cm_shatterfin_province"
+        }
+      ]
+    },
+    {
+      "id": "sootwake",
+      "name": "Sootwake",
+      "offset": [
+        1.0434782608695652,
+        2.6666666666666665
+      ],
+      "area_ratio": 0.064,
+      "country": "SWK",
+      "locations": [
+        {
+          "id": "cm_sootwake",
+          "name": "Sootwake",
+          "seed": [
+            0,
+            0
+          ],
+          "good": "fish",
+          "topography": "hills",
+          "vegetation": "grasslands",
+          "pop": 16.592,
+          "province": "cm_sootwake_province"
+        }
+      ]
+    },
+    {
+      "id": "ember_key",
+      "name": "Ember Key",
+      "offset": [
+        0.782608695652174,
+        3.111111111111111
+      ],
+      "area_ratio": 0.041,
+      "country": "SWK",
+      "locations": [
+        {
+          "id": "cm_ember_key",
+          "name": "Ember Key",
+          "seed": [
+            0,
+            0
+          ],
+          "good": "lumber",
+          "topography": "mountains",
+          "vegetation": "woods",
+          "pop": 12.43,
+          "province": "cm_sootwake_province"
+        }
+      ]
+    }
+  ],
+  "climate": "oceanic",
+  "region": "macaronesia_region",
+  "discovery_template": "expl_western_europe"
 }

@@ -1,7 +1,7 @@
 [CmdletBinding()]
-param()
+param([string]$GamePath, [switch]$PrepareOnly)
 $ErrorActionPreference = 'Stop'
-if (Get-Process -Name eu5 -ErrorAction SilentlyContinue) {
+if (-not $PrepareOnly -and (Get-Process -Name eu5 -ErrorAction SilentlyContinue)) {
     throw 'Close Europa Universalis V before installing this demo.'
 }
 $cmSource = Join-Path $PSScriptRoot 'cindermaw_demo'
@@ -12,6 +12,55 @@ $cmMetadataPath = Join-Path $cmSource '.metadata\metadata.json'
 if (-not (Test-Path -LiteralPath $cmMetadataPath)) { throw 'Cannot find the built Cindermaw mod next to this installer.' }
 $cmMetadata = Get-Content -LiteralPath $cmMetadataPath -Raw | ConvertFrom-Json
 if ($cmMetadata.id -ne 'alex.cindermaw_demo') { throw 'Unexpected source mod ID; installation stopped.' }
+# Compact release: reconstruct native cache streams in the extracted package.
+# Only reads the installed game; never writes to Steam.
+$cmPatchRoot = Join-Path $PSScriptRoot 'terrain_patch'
+if (-not (Test-Path -LiteralPath $cmPatchRoot)) { $cmPatchRoot = Join-Path $PSScriptRoot 'build\terrain_patch' }
+$cmManifestPath = Join-Path $cmPatchRoot 'manifest.json'
+if (Test-Path -LiteralPath $cmManifestPath) {
+    $cmManifest = Get-Content -LiteralPath $cmManifestPath -Raw | ConvertFrom-Json
+    $cmNeedsGame = @($cmManifest.files | Where-Object {
+        $cmCacheTarget = Join-Path $cmSource $_.path
+        -not (Test-Path -LiteralPath $cmCacheTarget) -or (Get-Item -LiteralPath $cmCacheTarget -ErrorAction SilentlyContinue).Length -ne $_.final_size
+    }).Count -gt 0
+    if ($cmNeedsGame) {
+        $cmGameCandidates = [Collections.Generic.List[string]]::new()
+        if ($GamePath) { $cmGameCandidates.Add($GamePath) }
+        $cmSteamRoot = (Get-ItemProperty -LiteralPath 'HKCU:\Software\Valve\Steam' -ErrorAction SilentlyContinue).SteamPath
+        if ($cmSteamRoot) {
+            $cmGameCandidates.Add((Join-Path $cmSteamRoot 'steamapps\common\Europa Universalis V\game'))
+            $cmVdf = Join-Path $cmSteamRoot 'steamapps\libraryfolders.vdf'
+            if (Test-Path -LiteralPath $cmVdf) {
+                foreach ($cmMatch in [regex]::Matches((Get-Content -LiteralPath $cmVdf -Raw), '"path"\s+"([^"]+)"')) {
+                    $cmLibraryPath = $cmMatch.Groups[1].Value.Replace('\\','\')
+                    $cmGameCandidates.Add((Join-Path $cmLibraryPath 'steamapps\common\Europa Universalis V\game'))
+                }
+            }
+        }
+        $cmGame = $cmGameCandidates | Where-Object { Test-Path -LiteralPath (Join-Path $_ 'in_game\gfx\terrain2\terrain_cache\heightmap.bin') } | Select-Object -First 1
+        if (-not $cmGame) { throw 'Could not find EU5. Run again with -GamePath pointing to the installed Europa Universalis V\game folder.' }
+        # Check all source caches before assembling any output.
+        foreach ($cmEntry in $cmManifest.files) {
+            $cmVanilla = Join-Path $cmGame $cmEntry.path
+            if ((Get-Item -LiteralPath $cmVanilla).Length -ne $cmEntry.source_size -or (Get-FileHash -LiteralPath $cmVanilla -Algorithm SHA256).Hash -ne $cmEntry.source_sha256) {
+                throw "EU5 terrain cache does not match this release: $($cmEntry.path). Rebuild for your game version."
+            }
+        }
+        foreach ($cmEntry in $cmManifest.files) {
+            $cmVanilla = Join-Path $cmGame $cmEntry.path
+            $cmCacheTarget = [IO.Path]::GetFullPath((Join-Path $cmSource $cmEntry.path))
+            $cmSourceResolved = [IO.Path]::GetFullPath($cmSource).TrimEnd('\') + '\'
+            if (-not $cmCacheTarget.StartsWith($cmSourceResolved, [StringComparison]::OrdinalIgnoreCase)) { throw 'Invalid cache output path.' }
+            Copy-Item -LiteralPath $cmVanilla -Destination $cmCacheTarget -Force
+            $cmOutput = [IO.File]::Open($cmCacheTarget, [IO.FileMode]::Append, [IO.FileAccess]::Write)
+            $cmDelta = [IO.File]::OpenRead((Join-Path $cmPatchRoot $cmEntry.delta))
+            try { $cmDelta.CopyTo($cmOutput) } finally { $cmDelta.Dispose(); $cmOutput.Dispose() }
+            if ((Get-Item -LiteralPath $cmCacheTarget).Length -ne $cmEntry.final_size) { throw 'Terrain reconstruction length mismatch.' }
+            if ((Get-FileHash -LiteralPath $cmCacheTarget -Algorithm SHA256).Hash -ne $cmEntry.final_sha256) { throw 'Terrain reconstruction checksum mismatch.' }
+        }
+    }
+}
+if ($PrepareOnly) { Write-Host "Prepared Cindermaw at $cmSource"; return }
 $cmDocuments = [Environment]::GetFolderPath('MyDocuments')
 if ([string]::IsNullOrWhiteSpace($cmDocuments)) { throw 'Windows did not return a Documents folder.' }
 $cmModRoot = [IO.Path]::GetFullPath((Join-Path $cmDocuments 'Paradox Interactive\Europa Universalis V\mod'))
@@ -38,4 +87,4 @@ if (Test-Path -LiteralPath $cmTarget) {
 }
 Copy-Item -LiteralPath $cmSource -Destination $cmTarget -Recurse
 Write-Host "Installed Cindermaw development demo at $cmTarget"
-Write-Host 'Use a separate playset with only this mod and start a new campaign. Runtime/terrain verification is still required.'
+Write-Host 'Fully restart EU5, use a separate playset with only this mod, and start a NEW campaign. Verify population, capital city and close-up terrain.'

@@ -1,7 +1,7 @@
 cm_captains_confederation = {
     major = yes
     government = republic
-    potential = { tag = CDM }
+    potential = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
     country_modifier = {
         can_hire_privateers = yes
         allow_privateers_slave_raid = yes

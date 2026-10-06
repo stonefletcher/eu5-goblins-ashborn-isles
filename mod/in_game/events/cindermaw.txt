@@ -3,7 +3,6 @@ cindermaw.1 = {
     type = country_event
     title = cindermaw.1.title
     desc = cindermaw.1.desc
-    orphan = yes
     trigger = { tag = CDM }
     illustration_tags = { 10 = exterior 10 = armed }
     option = {

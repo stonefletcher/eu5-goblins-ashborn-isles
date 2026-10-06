@@ -1,11 +1,14 @@
 {
   "name": "Cindermaw - Goblin Invasion (Demo)",
   "id": "alex.cindermaw_demo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "game_id": "eu5",
   "supported_game_version": "1.3.11",
-  "short_description": "Experimental Cindermaw island demo: eight new locations, a goblin pirate republic, native raiding mechanics and a poor but resource-rich economy. New campaign required. Runtime and terrain bake verification pending.",
-  "tags": ["Alternative history", "Gameplay"],
+  "short_description": "The Ashborn Isles: five goblin countries in the Atlantic, 19 locations, 593,647 people, one faith and patched terrain. New campaign and full restart required.",
+  "tags": [
+    "Alternative history",
+    "Gameplay"
+  ],
   "relationships": [],
   "game_custom_data": {}
 }

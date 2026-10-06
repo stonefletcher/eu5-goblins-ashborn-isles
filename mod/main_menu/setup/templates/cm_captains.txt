@@ -1,4 +1,4 @@
-starting_technology_level = 2
+starting_technology_level = 3
 government = {
     type = republic
     heir_selection = cm_captain_elective
@@ -19,7 +19,6 @@ government = {
     reforms = { cm_captains_confederation }
     privilege = { nobles_land_rights clergy_land_rights trade_monopolies communal_lands }
     laws = {
-        medieval_levy_law = noble_levies
         censorship = no_censorship
         administrative_system = feudal_administration
         republican_foundation_law = republicanism_policy

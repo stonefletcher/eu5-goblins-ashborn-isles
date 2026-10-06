@@ -1,45 +1,33 @@
-# Demo verification checklist
+# Cindermaw 0.2 verification
 
-## Completed outside the engine
+## Static checks
 
-The builder verifies the following and writes its evidence into `build/reports/validation.json`:
+- Setup scripts have no UTF-8 BOM; localization retains BOM.
+- All original population, country, city, market and geographic lines remain in order.
+- 19 land locations have one connected footprint each; locations on each island connect over land.
+- Every island has a port into one connected coastal basin, itself bordering vanilla navigable sea locations.
+- Only the existing impassable ocean area is repainted. Existing land and sea lanes remain unchanged.
+- Brackmaw rasterized land area is within 1% of 60% of Cindermaw; dimensions and offsets derive from the main radius.
+- Each country owns exactly its assigned locations and has a valid capital, culture and shared religion.
+- Population totals use decimal arithmetic: CDM 320,117; QBR 183,197; RHK 30,492; SFK 30,819; SWK 29,022; total 593,647, including 6K enslaved Cinderkin.
+- Hooktooth is explicitly city rank; the other capitals are towns. Every capital has a port.
+- Native terrain-cache tile indexes parse, appended PNGs decode, island samples are above sea level, and unmodified tile pixels are preserved.
+- Compact-package reconstruction is checked against the fully assembled build.
 
-- Script brace balance, JSON validity and required installed identifiers.
-- Every new location has one connected footprint; all eight are connected through land adjacency.
-- All replaced map pixels were traversable water, never existing land.
-- Each port coordinate lies on its named sea location, with Y converted to the engine convention.
-- Each population total matches the source specification exactly using decimal arithmetic.
-- Existing population, ownership, town, market and hierarchy content is preserved in order.
-- Starting policies exist within their respective laws.
-- The custom election references the Cindermaw reform rather than the vanilla pirate reform.
-- The procedural terrain is above sea level on the island mask and below sea level outside it.
+## New-campaign playtest
 
-These checks are not an EU5 parser or gameplay test.
+Fully exit and restart EU5 after installation. Use only Cindermaw in a dedicated playset. Do not load a 0.1 save.
 
-## Required next: engine smoke test
+1. Select CDM in a NEW 1337 campaign between the Azores and Portugal. Confirm Hooktooth is the capital **city**, its local population is the configured uneven population, and the country total is 320,117. Confirm the other four countries exist independently.
+2. Inspect population culture/religion: Cinderkin, Brinekin, Reefkin, Shatterkin and Sootkin must all belong to Goblinkin and follow The Hunger Below.
+3. Inspect Hooktooth's existing marketplace, naval-supplies guild and stockade. Check construction requirements; a poor treasury can still prevent purchases, but missing population/city setup should not. Verify food, workers and market access.
+4. Zoom into all eight islands in 3D. Check dry land, coastlines, volcanic elevation, materials and seamless terrain across cache-tile boundaries. The packaged terrain preview is a technical heightfield, not an in-game screenshot.
+5. Advance one month: Cindermaw's fleet/army and opening lore event should appear once. Advance another month and save/reload to check they do not repeat.
+6. Move armies across Cindermaw and Brackmaw. Sail out of the archipelago, dock at each island, embark and land. Confirm no sailing through land and no invisible land bridges between islands. Check existing routes toward Portugal, France and the Maghreb.
+7. Check captain elections, raiding availability under vanilla conditions, budgets and population for at least a year. Record any imbalance separately from parser/load errors.
+8. Review fresh logs for `cm_`, the five country tags, setup parser errors and navigation/locator errors. Compare widespread vanilla errors with a mod-free baseline.
+9. Load a mod-free playset/new campaign to verify ordinary vanilla geography remains available.
 
-Use EU5 1.3.11, a separate playset with only this demo, and a new campaign. Record all failures rather than continuing an unreliable save.
+## Limitations
 
-1. **Discovery:** confirm the mod appears, applies, and reaches the new-campaign screen without a crash.
-2. **Country:** locate Cindermaw northeast of northern Madagascar. Confirm all eight locations are owned by CDM, Hooktooth is the capital, and no neighboring country lost land.
-3. **Map:** inspect flat and 3D modes at several zoom levels. The northern volcano should be on the actual island. Check coastlines, capital/army positions, borders and map labels. A correct flat map does not prove that the terrain cache was rebuilt.
-4. **Identity and economy:** check Cinderkin culture, Cinder Tongue, The Hunger Below, the captains' government and election, 200K population, 6K enslaved population, 20 starting gold, seven resource types, and Hooktooth's town/market/buildings. Record the actual monthly balance and food balance.
-5. **Initialization:** advance through the first monthly pulse. Confirm one event, four galleys, eight cogs, and two footmen sub-units. Advance another month and save/reload: the force and event must not repeat.
-6. **Movement:** move the army between every location. Move ships out of Hooktooth, into Saltjaw/Splinter Cove, and toward Madagascar. Embark, sail and disembark. Check that fleets cannot sail through the new island and that existing sea routes still work.
-7. **Raiding:** confirm privateering/slave-raiding actions are available under appropriate vanilla conditions. Run a small controlled war and verify the actual captured-population behavior; do not assume a modifier alone proves it works.
-8. **Persistence:** save and reload the new campaign; play at least a year. Check treasury, food, election behavior, unemployment and fleet upkeep. Then check a mod-free playset still loads the ordinary vanilla map.
-9. **Logs:** compare fresh `logs/error.log` and relevant debug logs against a vanilla baseline. Look especially for `cm_`, `CDM`, unknown fields, unresolved names, missing terrain layers, ports and spline/navigation errors. Never describe a static validation pass as an in-game pass.
-
-## Terrain/editor gate
-
-If the island is submerged or stale in 3D, open a separate editor session using the demo. Locate the `cm_island` terrain instance, check its transform against the location map, and export the terrain cache into the mod's matching `in_game/gfx/terrain2/terrain_cache/` path. Confirm the editor is saving to the mod, not the Steam installation. Back up generated output before replacing it.
-
-Regenerate required locators, splines and navigation data using the installed editor tools, then repeat the movement and zoom tests. Exact editor commands and export behavior remain to be verified against this installation; no unverified console commands are automated here.
-
-## Known limitations
-
-- No engine launch, parser log review or editor cache export has been performed.
-- No custom goblin anatomy or nonhuman inheritance/assimilation rules yet.
-- The current opening choices are informational.
-- AI-directed invasion and scripted captive processing are future work.
-- The source builder preserves existing world content, but it does not make full-file overrides compatible with other map/setup mods.
+Static validation and decoded cache inspection do not prove rendering, AI pathfinding, locators or construction work in the running game. No editor cache export or new in-engine test has been completed for 0.2. Terrain is patched directly in the native cache format. Any further terrain/navigation errors need the next game log and screenshot.

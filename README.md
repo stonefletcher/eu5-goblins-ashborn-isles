@@ -1,53 +1,59 @@
-# Cindermaw — Goblin Invasion Demo
+# Cindermaw 0.2 - The Ashborn Isles
 
-Version **0.1.0**, built against EU5 **1.3.11**, Steam build **24187685**.
+Development update for installed EU5 **1.3.11** (Steam build 24187685). Static checks are separate from an in-game pass. This update has not yet been tested in EU5.
 
-**Development demo: generated and statically validated, not yet tested in EU5.**
-The island terrain is authored as a terrain decal. The terrain cache has not been baked in the map editor. Do not treat this package as a verified playable release until the checks in `TESTING.md` pass.
+![Archipelago map](art/Cindermaw_Map_Preview.png)
 
-## What is implemented
+![Workshop thumbnail](mod/.metadata/thumbnail.png)
 
-- Eight entirely new land locations northeast of northern Madagascar, south of the Seychelles.
-- Three provinces in a new Cindermaw area within the existing Madagascar region.
-- A volcanic northern interior, forested shipbuilding districts, food-producing lowlands, and three ports.
-- Cindermaw (`CDM`), a new playable-country definition with Hooktooth as capital.
-- Cinderkin culture, Goblin culture group, Cinder Tongue language and fictional name pools.
-- The Hunger Below religion with its own religious group.
-- A captains' republic with a custom election derived from the game's pirate election.
-- Native privateering and slave-raiding permissions, plus eligibility for anti-piracy retaliation.
-- **200,000 starting people**, including **6,000 enslaved Cinderkin** from the island's earlier clan wars. No existing people are removed from vanilla countries.
-- **20 starting gold**, a 15% tax-income-efficiency penalty, one town and otherwise rural territory.
-- Iron, copper, lumber, fish, millet, salt and livestock.
-- A local market at Hooktooth, with a marketplace, naval-supplies guild and stockade.
-- A one-time monthly initialization that creates four traditional galleys, eight cogs and two footmen sub-units, followed by an introductory event.
-- A black, red and yellow pirate flag using existing game emblems.
+## Changes
 
-The first event is an introduction with two guidance choices, not a branching reward system. It does not automatically declare a war or grant additional gold. The fleet arrives on the first country monthly pulse after starting the campaign; check again after advancing into the next month.
+- Cindermaw has roughly **2.66 times** its original land area, eight locations and **320,117 people**.
+- **Hooktooth is the capital and a city**, with a marketplace, naval-supplies guild and stockade. The treasury remains poor at 20 gold.
+- **Brackmaw** is a separate country on an island with **60% of Cindermaw's land area** (linear dimensions scale by the square root of 0.6). It has five locations, 183,197 people, Brinekin culture and Brackhaven as its capital town.
+- Three independent clans each hold a two-island chain: **Reefhook**, **Shatterfin**, and **Sootwake**. Their populations are 30,492, 30,819 and 29,022 respectively; each has its own culture and capital town.
+- All five cultures belong to **Goblinkin**, speak Cinder Tongue, and follow **The Hunger Below**.
+- Total: **five countries, eight physical islands, 19 land locations, 593,647 people**. There are 6,000 enslaved Cinderkin in the initial setup; no vanilla population is removed.
+- The islands now sit **in the eastern North Atlantic, between the Azores and Portugal**, in the previously impassable Azores-Biscay ridge area. Their coastal basin connects to the existing navigable sea network. Existing land and navigable sea-lane pixels are unchanged.
+- Island sizes and center offsets derive from the main island's dimensions. Population counts are intentionally uneven and fixed in the source; rebuilding never rerolls them. Editing `radius` scales the group together; the 60% sister-island ratio is checked after rasterization. The builder rejects overlap with vanilla land/routes or between islands rather than silently breaking the map.
+- Internal boundaries use smooth, irregular curves instead of straight Voronoi edges. The same boundary warp drives terrain transitions; every location remains a single connected district.
+- The faction lore and opening event describe the early-1300s volcanic emergence and the divided goblin islands in 1337. See `LORE.md`.
 
-## Deliberately unfinished
+The Atlantic placement puts Portugal and Castile nearby, with France, England and the Maghreb as later coastal targets. The island climate is oceanic and the main food crop is wheat.
 
-- Goblin models, green skin and custom anatomy: characters currently use human placeholder graphics.
-- A biological species system: Goblin is presently represented through culture. Human/goblin assimilation and inheritance are not separately modeled.
-- Detailed captain loyalty, eruption events, captive-management choices and reform paths.
-- A later-date surprise invasion mode or scripted AI invasion. Vanilla's slave-raiding casus belli is AI-disabled; enabling its mechanics does not guarantee the AI will launch raids.
-- In-game budget and fleet-maintenance balancing. Starting gold and populations are specified, but actual monthly profit is unmeasured.
-- Terrain-cache baking, spline/locator verification, engine logs, save/reload, naval movement and combat tests.
+## Fixes prompted by the first playtest
 
-## Install the generated test build
+The game log rejected BOM-prefixed starting-world keys (`?locations`, `?market_manager`, `?current_age`). The new build writes setup scripts as UTF-8 **without BOM** and retains BOM for localization. This addresses the ignored population/city/market setup; 593,647 is the intended new-campaign total, not a claim of a runtime-verified display.
 
-1. Extract the ZIP. Close EU5.
-2. Copy the complete `cindermaw_demo` folder, including `.metadata`, into your actual Documents folder under `Paradox Interactive/Europa Universalis V/mod/`.
-3. Alternatively, run the included `Install-Cindermaw.ps1` in PowerShell. It discovers the Windows Documents folder, installs only this mod, and preserves an existing Cindermaw install as a dated backup. It does not edit the Steam installation or playsets.
-4. In EU5, create a separate test playset containing **only** Cindermaw. Start a **new** 1337 campaign and look northeast of northern Madagascar.
-5. Follow `TESTING.md`. Existing saves do not test this starting-world setup.
+The combat tags now drive the terrain generator: mountain districts receive volcanic cones and crater rims, hills receive rolling relief, and flatland districts have much lower relief. The builder records each location's tag and minimum/median/maximum height above sea level. Narrow transitions blend between districts and coastlines taper to sea level.
 
-To disable, switch to a playset without Cindermaw. Keep demo saves separate. The Jerusalem mod is not modified by this project; running both together is not supported yet because some generated override paths overlap.
+The original demo supplied an unbaked terrain decal, while this installation loads a prebuilt terrain cache with static decals disabled. This build instead patches the native runtime **heightmap, material and index PNG tile streams**, including their mip levels and tile borders. It samples valid material/index combinations from Madagascar and preserves every untouched tile reference and unaffected pixel. Obsolete demo decals are removed from the staged build.
 
-This session only built the package in its writable workspace. It did not install into your Documents mod folder or launch EU5.
+This is a programmatic native-cache patch, **not an editor export or an in-game rendering pass**. Close-up terrain, material appearance and navigation must still be checked in EU5.
 
-## Rebuild from source
+## Thumbnail
 
-Use Python 3.11+ with Pillow and NumPy:
+The 512 x 512 PNG (525,305 bytes, under 1 MB) is embedded at `mod/.metadata/thumbnail.png` in the source and `cindermaw_demo/.metadata/thumbnail.png` in the prepared mod. The installer preserves it. It is a placeholder for the mod listing; no Steam publication has been performed.
+
+## Install
+
+1. Extract `Cindermaw_Demo_0.2.0.zip` into a writable folder. **Close EU5 completely.**
+2. Run `Install-Cindermaw.ps1` from the extracted folder. It finds EU5 through Steam's library configuration, checks the original cache hashes, reconstructs the terrain files in the extracted folder, and installs the mod. It backs up the prior Cindermaw outside the mod scan directory.
+3. If detection fails, run:
+   `powershell -ExecutionPolicy Bypass -File .\Install-Cindermaw.ps1 -GamePath "E:\SteamLibrary\steamapps\common\Europa Universalis V\game"`
+   Substitute your installation's `game` folder.
+4. Restart EU5. Enable **only Cindermaw** in a dedicated playset and start a **NEW 1337 campaign**. Existing saves retain their old population and map state.
+5. Use `TESTING.md`. Hooktooth should start as a city with about 63,973 residents, within Cindermaw's 320,117 total.
+
+**The ZIP uses compact terrain deltas. Do not just copy its unprepared mod folder.** The installer first reconstructs about 1.8 GB of native cache files from your own game installation. No Python is required for installation. Allow roughly 4 GB free for extraction/preparation plus the installed copy. It never writes to the Steam installation.
+
+For manual installation, run the installer with `-PrepareOnly` (and `-GamePath` if needed), then copy the complete prepared `cindermaw_demo` folder into your actual Documents folder under `Paradox Interactive/Europa Universalis V/mod/` while EU5 is closed. A prepared source build already contains the reconstructed cache.
+
+To disable, choose a playset without this mod. Keep its saves separate. Jerusalem and other map/setup overrides require a compatibility build; they are not changed by this update.
+
+## Build and source
+
+Python 3.11+, NumPy and Pillow:
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -55,18 +61,10 @@ python tools/build.py --game "E:\SteamLibrary\steamapps\common\Europa Universali
 python tools/package.py
 ```
 
-Change `--game` for another Steam library. The builder reads vanilla files and writes only into this project's `build/` folder. It does not modify the installed game. Build into a fresh extracted project for each release so obsolete generated files cannot carry forward.
+`data/island.json` is the source of geometry, countries and populations. `tools/archipelago.py` handles derived geography and world setup. `tools/terrain_cache.py` patches the installed cache format. `build/reports/validation.json` records source hashes, population totals, ports, island ratios and checks. Rebuild after EU5 updates: the installer intentionally rejects mismatched cache versions.
 
-`data/island.json` controls location seeds, resources, population and island position. `mod/` contains authored gameplay definitions. `tools/build.py` applies narrowly scoped additions to required full-file overrides and creates the map layer. `build/reports/validation.json` records checks and source hashes.
+Authored source is tracked in the local Git repository. Generated vanilla overrides and caches are excluded. The source ZIP contains no original game assets.
 
-Authored sources belong in Git; generated map overrides and vanilla-derived assets do not. The local development snapshot is committed in Git. The source ZIP excludes `.git`, generated outputs, machine-specific settings and game assets.
+## Remaining work
 
-## Map implementation notes
-
-The location map is 16384 × 8192. The heightmap file directly under `gfx/terrain2/` is not the complete playable-world terrain in this installation; the real world is assembled from tiled decals. Cindermaw uses a new 1024 × 1024 terrain decal, placed with the existing terrain instance format. Its world coordinates are four times location-map coordinates, with inverted Y. Its coastline comes from the same mask as the playable map.
-
-The new instance and decal definition are supplied, but whether the game regenerates all necessary cache data on load remains unverified. If it loads the terrain from the vanilla cache, the new land may still appear underwater in 3D until an editor bake is exported into this mod. Do not delete or overwrite the original game's terrain cache.
-
-Map modifications also require checking navigation nodes, city/army locators and spline networks. This build does not ship newly engine-generated versions of those data sets. Their generation and verification are part of the next in-game milestone.
-
-The entire `locations.png`, `rivers.png`, geographic definitions, location templates, ports, terrain decal definitions, and selected setup files are generated overrides. Other mods changing the same paths need a compatibility build. Rebuild and retest after game updates.
+Human placeholder portraits; species-specific biology/assimilation; detailed clan diplomacy and invasion AI; more varied island shapes; runtime economy balancing; editor-generated settlement/army locators and navigation verification. Small clans currently use vanilla AI behavior and have no scripted opening invasion fleet. Cindermaw's opening fleet is created once on its first monthly country pulse.

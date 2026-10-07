@@ -1,0 +1,8 @@
+﻿# Species follows character culture, including goblins employed by human countries.
+# A conditional modifier prevents stacking and removes the benefit if culture changes.
+ga_goblin_longevity = {
+    type = character
+    category = character
+    potential_trigger = { OR = { culture = culture:cm_cinderkin culture = culture:cm_brinekin culture = culture:cm_reefkin culture = culture:cm_shatterkin culture = culture:cm_sootkin } }
+    character_life_expectancy = 15
+}

@@ -3,14 +3,14 @@ from pathlib import Path
 
 DYNASTY='cm_shatterfin_dynasty'
 FAMILY=[
-    ('cm_sfk_savra','cm_name_savra','1270.2.9',True,None,'1329.6.3',65,60,45),
-    ('cm_sfk_maarka','cm_name_maarka','1289.3.12',True,'cm_sfk_savra',None,66,58,52),
-    ('cm_sfk_ishra','cm_name_ishra','1295.8.4',True,'cm_sfk_savra',None,59,71,35),
-    ('cm_sfk_korr','cm_name_korr','1307.1.6',False,'cm_sfk_maarka',None,70,55,98),
-    ('cm_sfk_veshka','cm_name_veshka','1310.5.19',True,'cm_sfk_maarka',None,74,62,86),
-    ('cm_sfk_neshri','cm_name_neshri','1314.9.2',True,'cm_sfk_maarka',None,61,76,44),
-    ('cm_sfk_rikka','cm_name_rikka','1316.4.23',True,'cm_sfk_ishra',None,57,65,63),
-    ('cm_sfk_sella','cm_name_sella','1327.7.11',True,'cm_sfk_veshka',None,48,54,39),
+    ('cm_sfk_savra','cm_name_savra','1278.2.9',True,None,'1329.6.3',65,60,45),
+    ('cm_sfk_maarka','cm_name_maarka','1298.3.12',True,'cm_sfk_savra',None,66,58,52),
+    ('cm_sfk_ishra','cm_name_ishra','1301.8.4',True,'cm_sfk_savra',None,59,71,35),
+    ('cm_sfk_korr','cm_name_korr','1316.1.6',False,'cm_sfk_maarka',None,70,55,98),
+    ('cm_sfk_veshka','cm_name_veshka','1317.5.19',True,'cm_sfk_maarka',None,74,62,86),
+    ('cm_sfk_neshri','cm_name_neshri','1318.9.2',True,'cm_sfk_maarka',None,61,76,44),
+    ('cm_sfk_rikka','cm_name_rikka','1319.4.23',True,'cm_sfk_ishra',None,57,65,63),
+    ('cm_sfk_sella','cm_name_sella','1335.7.11',True,'cm_sfk_veshka',None,48,54,39),
 ]
 LOCALIZATION={
     'cm_tidemother_monarchy':'Tidemother Monarchy',

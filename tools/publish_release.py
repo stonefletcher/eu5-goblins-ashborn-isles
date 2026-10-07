@@ -1,67 +1,88 @@
-"""Publish hash-verified, locally built archives from a release transport branch.
-
-The runner cannot build EU5 assets without a licensed game installation. Archives
-are therefore transported in base64 chunks on release/*, never generated from
-unavailable game files or included in the main source tree.
-"""
+"""Verify and publish a prepared release; refresh documentation only."""
 from pathlib import Path
 import base64, hashlib, json, os, re, subprocess, zipfile
+from verify_prepared_bundle import verify
 
+DOCUMENTS = ['README.md', 'RELEASE_NOTES.md', 'TESTING.md',
+             'WORKSHOP_UPLOAD.md', 'STEAM_DESCRIPTION.txt', 'STEAM_CHANGELOG.txt']
 
 def main():
-    root=Path(__file__).resolve().parents[1]
-    manifest=json.loads((root/'.release/manifest.json').read_text())
-    version=manifest['version']
-    assert re.fullmatch(r'\d+\.\d+\.\d+',version)
-    assert version==json.loads((root/'data/island.json').read_text())['version']
-    assert os.environ['GITHUB_REF_NAME']=='release/v'+version
-    target=manifest['source_commit'];assert re.fullmatch('[0-9a-f]{40}',target)
-    destination=root/'dist';destination.mkdir(exist_ok=True)
-    files=[]
-    for item in manifest['assets']:
-        name=item['name'];assert re.fullmatch(r'[A-Za-z0-9_.-]+\.zip',name)
-        data=bytearray()
-        for chunk in item['chunks']:
-            assert re.fullmatch(r'assets/[A-Za-z0-9_.-]+',chunk)
-            data.extend(base64.b64decode((root/'.release'/chunk).read_bytes(),validate=True))
-        assert len(data)==item['size']
-        assert hashlib.sha256(data).hexdigest()==item['sha256']
-        path=destination/name;path.write_bytes(data)
-        with zipfile.ZipFile(path) as archive:assert archive.testzip() is None
-        files.append(str(path))
-    tag='v'+version
-    # Existing assets are immutable on retries. A specifically authorized source
-    # tag correction may advance only the known tag while retaining those bytes.
-    exists=subprocess.run(['gh','release','view',tag],capture_output=True)
-    if exists.returncode==0:
-        previous=manifest.get('source_tag_correction_from')
-        if not previous:raise SystemExit('Release already exists; inspect it before making changes.')
-        assert re.fullmatch('[0-9a-f]{40}',previous)
-        repo=os.environ['GH_REPO']
-        def api(endpoint):
-            return json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{endpoint}'],text=True))
-        release=api(f'releases/tags/{tag}')
-        assert not release['draft'] and not release.get('immutable',False)
-        wanted={a['name']:(a['size'],'sha256:'+a['sha256']) for a in manifest['assets']}
-        actual={a['name']:(a['size'],a.get('digest')) for a in release['assets']}
-        assert actual==wanted,'Existing release assets differ; correction refused'
-        ref=api(f'git/ref/tags/{tag}')
-        assert ref['object']['type']=='commit'
-        current=ref['object']['sha']
-        assert current in (previous,target),'Tag moved unexpectedly; correction refused'
-        if current!=target:
-            compare=api(f'compare/{current}...{target}')
-            assert compare['status']=='ahead','Source correction must be a fast-forward'
-            subprocess.run(['gh','api','--method','PATCH',f'repos/{repo}/git/refs/tags/{tag}',
-                            '-f',f'sha={target}','-F','force=false'],check=True)
-        subprocess.run(['gh','release','edit',tag,'--target',target,'--latest',
-                        '--notes-file',str(root/f'RELEASE_NOTES_{version}.md')],check=True)
-        print('Source tag corrected; verified release assets preserved.')
-        return
-    subprocess.run(['gh','release','create',tag,*files,'--target',target,
-                    '--title',f'Goblins of the Ashborn Isles {version} - Rough-Clad Goblins',
-                    '--notes-file',str(root/f'RELEASE_NOTES_{version}.md'),'--latest'],check=True)
+    root = Path(__file__).resolve().parents[1]
+    manifest_path = root / '.release/manifest.json'
+    manifest = json.loads(manifest_path.read_text())
+    version = manifest['version']
+    assert re.fullmatch(r'\d+\.\d+\.\d+', version)
+    branch = 'release/v' + version
+    assert os.environ['GITHUB_REF_NAME'] == branch
+    tag = 'v' + version
+    exists = subprocess.run(['gh', 'release', 'view', tag], capture_output=True)
+    if exists.returncode == 0:
+        raise SystemExit('Release already exists; inspect it before changing its assets.')
+    print(json.dumps(verify(root), indent=2), flush=True)
+    assert len(manifest['assets']) == 1, 'Use the standard installer package only'
+    item = manifest['assets'][0]
+    assert item['name'] == f'Goblins_Ashborn_Isles_{version}.zip'
+    raw = b''.join(base64.b64decode((root / '.release' / chunk).read_bytes(), validate=True)
+                   for chunk in item['chunks'])
+    assert len(raw) == item['size']
+    assert hashlib.sha256(raw).hexdigest() == item['sha256']
+    destination = root / 'dist'
+    destination.mkdir(exist_ok=True)
+    path = destination / item['name']
+    path.write_bytes(raw)
+    documents = DOCUMENTS + [f'RELEASE_NOTES_{version}.md']
+    replacement = {name: (root / name).read_bytes() for name in documents}
+    with zipfile.ZipFile(path) as archive:
+        changed = {name: data for name, data in replacement.items()
+                   if name not in archive.namelist() or archive.read(name) != data}
+        original_members = {entry.filename: (entry.CRC, entry.file_size)
+                            for entry in archive.infolist()
+                            if entry.filename not in replacement}
+    if changed:
+        with zipfile.ZipFile(path, 'a', zipfile.ZIP_DEFLATED, compresslevel=6) as archive:
+            archive.start_dir = len(raw)
+            archive.filelist = [entry for entry in archive.filelist if entry.filename not in changed]
+            archive.NameToInfo = {entry.filename: entry for entry in archive.filelist}
+            for name, data in changed.items():
+                archive.writestr(name, data)
+        complete = path.read_bytes()
+        assert complete[:len(raw)] == raw
+        suffix = complete[len(raw):]
+        digest = hashlib.sha256(suffix).hexdigest()
+        for index, offset in enumerate(range(0, len(suffix), 512 * 1024)):
+            chunk = f'assets/{item["name"]}.docs.{digest[:12]}.{index:04d}.b64'
+            (root / '.release' / chunk).write_bytes(base64.b64encode(suffix[offset:offset + 512 * 1024]))
+            item['chunks'].append(chunk)
+        item['size'] = len(complete)
+        item['sha256'] = hashlib.sha256(complete).hexdigest()
+    manifest['source_commit'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+    manifest['release_branch'] = branch
+    manifest_path.write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
+    print(json.dumps(verify(root), indent=2), flush=True)
+    with zipfile.ZipFile(path) as archive:
+        assert len(archive.namelist()) == len(set(archive.namelist()))
+        for name, data in replacement.items():
+            assert archive.read(name) == data, name
+        final_members = {entry.filename: (entry.CRC, entry.file_size)
+                         for entry in archive.infolist() if entry.filename not in replacement}
+        assert final_members == original_members, 'Non-document members changed'
+        assert archive.testzip() is None
+    subprocess.run(['git', 'config', 'user.name', 'github-actions[bot]'], check=True)
+    subprocess.run(['git', 'config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com'], check=True)
+    subprocess.run(['git', 'add', '.release'], check=True)
+    if subprocess.run(['git', 'diff', '--cached', '--quiet']).returncode:
+        subprocess.run(['git', 'commit', '-m', f'Finalize {version} package documentation and checksums [skip ci]'], check=True)
+        subprocess.run(['git', 'push', 'origin', f'HEAD:refs/heads/{branch}'], check=True)
+    target = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+    assert not subprocess.check_output(['git', 'status', '--porcelain', '--untracked-files=no'], text=True).strip()
+    checksum = destination / 'SHA256SUMS.txt'
+    checksum.write_text(f'{item["sha256"]}  {item["name"]}\n', encoding='utf-8')
+    print(f'Verified release commit: {target}', flush=True)
+    subprocess.run(['gh', 'release', 'create', tag, str(path), str(checksum),
+                    '--target', target,
+                    '--title', f'Goblins of the Ashborn Isles {version} - Districts and Dynasties',
+                    '--notes-file', str(root / f'RELEASE_NOTES_{version}.md'),
+                    '--latest'], check=True)
 
-
-if __name__=='__main__':main()
-
+if __name__ == '__main__':
+    main()

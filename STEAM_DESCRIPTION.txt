@@ -1,5 +1,5 @@
 [h1]Goblins of the Ashborn Isles[/h1]
-[b]A fantasy Europa Universalis V demo — Version 0.5.3[/b]
+[b]A fantasy Europa Universalis V demo — Version 0.5.4[/b]
 
 Fire rose from the Atlantic. When the smoke cleared, new islands stood between the Azores and Portugal — and goblins already walked their shores.
 
@@ -18,20 +18,22 @@ Lead one of the Ashborn clans in a new 1337 campaign. Build your island realm, c
 
 [h2]What is in the demo?[/h2]
 [list]
-[*][b]A new Atlantic homeland:[/b] Six volcanic islands, 36 land locations and 13 coastal sea zones, with custom terrain, ports, settlements and resources.
+[*][b]A new Atlantic homeland:[/b] Six volcanic islands, 72 land locations and 30 provinces and 13 coastal sea zones, with custom terrain, ports, settlements and resources.
 [*][b]A shared goblin identity:[/b] Five Ashborn cultures, Cinder Tongue, the Hunger Below faith, and original clan names, dynasties and royal families.
-[*][b]Two paths to power:[/b] Four Ironfang Monarchies follow Rule of the Strongest, favouring eligible adult men by military ability. Shatterfin follows the senior eligible woman of its ruling maternal dynasty.
+[*][b]Two paths to power:[/b] Four Ironfang Monarchies follow Rule of the Strongest, favouring eligible adult Ashborn men of the ruling dynasty by military ability. Shatterfin follows the senior eligible woman of its ruling maternal dynasty.
 [*][b]Voyages into the unknown:[/b] Fund expeditions toward Iberia, northern waters and northwest Africa. Returning crews bring charts — and contact reveals the isles to the countries they visit.
-[*][b]An island economy:[/b] Develop a shared market, fishing villages, mines, ports and modest urban industries.
+[*][b]An island economy:[/b] Lead 1,294,755 goblins across five clans, with larger minor realms, expanded capital industries, granaries, villages, mines and valuable resources.
 [*][b]Goblin character and unit art:[/b] Clan-based portrait appearances and custom infantry assets. The 0.5.3 art pass introduces more subdued skin colours, revised goblin features and rougher clothing; visuals remain under development.
 [/list]
 
-[h2]New in 0.5.3[/h2]
+[h2]New in 0.5.4: Districts and Dynasties[/h2]
 [list]
-[*]Revised goblin features, subdued clan skin colours and rougher clothing across all five Ashborn cultures, with human portraits preserved.
-[*]Repaired map infantry through native mesh attachments; visibility and the reported crash fix were confirmed in a player test. Further appearance refinement remains in development.
-[*]Original goblin infantry recruitment illustrations scoped to Ashborn cultures.
-[*]A companion first-contact event for the owners of ports visited by Ashborn expeditions.
+[*]72 inhabited locations and 30 provinces across the existing six islands.
+[*]Larger, uneven clan populations; Shatterfin is the largest of the three smaller clans.
+[*]114 starting building levels and 387 levels of guarded, once-only first-month RGO investment.
+[*]Dynasty-only Ironfang succession and country names that follow the reigning house.
+[*]Younger rulers aged 27–39, varied court birthdays and plausible dynastic heirs.
+[*]Ashborn characters receive +15 years of life expectancy; humans do not receive the bonus.
 [/list]
 
 [h2]Demo status[/h2]

@@ -38,5 +38,6 @@ cm_tidemother_seniority = {
     }
     succession_effect = {
         scope:new_ruler = { change_character_estate = estate_type:crown_estate }
+        ga_update_dynastic_clan_name = yes
     }
 }

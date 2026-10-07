@@ -1,24 +1,57 @@
-# 0.5.3 - Rough-Clad Goblins
+# 0.5.4 - Districts and Dynasties
 
-Demo release for **Europa Universalis V 1.3.11 (Pavia)**. Fully restart the game and start a **new 1337 campaign**.
+Demo release for **Europa Universalis V 1.3.11 (Pavia)**. Restart EU5 and start a **new 1337 campaign**; the map and starting setup changed.
 
-- Revised goblin features, subdued clan skin colours, compact adult proportions and plain clothing for all five Ashborn cultures; human appearance remains isolated.
-- Repaired custom infantry through native shared-pose mesh attachments. User confirmed visibility and no recurrence of the reported crash on October 6, 2026. Further visual refinement is tracked in issue #4.
-- Added original culture-scoped goblin infantry recruitment and army-card paintings without changing native unit statistics.
-- Added **Strange Visitors on Our Shores** for owners of visited ports when expeditions establish reciprocal contact. The event is guarded once per non-Ashborn country.
-- Consolidated the matching prepared installer and Workshop staging tools, full terrain caches, thumbnail and Steam BBCode description.
+- Expanded the archipelago from 36 to **72 inhabited locations** and from 15 to **30 provinces**, retaining six islands, capitals and thirteen coastal sea zones.
+- Increased starting population to **1,294,755**: Cindermaw 552,739; Brackmaw 318,463; Reefhook 108,437; Shatterfin 213,487; Sootwake 101,629. Shatterfin is the largest of the three smaller clans.
+- Increased starting building levels from 47 to **114**, with capital markets, granaries, guilds, villages, wheat windmills and metal smelters. First-month, once-only RGO investment now supplies **387 levels**, guarded by ownership.
+- Added gold, silver, dyes, saffron, silk, pearls and alum alongside food, timber and industrial materials.
+- Restricted Ironfang succession to eligible adult Ashborn men **within the ruling dynasty**. Military ability decides, with Administration and age breaking ties.
+- Added country names and adjectives that follow the reigning dynasty after a takeover or reassignment. Shatterfin retains maternal seniority.
+- Varied starting ruler ages: Cindermaw 38, Brackmaw 36, Reefhook 27, Shatterfin 39 and Sootwake 29. Courts and families have varied, plausible birthdays; younger rulers have minor children and eligible adult brothers.
+- Added **+15 years of life expectancy** for all five Ashborn cultures, including future characters and goblins employed abroad. Human cultures do not receive the bonus.
+- Preserved 0.5.3 portrait isolation, the user-tested infantry attachment repair, recruitment artwork and reciprocal first-contact events.
 
-The five kingdoms, 36 land locations, six islands, thirteen sea zones, exploration routes, Ironfang succession and Shatterfin maternal seniority are included. The 0.5.4 economy, population, lifespan and younger-ruler work, and the 0.5.5 expansion chain, are not part of this release.
+**Install:** extract `Goblins_Ashborn_Isles_0.5.4.zip` into a new writable folder, close EU5 and run `Install-Goblins.cmd`. The installer reconstructs terrain from your matching game installation and backs up the previous mod. Source downloads also carry the matching prepared bundle.
 
-**Install:** download `Goblins_Ashborn_Isles_0.5.3.zip`, extract it into a new writable folder, close EU5 and run `Install-Goblins.cmd`. The compact installer reconstructs and verifies terrain using your matching game installation. Source downloads at this tag also include the matching prepared bundle.
+**Steam:** use the same package and installer. Upload the installed `goblins_ashborn_isles` folder from the EU5 user-data `mod` directory to the existing Workshop listing. Use `STEAM_DESCRIPTION.txt` and `STEAM_CHANGELOG.txt`. See `WORKSHOP_UPLOAD.md`.
 
-**Steam upload:** use the separately prepared `Goblins_Ashborn_Isles_0.5.3_Workshop.zip`. Run its staging script, then update the existing Workshop item from the full `goblins_ashborn_isles` folder under the EU5 user-data `mod` directory. See `WORKSHOP_UPLOAD.md`. Publishing the GitHub release does not upload the Steam item.
-
-**Remaining checks:** portrait/clothing appearance, recruitment illustrations, first-contact event behavior, succession edge cases, movement/combat/save-reload coverage, long-term balance and multiplayer. Static/package validation is separate from these checks.
+**Validation:** archive hashes, ZIP integrity, packaged version, population totals, ruler ages and authored art are checked automatically. Gameplay acceptance remains separate: test the new map, employment/food/budgets, longevity, dynasty renaming, succession edge cases and save/reload using `TESTING.md`. A lifespan bonus does not guarantee a fixed death age. The 0.5.5 expansion chain is outside this release.
 
 ---
 
-## Historical development notes
+# Development history
+
+The entries below record earlier iterations; the release summary above is authoritative for final 0.5.4 values.
+
+## 0.5.4 demographic revision
+
+- Starting populations: Cindermaw 552,739; Brackmaw 318,463; Reefhook 108,437; Shatterfin 213,487; Sootwake 101,629. Total 1,294,755. All clans gain at least another 50% over the first 0.5.4 pass; Shatterfin is the largest smaller clan.
+- Rulers start at varied ages of 27-39, with varied consort/court birthdays; their family dates preserve plausible parent ages, adult dynastic heirs, younger rulers with minor children and adult brothers, and Shatterfin maternal seniority.
+- Native character auto modifier grants Ashborn goblins +15 years of life expectancy by culture, independent of country, dynasty and employment. Conditional application avoids stacking and excludes humans. Mortality remains probabilistic; combat, illness and scripted deaths remain possible.
+- Starting RGO expansion scales with the additional population, reaching 387 levels. Geography, resources and buildings retain the previous 0.5.4 layout.
+- Static and installer checks are separate from pending engine acceptance. Starting-population and birth-date edits require a new campaign.
+
+The earlier 0.5.4 entries below describe the initial pass.
+
+# 0.5.4 — Districts and Dynasties
+
+Built on tested staging/0.5.3. EU5 1.3.11; a new 1337 campaign is required.
+
+- 682,694 goblins, up from 593,647 (+15%, rounded to whole people). Each original population is split between two districts, with all starting population classes expanded.
+- 36 → 72 inhabited locations and 15 → 30 provinces. Every original location and province is subdivided. Stable country tags, original location IDs, capitals, coastlines and thirteen sea zones remain.
+- Starting building levels rise from 47 to 114: stronger capital markets, five granaries, tools/cloth/pottery guilds, rural villages, wheat windmills and smelters on iron/copper RGOs.
+- Once-only, ownership-checked first-month RGO expansion rises from 70 to 160 levels across the larger map.
+- New RGOs: 2 gold, 3 silver, 2 dyes, 2 saffron, 1 silk, 1 pearls and 2 alum. New food/timber/material districts support basic demand; original districts retain their resources. Native gold ID: goods_gold.
+- Ironfang: strongest eligible adult Ashborn man within the ruling dynasty inherits. Military ability decides, with Administration and age breaking ties. Unrelated courtiers cannot inherit through this law; no eligible dynasty member means no eligible heir.
+- Native country naming follows the reigning house after a takeover or dynasty reassignment; succession hooks and monthly reconciliation cover changes. Regents do not rename the country. Shatterfin keeps maternal seniority.
+- Retains 0.5.3 human portrait isolation, working shared-pose infantry, recruitment art and first-contact events.
+
+Installed Europe reference medians: 520 map pixels/location, 2,626 pixels/province and 5 locations/province. The new districts use this spatial scale as a reference while preserving the islands' smaller political units.
+
+Volcanic/hydrothermal seams explain gold, silver and alum; reeds/lichens supply dyes; drained sheltered volcanic plots grow saffron. Knifeback has a small cultivated silk grove and Reefhook has pearl-diving grounds. These are fictional resources appropriate to the setting.
+
+Extra production capacity is not guaranteed profitability. Food, employment, balance and succession require gameplay acceptance. Use only a verified matching 0.5.4 installer; older instructions below refer to earlier releases.
 
 ## 0.5.3 companion first-contact event
 

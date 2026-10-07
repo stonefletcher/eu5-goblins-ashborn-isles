@@ -53,6 +53,15 @@ def build_names(b,out):
 
 def ruler(tag):return 'cm_sfk_maarka' if tag=='SFK' else 'cm_'+tag.lower()+'_ruler'
 
+# Authored variation is reproducible across builds; dates keep families plausible.
+COURT_DATES = {
+ 'CDM': ('1299.3.12', '1298.6.4', '1317.8.8', '1319.2.15', ('1304.2.3', '1308.8.5', '1302.11.6')),
+ 'QBR': ('1301.1.17', '1300.5.8', '1318.7.26', '1319.10.5', ('1310.4.18', '1305.9.21', '1297.3.9')),
+ 'RHK': ('1310.9.26', '1311.2.14', '1330.4.19', '1332.8.27', ('1306.6.11', '1311.1.28', '1294.10.16')),
+ 'SFK': (None, None, None, None, ('1302.7.4', '1309.3.22', '1307.5.13')),
+ 'SWK': ('1308.7.6', '1310.10.9', '1328.1.23', '1330.5.31', ('1312.6.17', '1303.4.7', '1296.8.29')),
+}
+
 def build_courts(b,out):
     """Add families and adult courtiers; native cabinet appointments remain native."""
     dynasties=[];characters=[]
@@ -61,16 +70,23 @@ def build_courts(b,out):
         characters.append(f'{ident} = {{ first_name = {{ name = {key(name)} }} culture = {culture} religion = cm_hunger_below dynasty = {dynasty} tag = {tag} birth = {capital} birth_date = {born} adm = {adm} dip = {dip} mil = {mil} '+('female = yes ' if female else '')+extra+' }')
     for country in b.CFG['countries']:
         tag=country['tag'];label,culture,males,females,houses,_=POOLS[tag];males=males.split();females=females.split();capital=country['capital'];prefix='cm_'+tag.lower()
+        leader_birth,consort_birth,son_birth,daughter_birth,court_births=COURT_DATES[tag]
         for i in range(1 if tag=='SFK' else 0,4):dynasties.append(f'{house_key(tag,i)} = {{ name = {{ name = {house_key(tag,i)} }} home = {capital} }}')
         if tag!='SFK':
             nickname=' nickname = { name = cm_stone_fletcher }' if tag=='CDM' else ''
-            person(prefix+'_ruler',males[0],tag,culture,capital,house_key(tag,0),'1292.3.12',extra='spouse = '+prefix+'_consort'+nickname,stats=(66,61,90))
-            person(prefix+'_consort',females[0],tag,culture,capital,house_key(tag,1),'1294.6.4',True,'spouse = '+prefix+'_ruler',stats=(70,68,50))
+            ancestry=''
+            if tag in {'RHK','SWK'}:
+                father_birth,brother_birth=('1282.2.11','1305.10.16') if tag=='RHK' else ('1281.5.20','1303.1.14')
+                person(prefix+'_father',males[5],tag,culture,capital,house_key(tag,0),father_birth,extra='death_date = 1334.9.6',stats=(63,57,88))
+                ancestry=' father = '+prefix+'_father'
+                person(prefix+'_brother',males[1],tag,culture,capital,house_key(tag,0),brother_birth,extra=ancestry,stats=(59,55,82))
+            person(prefix+'_ruler',males[0],tag,culture,capital,house_key(tag,0),leader_birth,extra='spouse = '+prefix+'_consort'+nickname+ancestry,stats=(66,61,90))
+            person(prefix+'_consort',females[0],tag,culture,capital,house_key(tag,1),consort_birth,True,'spouse = '+prefix+'_ruler',stats=(70,68,50))
             parents=f'father = {prefix}_ruler mother = {prefix}_consort'
-            person(prefix+'_son',males[1],tag,culture,capital,house_key(tag,0),'1312.8.8',extra=parents,stats=(59,55,82))
-            person(prefix+'_daughter',females[1],tag,culture,capital,house_key(tag,0),'1315.2.15',True,parents,stats=(67,72,61))
+            person(prefix+'_son',males[2] if tag in {'RHK','SWK'} else males[1],tag,culture,capital,house_key(tag,0),son_birth,extra=parents,stats=(59,55,82))
+            person(prefix+'_daughter',females[1],tag,culture,capital,house_key(tag,0),daughter_birth,True,parents,stats=(67,72,61))
         for i,stats in enumerate([(84,59,43),(53,85,52),(51,57,86)]):
-            person(prefix+'_court_'+str(i),[males[3],females[3],males[4]][i],tag,culture,capital,house_key(tag,i+1),['1300.2.3','1302.8.5','1299.11.6'][i],i==1,stats=stats)
+            person(prefix+'_court_'+str(i),[males[3],females[3],males[4]][i],tag,culture,capital,house_key(tag,i+1),court_births[i],i==1,stats=stats)
     for rel,block,rows in [('main_menu/setup/start/04_dynasties.txt','dynasty_manager',dynasties),('main_menu/setup/start/05_characters.txt','character_db',characters)]:
         p=out/rel;b.write(out,rel,b.inject(p.read_text(encoding='utf-8-sig'),block,'\n'.join(rows)))
     return len(characters)
@@ -89,4 +105,4 @@ def verify(b,out):
     for k in localization():assert k+': ' in loc or k+':0 ' in loc,k
     assert 'nickname = { name = cm_stone_fletcher }' in chars
     assert 'nickname = { name = cm_mare_mother }' in chars
-    return {'cultures':5,'male_name_entries':80,'female_name_entries':80,'houses':30,'lowborn_name_entries':30,'authored_family_and_court_characters':39,'engine_generation_tested':False}
+    return {'cultures':5,'male_name_entries':80,'female_name_entries':80,'houses':30,'lowborn_name_entries':30,'authored_family_and_court_characters':43,'engine_generation_tested':False}

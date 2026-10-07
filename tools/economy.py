@@ -43,6 +43,12 @@ ga_economy_monthly = {{
             if key=='fishing_village':assert loc['good']=='fish'
             if key=='forest_village':assert loc['vegetation']=='woods'
             if key=='farming_village':assert loc['good'] in {'wheat','livestock','wool'}
+            if key=='windmill':assert loc['good'] in {'wheat','rice','millet'}
+            if key=='local_smelters':assert loc['good'] in {'iron','copper','tin','lead'}
+    goods='\n'.join(p.read_text(encoding='utf-8-sig') for p in (game/'in_game/common/goods').glob('*.txt'))
+    for loc in cfg['locations']:
+        a,z=b.block_span(goods,loc['good'])
+        assert 'category = raw_material' in goods[a:z] or loc['good'] in {'fish','wheat','livestock','lumber','tar','wool'},(loc['id'],'invalid RGO')
     effects=b.read(game,'in_game/common/scripted_effects/country_effects.txt')
     assert 'change_max_raw_material_workers = 1' in effects,'Native RGO effect changed'
     return {'rgo_expansion_total':sum(l['rgo_expansion'] for l in cfg['locations']),

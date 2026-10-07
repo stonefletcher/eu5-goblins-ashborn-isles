@@ -1,6 +1,27 @@
-"""Small, optional voyages that reveal coastlines only after the crews return."""
+"""Known Atlantic charts and optional voyages that establish foreign contact."""
 import re
 import event_art
+
+FIRST_OFFER_MONTHS = 36
+STARTING_REGIONS = ['iberia_region']
+STARTING_SEA_AREAS = ['iberian_west_coast_area', 'bay_of_biscay_area',
+                      'english_channel_area', 'nw_africa_coast_area']
+# Coastal provinces near the voyage destinations; distant interiors stay hidden.
+STARTING_PROVINCES = [
+    'cornwall_province', 'devon_province', 'dorset_province', 'hampshire_province',
+    'sussex_province', 'kent_province',
+    'tregor_province', 'cornouaille_province', 'vannetais_province', 'nantais_province',
+    'rennais_province', 'lower_poitou_province', 'saintonge_province',
+    'bordelais_province', 'tursan_province', 'bayonne_province',
+    'habat_province', 'azghar_province', 'fez_province', 'tamasna_province',
+    'dukkala_province', 'haha_province', 'errif_province', 'kert_province',
+]
+
+
+def starting_knowledge():
+    return (f"discovered_areas = {{ cm_cindermaw_area cm_ashborn_seas_area {' '.join(STARTING_SEA_AREAS)} }}\n"
+            f" discovered_regions = {{ {' '.join(STARTING_REGIONS)} }}\n"
+            f" discovered_provinces = {{ {' '.join(STARTING_PROVINCES)} }}")
 
 ROUTES = {
     'east': {'cost':5,'months':4,'event':2,'areas':['iberian_west_coast_area'],'locations':['lisbon','porto','setubal']},
@@ -13,22 +34,22 @@ TEXT = {
     'goblins_exploration.6.desc':'Fishermen report that a strange little vessel put ashore along our coast. Its crew were unlike any people they had seen: short, ugly creatures with long pointed ears, sharp teeth and restless eyes. They picked through the shallows and argued in a rasping tongue, but the moment they realized they had been spotted, they scrambled aboard and fled out to sea.\n\nA scout ship followed at a cautious distance, keeping their patched sails just within sight. Beyond our familiar waters, the pursuit led to a cluster of smoke-wreathed islands, their coves crowded with crooked docks and more of the same vessels. Our scouts have returned with a chart of the crossing. Whatever these creatures may be, we now know where they live.',
     'goblins_exploration.6.a':'Mark the islands on our charts. Keep watch on the sea.',
     'goblins_exploration.1.title':'Beyond the Ashen Horizon',
-    'goblins_exploration.1.desc':'Our charts end where the smoke of our mountains disappears. A fishing crew has returned with a plank unlike anything built in the isles, and the captains argue that it drifted from the east. A small expedition could follow the currents and bring back a route to whoever lives beyond them.',
+    'goblins_exploration.1.desc':'Our rough charts show Iberia and the nearby mainland shores, but no captain has returned with a close account of their harbors. After years of gathering provisions and seaworthy hulls, the crews are ready. A small expedition could cross the eastern waters and learn who lives beyond them.',
     'goblins_exploration.1.east':'Provision a voyage east. The crew returns in four months.',
     'goblins_exploration.1.wait':'We need these provisions at home. Ask again in six months.',
     'goblins_exploration.2.title':'A Coast Beyond Counting',
-    'goblins_exploration.2.desc':'The expedition returns with sketches of river mouths, broad sails and stone towns. Their coastal chart marks Porto, Lisbon and Setubal, with a sailing route back to our islands. What lies beyond those harbors remains a blank. Our crews fled when shore watchers spotted them, but a foreign sail shadowed their return. The rulers of these ports now know the Ashborn Isles and the waters around them.',
+    'goblins_exploration.2.desc':'The expedition returns with sketches of river mouths, broad sails and stone towns. Porto, Lisbon and Setubal are more than marks on an old chart now: our crews have seen their harbors and sailed the crossing home. They fled when shore watchers spotted them, but a foreign sail shadowed their return. The rulers of these ports now know the Ashborn Isles and the waters around them.',
     'goblins_exploration.2.a':'Keep the charts dry. There will be more voyages.',
     'goblins_exploration.3.title':'The Captains Unroll Their Charts',
-    'goblins_exploration.3.desc':'We know the eastern crossing, but the mainland coast continues beyond the last marks on our charts. Some crews favor the northern waters, others the warmer southern coast. Provisions for another expedition will cost ten gold, and the voyage will take six months.',
+    'goblins_exploration.3.desc':'We have sailed the eastern crossing, but much of the coastline on our charts is still known only through old accounts. Some crews favor visiting the northern harbors, others the warmer southern coast. Provisions for another expedition will cost ten gold, and the voyage will take six months.',
     'goblins_exploration.3.north':'Chart the northern coasts and the narrow sea beyond.',
     'goblins_exploration.3.south':'Follow the coast south toward the straits.',
     'goblins_exploration.3.wait':'Let the crews rest. Reconsider in six months.',
     'goblins_exploration.4.title':'Cold Seas and Foreign Harbors',
-    'goblins_exploration.4.desc':'Our sailors bring back a northern coastal chart. Beyond the great bay lie Brest, La Rochelle and Bordeaux; across the narrow sea they found Plymouth and Southampton. The chart records their harbors and the waters between them. Inland roads and distant kingdoms remain unknown. The rulers of the ports we visited now know the Ashborn Isles.',
+    'goblins_exploration.4.desc':'Our sailors bring back firsthand accounts of the northern coast. They visited Brest, La Rochelle and Bordeaux, then Plymouth and Southampton across the narrow sea. Old chart marks now carry sketches of harbors and notes on their inhabitants. Distant interiors remain unknown. The rulers of the ports we visited now know the Ashborn Isles.',
     'goblins_exploration.4.a':'Another stretch of the world has a name.',
     'goblins_exploration.5.title':'The Southern Straits',
-    'goblins_exploration.5.desc':'The southern expedition has returned. Its chart shows Cadiz and the northern African coast, including Tangier and Ceuta near the straits. The captains count rich-looking harbors, but their map tells us little about the lands behind the walls. The rulers of these ports now know the route to the Ashborn Isles.',
+    'goblins_exploration.5.desc':'The southern expedition has returned from Cadiz, Tangier and Ceuta near the straits. The captains have replaced rumors with firsthand sketches of rich-looking harbors, though they learned little of life behind the walls. The rulers of these ports now know the route to the Ashborn Isles.',
     'goblins_exploration.5.a':'The sea is wider than our old stories claimed.',
 }
 
@@ -44,6 +65,8 @@ def voyage_option(route,offer):
 
 def build(b,game,out,validate_setup=True):
     names=b.parse_names(game);defs=b.read(game,'in_game/map_data/definitions.txt')
+    for key in STARTING_REGIONS + STARTING_SEA_AREAS + STARTING_PROVINCES:
+        b.block_span(defs,key)
     for route in ROUTES.values():
         for area in route['areas']:b.block_span(defs,area)
         for name in route['locations']:assert name in names,name
@@ -54,7 +77,7 @@ def build(b,game,out,validate_setup=True):
         if = {{
             limit = {{ NOT = {{ has_variable = ga_exploration_initialized }} }}
             set_variable = {{ name = ga_exploration_initialized value = yes }}
-            set_variable = {{ name = ga_exploration_cooldown months = 3 }}
+            set_variable = {{ name = ga_exploration_cooldown months = {FIRST_OFFER_MONTHS} }}
         }}
         if = {{
             limit = {{
@@ -149,9 +172,11 @@ def build(b,game,out,validate_setup=True):
         setup=(out/'main_menu/setup/start/10_countries.txt').read_text(encoding='utf-8-sig')
         for c in b.CFG['countries']:
             a,z=b.block_span(setup,c['tag']);country=setup[a:z]
-            assert 'expl_western_europe' not in country and 'discovered_regions' not in country
-            assert 'cm_cindermaw_area cm_ashborn_seas_area' in country
+            assert 'expl_western_europe' not in country
+            assert starting_knowledge() in country
     # Mutual contact is limited to the owners of this voyage's named ports.
-    return {'starting_knowledge':'Ashborn land and sea areas only','countries':[c['tag'] for c in b.CFG['countries']],
-            'first_offer_after_months':3,'routes':ROUTES,'reciprocal_discovery':True,
+    return {'starting_knowledge':{'regions':STARTING_REGIONS,'sea_areas':STARTING_SEA_AREAS,
+                                'coastal_provinces':STARTING_PROVINCES,'fog_of_war':'normal'},
+            'countries':[c['tag'] for c in b.CFG['countries']],
+            'first_offer_after_months':FIRST_OFFER_MONTHS,'routes':ROUTES,'reciprocal_discovery':True,
             'recipients':'current owners of visited locations; unowned sea locations skipped','runtime_verified':False}

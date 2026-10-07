@@ -4,9 +4,13 @@ Five goblin kingdoms share six volcanic islands in the Atlantic. Unite their riv
 
 ![The five Ashborn clans gather beneath their banners](art/events/sources/gathering.png)
 
-**0.5.6 staging — economic pass.** This branch contains the next version's economic changes on top of **0.5.5 — The Gathering of the Five**, targeting **EU5 1.3.11**. English text is included. The bundled installer is still **0.5.5**; the 0.5.6 economy has passed focused static checks but has not been packaged or tested in-game. Starting-world updates require a **new 1337 campaign**.
+**0.5.6 staging — economy and exploration.** This branch contains the next version's economic and exploration changes on top of **0.5.5 — The Gathering of the Five**, targeting **EU5 1.3.11**. English text is included. The bundled installer is still **0.5.5**; the 0.5.6 changes have passed focused static checks but have not been packaged or tested in-game. Starting-world updates require a **new 1337 campaign**.
 
 ## What is changing in 0.5.6?
+
+The first exploration offer now waits **36 months after the first monthly country pulse**, roughly three years into a new campaign. All five crowns begin with **Iberia, nearby Atlantic waters, and coastal provinces of southern England, Atlantic France and Morocco visible under normal fog of war**. In EU5 this is discovered map knowledge: terrain and countries can be inspected and interacted with, while ordinary fog still conceals units. The selected coastal provinces include some adjoining inland locations; distant regions remain hidden.
+
+Voyages now represent firsthand visits and foreign contact. The eastern journey still costs five gold and takes four months; northern/southern journeys cost ten gold and take six months. Owners of visited ports learn about the Isles when the crews return. Six-month postponements, twelve-month breaks between completed voyages and once-only contact notices are retained. Existing saves do not receive new starting knowledge or reset an already initialized timer. The generator and focused setup/contact checks are updated; the checked-in 0.5.5 runtime payload and installer remain unchanged pending the full 0.5.6 build.
 
 The first economic pass gives each crown a distinct role, with buildings scaled to its lore, geography and available workers. Starting infrastructure was compared with installed vanilla states including Serbia, Navarre, Scotland and Cyprus.
 
@@ -24,7 +28,7 @@ Rural buildings follow local resources and vegetation. Additional extraction inv
 
 Focused checks passed for native building ranks/resources, generated buildings, population totals, production staffing, economic specialization and guarded market/investment setup. Profitability, food security and affordability of starting forces remain pending fresh-campaign tests. Building-level counts describe infrastructure, not equivalent income.
 
-See the [0.5.6 economic design and validation notes](ECONOMY_056.md) for comparisons, trade dependencies and the playtest checklist. **Downloading this staging branch and running its existing installer installs the bundled 0.5.5 content, not the new economy.** A full 0.5.6 build and package are still required.
+See the [0.5.6 economic design and validation notes](ECONOMY_056.md) for comparisons, trade dependencies and the playtest checklist. **Downloading this branch and running its existing installer installs the bundled 0.5.5 content, not the new economy or exploration changes.** A full 0.5.6 build and package are still required.
 
 ## Install and play the released 0.5.5 version
 

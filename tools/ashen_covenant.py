@@ -1,0 +1,190 @@
+"""Authored 0.5.7 religion generator. Standalone output is a partial staging tree."""
+from pathlib import Path
+import argparse
+import json
+
+ROOT = Path(__file__).resolve().parents[1]
+RELIGION = 'cm_hunger_below'  # Stable save/setup identity; only the display name changes.
+DESCRIPTION = ('The Ashborn live by bargains with fire, water, roots and the remembered dead. '
+    'Beneath the islands sleeps the Hunger Below: its fire creates land, yet its appetite can consume it. '
+    'Oathkeepers tend local shrines and witness the duties of chiefs to their households. '
+    'The Returning Mother, Reed Listener, Lantern Dead, Rootkeeper and Tooth in the Gale receive their own offerings. '
+    'No single priest speaks for every island. What keeps you living must be fed.')
+ASPECTS = {
+    'common_hearth': ('Feed the Common Hearth', 'The first share sustains the households. Chiefs must answer for empty stores.', 'global_monthly_food_modifier', .05),
+    'offering_smoke': ('Smoke Is an Offering', 'Useful work feeds the fire below. Forge crews dedicate their first finished piece.', 'global_production_efficiency', .05),
+    'crew_home': ('Bring the Crew Home', 'The Lantern Dead guide those who keep the rescue lights burning. Reckon the cargo after the living.', 'naval_morale_modifier', .05),
+    'remembered_dead': ('The Dead Keep Their Names', 'Funeral keepers recite the names and obligations carried by each household.', 'stability_cost_efficiency', .10),
+    'cutting_oath': ('No Axe Without an Oath', 'Root-wardens guard seed groves, firebreaks and the wooded paths that shelter our people.', 'global_defensive', .10),
+    'shore_spirits': ('Every Shore Has Spirits', 'An unfamiliar shore has powers of its own. Its inhabitants may teach us how to honor them.', 'tolerance_heathen', 1),
+    'first_share': ('The First Share Goes Below', 'The Hunger receives the first offering after battle; the bereaved must also receive their due.', 'land_morale_modifier', .05),
+    'many_hearths': ('Many Hearths, One Covenant', 'Each shrine keeps its own witnesses. A common faith need not silence its many voices.', 'clergy_estate_target_satisfaction', .05),
+}
+STARTING = {'CDM': ('offering_smoke', 'first_share'), 'QBR': ('common_hearth', 'many_hearths'),
+            'RHK': ('crew_home', 'shore_spirits'), 'SFK': ('crew_home', 'remembered_dead'),
+            'SWK': ('cutting_oath', 'remembered_dead')}
+SITES = [
+    ('first_mouth', 'The First Mouth', 'cm_cinder_crown', 'cindermaw', 'local_production_efficiency', .05,
+     'A warm fissure beneath Cinder Crown. Ember-speakers listen through hollow stone tubes while forge crews surrender their first work. No one agrees whether the first goblins were born here or escaped through it.'),
+    ('listening_pool', 'The Listening Pool', 'cm_reedmouth', 'brackmaw', 'local_monthly_food_modifier', .05,
+     'A spring-fed pool beside the tidal channels. Carved stakes record repair oaths, and old flood marks remind the marsh houses what neglect can cost.'),
+    ('lantern_steps', 'The Lantern Steps', 'cm_tidefang', 'reefhook', 'local_monthly_prosperity', .001,
+     'Steps descend to the landing where the drowned are brought ashore. Lamps burn beside name stones; strangers receive a stone even when no name survives.'),
+    ('mothers_basin', "The Mothers' Basin", 'cm_shatterfin', 'shatterfin', 'local_unrest', -.05,
+     'Maternal households wash heirloom cords in a rain-fed basin above the harbor. Each knot recalls a dependent, a promise or a return from sea.'),
+    ('storm_teeth', 'The Storm Teeth', 'cm_knifeback', 'knifeback', 'local_defensive', .10,
+     'Basalt pinnacles carry ropes left by returning crews. Pilgrims climb with a stone for someone who never returned, seeking the courage of the Tooth in the Gale.'),
+    ('emberroot', 'The Emberroot Hollow', 'cm_ember_key', 'sootwake', 'local_defensive', .10,
+     'A charred stump marks the first sheltered hearth. Funeral ash is laid beneath young trees, and Root-wardens keep the surrounding seed grove from the charcoal axes.'),
+]
+RITES = {
+    'returning_ash': ('Feast of Returning Ash', 'Fund a communal feast and name the dead.', 'stability_cost_efficiency', .10),
+    'water_lanterns': ('Lanterns Upon the Water', 'Provision beacon keepers and the households of missing crews.', 'naval_morale_modifier', .10),
+    'first_oath': ('Renewal of the First Oath', 'Reconcile the crown with the Oathkeepers and renew communal duties.', 'clergy_estate_target_satisfaction', .10),
+}
+
+# Event-specific eligibility is checked by native random_events before selection.
+# Both options are available without payment; only the funded choice is gated.
+STORIES = [
+    (1, 'The Mountain Answers', 'A tremor opens a narrow cavity beneath the First Mouth. Miners want to follow the warm draft; the Ember-speakers demand that the listening fissure be made safe first.', 'owns = location:cm_cinder_crown', 'cindermaw', 'Secure the fissure and hear the witnesses.', 'Let the miners follow the draft.'),
+    (2, 'The Flood Remembers', 'The stakes at the Listening Pool name a wealthy house that promised labor after the last flood. Its heirs now deny the debt. The Reed-witnesses bring the old flood marks before the crown.', 'owns = location:cm_reedmouth', 'brackmaw', 'Fund the repairs and uphold the oath.', 'Accept the heirs\' objection.'),
+    (3, 'A Stranger Beneath Our Lantern', 'A foreign sailor has washed ashore at the Lantern Steps. Some households refuse a stranger a place among their dead; the keepers answer that the sea did not ask his birthplace.', 'owns = location:cm_tidefang', 'reefhook', 'Give the stranger a lamp and a stone.', 'Leave the burial to the harbor households.'),
+    (4, 'A Cord Without a Name', 'A dependent branch of the maternal house presents an unmarked cord at the Mothers\' Basin. Recognizing it would make old promises public and give its households a voice at future observances.', 'owns = location:cm_shatterfin', 'shatterfin', 'Provide the gifts and witness their names.', 'Let the senior households settle it.'),
+    (5, 'The Path to the Storm Teeth', 'Loose stone has made the pilgrimage climb dangerous. Returning captains demand a repaired path, while younger crews call the danger a fitting test of the storm spirit.', 'owns = location:cm_knifeback', 'shatterfin', 'Repair the path before another climb.', 'Leave the climb to those who dare.'),
+    (6, 'The Forbidden Felling', 'Charcoal burners have marked trees inside Emberroot Hollow. The navy needs timber and the forges need fuel, but Root-wardens insist that a seed grove cannot be bought back once it is gone.', 'owns = location:cm_ember_key', 'sootwake', 'Pay for supplies from outside the grove.', 'Permit a limited cutting.'),
+    (7, 'The Unnamed Crew', 'A captain has omitted missing sailors from his account of a voyage. Naming them would oblige his patrons to support their households. The Lantern-keepers have brought their families to court.', 'has_religious_aspect = religious_aspect:ac_crew_home', 'reefhook', 'Compensate the households and record the names.', 'Accept the captain\'s account.'),
+    (8, 'The Hungry Preacher', 'A wandering speaker claims that charcoal and food no longer satisfy the Hunger Below. The local Oathkeepers accuse the preacher of making the mountain an excuse for ambition.', '', 'cindermaw', 'Sponsor a public feast under the Oathkeepers.', 'Let the shrines answer without the crown.'),
+    (9, 'The Captive\'s Hearth', 'An enslaved household asks to name its dead beside those of its owners. Its speaker asks whether sharing a hearth creates duties even toward captives. Several chiefs fear the precedent.', '', 'oath', 'Pay for their memorial and acknowledge the duty.', 'Leave the matter to the household\'s owners.'),
+    (10, 'A Spirit Beyond the Sea', 'Our overseas crews return with accounts of a sacred place tended by people beyond the Isles. Some wish to offer useful gifts there; others fear acknowledging powers whose names we barely know.', 'has_variable = ga_charted_east', 'eastern_harbor', 'Send gifts and learn the local observances.', 'Keep our offerings for the island shrines.'),
+    (11, 'The Empty Feast', 'Common-hearth keepers report that some households cannot bring even a small offering to the seasonal feast. A chief\'s full table has become an accusation against him.', 'has_religious_aspect = religious_aspect:ac_common_hearth', 'brackmaw', 'Feed the households from the crown\'s stores.', 'Require each household to provide its share.'),
+    (12, 'The First Finished Blade', 'Forge crews disagree over an unusually fine blade set aside for the First Mouth. A captain wants it for the muster; the smith who made it insists that an offering is an oath already spoken.', 'has_religious_aspect = religious_aspect:ac_offering_smoke', 'cindermaw', 'Pay the smith and honor the offering.', 'Send the blade to the muster.'),
+]
+
+def build(out):
+    text = {'religious_influence_cm_hunger_below': 'Covenant Favor'}
+    paths = []
+    def loc(key, value):
+        text[key] = value
+        return key
+    def write(path, content):
+        p = out / path
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(content.strip() + '\n', encoding='utf-8-sig', newline='\r\n')
+        paths.append(path)
+    write('in_game/common/religions/goblins_ashborn_isles.txt', f'''{RELIGION} = {{
+ color = rgb {{ 160 56 36 }}
+ group = cm_ashen_faiths
+ language = cm_cinder_tongue
+ tags = {{ folk_african_gfx pagan_gfx }}
+ religious_aspects = 2
+ has_religious_influence = yes
+ definition_modifier = {{ monthly_religious_influence = 0.2 maximum_religious_influence = 100 }}
+ opinions = {{ }}
+}}''')
+    aspects = []
+    for key, (name, desc, modifier, value) in ASPECTS.items():
+        loc('ac_' + key, name); loc('ac_' + key + '_desc', desc)
+        aspects.append(f'ac_{key} = {{ religion = {RELIGION} icon = religious_aspect_folk_green modifier = {{ {modifier} = {value} }} }}')
+    write('in_game/common/religious_aspects/ashen_covenant.txt', '\n'.join(aspects))
+    sites, types = [], []
+    for key, name, location, island, modifier, value, desc in SITES:
+        loc('ac_' + key, name); loc('ac_' + key + '_desc', desc)
+        loc('ac_' + key + '_site', name)
+        sites.append(f'ac_{key} = {{ location = {location} type = ac_{key}_site importance = 3 religions = {{ {RELIGION} }} }}')
+        types.append(f'ac_{key}_site = {{ location_modifier = {{ {modifier} = {value} }} }}')
+    write('in_game/common/holy_sites/ashen_covenant.txt', '\n'.join(sites))
+    write('in_game/common/holy_site_types/ashen_covenant.txt', '\n'.join(types))
+    write('in_game/common/prices/ashen_covenant.txt', 'ac_major_rite = { scaled_gold = 2 religious_influence = 20 }')
+    mods, actions = [], []
+    for key, (name, desc, modifier, value) in RITES.items():
+        loc('ac_' + key, name)
+        loc('ac_' + key + '_desc', desc + ' Costs two months of scaled income and 20 Covenant Favor. The blessing lasts five years; all major rites share a five-year cooldown.')
+        mods.append(f'ac_{key} = {{ {modifier} = {value} }}')
+        actions.append(f'''ac_{key} = {{
+ type = owncountry
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 12
+ potential = {{ scope:actor = {{ religion = religion:{RELIGION} }} }}
+ allow = {{ scope:actor = {{ NOT = {{ has_variable = ac_rite_cooldown }} }} }}
+ price = price:ac_major_rite
+ cooldown = {{ type = ac_{key} years = 5 }}
+ effect = {{ scope:actor = {{
+   set_variable = {{ name = ac_rite_cooldown years = 5 }}
+   add_country_modifier = {{ modifier = ac_{key} years = 5 mode = replace }}
+ }} }}
+ ai_will_do = {{ add = 5 }}
+}}''')
+    for key, name, modifier, value in [('local_covenants', 'The Local Covenants', 'tolerance_heathen', 1), ('first_oathkeeper', 'The First Oathkeeper', 'stability_cost_efficiency', .10)]:
+        loc('ac_' + key, name); loc('ac_' + key + '_desc', 'The settlement agreed at the Moot of Six Fires.')
+        mods.append(f'ac_{key} = {{ {modifier} = {value} }}')
+    write('in_game/common/generic_actions/ashen_covenant.txt', '\n'.join(actions))
+    write('in_game/common/generic_action_ai_lists/ashen_covenant.txt',
+          f'ac_rites_ai = {{ potential = {{ religion = religion:{RELIGION} }} actions = {{ ' + ' '.join('ac_' + k for k in RITES) + ' } }')
+    write('main_menu/common/static_modifiers/ashen_covenant.txt', '\n'.join(mods))
+    events = ['namespace = ashen_covenant']
+    for num, title, desc, eligibility, art, yes, no in STORIES:
+        prefix = f'ashen_covenant.{num}'
+        loc(prefix + '.title', title); loc(prefix + '.desc', desc)
+        loc(prefix + '.a', yes); loc(prefix + '.b', no)
+        events.append(f'''{prefix} = {{
+ type = country_event
+ category = situation_event
+ outcome = neutral
+ title = {prefix}.title
+ desc = {prefix}.desc
+ image = "gfx/interface/illustrations/event/ashborn/{art}.dds"
+ trigger = {{ religion = religion:{RELIGION} NOT = {{ has_variable = ac_story_cooldown }} {eligibility} }}
+ immediate = {{ set_variable = {{ name = ac_story_cooldown years = 3 }} }}
+ option = {{ name = {prefix}.a trigger = {{ gold >= 5 }} ai_chance = {{ factor = 3 }} add_gold = -5 add_religious_influence = 5 add_prestige = 2 }}
+ option = {{ name = {prefix}.b ai_chance = {{ factor = 1 }} add_religious_influence = -3 }}
+}}''')
+    prefix = 'ashen_covenant.20'
+    loc(prefix + '.title', 'The Moot of Six Fires')
+    loc(prefix + '.desc', 'The islands answer to a common realm, but their Oathkeepers speak with many voices. Ember-speakers ask who will witness the crown\'s promises. Tide-mothers insist that no common authority erase their household cords. The gathered custodians await a settlement: renew the local covenants, or appoint a First Oathkeeper to serve the united realm?')
+    loc(prefix + '.a', 'Renew the local covenants. Each shrine keeps its witnesses.')
+    loc(prefix + '.b', 'Appoint a First Oathkeeper to the common realm.')
+    events.append(f'''{prefix} = {{
+ type = country_event category = situation_event outcome = neutral
+ title = {prefix}.title desc = {prefix}.desc
+ image = "gfx/interface/illustrations/event/ashborn/unification.dds"
+ trigger = {{ religion = religion:{RELIGION} has_variable = ga_unifier ga_controls_homeland = yes }}
+ option = {{ name = {prefix}.a ai_chance = {{ factor = 1 }} set_variable = {{ name = ac_local_covenants value = yes }} add_country_modifier = {{ modifier = ac_local_covenants years = -1 mode = replace }} }}
+ option = {{ name = {prefix}.b ai_chance = {{ factor = 1 }} set_variable = {{ name = ac_first_oathkeeper value = yes }} add_country_modifier = {{ modifier = ac_first_oathkeeper years = -1 mode = replace }} }}
+}}''')
+    write('in_game/events/ashen_covenant.txt', '\n'.join(events))
+    starts = []
+    for tag, pair in STARTING.items():
+        starts.append(f'if = {{ limit = {{ tag = {tag} num_of_religious_aspects = 0 }} ' + ' '.join(f'add_religious_aspect = religious_aspect:ac_{key}' for key in pair) + ' }')
+    cleanup = ' '.join(f'remove_country_modifier = ac_{key}' for key in list(RITES) + ['local_covenants', 'first_oathkeeper'])
+    write('in_game/common/on_action/ashen_covenant.txt', f'''monthly_country_pulse = {{ on_actions = {{ ac_covenant_monthly ac_covenant_stories }} }}
+ac_covenant_monthly = {{
+ trigger = {{ OR = {{ religion = religion:{RELIGION} has_variable = ac_initialized }} }}
+ effect = {{
+  if = {{ limit = {{ religion = religion:{RELIGION} }}
+   if = {{ limit = {{ NOT = {{ has_variable = ac_initialized }} }}
+    set_variable = {{ name = ac_initialized value = yes }}
+    set_variable = {{ name = ac_story_cooldown years = 1 }}
+    {' '.join(starts)}
+   }}
+   if = {{ limit = {{ has_variable = ga_unifier ga_controls_homeland = yes NOT = {{ has_variable = ac_moot_held }} }}
+    set_variable = {{ name = ac_moot_held value = yes }}
+    trigger_event_non_silently = {{ id = ashen_covenant.20 }}
+   }}
+  }}
+  else = {{ {cleanup} }}
+ }}
+}}
+ac_covenant_stories = {{
+ trigger = {{ religion = religion:{RELIGION} has_variable = ac_initialized NOT = {{ has_variable = ac_story_cooldown }} }}
+ random_events = {{ chance_to_happen = 5 {' '.join(f'10 = ashen_covenant.{s[0]}' for s in STORIES)} }}
+}}''')
+    write('main_menu/localization/english/ashen_covenant_l_english.yml', 'l_english:\n' + '\n'.join(' ' + k + ': "' + v.replace('"', '\\"') + '"' for k, v in text.items()))
+    return {'version': '0.5.7', 'sites': len(SITES), 'aspects': len(ASPECTS), 'rites': len(RITES), 'events': len(STORIES) + 1, 'files': paths, 'engine_tested': False}
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--out', type=Path, default=ROOT/'build/religion-check')
+    args = parser.parse_args()
+    print(json.dumps(build(args.out), indent=2))

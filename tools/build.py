@@ -92,9 +92,10 @@ def build_setup(game,out):
     return archipelago.build_setup(sys.modules[__name__],game,out)
 
 def localization(out):
+    import ashen_covenant
     loc={'CDM':'Cindermaw','CDM_ADJ':'Cindermaw','CDM_ADJ_f':'Cindermaw','CDM_ADJ_m':'Cindermaw',
          'cm_cinderkin':'Emberblood','cm_goblin_group':'Goblin','cm_cinder_tongue':'Cinder Tongue','cm_goblin_language_family':'Goblin',
-         'cm_hunger_below':'The Hunger Below','cm_hunger_below_ADJ':'Ashen','cm_hunger_below_desc':'The Emberblood hear a sleeping power beneath the volcanic crown. Its hunger is appeased by offerings and the smoke of the island forges.',
+         'cm_hunger_below':'The Ashen Covenant','cm_hunger_below_ADJ':'Ashen','cm_hunger_below_desc':ashen_covenant.DESCRIPTION,
          'cm_ashen_faiths':'Ashen Faiths','cm_captains_confederation':'Confederation of Captains','cm_captain_elective':'Election of the High Captain',
          'cm_captains_confederation_desc':'Ship-clans share a harbor, a war fleet and a hunger for plunder. Their autonomy weakens taxation while supporting privateering and slave raids.',
          'cm_cindermaw_sea':'Cindermaw Coastal Waters','cm_cindermaw_area':'Cindermaw','cm_crown_province':'The Cinder Crown','cm_hooktooth_province':'Hooktooth Coast','cm_ashfields_province':'The Ashfields',
@@ -224,6 +225,11 @@ def main():
     discovery=exploration.build(sys.modules[__name__],game,out)
     import gathering
     gathering_report=gathering.build(out,CFG)
+    import ashen_covenant
+    religion_report=ashen_covenant.build(out)
+    from verify_ashen_covenant import verify as verify_religion
+    religion_report['validation']=verify_religion(game,out)
+    (reports/'religion_057.json').write_text(json.dumps(religion_report,indent=2),encoding='utf-8')
     import export_event_art
     export_event_art.build(out)
     import export_goblin_models

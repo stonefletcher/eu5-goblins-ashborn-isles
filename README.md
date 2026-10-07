@@ -4,7 +4,11 @@ Five goblin kingdoms share six volcanic islands in the Atlantic. Unite their riv
 
 ![The five Ashborn clans gather beneath their banners](art/events/sources/gathering.png)
 
-**0.5.6 staging — economy and exploration.** This branch contains the next version's economic and exploration changes on top of **0.5.5 — The Gathering of the Five**, targeting **EU5 1.3.11**. English text is included. The bundled installer is still **0.5.5**; the 0.5.6 changes have passed focused static checks but have not been packaged or tested in-game. Starting-world updates require a **new 1337 campaign**.
+**0.5.7 development — Oaths of Ash and Salt.** Branch `feature/0.5.7-ashen-covenant` adds the first Ashen Covenant religion implementation on top of the merged **0.5.6 economy and exploration** changes, targeting **EU5 1.3.11**. The faith retains its internal identity while gaining six island holy sites, eight traditions, two initial traditions per crown, Covenant Favor, three rites with a shared cooldown, twelve religious stories and the post-unification Moot of Six Fires. Existing artwork is reused. Focused static checks are included; gameplay acceptance is pending.
+
+**Source development only: the bundled installer and release metadata remain 0.5.5.** No 0.5.7 full build, package or installation has been produced. Running the bundled installer does not install these new features. The 0.5.6 economic specializations, starting Atlantic charts and three-year exploration delay are preserved in source. A future packaged update will require a **new 1337 campaign**.
+
+See [0.5.7 implementation and remaining work](RELIGION_057.md) for balance values, current limitations and verification instructions.
 
 ## What is changing in 0.5.6?
 

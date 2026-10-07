@@ -1,27 +1,26 @@
-# 0.5.6 exploration handoff
+# 0.5.7 religion handoff
 
-Checkout: this chat's work/repo, branch feature/0.5.6-exploration-pacing,
-based on staging/0.5.6 commit 3260d96. Prior economy changes remain intact.
-Goal: delay first exploration by a few years and expose Iberia plus nearby
-European/African coastlines under normal fog of war.
+Checkout: C:/Users/alexa/Documents/Codex/2026-10-07/le/work/goblins-057.
+Branch: feature/0.5.7-ashen-covenant; base fe82a46 (merged 0.5.6 staging).
+Goal: implement Oaths of Ash and Salt, the approved religion-focused proposal.
 
-Completed: first monthly initialization gives a 36-month cooldown. Shared
-starting-knowledge generator exposes Iberia, four adjacent sea areas and 24
-coastal provinces in southern England, Atlantic France and Morocco for all five
-crowns. EU5 discovered territory is interactable; this does not lift unit fog.
-Voyage prose now describes firsthand visits and foreign contact. Existing costs,
-travel times, postpone/completion cooldowns, pending guards and reciprocal
-owner-scoped discovery remain intact. Existing saves are not migrated.
+Completed first pass: source generator and full-build integration for the Ashen
+Covenant display name (stable cm_hunger_below ID), six local holy sites, eight
+native aspects, two initial aspects per kingdom, Covenant Favor, three scaled-price
+rites with one shared cooldown, twelve initial religious stories, and the Moot of
+Six Fires after Gathering. Includes monthly conversion cleanup and AI rite list.
+Expanded LORE.md; README and RELIGION_057.md distinguish source from bundled release.
 
-Passed against installed EU5 1.3.11: tools/verify_exploration.py,
-tools/verify_economy.py, git diff --check. Partial generated output and audit:
-build/exploration-check (not installable). Native game-concept definitions confirm
-that discovery removes terra incognita while normal fog hides foreign units.
+Passed: verify_ashen_covenant.py against installed EU5 1.3.11; existing exploration
+and economy validators; generated faith-name/description integration; diff whitespace
+check. No game launch. Staging output under build/religion-check is partial.
 
-Build/install state: source-generator change only. Tracked runtime payload,
-overlay manifest and bundled installer deliberately remain 0.5.5. No full build,
-package, install or game launch. No runtime acceptance claimed.
+Next: differentiate event outcomes and scale their current 5-gold payments; add
+custom art; design council cooldown without native-action bypass; pilgrimage and
+damaged-site restoration remain unimplemented. RELIGION_057.md lists current
+effects, limits and fresh-campaign acceptance. Then full build, package and the
+mandatory clean-download gate before recommending installation.
 
-Next: review source changes, full 0.5.6 build/package, then fresh-campaign checks
-in TESTING.md, including visibility, early diplomacy/target selection, three-year
-wait, save/reload, paid voyage returns and once-only foreign contact.
+Build/install/publish: no full 0.5.7 build, package, installation, push or Workshop
+upload. Bundled installer, payload and metadata remain 0.5.5. Existing 0.5.6 economy,
+population and exploration source retained. This branch is local development.

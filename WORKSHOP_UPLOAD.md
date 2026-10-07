@@ -1,46 +1,17 @@
-# Goblins of the Ashborn Isles — 0.5.3 demo
+# 0.5.5 Workshop upload
 
-## Build and stage
+Use the standard package and installer.
 
-Run a full build against EU5 1.3.11, then run `python tools/prepare_workshop.py`.
-The staging tool creates a fresh `dist/Workshop_0.5.3_TIMESTAMP` folder, verifies
-all copied files and records SHA-256 hashes in `workshop_manifest.json`.
+1. Extract `Goblins_Ashborn_Isles_0.5.5.zip` into a fresh folder. Close EU5 and run **Install-Goblins.cmd**. Disable the earlier Gathering Prototype add-on: the full mod includes its content.
+2. The installer reconstructs all three terrain caches and installs the full mod. The normal upload folder is:
+   `C:\Users\alexa\Documents\Paradox Interactive\Europa Universalis V\mod\goblins_ashborn_isles`
+   If your Documents or EU5 user-data folder is redirected, use the actual installed path printed by the installer.
+3. Open EU5 **Mod Tools > Uploaded mods**, choose the [existing listing](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518), and upload content from that installed folder. It must directly contain `.metadata`, `in_game` and `main_menu`.
+4. If asked specifically for metadata, select `.metadata` within that folder. Preview: `.metadata/thumbnail.png`.
+5. Paste `STEAM_DESCRIPTION.txt` as Steam BBCode and `STEAM_CHANGELOG.txt` as the update notes. Check version **0.5.5** and the retained listing after upload.
 
-The actual upload content is its **goblins_ashborn_isles** subfolder. This contains
-`.metadata`, `in_game` and `main_menu` directly. Its thumbnail is
-**goblins_ashborn_isles/.metadata/thumbnail.png**, beside `metadata.json`.
-If the publishing interface asks for the metadata folder, select that `.metadata`
-folder; if it asks for the mod/content root, select `goblins_ashborn_isles`.
-For a separate preview-image field, choose the same thumbnail PNG.
+Do not upload the repository, ZIP or compact unprepared payload. The full installed folder contains the reconstructed terrain `.bin` files and their `.info` companions. The installer verifies the matching game caches and backs up previous content.
 
-Do not upload the repository, authored `mod` folder, or compact installer ZIP.
-The compact ZIP omits full terrain cache binaries and reconstructs them during
-installation. Workshop subscribers need the full built mod, including the three
-terrain `.bin` files and their `.info` companions. The staging tool enforces this.
+Target game: **EU5 1.3.11 (Pavia)**. Test using a **new 1337 campaign** and one active copy. See `TESTING.md` for map, population, lifespan, economy, succession and regression checks.
 
-## Listing
-
-- Title: **Goblins of the Ashborn Isles — Demo**
-- Initial demo version: **0.5.3**
-- Target game: **EU5 1.3.11 (Pavia)**
-- Description: paste `STEAM_DESCRIPTION.txt` (Steam BBCode).
-- Thumbnail: existing 512 × 512 PNG; no external image path is needed in metadata.
-- Use actual in-game screenshots for the gallery; concept art is not a gameplay capture.
-
-## Acceptance before public release
-
-The build checks prove package structure and static consistency, not engine behavior.
-On the exact staged candidate, enable this mod alone and start a new 1337 campaign:
-
-1. Confirm vanilla land and all six islands render; inspect relief, coasts and settlements.
-2. Select each clan; check ownership, capital, names, ruler and opening event.
-3. Inspect men, women, children, cabinet members and a human control portrait.
-4. Recruit/move infantry and sail between the new coastal zones and vanilla sea lanes.
-   Earlier builds reported invisible infantry; require a visible-unit check here.
-5. Advance several months; inspect budgets, exploration and fresh engine logs.
-6. Exercise Shatterfin succession and maternal dynasty inheritance, then save/reload.
-
-If a demo ships with known visual/gameplay defects, describe the actual defects in
-the listing. Do not convert pending checks into passed checks without testing.
-
-These preparation files are integrated into staging/0.5.3. Build and stage from this consolidated branch; do not upload an older Workshop snapshot. No Workshop item has been created or published by these tools.
+GitHub release publication does not upload the Steam item.

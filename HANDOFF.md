@@ -1,6 +1,7 @@
 # 0.5.5 complete-release handoff
 
-Checkout: work/repo, release/v0.5.5. Art/flag/player-guide PR #9 merged at e5539c4.
+Checkout: work/repo, merge/release-055-main, integrating release/v0.5.5 into main.
+User authorized the main merge and requested the installed Workshop upload folder.
 Release source: 393d6badf5118a4d6884dee76eafa4da0628da17.
 Verified bundled tree: 3b7861b3fdc3a940cd321d1fb1d3ebe78e8de337.
 
@@ -32,3 +33,12 @@ with the full installer and focused RELEASE_NOTES_0.5.5.md. Publishing workflow
 37653002068 passed. Published asset size/digest and a fresh downloaded ZIP match
 the SHA-256 above. Release URL:
 https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.5
+
+Main integration preserves earlier main-only release tooling, hotfix scripts,
+historical releases and artwork while retaining the verified 0.5.5 bundle and
+current player guide. WORKSHOP_UPLOAD.md now describes 0.5.5 and the regular
+installer. The existing installed mod already reports 0.5.5; all 1,639 packaged
+files and three terrain caches match the published archive without reinstalling.
+Upload folder: C:/Users/alexa/Documents/Paradox Interactive/Europa Universalis V/mod/goblins_ashborn_isles
+Use Mod Tools > Uploaded mods > existing listing > Upload content from a folder.
+No Steam upload has been performed. Final main merge state is recorded in its PR.

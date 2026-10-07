@@ -10,7 +10,12 @@ stronger jaw/chin, restrained nose and mouth corners, cropped/mohawk male hair,
 tied-back female braids and adult-only native early facial creases after tint.
 Ear UVs avoid crease masks. Shared skin/ears/wardrobe and child safeguards retained.
 Native asset/portrait checks, full build, bundle verification and clean Git export PrepareOnly passed. Tested bundle commit: 878ac36.
-No engine acceptance claimed. EU5 reopened (PID 37208); user already asked to close it. Isolated install and staging push are pending. Prepared folder: ../rough-clean-source/.prepared-release-0.5.8. Once closed, run its installer with -UserDataPath ../rough-test-user (absolute path), then ../verify_rough_install.py, copy package/notes to outputs, commit final gate record, and push HEAD to staging/0.5.8 after checking remote advancement. Do not interrupt the game.
+Fresh isolated installation passed after the user closed EU5. All 1,658 installed
+files match the prepared payload by SHA-256; native portrait verification passed.
+Package SHA-256: 86aaa93533aab1dc6fc5495e60c92797eb4b62a6946bb6b84b463671021fe9c2.
+Staging publication follows this verified immutable payload. Next: user installs
+and visually reviews Drogg, Jaima, Murgash and court variation. In-game appearance
+of this newest face/hair/weathering pass remains unverified.
 No active-profile install or game launch. Preserve previous verified candidate
 0d098e0 as fallback until the new visuals are accepted. Steam remains unchanged.
 

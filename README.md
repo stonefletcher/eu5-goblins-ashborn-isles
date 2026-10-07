@@ -1,18 +1,22 @@
-## 0.5.6 event fixes (source branch)
-
-Branch `fix/0.5.6-event-performance-localization` includes the staging economy work and fixes the Gathering modifier localization using native `STATIC_MODIFIER_NAME_` / `STATIC_MODIFIER_DESC_` keys for all six modifiers. The Gathering completion and Eastern Hunger start/completion tooltips now use concise native custom tooltips, preserving the original predicates.
-
-The installed 0.5.5 Gathering image matches the source exactly: 1080x440 BC1/DXT1, 11 mip levels, 317,512 bytes. All 63 comparable native BC1 event backgrounds have these same dimensions, mip count and size. DDS headers differ only in reserved exporter metadata. Large original PNGs are not referenced by events. The artwork is retained. The user reproduced the near-crash by opening the Situation Panel. A subsequent snapshot of six rotating October 7 error logs contained 25,367 lines (5,352,439 bytes), all scope-description warnings at Gathering `can_end`; tooltip expansion is the evidence-backed performance suspect, not a proven crash cause.
-
-Validation: 14 ownership scenarios, native modifier references, all six modifier name/description keys, exact preservation of the three wrapped predicates, and decoding/hash/manifest checks for 21 art textures passed. In-game popup performance remains untested. No installation or release package was produced; the bundled installer remains 0.5.5 and does not install these fixes.
-
 # Goblins of the Ashborn Isles
 
 Five goblin kingdoms share six volcanic islands in the Atlantic. Unite their rival crowns, chart the waters beyond your homeland, and claim a foothold on Europe's coast in **Europa Universalis V**.
 
 ![The five Ashborn clans gather beneath their banners](art/events/sources/gathering.png)
 
-**0.5.6 staging â€” economic pass.** This branch contains the next version's economic changes on top of **0.5.5 â€” The Gathering of the Five**, targeting **EU5 1.3.11**. English text is included. The bundled installer is still **0.5.5**; the 0.5.6 economy has passed focused static checks but has not been packaged or tested in-game. Starting-world updates require a **new 1337 campaign**.
+**0.5.6 development: situation fixes, event choices and economy.** This is the `fix/0.5.6-event-performance-localization` branch, targeting EU5 1.3.11. These are source changes awaiting integration and in-game testing. The bundled installer remains **0.5.5** and does not install these fixes. Starting-world updates require a new 1337 campaign.
+
+## Latest 0.5.6 fixes
+
+- **Blank Situation Panel:** added the required layouts for Gathering of the Five and Eastern Hunger, with native artwork, dates, descriptions, completion requirements and action lists.
+- **Situation Panel slowdown:** replaced expanded territorial-condition tooltips with concise descriptions while preserving completion rules. Captured logs contained 25,367 scope-description warnings from the Gathering completion check. This addresses the identified warning source; performance improvement still needs an in-game test.
+- **Unnamed bonuses:** corrected native localization keys for all six existing Gathering modifiers and named the three new Cindermaw bonuses.
+- **One Fire, Many Blades:** shortened the council scene and added three choices, each lasting five years: Grask's drills (+5% army morale), Kragga's envoys (+0.5 diplomatic reputation), or Grakka's supply reforms (+10% army maintenance efficiency). This introduction is independent of the earlier Gathering choice.
+- **Artwork comparison:** the installed Gathering image already matches 63 comparable native event backgrounds: 1080 x 440, BC1/DXT1, 11 mip levels and 317,512 bytes. Artwork is retained.
+
+**Validation:** 14 ownership scenarios, native modifier references, localization, required panel layouts, package-manifest hashes and 21 DDS textures passed static checks. Engine rendering, action visibility and performance remain unverified. No new release package or installation has been made.
+
+This branch's changes are not yet merged into `main`. See [TESTING.md](TESTING.md) for the in-game acceptance checklist.
 
 ## What is changing in 0.5.6?
 
@@ -128,9 +132,3 @@ Report problems through [GitHub Issues](https://github.com/stonefletcher/eu5-gob
 - [Clan flag sources and export details](art/flags/README.md)
 
 Europa Universalis V and its game assets belong to Paradox. This is an unofficial fantasy mod. Event paintings were created with image generation; editable clan emblems and artwork provenance are included in the linked art documentation.
-
-
-One Fire, Many Blades now offers a shorter council scene with three five-year bonuses: Grask's drills (+5% land morale), Kragga's envoys (+0.5 diplomatic reputation), or Grakka's accounts (+10% army maintenance efficiency). This introduction is independent of the opening Gathering choice. Native personality_events.10 provides the alternative five-year reward pattern; native the_rule_of_god includes 5% land morale, and modifier definitions confirm maintenance efficiency is positive-benefit. Existing once-only monthly routing is preserved. Generator, profile, generated outputs and manifest updated. Native-reference/ownership and art checks passed. Runtime acceptance pending. Source-only fixes on `fix/0.5.6-event-performance-localization`; no new installer or release package. Runtime testing is still pending.
-
-
-The blank Situation Panel had a separate source omission: neither custom situation had its required ID-named GUI layout. Added ga_gathering_of_five.gui and ga_eastern_hunger.gui under in_game/gui/panels/situation, authored by gathering.py. Installed native GUI readme requires these files; layouts inherit situation_panel from common.gui, retaining artwork, dates, scrolling, ended-state handling and situations_actions. Custom content adds localized description and completion requirements. Both are included in the additive manifest. Static native-template, layout presence, localization, ownership and art checks passed; engine rendering and actual action visibility remain untested.

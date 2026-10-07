@@ -15,9 +15,14 @@ Passed: full EU5 1.3.11 build, five-culture/seven-type portrait checks, native
 male/female facial attribute audit, closed/wound ear topology and positive shell
 volumes, DDS compatibility and native binding/reference checks. No game launch.
 
-Packaging: full build complete; archive/source bundle and clean-export isolated
-installation verification in progress. Active installed mod untouched.
-Next: finish package gates, then user-run in-game visual review. Do not describe
+Packaging: full build, prepared-bundle integrity/content, clean Git export
+preparation and isolated install all passed at runtime tree 2b65b85. All 1,656
+installed files matched their prepared source hashes; installed portraits passed
+the native checks. Archive SHA-256:
+575161f9499da444441e50db0b88e0dde0ce9ac6ca4e4c844a29a92ab790011d
+Active installed mod untouched. No push, Workshop upload or game launch.
+Deliverables: ../../outputs/Goblins_Ashborn_Isles_0.5.8.zip, portrait notes and
+0.5.8-validation.json. Next: user-run in-game visual review. Do not describe
 the technical mesh preview or static checks as proof of portrait quality.
 
 Inherited generated religion/exploration text was refreshed to its current

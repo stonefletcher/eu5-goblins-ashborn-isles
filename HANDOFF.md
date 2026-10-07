@@ -11,6 +11,9 @@ swept ears, external fang removal, stronger brow/cheek/nose morphs, native add-
 template empty-outfit suppression at priority 120. Child/infant safeguards retained.
 
 Passed: native rig/material/outfit checks; facial attributes present on both sexes.
-Full build and refreshed installer gates in progress. Do not claim engine success.
-Next: complete package and clean-export isolated installation; publish staging.
+Full build, prepared bundle, clean Git export PrepareOnly and isolated install passed.
+Verified all 1,658 installed files by SHA-256. Tested payload tree: c5e32a0.
+Archive SHA-256: 050c92f73607dc25020662df795fab05fba3506396f7fedb81cb5eb5905b8151.
+In-game appearance remains unverified. Do not claim engine success.
+Next: user installs refreshed staging and checks the same court characters in-game.
 No game launch, active-profile installation or Steam publication authorized here.

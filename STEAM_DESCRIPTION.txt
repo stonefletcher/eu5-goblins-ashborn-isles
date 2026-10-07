@@ -1,11 +1,20 @@
 [h1]Goblins of the Ashborn Isles[/h1]
-[b]A fantasy Europa Universalis V mod — Version 0.5.7[/b]
+[b]A fantasy Europa Universalis V mod — Version 0.5.8[/b]
 
 Fire rose from the Atlantic. When the smoke cleared, new islands stood between the Azores and Portugal — and goblins already walked their shores.
 
 Now five rival nations carve a living from volcanic ridges, sheltered harbours and treacherous seas. Captains quarrel, mines ring beneath the mountains, and the world beyond the horizon waits to be discovered.
 
 Lead one of the Ashborn clans in a new 1337 campaign. Build your island realm, chart foreign shores, and decide whether your neighbours will become trading partners, rivals, or the first conquests of a goblin empire.
+
+[h2]Version 0.5.8 - Faces, Shrines and the Gathering[/h2]
+[list]
+[*]Rougher goblin portraits, leather/hide/fur clothing and varied native hairstyles without stacked hair.
+[*]Drogg's distinct face, cosmetic battle scar and short swept-back haircut.
+[*]Nine holy sites with importance 1-5 and varied island distribution.
+[*]Gathering kingdom cards show rulers, live realm progress, annexed crowns and subject states, with expandable rules.
+[/list]
+[b]EU5 1.3.11. New 1337 campaign required. In-game appearance, save/reload and balance review remain pending.[/b]
 
 [h2]Version 0.5.7 - Oaths of Ash and Salt[/h2]
 [list]

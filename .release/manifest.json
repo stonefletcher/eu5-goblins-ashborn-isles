@@ -5,8 +5,8 @@
   "assets": [
     {
       "name": "Goblins_Ashborn_Isles_0.5.8.zip",
-      "size": 289672446,
-      "sha256": "76172ff399e70c71fb63f6380bc1a74e47ea7e42cf931ebd00c028e355dd68a4",
+      "size": 289973974,
+      "sha256": "66806f947de7ab5e15ba39e609053b88fa2eb9b8f4187b447ef074ae42e318a1",
       "chunks": [
         "assets/Goblins_Ashborn_Isles_0.5.2.zip.0000.b64",
         "assets/Goblins_Ashborn_Isles_0.5.2.zip.0001.b64",
@@ -570,7 +570,8 @@
         "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.c4b92b17b07d.0000.b64",
         "assets/overlay-072bcdf0b025-0000.b64",
         "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.f862f1d25055.0000.b64",
-        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.5322eff7c1d3.0000.b64"
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.5322eff7c1d3.0000.b64",
+        "assets/overlay-001ca42c9168-0000.b64"
       ]
     }
   ]

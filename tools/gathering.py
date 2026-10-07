@@ -274,7 +274,7 @@ ga_eastern_hunger = {
     write(out, 'in_game/common/situations/goblins_gathering.txt', situations)
     # Native panels are resolved by situation ID; definitions alone render no UI.
     # Inherit the game's illustration, start date, scrolling and action list.
-    for situation_id in ('ga_gathering_of_five', 'ga_eastern_hunger'):
+    for situation_id in ('ga_eastern_hunger',):
         panel = '''
 situation_panel = {
     blockoverride "situation_subheader_content" {}
@@ -556,6 +556,8 @@ ga_cb_eastern_foothold = {
         ('ga_relations', 'Relations with the other kingdom')
     ]:
         loc(key, text)
+    import gathering_panel
+    gathering_panel.build(write, loc, out, homeland, TAGS)
     localization = 'l_english:\n' + '\n'.join(' ' + k + ': "' + v.replace('"', '\\"').replace('\n', r'\n') + '"' for k, v in TEXT.items())
     write(out, 'main_menu/localization/english/goblins_gathering_l_english.yml', localization)
     return {'version': '0.5.5', 'homeland_locations': len(homeland), 'kingdoms': TAGS,

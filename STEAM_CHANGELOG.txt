@@ -1,3 +1,12 @@
+[h2]Version 0.5.8 - Faces, Shrines and the Gathering[/h2]
+[list]
+[*]Rougher goblin portraits, leather/hide/fur clothing and varied native hairstyles without stacked hair.
+[*]Drogg's distinct face, cosmetic battle scar and short swept-back haircut.
+[*]Nine holy sites with importance 1-5 and varied island distribution.
+[*]Gathering kingdom cards show rulers, live realm progress, annexed crowns and subject states, with expandable rules.
+[/list]
+[b]EU5 1.3.11. New 1337 campaign required. In-game appearance, save/reload and balance review remain pending.[/b]
+
 [h2]0.5.8 Drogg and hair correction (staging)[/h2]
 Native hairstyle replacement removes the extra hair layer. Six equal male and five female styles; Drogg-specific face, crest and cosmetic scar. Engine review pending.
 

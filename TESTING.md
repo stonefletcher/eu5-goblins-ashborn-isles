@@ -1,3 +1,10 @@
+# 0.5.8 release acceptance
+
+Check Drogg's short swept-back hair, scar and expressions; court hairstyle variety; child and infant appearance; human rulers unchanged. Save/reload to check stability.
+Check all nine holy sites and importance levels in a new campaign.
+Check Gathering cards immediately on opening, live progress, annexation, vassals and junior partners; expand unification rules.
+Static and installation checks do not establish in-game acceptance.
+
 ## Latest 0.5.8 native hair and Drogg checks
 
 - Reject layered custom hair genes; require native hair_styles replacement.

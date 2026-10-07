@@ -59,7 +59,7 @@ def drogg_modifier():
  cm_drogg_warchief = {{ ignore_outfit_tags = yes
  dna_modifiers = {{
  {dna}
- accessory = {{ mode = replace gene = hair_styles template = all_hair accessory = male_iroquois_hair_mohawk_regular }}
+ accessory = {{ mode = replace gene = hair_styles template = all_hair accessory = male_hair_short_straight_pomp }}
  morph = {{ mode = add gene = cm_drogg_scar template = cm_battle_scar value = 1 }}
  }}
  weight = {{ base = 0 modifier = {{ add = 1000 exists = this exists = character:cm_cdm_ruler this = character:cm_cdm_ruler gfx_culture_applicable = cm_cinderkin_gfx }} }}

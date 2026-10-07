@@ -63,7 +63,7 @@ def verify(out,game=None):
     assert 'priority = 140' in drogg
     assert 'exists = character:cm_cdm_ruler this = character:cm_cdm_ruler' in drogg
     assert 'gene = cm_drogg_scar' in drogg and 'gene = cm_drogg_scar' not in generic_modifiers
-    assert 'mode = replace gene = hair_styles template = all_hair accessory = male_iroquois_hair_mohawk_regular' in drogg
+    assert 'mode = replace gene = hair_styles template = all_hair accessory = male_hair_short_straight_pomp' in drogg
     for clan in clans:
         ident=clan['id'];tag=clan['culture']+'_gfx'
         assert generic_modifiers.count('gfx_culture_applicable = '+tag)==1

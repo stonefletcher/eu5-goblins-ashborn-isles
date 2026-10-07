@@ -14,6 +14,7 @@ def main():
               ROOT / 'mod/main_menu/common/static_modifiers/goblins_gathering.txt',
               ROOT / 'mod/main_menu/localization/english/goblins_gathering_l_english.yml']
     assert len(paths) == 10
+    paths += [ROOT / 'mod/in_game/common/script_values/ga_gathering_ui.txt']
     paths += [ROOT / 'mod/in_game/gui/panels/situation' / (key + '.gui')
               for key in ('ga_gathering_of_five', 'ga_eastern_hunger')]
     paths += [ROOT / 'mod/in_game/events/goblins_ashborn_isles.txt',

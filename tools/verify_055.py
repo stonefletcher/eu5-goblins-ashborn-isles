@@ -99,12 +99,57 @@ def ownership_checks(definitions, ids):
             else: raise AssertionError(f'Uncovered ownership test token: {key}')
             answers.append(result)
         return all(answers)
+    def script_value(name, country):
+        def calculate(rows):
+            nonlocal claimant
+            total = 0
+            matched = False
+            for key, _, body in rows:
+                if key == 'value': total = int(body)
+                elif key == 'save_temporary_scope_as': claimant = country
+                elif key == 'add': total += int(body)
+                elif key in ('if', 'else_if', 'else'):
+                    if key == 'if': matched = False
+                    conditions = next((v for k, _, v in body if k == 'limit'), [])
+                    if not matched and evaluate(conditions, country):
+                        total += calculate([r for r in body if r[0] != 'limit'])
+                        matched = True
+                else: raise AssertionError(f'Unhandled progress token: {key}')
+            return total
+        return calculate(definitions[name])
     def complete(): return evaluate(definitions['ga_controls_homeland'], 'CDM')
     scenarios = []
     def check(name, expected):
         assert complete() == expected, name
+        progress = script_value('ga_gathering_realm_locations', 'CDM')
+        assert 0 <= progress <= len(ids), (name, progress)
+        assert (progress == len(ids)) == expected, (name, progress)
         scenarios.append(name)
     check('All homeland directly owned', True)
+    assert script_value('ga_gathering_crown_status', 'CDM') == 1
+    # Simulate annexation, release and submission through the actual UI value.
+    owners[ids[0]] = 'QBR'
+    assert script_value('ga_gathering_realm_locations', 'CDM') == len(ids) - 1
+    assert script_value('ga_gathering_realm_locations', 'QBR') == 1
+    owners[ids[0]] = 'CDM'
+    assert script_value('ga_gathering_realm_locations', 'CDM') == len(ids)
+    assert script_value('ga_gathering_realm_locations', 'QBR') == 0
+    owners[ids[0]] = 'QBR'
+    countries['QBR'].update(subject='vassal', overlord='CDM')
+    assert script_value('ga_gathering_realm_locations', 'CDM') == len(ids)
+    assert script_value('ga_gathering_realm_locations', 'QBR') == 0
+    assert script_value('ga_gathering_crown_status', 'QBR') == 2
+    countries['QBR'].update(subject=None, overlord=None, senior='CDM')
+    assert script_value('ga_gathering_crown_status', 'QBR') == 3
+    assert script_value('ga_gathering_realm_locations', 'CDM') == len(ids)
+    countries['QBR'].update(subject='tributary', overlord='CDM', senior=None)
+    assert script_value('ga_gathering_crown_status', 'QBR') == 4
+    assert script_value('ga_gathering_realm_locations', 'CDM') == len(ids) - 1
+    countries['QBR'].update(subject=None, overlord=None)
+    assert script_value('ga_gathering_crown_status', 'QBR') == 1
+    assert script_value('ga_gathering_realm_locations', 'QBR') == 1
+    owners[ids[0]] = 'CDM'
+    scenarios.append('Live progress: annexation, release, vassalage, union, tributary and independence')
     assert evaluate(definitions['ga_owns_entire_homeland'], 'CDM')
     assert not evaluate(definitions['ga_has_european_foothold'], 'CDM'), 'Homeland must not count as Europe foothold'
     scenarios.append('European-classified Ashborn homeland is excluded from foothold completion')
@@ -150,7 +195,8 @@ def verify(root, game, out):
     ids = [x['id'] for x in cfg['locations']]
     scripts = sorted(out.glob('in_game/common/**/goblins_gathering.txt'))
     scripts += [out / 'in_game/events/goblins_gathering.txt', out / 'main_menu/common/static_modifiers/goblins_gathering.txt']
-    assert len(scripts) == 9, f'Expected 9 script files, got {len(scripts)}'
+    scripts.append(out / 'in_game/common/script_values/ga_gathering_ui.txt')
+    assert len(scripts) == 10, f'Expected 10 script files, got {len(scripts)}'
     ast = {}; declarations = {}; raw = ''
     for path in scripts:
         text = read(path); raw += text
@@ -251,6 +297,18 @@ def verify(root, game, out):
     ai_actions = next(v for k, _, v in declarations['ga_gathering_ai_list'] if k == 'actions')
     assert all(k != 'ga_offer_harbor_pact' for k, _, _ in ai_actions)
     assert ('ai_will_do', '=', [('add', '=', '-1000')]) in declarations['ga_offer_harbor_pact']
+    progress_locations = [k.split(':', 1)[1] for k, _, _ in flatten(declarations['ga_gathering_realm_locations']) if k.startswith('location:')]
+    assert len(progress_locations) == len(set(progress_locations)) == len(ids)
+    assert set(progress_locations) == set(ids)
+    panel = read(out / 'in_game/gui/panels/situation/ga_gathering_of_five.gui')
+    assert "GetGlobalList('ga_five_kingdoms')" not in panel
+    for tag in ['CDM', 'QBR', 'RHK', 'SFK', 'SWK']:
+        assert panel.count(f"[GetCountry('{tag}')]") == 1
+    assert panel.count('visible = "[Not(Country.Exists)]"') == 5
+    assert panel.count('text = "ga_gathering_annexed"') == 5
+    assert panel.count('text = "[Country.GetGovernment.GetRulerOrRegent.GetName]"') == 5
+    for texture in re.findall(r'(?:texture|progresstexture|noprogresstexture) = "(gfx/[^"\n]+)"', panel):
+        assert any((game / folder / texture).is_file() for folder in ['in_game', 'main_menu', 'loading_screen']), texture
     ownership = declarations['ga_controls_homeland']
     locations = [key.split(':', 1)[1] for key, _, _ in flatten(ownership) if key.startswith('location:')]
     assert len(locations) == len(set(locations)) == 72

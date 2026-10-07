@@ -1,41 +1,39 @@
 # Goblins of the Ashborn Isles
 
-**0.5.8 staging — Drogg character pass, corrected hair layering, varied court styles and holy sites.**
-Nine shrines now span importance 1-5: three on Cindermaw, two on Brackmaw,
-and one on each smaller island. The First Mouth is the principal sanctuary.
-New oath groves and hearths have modest local bonuses; existing shrine IDs and
-event links remain. Native importance scales local effects. Test site counts,
-tooltips and balance in a new campaign.
+**Release 0.5.8 — revised goblin portraits, nine varied holy sites and a redesigned Gathering panel.**
 
-The latest portrait pass fixes the separate hair layer that left Drogg's long
-hair beneath a new crest. Hair now replaces the native hairstyle directly:
-six equally weighted adult male choices and five female choices, plus fitted
-child styles. No single adult style carries more than 20% of the pool weight.
-Drogg has his own guarded character modifier: a single signature crest,
-restrained nose, firmer jaw, deliberate facial proportions and a cosmetic
-battle scar. Other characters retain the previous species face settings.
+Goblin courts use rougher faces, shared face/ear skin, compact proportions and
+leather, hide and fur clothing. Native hairstyle replacement removes stacked
+hair; six equal male and five equal female choices provide variety. Drogg has
+short swept-back hair, tailored facial proportions and a cosmetic battle scar.
+Children retain fitted styles and infants retain swaddling.
 
-Shared face/ear skin rendering, 94% clan tint, swept ears, compact posture and
-shorter necks are retained. External tooth studs remain removed. The adult
-wardrobe uses hide tunics, fringed leather and fur-trimmed hunter clothing.
-Children keep fitted clothes and hair, with no added adult weathering; infants
-retain swaddling. All five cultures are covered, without global human changes.
+Nine holy sites span importance 1–5: three on Cindermaw, two on Brackmaw and
+one on each smaller island. The First Mouth is the principal sanctuary; new
+oath groves and hearths add local lore and modest bonuses.
+
+The Gathering opens directly to five kingdom cards with rulers and live
+homeland control. Annexed kingdoms remain visible; vassals, junior partners
+and other subjects have distinct states. Eligible subject territory counts
+towards its senior realm, and expandable rules explain unification.
 
 ![The Gathering artwork reference](art/events/sources/gathering.png)
 
 **Source and installer: 0.5.8 / EU5 1.3.11.** Download the complete
-[staging ZIP](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/archive/refs/heads/staging/0.5.8.zip),
-extract into a new folder, close EU5 and run **Install-Goblins.cmd**. Restart the
-game and enable one Goblins copy. This is a revised 0.5.8 build, so an older
-0.5.8 archive will not contain the latest hair-layer correction and Drogg-specific changes.
+[0.5.8 release](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.8),
+extract into a new folder, close EU5 and run **Install-Goblins.cmd**.
+Restart and enable only one Goblins copy. Start a **new 1337 campaign** for
+holy-site and starting-world changes. Existing saves need a restart for UI
+and portrait changes; their application and appearance still need game review.
 
-Native asset/material checks pass; full-build, bundle and clean-install gate
-results accompany the candidate. The user screenshots confirm improved skin and clothing but show stacked hair
-and insufficient variety. **The new native hair replacement and Drogg-specific
-portrait still need in-game review**, including save/reload stability. Main remains the released 0.5.7; Steam is unchanged.
+Static script/native-asset checks, archive checks and clean-source isolated
+installation are the release gates. In-game portrait appearance, Gathering
+layout/live updates, save/reload and gameplay balance remain unverified.
+This package includes the final swept-back haircut and Gathering redesign;
+earlier 0.5.8 candidates may lack them. Inherited religion, economy, estates,
+exploration and diplomacy are retained.
 
-See [changes, evidence and visual checks](RELEASE_NOTES_0.5.8.md).
-Inherited religion, estate, exploration and diplomacy content is retained.
+See [release notes](RELEASE_NOTES_0.5.8.md) and [testing checklist](TESTING.md).
 
 ## Inherited economy and revised exploration
 
@@ -61,11 +59,11 @@ Focused checks passed for native building ranks/resources, generated buildings, 
 
 See the [0.5.6 economic design and validation notes](ECONOMY_056.md) for comparisons, trade dependencies and the playtest checklist. These economy changes are inherited by the complete 0.5.8 candidate.
 
-## Install and play the released 0.5.5 version
+## Install and play the released 0.5.8 version
 
-The full 0.5.5 package includes the islands, goblin characters, Gathering campaign, mixed populations and custom artwork. No earlier version is required.
+The full 0.5.8 package includes the islands, goblin characters, Gathering campaign, mixed populations and custom artwork. No earlier version is required.
 
-1. Download **Goblins_Ashborn_Isles_0.5.5.zip** from the [0.5.5 release](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.5).
+1. Download **Goblins_Ashborn_Isles_0.5.8.zip** from the [0.5.8 release](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.8).
 2. Extract the complete ZIP into a writable folder and close EU5 completely.
 3. Run **Install-Goblins.cmd** from the extracted folder. Let it finish preparing and installing the mod.
 4. Enable **Goblins of the Ashborn Isles** in your EU5 playset. **Disable Goblins 0.5.5 - Gathering Prototype** if you used the earlier add-on: its content is now included in the full mod.
@@ -136,7 +134,7 @@ Other mods that change the map, starting world or terrain shaders may conflict. 
 | Problem | What to check |
 |---|---|
 | The installer cannot find EU5 | Run Install-Goblins.ps1 with its -GamePath option pointing to your EU5 game folder. |
-| The Gathering, new flags or updated populations are missing | Check the installed version is 0.5.5, disable the old prototype add-on, restart EU5 and start a new campaign. |
+| The Gathering, new flags or updated populations are missing | Check the installed version is 0.5.8, disable the old prototype add-on, restart EU5 and start a new campaign. |
 | Installation fails when run from a ZIP | Extract the complete download first, then run its installer from the extracted folder. |
 | The map or terrain looks wrong after an update | Check the game version and reinstall the matching base through its installer. Avoid manually copying unprepared terrain files. |
 

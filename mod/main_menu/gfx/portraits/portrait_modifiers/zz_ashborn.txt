@@ -186,7 +186,7 @@ morph = { mode = replace gene = gene_mouth_width template = template_1 value = 0
 morph = { mode = replace gene = gene_mouth_corner_height template = template_1 value = 0.43 }
 morph = { mode = replace gene = gene_mouth_upper_lip_size template = template_1 value = 0.25 }
 morph = { mode = replace gene = gene_mouth_lower_lip_size template = template_1 value = 0.29 }
- accessory = { mode = replace gene = hair_styles template = all_hair accessory = male_iroquois_hair_mohawk_regular }
+ accessory = { mode = replace gene = hair_styles template = all_hair accessory = male_hair_short_straight_pomp }
  morph = { mode = add gene = cm_drogg_scar template = cm_battle_scar value = 1 }
  }
  weight = { base = 0 modifier = { add = 1000 exists = this exists = character:cm_cdm_ruler this = character:cm_cdm_ruler gfx_culture_applicable = cm_cinderkin_gfx } }

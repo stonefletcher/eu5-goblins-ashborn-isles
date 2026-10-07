@@ -1,5 +1,5 @@
 {
-  "base_release": "0.5.6",
+  "base_release": "0.5.8",
   "stage": "development-models-and-culture-names",
   "engine_tested": false,
   "files": [
@@ -13,15 +13,15 @@
     },
     {
       "path": "in_game/common/ethnicities/ashborn.txt",
-      "sha256": "fd0fd3228f11e703b1f856252b5d572a28b78d39f08472719116791394993f65"
+      "sha256": "6626a02b5bf390af7a6e9af8e09021d4ede0068deb8df9102a387d73e9b29c1c"
     },
     {
       "path": "in_game/common/genes/zz_ashborn_outfits.txt",
-      "sha256": "973c3fd3696d94bd25c0530d4af695f183c9b93af506d168e7fe2797ef1db82d"
+      "sha256": "e78ed9be908162be10321b4149ef3a824b80e5a8f3ae92dc0a4acc763ca3d6b0"
     },
     {
       "path": "in_game/common/genes/zz_ashborn_portraits.txt",
-      "sha256": "f5a1ef4c5d61203c98877966a532874e9a0c43cb2a3fca8c17fd4007992f7890"
+      "sha256": "9cca78832b8313bfdb7695aea9bb5e61d57eac79bc441e5e85e3e5970b8cef66"
     },
     {
       "path": "in_game/common/languages/goblins_ashborn_isles.txt",
@@ -57,15 +57,15 @@
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/cm_female_features.mesh",
-      "sha256": "3513a7bd80b0621d2e34a4fac8833a8ddde4c531ec5a34498e0051ba96bb498b"
+      "sha256": "d0cd859ec21ed8be779a75c079612b5c9d5ab74fddb359754bdabbebd20df2ca"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/cm_infant_features.mesh",
-      "sha256": "54e9fa0dee117773aa0f7d2e36bcb31ce47a0b4f56160b0b25b2e7c0c8e7bc8a"
+      "sha256": "5bb8692ce00d358cb8dbac8d2d72c98bad68764474b20b8a3b9e0a3731cd5e1e"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/cm_male_features.mesh",
-      "sha256": "3bad340edbec820aa5f3f3a3f8f7857397c81193b7114ba858db1007a05325b4"
+      "sha256": "c2250bc6fa8a8aefef6b8d02ad58fcd853140fc710082964aacb342c13574f2f"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/ivory.dds",
@@ -737,11 +737,11 @@
     },
     {
       "path": "main_menu/gfx/portraits/portrait_modifiers/zz_ashborn.txt",
-      "sha256": "f26495eadd50570260ef40bdcc15aac7e3930e53a6301df2f7caf0914d6f99d4"
+      "sha256": "c3de833a353423b40575c7389688450cd8f630d20f66d136b7a97ff5135a2723"
     },
     {
       "path": "main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt",
-      "sha256": "3c3bd240084661a0c530826e4589e3239bda9f86d305f8d39c39f96551da4e38"
+      "sha256": "fae29e5a5973e5ac6aac9eeef305f210c6671c33f2763a0878f2ba0865b42a13"
     },
     {
       "path": "main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt",
@@ -753,11 +753,11 @@
     },
     {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",
-      "sha256": "eb69c4cb89a7ee0c9442abc25b08bbf3c78a27f37abb403dc607e9f37acf272f"
+      "sha256": "5f1c6c015de43731c88b7c367658c7ebd250cab4676e515db80579417251fba0"
     },
     {
       "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
-      "sha256": "600c7d15978cec9c1dd88fbccf0ec5235f0f168904862b8bdecf7d0a7d088966"
+      "sha256": "5b873c3c0a13fe51125e1bd33fe064625c250ad0dfc39a2036cfa3baba27ac2a"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_absolutism_cawa_cm_cinderkin_gfx.dds",

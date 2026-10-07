@@ -5,6 +5,7 @@ accessory = { mode = replace gene = clothes template = no_clothes value = 0 }
 accessory = { mode = replace gene = headwear template = no_headwear value = 0 }
 accessory = { mode = replace gene = capes template = no_cape value = 0 }
 accessory = { mode = replace gene = neckware_neck template = no_neckware_neck value = 0 }
+accessory = { mode = replace gene = beards template = no_beard value = 0 }
 accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }
 }
 weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_cinderkin_gfx } } }
@@ -14,6 +15,7 @@ accessory = { mode = replace gene = clothes template = no_clothes value = 0 }
 accessory = { mode = replace gene = headwear template = no_headwear value = 0 }
 accessory = { mode = replace gene = capes template = no_cape value = 0 }
 accessory = { mode = replace gene = neckware_neck template = no_neckware_neck value = 0 }
+accessory = { mode = replace gene = beards template = no_beard value = 0 }
 accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }
 }
 weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_brinekin_gfx } } }
@@ -23,6 +25,7 @@ accessory = { mode = replace gene = clothes template = no_clothes value = 0 }
 accessory = { mode = replace gene = headwear template = no_headwear value = 0 }
 accessory = { mode = replace gene = capes template = no_cape value = 0 }
 accessory = { mode = replace gene = neckware_neck template = no_neckware_neck value = 0 }
+accessory = { mode = replace gene = beards template = no_beard value = 0 }
 accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }
 }
 weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_reefkin_gfx } } }
@@ -32,6 +35,7 @@ accessory = { mode = replace gene = clothes template = no_clothes value = 0 }
 accessory = { mode = replace gene = headwear template = no_headwear value = 0 }
 accessory = { mode = replace gene = capes template = no_cape value = 0 }
 accessory = { mode = replace gene = neckware_neck template = no_neckware_neck value = 0 }
+accessory = { mode = replace gene = beards template = no_beard value = 0 }
 accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }
 }
 weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_shatterkin_gfx } } }
@@ -41,6 +45,7 @@ accessory = { mode = replace gene = clothes template = no_clothes value = 0 }
 accessory = { mode = replace gene = headwear template = no_headwear value = 0 }
 accessory = { mode = replace gene = capes template = no_cape value = 0 }
 accessory = { mode = replace gene = neckware_neck template = no_neckware_neck value = 0 }
+accessory = { mode = replace gene = beards template = no_beard value = 0 }
 accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }
 }
 weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_sootkin_gfx } } }

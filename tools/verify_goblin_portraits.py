@@ -2,6 +2,7 @@
 import json,re,struct
 from pathlib import Path
 import numpy as np
+from collections import Counter
 from PIL import Image
 from pdx_binary import read
 from build_goblin_portraits import ROOT,ART,REL,TYPES
@@ -57,10 +58,24 @@ def verify(out,game=None):
             ns=read(native)['children'][0]['children'][0]
             nb={b['name']:b for b in next(c['children'] for c in ns['children'] if c['name']=='skeleton')}
             for bone in bones:assert np.allclose(bone['props']['tx'][1],nb[bone['name']]['props']['tx'][1]),bone['name']
-        for mesh in [c for c in shape['children'] if c['name']=='mesh']:
+        for mesh_index,mesh in enumerate(c for c in shape['children'] if c['name']=='mesh'):
             p=np.array(mesh['props']['p'][1]).reshape(-1,3);t=np.array(mesh['props']['tri'][1]).reshape(-1,3)
             skin=next(c['props'] for c in mesh['children'] if c['name']=='skin')
             assert np.isfinite(p).all() and t.min()>=0 and t.max()<len(p)
+            area=np.cross(p[t[:,1]]-p[t[:,0]],p[t[:,2]]-p[t[:,0]])
+            assert (np.linalg.norm(area,axis=1)>1e-8).all(), (sex,'degenerate triangle')
+            if mesh_index==0:
+                # Ears must be watertight with opposite winding on shared edges.
+                edges=Counter()
+                for face in t:
+                    verts=[tuple(np.round(p[v],5)) for v in face]
+                    for a,b in zip(verts,verts[1:]+verts[:1]):edges[(a,b)]+=1
+                assert all(n==1 and edges[(b,a)]==1 for (a,b),n in edges.items()), (sex,'open or reversed ear shell')
+                assert len(t)>=1000, (sex,'old flat ear geometry')
+                for sign in [-1,1]:
+                    side=t[p[t].mean(axis=1)[:,0]*sign>0]
+                    volume=np.einsum('ij,ij->i',p[side[:,0]],np.cross(p[side[:,1]],p[side[:,2]])).sum()/6
+                    assert volume>0, (sex,'inside-out ear')
             assert np.allclose(np.linalg.norm(np.array(mesh['props']['n'][1]).reshape(-1,3),axis=1),1)
             assert min(skin['ix'][1])>=0 and max(skin['ix'][1])<len(bones)
             assert np.allclose(np.array(skin['w'][1]).reshape(-1,4).sum(axis=1),1)
@@ -85,6 +100,10 @@ def verify(out,game=None):
         for template in RESET.values():assert re.search(r'\b'+template+r'\s*=\s*\{',native_genes),template
         for gene in re.findall(r'mode = replace gene = (gene_\w+)',modifiers):
             assert re.search(r'\b'+gene+r'\s*=\s*\{',native_genes),gene
+        from build_goblin_portraits import FACE
+        assert FACE['gene_eye_size'][1] < .5, 'Avoid the previous enlarged cartoon eyes'
+        assert FACE['gene_mouth_width'][1] < .65, 'Avoid the previous broad grin'
+        assert RESET.get('beards') == 'no_beard'
         for sex in ['male','female']:
             body=(Path(game)/f'in_game/gfx/models/portraits/{sex}_body/{sex}_body.asset').read_text(encoding='utf-8-sig')
             for attribute in ['body_infant_proportions','body_hunchback']:

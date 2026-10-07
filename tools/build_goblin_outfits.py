@@ -6,9 +6,9 @@ Custom torn hems, patches and distressed materials remain an art follow-up.
 from pathlib import Path
 
 OUTFITS = {
-    'male': [(4, 'male_clothes_deccan_commoner_harness'),
-             (3, 'male_clothes_aztec_common_tilmatl'),
-             (2, 'male_clothes_german_common_short_sleeves_jacket')],
+    'male': [(2, 'male_clothes_deccan_commoner_harness'),
+             (4, 'male_clothes_aztec_common_tilmatl'),
+             (4, 'male_clothes_german_common_short_sleeves_jacket')],
     'female': [(4, 'female_clothes_iroquois_common_overcoat'),
                (3, 'female_clothes_aztec_common_huipilli'),
                (2, 'female_clothes_syrian_common_dress_scarf')],
@@ -18,7 +18,8 @@ OUTFITS = {
     'infant': [(1, 'empty')],
 }
 RESET = {'clothes': 'no_clothes', 'headwear': 'no_headwear',
-         'capes': 'no_cape', 'neckware_neck': 'no_neckware_neck'}
+         'capes': 'no_cape', 'neckware_neck': 'no_neckware_neck',
+         'beards': 'no_beard'}
 
 def build(out, clans):
     from build_goblin_portraits import text
@@ -42,4 +43,5 @@ def build(out, clans):
     text(out/'main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt', '\n'.join(mods)+'\n')
     return {'method':'native plain garments, culture-scoped, priority 100',
             'royal_clothes_and_crowns_removed':True, 'engine_tested':False,
-            'custom_rag_geometry':False}
+            'custom_rag_geometry':False, 'beards_removed':True,
+            'covered_male_garment_weight':0.8}

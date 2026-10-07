@@ -10,20 +10,22 @@
     "adolescent_girl",
     "infant"
   ],
-  "method": "long swept ears, hooked noses, pinched jaws, prominent cheeks, wide mouths and small teeth",
+  "method": "cupped smooth ears, hooded recessed eyes, lean weathered cheeks, hooked noses and restrained mouths; 60% skin tint preserves more native colour detail",
   "infants": "skin and smaller pointed ears; no tusks or extra stature modifier",
   "outfits": {
     "method": "native plain garments, culture-scoped, priority 100",
     "royal_clothes_and_crowns_removed": true,
     "engine_tested": false,
-    "custom_rag_geometry": false
+    "custom_rag_geometry": false,
+    "beards_removed": true,
+    "covered_male_garment_weight": 0.8
   },
-  "portrait_stature": "culture-only compact torso proportions and stoop on both sexes; native child growth preserved; framing and clothing fit need engine review",
+  "portrait_stature": "culture-only compact torso 0.42 and stoop 0.24 on both sexes, shorter neck; native child growth preserved; framing and clothing fit need engine review",
   "validation": {
     "status": "static checks passed; in-game appearance unverified",
     "cultures": 5,
     "portrait_types": 7,
-    "attachment_triangles": 252,
+    "attachment_triangles": 3216,
     "native_rig_bindings_checked": true,
     "native_outfit_references_checked": true,
     "engine_tested": false

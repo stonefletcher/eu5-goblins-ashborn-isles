@@ -1,18 +1,25 @@
 # Goblins of the Ashborn Isles
 
-Five goblin kingdoms share six volcanic islands in the Atlantic. Unite their rival crowns, chart the waters beyond your homeland, and claim a foothold on Europe's coast in **Europa Universalis V**.
+**0.5.8 portrait development candidate — `feature/0.5.8-portrait-art-pass`.**
+Reworks court, noble and character portraits toward the Gathering artwork:
+small hooded eyes, lean weathered faces, folded ears, smaller teeth, shorter
+necks and more compact, stooped bodies. Culture routing covers the five goblin
+peoples while preserving human characters. Native beards are removed and
+covered male clothing is more common. Includes the 0.5.7 religion, estate,
+exploration and diplomacy changes.
 
 ![The five Ashborn clans gather beneath their banners](art/events/sources/gathering.png)
 
-**0.5.7 — Oaths of Ash and Salt.** Release branch `release/v0.5.7` includes the first Ashen Covenant religion implementation and all published 0.5.6 repairs, targeting **EU5 1.3.11**. The faith retains its internal identity while gaining six island holy sites, eight traditions, two initial traditions per crown, Covenant Favor, three rites with a shared cooldown, twelve religious stories and the post-unification Moot of Six Fires. Existing artwork is reused. Goblin estate names preserve native mechanics. The complete situation panels, concise tooltips, named modifiers and Cindermaw council rewards from 0.5.6 are retained. Gameplay acceptance is pending.
+**Installation:** the complete local 0.5.8 candidate includes Install-Goblins.cmd.
+Close EU5, extract into a new folder and run the installer. Enable one mod copy.
+Use a new 1337 campaign to test inherited starting-world changes; also check
+portraits in an existing save. This candidate has not been published or installed
+into the active profile. Full-build static checks pass. Bundle and isolated-install checks accompany
+the delivered candidate; in-game appearance remains unverified.
 
-**0.5.7 exploration correction:** All five crowns start with the Ashborn homeland and nearby Atlantic sea areas discovered, but no foreign land grants. Iberia and the English, French and Moroccan coastlines remain terra incognita until discovered. Known water beside unknown land is intended to provide the coastal silhouettes shown in the reference screenshot; that exact rendering still needs an in-game check. Voyages reveal their named ports on return. The three-year initial delay remains.
-
-**0.5.7 diplomacy fixes:** Harbor Pact acceptance/refusal and Ashen Compact refusal now notify the sender; all result popups identify the responding kingdom. The AI no longer initiates the custom Harbor Pact action. Players can still use it at the existing price, and native alliance diplomacy remains available. Focused script and response-routing checks pass; gameplay verification is pending.
-
-**Complete 0.5.7 installer:** download [Goblins_Ashborn_Isles_0.5.7.zip](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.7), extract into a new folder, close EU5 and run **Install-Goblins.cmd**. No earlier package is required. Enable one copy only and start a **new 1337 campaign**. Existing saves retain prior discoveries. Release gates cover full-build static checks, package hashes, terrain reconstruction and a clean-source isolated installation; gameplay and balance remain unverified.
-
-See [0.5.7 implementation and remaining work](RELIGION_057.md) for balance values, current limitations and verification instructions.
+See [portrait changes and visual checks](RELEASE_NOTES_0.5.8.md). Clothing still
+uses native garments; this pass does not promise an exact recreation of the
+painting's ragged leather or a measured one-metre character height.
 
 ## Inherited economy and revised exploration
 
@@ -36,7 +43,7 @@ Rural buildings follow local resources and vegetation. Additional extraction inv
 
 Focused checks passed for native building ranks/resources, generated buildings, population totals, production staffing, economic specialization and guarded market/investment setup. Profitability, food security and affordability of starting forces remain pending fresh-campaign tests. Building-level counts describe infrastructure, not equivalent income.
 
-See the [0.5.6 economic design and validation notes](ECONOMY_056.md) for comparisons, trade dependencies and the playtest checklist. **Downloading this branch and running its existing installer installs the bundled 0.5.5 content, not the new economy or exploration changes.** A full 0.5.6 build and package are still required.
+See the [0.5.6 economic design and validation notes](ECONOMY_056.md) for comparisons, trade dependencies and the playtest checklist. These economy changes are inherited by the complete 0.5.8 candidate.
 
 ## Install and play the released 0.5.5 version
 

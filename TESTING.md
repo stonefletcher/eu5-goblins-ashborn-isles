@@ -1,3 +1,9 @@
+# 0.5.8 portrait acceptance
+
+Follow the age/sex, culture, existing-save and human-control checks in
+RELEASE_NOTES_0.5.8.md. Compare to the Gathering artwork. In-game acceptance is
+pending; static geometry and packaging checks do not establish visual quality.
+
 ## 0.5.7 exploration correction acceptance (pending full build)
 
 Run `python tools/verify_exploration.py --game <EU5 game directory>` for a focused

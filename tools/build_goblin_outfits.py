@@ -30,9 +30,11 @@ def build(out, clans):
         genes.append(sex + ' = { ' + ' '.join(f'{w} = "{a}"' for w, a in choices) + ' }')
     genes += ['adolescent_boy = boy adolescent_girl = girl', '} } } }']
     text(out/'in_game/common/genes/zz_ashborn_outfits.txt', '\n'.join(genes)+'\n')
-    mods = ['cm_ashborn_outfits = { usage = game priority = 100']
+    mods = ['cm_ashborn_outfits = { usage = game selection_behavior = max priority = 120']
     for clan in clans:
-        dna = [f'accessory = {{ mode = replace gene = {g} template = {t} value = 0 }}'
+        # Match native beard/headwear suppression: add the empty template with a
+        # selection range. A zero-strength replace did not suppress noble outfits.
+        dna = [f'accessory = {{ mode = add gene = {g} template = {t} range = {{ 0 1 }} }}'
                for g, t in RESET.items()]
         dna.append('accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }')
         mods.append(f'cm_{clan["id"]}_rough_clothing = {{ ignore_outfit_tags = yes\n'
@@ -40,8 +42,8 @@ def build(out, clans):
                     f'weight = {{ base = 0 modifier = {{ add = 100 gfx_culture_applicable = {clan["culture"]}_gfx }} }} }}')
     mods.append('}')
     text(out/'main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt', '\n'.join(mods)+'\n')
-    return {'method':'native hide tunics, fringed leather overcoats and fur-trimmed hunter garments; culture-scoped, priority 100',
-            'royal_clothes_and_crowns_removed':True, 'engine_tested':False,
+    return {'method':'native hide tunics, fringed leather overcoats and fur-trimmed hunter garments; culture-scoped native add-template suppression, priority 120',
+            'royal_clothes_and_crowns_suppression':'configured; in-game confirmation pending', 'engine_tested':False,
             'custom_rag_geometry':False, 'beards_removed':True,
             'adult_leather_garment_weight':1.0,
             'children':'native fitted plain clothes; no adult meshes on child rigs'}

@@ -10,11 +10,14 @@
     "adolescent_girl",
     "infant"
   ],
-  "method": "cupped smooth ears, hooded recessed eyes, lean weathered cheeks, hooked noses and restrained mouths; 60% skin tint preserves more native colour detail",
+  "method": "shorter swept cupped ears using native skin shader and shared head decal; stronger brows, lean cheeks and hooked noses; 94% clan tint with native normal detail retained",
+  "skin_opacity": 0.94,
+  "ear_material": "portrait_skin with head decal routing and skin palette",
+  "teeth": "native animated mouth teeth only; detached external fangs removed",
   "infants": "skin and smaller pointed ears; no tusks or extra stature modifier",
   "outfits": {
-    "method": "native hide tunics, fringed leather overcoats and fur-trimmed hunter garments; culture-scoped, priority 100",
-    "royal_clothes_and_crowns_removed": true,
+    "method": "native hide tunics, fringed leather overcoats and fur-trimmed hunter garments; culture-scoped native add-template suppression, priority 120",
+    "royal_clothes_and_crowns_suppression": "configured; in-game confirmation pending",
     "engine_tested": false,
     "custom_rag_geometry": false,
     "beards_removed": true,
@@ -26,7 +29,7 @@
     "status": "static checks passed; in-game appearance unverified",
     "cultures": 5,
     "portrait_types": 7,
-    "attachment_triangles": 3216,
+    "attachment_triangles": 3024,
     "native_rig_bindings_checked": true,
     "native_outfit_references_checked": true,
     "engine_tested": false

@@ -13,21 +13,22 @@ ROOT=Path(__file__).resolve().parents[1]
 ART=ROOT/'art/models/goblins'
 REL='in_game/gfx/models/portraits/ashborn'
 TYPES=['male','female','boy','girl','adolescent_boy','adolescent_girl','infant']
+SKIN_OPACITY = 0.94
 
 # Gathering artwork: hooded eyes, lean cheeks, a hooked nose and a restrained
 # mouth. Avoid stacking extreme morphs: that made the previous faces caricatures.
 FACE = {
-    'gene_nose_length': (.76,.91), 'gene_nose_tip_forward': (.70,.86),
+    'gene_nose_length': (.82,.94), 'gene_nose_tip_forward': (.76,.90),
     'gene_nose_tip_angle': (.16,.29), 'gene_nose_width': (.30,.44),
     'gene_nose_ridge_def': (.65,.82),
     'gene_jaw_width': (.23,.38), 'gene_jaw_height': (.29,.43),
     'gene_chin_size': (.25,.39), 'gene_head_height': (.38,.49),
     'gene_eye_size': (.30,.43), 'gene_eye_open': (.34,.46),
     'gene_eye_forward': (.30,.43), 'gene_eye_socket': (.62,.78),
-    'gene_forehead_brow_forward': (.65,.81),
+    'gene_forehead_brow_forward': (.72,.87),
     'gene_forehead_brow_height': (.30,.43),
     'gene_cheek_forward': (.61,.77), 'gene_cheek_width': (.39,.53),
-    'gene_cheek_def': (.68,.84), 'gene_cheek_fat': (.24,.39),
+    'gene_cheek_def': (.75,.89), 'gene_cheek_fat': (.19,.32),
     'gene_mouth_width': (.47,.61), 'gene_mouth_upper_lip_size': (.23,.37),
     'gene_mouth_lower_lip_size': (.26,.40),
     'gene_neck_length': (.24,.38),
@@ -57,7 +58,7 @@ def geometry(sex,bones):
     Concentric anatomical folds replace the flat five-triangle fan. Matching
     boundary vertices close the front/back shell; normals are area averaged.
     """
-    parts=[[],[]]
+    parts=[[]]
     names={b['name']:i for i,b in enumerate(bones)}
     def tri(part,a,b,c,j):parts[part].append((np.array([a,b,c],float),j))
     young=sex=='infant'; female=sex=='female'
@@ -65,13 +66,13 @@ def geometry(sex,bones):
     y=15.7 if not female else 15.3
     if young:x,y=5.9,9.2
     for sign in [-1,1]:
-        length=7.2 if not young else 3.6
+        length=6.3 if not young else 3.2
         # Swept, slightly unequal ears, with a thick root and tapered tip.
         length *= 1.0 if sign > 0 else .96
         scale=.62 if young else 1.0
         outline=np.array([[x-.25,y-1.7*scale,-1.45],
             [x+1.2,y-1.95*scale,-1.2], [x+3.6*scale,y-.35*scale,-.65],
-            [x+length,y+2.4*scale,.20], [x+4.4*scale,y+2.0*scale,-.45],
+            [x+length,y+2.8*scale,.20], [x+4.0*scale,y+2.15*scale,-.45],
             [x+1.8*scale,y+1.9*scale,-1.1], [x-.3,y+.9*scale,-1.65]])
         # Rounded root/lobe with a cusp at the tip, rather than polygon corners.
         tangents=(np.roll(outline,-1,axis=0)-np.roll(outline,1,axis=0))*.4
@@ -102,17 +103,10 @@ def geometry(sex,bones):
                 for inner,outer in zip(rings,rings[1:]):
                     eartri(inner[i],inner[j],outer[j],back)
                     eartri(inner[i],outer[j],outer[i],back)
-        if young:continue
-        # Separate jaw-bound teeth follow speech/idle jaw movement.
-        joint=names['bn_jaw_main'];rings=[]
-        for h,r,forward in [(0,.16,0),(.18,.12,-.04),(.34,.06,-.09),(.46,.012,-.12)]:
-            rings.append([np.array([sign*2.0+r*math.cos(t),10.7+h,-9.05+forward+r*math.sin(t)]) for t in np.linspace(0,2*math.pi,9)[:-1]])
-        for k in range(3):
-            for i in range(8):
-                a,b=rings[k][i],rings[k][(i+1)%8];c,d=rings[k+1][i],rings[k+1][(i+1)%8]
-                tri(1,a,c,b,joint);tri(1,b,c,d,joint)
+        # Native teeth stay inside the animated mouth. Fixed external fangs
+        # appeared as detached white studs beside narrower lips in screenshots.
     meshes=[]
-    for faces in parts:
+    for part_index,faces in enumerate(parts):
         if not faces:continue
         p=[];n=[];ix=[]
         smooth={}
@@ -133,7 +127,7 @@ def geometry(sex,bones):
             'u0':prop('f',np.full((len(p),2),.5)),'tri':prop('i',np.arange(len(p))),
             'boundingsphere':prop('f',np.r_[center,np.linalg.norm(p-center,axis=1).max()])},[
             node('aabb',{'min':prop('f',low),'max':prop('f',high)}),
-            node('material',{'shader':('s','portrait_attachment')}),
+            node('material',{'shader':('s','portrait_skin' if part_index==0 else 'portrait_attachment')}),
             node('skin',{'bones':('i',[4]),'ix':prop('i',ix),'w':prop('f',np.tile([1.,0,0,0],(len(p),1)))})]))
     return node('root',{'pdxasset':('i',[1,0])},[node('object',children=[node('ashborn_features',children=meshes+[node('skeleton',children=bones)])])])
 
@@ -142,10 +136,14 @@ def build(out):
     clans=json.loads((ART/'clans.json').read_text())['clans']
     bindings=json.loads((ART/'portrait_bindings.json').read_text())
     for sex,bones in bindings.items():write(dest/f'cm_{sex}_features.mesh',geometry(sex,bones))
-    for name,color in [('normal',(128,128,255,128)),('properties',(255,96,0,210)),('ivory',(222,210,164,255))]:
+    # RRxG normal decoding uses G and A, not the usual RGB tangent packing.
+    # Ear skin follows PS_skin: palette + head decals + skin scattering.
+    for name,color in [('normal',(128,128,255,128)),('properties',(120,64,0,210)),
+                       ('ivory',(222,210,164,255)),('ear_base',(128,128,128,255)),
+                       ('ssao',(0,0,0,255))]:
         Image.new('RGBA',(4,4),color).save(dest/f'{name}.dds')
     # Opt-in visual effects, never ordinary DNA: zero-strength defaults can render globally.
-    genes=['special_genes = {\nmorph_genes = {'];accessories=[];assets=[];modifiers=['cm_ashborn_appearance = {\n usage = game'];ethnicities=[]
+    genes=['special_genes = {\nmorph_genes = {'];accessories=[];assets=[];modifiers=['cm_ashborn_appearance = {\n usage = game selection_behavior = max priority = 110'];ethnicities=[]
     # Kept within supported native gene ranges. Individuals retain all other DNA.
     face=FACE
     # Reuse the supported torso-only proportion and posture attributes on BOTH
@@ -173,7 +171,7 @@ def build(out):
             decals+=f'''decal = {{ body_part = {part}
  textures = {{ diffuse = "gfx/models/portraits/ashborn/{ident}_skin.dds" }}
  blend_modes = {{ diffuse = replace }}
- alpha_curve = {{ {{ 0 0.60 }} {{ 1 0.60 }} }}
+ alpha_curve = {{ {{ 0 {SKIN_OPACITY} }} {{ 1 {SKIN_OPACITY} }} }}
  decal_apply_order = post_skin_color priority = 100
  }}\n'''
         genes.append(f'{gene} = {{ inheritable = no {gene} = {{ index = 0 male = {{ {decals} }} '+
@@ -181,11 +179,13 @@ def build(out):
         for sex in ['male','female','infant']:
             name=f'cm_{ident}_{sex}_features'
             settings=''
-            for i,texture in enumerate([ident+'_skin','ivory'] if sex!='infant' else [ident+'_skin']):
+            for i,texture in enumerate(['ear_base']):
+                shader='portrait_skin' if i==0 else 'portrait_attachment'
                 settings+=f'''meshsettings = {{ name = "ashborn_features" index = {i}
  texture_diffuse = "{texture}.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }}\n'''
-            assets.append(f'pdxmesh = {{ name = "{name}_mesh" file = "cm_{sex}_features.mesh" {settings} }}\nentity = {{ name = "{name}_entity" pdxmesh = "{name}_mesh" }}')
+ texture = {{ file = "ssao.dds" index = 3 }}
+ shader = "{shader}" shader_file = "gfx/FX/jomini/portrait.shader" }}\n'''
+            assets.append(f'pdxmesh = {{ name = "{name}_mesh" file = "cm_{sex}_features.mesh" {settings} }}\nentity = {{ name = "{name}_entity" pdxmesh = "{name}_mesh" game_data = {{ portrait_entity_user_data = {{ color_mask_remap_interval = {{ interval = {{ 0 1 }} }} portrait_decal = {{ body_part = head }} }} }} }}')
             accessories.append(f'{name} = {{ entity = {{ required_tags = "" shared_pose_entity = head entity = {name}_entity }} }}')
         dna=f'morph = {{ mode = add gene = {gene} template = {gene} value = 1 }}\naccessory = {{ mode = add gene = cm_ashborn_features template = cm_{ident}_features value = 1 }}\n'
         dna+='morph = { mode = add gene = cm_ashborn_stature template = cm_compact_body value = 1 }\n'
@@ -206,7 +206,7 @@ def build(out):
     text(out/'main_menu/gfx/portraits/portrait_modifiers/zz_ashborn.txt','\n'.join(modifiers)+'\n')
     from build_goblin_outfits import build as build_outfits
     outfits = build_outfits(out, clans)
-    return {'engine_tested':False,'cultures':len(clans),'portrait_types':TYPES,'method':'cupped smooth ears, hooded recessed eyes, lean weathered cheeks, hooked noses and restrained mouths; 60% skin tint preserves more native colour detail','infants':'skin and smaller pointed ears; no tusks or extra stature modifier','outfits':outfits,'portrait_stature':'culture-only compact torso 0.42 and stoop 0.24 on both sexes, shorter neck; native child growth preserved; framing and clothing fit need engine review'}
+    return {'engine_tested':False,'cultures':len(clans),'portrait_types':TYPES,'method':'shorter swept cupped ears using native skin shader and shared head decal; stronger brows, lean cheeks and hooked noses; 94% clan tint with native normal detail retained','skin_opacity':SKIN_OPACITY,'ear_material':'portrait_skin with head decal routing and skin palette','teeth':'native animated mouth teeth only; detached external fangs removed','infants':'skin and smaller pointed ears; no tusks or extra stature modifier','outfits':outfits,'portrait_stature':'culture-only compact torso 0.42 and stoop 0.24 on both sexes, shorter neck; native child growth preserved; framing and clothing fit need engine review'}
 
 if __name__=='__main__':
     import argparse

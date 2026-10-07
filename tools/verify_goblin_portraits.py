@@ -15,6 +15,21 @@ def verify(out,game=None):
     gfx=(out/'in_game/gfx/graphical_culture_types/ashborn_goblins.txt').read_text(encoding='utf-8-sig')
     accessories=(out/'main_menu/gfx/portraits/accessories/ashborn.txt').read_text(encoding='utf-8-sig')
     asset=(folder/'ashborn_features.asset').read_text(encoding='utf-8-sig')
+    # Regression: attachments bypass skin palette, decal and scattering stages.
+    assert asset.count('shader = "portrait_skin"')==15
+    assert 'shader = "portrait_attachment"' not in asset, 'Ear material must use skin lighting'
+    assert asset.count('portrait_decal = { body_part = head }')==15
+    assert asset.count('texture_diffuse = "ear_base.dds"')==15
+    assert Image.open(folder/'ear_base.dds').getpixel((0,0))[3]==255
+    normal=Image.open(folder/'normal.dds').getpixel((0,0))
+    assert normal[1]==normal[3]==128, 'RRxG normals use green and alpha'
+    properties=Image.open(folder/'properties.dds').getpixel((0,0))
+    assert properties[2]==0 and properties[3]>=180, 'Skin must remain non-metallic and rough'
+    from build_goblin_portraits import SKIN_OPACITY
+    assert SKIN_OPACITY>=.9
+    # Shader equation: residual pre-decal face/ear colour difference is <=6%.
+    assert (1-SKIN_OPACITY)*255 <= 15.31
+    assert genes.count(f'{{ 0 {SKIN_OPACITY} }} {{ 1 {SKIN_OPACITY} }}')==10
     for path in re.findall(r'"([^"\n]+\.(?:mesh|dds))"',asset):assert (folder/path).is_file(),path
     for path in re.findall(r'"(gfx/[^"\n]+\.dds)"',genes):assert (out/'in_game'/path).is_file(),path
     for entity in re.findall(r'entity = (cm_\w+)',accessories):assert f'name = "{entity}"' in asset,entity
@@ -51,6 +66,7 @@ def verify(out,game=None):
     triangles=0
     for sex in ['male','female','infant']:
         shape=read(folder/f'cm_{sex}_features.mesh')['children'][0]['children'][0]
+        assert sum(c['name']=='mesh' for c in shape['children'])==1, 'External tusks must not return'
         bones=next(c['children'] for c in shape['children'] if c['name']=='skeleton')
         if game:
             native=Path(game)/'in_game/gfx/models/portraits'
@@ -87,9 +103,10 @@ def verify(out,game=None):
     for script in [outfit_genes,outfit_mods]:assert script.count('{')==script.count('}')
     assert outfit_genes.lstrip().startswith('special_genes = {'), 'Goblin clothes must not be ordinary DNA'
     assert 'mode = add gene = cm_ashborn_clothing' in outfit_mods
-    assert 'priority = 100' in outfit_mods
+    assert 'priority = 120' in outfit_mods and 'selection_behavior = max' in outfit_mods
     assert all(outfit_mods.count('gfx_culture_applicable = '+c['culture']+'_gfx')==1 for c in clans)
-    assert all('mode = replace gene = '+g+' template = '+t in outfit_mods for g,t in RESET.items())
+    assert all(outfit_mods.count('mode = add gene = '+g+' template = '+t+' range = { 0 1 }')==5 for g,t in RESET.items())
+    assert 'value = 0' not in outfit_mods, 'Zero-strength replacements failed to clear noble outfits'
     assert OUTFITS['infant']==[(1,'empty')], 'Do not layer clothing over the native infant swaddle'
     for sex in ['male','female']:
         assert all('iroquois' in name for _,name in OUTFITS[sex]), 'Adults must select the inspected hide/leather wardrobe'

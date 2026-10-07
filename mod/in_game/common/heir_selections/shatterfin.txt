@@ -1,4 +1,4 @@
-cm_tidemother_seniority = {
+﻿cm_tidemother_seniority = {
     all_in_dynasty = yes
     all_in_country = yes
     through_female = yes

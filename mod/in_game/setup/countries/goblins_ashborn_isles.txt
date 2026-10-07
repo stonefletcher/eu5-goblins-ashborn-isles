@@ -1,7 +1,5 @@
-CDM = {
-    color = rgb { 117 140 48 }
-    color2 = rgb { 36 31 29 }
-    culture_definition = cm_cinderkin
-    religion_definition = cm_hunger_below
-    is_historic = no
-}
+﻿CDM = { color = rgb { 117 140 48 } color2 = rgb { 36 31 29 } culture_definition = cm_cinderkin religion_definition = cm_hunger_below is_historic = no }
+QBR = { color = rgb { 62 135 147 } color2 = rgb { 36 31 29 } culture_definition = cm_brinekin religion_definition = cm_hunger_below is_historic = no }
+RHK = { color = rgb { 172 130 58 } color2 = rgb { 36 31 29 } culture_definition = cm_reefkin religion_definition = cm_hunger_below is_historic = no }
+SFK = { color = rgb { 121 91 145 } color2 = rgb { 36 31 29 } culture_definition = cm_shatterkin religion_definition = cm_hunger_below is_historic = no }
+SWK = { color = rgb { 158 78 59 } color2 = rgb { 36 31 29 } culture_definition = cm_sootkin religion_definition = cm_hunger_below is_historic = no }

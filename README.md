@@ -36,21 +36,9 @@ Rural buildings follow local resources and vegetation. Additional extraction inv
 
 Focused checks passed for native building ranks/resources, generated buildings, population totals, production staffing, economic specialization and guarded market/investment setup. Profitability, food security and affordability of starting forces remain pending fresh-campaign tests. Building-level counts describe infrastructure, not equivalent income.
 
-See the [0.5.6 economic design and validation notes](ECONOMY_056.md) for comparisons, trade dependencies and the playtest checklist. **Downloading this branch and running its existing installer installs the bundled 0.5.5 content, not the new economy or exploration changes.** A full 0.5.6 build and package are still required.
+See the [0.5.6 economic design and validation notes](ECONOMY_056.md) for comparisons, trade dependencies and the playtest checklist. The complete 0.5.7 installer includes these economic and exploration changes.
 
-## Install and play the released 0.5.5 version
-
-The full 0.5.5 package includes the islands, goblin characters, Gathering campaign, mixed populations and custom artwork. No earlier version is required.
-
-1. Download **Goblins_Ashborn_Isles_0.5.5.zip** from the [0.5.5 release](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.5).
-2. Extract the complete ZIP into a writable folder and close EU5 completely.
-3. Run **Install-Goblins.cmd** from the extracted folder. Let it finish preparing and installing the mod.
-4. Enable **Goblins of the Ashborn Isles** in your EU5 playset. **Disable Goblins 0.5.5 - Gathering Prototype** if you used the earlier add-on: its content is now included in the full mod.
-5. Restart EU5 and start a **new 1337 campaign** as any of the five goblin kingdoms.
-
-Use the installer rather than copying the mod folder by hand: it prepares the terrain for your game installation, checks the files and backs up an existing installation. Allow roughly 4 GB of working space. It installs under your EU5 user-data folder and leaves Steam's game files alone.
-
-Keep your old saves separately. Starting populations and campaign setup have changed, so begin a fresh campaign after updating from 0.5.4 or the prototype. The old **Install-Prototype-055.cmd** is only for the earlier 0.5.4 add-on workflow; use **Install-Goblins.cmd** for this release.
+Older releases remain on GitHub as fallbacks. Disable the earlier Gathering Prototype add-on. Allow at least 4 GB of working space.
 
 ## Choose your clan
 
@@ -113,7 +101,7 @@ Other mods that change the map, starting world or terrain shaders may conflict. 
 | Problem | What to check |
 |---|---|
 | The installer cannot find EU5 | Run Install-Goblins.ps1 with its -GamePath option pointing to your EU5 game folder. |
-| The Gathering, new flags or updated populations are missing | Check the installed version is 0.5.5, disable the old prototype add-on, restart EU5 and start a new campaign. |
+| The Gathering, new flags or updated populations are missing | Check the installed version is 0.5.7, disable the old prototype add-on, restart EU5 and start a new campaign. |
 | Installation fails when run from a ZIP | Extract the complete download first, then run its installer from the extracted folder. |
 | The map or terrain looks wrong after an update | Check the game version and reinstall the matching base through its installer. Avoid manually copying unprepared terrain files. |
 

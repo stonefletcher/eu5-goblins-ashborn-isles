@@ -1,4 +1,4 @@
-# The native hook has country root and scope:character for the newborn.
+﻿# The native hook has country root and scope:character for the newborn.
 # Append a named action, preserving vanilla birth effects.
 on_character_birth = { on_actions = { cm_shatterfin_maternal_house } }
 cm_shatterfin_maternal_house = {

@@ -1,0 +1,1 @@
+﻿ac_rites_ai = { potential = { religion = religion:cm_hunger_below } actions = { ac_returning_ash ac_water_lanterns ac_first_oath } }

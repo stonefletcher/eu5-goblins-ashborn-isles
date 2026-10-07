@@ -1,0 +1,48 @@
+﻿ac_returning_ash = {
+ type = owncountry
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 12
+ potential = { scope:actor = { religion = religion:cm_hunger_below } }
+ allow = { scope:actor = { NOT = { has_variable = ac_rite_cooldown } } }
+ price = price:ac_major_rite
+ cooldown = { type = ac_returning_ash years = 5 }
+ effect = { scope:actor = {
+   set_variable = { name = ac_rite_cooldown years = 5 }
+   add_country_modifier = { modifier = ac_returning_ash years = 5 mode = replace }
+ } }
+ ai_will_do = { add = 5 }
+}
+ac_water_lanterns = {
+ type = owncountry
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 12
+ potential = { scope:actor = { religion = religion:cm_hunger_below } }
+ allow = { scope:actor = { NOT = { has_variable = ac_rite_cooldown } } }
+ price = price:ac_major_rite
+ cooldown = { type = ac_water_lanterns years = 5 }
+ effect = { scope:actor = {
+   set_variable = { name = ac_rite_cooldown years = 5 }
+   add_country_modifier = { modifier = ac_water_lanterns years = 5 mode = replace }
+ } }
+ ai_will_do = { add = 5 }
+}
+ac_first_oath = {
+ type = owncountry
+ show_message = no
+ automation_tick = never
+ ai_tick = monthly
+ ai_tick_frequency = 12
+ potential = { scope:actor = { religion = religion:cm_hunger_below } }
+ allow = { scope:actor = { NOT = { has_variable = ac_rite_cooldown } } }
+ price = price:ac_major_rite
+ cooldown = { type = ac_first_oath years = 5 }
+ effect = { scope:actor = {
+   set_variable = { name = ac_rite_cooldown years = 5 }
+   add_country_modifier = { modifier = ac_first_oath years = 5 mode = replace }
+ } }
+ ai_will_do = { add = 5 }
+}

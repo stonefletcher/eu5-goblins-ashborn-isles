@@ -1,11 +1,11 @@
-## 0.5.7 exploration correction acceptance (pending full build)
+## 0.5.7 exploration correction acceptance (gameplay acceptance pending)
 
 Run `python tools/verify_exploration.py --game <EU5 game directory>` for a focused
 setup build, native map-reference checks, initial cooldown and voyage/contact
 guards. `tools/verify_economy.py` checks the shared setup generator's economy.
 These partial build folders are not installable mods.
 
-After packaging 0.5.7, start a new 1337 campaign as each crown. Confirm the Ashborn
+With the complete 0.5.7 package, start a new 1337 campaign as each crown. Confirm the Ashborn
 homeland and nearby Atlantic waters are discovered, while Iberia and all English,
 French and Moroccan land remain terra incognita. Compare known-water/unknown-land
 edges to the user's coastal-silhouette screenshot: no pre-revealed political
@@ -265,8 +265,8 @@ All five Ashborn cultures have 16 male and 16 female name entries, six house nam
 
 ## 0.5.6 Gathering popup regression
 
-After a full 0.5.6 build, compare the same campaign date and graphics settings with 0.5.5. Open A Seat Among Five, hover all three options, and open the Gathering situation completion tooltip. Confirm responsive input and readable names: Claimant Among the Five for the first two choices, Our Shores, Our Crown for the third. Confirm the unchanged five-year bonuses. Reopen the situation tooltip repeatedly and check that new logs no longer accumulate scope-description warnings at its completion condition. Test Eastern Hunger start/completion descriptions as well. Validate unification through direct ownership, vassals and junior unions; one foreign-held homeland district must still prevent completion. Static checks do not establish frame-time improvement or crash freedom.
+With the full 0.5.7 build, compare the same campaign date and graphics settings with 0.5.5. Open A Seat Among Five, hover all three options, and open the Gathering situation completion tooltip. Confirm responsive input and readable names: Claimant Among the Five for the first two choices, Our Shores, Our Crown for the third. Confirm the unchanged five-year bonuses. Reopen the situation tooltip repeatedly and check that new logs no longer accumulate scope-description warnings at its completion condition. Test Eastern Hunger start/completion descriptions as well. Validate unification through direct ownership, vassals and junior unions; one foreign-held homeland district must still prevent completion. Static checks do not establish frame-time improvement or crash freedom.
 
 Test all three One Fire, Many Blades options from the same pre-event save. Each must award exactly its selected five-year modifier. Verify this introduction appears for any earlier Gathering choice and does not repeat monthly.
 
-Open both custom situations in the full 0.5.6 build. Verify title, artwork, start date, description, completion requirement, scrolling and eligible action buttons appear. Check ended-state display, GUI error logs and repeated panel opening responsiveness.
+Open both custom situations in the full 0.5.7 build. Verify title, artwork, start date, description, completion requirement, scrolling and eligible action buttons appear. Check ended-state display, GUI error logs and repeated panel opening responsiveness.

@@ -1,0 +1,8 @@
+﻿ac_common_hearth = { religion = cm_hunger_below icon = religious_aspect_folk_green modifier = { global_monthly_food_modifier = 0.05 } }
+ac_offering_smoke = { religion = cm_hunger_below icon = religious_aspect_folk_green modifier = { global_production_efficiency = 0.05 } }
+ac_crew_home = { religion = cm_hunger_below icon = religious_aspect_folk_green modifier = { naval_morale_modifier = 0.05 } }
+ac_remembered_dead = { religion = cm_hunger_below icon = religious_aspect_folk_green modifier = { stability_cost_efficiency = 0.1 } }
+ac_cutting_oath = { religion = cm_hunger_below icon = religious_aspect_folk_green modifier = { global_defensive = 0.1 } }
+ac_shore_spirits = { religion = cm_hunger_below icon = religious_aspect_folk_green modifier = { tolerance_heathen = 1 } }
+ac_first_share = { religion = cm_hunger_below icon = religious_aspect_folk_green modifier = { land_morale_modifier = 0.05 } }
+ac_many_hearths = { religion = cm_hunger_below icon = religious_aspect_folk_green modifier = { clergy_estate_target_satisfaction = 0.05 } }

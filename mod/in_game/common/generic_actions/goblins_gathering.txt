@@ -40,11 +40,7 @@
         set_variable = { name = ga_offer_pending value = yes }
         trigger_event_non_silently = ga_gathering.2
     } } }
-    ai_will_do = { add = 5
-        if = { limit = { exists = scope:target }
-            add = { value = "scope:actor.opinion(scope:target)" multiply = 0.2 desc = ga_relations }
-            if = { limit = { scope:actor = { is_allied_with = { target = scope:target } } } add = 15 }
-        } }
+    ai_will_do = { add = -1000 }
 }
 
 ga_send_supplies = {

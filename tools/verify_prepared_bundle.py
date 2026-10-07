@@ -37,6 +37,16 @@ def verify(root):
             assert z.read('goblins_ashborn_isles/'+str(Path(item['path']).with_suffix('.info')).replace('\\','/'))
         for name in ['10_countries.txt','06_pops.txt','07_cities_and_buildings.txt','03_markets.txt']:
             assert z.read('goblins_ashborn_isles/main_menu/setup/start/'+name)
+        if tuple(map(int, version.split('.'))) >= (0, 5, 7):
+            # Verify new features in delivered bytes, not only their source files.
+            events=z.read('goblins_ashborn_isles/in_game/events/goblins_gathering.txt').decode('utf-8-sig')
+            for number in [4, 16, 17, 18]:
+                assert f'trigger_event_non_silently = ga_gathering.{number}' in events
+            ai=z.read('goblins_ashborn_isles/in_game/common/generic_action_ai_lists/goblins_gathering.txt').decode('utf-8-sig')
+            assert 'ga_offer_harbor_pact' not in ai
+            assert z.read('goblins_ashborn_isles/in_game/events/ashen_covenant.txt')
+            estates=z.read('goblins_ashborn_isles/in_game/common/customizable_localization/estates.txt').decode('utf-8-sig')
+            assert 'localization_key = ga_crown_estate' in estates
         if 'country_population_targets' in config:
             # Check the delivered setup, not merely the manifest's claimed config hash.
             pops=z.read('goblins_ashborn_isles/main_menu/setup/start/06_pops.txt').decode('utf-8-sig')

@@ -1,5 +1,72 @@
-cm_scrap_port = {
-    marketplace = 1
-    naval_supplies_guild = 1
-    stockade = 1
-}
+﻿cm_cinder_crown_settlement = { market_village = 1 local_smelters = 1 }
+cm_blackwood_settlement = { forest_village = 1 }
+cm_copperfang_settlement = { market_village = 1 local_smelters = 1 }
+cm_hooktooth_settlement = { marketplace = 3 wharf = 1 tools_guild = 3 weapon_guild = 3 naval_supplies_guild = 1 stockade = 1 granary = 2 pottery_guild = 2 cloth_guild = 1 }
+cm_ashfields_settlement = { farming_village = 2 fiber_crops_farm = 1 }
+cm_saltjaw_settlement = { market_village = 2 }
+cm_redpasture_settlement = { farming_village = 2 }
+cm_splinter_cove_settlement = { forest_village = 2 }
+cm_ironbark_settlement = { forest_village = 1 charcoal_maker = 1 }
+cm_ashspine_settlement = { market_village = 1 local_smelters = 1 }
+cm_emberfall_settlement = { market_village = 1 }
+cm_scorchbrook_settlement = {  }
+cm_obsidian_cut_settlement = {  }
+cm_cinder_shelf_settlement = {  }
+cm_smokehorn_settlement = {  }
+cm_goldscar_settlement = {  }
+cm_coaljaw_settlement = { forest_village = 1 }
+cm_silverfang_settlement = {  }
+cm_netjaw_settlement = { market_village = 1 }
+cm_saffron_hollow_settlement = { market_village = 1 }
+cm_dyer_s_marsh_settlement = { market_village = 1 }
+cm_grazetooth_settlement = { farming_village = 1 }
+cm_sawtooth_settlement = { forest_village = 1 }
+cm_pitchfang_settlement = { forest_village = 1 }
+cm_goldvein_settlement = { market_village = 1 }
+cm_clayjaw_settlement = { market_village = 1 }
+cm_reedfurrow_settlement = {  }
+cm_quarrystone_settlement = {  }
+cm_saltlip_settlement = {  }
+cm_ashgrain_settlement = { farming_village = 1 windmill = 1 }
+cm_brackhaven_settlement = { marketplace = 2 wharf = 1 naval_supplies_guild = 3 cloth_guild = 2 pottery_guild = 1 granary = 3 tools_guild = 1 }
+cm_brinewood_settlement = { forest_village = 1 }
+cm_rustpeak_settlement = { market_village = 1 local_smelters = 1 }
+cm_mossfields_settlement = { farming_village = 2 windmill = 1 }
+cm_bracksalt_settlement = { market_village = 2 }
+cm_mossglen_settlement = { farming_village = 1 }
+cm_reedmouth_settlement = { forest_village = 1 }
+cm_blackcrag_settlement = { market_village = 1 }
+cm_basalt_steps_settlement = {  }
+cm_fumarole_fields_settlement = {  }
+cm_rustneedle_settlement = { local_smelters = 1 }
+cm_brine_spur_settlement = {  }
+cm_bracknet_settlement = { market_village = 1 }
+cm_miregrove_settlement = { forest_village = 1 }
+cm_silverneedle_settlement = {  }
+cm_mossfurrow_settlement = { farming_village = 2 windmill = 1 }
+cm_brinepasture_settlement = { farming_village = 1 }
+cm_woolfen_settlement = { farming_village = 1 }
+cm_reedfish_settlement = {  }
+cm_alumcrag_settlement = { market_village = 1 }
+cm_basaltgrain_settlement = { farming_village = 1 windmill = 1 }
+cm_saffron_vale_settlement = {  }
+cm_rustforge_settlement = { market_village = 1 }
+cm_dyer_s_fen_settlement = {  }
+cm_reefhook_settlement = { marketplace = 3 wharf = 1 naval_supplies_guild = 1 granary = 1 }
+cm_crooked_reef_settlement = { forest_village = 1 }
+cm_hookrim_settlement = {  }
+cm_tidefang_settlement = {  }
+cm_reefnet_settlement = { market_village = 1 }
+cm_coralpasture_settlement = { farming_village = 1 }
+cm_pearlshore_settlement = { market_village = 1 }
+cm_tidegrain_settlement = { farming_village = 1 windmill = 1 }
+cm_shatterfin_settlement = { marketplace = 2 wharf = 2 naval_supplies_guild = 2 cloth_guild = 2 granary = 2 tools_guild = 1 }
+cm_shardpoint_settlement = {  }
+cm_stormpasture_settlement = { farming_village = 1 }
+cm_silver_shard_settlement = { market_village = 1 }
+cm_knifeback_settlement = { forest_village = 2 }
+cm_silkworm_grove_settlement = { forest_village = 1 }
+cm_sootwake_settlement = { marketplace = 1 wharf = 1 naval_supplies_guild = 1 granary = 1 tools_guild = 1 }
+cm_ember_key_settlement = { forest_village = 2 charcoal_maker = 1 }
+cm_sootgrain_settlement = { farming_village = 1 windmill = 1 }
+cm_alum_key_settlement = { market_village = 1 charcoal_maker = 1 }

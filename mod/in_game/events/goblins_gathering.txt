@@ -48,13 +48,15 @@ ga_gathering.2 = {
         
             create_relation = { first = root second = var:ga_offer_sender type = relation_type:alliance }
             add_opinion_mutual_effect = { target = var:ga_offer_sender modifier = ga_harbor_pact_opinion }
-        
+        save_scope_as = ga_offer_respondent
+            var:ga_offer_sender ?= { trigger_event_non_silently = ga_gathering.16 }
     }
 option = {
         name = ga_gathering.2.b
         trigger = {  }
         ai_chance = { factor = 2 }
-        
+        save_scope_as = ga_offer_respondent
+            var:ga_offer_sender ?= { trigger_event_non_silently = ga_gathering.17 }
     }
     after = { remove_variable = ga_offer_sender remove_variable = ga_offer_pending }
 }
@@ -79,14 +81,15 @@ ga_gathering.3 = {
             make_subject_of = { target = var:ga_offer_sender type = subject_type:vassal }
             add_country_modifier = { modifier = ga_compact_guarantees years = 10 mode = replace }
             add_opinion = { target = var:ga_offer_sender modifier = ga_oath_honored }
-            var:ga_offer_sender = { trigger_event_non_silently = ga_gathering.4 }
-        
+        save_scope_as = ga_offer_respondent
+            var:ga_offer_sender ?= { trigger_event_non_silently = ga_gathering.4 }
     }
 option = {
         name = ga_gathering.3.b
         trigger = {  }
         ai_chance = { factor = 2 }
-        
+        save_scope_as = ga_offer_respondent
+            var:ga_offer_sender ?= { trigger_event_non_silently = ga_gathering.18 }
     }
     after = { remove_variable = ga_offer_sender remove_variable = ga_offer_pending }
 }
@@ -105,6 +108,60 @@ ga_gathering.4 = {
         trigger = {  }
         ai_chance = { factor = 1 }
         add_prestige = 3
+    }
+    after = {  }
+}
+
+ga_gathering.16 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.16.title
+    desc = ga_gathering.16.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/harbor_pact.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.16.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}
+
+ga_gathering.17 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.17.title
+    desc = ga_gathering.17.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/harbor_pact.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.17.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}
+
+ga_gathering.18 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.18.title
+    desc = ga_gathering.18.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.18.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
     }
     after = {  }
 }

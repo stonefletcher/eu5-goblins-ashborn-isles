@@ -1,0 +1,6 @@
+﻿ac_first_mouth = { location = cm_cinder_crown type = ac_first_mouth_site importance = 3 religions = { cm_hunger_below } }
+ac_listening_pool = { location = cm_reedmouth type = ac_listening_pool_site importance = 3 religions = { cm_hunger_below } }
+ac_lantern_steps = { location = cm_tidefang type = ac_lantern_steps_site importance = 3 religions = { cm_hunger_below } }
+ac_mothers_basin = { location = cm_shatterfin type = ac_mothers_basin_site importance = 3 religions = { cm_hunger_below } }
+ac_storm_teeth = { location = cm_knifeback type = ac_storm_teeth_site importance = 3 religions = { cm_hunger_below } }
+ac_emberroot = { location = cm_ember_key type = ac_emberroot_site importance = 3 religions = { cm_hunger_below } }

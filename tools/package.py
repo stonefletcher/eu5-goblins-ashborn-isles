@@ -19,14 +19,14 @@ for item in manifest['files']:
 for filename in ['10_countries.txt','06_pops.txt','07_cities_and_buildings.txt','03_markets.txt']:
     if not (output/'main_menu/setup/start'/filename).is_file():raise SystemExit('Incomplete campaign setup.')
 dist=ROOT/'dist';dist.mkdir(exist_ok=True)
-docs=['NAMING_PROPOSALS.md','README.md','TESTING.md','LORE.md','RELEASE_NOTES.md','PROTOTYPE_055.md','STEAM_DESCRIPTION.txt','STEAM_CHANGELOG.txt','Install-Goblins.ps1','Install-Goblins.cmd']
+docs=['RELEASE_NOTES_'+version+'.md','RELIGION_057.md','WORKSHOP_UPLOAD.md','NAMING_PROPOSALS.md','README.md','TESTING.md','LORE.md','RELEASE_NOTES.md','PROTOTYPE_055.md','STEAM_DESCRIPTION.txt','STEAM_CHANGELOG.txt','Install-Goblins.ps1','Install-Goblins.cmd']
 with zipfile.ZipFile(dist/f'Goblins_Ashborn_Isles_{version}.zip','w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
     for p in sorted((ROOT/'build/goblins_ashborn_isles').rglob('*')):
         if p.is_file() and not (p.suffix=='.bin' and 'terrain_cache' in p.parts):z.write(p,'goblins_ashborn_isles/'+p.relative_to(ROOT/'build/goblins_ashborn_isles').as_posix())
     for p in sorted((ROOT/'build/terrain_patch').iterdir()):
         if p.is_file():z.write(p,'terrain_patch/'+p.name)
     for name in docs:z.write(ROOT/name,name)
-    for name in ['validation.json','terrain_verification.json','feature_verification.json','model_export.json','model_verification.json','portrait_verification.json','Goblins_Map_Preview.png','Goblins_Terrain_Preview.png','Goblins_Cache_Relief.png']:
+    for name in ['validation.json','terrain_verification.json','feature_verification.json','religion_057.json','gathering.json','model_export.json','model_verification.json','portrait_verification.json','Goblins_Map_Preview.png','Goblins_Terrain_Preview.png','Goblins_Cache_Relief.png']:
         p=ROOT/'build/reports'/name
         if p.is_file():z.write(p,'reports/'+p.name)
     for p in sorted((ROOT/'art').glob('*')):

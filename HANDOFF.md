@@ -7,11 +7,13 @@ Removed custom hair layer in favour of native hair_styles replacements at priori
 130, six equally weighted male/five female adult styles and fitted child choices.
 Drogg-specific priority-140 ID/culture guard adds a single crest, tailored face
 and cosmetic scar. Other species facial ranges, skin, clothes and holy sites retained.
-Native asset/regression checks passed. Full build/package gates in progress.
-User previously authorized installing the update; game was running at task start
-and close request is pending. Do not interrupt it. Complete clean-export isolated
-installation, then install to active profile with backup/hash verification when closed.
-Previous active install is verified 322e466; no engine acceptance for this new pass.
+Full build, native asset checks, bundle verification and clean Git export
+PrepareOnly passed. Verified payload commit: fb36c34. Isolated and active-profile
+installations each matched all 1,658 files by SHA-256. Game remained closed.
+Active backup: C:/Users/alexa/Documents/Paradox Interactive/Europa Universalis V/goblins_backups/goblins_ashborn_isles_20261007_173617_292.
+Archive SHA-256: 76172ff399e70c71fb63f6380bc1a74e47ea7e42cf931ebd00c028e355dd68a4.
+Next: user checks Drogg's single crest/scar/face and court hairstyle variety,
+including save/reload. No engine acceptance claimed; no Steam release.
 
 Gathering panel follow-up: generator, panel, localization and affected manifest hashes
 now show participants immediately. Isolated fix/0.5.8-gathering-participants commit

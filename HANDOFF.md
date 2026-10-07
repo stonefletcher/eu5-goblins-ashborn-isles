@@ -1,11 +1,11 @@
 # 0.5.5 event and situation art handoff
 
 Checkout: work/repo; art/events-situations-055, based on staging/0.5.5 at
-51c01d8. Goal: custom art for all new events and situations.
+8fd0358 (initial art base 51c01d8). Goal: custom art for all new events and situations.
 
 Completed: 17 original built-in imagegen paintings with full prompts and source
-hashes under art/events. Explicit native image references cover all 20 authored
-events, including the 13 Gathering events and the seven older introduction and
+hashes under art/events. Explicit native image references cover all 21 authored
+events, including the 14 Gathering events and the seven older introduction and
 exploration/contact events. Both situations receive headers and icons. Twenty-one
 BC1 DDS textures have native dimensions and full mip chains. Related oath and
 unification events intentionally share scenes. All five clan introductions have
@@ -25,3 +25,7 @@ remains the additive prototype on 0.5.4; the pre-existing regular .release bundl
 is still 0.5.4 and is not a new full 0.5.5 release. The prototype installer is the
 delivery path for this art pass. In-game rendering, crop/UI scale and override
 precedence remain pending; TESTING.md has the art acceptance checklist.
+
+Concurrent staging updates preserved: mixed-population additions (1,618,696 total),
+Jaima's expanded introduction and delayed maternal-house event, and revised ruler
+nickname origins. Maternal-house follow-up shares Shatterfin's council painting.

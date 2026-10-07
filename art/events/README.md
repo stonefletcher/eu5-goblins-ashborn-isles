@@ -1,9 +1,10 @@
 # Ashborn event and situation art
 
-Seventeen original paintings cover all twenty authored events, the Gathering of
+Seventeen original paintings cover all twenty-one authored events, the Gathering of
 the Five and Eastern Hunger situation headers, and both situation icons.
-The thirteen 0.5.5 events use eleven paintings; oath offer/acceptance and the two
-unification perspectives intentionally share their matching scene. The opening
+The fourteen 0.5.5 events use eleven paintings; oath offer/acceptance and the two
+unification perspectives intentionally share their matching scene. Shatterfin's
+maternal-house follow-up shares its clan council painting. The opening
 Cindermaw lore event shares Drogg's forge painting. Six exploration and reciprocal
 contact events each have a separate painting.
 

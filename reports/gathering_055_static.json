@@ -2,9 +2,9 @@
   "version": "0.5.5",
   "script_files": 9,
   "situations": 2,
-  "events": 13,
+  "events": 14,
   "homeland_locations": 72,
-  "localization_keys": 83,
+  "localization_keys": 86,
   "ownership_scenarios": [
     "All homeland directly owned",
     "European-classified Ashborn homeland is excluded from foothold completion",
@@ -24,6 +24,8 @@
   "native_references_checked": true,
   "no_free_foreign_land_units_or_wars": true,
   "static_checks_passed": true,
+  "all_five_introductions_routed": true,
+  "shatterfin_guarded_followup": true,
   "engine_parser_tested": false,
   "gameplay_tested": false
 }

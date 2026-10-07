@@ -18,14 +18,16 @@ def main():
               ROOT / 'mod/in_game/events/goblins_exploration.txt']
     paths += [ROOT / 'mod' / rel for rel in runtime_paths()]
     paths = sorted(set(paths))
-    manifest = {'version': '0.5.5', 'base_version': '0.5.4',
+    import mixed_populations
+    population_additions = {ident: '\n'.join(mixed_populations.rows(ident)) for ident in mixed_populations.additions()}
+    manifest = {'population_additions': population_additions, 'version': '0.5.5', 'base_version': '0.5.4',
                 'identities': [{'tag': tag, 'path': 'data/'+name+'.json',
                                 'sha256': hashlib.sha256((ROOT / 'data' / (name+'.json')).read_bytes()).hexdigest()}
                                for tag,name in SOURCES.items()],
                 'homeland_locations': [x['id'] for island in cfg['islands'] for x in island['locations']],
                 'files': [{'path': p.relative_to(ROOT / 'mod').as_posix(),
                            'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in paths]}
-    (ROOT / 'data/prototype_055_files.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
+    (ROOT / 'data/prototype_055_files.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8',newline='\n')
     print(json.dumps({'files': len(paths), 'homeland_locations': len(manifest['homeland_locations'])}))
 
 if __name__ == '__main__': main()

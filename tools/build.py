@@ -140,7 +140,8 @@ def validate(game,out,mapstats,economy):
     pops=(out/'main_menu/setup/start/06_pops.txt').read_text(encoding='utf-8-sig')
     for l in CFG['locations']:
         a,b=block_span(pops,l['id']);sizes=re.findall(r'\bsize\s*=\s*([\d.]+)',pops[a:b])
-        assert sum(map(Decimal,sizes))==Decimal(str(l['pop']))
+        import mixed_populations
+        assert sum(map(Decimal,sizes))==Decimal(str(l['pop']))+mixed_populations.extra(l['id'])
     checks.append(f'Each location population matches its specification: {economy["total_population"]:,} people across five countries.')
     checks.append('All generated locations are connected within their islands; every island has a port into the connected coastal basin.')
     checks.append('Archipelago replaces only impassable ocean pixels; all vanilla land and navigable sea lanes are preserved.')

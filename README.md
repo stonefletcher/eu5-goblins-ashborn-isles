@@ -1,6 +1,27 @@
 # 0.5.5 — Gathering prototype
 
-The 0.5.5 update gives Cindermaw, Brackmaw, Reefhook and Sootwake distinct ruler abilities, expanded cultural traditions, royal-family stories and rewritten Gathering introductions. Their shared Ashborn origins now support four different approaches to power: military leadership, control of supplies, maritime bargaining and woodland independence.
+The prototype also adds **323,941 goblins of minority cultures**, bringing the
+starting population to **1,618,696**. Minorities make up roughly **16–22%** of each
+nation; the home clan remains **78–84%**. All 72 districts across the six islands
+contain all five Ashborn cultures, with varied counts that stay fixed between
+installs. These communities represent migration, captives taken in inter-clan
+raids and their descendants. Of the additions, **231,332 are slaves** and
+**92,609 are free goblins**: laborers, peasants and capital merchants.
+
+| Nation | Added minorities | Of those, slaves | Minority share | Total population |
+|---|---:|---:|---:|---:|
+| Cindermaw | 159,949 | 133,351 | 22.4% | 712,688 |
+| Brackmaw | 73,355 | 50,012 | 18.7% | 391,818 |
+| Reefhook | 21,955 | 10,414 | 16.8% | 130,392 |
+| Shatterfin | 49,120 | 28,543 | 18.7% | 262,607 |
+| Sootwake | 19,562 | 9,012 | 16.1% | 121,191 |
+
+Cindermaw receives the largest influx and slave share. Capitals attract more
+newcomers and free merchants; mining districts favor captive labor. Existing
+populations and classes are preserved. Run the prototype installer again, load
+the prototype after the 0.5.4 base, and start a new campaign.
+
+The 0.5.5 update gives all five kingdoms distinct Gathering introductions and royal-family stories. Cindermaw, Brackmaw, Reefhook and Sootwake also receive revised ruler abilities and expanded culture descriptions. Shatterfin’s Jaima brings the maternal house’s terms to the Gathering and receives her own follow-up event. Their shared Ashborn origins support military leadership, control of supplies, maritime bargaining, maternal continuity and woodland independence.
 
 ## Rulers and faction identities
 
@@ -9,24 +30,25 @@ The 0.5.5 update gives Cindermaw, Brackmaw, Reefhook and Sootwake distinct ruler
 | Cindermaw | Drogg Cindermaw | The Stone Fletcher | 78 | 80 | 96 | One Fire, Many Blades |
 | Brackmaw | Murgash Brackmaw | The Sluice-King | 84 | 78 | 90 | The Sluice-King's Bargain |
 | Reefhook | Skrezz Reefhook | The Wreck-Taker | 62 | 88 | 90 | The Wreck-Taker's Share |
+| Shatterfin | Jaima Shatterfin | The Mare-Mother | 66 | 58 | 52 | The Tidemother's Terms |
 | Sootwake | Snikh Sootwake | The Blackbough | 80 | 54 | 90 | Beneath the Blackbough |
 
-Shatterfin retains Jaima **the Mare-Mother**, its Stormfang identity and maternal dynastic seniority.
+Jaima’s 66/58/52 abilities are unchanged from the 0.5.4 base. Shatterfin retains its Stormfang identity and maternal dynastic seniority.
 
-**Cindermaw — Emberblood:** The largest Ashborn kingdom, ruled from Hooktooth by King Drogg, **the Stone Fletcher**. Muster yards, forge captains and volcanic ridge defenses sustain its military power; weapons contracts, patronage, marriage negotiations and protection extend its influence across the Isles. House Cindermaw's saying is **“One fire, many blades.”** Drogg expects to lead the Gathering, while Queen Grakka counts the cost and their son Grask seeks a command. His abilities are 78/80/96 ADM/DIP/MIL. The expanded Emberblood description and **One Fire, Many Blades** introduction give the main faction a commanding role, with supply demands and rival crowns testing its ambitions.
+**Cindermaw — Emberblood:** The largest Ashborn kingdom, ruled from Hooktooth by King Drogg, **the Stone Fletcher**, who earned his nickname defending the harbor with volcanic arrowheads when iron ran short. Muster yards, forge captains and volcanic ridge defenses sustain its military power; weapons contracts, patronage, marriage negotiations and protection extend its influence across the Isles. House Cindermaw's saying is **“One fire, many blades.”** Drogg expects to lead the Gathering, while Queen Grakka counts the cost and their son Grask seeks a command. His abilities are 78/80/96 ADM/DIP/MIL. The expanded Emberblood description and **One Fire, Many Blades** introduction give the main faction a commanding role, with supply demands and rival crowns testing its ambitions.
 
-**Brackmaw — Brineward:** Murgash Brackmaw, **the Sluice-King**, built his authority on tidal gates, dry granaries and debts remembered. Brackhaven's timber crews, ropewalks and coastal workshops supply his bid to make every Ashborn crown dependent on his harbor. The marsh houses expect maintained waterways and a voice in the labor he demands. His administration and diplomacy now reflect that identity (84/78/90 ADM/DIP/MIL); his house, family and succession remain intact. The Brineward culture text and Brackmaw's Gathering introduction tell this story in game.
-
-Drogg's nickname recalls defending Hooktooth with volcanic arrowheads when iron ran short. Murgash earned his by sacrificing his own hall's embankment to save Brackhaven's granaries in the Blackwater Flood. Their rivalry joins Cindermaw's military weight to Brackmaw's ability to bargain over the provisions and coastal industry that campaigns require.
+**Brackmaw — Brineward:** Murgash Brackmaw, **the Sluice-King**, earned his nickname by sacrificing his own hall's embankment to save Brackhaven's granaries in the Blackwater Flood. He built his authority on tidal gates, dry granaries and debts remembered. Brackhaven's timber crews, ropewalks and coastal workshops supply his bid to make every Ashborn crown dependent on his harbor, giving him bargaining power over the provisions Drogg's campaigns require. The marsh houses expect maintained waterways and a voice in the labor he demands. His administration and diplomacy now reflect that identity (84/78/90 ADM/DIP/MIL); his house, family and succession remain intact. The Brineward culture text and Brackmaw's Gathering introduction tell this story in game.
 
 **Reefhook — Reefstrider:** Skrezz Reefhook, **the Wreck-Taker**, is a charming captain who rescued stranded fishers at the Lantern Shoals and salvaged their hulls to replace the lost boats. House Reefhook's rescue beacons and pilotage obligations bind it to the fishing households; its saying is **“Bring the crew home; reckon the cargo after.”** Older brother Krizzek challenges Skrezz's costly foreign friendships, while consort Zikka connects the crown to House Shoalcut's pilots. Pearls, safe passage and divided salvage offer influence, but growing settlements need food and dependable buyers. Skrezz starts at 62/88/90 ADM/DIP/MIL.
 
 **Sootwake — Ashveil:** Snikh Sootwake, **the Blackbough**, kept a scorched branch after holding the Red Hollow firebreak while families escaped. House Sootwake guards forest paths and cutting rights under the saying **“Roots outlast fire.”** Older brother Zhor presses the wardens' timber claims; consort Zheska of House Cinderhush speaks for the charcoal settlements. New hearths strengthen the kingdom while straining the groves that shelter it. Snikh starts at 80/54/90 ADM/DIP/MIL. Both houses retain their names and existing family relationships and succession rules. See [LORE.md](LORE.md) for their expanded stories.
 
+**Shatterfin — Stormfang:** Jaima Shatterfin, **the Mare-Mother**, joins the Gathering as a potential leader, ally or consenting vassal with terms of her own. Her maternal house connects crews and households across two islands. Sister Skritcha is the initial eligible successor; daughters Morzha and Rikkra belong to the maternal line, while son Vrosh cannot inherit under the Tidemother law. **The Tidemother’s Terms** (`ga_gathering.13`) introduces these interests. Thirty days after that introduction, **The Maternal House Endures** (`ga_gathering.15`) gives Shatterfin a second, once-only family-council event. Both are narrative events; they appoint no heir, change no law and settle no treaty.
+
 ## What changes in play
 
 **Custom event and situation art:** seventeen original Ashborn paintings cover
-all thirteen Gathering events, the Cindermaw introduction and all six exploration
+all fourteen Gathering events, the Cindermaw introduction and all six exploration
 and first-contact events. Both situations have custom headers and icons. The five
 clan introductions illustrate their own stories; related oath and unification
 events share matching scenes. The prototype installer includes the textures and
@@ -34,15 +56,15 @@ explicit image references. See [art/events/README.md](art/events/README.md) for
 originals, prompts, mappings and reproducible DDS exports. In-game rendering
 remains pending.
 
-The four ruler ability sets above replace their previously shared 66/61/90 values. Brackmaw, Reefhook and Sootwake gain their nicknames; Drogg keeps his existing Stone Fletcher nickname. Expanded culture descriptions and four rewritten introductions bring the new identities into the game. [LORE.md](LORE.md) contains the full ruler, dynasty and national stories.
+The four revised ruler ability sets replace their previously shared 66/61/90 values; Jaima keeps 66/58/52. Brackmaw, Reefhook and Sootwake gain their nicknames; Drogg keeps his existing Stone Fletcher nickname. Expanded culture descriptions for four kingdoms, five rewritten introductions and Shatterfin’s follow-up bring the identities into the game. [LORE.md](LORE.md) contains the ruler, dynasty and national stories for all five kingdoms.
 
-The house sayings, family interests, military customs, rescue obligations and woodland rights are narrative flavor. They do not add new institutions, court appointments, economic bonuses or diplomatic actions. Existing family relationships, house names, birthdays and succession laws are preserved, as are population, geography and the costs of situation actions.
+The house sayings, family interests, military customs, rescue obligations and woodland rights are narrative flavor. They do not add new institutions, court appointments, economic bonuses or diplomatic actions. Existing family relationships, house names, birthdays and succession laws are preserved, as are geography and the costs of situation actions. The population additions are described above.
 
-Two situations, seven actions and thirteen events connect all five Ashborn kingdoms to a shared unification struggle and then an eastern coastal ambition. Conquest and consent-based vassalage use native mechanics; unions obtained normally count toward unification. Eastern actions provide paid bonuses and a temporary conquest casus belli, never free foreign land or automatic wars.
+Two situations, seven actions and fourteen events connect all five Ashborn kingdoms to a shared unification struggle and then an eastern coastal ambition. Conquest and consent-based vassalage use native mechanics; unions obtained normally count toward unification. Eastern actions provide paid bonuses and a temporary conquest casus belli, never free foreign land or automatic wars.
 
 ## Installation and verification
 
-The prototype installer includes all four faction updates. It derives the required character and localization overrides from the installed 0.5.4 base. Preparation from a clean source export, installation into isolated test data, checksum checks and comparisons against the full-build character generator have passed. All unrelated character and localization entries were preserved. Native-reference checks and all 14 ownership scenarios also passed.
+The prototype installer includes all five kingdoms’ Gathering events and the four ruler/culture overrides. It derives the required character and localization overrides from the installed 0.5.4 base. Preparation from a clean source export, installation into isolated test data, checksum checks and comparisons against the full-build character generator have passed. All unrelated character and localization entries were preserved. Native-reference checks and all 14 ownership scenarios also passed.
 
 **Prototype: static checks pass; in-game parsing, UI, AI and balance remain untested.** Use the small additive installer with the installed **0.5.4** base: download this branch, close EU5, run **Install-Prototype-055.cmd**, then enable both mods and start a new campaign. The regular installer is not a 0.5.5 release package. See [PROTOTYPE_055.md](PROTOTYPE_055.md) for installation, exact mechanics, limitations and tests.
 

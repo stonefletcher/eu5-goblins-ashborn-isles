@@ -1,0 +1,22 @@
+﻿monthly_country_pulse = { on_actions = { ac_covenant_monthly ac_covenant_stories } }
+ac_covenant_monthly = {
+ trigger = { OR = { religion = religion:cm_hunger_below has_variable = ac_initialized } }
+ effect = {
+  if = { limit = { religion = religion:cm_hunger_below }
+   if = { limit = { NOT = { has_variable = ac_initialized } }
+    set_variable = { name = ac_initialized value = yes }
+    set_variable = { name = ac_story_cooldown years = 1 }
+    if = { limit = { tag = CDM num_of_religious_aspects = 0 } add_religious_aspect = religious_aspect:ac_offering_smoke add_religious_aspect = religious_aspect:ac_first_share } if = { limit = { tag = QBR num_of_religious_aspects = 0 } add_religious_aspect = religious_aspect:ac_common_hearth add_religious_aspect = religious_aspect:ac_many_hearths } if = { limit = { tag = RHK num_of_religious_aspects = 0 } add_religious_aspect = religious_aspect:ac_crew_home add_religious_aspect = religious_aspect:ac_shore_spirits } if = { limit = { tag = SFK num_of_religious_aspects = 0 } add_religious_aspect = religious_aspect:ac_crew_home add_religious_aspect = religious_aspect:ac_remembered_dead } if = { limit = { tag = SWK num_of_religious_aspects = 0 } add_religious_aspect = religious_aspect:ac_cutting_oath add_religious_aspect = religious_aspect:ac_remembered_dead }
+   }
+   if = { limit = { has_variable = ga_unifier ga_controls_homeland = yes NOT = { has_variable = ac_moot_held } }
+    set_variable = { name = ac_moot_held value = yes }
+    trigger_event_non_silently = { id = ashen_covenant.20 }
+   }
+  }
+  else = { remove_country_modifier = ac_returning_ash remove_country_modifier = ac_water_lanterns remove_country_modifier = ac_first_oath remove_country_modifier = ac_local_covenants remove_country_modifier = ac_first_oathkeeper }
+ }
+}
+ac_covenant_stories = {
+ trigger = { religion = religion:cm_hunger_below has_variable = ac_initialized NOT = { has_variable = ac_story_cooldown } }
+ random_events = { chance_to_happen = 5 10 = ashen_covenant.1 10 = ashen_covenant.2 10 = ashen_covenant.3 10 = ashen_covenant.4 10 = ashen_covenant.5 10 = ashen_covenant.6 10 = ashen_covenant.7 10 = ashen_covenant.8 10 = ashen_covenant.9 10 = ashen_covenant.10 10 = ashen_covenant.11 10 = ashen_covenant.12 }
+}

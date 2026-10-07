@@ -1,0 +1,1 @@
+﻿ac_major_rite = { scaled_gold = 2 religious_influence = 20 }

@@ -1,8 +1,8 @@
 # 0.5.7 — Oaths of Ash and Salt
 
-Development branch: `feature/0.5.7-ashen-covenant`, based on 0.5.6 staging `fe82a46`.
-This is the first source implementation, not an installable release. The existing
-0.5.5 installer, payload, overlay hashes and release metadata have not been changed.
+Release branch: `release/v0.5.7`, including the published 0.5.6 repairs.
+This first religion implementation is included in the complete 0.5.7 installer.
+The limitations below remain; static checks do not establish gameplay acceptance.
 
 ## Implemented
 

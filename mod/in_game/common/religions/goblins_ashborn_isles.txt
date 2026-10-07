@@ -1,8 +1,10 @@
-cm_hunger_below = {
-    color = rgb { 160 56 36 }
-    group = cm_ashen_faiths
-    language = cm_cinder_tongue
-    tags = { folk_african_gfx }
-    definition_modifier = { }
-    opinions = { }
+﻿cm_hunger_below = {
+ color = rgb { 160 56 36 }
+ group = cm_ashen_faiths
+ language = cm_cinder_tongue
+ tags = { folk_african_gfx pagan_gfx }
+ religious_aspects = 2
+ has_religious_influence = yes
+ definition_modifier = { monthly_religious_influence = 0.2 maximum_religious_influence = 100 }
+ opinions = { }
 }

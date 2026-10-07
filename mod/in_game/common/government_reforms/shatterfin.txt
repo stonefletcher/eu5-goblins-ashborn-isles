@@ -1,4 +1,4 @@
-cm_tidemother_monarchy = {
+﻿cm_tidemother_monarchy = {
     major = yes
     unique = yes
     government = monarchy

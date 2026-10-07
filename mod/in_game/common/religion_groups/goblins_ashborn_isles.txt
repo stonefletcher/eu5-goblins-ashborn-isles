@@ -1,4 +1,4 @@
-cm_ashen_faiths = {
+﻿cm_ashen_faiths = {
     color = rgb { 160 56 36 }
     # Preserve captive faith; no automatic starting conversion.
     convert_slaves_at_start = no

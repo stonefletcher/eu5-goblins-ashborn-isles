@@ -1,9 +1,9 @@
-# 0.5.4 development handoff
+# 0.5.4 release handoff
 
-Checkout: work/goblins; branch staging/0.5.4. Based on the uploaded f1cc641 tree (tested staging/0.5.3 foundation). Local and connector commit IDs differ; compare tree hashes.
+Release branch: release/v0.5.4, based on staging/0.5.4 commit f4a93059c6b79366191504adee64293031f448cb. The prepared staging bundle passed GitHub installer verification. Final release publication verifies transport hashes, packaged populations/ages and art, refreshes release documentation in the ZIP, and verifies the result again.
 
-Latest scope: 1,294,755 goblins; every clan gains at least another 50% over the first 0.5.4 pass. Small clans exceed 100k with Shatterfin largest. Rulers start at 27-39 with varied court birthdays; families retain plausible dates and adult dynastic heirs (brothers for the younger rulers). Ashborn cultures receive a conditional character auto modifier of +15 life-expectancy years. RGO expansion scales to 387.
+Final scope: 1,294,755 goblins; 72 locations/30 provinces; 114 building levels; 387 first-month RGO levels; dynasty-only Ironfang succession, dynastic naming, varied rulers aged 27–39 and Ashborn +15-year life expectancy. Shatterfin retains maternal seniority. 0.5.3 art/contact work is preserved; 0.5.5 expansion work is excluded.
 
-Preserved: 72 locations/30 provinces, economic buildings/valuable RGOs, dynasty-only Ironfang succession, dynastic country naming, Shatterfin maternal seniority, tested 0.5.3 portrait/infantry/contact work. Terrain and art reused from verified previous 0.5.4 prepared output; demographic setup regenerated and validated.
+Use the standard package plus Install-Goblins.cmd. WORKSHOP_UPLOAD.md describes the installed-folder upload route. No separate Workshop kit is generated.
 
-Scoped build/setup validation passed: population/class totals, starting ages, family chronology and succession eligibility. Prepared bundle regenerated and statically verified. The final bundle commit records exact-tree clean preparation and remote publication acceptance. Gameplay acceptance remains pending; use TESTING.md. No active installation, launch, main merge or Workshop publication performed.
+Gameplay acceptance remains pending; use TESTING.md. Release preparation does not install locally, launch EU5, merge main or upload to Steam.

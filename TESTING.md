@@ -1,3 +1,7 @@
+# Goblins of the Ashborn Isles 0.5.4 verification
+
+Run `python tools/verify_prepared_bundle.py` for package validation. For engine acceptance, install 0.5.4 with EU5 closed and start a new 1337 campaign.
+
 ## 0.5.4 demographic revision acceptance
 
 Start a new 1337 campaign. Check total populations: CDM 552,739; QBR 318,463; RHK 108,437; SFK 213,487; SWK 101,629. Verify ruler ages are CDM 38, QBR 36, RHK 27, SFK 39 and SWK 29, eligible heirs remain adults and Jaima retains maternal seniority.
@@ -6,25 +10,28 @@ Check Goblin Longevity in character life-expectancy modifiers: +15 years for eac
 
 Inspect food prices, employment, RGO capacity, tax receipts and budgets after the first monthly initialization and after 1, 5 and 10 years. More people and capacity have passed static checks, but economic viability needs gameplay evidence. Check the three smaller clans especially.
 
-Earlier population figures below refer to the initial 0.5.4 pass.
-
 # 0.5.4 acceptance checklist
 
 Use a NEW 1337 campaign, only the intended 0.5.4 copy active.
 
 1. Confirm 72 land locations and 30 provinces, with complete borders, settlements, ports and navigable channels.
-2. Starting population before simulation: CDM 368,134; QBR 210,677; RHK 35,067; SFK 35,442; SWK 33,374. Total 682,694. Check burgher/laborer employment alongside peasants.
+2. Starting population before simulation: CDM 552,739; QBR 318,463; RHK 108,437; SFK 213,487; SWK 101,629. Total 1,294,755. Check burgher/laborer employment alongside peasants.
 3. All five capitals: marketplace level 2, granary level 1 and tools/cloth/pottery guilds. Check wheat windmills and iron/copper smelters have usable production methods.
 4. First monthly pulse grants RGO investment once. Save/reload and advance another year to check for repeated grants.
 5. Inspect Goldscar/Goldvein, Silverfang/Silverneedle/Silver Shard, Saffron Hollow/Vale, Dyer's Marsh/Fen, Silkworm Grove, Pearlshore and Alumcrag/Alum Key. Original resource districts remain beside them.
 6. Run all clans for 1, 5 and 10 years; record treasury balance, tax/trade income, building profitability, employment, market access and provincial food. Check luxury production does not starve basic industry of workers.
-7. Each Ironfang dynastic son (MIL 82) initially qualifies ahead of unrelated courtier MIL 86. In a disposable save, raise another eligible dynastic adult man's MIL and check he leads. Minors, women, foreign rulers and blocked candidates remain excluded.
+7. Each Ironfang clan has an eligible adult dynastic heir (a son or brother). Eligible dynastic candidates must qualify ahead of an unrelated courtier even if that courtier has higher MIL. In a disposable save, raise another eligible dynastic adult man's MIL and check he leads. Minors, women, foreign rulers and blocked candidates remain excluded.
 8. With no eligible adult men in the dynasty, no unrelated courtier may become eligible under this law. Test the native crisis/alternative-law path separately.
 9. Force a new dynasty or successful pretender takeover in a disposable save: displayed country name/adjective should follow the new house, with tag, territory, relations and events intact. Directly reassign a ruler's dynasty, advance a month and check reconciliation. A regent must not rename the country.
 10. Shatterfin retains Jaima, the Mare-Mother, and maternal seniority: Skritcha is the initial eligible successor; stronger men cannot inherit. A new maternal house also updates the country name.
 11. Regression: human portraits, goblin courts, visible infantry, recruitment art, voyages and reciprocal first contact.
 
 Static checks do not establish gameplay acceptance. Earlier-version notes follow.
+
+
+## Historical regression notes
+
+The following sections describe earlier versions. Their population figures, location counts and download paths are historical; use the 0.5.4 targets above.
 
 ## 0.5.3 infantry attachment repair — user tested
 

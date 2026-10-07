@@ -10,7 +10,7 @@ Five goblin kingdoms share six volcanic islands in the Atlantic. Unite their riv
 
 **0.5.7 diplomacy fixes:** Harbor Pact acceptance/refusal and Ashen Compact refusal now notify the sender; all result popups identify the responding kingdom. The AI no longer initiates the custom Harbor Pact action. Players can still use it at the existing price, and native alliance diplomacy remains available. Focused script and response-routing checks pass; gameplay verification is pending.
 
-**Complete 0.5.7 installer:** download [Goblins_Ashborn_Isles_0.5.7.zip](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.7), extract into a new folder, close EU5 and run **Install-Goblins.cmd**. No earlier package is required. Enable one copy only and start a **new 1337 campaign**. Existing saves retain prior discoveries. Release gates cover full-build static checks, package hashes, terrain reconstruction and a clean-source isolated installation; gameplay and balance remain unverified.
+**Complete 0.5.7 installer:** download [Goblins_Ashborn_Isles_0.5.7.zip](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.7), extract into a new folder, close EU5 and run **Install-Goblins.cmd**. No earlier package is required. Enable one copy only and start a **new 1337 campaign**. Existing saves retain prior discoveries. Full-build static checks, package hashes, terrain reconstruction and clean-source isolated installation passed; all 1,656 installed files matched the verified build. Gameplay and balance remain unverified.
 
 See [0.5.7 implementation and remaining work](RELIGION_057.md) for balance values, current limitations and verification instructions.
 

@@ -1,12 +1,12 @@
 {
   "version": "0.5.7",
-  "source_commit": "60dd2c28be77b42be82eb3b20ba492630b84be8c",
+  "source_commit": "2e8407958d28a3067b66c20195ec02409eb20aba",
   "source_config_sha256": "0851ee2a060abeedc017214ff055cb5885026177430ac2d5dc8883c7563bb016",
   "assets": [
     {
       "name": "Goblins_Ashborn_Isles_0.5.7.zip",
-      "size": 288441149,
-      "sha256": "bbac4963f699209b6e08f0573f62a99cca40cc4da25ec76f5c1e97552f7f0f38",
+      "size": 288714715,
+      "sha256": "8b8b99a8233364303194153437052af1e3652e54a199f99e2ffb6760a2e7b60b",
       "chunks": [
         "assets/Goblins_Ashborn_Isles_0.5.2.zip.0000.b64",
         "assets/Goblins_Ashborn_Isles_0.5.2.zip.0001.b64",
@@ -567,8 +567,10 @@
         "assets/Goblins_Ashborn_Isles_0.5.7.zip.update.22ac7e000edc.0030.b64",
         "assets/Goblins_Ashborn_Isles_0.5.7.zip.update.22ac7e000edc.0031.b64",
         "assets/Goblins_Ashborn_Isles_0.5.7.zip.update.22ac7e000edc.0032.b64",
-        "assets/overlay-c58b373c42b1-0000.b64"
+        "assets/overlay-c58b373c42b1-0000.b64",
+        "assets/overlay-1a35b1016c16-0000.b64"
       ]
     }
-  ]
+  ],
+  "release_branch": "release/v0.5.7"
 }

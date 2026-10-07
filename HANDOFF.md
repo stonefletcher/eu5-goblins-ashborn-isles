@@ -1,31 +1,21 @@
-# 0.5.8 portrait pass
+# 0.5.8 staging handoff
 
 Checkout: C:/Users/alexa/Documents/Codex/2026-10-07/le-2/work/goblins-058
-Branch: feature/0.5.8-portrait-art-pass; base ec4e006 (integrated 0.5.7 source).
-Goal: court, noble and character portraits closer to Gathering artwork: short,
-ugly, believable goblins. No publishing or active-profile installation requested.
+Branch: staging/0.5.8; merged completed 0.5.7 release b4940c7.
+Goal: finish tribal/leather clothing correction and push complete 0.5.8 staging.
 
-Implemented: restrained face ranges, smaller hooded/recessed eyes, lean cheeks,
-shorter necks, compact torso 0.42/stoop 0.24, 60% skin tint, cupped smooth closed
-ears with rounded outlines and mild asymmetry, smaller teeth, no beards, more
-covered male clothing. Preserves culture selection, native rigs, infant handling
-and the working infantry pipeline. See RELEASE_NOTES_0.5.8.md for visual checks.
+Portrait work: small recessed/hooded eyes, stronger brows, lean cheeks, shorter
+necks, compact torso/stoop, cupped smooth ears, reduced teeth and skin tint.
+Clothing correction: every adult choice now uses inspected native hide tunics,
+fringed leather overcoats or fur-trimmed hunter outfits. No mixed cloth jackets,
+wraps or scarf dresses. Children retain fitted plain clothes; infants swaddling.
+Native beards removed. Culture routing covers all five goblin peoples.
 
-Passed: full EU5 1.3.11 build, five-culture/seven-type portrait checks, native
-male/female facial attribute audit, closed/wound ear topology and positive shell
-volumes, DDS compatibility and native binding/reference checks. No game launch.
+Previous portrait candidate passed full build, bundle and isolated installation.
+This revised staging tree passes native portrait/outfit checks; full build and
+new clean-export/isolated-install gates are in progress before the authorized push.
+No game launch, active-profile installation or Steam publication.
 
-Packaging: full build, prepared-bundle integrity/content, clean Git export
-preparation and isolated install all passed at runtime tree 2b65b85. All 1,656
-installed files matched their prepared source hashes; installed portraits passed
-the native checks. Archive SHA-256:
-575161f9499da444441e50db0b88e0dde0ce9ac6ca4e4c844a29a92ab790011d
-Active installed mod untouched. No push, Workshop upload or game launch.
-Deliverables: ../../outputs/Goblins_Ashborn_Isles_0.5.8.zip, portrait notes and
-0.5.8-validation.json. Next: user-run in-game visual review. Do not describe
-the technical mesh preview or static checks as proof of portrait quality.
-
-Inherited generated religion/exploration text was refreshed to its current
-0.5.7 generators. Full build overwrites LORE.md and drops its authored Ashen
-Covenant section; the authored file was restored before packaging. Avoid losing
-that section during future rebuilds. Historical release notes retained.
+Next: finish package gates, push staging/0.5.8, verify remote commit/README/bytes.
+In-game appearance and clothing fit remain unverified; user visual review needed.
+The merged 0.5.7 generator now preserves the Covenant lore section on rebuild.

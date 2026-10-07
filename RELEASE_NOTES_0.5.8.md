@@ -1,7 +1,7 @@
 # Goblins of the Ashborn Isles 0.5.8 — Portrait art pass
 
-Development candidate, based on the 0.5.7 release source at ec4e006. Not published
-to GitHub or Steam, and not installed into the active game profile.
+Staging candidate, incorporating the completed 0.5.7 release at b4940c7.
+Not a Steam release and not installed into the active game profile.
 
 ## Portrait changes
 
@@ -17,9 +17,11 @@ to GitHub or Steam, and not installed into the active game profile.
   These are rig parameters, not measured height in metres. Female height poses
   remain unsupported, so no disabled height attribute is introduced.
 - Smaller jaw-bound teeth; remove native beards to expose goblin facial anatomy.
-- Increase covered male garments from 5/9 to 8/10 of outfit selection weight.
-  Garments are still native wraps, jackets and overcoats; custom ragged leather
-  and jewellery matching the painting exactly remain future work.
+- Replace the mixed adult cloth wardrobe entirely with inspected native hide
+  tunics, fringed leather overcoats and fur-trimmed hunter garments. No Chinese,
+  German jacket, Aztec wrap or Syrian scarf-dress entries remain in the adult
+  selection. Children retain fitted plain garments and infants retain swaddling.
+  Custom torn-leather geometry remains future work.
 - Apply by goblin culture to court members, nobles, relatives and generated
   characters, preserving human appearance and unrelated individual DNA.
 - Keep infant skin/ears separate from adult teeth and compact-body treatment;

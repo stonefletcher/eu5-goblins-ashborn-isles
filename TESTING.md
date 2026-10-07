@@ -1,7 +1,8 @@
 # 0.5.8 portrait acceptance
 
 Follow the age/sex, culture, existing-save and human-control checks in
-RELEASE_NOTES_0.5.8.md. Compare to the Gathering artwork. In-game acceptance is
+RELEASE_NOTES_0.5.8.md. Compare to the Gathering artwork. Confirm adult court and noble portraits select
+hide/leather/fur outfits, with no cloth robe or jacket from the old mixed pool. In-game acceptance is
 pending; static geometry and packaging checks do not establish visual quality.
 
 ## 0.5.7 exploration correction acceptance (pending full build)

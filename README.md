@@ -1,25 +1,25 @@
 # Goblins of the Ashborn Isles
 
-**0.5.8 portrait development candidate — `feature/0.5.8-portrait-art-pass`.**
+**0.5.8 portrait development candidate — `staging/0.5.8`.**
 Reworks court, noble and character portraits toward the Gathering artwork:
 small hooded eyes, lean weathered faces, folded ears, smaller teeth, shorter
 necks and more compact, stooped bodies. Culture routing covers the five goblin
-peoples while preserving human characters. Native beards are removed and
-covered male clothing is more common. Includes the 0.5.7 religion, estate,
+peoples while preserving human characters. Native beards are removed. Adults exclusively select hide tunics, fringed
+leather overcoats and fur-trimmed hunter garments, replacing the earlier mixed
+cloth wardrobe. Children retain fitted plain clothes; infants retain swaddling. Includes the 0.5.7 religion, estate,
 exploration and diplomacy changes.
 
 ![The five Ashborn clans gather beneath their banners](art/events/sources/gathering.png)
 
-**Installation:** the complete local 0.5.8 candidate includes Install-Goblins.cmd.
-Close EU5, extract into a new folder and run the installer. Enable one mod copy.
+**Complete staging installer:** use [Code > Download ZIP](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/archive/refs/heads/staging/0.5.8.zip), extract into a new folder and run Install-Goblins.cmd. The source and bundled installer both target **0.5.8 / EU5 1.3.11**.
+Close EU5, extract into a new folder and run the installer. Enable one mod copy. The default main branch remains the released 0.5.7.
 Use a new 1337 campaign to test inherited starting-world changes; also check
-portraits in an existing save. This candidate has not been published or installed
-into the active profile. Full-build static checks pass. Bundle and isolated-install checks accompany
+portraits in an existing save. This is a staging candidate, not a Steam release. The active installed profile
+has not been changed. Full-build static checks pass. Bundle and isolated-install checks accompany
 the delivered candidate; in-game appearance remains unverified.
 
-See [portrait changes and visual checks](RELEASE_NOTES_0.5.8.md). Clothing still
-uses native garments; this pass does not promise an exact recreation of the
-painting's ragged leather or a measured one-metre character height.
+See [portrait changes and visual checks](RELEASE_NOTES_0.5.8.md). Clothing uses inspected native leather/hide materials and fitted meshes.
+Custom torn-leather geometry and a measured one-metre height are not claimed.
 
 ## Inherited economy and revised exploration
 

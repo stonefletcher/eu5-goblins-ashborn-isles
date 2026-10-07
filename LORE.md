@@ -35,6 +35,7 @@ past without proving where the Ashborn came from. The covenant can welcome an
 outsider adopted into a household, yet its promise of reciprocal duties also
 raises difficult questions about those held in slavery.
 
+
 ## Cindermaw — Emberblood
 
 King Drogg Cindermaw, the Stone Fletcher, earned his name defending the Hooktooth approaches when his crews ran short of iron arrowheads. He put stonecutters to work shaping volcanic points, supplied the ridge archers and held the passes until his scattered captains could gather. He still keeps one of those crude arrows beside his throne. Broad in ambition and exacting in preparation, Drogg inspects weapons, remembers which captains held their ground and rewards useful service with a place near his table. His patience ends with commanders who waste lives for display. He treats the independence of the other crowns as a problem that strength and obligation will eventually settle.

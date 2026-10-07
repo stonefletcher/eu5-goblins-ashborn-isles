@@ -194,7 +194,19 @@ ga_gathering.10 = {
         name = ga_gathering.10.a
         trigger = {  }
         ai_chance = { factor = 1 }
-        
+        add_country_modifier = { modifier = ga_cindermaw_drilled_captains years = 5 mode = replace }
+    }
+option = {
+        name = ga_gathering.10.b
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        add_country_modifier = { modifier = ga_cindermaw_court_envoys years = 5 mode = replace }
+    }
+option = {
+        name = ga_gathering.10.c
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        add_country_modifier = { modifier = ga_cindermaw_counted_stores years = 5 mode = replace }
     }
     after = {  }
 }

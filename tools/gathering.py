@@ -395,6 +395,9 @@ ga_oath_honored = { value = 25 months = 120 yearly_decay = 2 }
     for key, text in [('ga_harbor_pact_opinion', 'The Harbor Pact'), ('ga_received_supplies', 'Grain and Iron Received'), ('ga_oath_honored', 'The Ashen Oath')]:
         loc(key, text)
     write(out, 'main_menu/common/static_modifiers/goblins_gathering.txt', '''
+ga_cindermaw_drilled_captains = { land_morale_modifier = 0.05 }
+ga_cindermaw_court_envoys = { diplomatic_reputation = 0.5 }
+ga_cindermaw_counted_stores = { army_maintenance_efficiency = 0.10 }
 ga_gathering_claimant = { diplomatic_reputation = 0.5 }
 ga_gathering_defiant = { naval_morale_modifier = 0.05 }
 ga_compact_guarantees = { subject_loyalty = 10 }
@@ -405,6 +408,13 @@ ga_first_eastern_harbor = { naval_morale_recovery = 0.05 }
     for key, text in [('ga_gathering_claimant', 'Claimant Among the Five'), ('ga_gathering_defiant', 'Our Shores, Our Crown'), ('ga_compact_guarantees', 'Guarantees of the Ashen Compact'), ('ga_unification_recovery', 'Five Crowns, One Hunger'), ('ga_crossing_preparations', 'The Eastern Crossing'), ('ga_first_eastern_harbor', 'The First Eastern Harbor')]:
         loc('STATIC_MODIFIER_NAME_' + key, text)
         loc('STATIC_MODIFIER_DESC_' + key, text + '. A temporary benefit from the Ashborn situation.')
+    for key, name, description in [
+        ('ga_cindermaw_drilled_captains', 'One Fire, Many Blades', 'Grask drills the rival captains to hold their companies together beneath Cindermaw banners.'),
+        ('ga_cindermaw_court_envoys', 'A Place at the Forge', 'Kragga carries offers of patronage and protection to the other Ashborn courts.'),
+        ('ga_cindermaw_counted_stores', "Grakka's Muster Accounts", 'Grakka counts stores and wages before the captains promise another campaign.'),
+    ]:
+        loc('STATIC_MODIFIER_NAME_' + key, name)
+        loc('STATIC_MODIFIER_DESC_' + key, description)
     # Native conquest goal and peace costs; only the paid, selected target is valid.
     write(out, 'in_game/common/casus_belli/goblins_gathering.txt', '''
 ga_cb_eastern_foothold = {
@@ -480,7 +490,17 @@ ga_cb_eastern_foothold = {
     ]
     for num, tag, title, desc, answer in signatures:
         after = 'trigger_event_non_silently = { id = ga_gathering.15 days = 30 }' if tag == 'SFK' else ''
-        events.append(event(num, title, desc, option(num, 'a', answer), trigger=f'tag = {tag}', after=after))
+        choices = option(num, 'a', answer)
+        if tag == 'CDM':
+            choices = '\n'.join([
+                option(num, 'a', 'Grask, make these captains fight as one.',
+                       'add_country_modifier = { modifier = ga_cindermaw_drilled_captains years = 5 mode = replace }'),
+                option(num, 'b', 'Kragga, give the other crowns a reason to follow.',
+                       'add_country_modifier = { modifier = ga_cindermaw_court_envoys years = 5 mode = replace }'),
+                option(num, 'c', 'Grakka, put our stores and wages in order.',
+                       'add_country_modifier = { modifier = ga_cindermaw_counted_stores years = 5 mode = replace }'),
+            ])
+        events.append(event(num, title, desc, choices, trigger=f'tag = {tag}', after=after))
     events.append(event(15, SHATTERFIN['followup_title'], SHATTERFIN['followup_description'],
         option(15, 'a', SHATTERFIN['followup_answer']),
         trigger='tag = SFK NOT = { has_variable = ga_tidemother_council_seen }',

@@ -27,7 +27,13 @@ nine mip levels. Full builds no longer clone Cindermaw's skull flag. Sources,
 exporter, prototype manifest and CI include all five. Final clean-source and
 package verification results are recorded in PR #9.
 
-State: no active game installation, launch, Workshop publication or merge. This
+README: replaced the accumulated development/release fragments with one player
+guide: separate base/add-on installation, five clan summaries, campaign goals,
+current artwork/features, troubleshooting and links to detailed documentation.
+Removed obsolete population totals, succession rules and installation paths.
+User authorized merging PR #9 into staging/0.5.5; verify final merge state on GitHub.
+
+State: no active game installation, launch or Workshop publication. This
 remains the additive prototype on 0.5.4; the pre-existing regular .release bundle
 is still 0.5.4 and is not a new full 0.5.5 release. The prototype installer is the
 delivery path for this art pass. In-game rendering, crop/UI scale and override

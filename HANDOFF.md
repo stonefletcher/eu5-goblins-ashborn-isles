@@ -12,10 +12,14 @@ wraps or scarf dresses. Children retain fitted plain clothes; infants swaddling.
 Native beards removed. Culture routing covers all five goblin peoples.
 
 Previous portrait candidate passed full build, bundle and isolated installation.
-This revised staging tree passes native portrait/outfit checks; full build and
-new clean-export/isolated-install gates are in progress before the authorized push.
+Revised staging runtime tree c8bb070 passed full build, native portrait/outfit
+checks, bundle content/CRC verification, clean Git export preparation and isolated
+installation. All 1,656 installed files matched. Package SHA-256:
+08184d3771de49e09b95747d6ac5a54a906a5a3f52c80f26f8d9feb8895f3532
 No game launch, active-profile installation or Steam publication.
 
-Next: finish package gates, push staging/0.5.8, verify remote commit/README/bytes.
+Publishing target: staging/0.5.8. Final handoff commit only updates this record;
+the verified runtime files and immutable prepared installer remain unchanged.
+Next: user in-game portrait and outfit review.
 In-game appearance and clothing fit remain unverified; user visual review needed.
 The merged 0.5.7 generator now preserves the Covenant lore section on rebuild.

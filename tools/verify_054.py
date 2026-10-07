@@ -7,7 +7,7 @@ def verify(b,game,out,mapstats):
     cfg=b.CFG;locs=cfg['locations'];baseline=cfg['baseline_locations'];byid={l['id']:l for l in locs}
     assert len(byid)==len(locs)==72 and len({l['color'] for l in locs})==72
     assert set(baseline)<=set(byid)
-    assert sum(Decimal(str(l['pop'])) for l in locs)==Decimal('682.694')
+    assert sum(Decimal(str(l['pop'])) for l in locs)==Decimal(cfg['population_target'])/1000
     for l in locs:
         assert sum(Decimal(str(v)) for v in l['pop_classes'].values())==Decimal(str(l['pop']))
         assert all(v>=0 for v in l['pop_classes'].values())
@@ -15,7 +15,11 @@ def verify(b,game,out,mapstats):
         children=[l for l in locs if l.get('split_from')==ident];assert len(children)==1
         assert byid[ident]['good']==old['good']
         combined=Decimal(str(byid[ident]['pop']))+Decimal(str(children[0]['pop']))
-        assert abs(combined-Decimal(str(old['population']))*Decimal('1.15'))<=Decimal('.004')
+        previous=cfg['population_revision_baseline']['locations']
+        old_combined=Decimal(str(previous[ident]))+Decimal(str(previous[children[0]['id']]))
+        tag=byid[ident]['country']
+        factor=Decimal(cfg['country_population_targets'][tag])/cfg['population_revision_baseline']['country_populations'][tag]
+        assert abs(combined-old_combined*factor)<=Decimal('.004')
         assert children[0]['province']!=byid[ident]['province']
     assert len({l['province'] for l in locs})==30
     # Check generated setup, not just input configuration.
@@ -26,24 +30,41 @@ def verify(b,game,out,mapstats):
     defs=(out/'in_game/map_data/definitions.txt').read_text(encoding='utf-8-sig')
     a,z=b.block_span(defs,'cm_cindermaw_area');area=defs[a:z]
     for l in locs:assert len(re.findall(r'\b'+re.escape(l['id'])+r'\b',area))==1
-    # Real starting courts: outsiders have MIL 86 and must lose to a dynastic son at MIL 82.
+    # Outsiders at MIL 86 and minor sons must lose to eligible dynastic adults.
     chars=(out/'main_menu/setup/start/05_characters.txt').read_text(encoding='utf-8-sig')
     heirs={}
     for tag in ['CDM','QBR','RHK','SWK']:
         prefix='cm_'+tag.lower();candidates=[]
-        for suffix in ['son','daughter','court_0','court_1','court_2']:
+        suffixes=['son','daughter','court_0','court_1','court_2']+(['brother','father'] if tag in {'RHK','SWK'} else [])
+        for suffix in suffixes:
             ident=prefix+'_'+suffix;a,z=b.block_span(chars,ident);s=chars[a:z]
             house=re.search(r'\bdynasty\s*=\s*(\w+)',s)[1]
             if house!=prefix+'_house_0' or 'female = yes' in s:continue
+            if 'death_date =' in s:continue
+            from datetime import date
+            born=date(*map(int,re.search(r'birth_date = ([\d.]+)',s)[1].split('.')))
+            if (date(1337,11,11)-born).days<18*365.25:continue
             stats=[int(re.search(r'\b'+k+r'\s*=\s*(\d+)',s)[1]) for k in ['mil','adm']]
             candidates.append((tuple(stats),ident))
-        assert max(candidates)[1]==prefix+'_son';heirs[tag]=max(candidates)[1]
+        expected=prefix+('_brother' if tag in {'RHK','SWK'} else '_son')
+        assert max(candidates)[1]==expected;heirs[tag]=max(candidates)[1]
     law=(out/'in_game/common/heir_selections/goblins_ashborn_isles.txt').read_text(encoding='utf-8-sig')
     assert 'dynasty = scope:target.last_valid_ruler.dynasty' in law
     assert 'regardless of dynasty' not in (out/'main_menu/localization/english/goblins_ashborn_isles_l_english.yml').read_text(encoding='utf-8-sig')
     import statistics
     provinces={p:sum(mapstats['locations'][l['id']]['pixels'] for l in locs if l['province']==p) for p in {l['province'] for l in locs}}
-    return {'version':'0.5.4','population':682694,'increase_percent':round((682694/593647-1)*100,6),
+    populations={c['tag']:sum(round(l['pop']*1000) for l in locs if l['country']==c['tag']) for c in cfg['countries']}
+    assert populations==cfg['country_population_targets']
+    assert populations['SFK']>populations['RHK']>populations['SWK']
+    assert all(n%1000!=0 for n in populations.values())
+    for tag,n in populations.items():
+        assert n>=cfg['population_revision_baseline']['country_populations'][tag]*1.5
+        assert n>=100000
+    import goblin_longevity
+    longevity=goblin_longevity.verify(b,out)
+    return {'version':'0.5.4','population':cfg['population_target'],'country_populations':populations,
+            'increase_from_previous_054_percent':{tag:round((n/cfg['population_revision_baseline']['country_populations'][tag]-1)*100,3) for tag,n in populations.items()},
+            'longevity':longevity,
             'locations':72,'provinces':30,'resources':dict(Counter(l['good'] for l in locs)),
             'starting_dynastic_heirs':heirs,'population_classes_and_generated_totals_checked':True,
             'original_ids_and_resources_preserved':True,

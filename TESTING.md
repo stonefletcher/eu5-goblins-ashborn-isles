@@ -1,3 +1,13 @@
+## 0.5.4 demographic revision acceptance
+
+Start a new 1337 campaign. Check total populations: CDM 552,739; QBR 318,463; RHK 108,437; SFK 213,487; SWK 101,629. Verify ruler ages are CDM 38, QBR 36, RHK 27, SFK 39 and SWK 29, eligible heirs remain adults and Jaima retains maternal seniority.
+
+Check Goblin Longevity in character life-expectancy modifiers: +15 years for each Ashborn culture, both sexes, children and newly generated characters. Test a goblin employed in a human country and a human in a goblin country. Save/reload and change character culture; the conditional bonus must follow culture and never stack. Compare otherwise identical goblin/human characters rather than asserting a fixed death age.
+
+Inspect food prices, employment, RGO capacity, tax receipts and budgets after the first monthly initialization and after 1, 5 and 10 years. More people and capacity have passed static checks, but economic viability needs gameplay evidence. Check the three smaller clans especially.
+
+Earlier population figures below refer to the initial 0.5.4 pass.
+
 # 0.5.4 acceptance checklist
 
 Use a NEW 1337 campaign, only the intended 0.5.4 copy active.

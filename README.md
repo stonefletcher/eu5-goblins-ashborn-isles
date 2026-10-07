@@ -2,14 +2,24 @@
 
 Built on tested staging/0.5.3. EU5 1.3.11; a new 1337 campaign is required.
 
-- 682,694 goblins, up from 593,647 (+15%, rounded to whole people). Each original population is split between two districts, with all starting population classes expanded.
+- 1,294,755 goblins. The initial +15% pass is followed by at least another +50% for every clan; smaller clans receive a larger uplift. Location and population-class shares are preserved with whole-person rounding. Shatterfin is the largest smaller clan.
 - 36 → 72 inhabited locations and 15 → 30 provinces. Every original location and province is subdivided. Stable country tags, original location IDs, capitals, coastlines and thirteen sea zones remain.
 - Starting building levels rise from 47 to 114: stronger capital markets, five granaries, tools/cloth/pottery guilds, rural villages, wheat windmills and smelters on iron/copper RGOs.
-- Once-only, ownership-checked first-month RGO expansion rises from 70 to 160 levels across the larger map.
+- Once-only, ownership-checked first-month RGO expansion rises from 70 to 387 levels across the larger map.
 - New RGOs: 2 gold, 3 silver, 2 dyes, 2 saffron, 1 silk, 1 pearls and 2 alum. New food/timber/material districts support basic demand; original districts retain their resources. Native gold ID: goods_gold.
 - Ironfang: strongest eligible adult Ashborn man within the ruling dynasty inherits. Military ability decides, with Administration and age breaking ties. Unrelated courtiers cannot inherit through this law; no eligible dynasty member means no eligible heir.
 - Native country naming follows the reigning house after a takeover or dynasty reassignment; succession hooks and monthly reconciliation cover changes. Regents do not rename the country. Shatterfin keeps maternal seniority.
+- Starting ruler ages vary: Cindermaw 38, Brackmaw 36, Reefhook 27, Shatterfin 39 and Sootwake 29. Consorts and courtiers also have varied birthdays. Family birth dates retain plausible parent ages and adult dynastic heirs (brothers for the younger rulers). Shatterfin keeps four eligible adult women and maternal seniority.
+- A native character auto modifier gives all five Ashborn cultures +15 years of life expectancy, including future characters and goblins employed abroad; human characters receive no species bonus.
 - Retains 0.5.3 human portrait isolation, working shared-pose infantry, recruitment art and first-contact events.
+
+| Clan | Starting population | Increase over first 0.5.4 pass |
+|---|---:|---:|
+| Cindermaw | 552,739 | 50.15% |
+| Brackmaw | 318,463 | 51.16% |
+| Reefhook | 108,437 | 209.23% |
+| Shatterfin | 213,487 | 502.36% |
+| Sootwake | 101,629 | 204.52% |
 
 Installed Europe reference medians: 520 map pixels/location, 2,626 pixels/province and 5 locations/province. The new districts use this spatial scale as a reference while preserving the islands' smaller political units.
 
@@ -51,7 +61,7 @@ Static model, animation, texture, rig and clothing-reference checks pass. In-gam
 
 [Repository](https://github.com/stonefletcher/eu5-goblins-ashborn-isles) | [Origins and lore](LORE.md) | [Testing checklist](TESTING.md) | [Release notes](RELEASE_NOTES.md)
 
-## The goblin nations
+## The goblin nations (0.5.3 population reference)
 
 In the early fourteenth century, fire rose from the Atlantic. New islands emerged, and goblins already walked their shores. No fleet had brought them. Whether the mountains birthed them or opened passages beneath the world remains disputed.
 

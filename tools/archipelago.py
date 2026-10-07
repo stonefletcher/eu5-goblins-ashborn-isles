@@ -336,6 +336,8 @@ def add_localization(b,out):
     extra.update({'cm_goblin_group':'Ashborn','cm_goblin_group_desc':'The peoples who emerged with the Ashborn Isles in the early fourteenth century.','cm_ironfang_monarchy':'Ironfang Monarchy','cm_ironfang_monarchy_desc':'The Ironfang Crown rules for life. Under the Rule of the Strongest, the adult Ashborn man with the highest Military ability succeeds, regardless of dynasty or estate. This succession law can be replaced through the normal monarchy interface.','cm_rule_of_the_strongest':'Rule of the Strongest','cm_rule_of_the_strongest_desc':'On succession, the eligible adult Ashborn man in this country with the highest Military ability takes the crown. Administrative ability and then age break ties. Foreign rulers, children and characters barred from ruling are excluded. There are no fixed terms or periodic challenges.','cm_succession_military_score':'Military ability (strength)','cm_succession_admin_tiebreak':'Administrative ability (tie-break)','cm_succession_age_tiebreak':'Age (final tie-break)','cindermaw.1.a':'The Ashborn rise.','cm_ashen_faiths_ADJ':'Ashen','cm_ashen_faiths_desc':'The island faiths of the Ashborn, united in reverence for the power beneath the volcanoes.','cm_ashborn_seas_area':'Ashborn Waters','cm_ashborn_seas_province':'Ashborn Waters'})
     import shatterfin
     extra.update(shatterfin.LOCALIZATION)
+    import goblin_longevity
+    extra.update(goblin_longevity.LOCALIZATION)
     import ashborn_names
     extra.update(ashborn_names.localization())
     extra.update({z['id']:z['name'] for z in b.CFG['coastal_sea']['zones']})

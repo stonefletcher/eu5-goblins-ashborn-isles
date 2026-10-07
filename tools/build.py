@@ -216,6 +216,9 @@ def main():
     import dynastic_clans
     dynastic_clans.build(sys.modules[__name__],game,out)
     economy['dynastic_clans']=dynastic_clans.verify(sys.modules[__name__],out)
+    import goblin_longevity
+    goblin_longevity.build(sys.modules[__name__],game,out)
+    economy['longevity']=goblin_longevity.verify(sys.modules[__name__],out)
     import exploration
     discovery=exploration.build(sys.modules[__name__],game,out)
     import export_goblin_models

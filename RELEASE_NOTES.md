@@ -1,3 +1,13 @@
+## 0.5.4 demographic revision
+
+- Starting populations: Cindermaw 552,739; Brackmaw 318,463; Reefhook 108,437; Shatterfin 213,487; Sootwake 101,629. Total 1,294,755. All clans gain at least another 50% over the first 0.5.4 pass; Shatterfin is the largest smaller clan.
+- Rulers start at varied ages of 27-39, with varied consort/court birthdays; their family dates preserve plausible parent ages, adult dynastic heirs, younger rulers with minor children and adult brothers, and Shatterfin maternal seniority.
+- Native character auto modifier grants Ashborn goblins +15 years of life expectancy by culture, independent of country, dynasty and employment. Conditional application avoids stacking and excludes humans. Mortality remains probabilistic; combat, illness and scripted deaths remain possible.
+- Starting RGO expansion scales with the additional population, reaching 387 levels. Geography, resources and buildings retain the previous 0.5.4 layout.
+- Static and installer checks are separate from pending engine acceptance. Starting-population and birth-date edits require a new campaign.
+
+The earlier 0.5.4 entries below describe the initial pass.
+
 # 0.5.4 — Districts and Dynasties
 
 Built on tested staging/0.5.3. EU5 1.3.11; a new 1337 campaign is required.

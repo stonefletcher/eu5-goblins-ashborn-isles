@@ -1,28 +1,32 @@
-# 0.5.4 - Districts and Dynasties
+# 0.5.5 — The Gathering of the Five
 
-Demo release for **Europa Universalis V 1.3.11 (Pavia)**. Restart EU5 and start a **new 1337 campaign**; the map and starting setup changed.
+Complete release candidate for EU5 1.3.11. Start a new 1337 campaign. Disable the
+earlier Gathering Prototype add-on: this full mod includes its content and
+installs without a 0.5.4 prerequisite.
 
-- Expanded the archipelago from 36 to **72 inhabited locations** and from 15 to **30 provinces**, retaining six islands, capitals and thirteen coastal sea zones.
-- Increased starting population to **1,294,755**: Cindermaw 552,739; Brackmaw 318,463; Reefhook 108,437; Shatterfin 213,487; Sootwake 101,629. Shatterfin is the largest of the three smaller clans.
-- Increased starting building levels from 47 to **114**, with capital markets, granaries, guilds, villages, wheat windmills and metal smelters. First-month, once-only RGO investment now supplies **387 levels**, guarded by ownership.
-- Added gold, silver, dyes, saffron, silk, pearls and alum alongside food, timber and industrial materials.
-- Restricted Ironfang succession to eligible adult Ashborn men **within the ruling dynasty**. Military ability decides, with Administration and age breaking ties.
-- Added country names and adjectives that follow the reigning dynasty after a takeover or reassignment. Shatterfin retains maternal seniority.
-- Varied starting ruler ages: Cindermaw 38, Brackmaw 36, Reefhook 27, Shatterfin 39 and Sootwake 29. Courts and families have varied, plausible birthdays; younger rulers have minor children and eligible adult brothers.
-- Added **+15 years of life expectancy** for all five Ashborn cultures, including future characters and goblins employed abroad. Human cultures do not receive the bonus.
-- Preserved 0.5.3 portrait isolation, the user-tested infantry attachment repair, recruitment artwork and reciprocal first-contact events.
+- Unite the 72 homeland districts through conquest, vassalage or senior unions
+  in the Gathering of the Five, then pursue a European coastal foothold through
+  Eastern Hunger.
+- Seven situation actions support alliances, paid aid, voluntary submission,
+  war goals and fleet preparation. Offers can be refused; conquests follow
+  normal EU5 declarations, warfare and peace rules.
+- Five clan introductions, expanded royal-family stories, revised ruler
+  abilities and Shatterfin's maternal-house follow-up. Existing family
+  relationships and succession laws are preserved.
+- 323,941 additional minority-culture goblins bring the Isles to 1,618,696 people.
+  All five Ashborn cultures live in every district.
+- Seventeen original paintings cover all 21 authored events. Both situations
+  have custom headers and icons; all five clans have matching custom flags.
+- One regular installer and a matching 0.5.5 terrain/package bundle replace the
+  separate prototype installation. The README is now a player guide.
 
-**Install:** extract `Goblins_Ashborn_Isles_0.5.4.zip` into a new writable folder, close EU5 and run `Install-Goblins.cmd`. The installer reconstructs terrain from your matching game installation and backs up the previous mod. Source downloads also carry the matching prepared bundle.
+In-game acceptance of the new situations, art, AI behavior and balance remains
+pending. Automated checks and package verification do not establish gameplay
+readiness. Earlier release notes follow.
 
-**Steam:** use the same package and installer. Upload the installed `goblins_ashborn_isles` folder from the EU5 user-data `mod` directory to the existing Workshop listing. Use `STEAM_DESCRIPTION.txt` and `STEAM_CHANGELOG.txt`. See `WORKSHOP_UPLOAD.md`.
+## 0.5.5 Jaima Gathering update
 
-**Validation:** archive hashes, ZIP integrity, packaged version, population totals, ruler ages and authored art are checked automatically. Gameplay acceptance remains separate: test the new map, employment/food/budgets, longevity, dynasty renaming, succession edge cases and save/reload using `TESTING.md`. A lifespan bonus does not guarantee a fixed death age. The 0.5.5 expansion chain is outside this release.
-
----
-
-# Development history
-
-The entries below record earlier iterations; the release summary above is authoritative for final 0.5.4 values.
+Shatterfin is included in the ruler table at Jaima’s unchanged 66/58/52 ADM/DIP/MIL. Expanded The Tidemother’s Terms and new The Maternal House Endures give her two Shatterfin-only narrative events. The follow-up is scheduled 30 days after the introduction and guarded against repeats. All five kingdoms retain their introductions; total events rise from 13 to 14. Maternal seniority, family setup, situation costs and population additions are preserved. README, prototype guide and generated lore now cover her role. Static and packaging checks are separate from pending gameplay acceptance.
 
 ## 0.5.4 demographic revision
 

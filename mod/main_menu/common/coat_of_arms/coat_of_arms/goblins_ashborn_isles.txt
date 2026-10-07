@@ -1,11 +1,44 @@
 CDM = {
     pattern = "pattern_solid.dds"
-    color1 = black
-    color2 = red
-    colored_emblem = {
-        texture = "ce_deaths_head_crossed_swords.dds"
-        color1 = yellow
-        color2 = red
-        instance = { position = { 0.5 0.5 } scale = { 0.75 0.75 } }
+    color1 = rgb { 140 67 31 }
+    textured_emblem = {
+        texture = "te_ashborn_cindermaw.dds"
+        instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }
+    }
+}
+
+QBR = {
+    pattern = "pattern_solid.dds"
+    color1 = rgb { 66 72 43 }
+    textured_emblem = {
+        texture = "te_ashborn_brackmaw.dds"
+        instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }
+    }
+}
+
+RHK = {
+    pattern = "pattern_solid.dds"
+    color1 = rgb { 62 106 110 }
+    textured_emblem = {
+        texture = "te_ashborn_reefhook.dds"
+        instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }
+    }
+}
+
+SFK = {
+    pattern = "pattern_solid.dds"
+    color1 = rgb { 53 71 91 }
+    textured_emblem = {
+        texture = "te_ashborn_shatterfin.dds"
+        instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }
+    }
+}
+
+SWK = {
+    pattern = "pattern_solid.dds"
+    color1 = rgb { 41 42 39 }
+    textured_emblem = {
+        texture = "te_ashborn_sootwake.dds"
+        instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }
     }
 }

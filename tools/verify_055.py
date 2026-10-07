@@ -1,0 +1,251 @@
+"""Static references plus ownership regression scenarios for the 0.5.5 prototype.
+
+These checks are deliberately not described as an engine parser or gameplay test.
+"""
+from pathlib import Path
+import argparse
+import json
+import re
+
+TOKEN = re.compile(r'#[^\n]*|"(?:\\.|[^"\\])*"|\?=|>=|<=|!=|[{}=]|[^\s{}=<>!]+|[<>]')
+
+def parse(text):
+    tokens = [m[0] for m in TOKEN.finditer(text) if not m[0].startswith('#')]
+    index = 0
+    def group(nested=False):
+        nonlocal index
+        rows = []
+        while index < len(tokens):
+            if tokens[index] == '}':
+                assert nested, 'Unexpected closing brace'
+                index += 1
+                return rows
+            key = tokens[index]; index += 1
+            assert index < len(tokens), f'Incomplete entry: {key}'
+            if tokens[index] not in ['=', '?=', '>=', '<=', '>', '<', '!=']:
+                rows.append((key, None, None))
+                continue
+            operator = tokens[index]; index += 1
+            assert index < len(tokens), f'Missing value: {key}'
+            if tokens[index] == '{':
+                index += 1; value = group(True)
+            else:
+                value = tokens[index]; index += 1
+            rows.append((key, operator, value))
+        assert not nested, 'Unclosed brace'
+        return rows
+    return group()
+
+def flatten(rows):
+    for key, operator, value in rows:
+        yield key, operator, value
+        if isinstance(value, list):
+            yield from flatten(value)
+
+def read(path):
+    return path.read_text(encoding='utf-8-sig')
+
+def ownership_checks(definitions, ids):
+    # Evaluate the actual generated ownership trigger subset, rather than a
+    # separate copy of the intended ownership algorithm.
+    countries = {tag: {'tag': tag, 'subject': None, 'overlord': None, 'senior': None}
+                 for tag in ['CDM', 'QBR', 'RHK', 'SFK', 'SWK', 'POR']}
+    owners = {x: 'CDM' for x in ids}
+    locations = {x: {'continent': 'europe', 'coastal': True, 'area': 'cm_cindermaw_area'} for x in ids}
+    locations['porto'] = {'continent': 'europe', 'coastal': True, 'area': 'porto_area'}
+    owners['porto'] = 'POR'
+    claimant = None
+    def evaluate(rows, obj, kind='country', depth=0):
+        nonlocal claimant
+        assert depth < 64, 'Cyclic scripted subject evaluation'
+        answers = []
+        for key, op, value in rows:
+            if key == 'OR': result = any(evaluate([row], obj, kind, depth + 1) for row in value)
+            elif key == 'AND': result = evaluate(value, obj, kind, depth + 1)
+            elif key == 'NOT': result = not evaluate(value, obj, kind, depth + 1)
+            elif key == 'save_temporary_scope_as': claimant = obj; result = True
+            elif key == 'this': result = obj == claimant
+            elif key == 'tag': result = countries[obj]['tag'] == value
+            elif key == 'is_subject': result = (countries[obj]['subject'] is not None) == (value == 'yes')
+            elif key == 'is_junior_partner': result = (countries[obj]['senior'] is not None) == (value == 'yes')
+            elif key == 'is_subject_type': result = countries[obj]['subject'] == value
+            elif key == 'junior_union_with': result = countries[obj]['senior'] == claimant
+            elif key == 'any_overlord_or_above':
+                others = []
+                other = countries[obj]['overlord']
+                while other is not None:
+                    assert other not in others, 'Cyclic subject graph'
+                    others.append(other)
+                    other = countries[other]['overlord']
+                predicates = [row for row in value if row[0] != 'count']
+                results = [evaluate(predicates, other, depth=depth + 1) for other in others]
+                result = all(results) if ('count', '=', 'all') in value else any(results)
+            elif key == 'overlord':
+                other = countries[obj]['overlord']
+                result = (op == '?=') if other is None else evaluate(value, other, depth=depth + 1)
+            elif key.startswith('location:'): result = evaluate(value, key.split(':', 1)[1], 'location', depth + 1)
+            elif key == 'exists': result = owners[obj] is not None
+            elif key == 'any_country': result = any(evaluate(value, country, depth=depth + 1) for country in countries)
+            elif key == 'any_owned_location':
+                result = any(evaluate(value, location, 'location', depth + 1) for location, owner in owners.items() if owner == obj)
+            elif key == 'continent': result = locations[obj]['continent'] == value.split(':', 1)[1]
+            elif key == 'is_coastal': result = locations[obj]['coastal'] == (value == 'yes')
+            elif key == 'area': result = locations[obj]['area'] == value.split(':', 1)[1]
+            elif key == 'owner':
+                other = owners[obj]
+                result = (op == '?=') if other is None else evaluate(value, other, depth=depth + 1)
+            elif key == 'owns': result = owners[value.split(':', 1)[1]] == obj
+            elif key in definitions: result = evaluate(definitions[key], obj, kind, depth + 1)
+            else: raise AssertionError(f'Uncovered ownership test token: {key}')
+            answers.append(result)
+        return all(answers)
+    def complete(): return evaluate(definitions['ga_controls_homeland'], 'CDM')
+    scenarios = []
+    def check(name, expected):
+        assert complete() == expected, name
+        scenarios.append(name)
+    check('All homeland directly owned', True)
+    assert evaluate(definitions['ga_owns_entire_homeland'], 'CDM')
+    assert not evaluate(definitions['ga_has_european_foothold'], 'CDM'), 'Homeland must not count as Europe foothold'
+    scenarios.append('European-classified Ashborn homeland is excluded from foothold completion')
+    owners['porto'] = 'CDM'
+    assert evaluate(definitions['ga_has_european_foothold'], 'CDM')
+    scenarios.append('A genuinely foreign coastal foothold counts')
+    owners['porto'] = 'POR'
+    for tag in ['QBR', 'RHK', 'SFK', 'SWK']:
+        countries[tag].update(subject='vassal', overlord='CDM')
+    for n, x in enumerate(ids): owners[x] = ['CDM', 'QBR', 'RHK', 'SFK', 'SWK'][n % 5]
+    check('Mixed direct land and four vassals', True)
+    countries['SFK'].update(subject=None, overlord=None, senior='CDM')
+    check('Shatterfin junior union partner', True)
+    countries['RHK'].update(overlord='SFK')
+    check('Vassal beneath a junior union partner', True)
+    countries['QBR'].update(overlord='RHK')
+    countries['SWK'].update(overlord='QBR')
+    check('Multiple nested vassal links', True)
+    owners['porto'] = 'SFK'
+    assert evaluate(definitions['ga_has_european_foothold'], 'CDM')
+    scenarios.append('Foothold held by a qualifying junior partner counts')
+    owners['porto'] = 'POR'
+    countries['QBR']['subject'] = 'tributary'
+    check('Tributary in the subject chain blocks completion', False)
+    countries['QBR']['subject'] = 'vassal'
+    owners[ids[-1]] = None
+    check('An unowned homeland district blocks completion', False)
+    owners[ids[-1]] = 'POR'
+    check('One foreign-held district blocks completion', False)
+    countries['POR'].update(subject='vassal', overlord='CDM')
+    check('Foreign vassal legitimately holding homeland counts', True)
+    countries['SFK']['senior'] = 'POR'
+    check('Union under a different senior crown blocks completion', False)
+    countries['SFK']['senior'] = 'CDM'
+    countries['POR'].update(subject=None, overlord=None)
+    countries['CDM'].update(subject='vassal', overlord='POR')
+    check('A foreign-controlled claimant cannot win', False)
+    return scenarios
+
+def verify(root, game, out):
+    import archipelago
+    cfg = archipelago.prepare(json.loads(read(root / 'data/island.json')))
+    ids = [x['id'] for x in cfg['locations']]
+    scripts = sorted(out.glob('in_game/common/**/goblins_gathering.txt'))
+    scripts += [out / 'in_game/events/goblins_gathering.txt', out / 'main_menu/common/static_modifiers/goblins_gathering.txt']
+    assert len(scripts) == 9, f'Expected 9 script files, got {len(scripts)}'
+    ast = {}; declarations = {}; raw = ''
+    for path in scripts:
+        text = read(path); raw += text
+        assert path.read_bytes().startswith(b'\xef\xbb\xbf'), path
+        rows = parse(text); ast[path] = rows
+        for key, op, value in rows:
+            if key != 'namespace':
+                assert key not in declarations, f'Duplicate declaration: {key}'
+                declarations[key] = value
+    # Verify all namespaced static references against either authored or native files.
+    directories = {'casus_belli': 'in_game/common/casus_belli', 'subject_type': 'in_game/common/subject_types',
+                   'relation_type': 'in_game/common/scripted_relations', 'price': 'in_game/common/prices',
+                   'situation': 'in_game/common/situations', 'special_status': 'in_game/common/special_statuses'}
+    native_refs = {}
+    for kind, folder in directories.items():
+        names = set()
+        for path in (game / folder).glob('*.txt'):
+            names.update(re.findall(r'(?m)^\s*(\w+)\s*=\s*\{', read(path)))
+        native_refs[kind] = names
+    for kind, ident in re.findall(r'\b(casus_belli|subject_type|relation_type|price|situation|special_status):(\w+)', raw):
+        assert ident in declarations or ident in native_refs[kind], f'Missing {kind}: {ident}'
+    for ident in re.findall(r'\bid\s*=\s*(ga_gathering\.\d+)|trigger_event_non_silently\s*=\s*(ga_gathering\.\d+)', raw):
+        assert (ident[0] or ident[1]) in declarations, ident
+    native_modifiers = '\n'.join(read(p) for p in (game / 'main_menu/common/modifier_type_definitions').glob('*.txt'))
+    for key, op, modifiers in ast[out / 'main_menu/common/static_modifiers/goblins_gathering.txt']:
+        for modifier, _, _ in modifiers:
+            assert re.search(r'(?m)^\s*' + re.escape(modifier) + r'\s*=\s*\{', native_modifiers), modifier
+    for modifier in re.findall(r'\bmodifier\s*=\s*(ga_\w+)', raw):
+        assert modifier in declarations, modifier
+    locpath = out / 'main_menu/localization/english/goblins_gathering_l_english.yml'
+    loctext = read(locpath)
+    keys = re.findall(r'(?m)^ ([\w.]+):', loctext)
+    assert len(keys) == len(set(keys)), 'Duplicate localization keys'
+    assert locpath.read_bytes().startswith(b'\xef\xbb\xbf')
+    for field in ['title', 'desc', 'none_available_msg_key']:
+        for key in re.findall(r'\b' + field + r'\s*=\s*(ga_[\w.]+)', raw):
+            assert key in keys, f'Missing localization: {key}'
+    for rows in ast.values():
+        for parent, _, value in flatten(rows):
+            if parent in ['option', 'select_trigger'] and isinstance(value, list):
+                for field, _, key in value:
+                    if field == 'name' and isinstance(key, str) and key.startswith('ga_'):
+                        assert key in keys, f'Missing option/selector localization: {key}'
+    # Full territorial checks: no culture shortcut, percentage threshold, or empty tile success.
+    # Every crown must receive its own introduction; Shatterfin has a guarded follow-up.
+    situation = declarations['ga_gathering_of_five']
+    monthly = next(v for k, _, v in situation if k == 'on_monthly')
+    for tag, number in [('CDM', 10), ('QBR', 11), ('RHK', 12), ('SFK', 13), ('SWK', 14)]:
+        introduction = declarations[f'ga_gathering.{number}']
+        assert ('trigger', '=', [('tag', '=', tag)]) in introduction
+        assert any(k == 'if' and ('limit', '=', [('tag', '=', tag)]) in v
+                   and ('trigger_event_non_silently', '=', f'ga_gathering.{number}') in v
+                   for k, _, v in flatten(monthly) if isinstance(v, list)), tag
+    after = next(v for k, _, v in declarations['ga_gathering.13'] if k == 'after')
+    assert after == [('trigger_event_non_silently', '=', [('id', '=', 'ga_gathering.15'), ('days', '=', '30')])]
+    followup = declarations['ga_gathering.15']
+    assert ('trigger', '=', [('tag', '=', 'SFK'), ('NOT', '=', [('has_variable', '=', 'ga_tidemother_council_seen')])]) in followup
+    assert ('immediate', '=', [('set_variable', '=', [('name', '=', 'ga_tidemother_council_seen'), ('value', '=', 'yes')])]) in followup
+    assert len([k for k in declarations if k.startswith('ga_gathering.')]) == 14
+    ownership = declarations['ga_controls_homeland']
+    locations = [key.split(':', 1)[1] for key, _, _ in flatten(ownership) if key.startswith('location:')]
+    assert len(locations) == len(set(locations)) == 72
+    assert set(locations) == set(ids)
+    scenarios = ownership_checks(declarations, ids)
+    forbidden = ['change_location_owner', 'annex_country', 'create_sub_unit', 'declare_war_with_cb', 'form_union', 'change_heir_selection']
+    for name in forbidden:
+        assert not re.search(r'\b' + name + r'\s*=', raw), f'Forbidden grant/forced operation: {name}'
+    # The sole scripted subject grant must require explicit recipient consent.
+    assert len(re.findall(r'\bmake_subject_of\s*=', raw)) == 1
+    submission = declarations['ga_gathering.3']
+    accepted = next(value for key, _, value in submission if key == 'option')
+    assert any(key == 'trigger' and any(k == 'ga_valid_submission_offer' for k, _, _ in value)
+               for key, _, value in accepted)
+    cb = declarations['ga_cb_eastern_foothold']
+    assert ('war_goal_type', '=', 'conquer_province') in cb
+    assert any(key == 'province' for key, _, _ in cb)
+    assert any(key == 'declare_enabled' and any(k == 'ga_controls_homeland' for k, _, _ in value) for key, _, value in cb)
+    # No free aid: the payer price is exactly the recipient's 10-gold transfer.
+    assert declarations['ga_gathering_aid_price'] == [('gold', '=', '10')]
+    report = {'version': '0.5.5', 'script_files': len(scripts), 'situations': 2,
+              'events': len([k for k in declarations if k.startswith('ga_gathering.')]),
+              'homeland_locations': len(locations), 'localization_keys': len(keys),
+              'ownership_scenarios': scenarios, 'native_references_checked': True,
+              'no_free_foreign_land_units_or_wars': True, 'static_checks_passed': True,
+              'all_five_introductions_routed': True, 'shatterfin_guarded_followup': True,
+              'engine_parser_tested': False, 'gameplay_tested': False}
+    return report
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--game', type=Path, required=True)
+    parser.add_argument('--out', type=Path)
+    args = parser.parse_args()
+    root = Path(__file__).resolve().parents[1]
+    report = verify(root, args.game, args.out or root / 'mod')
+    reports = root / 'build/reports'; reports.mkdir(parents=True, exist_ok=True)
+    (reports / 'gathering_verification.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+    print(json.dumps(report, indent=2))

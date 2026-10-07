@@ -1,0 +1,316 @@
+﻿ga_offer_harbor_pact = {
+    type = situation
+    show_message = no
+    potential = { scope:actor = { ga_is_goblin = yes is_subject = no is_junior_partner = no  } }
+    allow = { scope:actor = { at_war = no  } }
+    automation_tick = never
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    cooldown = { type = ga_offer_harbor_pact years = 3 }
+    price = price:ga_gathering_pact_price
+    select_trigger = {
+        looking_for_a = situation
+        interaction_source_list = { situation:ga_gathering_of_five = { add_to_list = source } }
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { this = situation:ga_gathering_of_five situation_is_active = yes }
+    }
+    select_trigger = {
+        looking_for_a = country
+        source_global_list = ga_five_kingdoms
+        target_flag = target
+        name = ga_choose_kingdom
+        none_available_msg_key = ga_no_kingdom_available
+        column = { data = name }
+        visible = {
+            ga_is_goblin = yes
+            this != scope:actor
+            is_subject = no
+            is_junior_partner = no
+            at_war = no
+            NOT = { has_variable = ga_offer_pending }
+            NOT = { is_rival_of = scope:actor }
+            NOT = { is_enemy_of = scope:actor }
+ NOT = { is_allied_with = { target = scope:actor } }
+        }
+    }
+    effect = { if = { limit = { exists = scope:target } scope:target = {
+        set_variable = { name = ga_offer_sender value = scope:actor }
+        set_variable = { name = ga_offer_pending value = yes }
+        trigger_event_non_silently = ga_gathering.2
+    } } }
+    ai_will_do = { add = 5
+        if = { limit = { exists = scope:target }
+            add = { value = "scope:actor.opinion(scope:target)" multiply = 0.2 desc = ga_relations }
+            if = { limit = { scope:actor = { is_allied_with = { target = scope:target } } } add = 15 }
+        } }
+}
+
+ga_send_supplies = {
+    type = situation
+    show_message = no
+    potential = { scope:actor = { ga_is_goblin = yes is_subject = no is_junior_partner = no  } }
+    allow = { scope:actor = { at_war = no  } }
+    automation_tick = never
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    cooldown = { type = ga_send_supplies years = 5 }
+    price = price:ga_gathering_aid_price
+    select_trigger = {
+        looking_for_a = situation
+        interaction_source_list = { situation:ga_gathering_of_five = { add_to_list = source } }
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { this = situation:ga_gathering_of_five situation_is_active = yes }
+    }
+    select_trigger = {
+        looking_for_a = country
+        source_global_list = ga_five_kingdoms
+        target_flag = target
+        name = ga_choose_kingdom
+        none_available_msg_key = ga_no_kingdom_available
+        column = { data = name }
+        visible = {
+            ga_is_goblin = yes
+            this != scope:actor
+            is_subject = no
+            is_junior_partner = no
+            at_war = no
+            NOT = { has_variable = ga_offer_pending }
+            NOT = { is_rival_of = scope:actor }
+            NOT = { is_enemy_of = scope:actor }
+        }
+    }
+    effect = { if = { limit = { exists = scope:target } scope:target = {
+            add_gold = 10
+            add_opinion = { target = scope:actor modifier = ga_received_supplies }
+        } } }
+    ai_will_do = { add = 5
+        if = { limit = { exists = scope:target }
+            add = { value = "scope:actor.opinion(scope:target)" multiply = 0.2 desc = ga_relations }
+            if = { limit = { scope:actor = { is_allied_with = { target = scope:target } } } add = 15 }
+        } }
+}
+
+ga_offer_compact = {
+    type = situation
+    show_message = no
+    potential = { scope:actor = { ga_is_goblin = yes is_subject = no is_junior_partner = no  } }
+    allow = { scope:actor = { at_war = no  } }
+    automation_tick = never
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    cooldown = { type = ga_offer_compact years = 3 }
+    price = price:ga_gathering_compact_price
+    select_trigger = {
+        looking_for_a = situation
+        interaction_source_list = { situation:ga_gathering_of_five = { add_to_list = source } }
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { this = situation:ga_gathering_of_five situation_is_active = yes }
+    }
+    select_trigger = {
+        looking_for_a = country
+        source_global_list = ga_five_kingdoms
+        target_flag = target
+        name = ga_choose_kingdom
+        none_available_msg_key = ga_no_kingdom_available
+        column = { data = name }
+        visible = {
+            ga_is_goblin = yes
+            this != scope:actor
+            is_subject = no
+            is_junior_partner = no
+            at_war = no
+            NOT = { has_variable = ga_offer_pending }
+            NOT = { is_rival_of = scope:actor }
+            NOT = { is_enemy_of = scope:actor }
+            is_allied_with = { target = scope:actor }
+            relative_strength = { target = scope:actor value <= 0.65 }
+            "opinion(scope:actor)" >= 125
+            scope:actor.country_rank_level >= country_rank_level
+        }
+    }
+    effect = { if = { limit = { exists = scope:target } scope:target = {
+        set_variable = { name = ga_offer_sender value = scope:actor }
+        set_variable = { name = ga_offer_pending value = yes }
+        trigger_event_non_silently = ga_gathering.3
+    } } }
+    ai_will_do = { add = 5
+        if = { limit = { exists = scope:target }
+            add = { value = "scope:actor.opinion(scope:target)" multiply = 0.2 desc = ga_relations }
+            if = { limit = { scope:actor = { is_allied_with = { target = scope:target } } } add = 15 }
+        } }
+}
+
+ga_challenge_crown = {
+    type = situation
+    show_message = no
+    potential = { scope:actor = { ga_is_goblin = yes is_subject = no is_junior_partner = no  } }
+    allow = { scope:actor = { at_war = no manpower_percentage >= 0.25 } }
+    automation_tick = never
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    cooldown = { type = ga_challenge_crown years = 5 }
+    price = price:ga_gathering_claim_price
+    select_trigger = {
+        looking_for_a = situation
+        interaction_source_list = { situation:ga_gathering_of_five = { add_to_list = source } }
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { this = situation:ga_gathering_of_five situation_is_active = yes }
+    }
+    select_trigger = {
+        looking_for_a = country
+        source_global_list = ga_five_kingdoms
+        target_flag = target
+        name = ga_choose_kingdom
+        none_available_msg_key = ga_no_kingdom_available
+        column = { data = name }
+        visible = {
+            ga_is_goblin = yes
+            this != scope:actor
+            is_subject = no
+            is_junior_partner = no
+            at_war = no
+            
+            NOT = { is_allied_with = { target = scope:actor } }
+            scope:actor = { can_declare_war_on = scope:target NOT = { has_truce_with = scope:target } }
+        }
+    }
+    effect = { if = { limit = { exists = scope:target } scope:actor = { add_casus_belli = { type = casus_belli:cb_subjugation target = scope:target years = 5 } } } }
+    ai_will_do = { add = -100
+        if = { limit = { exists = scope:target scope:actor = { wants_to_attack = scope:target } } add = 140 }
+        if = { limit = { scope:actor = { manpower_percentage < 0.5 } } subtract = 1000 } }
+}
+
+ga_claim_homeland = {
+    type = situation
+    show_message = no
+    potential = { scope:actor = { ga_is_goblin = yes is_subject = no is_junior_partner = no  } }
+    allow = { scope:actor = { at_war = no manpower_percentage >= 0.25 } }
+    automation_tick = never
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    cooldown = { type = ga_claim_homeland years = 5 }
+    price = price:ga_gathering_claim_price
+    select_trigger = {
+        looking_for_a = situation
+        interaction_source_list = { situation:ga_gathering_of_five = { add_to_list = source } }
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { this = situation:ga_gathering_of_five situation_is_active = yes }
+    }
+    select_trigger = {
+        looking_for_a = country
+        source_global_list = ga_five_kingdoms
+        target_flag = target
+        name = ga_choose_kingdom
+        none_available_msg_key = ga_no_kingdom_available
+        column = { data = name }
+        visible = {
+            ga_is_goblin = yes
+            this != scope:actor
+            is_subject = no
+            is_junior_partner = no
+            at_war = no
+            
+            NOT = { is_allied_with = { target = scope:actor } }
+            scope:actor = { can_declare_war_on = scope:target NOT = { has_truce_with = scope:target } }
+        }
+    }
+    effect = { if = { limit = { exists = scope:target } scope:actor = { add_casus_belli = {
+            type = casus_belli:cb_conquer_province target = scope:target province = scope:target.capital.province years = 5
+        } } } }
+    ai_will_do = { add = -100
+        if = { limit = { exists = scope:target scope:actor = { wants_to_attack = scope:target } } add = 140 }
+        if = { limit = { scope:actor = { manpower_percentage < 0.5 } } subtract = 1000 } }
+}
+
+ga_prepare_crossing = {
+    type = situation
+    show_message = no
+    potential = { scope:actor = { ga_is_goblin = yes is_subject = no is_junior_partner = no ga_controls_homeland = yes has_variable = ga_unifier } }
+    allow = { scope:actor = { at_war = no ga_controls_homeland = yes } }
+    automation_tick = never
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    cooldown = { type = ga_prepare_crossing years = 10 }
+    price = price:ga_gathering_crossing_price
+    select_trigger = {
+        looking_for_a = situation
+        interaction_source_list = { situation:ga_eastern_hunger = { add_to_list = source } }
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { this = situation:ga_eastern_hunger situation_is_active = yes }
+    }
+    
+    effect = { scope:actor = { add_country_modifier = { modifier = ga_crossing_preparations years = 5 mode = replace } } }
+    ai_will_do = { add = 20 }
+}
+
+ga_plan_eastern_foothold = {
+    type = situation
+    show_message = no
+    potential = { scope:actor = { ga_is_goblin = yes is_subject = no is_junior_partner = no ga_controls_homeland = yes has_variable = ga_unifier } }
+    allow = { scope:actor = { at_war = no  } }
+    automation_tick = never
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    cooldown = { type = ga_plan_eastern_foothold years = 3 }
+    price = price:ga_gathering_target_price
+    select_trigger = {
+        looking_for_a = situation
+        interaction_source_list = { situation:ga_eastern_hunger = { add_to_list = source } }
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { this = situation:ga_eastern_hunger situation_is_active = yes }
+    }
+    select_trigger = {
+        looking_for_a = province
+        target_flag = target
+        name = ga_choose_eastern_province
+        none_available_msg_key = ga_no_eastern_target
+        column = { data = name }
+        pre_evaluation_sort_value = { add = { value = "border_distance_to(scope:actor)" multiply = -1 } }
+        pre_evaluation_number_to_evaluate_fully = 8
+        visible = {
+            exists = owner
+            any_location_in_province = {
+                continent = continent:europe
+                is_coastal = yes
+                is_discovered_by = scope:actor
+                NOT = { area = area:cm_cindermaw_area }
+                owner = root.owner
+            }
+            NOT = { owner = { ga_is_goblin = yes } }
+        }
+        enabled = {
+            scope:actor = {
+                can_declare_war_on = root.owner
+                NOT = { has_truce_with = root.owner }
+                NOT = { is_allied_with = { target = root.owner } }
+            }
+        }
+    }
+    effect = { if = { limit = { exists = scope:target } scope:actor = {
+            set_variable = { name = ga_eastern_target value = scope:target years = 5 }
+            add_casus_belli = { type = casus_belli:ga_cb_eastern_foothold target = scope:target.owner province = scope:target years = 5 }
+        } } }
+    ai_will_do = { add = -100
+        if = {
+            limit = { exists = scope:target scope:actor = {
+                wants_to_attack = scope:target.owner
+                manpower_percentage >= 0.5
+                navy_size > 0
+            } }
+            add = 160
+        } }
+}

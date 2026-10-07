@@ -19,7 +19,7 @@ for item in manifest['files']:
 for filename in ['10_countries.txt','06_pops.txt','07_cities_and_buildings.txt','03_markets.txt']:
     if not (output/'main_menu/setup/start'/filename).is_file():raise SystemExit('Incomplete campaign setup.')
 dist=ROOT/'dist';dist.mkdir(exist_ok=True)
-docs=['NAMING_PROPOSALS.md','README.md','TESTING.md','LORE.md','RELEASE_NOTES.md','Install-Goblins.ps1','Install-Goblins.cmd']
+docs=['NAMING_PROPOSALS.md','README.md','TESTING.md','LORE.md','RELEASE_NOTES.md','PROTOTYPE_055.md','STEAM_DESCRIPTION.txt','STEAM_CHANGELOG.txt','Install-Goblins.ps1','Install-Goblins.cmd']
 with zipfile.ZipFile(dist/f'Goblins_Ashborn_Isles_{version}.zip','w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
     for p in sorted((ROOT/'build/goblins_ashborn_isles').rglob('*')):
         if p.is_file() and not (p.suffix=='.bin' and 'terrain_cache' in p.parts):z.write(p,'goblins_ashborn_isles/'+p.relative_to(ROOT/'build/goblins_ashborn_isles').as_posix())
@@ -31,6 +31,8 @@ with zipfile.ZipFile(dist/f'Goblins_Ashborn_Isles_{version}.zip','w',zipfile.ZIP
         if p.is_file():z.write(p,'reports/'+p.name)
     for p in sorted((ROOT/'art').glob('*')):
         if p.is_file():z.write(p,'art/'+p.name)
+    for name in ['art/events/README.md','art/flags/README.md','art/events/sources/gathering.png']:
+        z.write(ROOT/name,name)
 with zipfile.ZipFile(dist/f'Goblins_Ashborn_Isles_Source_{version}.zip','w',zipfile.ZIP_DEFLATED) as z:
     for name in docs+['requirements.txt','.gitignore','.gitattributes']:z.write(ROOT/name,'goblins-ashborn-isles-source/'+name)
     for folder in ['data','mod','tools','art','.github']:

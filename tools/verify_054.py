@@ -26,7 +26,8 @@ def verify(b,game,out,mapstats):
     pops=(out/'main_menu/setup/start/06_pops.txt').read_text(encoding='utf-8-sig')
     for l in locs:
         a,z=b.block_span(pops,l['id']);rows=pops[a:z]
-        assert sum(Decimal(v) for v in re.findall(r'\bsize\s*=\s*([\d.]+)',rows))==Decimal(str(l['pop']))
+        import mixed_populations
+        assert sum(Decimal(v) for v in re.findall(r'\bsize\s*=\s*([\d.]+)',rows))==Decimal(str(l['pop']))+mixed_populations.extra(l['id'])
     defs=(out/'in_game/map_data/definitions.txt').read_text(encoding='utf-8-sig')
     a,z=b.block_span(defs,'cm_cindermaw_area');area=defs[a:z]
     for l in locs:assert len(re.findall(r'\b'+re.escape(l['id'])+r'\b',area))==1

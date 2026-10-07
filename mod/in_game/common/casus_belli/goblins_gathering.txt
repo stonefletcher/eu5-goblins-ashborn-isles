@@ -1,0 +1,13 @@
+﻿ga_cb_eastern_foothold = {
+    years = 5
+    create_visible = { always = no }
+    create_enabled = { always = no }
+    declare_enabled = {
+        has_variable = ga_unifier
+        has_variable = ga_eastern_target
+        ga_controls_homeland = yes
+        scope:target = { this = root.var:ga_eastern_target.owner }
+    }
+    province = { this = scope:actor.var:ga_eastern_target }
+    war_goal_type = conquer_province
+}

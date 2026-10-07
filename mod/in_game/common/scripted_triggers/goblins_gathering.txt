@@ -1,0 +1,219 @@
+﻿ga_is_goblin = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+
+# country scope; unions are IOs in EU5, not a subject_type.
+ga_independent_goblin = { ga_is_goblin = yes is_subject = no is_junior_partner = no }
+
+# Claimant scope is explicitly captured by ga_controls_homeland before owner scopes.
+# Check the native overlord iterator without recursive scripted triggers.
+# Every intervening subject must be a vassal; tributary chains never count.
+ga_owner_in_claimant_realm = {
+    OR = {
+        this = scope:ga_claimant
+        AND = {
+            is_subject_type = vassal
+            any_overlord_or_above = {
+                OR = { this = scope:ga_claimant junior_union_with = { target = scope:ga_claimant } }
+            }
+            any_overlord_or_above = {
+                OR = {
+                    this = scope:ga_claimant
+                    is_subject_type = vassal
+                    junior_union_with = { target = scope:ga_claimant }
+                }
+                count = all
+            }
+        }
+        AND = { junior_union_with = { target = scope:ga_claimant } }
+    }
+}
+
+ga_controls_homeland = {
+    ga_independent_goblin = yes
+    save_temporary_scope_as = ga_claimant
+    AND = {
+        location:cm_cinder_crown = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_blackwood = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_copperfang = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_hooktooth = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_ashfields = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_saltjaw = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_redpasture = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_splinter_cove = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_ironbark = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_ashspine = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_emberfall = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_scorchbrook = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_obsidian_cut = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_cinder_shelf = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_smokehorn = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_goldscar = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_coaljaw = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_silverfang = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_netjaw = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_saffron_hollow = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_dyer_s_marsh = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_grazetooth = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_sawtooth = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_pitchfang = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_goldvein = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_clayjaw = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_reedfurrow = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_quarrystone = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_saltlip = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_ashgrain = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_brackhaven = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_brinewood = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_rustpeak = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_mossfields = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_bracksalt = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_mossglen = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_reedmouth = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_blackcrag = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_basalt_steps = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_fumarole_fields = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_rustneedle = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_brine_spur = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_bracknet = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_miregrove = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_silverneedle = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_mossfurrow = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_brinepasture = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_woolfen = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_reedfish = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_alumcrag = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_basaltgrain = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_saffron_vale = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_rustforge = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_dyer_s_fen = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_reefhook = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_crooked_reef = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_hookrim = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_tidefang = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_reefnet = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_coralpasture = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_pearlshore = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_tidegrain = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_shatterfin = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_shardpoint = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_stormpasture = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_silver_shard = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_knifeback = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_silkworm_grove = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_sootwake = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_ember_key = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_sootgrain = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_alum_key = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+    }
+}
+
+ga_owns_entire_homeland = {
+    ga_independent_goblin = yes
+    AND = {
+        owns = location:cm_cinder_crown
+        owns = location:cm_blackwood
+        owns = location:cm_copperfang
+        owns = location:cm_hooktooth
+        owns = location:cm_ashfields
+        owns = location:cm_saltjaw
+        owns = location:cm_redpasture
+        owns = location:cm_splinter_cove
+        owns = location:cm_ironbark
+        owns = location:cm_ashspine
+        owns = location:cm_emberfall
+        owns = location:cm_scorchbrook
+        owns = location:cm_obsidian_cut
+        owns = location:cm_cinder_shelf
+        owns = location:cm_smokehorn
+        owns = location:cm_goldscar
+        owns = location:cm_coaljaw
+        owns = location:cm_silverfang
+        owns = location:cm_netjaw
+        owns = location:cm_saffron_hollow
+        owns = location:cm_dyer_s_marsh
+        owns = location:cm_grazetooth
+        owns = location:cm_sawtooth
+        owns = location:cm_pitchfang
+        owns = location:cm_goldvein
+        owns = location:cm_clayjaw
+        owns = location:cm_reedfurrow
+        owns = location:cm_quarrystone
+        owns = location:cm_saltlip
+        owns = location:cm_ashgrain
+        owns = location:cm_brackhaven
+        owns = location:cm_brinewood
+        owns = location:cm_rustpeak
+        owns = location:cm_mossfields
+        owns = location:cm_bracksalt
+        owns = location:cm_mossglen
+        owns = location:cm_reedmouth
+        owns = location:cm_blackcrag
+        owns = location:cm_basalt_steps
+        owns = location:cm_fumarole_fields
+        owns = location:cm_rustneedle
+        owns = location:cm_brine_spur
+        owns = location:cm_bracknet
+        owns = location:cm_miregrove
+        owns = location:cm_silverneedle
+        owns = location:cm_mossfurrow
+        owns = location:cm_brinepasture
+        owns = location:cm_woolfen
+        owns = location:cm_reedfish
+        owns = location:cm_alumcrag
+        owns = location:cm_basaltgrain
+        owns = location:cm_saffron_vale
+        owns = location:cm_rustforge
+        owns = location:cm_dyer_s_fen
+        owns = location:cm_reefhook
+        owns = location:cm_crooked_reef
+        owns = location:cm_hookrim
+        owns = location:cm_tidefang
+        owns = location:cm_reefnet
+        owns = location:cm_coralpasture
+        owns = location:cm_pearlshore
+        owns = location:cm_tidegrain
+        owns = location:cm_shatterfin
+        owns = location:cm_shardpoint
+        owns = location:cm_stormpasture
+        owns = location:cm_silver_shard
+        owns = location:cm_knifeback
+        owns = location:cm_silkworm_grove
+        owns = location:cm_sootwake
+        owns = location:cm_ember_key
+        owns = location:cm_sootgrain
+        owns = location:cm_alum_key
+    }
+}
+
+# Evaluated in the recipient country. Repeat at acceptance to cover delayed popups.
+ga_valid_pact_offer = {
+    ga_independent_goblin = yes
+    at_war = no
+    country_exists = var:ga_offer_sender
+    var:ga_offer_sender = { ga_independent_goblin = yes at_war = no }
+    NOT = { is_rival_of = var:ga_offer_sender }
+    NOT = { is_enemy_of = var:ga_offer_sender }
+    NOT = { is_allied_with = { target = var:ga_offer_sender } }
+}
+
+ga_valid_submission_offer = {
+    ga_independent_goblin = yes
+    at_war = no
+    country_exists = var:ga_offer_sender
+    var:ga_offer_sender = { ga_independent_goblin = yes at_war = no }
+    is_allied_with = { target = var:ga_offer_sender }
+    relative_strength = { target = var:ga_offer_sender value <= 0.65 }
+    "opinion(var:ga_offer_sender)" >= 125
+    var:ga_offer_sender.country_rank_level >= country_rank_level
+}
+
+ga_has_european_foothold = {
+    ga_controls_homeland = yes
+    any_country = {
+        ga_owner_in_claimant_realm = yes
+        any_owned_location = {
+            continent = continent:europe
+            is_coastal = yes
+            NOT = { area = area:cm_cindermaw_area }
+        }
+    }
+}

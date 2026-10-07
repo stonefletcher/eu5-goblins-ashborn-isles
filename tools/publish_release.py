@@ -80,7 +80,7 @@ def main():
     print(f'Verified release commit: {target}', flush=True)
     subprocess.run(['gh', 'release', 'create', tag, str(path), str(checksum),
                     '--target', target,
-                    '--title', f'Goblins of the Ashborn Isles {version} - Districts and Dynasties',
+                    '--title', f'Goblins of the Ashborn Isles {version}',
                     '--notes-file', str(root / f'RELEASE_NOTES_{version}.md'),
                     '--latest'], check=True)
 

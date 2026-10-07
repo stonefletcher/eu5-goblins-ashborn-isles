@@ -140,7 +140,8 @@ def validate(game,out,mapstats,economy):
     pops=(out/'main_menu/setup/start/06_pops.txt').read_text(encoding='utf-8-sig')
     for l in CFG['locations']:
         a,b=block_span(pops,l['id']);sizes=re.findall(r'\bsize\s*=\s*([\d.]+)',pops[a:b])
-        assert sum(map(Decimal,sizes))==Decimal(str(l['pop']))
+        import mixed_populations
+        assert sum(map(Decimal,sizes))==Decimal(str(l['pop']))+mixed_populations.extra(l['id'])
     checks.append(f'Each location population matches its specification: {economy["total_population"]:,} people across five countries.')
     checks.append('All generated locations are connected within their islands; every island has a port into the connected coastal basin.')
     checks.append('Archipelago replaces only impassable ocean pixels; all vanilla land and navigable sea lanes are preserved.')
@@ -221,6 +222,10 @@ def main():
     economy['longevity']=goblin_longevity.verify(sys.modules[__name__],out)
     import exploration
     discovery=exploration.build(sys.modules[__name__],game,out)
+    import gathering
+    gathering_report=gathering.build(out,CFG)
+    import export_event_art
+    export_event_art.build(out)
     import export_goblin_models
     models=export_goblin_models.build(out)
     import build_goblin_portraits
@@ -238,6 +243,9 @@ def main():
     features=verify_features.verify(sys.modules[__name__],out,mapstats)
     import verify_054
     features['version_054']=verify_054.verify(sys.modules[__name__],game,out,mapstats)
+    from verify_055 import verify as verify_gathering
+    features['version_055']=verify_gathering(ROOT,game,out)
+    (reports/'gathering.json').write_text(json.dumps(gathering_report,indent=2),encoding='utf-8')
     (reports/'feature_verification.json').write_text(json.dumps(features,indent=2),encoding='utf-8')
     (reports/'model_export.json').write_text(json.dumps(models,indent=2),encoding='utf-8')
     (reports/'model_verification.json').write_text(json.dumps(model_checks,indent=2),encoding='utf-8')

@@ -1,5 +1,6 @@
 """Small, optional voyages that reveal coastlines only after the crews return."""
 import re
+import event_art
 
 ROUTES = {
     'east': {'cost':5,'months':4,'event':2,'areas':['iberian_west_coast_area'],'locations':['lisbon','porto','setubal']},
@@ -79,7 +80,7 @@ def build(b,game,out,validate_setup=True):
     title = goblins_exploration.{num}.title
     desc = goblins_exploration.{num}.desc
     trigger = {{ OR = {{ {tags} }} }}
-    illustration_tags = {{ 10 = exterior }}
+    image = "{event_art.image(f'goblins_exploration.{num}')}"
 '''+ '\n'.join(voyage_option(route,num) for route in routes)+f'''
     option = {{
         name = goblins_exploration.{num}.wait
@@ -95,7 +96,7 @@ def build(b,game,out,validate_setup=True):
     title = goblins_exploration.6.title
     desc = goblins_exploration.6.desc
     trigger = {{ NOT = {{ OR = {{ {tags} }} }} }}
-    illustration_tags = {{ 10 = exterior }}
+    image = "{event_art.image('goblins_exploration.6')}"
     option = {{ name = goblins_exploration.6.a }}
 }}
 ''')
@@ -129,7 +130,7 @@ def build(b,game,out,validate_setup=True):
     title = goblins_exploration.{num}.title
     desc = goblins_exploration.{num}.desc
     trigger = {{ OR = {{ {tags} }} }}
-    illustration_tags = {{ 10 = exterior }}
+    image = "{event_art.image(f'goblins_exploration.{num}')}"
     option = {{
         name = goblins_exploration.{num}.a
 {effects}

@@ -1,9 +1,44 @@
-# 0.5.4 release handoff
+# 0.5.5 complete-release handoff
 
-Release branch: release/v0.5.4, based on staging/0.5.4 commit f4a93059c6b79366191504adee64293031f448cb. The prepared staging bundle passed GitHub installer verification. Final release publication verifies transport hashes, packaged populations/ages and art, refreshes release documentation in the ZIP, and verifies the result again.
+Checkout: work/repo, merge/release-055-main, integrating release/v0.5.5 into main.
+User authorized the main merge and requested the installed Workshop upload folder.
+Release source: 393d6badf5118a4d6884dee76eafa4da0628da17.
+Verified bundled tree: 3b7861b3fdc3a940cd321d1fb1d3ebe78e8de337.
 
-Final scope: 1,294,755 goblins; 72 locations/30 provinces; 114 building levels; 387 first-month RGO levels; dynasty-only Ironfang succession, dynastic naming, varied rulers aged 27–39 and Ashborn +15-year life expectancy. Shatterfin retains maternal seniority. 0.5.3 art/contact work is preserved; 0.5.5 expansion work is excluded.
+Completed: full 0.5.5 build and regular installer bundle, including Gathering,
+Eastern Hunger, revised clan identities, mixed populations, all event/situation
+art and all five clan flags. No 0.5.4 prerequisite or prototype add-on is needed.
+README, release notes, Workshop description/changelog and test guidance describe
+one full mod; the prototype installation guide is explicitly historical.
 
-Use the standard package plus Install-Goblins.cmd. WORKSHOP_UPLOAD.md describes the installed-folder upload route. No separate Workshop kit is generated.
+Passed: full static build (72 districts, 1,618,696 people), native reference and
+ownership checks, art/flag validation, bundle reconstruction/CRC/unique members,
+all 39 Gathering/art/flag file comparisons, and exact Git-export PrepareOnly.
+Regular installation to isolated user data passed. Independent verification
+hashed all 1,639 packaged runtime files and three final terrain caches. The
+existing source/bundle version mismatch is resolved; all layers report 0.5.5.
 
-Gameplay acceptance remains pending; use TESTING.md. Release preparation does not install locally, launch EU5, merge main or upload to Steam.
+Deliverable: outputs/Goblins_Ashborn_Isles_0.5.5.zip, 253,684,636 bytes.
+SHA-256: 7fdd318f7b0346c6e6ecf082025564fed3097e1623b7b81f7da79b8f27071d93.
+Evidence: outputs/Ashborn_0.5.5_Release_Validation.json and workspace release logs.
+Source and matching bundle are pushed to staging/0.5.5. This follow-up changes
+only this handoff; verified release content remains the tree identified above.
+
+Pending: user-run in-game UI/art, AI and balance acceptance. Disable the earlier
+Gathering Prototype add-on and start a new 1337 campaign. No active installation,
+game launch or Workshop publication was performed.
+
+Published: GitHub release v0.5.5 (non-draft, non-prerelease), tagged at e2276ec,
+with the full installer and focused RELEASE_NOTES_0.5.5.md. Publishing workflow
+37653002068 passed. Published asset size/digest and a fresh downloaded ZIP match
+the SHA-256 above. Release URL:
+https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.5
+
+Main integration preserves earlier main-only release tooling, hotfix scripts,
+historical releases and artwork while retaining the verified 0.5.5 bundle and
+current player guide. WORKSHOP_UPLOAD.md now describes 0.5.5 and the regular
+installer. The existing installed mod already reports 0.5.5; all 1,639 packaged
+files and three terrain caches match the published archive without reinstalling.
+Upload folder: C:/Users/alexa/Documents/Paradox Interactive/Europa Universalis V/mod/goblins_ashborn_isles
+Use Mod Tools > Uploaded mods > existing listing > Upload content from a folder.
+No Steam upload has been performed. Final main merge state is recorded in its PR.

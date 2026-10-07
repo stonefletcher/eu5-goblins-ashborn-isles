@@ -270,6 +270,7 @@ def build_map(b,game,out,reports):
 
 def build_setup(b,game,out):
     import ashborn_names
+    import mixed_populations
     cfg=b.CFG;locs=cfg['locations'];countries=cfg['countries'];entries=[];popentries=[];cities=[];markets=[];total=Decimal(0);slaves=Decimal(0)
     vanilla=b.read(game,'main_menu/setup/start/10_countries.txt');outer,_=b.block_span(vanilla,'countries')
     for c in countries:
@@ -309,6 +310,9 @@ def build_setup(b,game,out):
             assert all(value>=0 for _,value in parts) and sum(value for _,value in parts)==n,l['id']
             captive=dict(parts).get('slaves',Decimal(0))
         rows=[f' define_pop = {{ type = {typ} size = {v:.3f} culture = {l["culture"]} religion = cm_hunger_below }}' for typ,v in parts]
+        rows += mixed_populations.rows(l['id'])
+        n += mixed_populations.extra(l['id'])
+        captive += sum((Decimal(str(p['size'])) for p in mixed_populations.additions().get(l['id'], []) if p['type']=='slaves'), Decimal(0))
         popentries.append(l['id']+' = {\n'+'\n'.join(rows)+'\n}');total+=n;slaves+=captive
     b.write(out,'in_game/common/town_setups/goblins_ashborn_isles.txt','\n'.join(town_templates)+'\n')
     b.write(out,'main_menu/setup/start/10_countries.txt',b.inject(vanilla,'countries','\n'.join(entries),outer+1))
@@ -319,9 +323,9 @@ def build_setup(b,game,out):
     b.write(out,rel,b.inject(b.read(game,rel),'monarchy','heir_selection = cm_rule_of_the_strongest\nheir_selection = cm_tidemother_seniority'))
     b.write(out,'in_game/setup/countries/goblins_ashborn_isles.txt','\n'.join(f'{c["tag"]} = {{ color = rgb {{ {" ".join(map(str,c["color"]))} }} color2 = rgb {{ 36 31 29 }} culture_definition = {c["culture"]} religion_definition = cm_hunger_below is_historic = no }}' for c in countries)+'\n')
     b.write(out,'in_game/common/cultures/goblins_ashborn_isles.txt','\n'.join(f'{c["culture"]} = {{ language = {c["culture"]}_dialect color = rgb {{ {" ".join(map(str,c["color"]))} }} tags = {{ european_gfx {c["culture"]}_gfx }} culture_groups = {{ cm_goblin_group }} opinions = {{ }} }}' for c in countries)+'\n')
-    flag=(b.ROOT/'mod/main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt').read_text()
-    b.write(out,'main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt','\n'.join(flag.replace('CDM =',c['tag']+' =').replace('color2 = red', 'color2 = '+['red','blue','yellow','purple','orange'][i]) for i,c in enumerate(countries)))
-    return {'total_population':int(total*1000),'enslaved_population':int(slaves*1000),'starting_gold':{c['tag']:c['gold'] for c in countries},'rgo_expansion_levels':{l['id']:l['rgo_expansion'] for l in locs},'starting_buildings':{l['id']:l['buildings'] for l in locs},'vanilla_population_entries_unchanged':True,'country_populations':{c['tag']:sum(int(Decimal(str(l['pop']))*1000) for l in locs if l['country']==c['tag']) for c in countries}}
+    import build_clan_flags
+    build_clan_flags.build(out)
+    return {'total_population':int(total*1000),'enslaved_population':int(slaves*1000),'starting_gold':{c['tag']:c['gold'] for c in countries},'rgo_expansion_levels':{l['id']:l['rgo_expansion'] for l in locs},'starting_buildings':{l['id']:l['buildings'] for l in locs},'vanilla_population_entries_unchanged':True,'country_populations':{c['tag']:sum(int((Decimal(str(l['pop']))+mixed_populations.extra(l['id']))*1000) for l in locs if l['country']==c['tag']) for c in countries}}
 
 def add_localization(b,out):
     rel='main_menu/localization/english/goblins_ashborn_isles_l_english.yml';p=out/rel;s=p.read_text(encoding='utf-8-sig');extra={}
@@ -340,6 +344,8 @@ def add_localization(b,out):
     extra.update(goblin_longevity.LOCALIZATION)
     import ashborn_names
     extra.update(ashborn_names.localization())
+    import clan_identity
+    extra.update({clan_identity.CULTURES[tag]+'_desc':p['culture_description'] for tag,p in clan_identity.PROFILES.items()})
     extra.update({z['id']:z['name'] for z in b.CFG['coastal_sea']['zones']})
     # Replace existing keys rather than emit duplicate localization.
     extra.update({'cindermaw.1.desc':LORE,'cm_demo_building_tip':'Hooktooth is a city with a marketplace, naval-supplies guild and stockade. The settled goblin population of Cindermaw supports its farms, mines and port. The neighboring goblin captains rule independent countries.','cm_cindermaw_area':'The Ashborn Isles'})
@@ -354,5 +360,5 @@ def add_localization(b,out):
         if re.search(pattern,s):s=re.sub(pattern,lambda m:line,s)
         else:s+=line+'\n'
     b.write(out,rel,s)
-    (b.ROOT/'LORE.md').write_text('# Goblins of the Ashborn Isles\n\n'+LORE+'\n',encoding='utf-8')
+    (b.ROOT/'LORE.md').write_text('# Goblins of the Ashborn Isles\n\n'+LORE+'\n'+clan_identity.lore_sections(),encoding='utf-8')
 

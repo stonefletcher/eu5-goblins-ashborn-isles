@@ -1,6 +1,46 @@
-# Goblins of the Ashborn Isles 0.5.4 verification
+## 0.5.5 art acceptance
 
-Run `python tools/verify_prepared_bundle.py` for package validation. For engine acceptance, install 0.5.4 with EU5 closed and start a new 1337 campaign.
+Check all five country shields and land/naval flags against the Gathering banner
+reference: Cindermaw black volcano/rust orange; Brackmaw ivory reeds/olive;
+Reefhook ivory curling wave/teal; Shatterfin ivory shark and three waves/slate
+blue; Sootwake ivory spiked helmet/charcoal. Check diplomacy and country headers,
+small situation participants, map armies and ships. Confirm transparent emblem
+surrounds, no skull-and-swords fallback and no duplicate Cindermaw arms. Restart
+fully after installing to refresh flag art; check a new campaign and save/reload.
+Native flag shape and lighting can change the appearance from the flat preview.
+
+Install the full 0.5.5 release with Install-Goblins.cmd and disable the separate
+Gathering Prototype add-on. Start a new 1337 campaign. Inspect both situation
+headers and their 128 x 128 icons in the situation list, panel and notifications.
+Check the Gathering council and Eastern Hunger fleet appear without missing
+textures or generic fallback art. Inspect at normal UI scale and one larger scale.
+
+Read all five clan introductions: stone arrow and forge for Cindermaw, tidal gate
+and stores for Brackmaw, split shell and rescue harbor for Reefhook, female ruler
+and maternal household for Shatterfin, scorched branch and woodland for Sootwake.
+Check the harbor pact, oath, unification, eastern preparation and first-harbor
+events. Oath offer/acceptance and both unification perspectives intentionally
+share their corresponding painting. Faces and props must remain readable under
+the native frame, with intact choices and no foreground character overlay.
+
+Complete east, north and south exploration voyages and inspect departure, charts,
+Iberia, Biscay and African coast art. From a contacted foreign country, inspect
+the human scout following goblin sails in Strange Visitors on Our Shores. Check
+the initial Cindermaw lore event uses its forge illustration. Save/reload and reopen
+the active situation. Inspect the error log for missing DDS or image-path errors.
+Static art validation does not establish these engine/UI results.
+
+# 0.5.5 Jaima Gathering acceptance
+
+Start a new 1337 campaign as Shatterfin with the prototype after the 0.5.4 base. Check Jaima, the Mare-Mother, at 66/58/52 and Skritcha as initial eligible successor. When the Gathering starts, read The Tidemother’s Terms; 30 days after its introduction, read The Maternal House Endures. Save/reload during the delay and continue for several months to verify one delivery. Check all buttons and family names. Neither event changes stats, heirs, laws or relationships. Repeat as each other kingdom: its own introduction must fire and neither Shatterfin event should appear. Check voluntary Shatterfin vassalage preserves the maternal house and law. In-game delivery and layout remain unverified by static checks.
+
+## 0.5.5 clan identity acceptance
+
+Cindermaw: check Drogg, The Stone Fletcher, at 78/80/96 ADM/DIP/MIL, with exactly one nickname. Read the expanded Emberblood culture description and the **One Fire, Many Blades** Gathering introduction. Verify Grakka, Grask and Kragga retain their original family links and dates. Military institutions and influence described in the text are flavor; no free forces, imposed allegiance or new diplomatic mechanics are granted.
+
+Enable the 0.5.4 base and the prepared 0.5.5 add-on, then start a new 1337 campaign. Check Murgash Brackmaw, The Sluice-King (84/78/90 ADM/DIP/MIL), Skrezz Reefhook, The Wreck-Taker (62/88/90), and Snikh Sootwake, The Blackbough (80/54/90). Their culture descriptions should show the expanded Brineward, Reefstrider and Ashveil customs. House names, parents, spouses, children, birthdays and strongest-dynasty succession should match the base. Krizzek and Zhor remain the adult dynastic successors at start.
+
+Run each kingdom to the Gathering introduction. Check The Sluice-King's Bargain, The Wreck-Taker's Share and Beneath the Blackbough for readable text, correct family names and intact buttons. These are narrative changes: rescue shares, cutting rights, house sayings and court interests do not add new actions or economic bonuses. Disable the add-on and start a separate base-only campaign to confirm the base's original names, abilities and descriptions return. In-game display, override precedence and event layout remain unverified by static tests.
 
 ## 0.5.4 demographic revision acceptance
 
@@ -10,28 +50,25 @@ Check Goblin Longevity in character life-expectancy modifiers: +15 years for eac
 
 Inspect food prices, employment, RGO capacity, tax receipts and budgets after the first monthly initialization and after 1, 5 and 10 years. More people and capacity have passed static checks, but economic viability needs gameplay evidence. Check the three smaller clans especially.
 
+Earlier population figures below refer to the initial 0.5.4 pass.
+
 # 0.5.4 acceptance checklist
 
 Use a NEW 1337 campaign, only the intended 0.5.4 copy active.
 
 1. Confirm 72 land locations and 30 provinces, with complete borders, settlements, ports and navigable channels.
-2. Starting population before simulation: CDM 552,739; QBR 318,463; RHK 108,437; SFK 213,487; SWK 101,629. Total 1,294,755. Check burgher/laborer employment alongside peasants.
+2. Starting population before simulation: CDM 368,134; QBR 210,677; RHK 35,067; SFK 35,442; SWK 33,374. Total 682,694. Check burgher/laborer employment alongside peasants.
 3. All five capitals: marketplace level 2, granary level 1 and tools/cloth/pottery guilds. Check wheat windmills and iron/copper smelters have usable production methods.
 4. First monthly pulse grants RGO investment once. Save/reload and advance another year to check for repeated grants.
 5. Inspect Goldscar/Goldvein, Silverfang/Silverneedle/Silver Shard, Saffron Hollow/Vale, Dyer's Marsh/Fen, Silkworm Grove, Pearlshore and Alumcrag/Alum Key. Original resource districts remain beside them.
 6. Run all clans for 1, 5 and 10 years; record treasury balance, tax/trade income, building profitability, employment, market access and provincial food. Check luxury production does not starve basic industry of workers.
-7. Each Ironfang clan has an eligible adult dynastic heir (a son or brother). Eligible dynastic candidates must qualify ahead of an unrelated courtier even if that courtier has higher MIL. In a disposable save, raise another eligible dynastic adult man's MIL and check he leads. Minors, women, foreign rulers and blocked candidates remain excluded.
+7. Each Ironfang dynastic son (MIL 82) initially qualifies ahead of unrelated courtier MIL 86. In a disposable save, raise another eligible dynastic adult man's MIL and check he leads. Minors, women, foreign rulers and blocked candidates remain excluded.
 8. With no eligible adult men in the dynasty, no unrelated courtier may become eligible under this law. Test the native crisis/alternative-law path separately.
 9. Force a new dynasty or successful pretender takeover in a disposable save: displayed country name/adjective should follow the new house, with tag, territory, relations and events intact. Directly reassign a ruler's dynasty, advance a month and check reconciliation. A regent must not rename the country.
 10. Shatterfin retains Jaima, the Mare-Mother, and maternal seniority: Skritcha is the initial eligible successor; stronger men cannot inherit. A new maternal house also updates the country name.
 11. Regression: human portraits, goblin courts, visible infantry, recruitment art, voyages and reciprocal first contact.
 
 Static checks do not establish gameplay acceptance. Earlier-version notes follow.
-
-
-## Historical regression notes
-
-The following sections describe earlier versions. Their population figures, location counts and download paths are historical; use the 0.5.4 targets above.
 
 ## 0.5.3 infantry attachment repair — user tested
 

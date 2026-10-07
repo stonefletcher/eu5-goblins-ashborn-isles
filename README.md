@@ -1,99 +1,101 @@
-# Goblins of the Ashborn Isles - 0.5.4
+# Goblins of the Ashborn Isles
 
-![Goblins of the Ashborn Isles](art/Goblins_Banner.png)
+Five goblin kingdoms share six volcanic islands in the Atlantic. Unite their rival crowns, chart the waters beyond your homeland, and claim a foothold on Europe's coast in **Europa Universalis V**.
 
-Five rival goblin kingdoms occupy six volcanic islands between the Azores and Portugal. They share the Ashborn heritage, Cinder Tongue and the Hunger Below faith, with distinct cultures, ruling houses and clan identities.
+![The five Ashborn clans gather beneath their banners](art/events/sources/gathering.png)
 
-**Release branch:** [release/v0.5.4](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/tree/release/v0.5.4).
-**Game version:** EU5 1.3.11 (Pavia). Restart the game and use a **new 1337 campaign**.
+**Version 0.5.5 — The Gathering of the Five.** This complete mod is built for **EU5 1.3.11** and requires a **new 1337 campaign**. English text is included. Gameplay acceptance of the new situations and artwork is still pending.
 
-[Download 0.5.4](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.4) | [Release notes](RELEASE_NOTES_0.5.4.md) | [Testing](TESTING.md) | [Workshop upload](WORKSHOP_UPLOAD.md) | [Lore](LORE.md)
+## Install and play
 
-## Districts and Dynasties
+The full 0.5.5 package includes the islands, goblin characters, Gathering campaign, mixed populations and custom artwork. No earlier version is required.
 
-Built on tested staging/0.5.3. EU5 1.3.11; a new 1337 campaign is required.
+1. Download **Goblins_Ashborn_Isles_0.5.5.zip** when available from the [release downloads](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases), or open the [0.5.5 staging branch](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/tree/staging/0.5.5) and choose **Code → Download ZIP**.
+2. Extract the complete ZIP into a writable folder and close EU5 completely.
+3. Run **Install-Goblins.cmd** from the extracted folder. Let it finish preparing and installing the mod.
+4. Enable **Goblins of the Ashborn Isles** in your EU5 playset. **Disable Goblins 0.5.5 - Gathering Prototype** if you used the earlier add-on: its content is now included in the full mod.
+5. Restart EU5 and start a **new 1337 campaign** as any of the five goblin kingdoms.
 
-- 1,294,755 goblins. The initial +15% pass is followed by at least another +50% for every clan; smaller clans receive a larger uplift. Location and population-class shares are preserved with whole-person rounding. Shatterfin is the largest smaller clan.
-- 36 → 72 inhabited locations and 15 → 30 provinces. Every original location and province is subdivided. Stable country tags, original location IDs, capitals, coastlines and thirteen sea zones remain.
-- Starting building levels rise from 47 to 114: stronger capital markets, five granaries, tools/cloth/pottery guilds, rural villages, wheat windmills and smelters on iron/copper RGOs.
-- Once-only, ownership-checked first-month RGO expansion rises from 70 to 387 levels across the larger map.
-- New RGOs: 2 gold, 3 silver, 2 dyes, 2 saffron, 1 silk, 1 pearls and 2 alum. New food/timber/material districts support basic demand; original districts retain their resources. Native gold ID: goods_gold.
-- Ironfang: strongest eligible adult Ashborn man within the ruling dynasty inherits. Military ability decides, with Administration and age breaking ties. Unrelated courtiers cannot inherit through this law; no eligible dynasty member means no eligible heir.
-- Native country naming follows the reigning house after a takeover or dynasty reassignment; succession hooks and monthly reconciliation cover changes. Regents do not rename the country. Shatterfin keeps maternal seniority.
-- Starting ruler ages vary: Cindermaw 38, Brackmaw 36, Reefhook 27, Shatterfin 39 and Sootwake 29. Consorts and courtiers also have varied birthdays. Family birth dates retain plausible parent ages and adult dynastic heirs (brothers for the younger rulers). Shatterfin keeps four eligible adult women and maternal seniority.
-- A native character auto modifier gives all five Ashborn cultures +15 years of life expectancy, including future characters and goblins employed abroad; human characters receive no species bonus.
-- Retains 0.5.3 human portrait isolation, working shared-pose infantry, recruitment art and first-contact events.
+Use the installer rather than copying the mod folder by hand: it prepares the terrain for your game installation, checks the files and backs up an existing installation. Allow roughly 4 GB of working space. It installs under your EU5 user-data folder and leaves Steam's game files alone.
 
-| Clan | Starting population | Increase over first 0.5.4 pass |
-|---|---:|---:|
-| Cindermaw | 552,739 | 50.15% |
-| Brackmaw | 318,463 | 51.16% |
-| Reefhook | 108,437 | 209.23% |
-| Shatterfin | 213,487 | 502.36% |
-| Sootwake | 101,629 | 204.52% |
+Keep your old saves separately. Starting populations and campaign setup have changed, so begin a fresh campaign after updating from 0.5.4 or the prototype. The old **Install-Prototype-055.cmd** is only for the earlier 0.5.4 add-on workflow; use **Install-Goblins.cmd** for this release.
 
-Installed Europe reference medians: 520 map pixels/location, 2,626 pixels/province and 5 locations/province. The new districts use this spatial scale as a reference while preserving the islands' smaller political units.
+## Choose your clan
 
-Volcanic/hydrothermal seams explain gold, silver and alum; reeds/lichens supply dyes; drained sheltered volcanic plots grow saffron. Knifeback has a small cultivated silk grove and Reefhook has pearl-diving grounds. These are fictional resources appropriate to the setting.
+All five kingdoms can lead the Gathering. Their courts, cultures and starting positions give each a different story.
 
-Extra production capacity is not guaranteed profitability. Food, employment, balance and succession require gameplay acceptance. Use the matching 0.5.4 package and installer.
+| Kingdom | Ruler | What defines it |
+|---|---|---|
+| **Cindermaw** | Drogg, the Stone Fletcher | The largest kingdom. Emberblood forges, muster yards and volcanic defenses support Drogg's claim to lead the Isles. |
+| **Brackmaw** | Murgash, the Sluice-King | Brineward marsh engineers and harbor workshops. Murgash builds influence through provisions, waterways and carefully remembered debts. |
+| **Reefhook** | Skrezz, the Wreck-Taker | Reefstrider pilots, fishing households and pearl divers. Skrezz balances rescue obligations, salvage and foreign friendships. |
+| **Shatterfin** | Jaima, the Mare-Mother | Stormfang crews and a maternal royal house spanning two islands. Jaima bargains for security while preserving her family's succession. |
+| **Sootwake** | Snikh, the Blackbough | Ashveil woodland settlements, charcoal hearths and guarded forest paths. Snikh defends the groves that sustain his people. |
 
+The Isles begin with **1,618,696 goblins across 72 districts**. All five Ashborn cultures live throughout the archipelago, alongside each kingdom's majority culture. Port communities, free workers and enslaved populations reflect generations of migration and raids.
 
+Four kingdoms use **Ironfang Monarchy**: the strongest eligible adult Ashborn man within the ruling dynasty inherits, with administration and age breaking ties. Shatterfin follows **maternal seniority**, with Jaima's sister Skritcha initially next in line. Kingdom names can follow a new ruling dynasty.
 
-## Install
+For the families, rivalries and origins behind each crown, read the [Ashborn lore](LORE.md).
 
-1. Download `Goblins_Ashborn_Isles_0.5.4.zip` and extract it into a fresh writable folder.
-2. Close EU5 and double-click **Install-Goblins.cmd**. The installer reconstructs and verifies terrain, backs up the previous installation and installs the full mod.
-3. Enable **Goblins of the Ashborn Isles** alone for initial testing, restart EU5 and start a **new 1337 campaign**.
+## Your campaign
 
-The normal installed folder is `Documents\Paradox Interactive\Europa Universalis V\mod\goblins_ashborn_isles`. If game detection fails, run `Install-Goblins.ps1 -GamePath "YOUR EU5 GAME DIRECTORY"`. A custom user-data location can be selected with `-UserDataPath`. Allow roughly 4 GB of working space.
+### Gather the Five
 
-GitHub **Code > Download ZIP** on the release branch also works: extract it and run the same installer. The compact payload requires terrain reconstruction; do not manually copy the authored `mod` directory. Use `-PrepareOnly` to prepare full content without installing it.
+Early in the campaign, **The Gathering of the Five** brings the kingdoms into a shared struggle for leadership. Offer alliances, send paid aid, negotiate voluntary vassalage, or pursue conquest through normal EU5 warfare. Other rulers can refuse your offers.
 
-## Clans
+To complete the Gathering, all **72 homeland districts** must belong to your realm through direct ownership, qualifying vassals or a union in which you hold the senior crown. An alliance alone does not unite the Isles, and occupying a district during a war does not count as owning it.
 
-| Clan | Culture | Capital | Population | Ruler age |
-|---|---|---|---:|---:|
-| Cindermaw | Emberblood | Hooktooth | 552,739 | 38 |
-| Brackmaw | Brineward | Brackhaven | 318,463 | 36 |
-| Reefhook | Reefstrider | Reefhook | 108,437 | 27 |
-| Shatterfin | Stormfang | Shatterfin | 213,487 | 39 |
-| Sootwake | Ashveil | Sootwake | 101,629 | 29 |
+Each kingdom receives its own introduction. Shatterfin also has a family council event about the maternal house. These stories accompany your decisions; they do not automatically settle treaties or change succession laws.
 
-King Drogg Cindermaw bears the nickname **the Stone Fletcher**. Jaima Shatterfin, **the Mare-Mother**, leads the Tidemothers. All five cultures have their own personal, house and lowborn name pools and authored royal families.
+### Explore the Atlantic
 
-## Succession
+Your country initially knows the Ashborn homeland and its surrounding waters. Optional voyages open routes east toward Iberia, north toward Biscay and the English Channel, and south toward northwest Africa.
 
-Four clans use Ironfang Monarchy and Rule of the Strongest: the strongest eligible adult Ashborn man in the reigning dynasty inherits. Unrelated courtiers are excluded. An exhausted eligible dynasty requires the native crisis or alternative-law path; the law does not silently admit outsiders.
+Expeditions cost gold and take time. Each kingdom develops its own charts. When your explorers reach a foreign coast, its owners also discover the Ashborn Isles.
 
-Shatterfin uses Tidemother Monarchy and maternal dynastic seniority. The oldest eligible adult Stormfang woman of the ruling dynasty inherits; her mother must belong to the same dynasty. Skritcha is the initial eligible successor. Children born to women of that house inherit the maternal dynasty while the law is active. Normal monarchy law controls remain available.
+### Pursue the Eastern Hunger
 
-Country names follow the reigning dynasty after a takeover or reassignment; regents do not rename a country.
+Once the homeland is united, **Eastern Hunger** turns your attention to Europe. Pay to prepare your fleet, then select a discovered European coastal province as a conquest objective.
 
-## Art and exploration
+The preparation costs **20 gold** and temporarily improves transport construction costs and naval morale. Choosing an objective costs **10 gold** and grants a temporary conquest casus belli (a reason to declare war) for use through the normal declaration and peace process. You must build your fleet, fight the war and secure the harbor yourself.
 
-Goblin portraits and infantry follow the five Ashborn cultures, including goblins employed abroad. Human cultures remain isolated. The 0.5.3 infantry shared-pose attachment repair passed the user's visibility/crash test on October 6, 2026; visual refinement remains tracked in [issue #4](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/issues/4). Portrait fit and wider animation coverage still require testing.
+Holding a qualifying European coastal foothold completes the situation. Keep the homeland united: losing that unity blocks further eastern actions and use of the special casus belli.
 
-Each clan starts with knowledge of the Ashborn land and sea areas. Optional eastern, northern and southern voyages reveal coastal routes and ports. Current owners of visited ports discover the islands and receive a once-per-country first-contact event. The 0.5.5 expansion chain and dedicated foreign invasion ambitions are not included.
+## What is new in 0.5.5?
 
-## Steam Workshop
+- **Two connected situations:** the Gathering and Eastern Hunger, with seven diplomatic and military actions.
+- **Expanded clan stories:** five distinct introductions, revised ruler identities and Shatterfin's maternal-house follow-up.
+- **Mixed populations:** 323,941 additional goblins from minority Ashborn cultures spread across the Isles.
+- **Custom artwork:** 17 original paintings cover all 21 authored events. Both situations have their own headers and icons.
+- **Five matching clan flags:** a black volcano on rust orange, ivory reeds on olive, a curling wave on teal, a shark and waves on blue, and a spiked helmet on charcoal.
 
-Use the package and installer above, then upload the **installed full mod folder** to the [existing Workshop item](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518). Paste `STEAM_DESCRIPTION.txt` and `STEAM_CHANGELOG.txt`; select `.metadata/thumbnail.png` for the preview. See [WORKSHOP_UPLOAD.md](WORKSHOP_UPLOAD.md). GitHub publication does not upload to Steam.
+The base mod also includes custom goblin portraits and infantry, volcanic terrain, coastal settlements, local industries and exploration events.
 
-## Build and validation
+## Compatibility and troubleshooting
 
-Python 3.11+, NumPy and Pillow are required for a full build against a licensed matching EU5 installation:
+**This mod is still in development.** Release packaging and automated validation are separate from gameplay testing. In-game acceptance of the situation UI, new artwork, AI behavior and balance is still pending. Achievements and multiplayer have not been verified.
 
-```powershell
-python -m pip install -r requirements.txt
-python tools/build.py --game "YOUR EU5 GAME DIRECTORY"
-python tools/package.py
-```
+Other mods that change the map, starting world or terrain shaders may conflict. For a first test, enable this full mod on its own. A game update may require a matching mod build.
 
-Generated content goes to `build/goblins_ashborn_isles`, reports to `build/reports` and packages to `dist`. Game-derived full terrain caches are excluded from authored source tracking.
+| Problem | What to check |
+|---|---|
+| The installer cannot find EU5 | Run Install-Goblins.ps1 with its -GamePath option pointing to your EU5 game folder. |
+| The Gathering, new flags or updated populations are missing | Check the installed version is 0.5.5, disable the old prototype add-on, restart EU5 and start a new campaign. |
+| Installation fails when run from a ZIP | Extract the complete download first, then run its installer from the extracted folder. |
+| The map or terrain looks wrong after an update | Check the game version and reinstall the matching base through its installer. Avoid manually copying unprepared terrain files. |
 
-`python tools/verify_prepared_bundle.py` verifies the transported package without EU5: archive hashes/CRC, version/config agreement, terrain payloads, actual packaged populations and ruler ages, and authored art. Release publication refreshes package documentation without changing gameplay assets and repeats this verification.
+To play vanilla, switch to a playset without the mod and restart EU5. Keep modded saves for use with their matching mod version. The installer retains backups outside the active mod folder; restore an older version only with EU5 closed and use saves from that version.
 
-Static checks do not establish long-term economic balance, engine rendering, succession edge cases, multiplayer or achievement compatibility. Other map, terrain-shader and starting-world mods may conflict, including Crusader States without a compatibility build. Follow [TESTING.md](TESTING.md).
+Report problems through [GitHub Issues](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/issues). Include your game and mod versions, enabled mods, chosen clan, campaign date, and the steps that caused the problem. A screenshot, relevant save and EU5 `logs/error.log` help reproduce it.
 
-Historical changes are retained in [RELEASE_NOTES.md](RELEASE_NOTES.md). Previous versions remain on their own release branches and tags. Europa Universalis V and its assets belong to Paradox; infantry sources and licensing are documented under [art/models/goblins](art/models/goblins/README.md). Banner and thumbnail were created with image generation.
+## More information
+
+- [Origins, cultures and royal families](LORE.md)
+- [Release history](RELEASE_NOTES.md)
+- [Gathering rules and the earlier prototype](PROTOTYPE_055.md)
+- [Playtesting checklist](TESTING.md)
+- [Event artwork sources and export details](art/events/README.md)
+- [Clan flag sources and export details](art/flags/README.md)
+
+Europa Universalis V and its game assets belong to Paradox. This is an unofficial fantasy mod. Event paintings were created with image generation; editable clan emblems and artwork provenance are included in the linked art documentation.

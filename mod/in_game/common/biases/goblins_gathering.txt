@@ -1,0 +1,3 @@
+﻿ga_harbor_pact_opinion = { value = 35 months = 120 yearly_decay = 3 }
+ga_received_supplies = { value = 30 months = 60 yearly_decay = 5 }
+ga_oath_honored = { value = 25 months = 120 yearly_decay = 2 }

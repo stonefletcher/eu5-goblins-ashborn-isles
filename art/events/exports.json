@@ -1,0 +1,202 @@
+{
+  "events": {
+    "cindermaw.1": "cindermaw",
+    "ga_gathering.1": "gathering",
+    "ga_gathering.2": "harbor_pact",
+    "ga_gathering.3": "oath",
+    "ga_gathering.4": "oath",
+    "ga_gathering.5": "unification",
+    "ga_gathering.6": "eastern_hunger",
+    "ga_gathering.7": "unification",
+    "ga_gathering.8": "eastern_harbor",
+    "ga_gathering.10": "cindermaw",
+    "ga_gathering.11": "brackmaw",
+    "ga_gathering.12": "reefhook",
+    "ga_gathering.13": "shatterfin",
+    "ga_gathering.14": "sootwake",
+    "ga_gathering.15": "shatterfin",
+    "goblins_exploration.1": "departure",
+    "goblins_exploration.2": "iberia",
+    "goblins_exploration.3": "charts",
+    "goblins_exploration.4": "biscay",
+    "goblins_exploration.5": "africa",
+    "goblins_exploration.6": "foreign_sails"
+  },
+  "situations": {
+    "ga_gathering_of_five": "gathering",
+    "ga_eastern_hunger": "eastern_hunger"
+  },
+  "original_paintings": 17,
+  "format": "DDS BC1/DXT1, full mip chain",
+  "files": [
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/africa.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "df624f1deb38b7d26946784f7b25e20251dbf3e667f815e0ee3562b0eabd2e9e"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/biscay.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "af6026704c4e22080672e041382705c5ea2b26ad6303a251d6a699916f57c83b"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/brackmaw.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "b1a2898d5af82eaeaeb273487279649bf09a71ff6edacec22072d1a95d26718c"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/charts.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "f1a3de958424e0c93a3927dfed28c9de22422d9254222ba550aab4d8bab35ce1"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/cindermaw.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "daf9ea8c14b8bc85cd45ccfc9306d5c3b5dc096a34adc147c79fa2ce76f06372"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/departure.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "8eb596f676f2bff3cd9e372a7c3a7f843a0cc382a9d9afe72c3f6931628ef48a"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/eastern_harbor.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "fd4c69b000e962bf5c2d25162ceb60addbc8f9699a3129b0d98282ca4df45ee6"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/eastern_hunger.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "7d11a8bb3f1bfe62f3f60afae144df18456c1728d50ab7e960944ffeaa96353c"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/foreign_sails.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "807bcfb33b02089360179561ae0d19709bf929bb59a8032ed4fd8186fd195ae6"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/gathering.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "8d0fc8c1f90b9c7e8d210a8fdea59f87db43a5cb9934425f3afdaf75b3cfd0c4"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/harbor_pact.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "bb43074a6ea3cc46bf733226164137909c700e6c13537baff9bd067774206777"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/iberia.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "b0477cbb985315db8d7c731f82a574d1f40b8a65d6856a7d32bf6cd405ab3c64"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/oath.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "ed42213c0222507b7cf5ea7888928ba25960deff2e12e20db513092eafddb6c9"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/reefhook.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "1dcfe8d1d3cbe4e726ac5c31377557ec1f41410f767e8d8268d7e918c7c2cf0f"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/shatterfin.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "cd8b30149589febed5766c8762ce037f961be1391e04863a353b00a03a7456a9"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/sootwake.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "b4d6f2080e9369d04e0e782f1eefae12958daf6d4c6a8dfb4519f957e1c40a3d"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/unification.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "1767a1c003eca337c3b2593503d3855a60b2c0ea4c60d405da219c053a10a101"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/situation/ga_gathering_of_five.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "8d0fc8c1f90b9c7e8d210a8fdea59f87db43a5cb9934425f3afdaf75b3cfd0c4"
+    },
+    {
+      "path": "main_menu/gfx/interface/icons/situations/ga_gathering_of_five.dds",
+      "size": [
+        128,
+        128
+      ],
+      "sha256": "f3149d95f51cb931ea9f7c9fac2a1414f4229a2ea8ca706bccc2e756a35b60e7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/situation/ga_eastern_hunger.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "7d11a8bb3f1bfe62f3f60afae144df18456c1728d50ab7e960944ffeaa96353c"
+    },
+    {
+      "path": "main_menu/gfx/interface/icons/situations/ga_eastern_hunger.dds",
+      "size": [
+        128,
+        128
+      ],
+      "sha256": "1497d02239dd09127ef1a47e3516abd36ade902a08ce4c885abb0219bc247682"
+    }
+  ],
+  "engine_tested": false
+}

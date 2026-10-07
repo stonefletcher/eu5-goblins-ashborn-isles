@@ -91,6 +91,9 @@ def verify(out,game=None):
     assert all(outfit_mods.count('gfx_culture_applicable = '+c['culture']+'_gfx')==1 for c in clans)
     assert all('mode = replace gene = '+g+' template = '+t in outfit_mods for g,t in RESET.items())
     assert OUTFITS['infant']==[(1,'empty')], 'Do not layer clothing over the native infant swaddle'
+    for sex in ['male','female']:
+        assert all('iroquois' in name for _,name in OUTFITS[sex]), 'Adults must select the inspected hide/leather wardrobe'
+    assert not any('chinese' in name for choices in OUTFITS.values() for _,name in choices)
     if game:
         native_accessories=(Path(game)/'main_menu/gfx/portraits/accessories/clothes.txt').read_text(encoding='utf-8-sig')
         native_genes='\n'.join(p.read_text(encoding='utf-8-sig') for p in (Path(game)/'in_game/common/genes').glob('*.txt'))

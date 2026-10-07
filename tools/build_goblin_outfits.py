@@ -1,17 +1,16 @@
 """Culture-only rough clothing selection; references installed native accessories.
 
-First pass: plain wraps, harnesses and overcoats. No native art is copied.
-Custom torn hems, patches and distressed materials remain an art follow-up.
+Native hide, fringe and fur materials inspected against the installed assets.
+No native art is copied. Children retain fitted plain clothes, infants swaddling.
 """
 from pathlib import Path
 
 OUTFITS = {
-    'male': [(2, 'male_clothes_deccan_commoner_harness'),
-             (4, 'male_clothes_aztec_common_tilmatl'),
-             (4, 'male_clothes_german_common_short_sleeves_jacket')],
-    'female': [(4, 'female_clothes_iroquois_common_overcoat'),
-               (3, 'female_clothes_aztec_common_huipilli'),
-               (2, 'female_clothes_syrian_common_dress_scarf')],
+    'male': [(5, 'male_clothes_iroquois_low_beadwork_shirt'),
+             (3, 'male_clothes_iroquois_low_beadwork'),
+             (2, 'male_clothes_iroquois_royal_bear_hunter')],
+    'female': [(7, 'female_clothes_iroquois_common_overcoat'),
+               (3, 'female_clothes_iroquois_noble_overcoat')],
     'boy': [(1, 'ger_child_cloth_set_a')],
     'girl': [(1, 'child_cloth')],
     # The native no_clothes template already supplies infant swaddling.
@@ -41,7 +40,8 @@ def build(out, clans):
                     f'weight = {{ base = 0 modifier = {{ add = 100 gfx_culture_applicable = {clan["culture"]}_gfx }} }} }}')
     mods.append('}')
     text(out/'main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt', '\n'.join(mods)+'\n')
-    return {'method':'native plain garments, culture-scoped, priority 100',
+    return {'method':'native hide tunics, fringed leather overcoats and fur-trimmed hunter garments; culture-scoped, priority 100',
             'royal_clothes_and_crowns_removed':True, 'engine_tested':False,
             'custom_rag_geometry':False, 'beards_removed':True,
-            'covered_male_garment_weight':0.8}
+            'adult_leather_garment_weight':1.0,
+            'children':'native fitted plain clothes; no adult meshes on child rigs'}

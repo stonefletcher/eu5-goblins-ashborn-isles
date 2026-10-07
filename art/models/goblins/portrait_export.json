@@ -13,12 +13,13 @@
   "method": "cupped smooth ears, hooded recessed eyes, lean weathered cheeks, hooked noses and restrained mouths; 60% skin tint preserves more native colour detail",
   "infants": "skin and smaller pointed ears; no tusks or extra stature modifier",
   "outfits": {
-    "method": "native plain garments, culture-scoped, priority 100",
+    "method": "native hide tunics, fringed leather overcoats and fur-trimmed hunter garments; culture-scoped, priority 100",
     "royal_clothes_and_crowns_removed": true,
     "engine_tested": false,
     "custom_rag_geometry": false,
     "beards_removed": true,
-    "covered_male_garment_weight": 0.8
+    "adult_leather_garment_weight": 1.0,
+    "children": "native fitted plain clothes; no adult meshes on child rigs"
   },
   "portrait_stature": "culture-only compact torso 0.42 and stoop 0.24 on both sexes, shorter neck; native child growth preserved; framing and clothing fit need engine review",
   "validation": {

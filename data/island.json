@@ -247,7 +247,7 @@
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 5,
+          "rgo_expansion": 1,
           "buildings": {
             "market_village": 1,
             "local_smelters": 1
@@ -277,7 +277,7 @@
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 5,
+          "rgo_expansion": 1,
           "buildings": {
             "forest_village": 1
           },
@@ -305,7 +305,7 @@
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 5,
+          "rgo_expansion": 2,
           "buildings": {
             "market_village": 1,
             "local_smelters": 1
@@ -335,16 +335,17 @@
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 11,
+          "rgo_expansion": 6,
           "buildings": {
-            "marketplace": 2,
+            "marketplace": 3,
             "wharf": 1,
-            "tools_guild": 1,
+            "tools_guild": 3,
+            "weapon_guild": 3,
             "naval_supplies_guild": 1,
             "stockade": 1,
-            "granary": 1,
-            "cloth_guild": 1,
-            "pottery_guild": 1
+            "granary": 2,
+            "pottery_guild": 2,
+            "cloth_guild": 1
           },
           "pop_classes": {
             "nobles": 0.122,
@@ -371,11 +372,10 @@
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 10,
+          "rgo_expansion": 3,
           "buildings": {
             "farming_village": 2,
-            "fiber_crops_farm": 1,
-            "windmill": 1
+            "fiber_crops_farm": 1
           },
           "pop_classes": {
             "nobles": 0.087,
@@ -401,7 +401,7 @@
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 5,
+          "rgo_expansion": 2,
           "buildings": {
             "market_village": 2
           },
@@ -429,7 +429,7 @@
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 7,
+          "rgo_expansion": 2,
           "buildings": {
             "farming_village": 2
           },
@@ -457,7 +457,7 @@
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 7,
+          "rgo_expansion": 2,
           "buildings": {
             "forest_village": 2
           },
@@ -481,9 +481,10 @@
           "vegetation": "woods",
           "pop": 15.835,
           "province": "cm_blackwood_province",
-          "rgo_expansion": 5,
+          "rgo_expansion": 1,
           "buildings": {
-            "forest_village": 1
+            "forest_village": 1,
+            "charcoal_maker": 1
           },
           "color": "ed1209",
           "pop_classes": {
@@ -506,7 +507,7 @@
           "vegetation": "sparse",
           "pop": 14.061,
           "province": "cm_crown_province",
-          "rgo_expansion": 5,
+          "rgo_expansion": 2,
           "buildings": {
             "market_village": 1,
             "local_smelters": 1
@@ -532,7 +533,7 @@
           "vegetation": "sparse",
           "pop": 15.133,
           "province": "cm_copperfang_province",
-          "rgo_expansion": 5,
+          "rgo_expansion": 1,
           "buildings": {
             "market_village": 1
           },
@@ -557,10 +558,8 @@
           "vegetation": "farmland",
           "pop": 11.324,
           "province": "cm_saltjaw_province",
-          "rgo_expansion": 5,
-          "buildings": {
-            "market_village": 1
-          },
+          "rgo_expansion": 1,
+          "buildings": {},
           "color": "ed120c",
           "pop_classes": {
             "nobles": 0.087,
@@ -582,7 +581,7 @@
           "vegetation": "sparse",
           "pop": 11.411,
           "province": "cm_ashfields_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 1,
           "buildings": {},
           "color": "ed120d",
           "pop_classes": {
@@ -605,7 +604,7 @@
           "vegetation": "sparse",
           "pop": 7.255,
           "province": "cm_saltjaw_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 1,
           "buildings": {},
           "color": "ed120e",
           "pop_classes": {
@@ -628,7 +627,7 @@
           "vegetation": "sparse",
           "pop": 7.874,
           "province": "cm_hooktooth_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 1,
           "buildings": {},
           "color": "ed120f",
           "pop_classes": {
@@ -655,10 +654,8 @@
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 4,
-          "buildings": {
-            "market_village": 1
-          },
+          "rgo_expansion": 1,
+          "buildings": {},
           "split_from": "cm_cinder_crown",
           "pop_classes": {
             "nobles": 0.087,
@@ -685,7 +682,7 @@
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 2,
+          "rgo_expansion": 1,
           "buildings": {
             "forest_village": 1
           },
@@ -714,10 +711,8 @@
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 4,
-          "buildings": {
-            "market_village": 1
-          },
+          "rgo_expansion": 1,
+          "buildings": {},
           "split_from": "cm_copperfang",
           "pop_classes": {
             "nobles": 0.087,
@@ -744,7 +739,7 @@
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 4,
+          "rgo_expansion": 3,
           "buildings": {
             "market_village": 1
           },
@@ -774,7 +769,7 @@
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 2,
+          "rgo_expansion": 1,
           "buildings": {
             "market_village": 1
           },
@@ -803,7 +798,7 @@
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 2,
+          "rgo_expansion": 1,
           "buildings": {
             "market_village": 1
           },
@@ -832,7 +827,7 @@
           "country": "CDM",
           "culture": "cm_cinderkin",
           "island": "cindermaw",
-          "rgo_expansion": 4,
+          "rgo_expansion": 2,
           "buildings": {
             "farming_village": 1
           },
@@ -886,7 +881,7 @@
           "vegetation": "woods",
           "pop": 15.834,
           "province": "cm_blackwood_outer_province",
-          "rgo_expansion": 2,
+          "rgo_expansion": 1,
           "buildings": {
             "forest_village": 1
           },
@@ -912,7 +907,7 @@
           "vegetation": "sparse",
           "pop": 14.061,
           "province": "cm_crown_outer_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 1,
           "buildings": {
             "market_village": 1
           },
@@ -938,7 +933,7 @@
           "vegetation": "sparse",
           "pop": 15.133,
           "province": "cm_copperfang_outer_province",
-          "rgo_expansion": 2,
+          "rgo_expansion": 1,
           "buildings": {
             "market_village": 1
           },
@@ -964,10 +959,8 @@
           "vegetation": "farmland",
           "pop": 11.323,
           "province": "cm_saltjaw_outer_province",
-          "rgo_expansion": 2,
-          "buildings": {
-            "market_village": 1
-          },
+          "rgo_expansion": 1,
+          "buildings": {},
           "color": "ed1230",
           "split_from": "cm_scorchbrook",
           "pop_classes": {
@@ -990,10 +983,8 @@
           "vegetation": "sparse",
           "pop": 11.411,
           "province": "cm_ashfields_outer_province",
-          "rgo_expansion": 2,
-          "buildings": {
-            "market_village": 1
-          },
+          "rgo_expansion": 1,
+          "buildings": {},
           "color": "ed1231",
           "split_from": "cm_obsidian_cut",
           "pop_classes": {
@@ -1016,10 +1007,8 @@
           "vegetation": "sparse",
           "pop": 7.254,
           "province": "cm_saltjaw_outer_province",
-          "rgo_expansion": 2,
-          "buildings": {
-            "market_village": 1
-          },
+          "rgo_expansion": 1,
+          "buildings": {},
           "color": "ed1232",
           "split_from": "cm_cinder_shelf",
           "pop_classes": {
@@ -1042,7 +1031,7 @@
           "vegetation": "sparse",
           "pop": 7.872,
           "province": "cm_hooktooth_outer_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 1,
           "buildings": {
             "farming_village": 1,
             "windmill": 1
@@ -1180,13 +1169,14 @@
           "vegetation": "sparse",
           "pop": 65.462,
           "province": "cm_brackhaven_province",
-          "rgo_expansion": 11,
+          "rgo_expansion": 5,
           "buildings": {
             "marketplace": 2,
             "wharf": 1,
-            "cloth_guild": 1,
+            "naval_supplies_guild": 3,
+            "cloth_guild": 2,
             "pottery_guild": 1,
-            "granary": 1,
+            "granary": 3,
             "tools_guild": 1
           },
           "color": "ed1210",
@@ -1210,7 +1200,7 @@
           "vegetation": "woods",
           "pop": 14.725,
           "province": "cm_brinewood_province",
-          "rgo_expansion": 5,
+          "rgo_expansion": 1,
           "buildings": {
             "forest_village": 1
           },
@@ -1235,7 +1225,7 @@
           "vegetation": "sparse",
           "pop": 7.941,
           "province": "cm_rustpeak_province",
-          "rgo_expansion": 5,
+          "rgo_expansion": 1,
           "buildings": {
             "market_village": 1,
             "local_smelters": 1
@@ -1261,10 +1251,9 @@
           "vegetation": "farmland",
           "pop": 17.881,
           "province": "cm_mossfields_province",
-          "rgo_expansion": 5,
+          "rgo_expansion": 3,
           "buildings": {
             "farming_village": 2,
-            "fiber_crops_farm": 1,
             "windmill": 1
           },
           "color": "ed1213",
@@ -1288,7 +1277,7 @@
           "vegetation": "sparse",
           "pop": 18.31,
           "province": "cm_brackhaven_province",
-          "rgo_expansion": 5,
+          "rgo_expansion": 3,
           "buildings": {
             "market_village": 2
           },
@@ -1313,7 +1302,7 @@
           "vegetation": "woods",
           "pop": 9.271,
           "province": "cm_brinewood_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 1,
           "buildings": {
             "farming_village": 1
           },
@@ -1338,7 +1327,7 @@
           "vegetation": "woods",
           "pop": 8.937,
           "province": "cm_mossfields_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 1,
           "buildings": {
             "forest_village": 1
           },
@@ -1363,7 +1352,7 @@
           "vegetation": "sparse",
           "pop": 14.768,
           "province": "cm_rustpeak_province",
-          "rgo_expansion": 5,
+          "rgo_expansion": 1,
           "buildings": {
             "market_village": 1
           },
@@ -1388,7 +1377,7 @@
           "vegetation": "sparse",
           "pop": 6.713,
           "province": "cm_brackhaven_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 1,
           "buildings": {},
           "color": "ed1218",
           "pop_classes": {
@@ -1411,7 +1400,7 @@
           "vegetation": "sparse",
           "pop": 5.579,
           "province": "cm_mossfields_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 1,
           "buildings": {},
           "color": "ed1219",
           "pop_classes": {
@@ -1434,7 +1423,7 @@
           "vegetation": "sparse",
           "pop": 4.535,
           "province": "cm_brinewood_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 1,
           "buildings": {
             "local_smelters": 1
           },
@@ -1459,7 +1448,7 @@
           "vegetation": "sparse",
           "pop": 3.817,
           "province": "cm_mossfields_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 1,
           "buildings": {},
           "color": "ed121b",
           "pop_classes": {
@@ -1482,7 +1471,7 @@
           "vegetation": "sparse",
           "pop": 28.054,
           "province": "cm_brackhaven_outer_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 5,
           "buildings": {
             "market_village": 1
           },
@@ -1508,7 +1497,7 @@
           "vegetation": "woods",
           "pop": 14.723,
           "province": "cm_brinewood_outer_province",
-          "rgo_expansion": 2,
+          "rgo_expansion": 1,
           "buildings": {
             "forest_village": 1
           },
@@ -1534,10 +1523,8 @@
           "vegetation": "sparse",
           "pop": 7.94,
           "province": "cm_rustpeak_outer_province",
-          "rgo_expansion": 4,
-          "buildings": {
-            "market_village": 1
-          },
+          "rgo_expansion": 1,
+          "buildings": {},
           "color": "ed1236",
           "split_from": "cm_rustpeak",
           "pop_classes": {
@@ -1560,9 +1547,9 @@
           "vegetation": "farmland",
           "pop": 17.879,
           "province": "cm_mossfields_outer_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 3,
           "buildings": {
-            "farming_village": 1,
+            "farming_village": 2,
             "windmill": 1
           },
           "color": "ed1237",
@@ -1587,7 +1574,7 @@
           "vegetation": "sparse",
           "pop": 18.309,
           "province": "cm_brackhaven_outer_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 2,
           "buildings": {
             "farming_village": 1
           },
@@ -1613,7 +1600,7 @@
           "vegetation": "woods",
           "pop": 9.271,
           "province": "cm_brinewood_outer_province",
-          "rgo_expansion": 2,
+          "rgo_expansion": 1,
           "buildings": {
             "farming_village": 1
           },
@@ -1639,10 +1626,8 @@
           "vegetation": "woods",
           "pop": 8.937,
           "province": "cm_mossfields_outer_province",
-          "rgo_expansion": 4,
-          "buildings": {
-            "market_village": 1
-          },
+          "rgo_expansion": 1,
+          "buildings": {},
           "color": "ed123a",
           "split_from": "cm_reedmouth",
           "pop_classes": {
@@ -1665,7 +1650,7 @@
           "vegetation": "sparse",
           "pop": 14.768,
           "province": "cm_rustpeak_outer_province",
-          "rgo_expansion": 2,
+          "rgo_expansion": 1,
           "buildings": {
             "market_village": 1
           },
@@ -1691,7 +1676,7 @@
           "vegetation": "sparse",
           "pop": 6.712,
           "province": "cm_brackhaven_outer_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 1,
           "buildings": {
             "farming_village": 1,
             "windmill": 1
@@ -1718,10 +1703,8 @@
           "vegetation": "sparse",
           "pop": 5.579,
           "province": "cm_mossfields_outer_province",
-          "rgo_expansion": 2,
-          "buildings": {
-            "market_village": 1
-          },
+          "rgo_expansion": 1,
+          "buildings": {},
           "color": "ed123d",
           "split_from": "cm_fumarole_fields",
           "pop_classes": {
@@ -1744,7 +1727,7 @@
           "vegetation": "sparse",
           "pop": 4.535,
           "province": "cm_brinewood_outer_province",
-          "rgo_expansion": 2,
+          "rgo_expansion": 1,
           "buildings": {
             "market_village": 1
           },
@@ -1770,10 +1753,8 @@
           "vegetation": "sparse",
           "pop": 3.817,
           "province": "cm_mossfields_outer_province",
-          "rgo_expansion": 2,
-          "buildings": {
-            "market_village": 1
-          },
+          "rgo_expansion": 1,
+          "buildings": {},
           "color": "ed123f",
           "split_from": "cm_brine_spur",
           "pop_classes": {
@@ -1884,14 +1865,12 @@
           "vegetation": "sparse",
           "pop": 35.345,
           "province": "cm_reefhook_province",
-          "rgo_expansion": 7,
+          "rgo_expansion": 3,
           "buildings": {
-            "marketplace": 2,
+            "marketplace": 3,
             "wharf": 1,
-            "pottery_guild": 1,
-            "granary": 1,
-            "tools_guild": 1,
-            "cloth_guild": 1
+            "naval_supplies_guild": 1,
+            "granary": 1
           },
           "color": "ed121c",
           "pop_classes": {
@@ -1914,7 +1893,7 @@
           "vegetation": "woods",
           "pop": 12.23,
           "province": "cm_crooked_reef_province",
-          "rgo_expansion": 7,
+          "rgo_expansion": 1,
           "buildings": {
             "forest_village": 1
           },
@@ -1939,7 +1918,7 @@
           "vegetation": "sparse",
           "pop": 9.135,
           "province": "cm_reefhook_province",
-          "rgo_expansion": 7,
+          "rgo_expansion": 1,
           "buildings": {},
           "color": "ed121e",
           "pop_classes": {
@@ -1962,7 +1941,7 @@
           "vegetation": "sparse",
           "pop": 7.61,
           "province": "cm_crooked_reef_province",
-          "rgo_expansion": 7,
+          "rgo_expansion": 1,
           "buildings": {},
           "color": "ed121f",
           "pop_classes": {
@@ -1985,7 +1964,7 @@
           "vegetation": "sparse",
           "pop": 15.149,
           "province": "cm_reefhook_outer_province",
-          "rgo_expansion": 7,
+          "rgo_expansion": 3,
           "buildings": {
             "market_village": 1
           },
@@ -2011,7 +1990,7 @@
           "vegetation": "woods",
           "pop": 12.227,
           "province": "cm_crooked_reef_outer_province",
-          "rgo_expansion": 7,
+          "rgo_expansion": 1,
           "buildings": {
             "farming_village": 1
           },
@@ -2037,7 +2016,7 @@
           "vegetation": "sparse",
           "pop": 9.134,
           "province": "cm_reefhook_outer_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 2,
           "buildings": {
             "market_village": 1
           },
@@ -2063,7 +2042,7 @@
           "vegetation": "sparse",
           "pop": 7.607,
           "province": "cm_crooked_reef_outer_province",
-          "rgo_expansion": 7,
+          "rgo_expansion": 1,
           "buildings": {
             "farming_village": 1,
             "windmill": 1
@@ -2155,14 +2134,14 @@
           "vegetation": "sparse",
           "pop": 62.386,
           "province": "cm_shatterfin_province",
-          "rgo_expansion": 13,
+          "rgo_expansion": 5,
           "buildings": {
             "marketplace": 2,
-            "wharf": 1,
-            "tools_guild": 1,
-            "granary": 1,
-            "cloth_guild": 1,
-            "pottery_guild": 1
+            "wharf": 2,
+            "naval_supplies_guild": 2,
+            "cloth_guild": 2,
+            "granary": 2,
+            "tools_guild": 1
           },
           "color": "ed1220",
           "pop_classes": {
@@ -2185,7 +2164,7 @@
           "vegetation": "sparse",
           "pop": 21.384,
           "province": "cm_shatterfin_province",
-          "rgo_expansion": 13,
+          "rgo_expansion": 2,
           "buildings": {},
           "color": "ed1221",
           "pop_classes": {
@@ -2208,7 +2187,7 @@
           "vegetation": "sparse",
           "pop": 26.732,
           "province": "cm_shatterfin_outer_province",
-          "rgo_expansion": 13,
+          "rgo_expansion": 4,
           "buildings": {
             "farming_village": 1
           },
@@ -2234,7 +2213,7 @@
           "vegetation": "sparse",
           "pop": 21.378,
           "province": "cm_shatterfin_outer_province",
-          "rgo_expansion": 13,
+          "rgo_expansion": 1,
           "buildings": {
             "market_village": 1
           },
@@ -2337,9 +2316,9 @@
           "vegetation": "woods",
           "pop": 40.804,
           "province": "cm_shatterfin_province",
-          "rgo_expansion": 19,
+          "rgo_expansion": 6,
           "buildings": {
-            "forest_village": 1
+            "forest_village": 2
           },
           "color": "ed1222",
           "pop_classes": {
@@ -2362,7 +2341,7 @@
           "vegetation": "woods",
           "pop": 40.803,
           "province": "cm_shatterfin_outer_province",
-          "rgo_expansion": 7,
+          "rgo_expansion": 1,
           "buildings": {
             "forest_village": 1
           },
@@ -2453,14 +2432,13 @@
           "vegetation": "sparse",
           "pop": 40.674,
           "province": "cm_sootwake_province",
-          "rgo_expansion": 10,
+          "rgo_expansion": 3,
           "buildings": {
-            "marketplace": 2,
+            "marketplace": 1,
             "wharf": 1,
-            "cloth_guild": 1,
+            "naval_supplies_guild": 1,
             "granary": 1,
-            "tools_guild": 1,
-            "pottery_guild": 1
+            "tools_guild": 1
           },
           "color": "ed1223",
           "pop_classes": {
@@ -2483,9 +2461,10 @@
           "vegetation": "woods",
           "pop": 21.767,
           "province": "cm_ember_key_province",
-          "rgo_expansion": 10,
+          "rgo_expansion": 4,
           "buildings": {
-            "forest_village": 1
+            "forest_village": 2,
+            "charcoal_maker": 1
           },
           "color": "ed1224",
           "pop_classes": {
@@ -2508,7 +2487,7 @@
           "vegetation": "sparse",
           "pop": 17.43,
           "province": "cm_sootwake_outer_province",
-          "rgo_expansion": 7,
+          "rgo_expansion": 1,
           "buildings": {
             "farming_village": 1,
             "windmill": 1
@@ -2535,9 +2514,10 @@
           "vegetation": "woods",
           "pop": 21.758,
           "province": "cm_ember_key_outer_province",
-          "rgo_expansion": 4,
+          "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "charcoal_maker": 1
           },
           "color": "ed1248",
           "split_from": "cm_ember_key",
@@ -2622,7 +2602,7 @@
   "land_area_multiplier": 1.25,
   "island_size_multiplier": 0.88,
   "terrain_revision": "volcanic-spacing-pass",
-  "economy_revision": "districts-and-dynasties-054",
+  "economy_revision": "lore-specialization-056",
   "population_baseline": 593647,
   "population_target": 1294755,
   "baseline_locations": {

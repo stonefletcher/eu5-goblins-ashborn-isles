@@ -1,44 +1,23 @@
-# 0.5.5 complete-release handoff
+# 0.5.6 economy development handoff
 
-Checkout: work/repo, merge/release-055-main, integrating release/v0.5.5 into main.
-User authorized the main merge and requested the installed Workshop upload folder.
-Release source: 393d6badf5118a4d6884dee76eafa4da0628da17.
-Verified bundled tree: 3b7861b3fdc3a940cd321d1fb1d3ebe78e8de337.
+Checkout: work/eu5-goblins, feature/0.5.6-economy, based on GitHub main.
+Goal: lore/geography-based economies with vanilla-scale infrastructure and viable
+small crowns. See ECONOMY_056.md for decisions, comparisons and campaign checks.
 
-Completed: full 0.5.5 build and regular installer bundle, including Gathering,
-Eastern Hunger, revised clan identities, mixed populations, all event/situation
-art and all five clan flags. No 0.5.4 prerequisite or prototype add-on is needed.
-README, release notes, Workshop description/changelog and test guidance describe
-one full mod; the prototype installation guide is explicitly historical.
+Completed: distinct capital industries, wooded charcoal chain, population-aware
+rural buildings, restrained resource investment, native-reference audit and
+focused setup verifier. All 72 location IDs, geography, resources, population
+classes and 1,618,696 people are preserved. RGO bonuses fall from 387 to 126.
 
-Passed: full static build (72 districts, 1,618,696 people), native reference and
-ownership checks, art/flag validation, bundle reconstruction/CRC/unique members,
-all 39 Gathering/art/flag file comparisons, and exact Git-export PrepareOnly.
-Regular installation to isolated user data passed. Independent verification
-hashed all 1,639 packaged runtime files and three final terrain caches. The
-existing source/bundle version mismatch is resolved; all layers report 0.5.5.
+Passed: focused setup generation against installed EU5 1.3.11, native building
+ranks/resources, exact generated levels/population, production staffing,
+specialization/relative scale and ownership-guarded once-only initialization.
+Existing Hooktooth stockade has no seeded soldiers; runtime garrison is untested.
 
-Deliverable: outputs/Goblins_Ashborn_Isles_0.5.5.zip, 253,684,636 bytes.
-SHA-256: 7fdd318f7b0346c6e6ecf082025564fed3097e1623b7b81f7da79b8f27071d93.
-Evidence: outputs/Ashborn_0.5.5_Release_Validation.json and workspace release logs.
-Source and matching bundle are pushed to staging/0.5.5. This follow-up changes
-only this handoff; verified release content remains the tree identified above.
+Build state: build/economy-check is a partial validation tree, NOT an installable
+mod. No full build, install, launch, push or publication. The bundled installer
+and release metadata deliberately remain 0.5.5 until a complete 0.5.6 release is
+prepared. Do not mistake the old bundle for the new economy.
 
-Pending: user-run in-game UI/art, AI and balance acceptance. Disable the earlier
-Gathering Prototype add-on and start a new 1337 campaign. No active installation,
-game launch or Workshop publication was performed.
-
-Published: GitHub release v0.5.5 (non-draft, non-prerelease), tagged at e2276ec,
-with the full installer and focused RELEASE_NOTES_0.5.5.md. Publishing workflow
-37653002068 passed. Published asset size/digest and a fresh downloaded ZIP match
-the SHA-256 above. Release URL:
-https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.5
-
-Main integration preserves earlier main-only release tooling, hotfix scripts,
-historical releases and artwork while retaining the verified 0.5.5 bundle and
-current player guide. WORKSHOP_UPLOAD.md now describes 0.5.5 and the regular
-installer. The existing installed mod already reports 0.5.5; all 1,639 packaged
-files and three terrain caches match the published archive without reinstalling.
-Upload folder: C:/Users/alexa/Documents/Paradox Interactive/Europa Universalis V/mod/goblins_ashborn_isles
-Use Mod Tools > Uploaded mods > existing listing > Upload content from a folder.
-No Steam upload has been performed. Final main merge state is recorded in its PR.
+Next: continue 0.5.6 work, then full build/package and fresh-campaign balance
+acceptance (food, employment, trade, debt and starting-force affordability).

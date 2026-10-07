@@ -13,15 +13,15 @@
     },
     {
       "path": "in_game/common/ethnicities/ashborn.txt",
-      "sha256": "c66ab39e13fc6a26340828955ae09359880a1f5deb455cd3877b854f9486352b"
+      "sha256": "0e8b6d4f6faecc6f99a0a2a9ef07f02b6d707ca038da6839dcdd0586553c0008"
     },
     {
       "path": "in_game/common/genes/zz_ashborn_outfits.txt",
-      "sha256": "409fec8162ade1329165373283c32ab5bec5c7cb114f77c2b532e2bac256f42c"
+      "sha256": "9947d65665975f4a3eb279bd41e7a22fa48a583831a8e764ef7224374b7789b8"
     },
     {
       "path": "in_game/common/genes/zz_ashborn_portraits.txt",
-      "sha256": "c68a9121cc5a5b63dd4a0c8621d2a4856ee160cb5a7879c4ed6e5dce660d19fb"
+      "sha256": "b735dafe7657cbaa32aa8949c6e5a6735c5835cdfb293a9f92ab00b59b60ea5c"
     },
     {
       "path": "in_game/common/languages/goblins_ashborn_isles.txt",
@@ -57,15 +57,15 @@
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/cm_female_features.mesh",
-      "sha256": "b0dbcff1d2091e7eaec4c54e272f12d97bbd90b46f730dfcfe9b8a8f9e6de296"
+      "sha256": "6363b5b76f24950fd3cbb58cdd9088924ebbb4015ecddb0970b9a1bba4f1aa91"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/cm_infant_features.mesh",
-      "sha256": "4abb04c766219ac4d131eaf8c3415026f7f640e4860e081da1defe9fe4c86731"
+      "sha256": "32adc1bf24a379c7b0470a66284b904f59f55a8e4bbe43ac211c33ddf797a216"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/cm_male_features.mesh",
-      "sha256": "14f2fa62e91bdcbe2011204f22b3bd409631a897fc366aaf4923d1c40b95c97b"
+      "sha256": "7292ed610d357d9fe3253e33504d7dd1f4a713cecf18bab7a4f6901593076a0d"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/ear_base.dds",
@@ -745,11 +745,11 @@
     },
     {
       "path": "main_menu/gfx/portraits/portrait_modifiers/zz_ashborn.txt",
-      "sha256": "9b052205d2c7bb55bd6f55b93af13f72dbd5b96ec0cd5bd1e931fc0d48f07a56"
+      "sha256": "6fe61d4c8618484067dbbb0727b24e1936c1303c850207b8c14c7d602de8a041"
     },
     {
       "path": "main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt",
-      "sha256": "b301e7a9dbb05a9dfaad277baf481a815f615406f158b0481a50ddea00c0ca97"
+      "sha256": "7faf0b4d4d1e08c2a5c2bad3f4dabe8b2faecc7c87631bd2fbcc63f808f7504e"
     },
     {
       "path": "main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt",

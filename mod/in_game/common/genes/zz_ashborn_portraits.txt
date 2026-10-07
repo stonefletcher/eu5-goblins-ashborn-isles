@@ -1,5 +1,53 @@
 ﻿special_genes = {
 morph_genes = {
+cm_ashborn_weathering = { inheritable = no cm_weathered = { index = 0
+male = {
+decal = { body_part = head
+ textures = { diffuse = "gfx/models/portraits/decals/male_head/male_head_old_forehead_1_early_diffuse.dds" normal = "gfx/models/portraits/decals/male_head/male_head_old_forehead_1_early_normal.dds" }
+ blend_modes = { diffuse = multiply normal = overlay }
+ alpha_curve = { { 0 0 } { 1 0.42 } }
+ age = { mode = multiply curve = { { 0 0 } { 0.18 0 } { 0.30 1 } { 1 1 } } }
+ decal_apply_order = post_skin_color priority = 110
+ }
+decal = { body_part = head
+ textures = { diffuse = "gfx/models/portraits/decals/male_head/male_head_old_eyes_1_early_diffuse.dds" normal = "gfx/models/portraits/decals/male_head/male_head_old_eyes_1_early_normal.dds" }
+ blend_modes = { diffuse = multiply normal = overlay }
+ alpha_curve = { { 0 0 } { 1 0.42 } }
+ age = { mode = multiply curve = { { 0 0 } { 0.18 0 } { 0.30 1 } { 1 1 } } }
+ decal_apply_order = post_skin_color priority = 110
+ }
+decal = { body_part = head
+ textures = { diffuse = "gfx/models/portraits/decals/male_head/male_head_old_mouth_1_early_diffuse.dds" normal = "gfx/models/portraits/decals/male_head/male_head_old_mouth_1_early_normal.dds" }
+ blend_modes = { diffuse = multiply normal = overlay }
+ alpha_curve = { { 0 0 } { 1 0.42 } }
+ age = { mode = multiply curve = { { 0 0 } { 0.18 0 } { 0.30 1 } { 1 1 } } }
+ decal_apply_order = post_skin_color priority = 110
+ }
+}
+female = {
+decal = { body_part = head
+ textures = { diffuse = "gfx/models/portraits/decals/female_head/female_head_old_forehead_1_early_diffuse.dds" normal = "gfx/models/portraits/decals/female_head/female_head_old_forehead_1_early_normal.dds" }
+ blend_modes = { diffuse = multiply normal = overlay }
+ alpha_curve = { { 0 0 } { 1 0.42 } }
+ age = { mode = multiply curve = { { 0 0 } { 0.18 0 } { 0.30 1 } { 1 1 } } }
+ decal_apply_order = post_skin_color priority = 110
+ }
+decal = { body_part = head
+ textures = { diffuse = "gfx/models/portraits/decals/female_head/female_head_old_eyes_1_early_diffuse.dds" normal = "gfx/models/portraits/decals/female_head/female_head_old_eyes_1_early_normal.dds" }
+ blend_modes = { diffuse = multiply normal = overlay }
+ alpha_curve = { { 0 0 } { 1 0.42 } }
+ age = { mode = multiply curve = { { 0 0 } { 0.18 0 } { 0.30 1 } { 1 1 } } }
+ decal_apply_order = post_skin_color priority = 110
+ }
+decal = { body_part = head
+ textures = { diffuse = "gfx/models/portraits/decals/female_head/female_head_old_mouth_1_early_diffuse.dds" normal = "gfx/models/portraits/decals/female_head/female_head_old_mouth_1_early_normal.dds" }
+ blend_modes = { diffuse = multiply normal = overlay }
+ alpha_curve = { { 0 0 } { 1 0.42 } }
+ age = { mode = multiply curve = { { 0 0 } { 0.18 0 } { 0.30 1 } { 1 1 } } }
+ decal_apply_order = post_skin_color priority = 110
+ }
+}
+boy = { } girl = { } adolescent_boy = { } adolescent_girl = { } infant = { } } }
 cm_ashborn_stature = { inheritable = no
  cm_compact_body = { index = 0
   male = {

@@ -3,15 +3,20 @@
 cm_cindermaw_appearance = { ignore_outfit_tags = yes dna_modifiers = { morph = { mode = add gene = cm_cindermaw_skin template = cm_cindermaw_skin value = 1 }
 accessory = { mode = add gene = cm_ashborn_features template = cm_cindermaw_features value = 1 }
 morph = { mode = add gene = cm_ashborn_stature template = cm_compact_body value = 1 }
-morph = { mode = replace gene = gene_nose_length template = template_1 range = { 0.82 0.94 } }
-morph = { mode = replace gene = gene_nose_tip_forward template = template_1 range = { 0.76 0.9 } }
+morph = { mode = add gene = cm_ashborn_weathering template = cm_weathered range = { 0.7 1 } }
+morph = { mode = replace gene = gene_nose_length template = template_1 range = { 0.73 0.86 } }
+morph = { mode = replace gene = gene_nose_tip_forward template = template_1 range = { 0.69 0.83 } }
 morph = { mode = replace gene = gene_nose_tip_angle template = template_1 range = { 0.16 0.29 } }
 morph = { mode = replace gene = gene_nose_width template = template_1 range = { 0.3 0.44 } }
 morph = { mode = replace gene = gene_nose_ridge_def template = template_1 range = { 0.65 0.82 } }
-morph = { mode = replace gene = gene_jaw_width template = template_1 range = { 0.23 0.38 } }
-morph = { mode = replace gene = gene_jaw_height template = template_1 range = { 0.29 0.43 } }
-morph = { mode = replace gene = gene_chin_size template = template_1 range = { 0.25 0.39 } }
-morph = { mode = replace gene = gene_head_height template = template_1 range = { 0.38 0.49 } }
+morph = { mode = replace gene = gene_jaw_width template = template_1 range = { 0.38 0.5 } }
+morph = { mode = replace gene = gene_jaw_height template = template_1 range = { 0.32 0.44 } }
+morph = { mode = replace gene = gene_chin_size template = template_1 range = { 0.36 0.48 } }
+morph = { mode = replace gene = gene_head_height template = template_1 range = { 0.3 0.42 } }
+morph = { mode = replace gene = gene_head_width template = template_1 range = { 0.51 0.62 } }
+morph = { mode = replace gene = gene_forehead_height template = template_1 range = { 0.22 0.36 } }
+morph = { mode = replace gene = gene_forehead_roundness template = template_1 range = { 0.22 0.38 } }
+morph = { mode = replace gene = gene_forehead_angle template = template_1 range = { 0.39 0.5 } }
 morph = { mode = replace gene = gene_eye_size template = template_1 range = { 0.3 0.43 } }
 morph = { mode = replace gene = gene_eye_open template = template_1 range = { 0.34 0.46 } }
 morph = { mode = replace gene = gene_eye_forward template = template_1 range = { 0.3 0.43 } }
@@ -25,19 +30,25 @@ morph = { mode = replace gene = gene_cheek_fat template = template_1 range = { 0
 morph = { mode = replace gene = gene_mouth_width template = template_1 range = { 0.47 0.61 } }
 morph = { mode = replace gene = gene_mouth_upper_lip_size template = template_1 range = { 0.23 0.37 } }
 morph = { mode = replace gene = gene_mouth_lower_lip_size template = template_1 range = { 0.26 0.4 } }
+morph = { mode = replace gene = gene_mouth_corner_height template = template_1 range = { 0.32 0.44 } }
 morph = { mode = replace gene = gene_neck_length template = template_1 range = { 0.24 0.38 } } } weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_cinderkin_gfx } } }
 cm_brackmaw_appearance = { ignore_outfit_tags = yes dna_modifiers = { morph = { mode = add gene = cm_brackmaw_skin template = cm_brackmaw_skin value = 1 }
 accessory = { mode = add gene = cm_ashborn_features template = cm_brackmaw_features value = 1 }
 morph = { mode = add gene = cm_ashborn_stature template = cm_compact_body value = 1 }
-morph = { mode = replace gene = gene_nose_length template = template_1 range = { 0.82 0.94 } }
-morph = { mode = replace gene = gene_nose_tip_forward template = template_1 range = { 0.76 0.9 } }
+morph = { mode = add gene = cm_ashborn_weathering template = cm_weathered range = { 0.7 1 } }
+morph = { mode = replace gene = gene_nose_length template = template_1 range = { 0.73 0.86 } }
+morph = { mode = replace gene = gene_nose_tip_forward template = template_1 range = { 0.69 0.83 } }
 morph = { mode = replace gene = gene_nose_tip_angle template = template_1 range = { 0.16 0.29 } }
 morph = { mode = replace gene = gene_nose_width template = template_1 range = { 0.3 0.44 } }
 morph = { mode = replace gene = gene_nose_ridge_def template = template_1 range = { 0.65 0.82 } }
-morph = { mode = replace gene = gene_jaw_width template = template_1 range = { 0.23 0.38 } }
-morph = { mode = replace gene = gene_jaw_height template = template_1 range = { 0.29 0.43 } }
-morph = { mode = replace gene = gene_chin_size template = template_1 range = { 0.25 0.39 } }
-morph = { mode = replace gene = gene_head_height template = template_1 range = { 0.38 0.49 } }
+morph = { mode = replace gene = gene_jaw_width template = template_1 range = { 0.38 0.5 } }
+morph = { mode = replace gene = gene_jaw_height template = template_1 range = { 0.32 0.44 } }
+morph = { mode = replace gene = gene_chin_size template = template_1 range = { 0.36 0.48 } }
+morph = { mode = replace gene = gene_head_height template = template_1 range = { 0.3 0.42 } }
+morph = { mode = replace gene = gene_head_width template = template_1 range = { 0.51 0.62 } }
+morph = { mode = replace gene = gene_forehead_height template = template_1 range = { 0.22 0.36 } }
+morph = { mode = replace gene = gene_forehead_roundness template = template_1 range = { 0.22 0.38 } }
+morph = { mode = replace gene = gene_forehead_angle template = template_1 range = { 0.39 0.5 } }
 morph = { mode = replace gene = gene_eye_size template = template_1 range = { 0.3 0.43 } }
 morph = { mode = replace gene = gene_eye_open template = template_1 range = { 0.34 0.46 } }
 morph = { mode = replace gene = gene_eye_forward template = template_1 range = { 0.3 0.43 } }
@@ -51,19 +62,25 @@ morph = { mode = replace gene = gene_cheek_fat template = template_1 range = { 0
 morph = { mode = replace gene = gene_mouth_width template = template_1 range = { 0.47 0.61 } }
 morph = { mode = replace gene = gene_mouth_upper_lip_size template = template_1 range = { 0.23 0.37 } }
 morph = { mode = replace gene = gene_mouth_lower_lip_size template = template_1 range = { 0.26 0.4 } }
+morph = { mode = replace gene = gene_mouth_corner_height template = template_1 range = { 0.32 0.44 } }
 morph = { mode = replace gene = gene_neck_length template = template_1 range = { 0.24 0.38 } } } weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_brinekin_gfx } } }
 cm_reefhook_appearance = { ignore_outfit_tags = yes dna_modifiers = { morph = { mode = add gene = cm_reefhook_skin template = cm_reefhook_skin value = 1 }
 accessory = { mode = add gene = cm_ashborn_features template = cm_reefhook_features value = 1 }
 morph = { mode = add gene = cm_ashborn_stature template = cm_compact_body value = 1 }
-morph = { mode = replace gene = gene_nose_length template = template_1 range = { 0.82 0.94 } }
-morph = { mode = replace gene = gene_nose_tip_forward template = template_1 range = { 0.76 0.9 } }
+morph = { mode = add gene = cm_ashborn_weathering template = cm_weathered range = { 0.7 1 } }
+morph = { mode = replace gene = gene_nose_length template = template_1 range = { 0.73 0.86 } }
+morph = { mode = replace gene = gene_nose_tip_forward template = template_1 range = { 0.69 0.83 } }
 morph = { mode = replace gene = gene_nose_tip_angle template = template_1 range = { 0.16 0.29 } }
 morph = { mode = replace gene = gene_nose_width template = template_1 range = { 0.3 0.44 } }
 morph = { mode = replace gene = gene_nose_ridge_def template = template_1 range = { 0.65 0.82 } }
-morph = { mode = replace gene = gene_jaw_width template = template_1 range = { 0.23 0.38 } }
-morph = { mode = replace gene = gene_jaw_height template = template_1 range = { 0.29 0.43 } }
-morph = { mode = replace gene = gene_chin_size template = template_1 range = { 0.25 0.39 } }
-morph = { mode = replace gene = gene_head_height template = template_1 range = { 0.38 0.49 } }
+morph = { mode = replace gene = gene_jaw_width template = template_1 range = { 0.38 0.5 } }
+morph = { mode = replace gene = gene_jaw_height template = template_1 range = { 0.32 0.44 } }
+morph = { mode = replace gene = gene_chin_size template = template_1 range = { 0.36 0.48 } }
+morph = { mode = replace gene = gene_head_height template = template_1 range = { 0.3 0.42 } }
+morph = { mode = replace gene = gene_head_width template = template_1 range = { 0.51 0.62 } }
+morph = { mode = replace gene = gene_forehead_height template = template_1 range = { 0.22 0.36 } }
+morph = { mode = replace gene = gene_forehead_roundness template = template_1 range = { 0.22 0.38 } }
+morph = { mode = replace gene = gene_forehead_angle template = template_1 range = { 0.39 0.5 } }
 morph = { mode = replace gene = gene_eye_size template = template_1 range = { 0.3 0.43 } }
 morph = { mode = replace gene = gene_eye_open template = template_1 range = { 0.34 0.46 } }
 morph = { mode = replace gene = gene_eye_forward template = template_1 range = { 0.3 0.43 } }
@@ -77,19 +94,25 @@ morph = { mode = replace gene = gene_cheek_fat template = template_1 range = { 0
 morph = { mode = replace gene = gene_mouth_width template = template_1 range = { 0.47 0.61 } }
 morph = { mode = replace gene = gene_mouth_upper_lip_size template = template_1 range = { 0.23 0.37 } }
 morph = { mode = replace gene = gene_mouth_lower_lip_size template = template_1 range = { 0.26 0.4 } }
+morph = { mode = replace gene = gene_mouth_corner_height template = template_1 range = { 0.32 0.44 } }
 morph = { mode = replace gene = gene_neck_length template = template_1 range = { 0.24 0.38 } } } weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_reefkin_gfx } } }
 cm_shatterfin_appearance = { ignore_outfit_tags = yes dna_modifiers = { morph = { mode = add gene = cm_shatterfin_skin template = cm_shatterfin_skin value = 1 }
 accessory = { mode = add gene = cm_ashborn_features template = cm_shatterfin_features value = 1 }
 morph = { mode = add gene = cm_ashborn_stature template = cm_compact_body value = 1 }
-morph = { mode = replace gene = gene_nose_length template = template_1 range = { 0.82 0.94 } }
-morph = { mode = replace gene = gene_nose_tip_forward template = template_1 range = { 0.76 0.9 } }
+morph = { mode = add gene = cm_ashborn_weathering template = cm_weathered range = { 0.7 1 } }
+morph = { mode = replace gene = gene_nose_length template = template_1 range = { 0.73 0.86 } }
+morph = { mode = replace gene = gene_nose_tip_forward template = template_1 range = { 0.69 0.83 } }
 morph = { mode = replace gene = gene_nose_tip_angle template = template_1 range = { 0.16 0.29 } }
 morph = { mode = replace gene = gene_nose_width template = template_1 range = { 0.3 0.44 } }
 morph = { mode = replace gene = gene_nose_ridge_def template = template_1 range = { 0.65 0.82 } }
-morph = { mode = replace gene = gene_jaw_width template = template_1 range = { 0.23 0.38 } }
-morph = { mode = replace gene = gene_jaw_height template = template_1 range = { 0.29 0.43 } }
-morph = { mode = replace gene = gene_chin_size template = template_1 range = { 0.25 0.39 } }
-morph = { mode = replace gene = gene_head_height template = template_1 range = { 0.38 0.49 } }
+morph = { mode = replace gene = gene_jaw_width template = template_1 range = { 0.38 0.5 } }
+morph = { mode = replace gene = gene_jaw_height template = template_1 range = { 0.32 0.44 } }
+morph = { mode = replace gene = gene_chin_size template = template_1 range = { 0.36 0.48 } }
+morph = { mode = replace gene = gene_head_height template = template_1 range = { 0.3 0.42 } }
+morph = { mode = replace gene = gene_head_width template = template_1 range = { 0.51 0.62 } }
+morph = { mode = replace gene = gene_forehead_height template = template_1 range = { 0.22 0.36 } }
+morph = { mode = replace gene = gene_forehead_roundness template = template_1 range = { 0.22 0.38 } }
+morph = { mode = replace gene = gene_forehead_angle template = template_1 range = { 0.39 0.5 } }
 morph = { mode = replace gene = gene_eye_size template = template_1 range = { 0.3 0.43 } }
 morph = { mode = replace gene = gene_eye_open template = template_1 range = { 0.34 0.46 } }
 morph = { mode = replace gene = gene_eye_forward template = template_1 range = { 0.3 0.43 } }
@@ -103,19 +126,25 @@ morph = { mode = replace gene = gene_cheek_fat template = template_1 range = { 0
 morph = { mode = replace gene = gene_mouth_width template = template_1 range = { 0.47 0.61 } }
 morph = { mode = replace gene = gene_mouth_upper_lip_size template = template_1 range = { 0.23 0.37 } }
 morph = { mode = replace gene = gene_mouth_lower_lip_size template = template_1 range = { 0.26 0.4 } }
+morph = { mode = replace gene = gene_mouth_corner_height template = template_1 range = { 0.32 0.44 } }
 morph = { mode = replace gene = gene_neck_length template = template_1 range = { 0.24 0.38 } } } weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_shatterkin_gfx } } }
 cm_sootwake_appearance = { ignore_outfit_tags = yes dna_modifiers = { morph = { mode = add gene = cm_sootwake_skin template = cm_sootwake_skin value = 1 }
 accessory = { mode = add gene = cm_ashborn_features template = cm_sootwake_features value = 1 }
 morph = { mode = add gene = cm_ashborn_stature template = cm_compact_body value = 1 }
-morph = { mode = replace gene = gene_nose_length template = template_1 range = { 0.82 0.94 } }
-morph = { mode = replace gene = gene_nose_tip_forward template = template_1 range = { 0.76 0.9 } }
+morph = { mode = add gene = cm_ashborn_weathering template = cm_weathered range = { 0.7 1 } }
+morph = { mode = replace gene = gene_nose_length template = template_1 range = { 0.73 0.86 } }
+morph = { mode = replace gene = gene_nose_tip_forward template = template_1 range = { 0.69 0.83 } }
 morph = { mode = replace gene = gene_nose_tip_angle template = template_1 range = { 0.16 0.29 } }
 morph = { mode = replace gene = gene_nose_width template = template_1 range = { 0.3 0.44 } }
 morph = { mode = replace gene = gene_nose_ridge_def template = template_1 range = { 0.65 0.82 } }
-morph = { mode = replace gene = gene_jaw_width template = template_1 range = { 0.23 0.38 } }
-morph = { mode = replace gene = gene_jaw_height template = template_1 range = { 0.29 0.43 } }
-morph = { mode = replace gene = gene_chin_size template = template_1 range = { 0.25 0.39 } }
-morph = { mode = replace gene = gene_head_height template = template_1 range = { 0.38 0.49 } }
+morph = { mode = replace gene = gene_jaw_width template = template_1 range = { 0.38 0.5 } }
+morph = { mode = replace gene = gene_jaw_height template = template_1 range = { 0.32 0.44 } }
+morph = { mode = replace gene = gene_chin_size template = template_1 range = { 0.36 0.48 } }
+morph = { mode = replace gene = gene_head_height template = template_1 range = { 0.3 0.42 } }
+morph = { mode = replace gene = gene_head_width template = template_1 range = { 0.51 0.62 } }
+morph = { mode = replace gene = gene_forehead_height template = template_1 range = { 0.22 0.36 } }
+morph = { mode = replace gene = gene_forehead_roundness template = template_1 range = { 0.22 0.38 } }
+morph = { mode = replace gene = gene_forehead_angle template = template_1 range = { 0.39 0.5 } }
 morph = { mode = replace gene = gene_eye_size template = template_1 range = { 0.3 0.43 } }
 morph = { mode = replace gene = gene_eye_open template = template_1 range = { 0.34 0.46 } }
 morph = { mode = replace gene = gene_eye_forward template = template_1 range = { 0.3 0.43 } }
@@ -129,5 +158,6 @@ morph = { mode = replace gene = gene_cheek_fat template = template_1 range = { 0
 morph = { mode = replace gene = gene_mouth_width template = template_1 range = { 0.47 0.61 } }
 morph = { mode = replace gene = gene_mouth_upper_lip_size template = template_1 range = { 0.23 0.37 } }
 morph = { mode = replace gene = gene_mouth_lower_lip_size template = template_1 range = { 0.26 0.4 } }
+morph = { mode = replace gene = gene_mouth_corner_height template = template_1 range = { 0.32 0.44 } }
 morph = { mode = replace gene = gene_neck_length template = template_1 range = { 0.24 0.38 } } } weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_sootkin_gfx } } }
 }

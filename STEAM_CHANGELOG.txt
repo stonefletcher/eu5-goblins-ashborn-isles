@@ -1,3 +1,6 @@
+[h2]0.5.8 rough-face follow-up (staging only)[/h2]
+Lower foreheads, sturdier jaws, cropped/braided adult hair and subtle adult facial weathering. Improved shared skin and leather wardrobe retained. New appearance awaits game review.
+
 [h2]0.5.8 material follow-up (staging)[/h2]
 Shared skin rendering for ears/faces, stronger clan tint, shorter swept ears, stronger brows/noses/cheeks, external tooth studs removed and corrected outfit suppression. Engine acceptance pending.
 

@@ -18,7 +18,19 @@ OUTFITS = {
 }
 RESET = {'clothes': 'no_clothes', 'headwear': 'no_headwear',
          'capes': 'no_cape', 'neckware_neck': 'no_neckware_neck',
-         'beards': 'no_beard'}
+         'beards': 'no_beard', 'hair_styles': 'no_hair'}
+
+# Keep ears and brow silhouette visible. No long court hair or balding bob.
+HAIR = {
+    'male': [(5, 'male_iroquois_hair_mohawk_regular'),
+             (3, 'male_german_hair_short_curly'),
+             (2, 'male_hair_short_straight_pomp')],
+    'female': [(6, 'female_syrian_braided_back_hair'),
+               (4, 'female_german_braid_hair_behind')],
+    'boy': [(1, 'boy_short_hair_a')],
+    'girl': [(1, 'female_hair_long_basic')],
+    'infant': [(1, 'empty')],
+}
 
 def build(out, clans):
     from build_goblin_portraits import text
@@ -27,6 +39,10 @@ def build(out, clans):
     genes = ['special_genes = {\naccessory_genes = { cm_ashborn_clothing = { inheritable = no',
              'cm_rough_clothing = { index = 0']
     for sex, choices in OUTFITS.items():
+        genes.append(sex + ' = { ' + ' '.join(f'{w} = "{a}"' for w, a in choices) + ' }')
+    genes += ['adolescent_boy = boy adolescent_girl = girl', '} }',
+              'cm_ashborn_hair = { inheritable = no cm_rough_hair = { index = 0']
+    for sex, choices in HAIR.items():
         genes.append(sex + ' = { ' + ' '.join(f'{w} = "{a}"' for w, a in choices) + ' }')
     genes += ['adolescent_boy = boy adolescent_girl = girl', '} } } }']
     text(out/'in_game/common/genes/zz_ashborn_outfits.txt', '\n'.join(genes)+'\n')
@@ -37,6 +53,7 @@ def build(out, clans):
         dna = [f'accessory = {{ mode = add gene = {g} template = {t} range = {{ 0 1 }} }}'
                for g, t in RESET.items()]
         dna.append('accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }')
+        dna.append('accessory = { mode = add gene = cm_ashborn_hair template = cm_rough_hair range = { 0 1 } }')
         mods.append(f'cm_{clan["id"]}_rough_clothing = {{ ignore_outfit_tags = yes\n'
                     'dna_modifiers = {\n'+'\n'.join(dna)+'\n}\n'
                     f'weight = {{ base = 0 modifier = {{ add = 100 gfx_culture_applicable = {clan["culture"]}_gfx }} }} }}')
@@ -46,4 +63,5 @@ def build(out, clans):
             'royal_clothes_and_crowns_suppression':'configured; in-game confirmation pending', 'engine_tested':False,
             'custom_rag_geometry':False, 'beards_removed':True,
             'adult_leather_garment_weight':1.0,
+            'hair':'adult mohawks/short crops and tied-back braids; fitted child hair; no infant hair',
             'children':'native fitted plain clothes; no adult meshes on child rigs'}

@@ -7,4 +7,12 @@ boy = { 1 = "ger_child_cloth_set_a" }
 girl = { 1 = "child_cloth" }
 infant = { 1 = "empty" }
 adolescent_boy = boy adolescent_girl = girl
+} }
+cm_ashborn_hair = { inheritable = no cm_rough_hair = { index = 0
+male = { 5 = "male_iroquois_hair_mohawk_regular" 3 = "male_german_hair_short_curly" 2 = "male_hair_short_straight_pomp" }
+female = { 6 = "female_syrian_braided_back_hair" 4 = "female_german_braid_hair_behind" }
+boy = { 1 = "boy_short_hair_a" }
+girl = { 1 = "female_hair_long_basic" }
+infant = { 1 = "empty" }
+adolescent_boy = boy adolescent_girl = girl
 } } } }

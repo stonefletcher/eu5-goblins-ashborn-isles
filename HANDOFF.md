@@ -1,21 +1,18 @@
-# 0.5.8 staging handoff
+# 0.5.8 rough portrait pass
 
-Branch: staging/0.5.8. Holy-site integration merge 06aabea; final combined package 5e25a41 (includes published portrait merge bb057fc).
-Checkout: C:/Users/alexa/Documents/Codex/2026-10-07/le-2/work/goblins-058.
-Frozen build/test checkout: C:/Users/alexa/Documents/Codex/2026-10-07/for-2/work/holy-sites.
+Checkout: C:/Users/alexa/Documents/Codex/2026-10-07/le-2/work/portrait-material-pass
+Branch: fix/0.5.8-portrait-materials; publish target staging/0.5.8.
+Base: 0d098e0, including the verified holy-site integration. Main remains 0.5.7.
 
-Completed: nine holy sites across six islands (counts 3/2/1/1/1/1), importance
-1-5, three new local shrines. Existing site IDs/events preserved. Includes the
-committed portrait/ear skin/clothing corrections from c672aac.
-Full build passed, including religion, native portraits, map/setup and terrain.
-Bundle regression rejects the old six-site payload and accepts the new one.
-Exact committed Git export passed bundle verification and PrepareOnly; fresh
-isolated installation matched all 1,658 files and passed religion validation.
-Package SHA-256: a0690741a313082fc9aad7293cdf520a750c4103e539caacc8e5540452699757.
-No active-profile install, game launch or Workshop upload. Gameplay acceptance
-for shrine balance/tooltips and portrait appearance remains pending.
-Next: review a new campaign. Preserve concurrent Gathering panel work below;
-it is not part of this verified package and needs its own combined rebuild.
+User screenshots confirm improved skin/clothing but request cooler, rougher faces,
+especially Drogg. Implemented lower/flatter foreheads, shorter broader heads,
+stronger jaw/chin, restrained nose and mouth corners, cropped/mohawk male hair,
+tied-back female braids and adult-only native early facial creases after tint.
+Ear UVs avoid crease masks. Shared skin/ears/wardrobe and child safeguards retained.
+Native asset/portrait checks passed. Full build/package/install gates in progress.
+No engine acceptance claimed. EU5 was running; user asked to close for install gate.
+No active-profile install or game launch. Preserve previous verified candidate
+0d098e0 as fallback until the new visuals are accepted. Steam remains unchanged.
 
 Gathering panel follow-up: generator, panel, localization and affected manifest hashes
 now show participants immediately. Isolated fix/0.5.8-gathering-participants commit

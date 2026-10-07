@@ -31,12 +31,28 @@ def verify(out,game=None):
     assert (1-SKIN_OPACITY)*255 <= 15.31
     assert genes.count(f'{{ 0 {SKIN_OPACITY} }} {{ 1 {SKIN_OPACITY} }}')==10
     for path in re.findall(r'"([^"\n]+\.(?:mesh|dds))"',asset):assert (folder/path).is_file(),path
-    for path in re.findall(r'"(gfx/[^"\n]+\.dds)"',genes):assert (out/'in_game'/path).is_file(),path
+    for path in re.findall(r'"(gfx/[^"\n]+\.dds)"',genes):
+        if '/ashborn/' in path:
+            assert (out/'in_game'/path).is_file(),path
+        else:
+            assert re.fullmatch(r'gfx/models/portraits/decals/(male|female)_head/\1_head_old_(forehead|eyes|mouth)_1_early_(diffuse|normal)\.dds',path),path
+            if game:
+                native_texture=Path(game)/'in_game'/path
+                assert native_texture.is_file(),path
+                if path.endswith('_diffuse.dds'):
+                    with Image.open(native_texture) as im:
+                        assert im.getpixel((int(im.width*.01),int(im.height*.01)))[3]==0, 'Ear UV must avoid facial weathering'
     for entity in re.findall(r'entity = (cm_\w+)',accessories):assert f'name = "{entity}"' in asset,entity
     for name in re.findall(r'1 = "(cm_\w+)"',genes):assert name+' = {' in accessories,name
     assert genes.lstrip().startswith('special_genes = {'), 'Goblin visuals must not be ordinary DNA'
     assert modifiers.count('mode = add gene = cm_ashborn_stature template = cm_compact_body value = 1')==5
     assert 'cm_ashborn_stature' not in ethnicity
+    assert 'cm_ashborn_weathering' not in ethnicity
+    assert modifiers.count('gene = cm_ashborn_weathering')==5
+    from build_goblin_portraits import weathering_gene
+    weathering=weathering_gene()
+    assert weathering.count('post_skin_color priority = 110')==6, 'Weathering must survive the clan tint'
+    for typ in TYPES[2:]: assert typ+' = { }' in weathering, 'No adult weathering on children'
     assert 'attribute = "body_infant_proportions"' in genes and 'attribute = "body_hunchback"' in genes
     assert 'male_body_height' not in genes, 'Do not depend on the disabled female height attribute'
     assert not re.search(r'cm_\w+_(?:skin|features)\s*=', ethnicity), 'Special genes must only be applied by scoped modifiers'
@@ -76,6 +92,7 @@ def verify(out,game=None):
             for bone in bones:assert np.allclose(bone['props']['tx'][1],nb[bone['name']]['props']['tx'][1]),bone['name']
         for mesh_index,mesh in enumerate(c for c in shape['children'] if c['name']=='mesh'):
             p=np.array(mesh['props']['p'][1]).reshape(-1,3);t=np.array(mesh['props']['tri'][1]).reshape(-1,3)
+            assert np.allclose(mesh['props']['u0'][1],.01), 'Ear UV must sample outside the facial crease masks'
             skin=next(c['props'] for c in mesh['children'] if c['name']=='skin')
             assert np.isfinite(p).all() and t.min()>=0 and t.max()<len(p)
             area=np.cross(p[t[:,1]]-p[t[:,0]],p[t[:,2]]-p[t[:,0]])
@@ -97,7 +114,7 @@ def verify(out,game=None):
             assert np.allclose(np.array(skin['w'][1]).reshape(-1,4).sum(axis=1),1)
             triangles+=len(t)
     for script in [genes,modifiers,accessories,asset,ethnicity]:assert script.count('{')==script.count('}')
-    from build_goblin_outfits import OUTFITS, RESET
+    from build_goblin_outfits import OUTFITS, RESET, HAIR
     outfit_genes=(out/'in_game/common/genes/zz_ashborn_outfits.txt').read_text(encoding='utf-8-sig')
     outfit_mods=(out/'main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt').read_text(encoding='utf-8-sig')
     for script in [outfit_genes,outfit_mods]:assert script.count('{')==script.count('}')
@@ -108,6 +125,10 @@ def verify(out,game=None):
     assert all(outfit_mods.count('mode = add gene = '+g+' template = '+t+' range = { 0 1 }')==5 for g,t in RESET.items())
     assert 'value = 0' not in outfit_mods, 'Zero-strength replacements failed to clear noble outfits'
     assert OUTFITS['infant']==[(1,'empty')], 'Do not layer clothing over the native infant swaddle'
+    assert HAIR['infant']==[(1,'empty')]
+    assert outfit_mods.count('gene = cm_ashborn_hair template = cm_rough_hair')==5
+    assert RESET['hair_styles']=='no_hair', 'Clear old hair before adding the new selection'
+    assert not any(token in name for _,name in HAIR['male'] for token in ['bald','long','bob','wig'])
     for sex in ['male','female']:
         assert all('iroquois' in name for _,name in OUTFITS[sex]), 'Adults must select the inspected hide/leather wardrobe'
     assert not any('chinese' in name for choices in OUTFITS.values() for _,name in choices)
@@ -118,11 +139,16 @@ def verify(out,game=None):
             for _,name in choices:
                 assert name=='empty' or re.search(r'(?m)^'+re.escape(name)+r'\s*=\s*\{',native_accessories),name
         for template in RESET.values():assert re.search(r'\b'+template+r'\s*=\s*\{',native_genes),template
+        native_hair=(Path(game)/'main_menu/gfx/portraits/accessories/hair.txt').read_text(encoding='utf-8-sig')
+        for choices in HAIR.values():
+            for _,name in choices:
+                assert name=='empty' or re.search(r'(?m)^\s*'+re.escape(name)+r'\s*=\s*\{',native_hair),name
         for gene in re.findall(r'mode = replace gene = (gene_\w+)',modifiers):
             assert re.search(r'\b'+gene+r'\s*=\s*\{',native_genes),gene
         from build_goblin_portraits import FACE
         assert FACE['gene_eye_size'][1] < .5, 'Avoid the previous enlarged cartoon eyes'
         assert FACE['gene_mouth_width'][1] < .65, 'Avoid the previous broad grin'
+        assert FACE['gene_forehead_height'][1]<.5, 'Avoid the tall rounded forehead seen on Drogg'
         assert RESET.get('beards') == 'no_beard'
         for sex in ['male','female']:
             body=(Path(game)/f'in_game/gfx/models/portraits/{sex}_body/{sex}_body.asset').read_text(encoding='utf-8-sig')

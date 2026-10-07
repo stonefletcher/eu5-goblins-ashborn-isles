@@ -1,62 +1,59 @@
-# Goblins of the Ashborn Isles 0.5.8 — Screenshot-driven portrait revision
+# Goblins of the Ashborn Isles 0.5.8 — Portrait revision and holy-site variety
 
-## Changes
+## Latest portrait refinement
 
-- Ears now use the native portrait skin shader, skin palette, head-decal routing
-  and skin scattering. Previously they used the attachment shader and a fixed
-  clan texture, bypassing the face's skin-colour and lighting stages.
-- Increase the shared head/torso/ear clan tint from 60% to 94%. This reduces
-  inherited skin-colour differences and the pale-face/coloured-ear split.
-  Native facial normal maps, ageing and facial morphology remain active.
-- Use a neutral ear base with native RRxG normal packing, non-metallic rough
-  skin properties and an explicit ambient-occlusion texture slot.
-- Shorter, more upward-swept ears retain the cupped, rounded, closed geometry.
-- Remove the separate external tusks that appeared as white dots beside the
-  lips. The native animated mouth retains its own teeth.
-- Stronger hooked noses, brow projection and lean cheek definition, retaining
-  individual variation, hooded eyes, shorter necks and compact posture.
-- Replace zero-strength outfit replacements with the native add-template
-  suppression pattern and move the outfit modifier to priority 120. Clear
-  clothes, hats, capes, neckwear and beards before applying the hide wardrobe.
-  This addresses the formal hat/robe combinations shown in the screenshots;
-  successful suppression still needs an engine test.
-- Adults select native hide tunics, fringed leather overcoats and fur-trimmed
-  hunter garments. Children retain fitted plain clothes; infants retain native
-  swaddling. No adult clothing meshes are forced onto child bodies.
-- All five goblin cultures remain covered; no global human skin or outfit
-  definitions are replaced. Inherited 0.5.7 content and the working infantry
-  pipeline are retained.
+The user confirms the previous skin/ear/clothing pass looks better. New screenshots
+show Drogg with a high rounded forehead and long smooth hair, while all three
+rulers still have overly smooth faces. This revision targets that evidence.
+
+- Lower, flatter foreheads and slightly shorter, broader heads.
+- Firmer jaws/chins without broad orc jaws; less exaggerated nose length and
+  projection; slightly lower mouth corners while retaining individual variation.
+- Culture-scoped adult hair selection: mohawks, short curly crops and short
+  swept hair for men; tied-back braids for women. Long court hair, balding bobs
+  and wigs are excluded from the adult male pool, including Drogg's selection.
+- Subtle native early-age brow, eye and mouth diffuse/normal detail applied
+  after the strong clan tint. Strength varies and fades in between 18 and 30;
+  children, adolescents and infants have empty weathering definitions. Ordinary
+  ageing remains active; no disease or scar traits are assigned.
+- Ear UVs sample a transparent corner of these detail maps, preventing facial
+  creases from appearing on ears. Shared skin rendering and clan tint remain.
+- Preserve cupped swept ears, compact posture, shorter necks, native animated
+  teeth, adult leather/hide/fur clothing and fitted child clothes.
 
 ## Evidence and validation
 
-The supplied screenshots show pale/green faces, blue-green ears, external tooth
-studs and formal hats/clothing. The active Goblins playset used the local 0.5.8
-copy, whose outfit modifier matched staging. No duplicate goblin copy was enabled
-in that playset.
+The previous attachment/skin shader mismatch is corrected. The new user
+screenshots support improved colour matching and clothing; they do not verify
+this newer forehead, hair or weathering candidate. Native gene definitions,
+sex-specific texture references, fitted hair accessories and mesh bindings are
+checked against EU5 1.3.11. No game-derived textures are redistributed.
 
-The shader mismatch is verified in the installed game source: PS_attachment
-bypasses the palette/head decals and lacks the skin scattering define; PS_skin
-applies them. Native beard suppression supplies an empty accessory template with
-mode add and a selection range, unlike the old zero-strength replacements.
-These findings explain plausible causes; the revised look is not engine-verified.
-
-Checks cover native rigs, all seven portrait types, five cultures, watertight
-ear shells, normals/weights, DDS format, skin shader/decal routing, material
-channels, opacity and wardrobe suppression syntax. Full build, archive and clean
-installation gate results are recorded in HANDOFF.md.
+Regression checks cover all five cultures and seven portrait types, native
+rigs, closed ear meshes, DDS format, palette/decal routing, material channels,
+wardrobe/hair suppression, empty child weathering and transparent ear sampling.
+Full build and matching clean-download/isolated-install results are recorded
+in HANDOFF.md. Gameplay acceptance remains pending.
 
 ## In-game review
 
-Fully restart EU5 after installing this newer 0.5.8 candidate. Enable one copy.
-Review the same characters from the screenshots, including Murgash, plus women,
-elders and generated nobles from all five cultures. Check ear/face/neck/hand
-colour under the same portrait lighting, missing tooth studs, blink/talk/idle
-poses, ear attachment at the root, hats/capes/beards and hide outfit selection.
-Check children and infants separately and a human ruler as a negative control.
+Install this refreshed 0.5.8 package with EU5 closed and fully restart. Check
+Drogg first: forehead height, jaw weight and replacement of his long hair.
+Compare Jaima and Murgash under the same light. Check variation across nobles,
+sexes and clans; weathering should be subtle, ears should keep matching skin,
+and hair should not obscure or clip ears. Check older adults, children, infants
+and a human ruler. Review blink/talk/idle poses and both existing-save portrait
+refresh and a new 1337 campaign. The portrait changes do not alter character
+IDs, relationships, stats or health traits. Active profiles and Steam are not
+modified by this staging preparation.
 
-Compare an existing save with a new 1337 campaign. Existing portrait/DNA refresh
-and every GUI's outfit selection need actual game confirmation. No game launch,
-active-profile installation or Steam release was performed for this revision.
+## Holy-site variety
+
+Nine shrines replace the uniform one-per-island pattern: three on Cindermaw,
+two on Brackmaw, one on each smaller island. Importance now spans 1-5.
+Adds Blackwood Oathstones, Ashfield Hearth and Miregrove Witness, with local
+lore and modest bonuses. Existing site IDs and event links are preserved.
+Static validation passed; fresh-campaign gameplay review is pending.
 
 ---
 

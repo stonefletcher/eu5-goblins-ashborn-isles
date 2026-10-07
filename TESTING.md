@@ -1,3 +1,12 @@
+## Latest 0.5.8 rough-face and hair checks
+
+- Inspect Drogg, Jaima and Murgash after a full restart; compare supplied screenshots.
+- Check lower foreheads, sturdier jaws, restrained nose length and new adult hair.
+- Check adult creases without facial lines on ears or adult weathering on children.
+- Confirm skin matching, outfits and expressions remain intact across five cultures.
+- Verify a human ruler and existing-save/new-campaign portrait refresh separately.
+- Static native checks and package hashes do not establish visual acceptance.
+
 # 0.5.8 material and outfit regression checks
 
 Use RELEASE_NOTES_0.5.8.md to repeat the supplied screenshot cases. Verify the

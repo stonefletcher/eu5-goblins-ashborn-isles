@@ -1,22 +1,23 @@
 # Goblins of the Ashborn Isles
 
-**0.5.8 staging — varied holy sites, revised portraits and tribal clothing.**
+**0.5.8 staging — rougher goblin faces, cropped hair, tribal clothing and varied holy sites.**
 Nine shrines now span importance 1-5: three on Cindermaw, two on Brackmaw,
 and one on each smaller island. The First Mouth is the principal sanctuary.
 New oath groves and hearths have modest local bonuses; existing shrine IDs and
 event links remain. Native importance scales local effects. Test site counts,
 tooltips and balance in a new campaign.
 
-Ears now share the native skin shader, palette and clan tint with the face,
-addressing the blue-ear/pale-face mismatch. Shorter swept ears, stronger brows,
-leaner cheeks and hooked noses accompany removal of the external tooth studs.
-Compact posture and shorter necks are retained.
+The latest portrait pass targets Drogg's tall, rounded forehead and long court
+hair: lower, flatter foreheads, sturdier jaws, restrained hooked noses and less
+upturned mouth corners. Adult males use mohawks and short crops; women use
+braids pulled behind the head. Subtle adult brow, eye and mouth creases now
+appear after the green tint, preserving more surface detail.
 
-The adult wardrobe uses hide tunics, fringed leather overcoats and fur-trimmed
-hunter clothing. Revised native suppression rules target the formal hats,
-capes, robes and beards still visible in the supplied screenshots. Children
-retain fitted plain clothing, infants their swaddling. All five cultures are
-covered; human appearance remains outside these culture-scoped modifiers.
+Shared face/ear skin rendering, 94% clan tint, swept ears, compact posture and
+shorter necks are retained. External tooth studs remain removed. The adult
+wardrobe uses hide tunics, fringed leather and fur-trimmed hunter clothing.
+Children keep fitted clothes and hair, with no added adult weathering; infants
+retain swaddling. All five cultures are covered, without global human changes.
 
 ![The Gathering artwork reference](art/events/sources/gathering.png)
 
@@ -24,12 +25,12 @@ covered; human appearance remains outside these culture-scoped modifiers.
 [staging ZIP](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/archive/refs/heads/staging/0.5.8.zip),
 extract into a new folder, close EU5 and run **Install-Goblins.cmd**. Restart the
 game and enable one Goblins copy. This is a revised 0.5.8 build, so an older
-0.5.8 archive will not contain the material and outfit-suppression corrections.
+0.5.8 archive will not contain the latest forehead, hair and weathering changes.
 
 Native asset/material checks pass; full-build, bundle and clean-install gate
-results accompany the candidate. **In-game colour, outfit suppression and
-animation acceptance remain pending.** The screenshots validate the reported
-problem, not the new candidate. Main remains the released 0.5.7; Steam is unchanged.
+results accompany the candidate. The latest user screenshots show improved skin
+matching and clothing. **This newer face, hair and weathering pass still needs
+in-game review**, especially Drogg, Jaima and Murgash. Main remains the released 0.5.7; Steam is unchanged.
 
 See [changes, evidence and visual checks](RELEASE_NOTES_0.5.8.md).
 Inherited religion, estate, exploration and diplomacy content is retained.

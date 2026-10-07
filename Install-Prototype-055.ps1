@@ -64,6 +64,62 @@ $popOutput = Join-Path $prepared $popRelative
 New-Item -ItemType Directory -Path (Split-Path $popOutput -Parent) -Force | Out-Null
 [IO.File]::WriteAllText($popOutput, $pops, [Text.UTF8Encoding]::new($hasBom))
 $populationHash = (Get-FileHash -LiteralPath $popOutput -Algorithm SHA256).Hash
+# Derive two overrides from the installed base; never distribute its native setup.
+# Patch the four authored identities, preserving every other entry.
+$derivedHashes = @{}
+$charRel = 'main_menu/setup/start/05_characters.txt'
+$chars = [IO.File]::ReadAllText((Join-Path $baseRoot $charRel))
+$locRel = 'main_menu/localization/english/goblins_ashborn_isles_l_english.yml'
+$loc = [IO.File]::ReadAllText((Join-Path $baseRoot $locRel))
+$expected = @{
+    CDM = @{path='data/cindermaw.json'; name='drogg'; culture='cm_cinderkin'; nickname='cm_stone_fletcher'}
+    QBR = @{path='data/brackmaw.json'; name='murgash'; culture='cm_brinekin'}
+    RHK = @{path='data/reefhook.json'; name='skrezz'; culture='cm_reefkin'}
+    SWK = @{path='data/sootwake.json'; name='snikh'; culture='cm_sootkin'}
+}
+if (@($manifest.identities).Count -ne $expected.Count -or @($manifest.identities.tag | Sort-Object -Unique).Count -ne $expected.Count) { throw 'Expected four unique clan identities.' }
+foreach ($entry in $manifest.identities) {
+    $identity = $expected[$entry.tag]
+    if (-not $identity -or $entry.path -ne $identity.path) { throw 'Unexpected clan identity source.' }
+    $identityPath = Join-Path $PSScriptRoot $entry.path
+    if ((Get-FileHash -LiteralPath $identityPath -Algorithm SHA256).Hash -ne $entry.sha256) { throw 'Clan identity source checksum mismatch.' }
+    $profile = Get-Content -LiteralPath $identityPath -Raw -Encoding UTF8 | ConvertFrom-Json
+    $rulerPattern = '(?m)^cm_' + $entry.tag.ToLowerInvariant() + '_ruler = \{[^\r\n]*\}'
+    $matchesFound = [regex]::Matches($chars, $rulerPattern)
+    if ($matchesFound.Count -ne 1) { throw "Expected exactly one authored ruler for $($entry.tag)." }
+    $ruler = $matchesFound[0].Value
+    $namePattern = 'first_name = \{ name = cm_ash_name_' + $identity.name + ' \}'
+    if ($ruler -notmatch $namePattern) { throw 'Unexpected ruler setup; use the matching 0.5.4 base.' }
+    $nicknames = [regex]::Matches($ruler, '\bnickname\s*=\s*\{\s*name\s*=\s*(\w+)\s*\}')
+    if ($identity.nickname) {
+        if ($nicknames.Count -ne 1 -or $nicknames[0].Groups[1].Value -ne $identity.nickname -or $profile.nickname_key -ne $identity.nickname) { throw 'Unexpected existing ruler nickname.' }
+    } elseif ($ruler -match '\bnickname\s*=') { throw 'Unexpected ruler nickname in the base.' }
+    foreach ($stat in @('adm', 'dip', 'mil')) {
+        $pattern = '\b' + $stat + ' = \d+'
+        if ([regex]::Matches($ruler, $pattern).Count -ne 1) { throw "Missing ruler stat: $stat" }
+        $ruler = [regex]::Replace($ruler, $pattern, ($stat + ' = ' + $profile.$stat))
+    }
+    if (-not $identity.nickname) { $ruler = $ruler.Substring(0, $ruler.Length - 1) + 'nickname = { name = ' + $profile.nickname_key + ' } }' }
+    $chars = $chars.Remove($matchesFound[0].Index, $matchesFound[0].Length).Insert($matchesFound[0].Index, $ruler)
+    $culturePattern = '(?m)^ ' + $identity.culture + '_desc:.*$'
+    if ([regex]::Matches($loc, $culturePattern).Count -ne 1) { throw 'Unexpected clan localization in the base.' }
+    $cultureLine = ' ' + $identity.culture + '_desc: "' + $profile.culture_description.Replace('"', '\"') + '"'
+    $loc = [regex]::Replace($loc, $culturePattern, $cultureLine)
+    $nicknamePattern = '(?m)^ ' + [regex]::Escape($profile.nickname_key) + ':\s*"([^"\r\n]*)"'
+    $nicknameLabels = [regex]::Matches($loc, $nicknamePattern)
+    if ($identity.nickname) {
+        if ($nicknameLabels.Count -ne 1 -or $nicknameLabels[0].Groups[1].Value -ne $profile.nickname) { throw 'Unexpected existing nickname localization.' }
+    } else {
+        if ($nicknameLabels.Count -ne 0) { throw 'Duplicate nickname localization.' }
+        $loc = $loc.TrimEnd() + "`r`n " + $profile.nickname_key + ': "' + $profile.nickname + '"' + "`r`n"
+    }
+}
+foreach ($derived in @(@{path=$charRel; text=$chars; bom=$false}, @{path=$locRel; text=$loc; bom=$true})) {
+    $destination = Join-Path $prepared $derived.path
+    New-Item -ItemType Directory -Path (Split-Path $destination -Parent) -Force | Out-Null
+    [IO.File]::WriteAllText($destination, $derived.text, [Text.UTF8Encoding]::new($derived.bom))
+    $derivedHashes[$derived.path] = (Get-FileHash -LiteralPath $destination -Algorithm SHA256).Hash
+}
 $metadata = @{
     name = 'Goblins 0.5.5 - Gathering Prototype (requires 0.5.4)'
     id = $id
@@ -102,6 +158,9 @@ foreach ($entry in $manifest.files) {
     if ((Get-FileHash -LiteralPath (Join-Path $target $entry.path) -Algorithm SHA256).Hash -ne $entry.sha256) { throw 'Installed prototype checksum mismatch.' }
 }
 if ((Get-FileHash -LiteralPath (Join-Path $target $popRelative) -Algorithm SHA256).Hash -ne $populationHash) { throw 'Installed population checksum mismatch.' }
+foreach ($relative in $derivedHashes.Keys) {
+    if ((Get-FileHash -LiteralPath (Join-Path $target $relative) -Algorithm SHA256).Hash -ne $derivedHashes[$relative]) { throw 'Installed clan override checksum mismatch.' }
+}
 Write-Host "Installed separate prototype at $target"
 Write-Host 'Enable BOTH Goblins 0.5.4 and this prototype. Start a NEW 1337 campaign for testing.'
 Write-Host 'The base mod and playsets were not modified. Disable the prototype to return to the base mod.'

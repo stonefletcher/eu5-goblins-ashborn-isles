@@ -75,6 +75,28 @@
   },
   "version": "0.5.5",
   "base_version": "0.5.4",
+  "identities": [
+    {
+      "tag": "CDM",
+      "path": "data/cindermaw.json",
+      "sha256": "4384ed64c145cf444f96a8581e014644736d5dd82d958ec416487f1bbe5234a3"
+    },
+    {
+      "tag": "QBR",
+      "path": "data/brackmaw.json",
+      "sha256": "8ce1ed6fd871589d4e8a384c8375906efb891f12603e86dfc2a280cada8e3d71"
+    },
+    {
+      "tag": "RHK",
+      "path": "data/reefhook.json",
+      "sha256": "1f0805800231f0ab15359e8558434c915b058e90e4e655537a50b2407cc56ffb"
+    },
+    {
+      "tag": "SWK",
+      "path": "data/sootwake.json",
+      "sha256": "49d5fe36b54dba61a34112ab7ac037494eef0afb1bca3fb7cc1b9e0f74eb7932"
+    }
+  ],
   "homeland_locations": [
     "cm_cinder_crown",
     "cm_blackwood",
@@ -188,7 +210,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "eb4de008687fc468f106c33f5d56baaea691d2f6d01b12b4e6185e9d035a9f59"
+      "sha256": "e8ac68a38e0f6e02240594c4861499c542f19dd25bfd513ef4fddd2707076a09"
     }
   ]
 }

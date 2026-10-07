@@ -1,9 +1,7 @@
-# 0.5.5 mixed populations handoff
+# 0.5.5 integrated handoff
 
-Branch: feature/0.5.5-mixed-goblin-populations, based on staging/0.5.5 at 294d5f2.
+PR #8 combines the population update with staging/0.5.5 at 51c01d8 (merged PR #7 clan identities). All 72 districts contain all five goblin cultures. Adds 323,941 goblins, including 231,332 slaves; total 1,618,696. Home clans retain approximately 78–84% of national populations. Existing population entries remain intact.
 
-All 72 districts across all six islands and five nations now contain all five Ashborn cultures. Adds 323,941 goblins, including 231,332 slaves, without changing any existing population entry. Total 1,618,696. Cindermaw receives 159,949 newcomers, including 133,351 slaves; every other nation has both slave and free minorities. Fixed seed 1337055, weighted by country, capital and resource. Authored distribution: data/mixed_populations.json; generator: tools/generate_mixed_populations.py.
+Preserved all four clan identity profiles, ruler abilities, nicknames, culture text, lore and Gathering introductions from PR #7. The prototype installer now derives population, character and localization overrides from the installed 0.5.4 base. The generated manifest contains both population additions and identity hashes. Full source generation uses both systems.
 
-Full source setup and the small prototype installer share the same distribution. Installer appends rows to a copy of the installed 0.5.4 population setup, preserving BOM and leaving the base untouched. Prototype must load after base. Reinstall prototype and start a new campaign. Regular prepared release remains 0.5.4; no full 0.5.5 terrain bundle is claimed.
-
-Checks: native classes, complete culture coverage, original entries unchanged, source-generated setup and prototype setup. Gathering static checks pass. Clean-export preparation and isolated installer checks recorded in the PR. Gameplay, load-order behavior and economy acceptance remain pending. No active installation, game launch, main merge or Workshop publication.
+Validation: mixed-population preservation and majority checks, clan identity checks, Gathering static checks and clean committed-source prototype preparation. Gameplay, override order and balance still need acceptance. No active installation or game launch. Use the small prototype installer with the 0.5.4 base and a new campaign; the regular prepared release remains 0.5.4.

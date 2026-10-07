@@ -43,8 +43,15 @@ def verify(base, out, game):
             foreign.add(p['culture']);stats['added']+=int(size)
             if p['type']=='slaves':stats['slaves']+=int(size)
         assert len(foreign)==4
+        # Every district remains overwhelmingly its home clan despite the uplift.
+        homeland = sum(Decimal(dict((k, v) for k, op, v in row)['size'])
+                       for kind, op, row in prior if kind == 'define_pop')
+        assert homeland / (homeland + mixed.extra(ident)) >= Decimal('.70'), ident
     assert summary['CDM']['slaves']>sum(v['slaves'] for k,v in summary.items() if k!='CDM')
     assert len({v['added'] for v in summary.values()})==5
+    for tag, stats in summary.items():
+        minority_share = stats['added'] / (cfg['country_population_targets'][tag] + stats['added'])
+        assert .15 <= minority_share <= .25, (tag, minority_share)
     return {'population':cfg['population_target']+sum(v['added'] for v in summary.values()),'countries':summary,'original_entries_preserved':True,'native_classes_checked':True,'engine_tested':False}
 
 if __name__=='__main__':

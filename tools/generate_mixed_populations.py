@@ -5,8 +5,9 @@ root=Path(__file__).resolve().parents[1]
 cfg=json.loads((root/'data/island.json').read_text())
 rng=random.Random(1337055)
 cultures={c['tag']:c['culture'] for c in cfg['countries']}
-# New minority shares are modest; mines and capitals attract captives/workers.
-rates={'CDM':(.045,.075,.76,.90),'QBR':(.030,.055,.58,.76),'RHK':(.025,.050,.38,.59),'SFK':(.030,.055,.48,.68),'SWK':(.020,.040,.35,.55)}
+# Rates are additions relative to the home population, not final population shares.
+# Clan homelands remain dominant; ports and mines concentrate migrants/captives.
+rates={'CDM':(.23,.32,.76,.90),'QBR':(.18,.26,.58,.76),'RHK':(.15,.23,.38,.59),'SFK':(.19,.27,.48,.68),'SWK':(.13,.20,.35,.55)}
 locations={}; summary={}
 for island in cfg['islands']:
  tag=island['country']; home=cultures[tag]; summary.setdefault(tag,{'added':0,'slaves':0})

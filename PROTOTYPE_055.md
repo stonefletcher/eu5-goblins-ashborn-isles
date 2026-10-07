@@ -26,20 +26,23 @@ For preparation without installation:
 
 ## Implemented
 
-- Mixed island populations: 65,693 additional goblins, including 47,526 slaves.
+- Mixed island populations: 323,941 additional goblins, including 231,332 slaves.
   Every district has all four foreign Ashborn cultures. Capital ports draw
   more newcomers and some free merchants; mining districts favor captive labor.
+  Minorities comprise about 16–22% of each nation (20% across the isles),
+  leaving home clans at 78–84%. These represent settled migrants, captives and
+  their descendants accumulated over the islands' history.
   The distribution uses seed 1337055 and stays fixed between installs. Existing
   home-culture populations, classes, religions and district majorities remain.
   All additions follow the Hunger Below. No humans are added.
 
 | Kingdom | Added goblins | Of those, slaves | New total population |
 |---|---:|---:|---:|
-| Cindermaw | 35,061 | 29,210 | 587,800 |
-| Brackmaw | 14,060 | 9,585 | 332,523 |
-| Reefhook | 4,314 | 2,051 | 112,751 |
-| Shatterfin | 8,587 | 4,990 | 222,074 |
-| Sootwake | 3,671 | 1,690 | 105,300 |
+| Cindermaw | 159,949 | 133,351 | 712,688 |
+| Brackmaw | 73,355 | 50,012 | 391,818 |
+| Reefhook | 21,955 | 10,414 | 130,392 |
+| Shatterfin | 49,120 | 28,543 | 262,607 |
+| Sootwake | 19,562 | 9,012 | 121,191 |
 
 The prototype installer now creates a population setup override from the
 installed 0.5.4 base, appending these entries without editing that base. Enable
@@ -95,7 +98,7 @@ provide flavor and guidance, rather than unique contribution mechanics.
 
 Check a new campaign for the population totals above, foreign Ashborn minorities
 and their slave/free classes. Cindermaw's existing home-culture slaves remain in
-addition to its 29,210 new foreign-culture slaves. Check load order if the world
+addition to its 133,351 new foreign-culture slaves. Check load order if the world
 still has 1,294,755 goblins. Gameplay and economic balance remain untested.
 
 1. Start as each kingdom in turn; confirm the Gathering panel appears and the

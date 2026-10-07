@@ -1,8 +1,8 @@
 # 0.5.5 — Gathering prototype
 
-The prototype also adds **65,693 goblins of minority cultures**, bringing the
-starting population to **1,360,448**. Every district gains all four other
-Ashborn cultures, with uneven, fixed populations. Of the newcomers, **47,526 are
+The prototype also adds **323,941 goblins of minority cultures**, bringing the
+starting population to **1,618,696**. Minorities make up roughly **16–22%** of each nation; the home clan remains **78–84%**. Every district gains all four other
+Ashborn cultures, with uneven, fixed populations. Of the newcomers, **231,332 are
 slaves**; the remainder are laborers, peasants and capital merchants. Cindermaw
 receives the largest influx and slave share. Existing populations and classes
 are preserved. Run the prototype installer again and start a new campaign.

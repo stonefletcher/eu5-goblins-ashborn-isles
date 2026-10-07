@@ -2,6 +2,39 @@
 
 In the early years of the fourteenth century, fire rose from the Atlantic. Months of eruptions left behind black volcanic islands. When the smoke cleared, goblins already walked their shores. No one saw them arrive. Some captains claim the mountains birthed them; others speak of passages beneath the earth that have since collapsed. Fishing camps became villages, crude mines opened in the ridges, and rival crews fought over sheltered harbors. By 1337, Hooktooth has become Cindermaw's capital, but the Ashborn Isles remain divided. The Brineward of Brackmaw and the Reefhook, Shatterfin and Sootwake clans share the Emberblood's faith in the Hunger Below, yet follow their own crowns; Shatterfin alone keeps the maternal house of the Tidemothers. Poor treasuries, crowded settlements and growing fleets drive them toward expansion. The Ironfang ruler dreams first of uniting the islands. Beyond them lies a world the goblins have only begun to discover.
 
+## The Ashen Covenant
+
+The Ashborn call their shared faith the Ashen Covenant. Beneath the islands sleeps
+the Hunger Below, whose fire makes land and whose appetite may consume it. Some
+say the first goblins were born from that fire; others remember passages that
+closed behind them. No common account settles the mystery.
+
+"What keeps you living must be fed." Fire, water, roots and the remembered dead
+lend their gifts, and every gift creates an obligation. A chief owes protection
+and provisions to the households that supply his crews. A rescued sailor owes
+labor to the beacon keepers. A woodcutter owes care to the grove that shelters the
+next generation. Offerings are useful things: food, rope, charcoal and finished
+craftwork, with animal sacrifice at some feasts.
+
+The Returning Mother receives the household cords of Shatterfin. Brackmaw's Reed
+Listener witnesses agreements beside water. Reefhook tends lamps for the Lantern
+Dead, including strangers whose names are lost. Sootwake's Rootkeeper shelters
+burial trees and seed groves. At the Storm Teeth, crews honor the Tooth in the
+Gale. These powers belong to the shared faith; migrating households carry their
+observances between islands rather than changing religion at a border.
+
+Oathkeepers preserve names, witness agreements, heal and interpret omens. They
+may be women or men; inheritance, apprenticeship and public recognition vary by
+shrine. Their authority can restrain a chief, but gifts and family loyalties can
+also purchase a convenient interpretation. The island crowns have no common
+religious head at the beginning of the campaign.
+
+The sacred places are young: fissures, pools, cairns, ropes and living groves on
+recently emerged islands. Carried relics and remembered chants hint at an older
+past without proving where the Ashborn came from. The covenant can welcome an
+outsider adopted into a household, yet its promise of reciprocal duties also
+raises difficult questions about those held in slavery.
+
 ## Cindermaw — Emberblood
 
 King Drogg Cindermaw, the Stone Fletcher, earned his name defending the Hooktooth approaches when his crews ran short of iron arrowheads. He put stonecutters to work shaping volcanic points, supplied the ridge archers and held the passes until his scattered captains could gather. He still keeps one of those crude arrows beside his throne. Broad in ambition and exacting in preparation, Drogg inspects weapons, remembers which captains held their ground and rewards useful service with a place near his table. His patience ends with commanders who waste lives for display. He treats the independence of the other crowns as a problem that strength and obligation will eventually settle.

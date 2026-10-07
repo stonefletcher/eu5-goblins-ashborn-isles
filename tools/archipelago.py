@@ -361,5 +361,6 @@ def add_localization(b,out):
         if re.search(pattern,s):s=re.sub(pattern,lambda m:line,s)
         else:s+=line+'\n'
     b.write(out,rel,s)
-    (b.ROOT/'LORE.md').write_text('# Goblins of the Ashborn Isles\n\n'+LORE+'\n'+clan_identity.lore_sections(),encoding='utf-8')
+    import ashen_covenant
+    (b.ROOT/'LORE.md').write_text('# Goblins of the Ashborn Isles\n\n'+LORE+'\n\n'+ashen_covenant.LORE_SECTION+clan_identity.lore_sections(),encoding='utf-8')
 

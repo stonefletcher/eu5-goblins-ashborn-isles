@@ -19,7 +19,7 @@ def main():
             assert digest(data)==item['sha256'],item['path']
             name='goblins_ashborn_isles/'+item['path']
             if name not in old.namelist() or old.read(name)!=data: changed[name]=data
-        for name in ['README.md','RELEASE_NOTES.md',f'RELEASE_NOTES_{manifest["version"]}.md','TESTING.md','WORKSHOP_UPLOAD.md','STEAM_DESCRIPTION.txt','STEAM_CHANGELOG.txt']:
+        for name in ['README.md','RELEASE_NOTES.md',f'RELEASE_NOTES_{manifest["version"]}.md','TESTING.md','WORKSHOP_UPLOAD.md','STEAM_DESCRIPTION.txt','STEAM_CHANGELOG.txt','LORE.md']:
             data=(ROOT/name).read_bytes()
             if name not in old.namelist() or old.read(name)!=data: changed[name]=data
     if not changed:

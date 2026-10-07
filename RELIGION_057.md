@@ -111,6 +111,7 @@ a partial staging tree and must not be installed as a complete mod.
 5. Trigger all twelve stories, test below 5 gold and check appropriate eligibility.
 6. Complete Gathering; inspect the Moot's two outcomes and verify no repeat on
    reload. Convert away and check cleanup after one month.
-7. Recheck 0.5.6 charts, voyage timing, mixed populations and economy.
+7. Recheck 0.5.7 sea-only starting charts and undiscovered foreign land, voyage
+   timing, mixed populations and economy. See TESTING.md for screenshot acceptance.
 8. Review the fresh game error log; package only after resolving new errors and
    completing the project's clean-download release gate.

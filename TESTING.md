@@ -1,21 +1,24 @@
-## 0.5.6 exploration acceptance (pending full build)
+## 0.5.7 exploration correction acceptance (pending full build)
 
 Run `python tools/verify_exploration.py --game <EU5 game directory>` for a focused
 setup build, native map-reference checks, initial cooldown and voyage/contact
 guards. `tools/verify_economy.py` checks the shared setup generator's economy.
 These partial build folders are not installable mods.
 
-After packaging 0.5.6, start a new 1337 campaign as each crown. Confirm Iberia,
-southern English coastal provinces, Atlantic French coastal provinces, Moroccan
-coastal provinces and nearby waters are visible, with ordinary fog hiding units.
-Check distant interiors such as Paris and London remain terra incognita, unless
-revealed by normal gameplay. Starting knowledge may enable normal diplomacy and
-earlier Eastern Hunger target selection; assess this balance effect too.
+After packaging 0.5.7, start a new 1337 campaign as each crown. Confirm the Ashborn
+homeland and nearby Atlantic waters are discovered, while Iberia and all English,
+French and Moroccan land remain terra incognita. Compare known-water/unknown-land
+edges to the user's coastal-silhouette screenshot: no pre-revealed political
+colors, country labels or inspectable port details. Check distant interiors such
+as Paris and London remain hidden unless revealed by normal gameplay. Existing
+saves retain previous discoveries and are not valid acceptance tests for setup.
 
 Confirm no exploration offer before the 36-month initial cooldown expires
 (counted from the first monthly pulse, around 1340). Save/reload before expiry.
 Check unaffordable voyages and six-month postponement; then pay for the eastward
-voyage and confirm arrival after four months. Verify the owners of visited ports
+voyage and confirm arrival after four months. Confirm Porto, Lisbon and Setubal
+are newly discovered only on return, and north/south land ports remain hidden.
+Verify the owners of visited ports
 learn of the Isles on arrival and receive at most one first-contact notice each.
 After twelve months, test each six-month north/south voyage, including a port
 changing owner before arrival. Complete both routes and check offers stop.

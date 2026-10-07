@@ -1,27 +1,18 @@
-"""Known Atlantic charts and optional voyages that establish foreign contact."""
+"""Known Atlantic waters; foreign land is discovered by completed voyages."""
 import re
 import event_art
 
 FIRST_OFFER_MONTHS = 36
-STARTING_REGIONS = ['iberia_region']
+STARTING_REGIONS = []
 STARTING_SEA_AREAS = ['iberian_west_coast_area', 'bay_of_biscay_area',
                       'english_channel_area', 'nw_africa_coast_area']
-# Coastal provinces near the voyage destinations; distant interiors stay hidden.
-STARTING_PROVINCES = [
-    'cornwall_province', 'devon_province', 'dorset_province', 'hampshire_province',
-    'sussex_province', 'kent_province',
-    'tregor_province', 'cornouaille_province', 'vannetais_province', 'nantais_province',
-    'rennais_province', 'lower_poitou_province', 'saintonge_province',
-    'bordelais_province', 'tursan_province', 'bayonne_province',
-    'habat_province', 'azghar_province', 'fez_province', 'tamasna_province',
-    'dukkala_province', 'haha_province', 'errif_province', 'kert_province',
-]
+# Known sea beside undiscovered land is the intended coastal-silhouette state.
+# Never reveal mainland provinces/regions merely to expose their shorelines.
+STARTING_PROVINCES = []
 
 
 def starting_knowledge():
-    return (f"discovered_areas = {{ cm_cindermaw_area cm_ashborn_seas_area {' '.join(STARTING_SEA_AREAS)} }}\n"
-            f" discovered_regions = {{ {' '.join(STARTING_REGIONS)} }}\n"
-            f" discovered_provinces = {{ {' '.join(STARTING_PROVINCES)} }}")
+    return f"discovered_areas = {{ cm_cindermaw_area cm_ashborn_seas_area {' '.join(STARTING_SEA_AREAS)} }}"
 
 ROUTES = {
     'east': {'cost':5,'months':4,'event':2,'areas':['iberian_west_coast_area'],'locations':['lisbon','porto','setubal']},
@@ -34,14 +25,14 @@ TEXT = {
     'goblins_exploration.6.desc':'Fishermen report that a strange little vessel put ashore along our coast. Its crew were unlike any people they had seen: short, ugly creatures with long pointed ears, sharp teeth and restless eyes. They picked through the shallows and argued in a rasping tongue, but the moment they realized they had been spotted, they scrambled aboard and fled out to sea.\n\nA scout ship followed at a cautious distance, keeping their patched sails just within sight. Beyond our familiar waters, the pursuit led to a cluster of smoke-wreathed islands, their coves crowded with crooked docks and more of the same vessels. Our scouts have returned with a chart of the crossing. Whatever these creatures may be, we now know where they live.',
     'goblins_exploration.6.a':'Mark the islands on our charts. Keep watch on the sea.',
     'goblins_exploration.1.title':'Beyond the Ashen Horizon',
-    'goblins_exploration.1.desc':'Our rough charts show Iberia and the nearby mainland shores, but no captain has returned with a close account of their harbors. After years of gathering provisions and seaworthy hulls, the crews are ready. A small expedition could cross the eastern waters and learn who lives beyond them.',
+    'goblins_exploration.1.desc':'Our rough charts trace the nearby waters, but the mainland beyond them remains unknown. After years of gathering provisions and seaworthy hulls, the crews are ready. A small expedition could cross the eastern waters, chart its harbors and learn who lives beyond them.',
     'goblins_exploration.1.east':'Provision a voyage east. The crew returns in four months.',
     'goblins_exploration.1.wait':'We need these provisions at home. Ask again in six months.',
     'goblins_exploration.2.title':'A Coast Beyond Counting',
-    'goblins_exploration.2.desc':'The expedition returns with sketches of river mouths, broad sails and stone towns. Porto, Lisbon and Setubal are more than marks on an old chart now: our crews have seen their harbors and sailed the crossing home. They fled when shore watchers spotted them, but a foreign sail shadowed their return. The rulers of these ports now know the Ashborn Isles and the waters around them.',
+    'goblins_exploration.2.desc':'The expedition returns with sketches of river mouths, broad sails and stone towns. Porto, Lisbon and Setubal now have names and places on our charts: our crews have discovered their harbors and sailed the crossing home. They fled when shore watchers spotted them, but a foreign sail shadowed their return. The rulers of these ports now know the Ashborn Isles and the waters around them.',
     'goblins_exploration.2.a':'Keep the charts dry. There will be more voyages.',
     'goblins_exploration.3.title':'The Captains Unroll Their Charts',
-    'goblins_exploration.3.desc':'We have sailed the eastern crossing, but much of the coastline on our charts is still known only through old accounts. Some crews favor visiting the northern harbors, others the warmer southern coast. Provisions for another expedition will cost ten gold, and the voyage will take six months.',
+    'goblins_exploration.3.desc':'We have charted the first eastern harbors, but the shores farther north and south remain unexplored. Some crews favor the northern waters, others the warmer southern coast. Provisions for another expedition will cost ten gold, and the voyage will take six months.',
     'goblins_exploration.3.north':'Chart the northern coasts and the narrow sea beyond.',
     'goblins_exploration.3.south':'Follow the coast south toward the straits.',
     'goblins_exploration.3.wait':'Let the crews rest. Reconsider in six months.',

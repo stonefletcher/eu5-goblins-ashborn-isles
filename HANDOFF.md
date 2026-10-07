@@ -10,6 +10,10 @@ native aspects, two initial aspects per kingdom, Covenant Favor, three scaled-pr
 rites with one shared cooldown, twelve initial religious stories, and the Moot of
 Six Fires after Gathering. Includes monthly conversion cleanup and AI rite list.
 Expanded LORE.md; README and RELIGION_057.md distinguish source from bundled release.
+Exploration correction: removed starting Iberia-region and 24 coastal-province
+discovery grants. Nearby sea areas remain known; all foreign land ports start
+undiscovered and are revealed by voyage returns. Updated event prose and checks.
+Exact coastal-silhouette rendering against the user screenshot remains untested.
 
 Passed: verify_ashen_covenant.py against installed EU5 1.3.11; existing exploration
 and economy validators; generated faith-name/description integration; diff whitespace
@@ -23,4 +27,5 @@ mandatory clean-download gate before recommending installation.
 
 Build/install/publish: no full 0.5.7 build, package, installation, push or Workshop
 upload. Bundled installer, payload and metadata remain 0.5.5. Existing 0.5.6 economy,
-population and exploration source retained. This branch is local development.
+population, exploration timings and reciprocal contact retained; the 0.5.6 land
+visibility grants are superseded. This branch is local development.

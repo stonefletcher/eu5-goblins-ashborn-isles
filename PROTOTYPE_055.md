@@ -26,6 +26,29 @@ For preparation without installation:
 
 ## Implemented
 
+- Mixed island populations: 65,693 additional goblins, including 47,526 slaves.
+  Every district has all four foreign Ashborn cultures. Capital ports draw
+  more newcomers and some free merchants; mining districts favor captive labor.
+  The distribution uses seed 1337055 and stays fixed between installs. Existing
+  home-culture populations, classes, religions and district majorities remain.
+  All additions follow the Hunger Below. No humans are added.
+
+| Kingdom | Added goblins | Of those, slaves | New total population |
+|---|---:|---:|---:|
+| Cindermaw | 35,061 | 29,210 | 587,800 |
+| Brackmaw | 14,060 | 9,585 | 332,523 |
+| Reefhook | 4,314 | 2,051 | 112,751 |
+| Shatterfin | 8,587 | 4,990 | 222,074 |
+| Sootwake | 3,671 | 1,690 | 105,300 |
+
+The prototype installer now creates a population setup override from the
+installed 0.5.4 base, appending these entries without editing that base. Enable
+the prototype after the base in load order so its `06_pops.txt` takes precedence.
+Re-running the installer starts from the base again and does not stack additions.
+`tools/generate_mixed_populations.py` regenerates the authored distribution;
+`tools/prepare_prototype_055.py` refreshes its installer manifest. The full source
+builder uses the same distribution. The regular prepared release remains 0.5.4.
+
 - Two native situations: Gathering of the Five, followed by Eastern Hunger.
 - All five starting kingdoms participate; kingdom names may change with dynasty.
 - Opening choice and one introductory event for each kingdom, plus response and
@@ -69,6 +92,11 @@ discounts are not in this first prototype. Kingdom-specific events currently
 provide flavor and guidance, rather than unique contribution mechanics.
 
 ## First test pass
+
+Check a new campaign for the population totals above, foreign Ashborn minorities
+and their slave/free classes. Cindermaw's existing home-culture slaves remain in
+addition to its 29,210 new foreign-culture slaves. Check load order if the world
+still has 1,294,755 goblins. Gameplay and economic balance remain untested.
 
 1. Start as each kingdom in turn; confirm the Gathering panel appears and the
    opening and correct kingdom event fire. Check localization and available actions.

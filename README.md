@@ -1,5 +1,12 @@
 # 0.5.5 — Gathering prototype
 
+The prototype also adds **65,693 goblins of minority cultures**, bringing the
+starting population to **1,360,448**. Every district gains all four other
+Ashborn cultures, with uneven, fixed populations. Of the newcomers, **47,526 are
+slaves**; the remainder are laborers, peasants and capital merchants. Cindermaw
+receives the largest influx and slave share. Existing populations and classes
+are preserved. Run the prototype installer again and start a new campaign.
+
 Two situations, seven actions and thirteen events connect all five Ashborn kingdoms to a shared unification struggle and then an eastern coastal ambition. Conquest and consent-based vassalage use native mechanics; unions obtained normally count toward unification. Eastern actions provide paid bonuses and a temporary conquest casus belli, never free foreign land or automatic wars.
 
 **Prototype: static checks pass; in-game parsing, UI, AI and balance remain untested.** Use the small additive installer with the installed **0.5.4** base: download this branch, close EU5, run **Install-Prototype-055.cmd**, then enable both mods and start a new campaign. The regular installer is not a 0.5.5 release package. See [PROTOTYPE_055.md](PROTOTYPE_055.md) for installation, exact mechanics, limitations and tests.

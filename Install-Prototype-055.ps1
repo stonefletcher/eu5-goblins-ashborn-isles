@@ -41,6 +41,29 @@ foreach ($entry in $manifest.files) {
     New-Item -ItemType Directory -Path (Split-Path $destination -Parent) -Force | Out-Null
     Copy-Item -LiteralPath $origin -Destination $destination -Force
 }
+# Build the population override from the installed base, preserving all existing
+# native and goblin entries. Only add rows inside the known homeland blocks.
+$popRelative = 'main_menu\setup\start\06_pops.txt'
+$popBytes = [IO.File]::ReadAllBytes((Join-Path $baseRoot $popRelative))
+$hasBom = $popBytes.Length -ge 3 -and $popBytes[0] -eq 239 -and $popBytes[1] -eq 187 -and $popBytes[2] -eq 191
+$pops = [Text.Encoding]::UTF8.GetString($popBytes).TrimStart([char]0xFEFF)
+foreach ($addition in $manifest.population_additions.PSObject.Properties) {
+    $matches = [regex]::Matches($pops, ('(?m)^\s*' + [regex]::Escape($addition.Name) + '\s*=\s*\{'))
+    if ($matches.Count -ne 1) { throw "Expected one base population block: $($addition.Name)" }
+    $cursor = $matches[0].Index + $matches[0].Length
+    $depth = 1
+    while ($depth -gt 0 -and $cursor -lt $pops.Length) {
+        if ($pops[$cursor] -eq '{') { $depth++ }
+        if ($pops[$cursor] -eq '}') { $depth-- }
+        $cursor++
+    }
+    if ($depth -ne 0) { throw 'Unclosed base population block.' }
+    $pops = $pops.Insert($cursor - 1, ($addition.Value.Replace("`n", "`r`n") + "`r`n"))
+}
+$popOutput = Join-Path $prepared $popRelative
+New-Item -ItemType Directory -Path (Split-Path $popOutput -Parent) -Force | Out-Null
+[IO.File]::WriteAllText($popOutput, $pops, [Text.UTF8Encoding]::new($hasBom))
+$populationHash = (Get-FileHash -LiteralPath $popOutput -Algorithm SHA256).Hash
 $metadata = @{
     name = 'Goblins 0.5.5 - Gathering Prototype (requires 0.5.4)'
     id = $id
@@ -78,6 +101,7 @@ Copy-Item -LiteralPath $prepared -Destination $target -Recurse
 foreach ($entry in $manifest.files) {
     if ((Get-FileHash -LiteralPath (Join-Path $target $entry.path) -Algorithm SHA256).Hash -ne $entry.sha256) { throw 'Installed prototype checksum mismatch.' }
 }
+if ((Get-FileHash -LiteralPath (Join-Path $target $popRelative) -Algorithm SHA256).Hash -ne $populationHash) { throw 'Installed population checksum mismatch.' }
 Write-Host "Installed separate prototype at $target"
 Write-Host 'Enable BOTH Goblins 0.5.4 and this prototype. Start a NEW 1337 campaign for testing.'
 Write-Host 'The base mod and playsets were not modified. Disable the prototype to return to the base mod.'

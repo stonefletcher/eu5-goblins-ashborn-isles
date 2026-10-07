@@ -270,6 +270,7 @@ def build_map(b,game,out,reports):
 
 def build_setup(b,game,out):
     import ashborn_names
+    import mixed_populations
     cfg=b.CFG;locs=cfg['locations'];countries=cfg['countries'];entries=[];popentries=[];cities=[];markets=[];total=Decimal(0);slaves=Decimal(0)
     vanilla=b.read(game,'main_menu/setup/start/10_countries.txt');outer,_=b.block_span(vanilla,'countries')
     for c in countries:
@@ -309,6 +310,9 @@ def build_setup(b,game,out):
             assert all(value>=0 for _,value in parts) and sum(value for _,value in parts)==n,l['id']
             captive=dict(parts).get('slaves',Decimal(0))
         rows=[f' define_pop = {{ type = {typ} size = {v:.3f} culture = {l["culture"]} religion = cm_hunger_below }}' for typ,v in parts]
+        rows += mixed_populations.rows(l['id'])
+        n += mixed_populations.extra(l['id'])
+        captive += sum((Decimal(str(p['size'])) for p in mixed_populations.additions().get(l['id'], []) if p['type']=='slaves'), Decimal(0))
         popentries.append(l['id']+' = {\n'+'\n'.join(rows)+'\n}');total+=n;slaves+=captive
     b.write(out,'in_game/common/town_setups/goblins_ashborn_isles.txt','\n'.join(town_templates)+'\n')
     b.write(out,'main_menu/setup/start/10_countries.txt',b.inject(vanilla,'countries','\n'.join(entries),outer+1))
@@ -321,7 +325,7 @@ def build_setup(b,game,out):
     b.write(out,'in_game/common/cultures/goblins_ashborn_isles.txt','\n'.join(f'{c["culture"]} = {{ language = {c["culture"]}_dialect color = rgb {{ {" ".join(map(str,c["color"]))} }} tags = {{ european_gfx {c["culture"]}_gfx }} culture_groups = {{ cm_goblin_group }} opinions = {{ }} }}' for c in countries)+'\n')
     flag=(b.ROOT/'mod/main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt').read_text()
     b.write(out,'main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt','\n'.join(flag.replace('CDM =',c['tag']+' =').replace('color2 = red', 'color2 = '+['red','blue','yellow','purple','orange'][i]) for i,c in enumerate(countries)))
-    return {'total_population':int(total*1000),'enslaved_population':int(slaves*1000),'starting_gold':{c['tag']:c['gold'] for c in countries},'rgo_expansion_levels':{l['id']:l['rgo_expansion'] for l in locs},'starting_buildings':{l['id']:l['buildings'] for l in locs},'vanilla_population_entries_unchanged':True,'country_populations':{c['tag']:sum(int(Decimal(str(l['pop']))*1000) for l in locs if l['country']==c['tag']) for c in countries}}
+    return {'total_population':int(total*1000),'enslaved_population':int(slaves*1000),'starting_gold':{c['tag']:c['gold'] for c in countries},'rgo_expansion_levels':{l['id']:l['rgo_expansion'] for l in locs},'starting_buildings':{l['id']:l['buildings'] for l in locs},'vanilla_population_entries_unchanged':True,'country_populations':{c['tag']:sum(int((Decimal(str(l['pop']))+mixed_populations.extra(l['id']))*1000) for l in locs if l['country']==c['tag']) for c in countries}}
 
 def add_localization(b,out):
     rel='main_menu/localization/english/goblins_ashborn_isles_l_english.yml';p=out/rel;s=p.read_text(encoding='utf-8-sig');extra={}

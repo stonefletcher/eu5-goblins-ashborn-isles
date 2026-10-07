@@ -1,9 +1,9 @@
-# 0.5.4 development handoff
+# 0.5.5 mixed populations handoff
 
-Checkout: work/goblins; branch staging/0.5.4. Based on the uploaded f1cc641 tree (tested staging/0.5.3 foundation). Local and connector commit IDs differ; compare tree hashes.
+Branch: feature/0.5.5-mixed-goblin-populations, based on staging/0.5.5 at 294d5f2.
 
-Latest scope: 1,294,755 goblins; every clan gains at least another 50% over the first 0.5.4 pass. Small clans exceed 100k with Shatterfin largest. Rulers start at 27-39 with varied court birthdays; families retain plausible dates and adult dynastic heirs (brothers for the younger rulers). Ashborn cultures receive a conditional character auto modifier of +15 life-expectancy years. RGO expansion scales to 387.
+All 72 districts across all six islands and five nations now contain all five Ashborn cultures. Adds 65,693 goblins, including 47,526 slaves, without changing any existing population entry. Total 1,360,448. Cindermaw receives 35,061 newcomers, including 29,210 slaves; every other nation has both slave and free minorities. Fixed seed 1337055, weighted by country, capital and resource. Authored distribution: data/mixed_populations.json; generator: tools/generate_mixed_populations.py.
 
-Preserved: 72 locations/30 provinces, economic buildings/valuable RGOs, dynasty-only Ironfang succession, dynastic country naming, Shatterfin maternal seniority, tested 0.5.3 portrait/infantry/contact work. Terrain and art reused from verified previous 0.5.4 prepared output; demographic setup regenerated and validated.
+Full source setup and the small prototype installer share the same distribution. Installer appends rows to a copy of the installed 0.5.4 population setup, preserving BOM and leaving the base untouched. Prototype must load after base. Reinstall prototype and start a new campaign. Regular prepared release remains 0.5.4; no full 0.5.5 terrain bundle is claimed.
 
-Scoped build/setup validation passed: population/class totals, starting ages, family chronology and succession eligibility. Prepared bundle regenerated and statically verified. The final bundle commit records exact-tree clean preparation and remote publication acceptance. Gameplay acceptance remains pending; use TESTING.md. No active installation, launch, main merge or Workshop publication performed.
+Checks: native classes, complete culture coverage, original entries unchanged, source-generated setup and prototype setup. Gathering static checks pass. Clean-export preparation and isolated installer checks recorded in the PR. Gameplay, load-order behavior and economy acceptance remain pending. No active installation, game launch, main merge or Workshop publication.

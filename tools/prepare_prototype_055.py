@@ -12,11 +12,13 @@ def main():
               ROOT / 'mod/main_menu/common/static_modifiers/goblins_gathering.txt',
               ROOT / 'mod/main_menu/localization/english/goblins_gathering_l_english.yml']
     assert len(paths) == 10
-    manifest = {'version': '0.5.5', 'base_version': '0.5.4',
+    import mixed_populations
+    population_additions = {ident: '\n'.join(mixed_populations.rows(ident)) for ident in mixed_populations.additions()}
+    manifest = {'population_additions': population_additions, 'version': '0.5.5', 'base_version': '0.5.4',
                 'homeland_locations': [x['id'] for island in cfg['islands'] for x in island['locations']],
                 'files': [{'path': p.relative_to(ROOT / 'mod').as_posix(),
                            'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in paths]}
-    (ROOT / 'data/prototype_055_files.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
+    (ROOT / 'data/prototype_055_files.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8',newline='\n')
     print(json.dumps({'files': len(paths), 'homeland_locations': len(manifest['homeland_locations'])}))
 
 if __name__ == '__main__': main()

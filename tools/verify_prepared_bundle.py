@@ -40,7 +40,9 @@ def verify(root):
         if 'country_population_targets' in config:
             # Check the delivered setup, not merely the manifest's claimed config hash.
             pops=z.read('goblins_ashborn_isles/main_menu/setup/start/06_pops.txt').decode('utf-8-sig')
+            import mixed_populations
             actual={tag:0 for tag in config['country_population_targets']}
+            expected=dict(config['country_population_targets'])
             for island in config['islands']:
                 for location in island['locations']:
                     start=re.search(r'(?m)^\s*'+re.escape(location['id'])+r'\s*=\s*\{',pops)
@@ -49,10 +51,11 @@ def verify(root):
                     while depth:
                         depth+=(pops[end]=='{')-(pops[end]=='}');end+=1
                     n=sum(Decimal(v) for v in re.findall(r'\bsize\s*=\s*([\d.]+)',pops[start.end():end]))
-                    assert n==Decimal(str(location['pop'])),f'Stale packaged population: {location["id"]}'
+                    assert n==Decimal(str(location['pop']))+mixed_populations.extra(location['id']),f'Stale packaged population: {location["id"]}'
                     actual[island['country']]+=int(n*1000)
-            assert actual==config['country_population_targets']==report['economy']['country_populations']
-            assert sum(actual.values())==config['population_target']
+                    expected[island['country']]+=int(mixed_populations.extra(location['id'])*1000)
+            assert actual==expected==report['economy']['country_populations']
+            assert sum(actual.values())==sum(expected.values())
             assert report['economy']['longevity']['goblin_character_life_expectancy_bonus_years']==15
             assert report['economy']['longevity']['starting_ruler_ages']==config['starting_ruler_ages']
             chars=z.read('goblins_ashborn_isles/main_menu/setup/start/05_characters.txt').decode('utf-8-sig')

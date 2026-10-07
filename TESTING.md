@@ -1,3 +1,7 @@
+# 0.5.5 Jaima Gathering acceptance
+
+Start a new 1337 campaign as Shatterfin with the prototype after the 0.5.4 base. Check Jaima, the Mare-Mother, at 66/58/52 and Skritcha as initial eligible successor. When the Gathering starts, read The Tidemother’s Terms; 30 days after its introduction, read The Maternal House Endures. Save/reload during the delay and continue for several months to verify one delivery. Check all buttons and family names. Neither event changes stats, heirs, laws or relationships. Repeat as each other kingdom: its own introduction must fire and neither Shatterfin event should appear. Check voluntary Shatterfin vassalage preserves the maternal house and law. In-game delivery and layout remain unverified by static checks.
+
 ## 0.5.5 clan identity acceptance
 
 Cindermaw: check Drogg, The Stone Fletcher, at 78/80/96 ADM/DIP/MIL, with exactly one nickname. Read the expanded Emberblood culture description and the **One Fire, Many Blades** Gathering introduction. Verify Grakka, Grask and Kragga retain their original family links and dates. Military institutions and influence described in the text are flavor; no free forces, imposed allegiance or new diplomatic mechanics are granted.

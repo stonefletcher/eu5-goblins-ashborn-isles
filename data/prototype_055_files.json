@@ -202,7 +202,7 @@
     },
     {
       "path": "in_game/events/goblins_gathering.txt",
-      "sha256": "4be0bb938469308e492d6eea69feb96f84b20c50e4bdf6665061684093c9fb43"
+      "sha256": "b81e0c73528592dd5a0f3bb07fa9e25b289e1d7ebde1d44912b262261aa86c22"
     },
     {
       "path": "main_menu/common/static_modifiers/goblins_gathering.txt",
@@ -210,7 +210,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "e8ac68a38e0f6e02240594c4861499c542f19dd25bfd513ef4fddd2707076a09"
+      "sha256": "faee8bc7ff3fb51983c1d2972e20f35fafb28a549ab11400e069cf0e2dd45382"
     }
   ]
 }

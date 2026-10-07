@@ -1,3 +1,7 @@
+## 0.5.5 Jaima Gathering update
+
+Shatterfin is included in the ruler table at Jaima’s unchanged 66/58/52 ADM/DIP/MIL. Expanded The Tidemother’s Terms and new The Maternal House Endures give her two Shatterfin-only narrative events. The follow-up is scheduled 30 days after the introduction and guarded against repeats. All five kingdoms retain their introductions; total events rise from 13 to 14. Maternal seniority, family setup, situation costs and population additions are preserved. README, prototype guide and generated lore now cover her role. Static and packaging checks are separate from pending gameplay acceptance.
+
 ## 0.5.4 demographic revision
 
 - Starting populations: Cindermaw 552,739; Brackmaw 318,463; Reefhook 108,437; Shatterfin 213,487; Sootwake 101,629. Total 1,294,755. All clans gain at least another 50% over the first 0.5.4 pass; Shatterfin is the largest smaller clan.

@@ -57,12 +57,13 @@ builder uses the same distribution. The regular prepared release remains 0.5.4.
 - Brackmaw's Murgash is **the Sluice-King**, an exacting marsh engineer and provision broker (ADM 84, DIP 78, MIL 90). His nickname recalls sacrificing his hall's embankment to save Brackhaven's granaries in the Blackwater Flood. Expanded Brineward culture text and **The Sluice-King's Bargain** introduction connect the marsh houses, tidal gates, coastal workshops and supply oaths to his rivalry with Cindermaw. These are character setup and flavor changes; situation actions and their costs remain unchanged.
 - Reefhook's **Skrezz, the Wreck-Taker** (62/88/90) combines rescue obligations, shoal pilotage, pearl trade and risky foreign friendships. House Reefhook's rescue-beacon tradition, brother Krizzek's fishing-household interests and consort Zikka's Shoalcut ties shape its court. Its introduction is **The Wreck-Taker's Share**.
 - Sootwake's **Snikh, the Blackbough** (80/54/90) protects woodland settlements through firebreaks, guarded paths and cutting oaths. House Sootwake's rootwood-table tradition, brother Zhor's wardens and consort Zheska's charcoal households give its court competing claims. Its introduction is **Beneath the Blackbough**.
+- Shatterfin’s **Jaima, the Mare-Mother** retains her existing 66/58/52 abilities and maternal seniority. The expanded **The Tidemother’s Terms** introduction (`ga_gathering.13`) brings her own terms to the Gathering. It schedules **The Maternal House Endures** (`ga_gathering.15`) 30 days later, a Shatterfin-only, once-only family council involving Skritcha, Morzha, Rikkra and Vrosh. These two narrative events alter no stats, heir, succession law or diplomatic relationship. Their authored source is `data/shatterfin.json`; all five kingdoms have lore in `LORE.md`.
 - The prototype installer derives character and localization overrides from the installed 0.5.4 base. It changes these four rulers' abilities, adds the three new nicknames and updates their culture descriptions. Drogg's existing Stone Fletcher nickname is preserved exactly once. Other characters and text are preserved, including house names, family relationships and succession. Shared authored sources are `data/cindermaw.json`, `data/brackmaw.json`, `data/reefhook.json` and `data/sootwake.json`; full lore is in `LORE.md`. The court roles, house sayings, customs and rescue/fire stories are narrative flavor, without additional economic or succession mechanics.
 
 - Two native situations: Gathering of the Five, followed by Eastern Hunger.
 - All five starting kingdoms participate; kingdom names may change with dynasty.
-- Opening choice and one introductory event for each kingdom, plus response and
-  completion events: 13 events total.
+- Opening choice and one introductory event for each kingdom, a Shatterfin
+  follow-up, plus response and completion events: 14 events total.
 - Seven situation actions: offer an alliance, transfer paid aid, negotiate
   voluntary vassalage, obtain subjugation or province conquest CBs, prepare the
   eastern fleet and choose an eastern conquest objective.
@@ -109,7 +110,7 @@ addition to its 133,351 new foreign-culture slaves. Check load order if the worl
 still has 1,294,755 goblins. Gameplay and economic balance remain untested.
 
 1. Start as each kingdom in turn; confirm the Gathering panel appears and the
-   opening and correct kingdom event fire. Check localization and available actions.
+   opening and correct kingdom event fire. As Shatterfin, check The Tidemother’s Terms and The Maternal House Endures 30 days later; save/reload before the follow-up and advance further to confirm it does not repeat. Other kingdoms must not receive these two events. Check localization and available actions.
 2. Offer a Harbor Pact; test acceptance and refusal. Confirm acceptance creates
    an alliance and does not complete the situation or create a subject.
 3. Send supplies: the sender loses 10 gold, the recipient receives 10, and opinion

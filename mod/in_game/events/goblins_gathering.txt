@@ -250,7 +250,7 @@ ga_gathering.13 = {
         ai_chance = { factor = 1 }
         
     }
-    after = {  }
+    after = { trigger_event_non_silently = { id = ga_gathering.15 days = 30 } }
 }
 
 ga_gathering.14 = {
@@ -264,6 +264,24 @@ ga_gathering.14 = {
     immediate = {  }
     option = {
         name = ga_gathering.14.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}
+
+ga_gathering.15 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.15.title
+    desc = ga_gathering.15.desc
+    trigger = { tag = SFK NOT = { has_variable = ga_tidemother_council_seen } }
+    illustration_tags = { 10 = exterior }
+    immediate = { set_variable = { name = ga_tidemother_council_seen value = yes } }
+    option = {
+        name = ga_gathering.15.a
         trigger = {  }
         ai_chance = { factor = 1 }
         

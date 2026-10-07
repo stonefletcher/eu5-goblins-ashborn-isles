@@ -6,7 +6,7 @@ The prototype deliberately leaves wars, peace, unions and succession to native E
 from pathlib import Path
 import argparse
 import json
-from clan_identity import PROFILES
+from clan_identity import PROFILES, SHATTERFIN
 
 ROOT = Path(__file__).resolve().parents[1]
 TAGS = ['CDM', 'QBR', 'RHK', 'SFK', 'SWK']
@@ -464,11 +464,16 @@ ga_cb_eastern_foothold = {
         (10, 'CDM', *(PROFILES['CDM'][k] for k in ('event_title','event_description','event_answer'))),
         (11, 'QBR', *(PROFILES['QBR'][k] for k in ('event_title','event_description','event_answer'))),
         (12, 'RHK', *(PROFILES['RHK'][k] for k in ('event_title','event_description','event_answer'))),
-        (13, 'SFK', 'The Tidemother\'s Terms', 'No pact shall erase the maternal house. The Ashen Compact preserves our ruling dynasty and current succession law. We may lead the gathering ourselves, or accept protection on those terms.', 'The Tidemother keeps her crown.'),
+        (13, 'SFK', *(SHATTERFIN[k] for k in ('event_title','event_description','event_answer'))),
         (14, 'SWK', *(PROFILES['SWK'][k] for k in ('event_title','event_description','event_answer')))
     ]
     for num, tag, title, desc, answer in signatures:
-        events.append(event(num, title, desc, option(num, 'a', answer), trigger=f'tag = {tag}'))
+        after = 'trigger_event_non_silently = { id = ga_gathering.15 days = 30 }' if tag == 'SFK' else ''
+        events.append(event(num, title, desc, option(num, 'a', answer), trigger=f'tag = {tag}', after=after))
+    events.append(event(15, SHATTERFIN['followup_title'], SHATTERFIN['followup_description'],
+        option(15, 'a', SHATTERFIN['followup_answer']),
+        trigger='tag = SFK NOT = { has_variable = ga_tidemother_council_seen }',
+        immediate='set_variable = { name = ga_tidemother_council_seen value = yes }'))
     write(out, 'in_game/events/goblins_gathering.txt', '\n'.join(events))
 
     for key, text in [

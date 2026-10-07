@@ -195,6 +195,21 @@ def verify(root, game, out):
                     if field == 'name' and isinstance(key, str) and key.startswith('ga_'):
                         assert key in keys, f'Missing option/selector localization: {key}'
     # Full territorial checks: no culture shortcut, percentage threshold, or empty tile success.
+    # Every crown must receive its own introduction; Shatterfin has a guarded follow-up.
+    situation = declarations['ga_gathering_of_five']
+    monthly = next(v for k, _, v in situation if k == 'on_monthly')
+    for tag, number in [('CDM', 10), ('QBR', 11), ('RHK', 12), ('SFK', 13), ('SWK', 14)]:
+        introduction = declarations[f'ga_gathering.{number}']
+        assert ('trigger', '=', [('tag', '=', tag)]) in introduction
+        assert any(k == 'if' and ('limit', '=', [('tag', '=', tag)]) in v
+                   and ('trigger_event_non_silently', '=', f'ga_gathering.{number}') in v
+                   for k, _, v in flatten(monthly) if isinstance(v, list)), tag
+    after = next(v for k, _, v in declarations['ga_gathering.13'] if k == 'after')
+    assert after == [('trigger_event_non_silently', '=', [('id', '=', 'ga_gathering.15'), ('days', '=', '30')])]
+    followup = declarations['ga_gathering.15']
+    assert ('trigger', '=', [('tag', '=', 'SFK'), ('NOT', '=', [('has_variable', '=', 'ga_tidemother_council_seen')])]) in followup
+    assert ('immediate', '=', [('set_variable', '=', [('name', '=', 'ga_tidemother_council_seen'), ('value', '=', 'yes')])]) in followup
+    assert len([k for k in declarations if k.startswith('ga_gathering.')]) == 14
     ownership = declarations['ga_controls_homeland']
     locations = [key.split(':', 1)[1] for key, _, _ in flatten(ownership) if key.startswith('location:')]
     assert len(locations) == len(set(locations)) == 72
@@ -220,6 +235,7 @@ def verify(root, game, out):
               'homeland_locations': len(locations), 'localization_keys': len(keys),
               'ownership_scenarios': scenarios, 'native_references_checked': True,
               'no_free_foreign_land_units_or_wars': True, 'static_checks_passed': True,
+              'all_five_introductions_routed': True, 'shatterfin_guarded_followup': True,
               'engine_parser_tested': False, 'gameplay_tested': False}
     return report
 

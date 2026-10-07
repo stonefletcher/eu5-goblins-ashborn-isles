@@ -1,6 +1,6 @@
 {
   "version": "0.5.4",
-  "source_commit": "52cb663b9a7265ea95c4ec5f1f5ddb1ba0f87ca3",
+  "source_commit": "c4ec83be9e320e174de96618ac1c324c5172191d",
   "source_config_sha256": "f50f9d14ac3c7309721434e8ee44d63290aed815263437a54835b1cbde1e587f",
   "assets": [
     {
@@ -452,5 +452,6 @@
         "assets/Goblins_Ashborn_Isles_0.5.4.zip.update.0854332116f4.0002.b64"
       ]
     }
-  ]
+  ],
+  "release_branch": "release/v0.5.4"
 }

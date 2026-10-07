@@ -4,7 +4,7 @@ Five goblin kingdoms share six volcanic islands in the Atlantic. Unite their riv
 
 ![The five Ashborn clans gather beneath their banners](art/events/sources/gathering.png)
 
-**0.5.6 installer repair.** This branch combines the 0.5.6 economy, delayed exploration and nearby Atlantic starting charts with the situation-panel, tooltip and event-choice fixes below. Source metadata and the prepared package now target **0.5.6 / EU5 1.3.11**. A new 1337 campaign is required for the starting-world changes. Packaging verification is recorded in the repair handoff; gameplay acceptance remains pending.
+**0.5.6 release.** This branch combines the 0.5.6 economy, delayed exploration and nearby Atlantic starting charts with the situation-panel, tooltip and event-choice fixes below. Source metadata and the prepared package now target **0.5.6 / EU5 1.3.11**. A new 1337 campaign is required for the starting-world changes. Packaging verification is recorded in the repair handoff; gameplay acceptance remains pending.
 
 ## Latest 0.5.6 fixes
 
@@ -16,7 +16,7 @@ Five goblin kingdoms share six volcanic islands in the Atlantic. Unite their riv
 
 **Validation:** 14 ownership scenarios, native modifier references, localization, required panel layouts, package-manifest hashes and 21 DDS textures passed static checks. Engine rendering, action visibility and performance remain unverified. The matching 0.5.6 package passed archive/content verification and clean-source installer preparation. These checks are separate from gameplay acceptance.
 
-This branch's changes are not yet merged into `main`. See [TESTING.md](TESTING.md) for the in-game acceptance checklist.
+Release branch: `release/v0.5.6`. See [TESTING.md](TESTING.md) for the in-game acceptance checklist.
 
 ## What is changing in 0.5.6?
 
@@ -40,7 +40,7 @@ See the [0.5.6 economic design and validation notes](ECONOMY_056.md) for compari
 
 ## Install the repaired 0.5.6 build
 
-Use the updated complete source archive from `staging/0.5.6`, extract it into a new folder, close EU5, then run `Install-Goblins.cmd`. Do not reuse an old extracted staging folder. Enable only Goblins of the Ashborn Isles and start a new 1337 campaign. The installer retains checksum checks and backs up an existing local installation.
+Download [Goblins_Ashborn_Isles_0.5.6.zip](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.6), extract it into a new folder, close EU5, then run `Install-Goblins.cmd`. Do not reuse an old extracted staging folder. Enable only Goblins of the Ashborn Isles and start a new 1337 campaign. The installer retains checksum checks and backs up an existing local installation.
 
 The older public 0.5.5 release remains available below as a fallback; it does not include the 0.5.6 changes.
 

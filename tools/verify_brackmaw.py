@@ -28,6 +28,7 @@ def verify(base, out):
             assert new_fields.pop(stat) == str(data[stat])
             old_fields.pop(stat)
         assert new_fields.pop('nickname') == [('name', '=', data['nickname_key'])]
+        if tag == 'CDM':assert old_fields.pop('nickname') == [('name', '=', data['nickname_key'])]
         assert new_fields == old_fields, 'Identity, family or chronology changed'
         rulers[pattern] = new
     assert original_chars == changed_chars, 'Unrelated characters changed'
@@ -40,10 +41,11 @@ def verify(base, out):
     original, changed = localization(base / locrel), localization(out / locrel)
     for tag, data in PROFILES.items():
         assert changed.pop(data['nickname_key']) == data['nickname']
+        if tag == 'CDM':assert original.pop(data['nickname_key']) == data['nickname']
         assert changed.pop(CULTURES[tag]+'_desc') == data['culture_description']
         original.pop(CULTURES[tag]+'_desc')
     assert original == changed, 'Unrelated localization changed'
-    # Generate authored courts separately, then compare all three rulers with the add-on.
+    # Generate authored courts separately, then compare all four rulers with the add-on.
     cfg = json.loads((Path(__file__).resolve().parents[1] / 'data/island.json').read_text())
     with tempfile.TemporaryDirectory() as directory:
         root = Path(directory)

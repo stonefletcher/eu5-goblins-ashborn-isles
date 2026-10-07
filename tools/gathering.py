@@ -461,7 +461,7 @@ ga_cb_eastern_foothold = {
         'Our realm has secured a European coastal foothold while the homeland remains united. It was acquired through the ordinary rules of diplomacy and war. The situation rewards the achievement with prestige and a temporary naval recovery benefit. No further territory is bestowed.',
         option(8, 'a', 'The eastern horizon is open.', 'add_prestige = 10 add_country_modifier = { modifier = ga_first_eastern_harbor years = 5 mode = replace }')))
     signatures = [
-        (10, 'CDM', 'The Forges Must Be Fed', 'Our forge captains see strength in a united archipelago. We can seek recognition through war, or supply those willing to stand beside us.', 'Let the forges serve our claim.'),
+        (10, 'CDM', *(PROFILES['CDM'][k] for k in ('event_title','event_description','event_answer'))),
         (11, 'QBR', *(PROFILES['QBR'][k] for k in ('event_title','event_description','event_answer'))),
         (12, 'RHK', *(PROFILES['RHK'][k] for k in ('event_title','event_description','event_answer'))),
         (13, 'SFK', 'The Tidemother\'s Terms', 'No pact shall erase the maternal house. The Ashen Compact preserves our ruling dynasty and current succession law. We may lead the gathering ourselves, or accept protection on those terms.', 'The Tidemother keeps her crown.'),

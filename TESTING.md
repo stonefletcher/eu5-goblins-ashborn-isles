@@ -1,3 +1,9 @@
+# 0.5.3 release acceptance status
+
+The user confirmed visible infantry and no recurrence of the reported crash on October 6, 2026. That check is passed; the broader checks below remain useful for regressions. Package validation is performed against a fresh source export, including reconstructed terrain hashes and exact runtime overlay contents.
+
+Check the release version **0.5.3** and enable only one copy. The 0.5.4 demographics/economy/lifespan work and 0.5.5 expansion prototype are excluded. Preserve separate saves and use a new 1337 campaign.
+
 ## 0.5.3 infantry attachment repair — user tested
 
 Native fallback infantry were visible and did not reproduce the crash in the user's test. Custom goblin infantry are now re-enabled through the native attachment workflow: the base graph supplies the skeleton, transform and animation machine; a named shared_pose_entity attachment supplies the visible mesh. The direct root MeshType is removed.

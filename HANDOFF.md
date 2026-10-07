@@ -1,7 +1,7 @@
-# 0.5.3 consolidated staging
+# 0.5.3 release handoff
 
-Canonical branch: staging/0.5.3. Base ff8a431 includes portraits, opt-in human isolation fix, native shared-pose infantry repair, first-contact companion event and culture-scoped recruitment illustrations. Workshop preparation merged from 90cbd3c. The packaging-only isolation commit 693914e is superseded: applying its old overlay would remove the now-complete exploration integration.
+Source baseline: staging/0.5.3 at cd7409e0cdbc4937ede49ef1c499b29fcce3f08f. Goal: publish v0.5.3, integrate into main and prepare the Steam update package. 0.5.4 and 0.5.5 development stays on its existing branches.
 
-User confirmed infantry visible and no longer crashing on October 6, 2026. Appearance refinement deferred to GitHub issue #4. Recruitment illustrations and first-contact event have static checks but await gameplay acceptance. Preserve the working graphics attachment route.
+Release docs consolidate the portrait pass, human isolation, user-tested shared-pose infantry repair, recruitment illustrations, first-contact event and Workshop preparation. Historical notes are retained. Publish workflow targets the full source SHA and uses version-specific release notes.
 
-Run exact-tree clean-download installer validation before handoff. No active installation, game launch or Workshop publication is implied. Existing source branches/worktrees remain intact; use this branch for further integration.
+Mandatory gates: prepared bundle verification; fresh exact-tree source export; PrepareOnly terrain reconstruction; file-hash verification of full Workshop staging. No active install/game launch or Steam publication is implied. User confirmed infantry visible/no reported crash on October 6; further appearance work is issue #4. Broader gameplay checks remain in TESTING.md.

@@ -19,9 +19,9 @@ def main():
             assert digest(data)==item['sha256'],item['path']
             name='goblins_ashborn_isles/'+item['path']
             if name not in old.namelist() or old.read(name)!=data: changed[name]=data
-        for name in ['README.md','RELEASE_NOTES.md','TESTING.md']:
+        for name in ['README.md','RELEASE_NOTES.md','RELEASE_NOTES_0.5.3.md','TESTING.md','WORKSHOP_UPLOAD.md','STEAM_DESCRIPTION.txt','STEAM_CHANGELOG.txt']:
             data=(ROOT/name).read_bytes()
-            if old.read(name)!=data: changed[name]=data
+            if name not in old.namelist() or old.read(name)!=data: changed[name]=data
     if not changed:
         print('Prepared bundle already matches overlay.');return
     buffer=io.BytesIO(raw)

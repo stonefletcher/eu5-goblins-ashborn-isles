@@ -26,6 +26,14 @@ Lead one of the Ashborn clans in a new 1337 campaign. Build your island realm, c
 [*][b]Goblin character and unit art:[/b] Clan-based portrait appearances and custom infantry assets. The 0.5.3 art pass introduces more subdued skin colours, revised goblin features and rougher clothing; visuals remain under development.
 [/list]
 
+[h2]New in 0.5.3[/h2]
+[list]
+[*]Revised goblin features, subdued clan skin colours and rougher clothing across all five Ashborn cultures, with human portraits preserved.
+[*]Repaired map infantry through native mesh attachments; visibility and the reported crash fix were confirmed in a player test. Further appearance refinement remains in development.
+[*]Original goblin infantry recruitment illustrations scoped to Ashborn cultures.
+[*]A companion first-contact event for the owners of ports visited by Ashborn expeditions.
+[/list]
+
 [h2]Demo status[/h2]
 This is an early development demo, not a finished overhaul. Terrain, portraits, unit rendering, succession and economic balance are still being tested and refined. Updates may require a fresh campaign. Multiplayer and achievement compatibility are unverified.
 

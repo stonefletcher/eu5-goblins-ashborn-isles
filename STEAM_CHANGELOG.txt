@@ -1,0 +1,9 @@
+[b]0.5.3 - Rough-Clad Goblins[/b]
+[list]
+[*]Revised goblin portraits, clan skin palettes, adult proportions and plain clothing; human appearances preserved.
+[*]Repaired custom map infantry using native shared-pose attachments. Visibility and the reported crash fix confirmed in a player test; further visual refinement planned.
+[*]Added goblin infantry recruitment and army-card artwork for all five Ashborn cultures.
+[*]Added the companion first-contact event Strange Visitors on Our Shores for owners of visited ports.
+[*]Consolidated installer and full Workshop packaging.
+[/list]
+EU5 1.3.11. Restart and start a new 1337 campaign. This remains a development demo; see the description for remaining testing limitations.

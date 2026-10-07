@@ -35,7 +35,7 @@ def main():
     if exists.returncode==0:raise SystemExit('Release already exists; inspect it before making changes.')
     subprocess.run(['gh','release','create',tag,*files,'--target',target,
                     '--title',f'Goblins of the Ashborn Isles {version} - Rough-Clad Goblins',
-                    '--notes-file',str(root/'RELEASE_NOTES.md'),'--prerelease'],check=True)
+                    '--notes-file',str(root/f'RELEASE_NOTES_{version}.md'),'--latest'],check=True)
 
 
 if __name__=='__main__':main()

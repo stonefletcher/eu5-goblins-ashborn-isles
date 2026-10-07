@@ -1,14 +1,39 @@
 # 0.5.5 — Gathering prototype
 
+The 0.5.5 update gives Cindermaw, Brackmaw, Reefhook and Sootwake distinct ruler abilities, expanded cultural traditions, royal-family stories and rewritten Gathering introductions. Their shared Ashborn origins now support four different approaches to power: military leadership, control of supplies, maritime bargaining and woodland independence.
+
+## Rulers and faction identities
+
+| Kingdom | Starting ruler | Nickname | Administration | Diplomacy | Military | Gathering introduction |
+|---|---|---|---:|---:|---:|---|
+| Cindermaw | Drogg Cindermaw | The Stone Fletcher | 78 | 80 | 96 | One Fire, Many Blades |
+| Brackmaw | Murgash Brackmaw | The Sluice-King | 84 | 78 | 90 | The Sluice-King's Bargain |
+| Reefhook | Skrezz Reefhook | The Wreck-Taker | 62 | 88 | 90 | The Wreck-Taker's Share |
+| Sootwake | Snikh Sootwake | The Blackbough | 80 | 54 | 90 | Beneath the Blackbough |
+
+Shatterfin retains Jaima **the Mare-Mother**, its Stormfang identity and maternal dynastic seniority.
+
 **Cindermaw — Emberblood:** The largest Ashborn kingdom, ruled from Hooktooth by King Drogg, **the Stone Fletcher**. Muster yards, forge captains and volcanic ridge defenses sustain its military power; weapons contracts, patronage, marriage negotiations and protection extend its influence across the Isles. House Cindermaw's saying is **“One fire, many blades.”** Drogg expects to lead the Gathering, while Queen Grakka counts the cost and their son Grask seeks a command. His abilities are 78/80/96 ADM/DIP/MIL. The expanded Emberblood description and **One Fire, Many Blades** introduction give the main faction a commanding role, with supply demands and rival crowns testing its ambitions.
 
 **Brackmaw — Brineward:** Murgash Brackmaw, **the Sluice-King**, built his authority on tidal gates, dry granaries and debts remembered. Brackhaven's timber crews, ropewalks and coastal workshops supply his bid to make every Ashborn crown dependent on his harbor. The marsh houses expect maintained waterways and a voice in the labor he demands. His administration and diplomacy now reflect that identity (84/78/90 ADM/DIP/MIL); his house, family and succession remain intact. The Brineward culture text and Brackmaw's Gathering introduction tell this story in game.
+
+Drogg's nickname recalls defending Hooktooth with volcanic arrowheads when iron ran short. Murgash earned his by sacrificing his own hall's embankment to save Brackhaven's granaries in the Blackwater Flood. Their rivalry joins Cindermaw's military weight to Brackmaw's ability to bargain over the provisions and coastal industry that campaigns require.
 
 **Reefhook — Reefstrider:** Skrezz Reefhook, **the Wreck-Taker**, is a charming captain who rescued stranded fishers at the Lantern Shoals and salvaged their hulls to replace the lost boats. House Reefhook's rescue beacons and pilotage obligations bind it to the fishing households; its saying is **“Bring the crew home; reckon the cargo after.”** Older brother Krizzek challenges Skrezz's costly foreign friendships, while consort Zikka connects the crown to House Shoalcut's pilots. Pearls, safe passage and divided salvage offer influence, but growing settlements need food and dependable buyers. Skrezz starts at 62/88/90 ADM/DIP/MIL.
 
 **Sootwake — Ashveil:** Snikh Sootwake, **the Blackbough**, kept a scorched branch after holding the Red Hollow firebreak while families escaped. House Sootwake guards forest paths and cutting rights under the saying **“Roots outlast fire.”** Older brother Zhor presses the wardens' timber claims; consort Zheska of House Cinderhush speaks for the charcoal settlements. New hearths strengthen the kingdom while straining the groves that shelter it. Snikh starts at 80/54/90 ADM/DIP/MIL. Both houses retain their names and existing family relationships and succession rules. See [LORE.md](LORE.md) for their expanded stories.
 
+## What changes in play
+
+The four ruler ability sets above replace their previously shared 66/61/90 values. Brackmaw, Reefhook and Sootwake gain their nicknames; Drogg keeps his existing Stone Fletcher nickname. Expanded culture descriptions and four rewritten introductions bring the new identities into the game. [LORE.md](LORE.md) contains the full ruler, dynasty and national stories.
+
+The house sayings, family interests, military customs, rescue obligations and woodland rights are narrative flavor. They do not add new institutions, court appointments, economic bonuses or diplomatic actions. Existing family relationships, house names, birthdays and succession laws are preserved, as are population, geography and the costs of situation actions.
+
 Two situations, seven actions and thirteen events connect all five Ashborn kingdoms to a shared unification struggle and then an eastern coastal ambition. Conquest and consent-based vassalage use native mechanics; unions obtained normally count toward unification. Eastern actions provide paid bonuses and a temporary conquest casus belli, never free foreign land or automatic wars.
+
+## Installation and verification
+
+The prototype installer includes all four faction updates. It derives the required character and localization overrides from the installed 0.5.4 base. Preparation from a clean source export, installation into isolated test data, checksum checks and comparisons against the full-build character generator have passed. All unrelated character and localization entries were preserved. Native-reference checks and all 14 ownership scenarios also passed.
 
 **Prototype: static checks pass; in-game parsing, UI, AI and balance remain untested.** Use the small additive installer with the installed **0.5.4** base: download this branch, close EU5, run **Install-Prototype-055.cmd**, then enable both mods and start a new campaign. The regular installer is not a 0.5.5 release package. See [PROTOTYPE_055.md](PROTOTYPE_055.md) for installation, exact mechanics, limitations and tests.
 
@@ -248,5 +273,5 @@ not certify in-game succession, maternal inheritance or portrait rendering.
 
 Naming proposals for all five Ashborn cultures are in [NAMING_PROPOSALS.md](NAMING_PROPOSALS.md). The approved dialect system is implemented in this version.
 
-All five Ashborn cultures have 16 male and 16 female name entries, six house names and six lowborn names each. Four additional royal families and 15 adult courtiers are authored. Drogg Cindermaw bears the nickname "the Stone Fletcher"; Jaima Shatterfin bears "the Mare-Mother". Cabinet appointments remain native, drawing on culture-specific names and the available court.
+All five Ashborn cultures have 16 male and 16 female name entries, six house names and six lowborn names each. Four additional royal families and 15 adult courtiers are authored. In 0.5.5, all five starting rulers have nicknames: Drogg "the Stone Fletcher", Murgash "the Sluice-King", Skrezz "the Wreck-Taker", Jaima "the Mare-Mother" and Snikh "the Blackbough". Cabinet appointments remain native, drawing on culture-specific names and the available court.
 

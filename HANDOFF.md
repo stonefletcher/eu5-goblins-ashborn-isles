@@ -15,3 +15,6 @@ One Fire, Many Blades now offers a shorter council scene with three five-year bo
 
 
 The blank Situation Panel had a separate source omission: neither custom situation had its required ID-named GUI layout. Added ga_gathering_of_five.gui and ga_eastern_hunger.gui under in_game/gui/panels/situation, authored by gathering.py. Installed native GUI readme requires these files; layouts inherit situation_panel from common.gui, retaining artwork, dates, scrolling, ended-state handling and situations_actions. Custom content adds localized description and completion requirements. Both are included in the additive manifest. Static native-template, layout presence, localization, ownership and art checks passed; engine rendering and actual action visibility remain untested.
+
+
+0.5.6 packaging repair in progress: includes staging exploration pacing and starting Atlantic charts alongside economy, situation panels, tooltip fixes and Cindermaw choices. Complete installer validation pending.

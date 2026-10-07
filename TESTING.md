@@ -1,3 +1,26 @@
+## 0.5.6 exploration acceptance (pending full build)
+
+Run `python tools/verify_exploration.py --game <EU5 game directory>` for a focused
+setup build, native map-reference checks, initial cooldown and voyage/contact
+guards. `tools/verify_economy.py` checks the shared setup generator's economy.
+These partial build folders are not installable mods.
+
+After packaging 0.5.6, start a new 1337 campaign as each crown. Confirm Iberia,
+southern English coastal provinces, Atlantic French coastal provinces, Moroccan
+coastal provinces and nearby waters are visible, with ordinary fog hiding units.
+Check distant interiors such as Paris and London remain terra incognita, unless
+revealed by normal gameplay. Starting knowledge may enable normal diplomacy and
+earlier Eastern Hunger target selection; assess this balance effect too.
+
+Confirm no exploration offer before the 36-month initial cooldown expires
+(counted from the first monthly pulse, around 1340). Save/reload before expiry.
+Check unaffordable voyages and six-month postponement; then pay for the eastward
+voyage and confirm arrival after four months. Verify the owners of visited ports
+learn of the Isles on arrival and receive at most one first-contact notice each.
+After twelve months, test each six-month north/south voyage, including a port
+changing owner before arrival. Complete both routes and check offers stop.
+Other native sources of discovery may independently reveal the Isles earlier.
+
 ## 0.5.5 art acceptance
 
 Check all five country shields and land/naval flags against the Gathering banner

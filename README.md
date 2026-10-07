@@ -132,3 +132,6 @@ Report problems through [GitHub Issues](https://github.com/stonefletcher/eu5-gob
 - [Clan flag sources and export details](art/flags/README.md)
 
 Europa Universalis V and its game assets belong to Paradox. This is an unofficial fantasy mod. Event paintings were created with image generation; editable clan emblems and artwork provenance are included in the linked art documentation.
+
+
+0.5.6 packaging repair in progress: includes staging exploration pacing and starting Atlantic charts alongside economy, situation panels, tooltip fixes and Cindermaw choices. Complete installer validation pending.

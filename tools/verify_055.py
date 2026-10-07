@@ -185,6 +185,20 @@ def verify(root, game, out):
     keys = re.findall(r'(?m)^ ([\w.]+):', loctext)
     assert len(keys) == len(set(keys)), 'Duplicate localization keys'
     assert locpath.read_bytes().startswith(b'\xef\xbb\xbf')
+    # Native UI discovery requires one ID-matched layout per situation.
+    native_panels = game / 'in_game/gui/panels/situation'
+    assert 'type situation_panel = lateralview' in read(native_panels / 'common.gui')
+    assert 'using = situations_actions' in read(native_panels / 'common.gui')
+    for situation_id in ('ga_gathering_of_five', 'ga_eastern_hunger'):
+        panel_path = out / 'in_game/gui/panels/situation' / (situation_id + '.gui')
+        panel = read(panel_path)
+        assert panel_path.read_bytes().startswith(b'\xef\xbb\xbf')
+        assert panel.count('{') == panel.count('}'), panel_path
+        assert panel.strip().startswith('situation_panel = {'), panel_path
+        assert f'text = "{situation_id}_desc"' in panel, panel_path
+        assert situation_id + '_desc' in keys
+        assert '[SituationView.GetActiveSituation.GetSituation.GetEndConditions]' in panel
+        assert 'blockoverride "panel_content"' not in panel, 'Must retain native actions and scrolling'
     for modifier, _, _ in ast[out / 'main_menu/common/static_modifiers/goblins_gathering.txt']:
         for prefix in ('STATIC_MODIFIER_NAME_', 'STATIC_MODIFIER_DESC_'):
             assert prefix + modifier in keys, f'Missing static modifier localization: {prefix}{modifier}'

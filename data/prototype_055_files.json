@@ -213,6 +213,14 @@
       "sha256": "029a7ab881e4047cda0c78f2f874eaefdad615f0e65cea23185fca1191d06c39"
     },
     {
+      "path": "in_game/gui/panels/situation/ga_eastern_hunger.gui",
+      "sha256": "3a0b66b6f31d083ee891b9f863493d806888420336fdef7efbf9fb80331a3aed"
+    },
+    {
+      "path": "in_game/gui/panels/situation/ga_gathering_of_five.gui",
+      "sha256": "a471dd7d1b7588c630b567105830e7e60af40d7b3ef0b9ee06aec7f61e3703f1"
+    },
+    {
       "path": "main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt",
       "sha256": "6d1230cb0bc5e1e9315b9956b108d914e671c68c04bb303683b0a9cd13918834"
     },

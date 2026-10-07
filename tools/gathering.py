@@ -272,6 +272,30 @@ ga_eastern_hunger = {
 }
 '''
     write(out, 'in_game/common/situations/goblins_gathering.txt', situations)
+    # Native panels are resolved by situation ID; definitions alone render no UI.
+    # Inherit the game's illustration, start date, scrolling and action list.
+    for situation_id in ('ga_gathering_of_five', 'ga_eastern_hunger'):
+        panel = '''
+situation_panel = {
+    blockoverride "situation_subheader_content" {}
+    blockoverride "situation_panel_main_content" {
+        text_multi = {
+            layoutpolicy_horizontal = expanding
+            max_width = 400
+            autoresize = yes
+            text = "SITUATION_DESCRIPTION_KEY"
+        }
+        text_single = {
+            layoutpolicy_horizontal = expanding
+            text = "END_REQUIREMENTS"
+        }
+        TooltipRequirementsList = {
+            textcontext = "[SituationView.GetActiveSituation.GetSituation.GetEndConditions]"
+        }
+    }
+}
+'''.replace('SITUATION_DESCRIPTION_KEY', situation_id + '_desc')
+        write(out, f'in_game/gui/panels/situation/{situation_id}.gui', panel)
 
     # Persist sender in the recipient, so event responses survive save/reload and
     # do not depend on the generic action's transient actor scope.

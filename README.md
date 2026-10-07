@@ -47,6 +47,12 @@ Jaima’s 66/58/52 abilities are unchanged from the 0.5.4 base. Shatterfin retai
 
 ## What changes in play
 
+**Matching clan flags:** all five country flags follow the banners in the
+Gathering painting, with custom volcano, reed, curling-wave, shark-and-wave and
+spiked-helmet emblems on matching rust, olive, teal, blue and charcoal fields.
+The prototype includes the flag definitions and textures. Editable sources and
+export details are in [art/flags/README.md](art/flags/README.md).
+
 **Custom event and situation art:** seventeen original Ashborn paintings cover
 all fourteen Gathering events, the Cindermaw introduction and all six exploration
 and first-contact events. Both situations have custom headers and icons. The five

@@ -14,5 +14,6 @@ jobs:
           python-version: '3.11'
       - run: pip install -r requirements.txt
       - run: python tools/verify_event_art.py
+      - run: python tools/verify_clan_flags.py
       - run: python tools/gathering.py
       - run: git diff --exit-code -- mod/in_game/events/goblins_gathering.txt

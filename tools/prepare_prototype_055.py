@@ -17,6 +17,8 @@ def main():
     paths += [ROOT / 'mod/in_game/events/goblins_ashborn_isles.txt',
               ROOT / 'mod/in_game/events/goblins_exploration.txt']
     paths += [ROOT / 'mod' / rel for rel in runtime_paths()]
+    from build_clan_flags import runtime_paths as flag_paths
+    paths += [ROOT / 'mod' / rel for rel in flag_paths()]
     paths = sorted(set(paths))
     import mixed_populations
     population_additions = {ident: '\n'.join(mixed_populations.rows(ident)) for ident in mixed_populations.additions()}

@@ -1,5 +1,14 @@
 ## 0.5.5 art acceptance
 
+Check all five country shields and land/naval flags against the Gathering banner
+reference: Cindermaw black volcano/rust orange; Brackmaw ivory reeds/olive;
+Reefhook ivory curling wave/teal; Shatterfin ivory shark and three waves/slate
+blue; Sootwake ivory spiked helmet/charcoal. Check diplomacy and country headers,
+small situation participants, map armies and ships. Confirm transparent emblem
+surrounds, no skull-and-swords fallback and no duplicate Cindermaw arms. Restart
+fully after installing to refresh flag art; check a new campaign and save/reload.
+Native flag shape and lighting can change the appearance from the flat preview.
+
 Enable the 0.5.4 base and the prepared 0.5.5 prototype. Inspect both situation
 headers and their 128 x 128 icons in the situation list, panel and notifications.
 Check the Gathering council and Eastern Hunger fleet appear without missing

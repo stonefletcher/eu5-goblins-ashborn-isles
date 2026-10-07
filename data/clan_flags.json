@@ -1,0 +1,7 @@
+{
+  "CDM": {"name": "Cindermaw", "source": "cindermaw", "field": [140, 67, 31], "motif": "black erupting volcano"},
+  "QBR": {"name": "Brackmaw", "source": "brackmaw", "field": [66, 72, 43], "motif": "ivory rooted reeds"},
+  "RHK": {"name": "Reefhook", "source": "reefhook", "field": [62, 106, 110], "motif": "ivory curling reef wave"},
+  "SFK": {"name": "Shatterfin", "source": "shatterfin", "field": [53, 71, 91], "motif": "ivory shark above three waves"},
+  "SWK": {"name": "Sootwake", "source": "sootwake", "field": [41, 42, 39], "motif": "ivory spiked helmet"}
+}

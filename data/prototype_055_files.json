@@ -213,8 +213,32 @@
       "sha256": "d68bf5002b79924c152905bcd015f6fee835d015d55c2a31a2d1b71338b80989"
     },
     {
+      "path": "main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt",
+      "sha256": "6d1230cb0bc5e1e9315b9956b108d914e671c68c04bb303683b0a9cd13918834"
+    },
+    {
       "path": "main_menu/common/static_modifiers/goblins_gathering.txt",
       "sha256": "0f8898035d9c23203fd2cc31064eea776acc5194bc01a46d4ec92e6c9aebe5ce"
+    },
+    {
+      "path": "main_menu/gfx/coat_of_arms/textured_emblems/te_ashborn_brackmaw.dds",
+      "sha256": "00c8cb9c0c611d6cae89249932c366bd3415d4469c5085ea167692543cc9d9cf"
+    },
+    {
+      "path": "main_menu/gfx/coat_of_arms/textured_emblems/te_ashborn_cindermaw.dds",
+      "sha256": "a54fb78ecb8719cbc180dfbbdf331806fcc1d38addb42bead4047ccfc7451b00"
+    },
+    {
+      "path": "main_menu/gfx/coat_of_arms/textured_emblems/te_ashborn_reefhook.dds",
+      "sha256": "bb0390d2c0540c4f7467434f2179d28cc7a781a936f1f751a19e6d7eb559deb1"
+    },
+    {
+      "path": "main_menu/gfx/coat_of_arms/textured_emblems/te_ashborn_shatterfin.dds",
+      "sha256": "f6ef9917d1c09bc20572c88a9ea50953a78382fa4ac9bb28b46908628965caed"
+    },
+    {
+      "path": "main_menu/gfx/coat_of_arms/textured_emblems/te_ashborn_sootwake.dds",
+      "sha256": "4a4cb6be70f700391f225a36145ca3e3b252eb328b434d7a4a3957f2a39e141d"
     },
     {
       "path": "main_menu/gfx/interface/icons/situations/ga_eastern_hunger.dds",

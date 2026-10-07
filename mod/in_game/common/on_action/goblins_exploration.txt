@@ -4,7 +4,7 @@
         if = {
             limit = { NOT = { has_variable = ga_exploration_initialized } }
             set_variable = { name = ga_exploration_initialized value = yes }
-            set_variable = { name = ga_exploration_cooldown months = 3 }
+            set_variable = { name = ga_exploration_cooldown months = 36 }
         }
         if = {
             limit = {

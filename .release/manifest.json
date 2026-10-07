@@ -1,12 +1,12 @@
 {
-  "version": "0.5.5",
-  "source_commit": "e2276ecb4a477c1443ff09e4bfc6f0a2cc694bca",
-  "source_config_sha256": "3bc562605096603c6d565abf78c310100bad1470e327e4127378284394b31c2c",
+  "version": "0.5.6",
+  "source_commit": "90b5245d05c52af02b17b29f00a61ae6f0f8f643",
+  "source_config_sha256": "140394c6efc02c68de2acab42bde28ff28b5927dfb568d9cc00edeea7a3f65bc",
   "assets": [
     {
-      "name": "Goblins_Ashborn_Isles_0.5.5.zip",
-      "size": 253684636,
-      "sha256": "7fdd318f7b0346c6e6ecf082025564fed3097e1623b7b81f7da79b8f27071d93",
+      "name": "Goblins_Ashborn_Isles_0.5.6.zip",
+      "size": 271181985,
+      "sha256": "3950fcc6c13203a2831a51f4ca833c2603ee183cc9eb2a4e4df6a4b6ebc1a8de",
       "chunks": [
         "assets/Goblins_Ashborn_Isles_0.5.2.zip.0000.b64",
         "assets/Goblins_Ashborn_Isles_0.5.2.zip.0001.b64",
@@ -498,8 +498,44 @@
         "assets/Goblins_Ashborn_Isles_0.5.5.zip.update.ce878a202ceb.0045.b64",
         "assets/Goblins_Ashborn_Isles_0.5.5.zip.update.ce878a202ceb.0046.b64",
         "assets/Goblins_Ashborn_Isles_0.5.5.zip.update.ce878a202ceb.0047.b64",
-        "assets/Goblins_Ashborn_Isles_0.5.5.zip.update.ce878a202ceb.0048.b64"
+        "assets/Goblins_Ashborn_Isles_0.5.5.zip.update.ce878a202ceb.0048.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0000.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0001.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0002.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0003.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0004.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0005.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0006.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0007.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0008.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0009.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0010.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0011.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0012.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0013.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0014.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0015.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0016.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0017.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0018.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0019.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0020.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0021.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0022.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0023.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0024.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0025.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0026.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0027.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0028.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0029.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0030.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0031.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0032.b64",
+        "assets/overlay-ed49992d8db8-0000.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.docs.4be00ab140e5.0000.b64"
       ]
     }
-  ]
+  ],
+  "release_branch": "release/v0.5.6"
 }

@@ -1,5 +1,5 @@
 [h1]Goblins of the Ashborn Isles[/h1]
-[b]A fantasy Europa Universalis V mod — Version 0.5.5[/b]
+[b]A fantasy Europa Universalis V mod — Version 0.5.6[/b]
 
 Fire rose from the Atlantic. When the smoke cleared, new islands stood between the Azores and Portugal — and goblins already walked their shores.
 
@@ -30,7 +30,7 @@ Lead one of the Ashborn clans in a new 1337 campaign. Build your island realm, c
 [/list]
 
 [h2]Development status[/h2]
-The complete 0.5.5 package includes the earlier Gathering prototype content. Disable the separate prototype add-on. New situation UI, artwork, AI behavior and balance still require in-game acceptance. Multiplayer and achievement compatibility are unverified.
+The complete 0.5.6 package includes the earlier Gathering prototype content. Disable the separate prototype add-on. New situation UI, artwork, AI behavior and balance still require in-game acceptance. Multiplayer and achievement compatibility are unverified.
 
 Dedicated foreign invasion ambitions and fear mechanics are planned, but are not included in this demo. England and Castile do not yet receive special scripted objectives to conquer the Ashborn Isles.
 

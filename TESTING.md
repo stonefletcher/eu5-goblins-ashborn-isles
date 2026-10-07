@@ -262,3 +262,11 @@ All five Ashborn cultures have 16 male and 16 female name entries, six house nam
 - Leave an offer pending, save/reload, then answer it. Repeat with offers involving different kingdoms; confirm names do not cross between result popups.
 - Make acceptance invalid while an offer is pending (war or subject status), then decline and check notification and pending-state cleanup.
 - Observe AI kingdoms for several action cycles: no custom Harbor Pact offers should be sent; ordinary native alliance diplomacy remains possible.
+
+## 0.5.6 Gathering popup regression
+
+After a full 0.5.6 build, compare the same campaign date and graphics settings with 0.5.5. Open A Seat Among Five, hover all three options, and open the Gathering situation completion tooltip. Confirm responsive input and readable names: Claimant Among the Five for the first two choices, Our Shores, Our Crown for the third. Confirm the unchanged five-year bonuses. Reopen the situation tooltip repeatedly and check that new logs no longer accumulate scope-description warnings at its completion condition. Test Eastern Hunger start/completion descriptions as well. Validate unification through direct ownership, vassals and junior unions; one foreign-held homeland district must still prevent completion. Static checks do not establish frame-time improvement or crash freedom.
+
+Test all three One Fire, Many Blades options from the same pre-event save. Each must award exactly its selected five-year modifier. Verify this introduction appears for any earlier Gathering choice and does not repeat monthly.
+
+Open both custom situations in the full 0.5.6 build. Verify title, artwork, start date, description, completion requirement, scrolling and eligible action buttons appear. Check ended-state display, GUI error logs and repeated panel opening responsiveness.

@@ -79,7 +79,7 @@
     {
       "tag": "CDM",
       "path": "data/cindermaw.json",
-      "sha256": "4384ed64c145cf444f96a8581e014644736d5dd82d958ec416487f1bbe5234a3"
+      "sha256": "a9bddc8dde6bb2abc26170862cd34b3083bf5132f45c1fc677ee78f4d5beadfc"
     },
     {
       "tag": "QBR",
@@ -198,7 +198,7 @@
     },
     {
       "path": "in_game/common/situations/goblins_gathering.txt",
-      "sha256": "7586d99726efb3c9658c7625a6b0edbfd3a8cad1708ddd88702e397ed226bab5"
+      "sha256": "db9083371e6d40d3a745d99625d329e416433a5de1babc8e8610865b045d15d0"
     },
     {
       "path": "in_game/events/goblins_ashborn_isles.txt",
@@ -210,7 +210,15 @@
     },
     {
       "path": "in_game/events/goblins_gathering.txt",
-      "sha256": "d68bf5002b79924c152905bcd015f6fee835d015d55c2a31a2d1b71338b80989"
+      "sha256": "029a7ab881e4047cda0c78f2f874eaefdad615f0e65cea23185fca1191d06c39"
+    },
+    {
+      "path": "in_game/gui/panels/situation/ga_eastern_hunger.gui",
+      "sha256": "3a0b66b6f31d083ee891b9f863493d806888420336fdef7efbf9fb80331a3aed"
+    },
+    {
+      "path": "in_game/gui/panels/situation/ga_gathering_of_five.gui",
+      "sha256": "a471dd7d1b7588c630b567105830e7e60af40d7b3ef0b9ee06aec7f61e3703f1"
     },
     {
       "path": "main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt",
@@ -218,7 +226,7 @@
     },
     {
       "path": "main_menu/common/static_modifiers/goblins_gathering.txt",
-      "sha256": "0f8898035d9c23203fd2cc31064eea776acc5194bc01a46d4ec92e6c9aebe5ce"
+      "sha256": "557d9e4556ce5019a91b386fe2b0c74ec467c63e97ea261879f6cf8f3d988ff8"
     },
     {
       "path": "main_menu/gfx/coat_of_arms/textured_emblems/te_ashborn_brackmaw.dds",
@@ -326,7 +334,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "faee8bc7ff3fb51983c1d2972e20f35fafb28a549ab11400e069cf0e2dd45382"
+      "sha256": "5a938757c55f497a98b26fc620825159797579b427bc07c91b5faa90272f37dc"
     }
   ]
 }

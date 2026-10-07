@@ -1,5 +1,5 @@
 {
-  "base_release": "0.5.5",
+  "base_release": "0.5.6",
   "stage": "development-models-and-culture-names",
   "engine_tested": false,
   "files": [
@@ -29,7 +29,7 @@
     },
     {
       "path": "in_game/common/on_action/goblins_exploration.txt",
-      "sha256": "5e5f77ed60cdc7db0708a20a656651fd988addae37c80ff5dcf7479123e6d2a9"
+      "sha256": "6e1c65bcda7bc75847a0c18b3ff484b66f5e674f564b386b7694a820280a93b0"
     },
     {
       "path": "in_game/events/goblins_ashborn_isles.txt",
@@ -757,7 +757,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
-      "sha256": "d50a351b644e3ff9aa94ebecf30fa9f3dedec18bda36a7e5cef54ba98ed7ef96"
+      "sha256": "600c7d15978cec9c1dd88fbccf0ec5235f0f168904862b8bdecf7d0a7d088966"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_absolutism_cawa_cm_cinderkin_gfx.dds",

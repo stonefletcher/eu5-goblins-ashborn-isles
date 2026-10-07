@@ -1,4 +1,7 @@
-﻿ga_gathering_claimant = { diplomatic_reputation = 0.5 }
+﻿ga_cindermaw_drilled_captains = { land_morale_modifier = 0.05 }
+ga_cindermaw_court_envoys = { diplomatic_reputation = 0.5 }
+ga_cindermaw_counted_stores = { army_maintenance_efficiency = 0.10 }
+ga_gathering_claimant = { diplomatic_reputation = 0.5 }
 ga_gathering_defiant = { naval_morale_modifier = 0.05 }
 ga_compact_guarantees = { subject_loyalty = 10 }
 ga_unification_recovery = { global_monthly_control = 0.002 }

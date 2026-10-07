@@ -200,7 +200,11 @@ ga_gathering_of_five = {
         current_date >= 1337.7.1
         any_country = { ga_independent_goblin = yes }
     }
-    can_end = { any_country = { ga_controls_homeland = yes } }
+    # Keep the full test, but do not expand 72 ownership trees in the UI.
+    can_end = { custom_tooltip = {
+        text = ga_gathering_complete_tt
+        any_country = { ga_controls_homeland = yes }
+    } }
     visible = { ga_is_goblin = yes }
     on_start = {
         every_country = {
@@ -244,8 +248,14 @@ ga_gathering_of_five = {
 
 ga_eastern_hunger = {
     monthly_spawn_chance = monthly_spawn_chance_unique
-    can_start = { any_country = { has_variable = ga_unifier ga_controls_homeland = yes } }
-    can_end = { any_country = { has_variable = ga_unifier ga_has_european_foothold = yes } }
+    can_start = { custom_tooltip = {
+        text = ga_eastern_start_tt
+        any_country = { has_variable = ga_unifier ga_controls_homeland = yes }
+    } }
+    can_end = { custom_tooltip = {
+        text = ga_eastern_complete_tt
+        any_country = { has_variable = ga_unifier ga_has_european_foothold = yes }
+    } }
     visible = { ga_is_goblin = yes }
     on_start = {
         every_country = {
@@ -262,6 +272,30 @@ ga_eastern_hunger = {
 }
 '''
     write(out, 'in_game/common/situations/goblins_gathering.txt', situations)
+    # Native panels are resolved by situation ID; definitions alone render no UI.
+    # Inherit the game's illustration, start date, scrolling and action list.
+    for situation_id in ('ga_gathering_of_five', 'ga_eastern_hunger'):
+        panel = '''
+situation_panel = {
+    blockoverride "situation_subheader_content" {}
+    blockoverride "situation_panel_main_content" {
+        text_multi = {
+            layoutpolicy_horizontal = expanding
+            max_width = 400
+            autoresize = yes
+            text = "SITUATION_DESCRIPTION_KEY"
+        }
+        text_single = {
+            layoutpolicy_horizontal = expanding
+            text = "END_REQUIREMENTS"
+        }
+        TooltipRequirementsList = {
+            textcontext = "[SituationView.GetActiveSituation.GetSituation.GetEndConditions]"
+        }
+    }
+}
+'''.replace('SITUATION_DESCRIPTION_KEY', situation_id + '_desc')
+        write(out, f'in_game/gui/panels/situation/{situation_id}.gui', panel)
 
     # Persist sender in the recipient, so event responses survive save/reload and
     # do not depend on the generic action's transient actor scope.
@@ -385,6 +419,9 @@ ga_oath_honored = { value = 25 months = 120 yearly_decay = 2 }
     for key, text in [('ga_harbor_pact_opinion', 'The Harbor Pact'), ('ga_received_supplies', 'Grain and Iron Received'), ('ga_oath_honored', 'The Ashen Oath')]:
         loc(key, text)
     write(out, 'main_menu/common/static_modifiers/goblins_gathering.txt', '''
+ga_cindermaw_drilled_captains = { land_morale_modifier = 0.05 }
+ga_cindermaw_court_envoys = { diplomatic_reputation = 0.5 }
+ga_cindermaw_counted_stores = { army_maintenance_efficiency = 0.10 }
 ga_gathering_claimant = { diplomatic_reputation = 0.5 }
 ga_gathering_defiant = { naval_morale_modifier = 0.05 }
 ga_compact_guarantees = { subject_loyalty = 10 }
@@ -393,8 +430,15 @@ ga_crossing_preparations = { navy_transport_build_cost_modifier = -0.15 naval_mo
 ga_first_eastern_harbor = { naval_morale_recovery = 0.05 }
 ''')
     for key, text in [('ga_gathering_claimant', 'Claimant Among the Five'), ('ga_gathering_defiant', 'Our Shores, Our Crown'), ('ga_compact_guarantees', 'Guarantees of the Ashen Compact'), ('ga_unification_recovery', 'Five Crowns, One Hunger'), ('ga_crossing_preparations', 'The Eastern Crossing'), ('ga_first_eastern_harbor', 'The First Eastern Harbor')]:
-        loc(key, text)
-        loc(key + '_desc', text + '. A temporary benefit from the Ashborn situation.')
+        loc('STATIC_MODIFIER_NAME_' + key, text)
+        loc('STATIC_MODIFIER_DESC_' + key, text + '. A temporary benefit from the Ashborn situation.')
+    for key, name, description in [
+        ('ga_cindermaw_drilled_captains', 'One Fire, Many Blades', 'Grask drills the rival captains to hold their companies together beneath Cindermaw banners.'),
+        ('ga_cindermaw_court_envoys', 'A Place at the Forge', 'Kragga carries offers of patronage and protection to the other Ashborn courts.'),
+        ('ga_cindermaw_counted_stores', "Grakka's Muster Accounts", 'Grakka counts stores and wages before the captains promise another campaign.'),
+    ]:
+        loc('STATIC_MODIFIER_NAME_' + key, name)
+        loc('STATIC_MODIFIER_DESC_' + key, description)
     # Native conquest goal and peace costs; only the paid, selected target is valid.
     write(out, 'in_game/common/casus_belli/goblins_gathering.txt', '''
 ga_cb_eastern_foothold = {
@@ -480,7 +524,17 @@ ga_cb_eastern_foothold = {
     ]
     for num, tag, title, desc, answer in signatures:
         after = 'trigger_event_non_silently = { id = ga_gathering.15 days = 30 }' if tag == 'SFK' else ''
-        events.append(event(num, title, desc, option(num, 'a', answer), trigger=f'tag = {tag}', after=after))
+        choices = option(num, 'a', answer)
+        if tag == 'CDM':
+            choices = '\n'.join([
+                option(num, 'a', 'Grask, make these captains fight as one.',
+                       'add_country_modifier = { modifier = ga_cindermaw_drilled_captains years = 5 mode = replace }'),
+                option(num, 'b', 'Kragga, give the other crowns a reason to follow.',
+                       'add_country_modifier = { modifier = ga_cindermaw_court_envoys years = 5 mode = replace }'),
+                option(num, 'c', 'Grakka, put our stores and wages in order.',
+                       'add_country_modifier = { modifier = ga_cindermaw_counted_stores years = 5 mode = replace }'),
+            ])
+        events.append(event(num, title, desc, choices, trigger=f'tag = {tag}', after=after))
     events.append(event(15, SHATTERFIN['followup_title'], SHATTERFIN['followup_description'],
         option(15, 'a', SHATTERFIN['followup_answer']),
         trigger='tag = SFK NOT = { has_variable = ga_tidemother_council_seen }',
@@ -492,6 +546,9 @@ ga_cb_eastern_foothold = {
         ('ga_gathering_of_five_desc', 'The five Ashborn kingdoms compete to unite their homeland through conquest, vassalage or unions. Alliances help cooperation but do not complete the struggle. Every starting goblin location must be held within one realm.'),
         ('ga_eastern_hunger', 'The Eastern Hunger'),
         ('ga_eastern_hunger_desc', 'The united Ashborn look toward Europe. Chart a coast, pay for preparations and obtain a temporary conquest casus belli. A European coastal foothold completes this ambition; wars and peace deals follow the normal rules.'),
+        ('ga_gathering_complete_tt', 'One independent Ashborn crown holds every homeland location through direct ownership, vassalage or junior union partners. Alliances and tributaries do not count.'),
+        ('ga_eastern_start_tt', 'A recognized Ashborn unifier still holds the entire homeland within its realm.'),
+        ('ga_eastern_complete_tt', 'A recognized Ashborn unifier holds the homeland and a coastal European foothold within its realm.'),
         ('ga_choose_kingdom', 'Choose an Ashborn Kingdom'),
         ('ga_no_kingdom_available', 'No eligible independent Ashborn kingdom is available.'),
         ('ga_choose_eastern_province', 'Choose a European Coastal Province'),

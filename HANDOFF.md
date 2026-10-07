@@ -1,27 +1,11 @@
-# 0.5.6 economy development handoff
+# 0.5.6 event fixes handoff
 
-Checkout: work/eu5-goblins, staging/0.5.6, based on GitHub main.
-Economic pass commit: d776785. Staging branch published to GitHub. README now
-describes the economic pass and distinguishes staging source from the 0.5.5 bundle.
-Goal: lore/geography-based economies with vanilla-scale infrastructure and viable
-small crowns. See ECONOMY_056.md for decisions, comparisons and campaign checks.
+Checkout: C:/Users/alexa/Documents/Codex/2026-10-07/cr/work/goblins
+Branch: fix/0.5.6-event-performance-localization, based on staging/0.5.6 economy source.
+Goal: address 0.5.5 Seat Among Five slowdown and unnamed option modifiers.
 
-Completed: distinct capital industries, wooded charcoal chain, population-aware
-rural buildings, restrained resource investment, native-reference audit and
-focused setup verifier. All 72 location IDs, geography, resources, population
-classes and 1,618,696 people are preserved. RGO bonuses fall from 387 to 126.
+Completed: native localization keys for all six Gathering modifiers; concise custom tooltips around three situation predicates, with original conditions intact; regenerated source output and additive manifest. README and TESTING document evidence and runtime checks. Artwork compared with installed base game and installed mod: 1080x440 DXT1/11 mips/317512 bytes, identical native payload size; no image reduction justified. User confirmed the Situation Panel triggers the near-crash. Captured six rotating logs under ../diagnostics: 25,367 lines / 5,352,439 bytes, all Gathering can_end scope-description warnings. Initial snapshot had only 414 such warnings.
 
-Passed: focused setup generation against installed EU5 1.3.11, native building
-ranks/resources, exact generated levels/population, production staffing,
-specialization/relative scale and ownership-guarded once-only initialization.
-Existing Hooktooth stockade has no seeded soldiers; runtime garrison is untested.
+Checks passed: verify_055 (14 ownership scenarios, native references, six modifier names/descriptions, exact wrapped predicates); verify_event_art (21 DDS decode/hash/manifest checks). No runtime test; tooltip performance diagnosis remains a hypothesis.
 
-Build state: build/economy-check is a partial validation tree, NOT an installable
-mod. No full build, install, launch or release publication. Staging source is
-intended for origin/staging/0.5.6; verify remote tracking before continuing.
-The bundled installer
-and release metadata deliberately remain 0.5.5 until a complete 0.5.6 release is
-prepared. Do not mistake the old bundle for the new economy.
-
-Next: continue 0.5.6 work, then full build/package and fresh-campaign balance
-acceptance (food, employment, trade, debt and starting-force affordability).
+Build/install/publish: source fixes only. Existing bundled installer and release metadata remain 0.5.5. No game launch, install, package, or GitHub push. Economy work retained from base. Next: integrate this branch with other 0.5.6 work, build the complete release, run required clean-download gate, then test popup responsiveness and logs in EU5.

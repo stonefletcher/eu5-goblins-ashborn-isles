@@ -4,7 +4,11 @@
         current_date >= 1337.7.1
         any_country = { ga_independent_goblin = yes }
     }
-    can_end = { any_country = { ga_controls_homeland = yes } }
+    # Keep the full test, but do not expand 72 ownership trees in the UI.
+    can_end = { custom_tooltip = {
+        text = ga_gathering_complete_tt
+        any_country = { ga_controls_homeland = yes }
+    } }
     visible = { ga_is_goblin = yes }
     on_start = {
         every_country = {
@@ -48,8 +52,14 @@
 
 ga_eastern_hunger = {
     monthly_spawn_chance = monthly_spawn_chance_unique
-    can_start = { any_country = { has_variable = ga_unifier ga_controls_homeland = yes } }
-    can_end = { any_country = { has_variable = ga_unifier ga_has_european_foothold = yes } }
+    can_start = { custom_tooltip = {
+        text = ga_eastern_start_tt
+        any_country = { has_variable = ga_unifier ga_controls_homeland = yes }
+    } }
+    can_end = { custom_tooltip = {
+        text = ga_eastern_complete_tt
+        any_country = { has_variable = ga_unifier ga_has_european_foothold = yes }
+    } }
     visible = { ga_is_goblin = yes }
     on_start = {
         every_country = {

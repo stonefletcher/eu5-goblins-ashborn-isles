@@ -230,3 +230,8 @@ All five Ashborn cultures have 16 male and 16 female name entries, six house nam
   attachment candidate is included and still needs engine acceptance.
 - Test Portugal's companion event on the next eastern voyage return.
 - Later-age infantry sharing medieval equipment artwork is expected in this first pass.
+
+
+## 0.5.6 Gathering popup regression
+
+After a full 0.5.6 build, compare the same campaign date and graphics settings with 0.5.5. Open A Seat Among Five, hover all three options, and open the Gathering situation completion tooltip. Confirm responsive input and readable names: Claimant Among the Five for the first two choices, Our Shores, Our Crown for the third. Confirm the unchanged five-year bonuses. Reopen the situation tooltip repeatedly and check that new logs no longer accumulate scope-description warnings at its completion condition. Test Eastern Hunger start/completion descriptions as well. Validate unification through direct ownership, vassals and junior unions; one foreign-held homeland district must still prevent completion. Static checks do not establish frame-time improvement or crash freedom.

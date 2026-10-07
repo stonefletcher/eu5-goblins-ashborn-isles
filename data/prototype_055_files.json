@@ -198,7 +198,7 @@
     },
     {
       "path": "in_game/common/situations/goblins_gathering.txt",
-      "sha256": "7586d99726efb3c9658c7625a6b0edbfd3a8cad1708ddd88702e397ed226bab5"
+      "sha256": "db9083371e6d40d3a745d99625d329e416433a5de1babc8e8610865b045d15d0"
     },
     {
       "path": "in_game/events/goblins_ashborn_isles.txt",
@@ -326,7 +326,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "faee8bc7ff3fb51983c1d2972e20f35fafb28a549ab11400e069cf0e2dd45382"
+      "sha256": "dff18d6638588e8496f0ec213f33b26ec65a045b730af6da791f4b126eddf2b9"
     }
   ]
 }

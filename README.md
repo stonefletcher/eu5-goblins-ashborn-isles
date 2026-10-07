@@ -1,10 +1,18 @@
+## 0.5.6 event fixes (source branch)
+
+Branch `fix/0.5.6-event-performance-localization` includes the staging economy work and fixes the Gathering modifier localization using native `STATIC_MODIFIER_NAME_` / `STATIC_MODIFIER_DESC_` keys for all six modifiers. The Gathering completion and Eastern Hunger start/completion tooltips now use concise native custom tooltips, preserving the original predicates.
+
+The installed 0.5.5 Gathering image matches the source exactly: 1080x440 BC1/DXT1, 11 mip levels, 317,512 bytes. All 63 comparable native BC1 event backgrounds have these same dimensions, mip count and size. DDS headers differ only in reserved exporter metadata. Large original PNGs are not referenced by events. The artwork is retained. The user reproduced the near-crash by opening the Situation Panel. A subsequent snapshot of six rotating October 7 error logs contained 25,367 lines (5,352,439 bytes), all scope-description warnings at Gathering `can_end`; tooltip expansion is the evidence-backed performance suspect, not a proven crash cause.
+
+Validation: 14 ownership scenarios, native modifier references, all six modifier name/description keys, exact preservation of the three wrapped predicates, and decoding/hash/manifest checks for 21 art textures passed. In-game popup performance remains untested. No installation or release package was produced; the bundled installer remains 0.5.5 and does not install these fixes.
+
 # Goblins of the Ashborn Isles
 
 Five goblin kingdoms share six volcanic islands in the Atlantic. Unite their rival crowns, chart the waters beyond your homeland, and claim a foothold on Europe's coast in **Europa Universalis V**.
 
 ![The five Ashborn clans gather beneath their banners](art/events/sources/gathering.png)
 
-**0.5.6 staging — economic pass.** This branch contains the next version's economic changes on top of **0.5.5 — The Gathering of the Five**, targeting **EU5 1.3.11**. English text is included. The bundled installer is still **0.5.5**; the 0.5.6 economy has passed focused static checks but has not been packaged or tested in-game. Starting-world updates require a **new 1337 campaign**.
+**0.5.6 staging â€” economic pass.** This branch contains the next version's economic changes on top of **0.5.5 â€” The Gathering of the Five**, targeting **EU5 1.3.11**. English text is included. The bundled installer is still **0.5.5**; the 0.5.6 economy has passed focused static checks but has not been packaged or tested in-game. Starting-world updates require a **new 1337 campaign**.
 
 ## What is changing in 0.5.6?
 

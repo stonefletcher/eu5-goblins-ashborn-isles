@@ -200,7 +200,11 @@ ga_gathering_of_five = {
         current_date >= 1337.7.1
         any_country = { ga_independent_goblin = yes }
     }
-    can_end = { any_country = { ga_controls_homeland = yes } }
+    # Keep the full test, but do not expand 72 ownership trees in the UI.
+    can_end = { custom_tooltip = {
+        text = ga_gathering_complete_tt
+        any_country = { ga_controls_homeland = yes }
+    } }
     visible = { ga_is_goblin = yes }
     on_start = {
         every_country = {
@@ -244,8 +248,14 @@ ga_gathering_of_five = {
 
 ga_eastern_hunger = {
     monthly_spawn_chance = monthly_spawn_chance_unique
-    can_start = { any_country = { has_variable = ga_unifier ga_controls_homeland = yes } }
-    can_end = { any_country = { has_variable = ga_unifier ga_has_european_foothold = yes } }
+    can_start = { custom_tooltip = {
+        text = ga_eastern_start_tt
+        any_country = { has_variable = ga_unifier ga_controls_homeland = yes }
+    } }
+    can_end = { custom_tooltip = {
+        text = ga_eastern_complete_tt
+        any_country = { has_variable = ga_unifier ga_has_european_foothold = yes }
+    } }
     visible = { ga_is_goblin = yes }
     on_start = {
         every_country = {
@@ -393,8 +403,8 @@ ga_crossing_preparations = { navy_transport_build_cost_modifier = -0.15 naval_mo
 ga_first_eastern_harbor = { naval_morale_recovery = 0.05 }
 ''')
     for key, text in [('ga_gathering_claimant', 'Claimant Among the Five'), ('ga_gathering_defiant', 'Our Shores, Our Crown'), ('ga_compact_guarantees', 'Guarantees of the Ashen Compact'), ('ga_unification_recovery', 'Five Crowns, One Hunger'), ('ga_crossing_preparations', 'The Eastern Crossing'), ('ga_first_eastern_harbor', 'The First Eastern Harbor')]:
-        loc(key, text)
-        loc(key + '_desc', text + '. A temporary benefit from the Ashborn situation.')
+        loc('STATIC_MODIFIER_NAME_' + key, text)
+        loc('STATIC_MODIFIER_DESC_' + key, text + '. A temporary benefit from the Ashborn situation.')
     # Native conquest goal and peace costs; only the paid, selected target is valid.
     write(out, 'in_game/common/casus_belli/goblins_gathering.txt', '''
 ga_cb_eastern_foothold = {
@@ -482,6 +492,9 @@ ga_cb_eastern_foothold = {
         ('ga_gathering_of_five_desc', 'The five Ashborn kingdoms compete to unite their homeland through conquest, vassalage or unions. Alliances help cooperation but do not complete the struggle. Every starting goblin location must be held within one realm.'),
         ('ga_eastern_hunger', 'The Eastern Hunger'),
         ('ga_eastern_hunger_desc', 'The united Ashborn look toward Europe. Chart a coast, pay for preparations and obtain a temporary conquest casus belli. A European coastal foothold completes this ambition; wars and peace deals follow the normal rules.'),
+        ('ga_gathering_complete_tt', 'One independent Ashborn crown holds every homeland location through direct ownership, vassalage or junior union partners. Alliances and tributaries do not count.'),
+        ('ga_eastern_start_tt', 'A recognized Ashborn unifier still holds the entire homeland within its realm.'),
+        ('ga_eastern_complete_tt', 'A recognized Ashborn unifier holds the homeland and a coastal European foothold within its realm.'),
         ('ga_choose_kingdom', 'Choose an Ashborn Kingdom'),
         ('ga_no_kingdom_available', 'No eligible independent Ashborn kingdom is available.'),
         ('ga_choose_eastern_province', 'Choose a European Coastal Province'),

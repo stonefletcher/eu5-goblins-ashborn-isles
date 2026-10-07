@@ -33,9 +33,11 @@ def main():
     # Do not replace an existing release or its assets on a retry.
     exists=subprocess.run(['gh','release','view',tag],capture_output=True)
     if exists.returncode==0:raise SystemExit('Release already exists; inspect it before making changes.')
+    notes=root/f'RELEASE_NOTES_{version}.md'
+    if not notes.is_file():notes=root/'RELEASE_NOTES.md'
     subprocess.run(['gh','release','create',tag,*files,'--target',target,
                     '--title',f'Goblins of the Ashborn Isles {version}',
-                    '--notes-file',str(root/'RELEASE_NOTES.md'),'--prerelease'],check=True)
+                    '--notes-file',str(notes)],check=True)
 
 
 if __name__=='__main__':main()

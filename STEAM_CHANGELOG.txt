@@ -1,10 +1,13 @@
+[h2]0.5.8 material follow-up (staging)[/h2]
+Shared skin rendering for ears/faces, stronger clan tint, shorter swept ears, stronger brows/noses/cheeks, external tooth studs removed and corrected outfit suppression. Engine acceptance pending.
+
 [h2]0.5.8 portrait candidate (unpublished)[/h2]
 Folded ears, smaller hooded eyes, lean faces, shorter necks, compact posture, smaller teeth, beard removal and an adult hide/leather/fur wardrobe. In-game appearance pending.
 
 [h2]0.5.6[/h2]
 Specialized economies, delayed exploration, situation panels, tooltip and modifier fixes, and three Cindermaw council rewards. Complete matching installer; new 1337 campaign required. Gameplay acceptance pending.
 
-[h2]0.5.5 — The Gathering of the Five[/h2]
+[h2]0.5.5 â€” The Gathering of the Five[/h2]
 [list]
 [*]Two connected situations: unite the five kingdoms, then establish a European coastal foothold.
 [*]Seven diplomatic and military actions, five clan introductions and Shatterfin's maternal-house follow-up.

@@ -1,30 +1,38 @@
 # Goblins of the Ashborn Isles
 
-**0.5.8 staging — portraits, tribal clothing and varied holy sites.**
-Nine shrines range from importance 1 to 5: three on Cindermaw, two on Brackmaw
-and one on each smaller island. The First Mouth is the principal sanctuary;
-smaller hearths and oath groves have modest local effects. Existing shrine and
-event identities remain. Native importance scales local bonuses.
+**0.5.8 staging — varied holy sites, revised portraits and tribal clothing.**
+Nine shrines now span importance 1-5: three on Cindermaw, two on Brackmaw,
+and one on each smaller island. The First Mouth is the principal sanctuary.
+New oath groves and hearths have modest local bonuses; existing shrine IDs and
+event links remain. Native importance scales local effects. Test site counts,
+tooltips and balance in a new campaign.
 
-Court, noble and character portraits have smaller hooded eyes, lean weathered
-faces, folded ears, smaller teeth, shorter necks and compact, stooped bodies.
-Ears use the skin shader and clan tint. Native beards are removed. Adults select
-hide tunics, fringed leather overcoats or fur-trimmed hunter garments; children
-retain plain clothes and infants swaddling. Includes the 0.5.7 religion, estate,
-exploration and diplomacy changes. Static checks pass; in-game appearance,
-clothing fit and holy-site balance remain unverified. Review in a new campaign.
+Ears now share the native skin shader, palette and clan tint with the face,
+addressing the blue-ear/pale-face mismatch. Shorter swept ears, stronger brows,
+leaner cheeks and hooked noses accompany removal of the external tooth studs.
+Compact posture and shorter necks are retained.
 
-![The five Ashborn clans gather beneath their banners](art/events/sources/gathering.png)
+The adult wardrobe uses hide tunics, fringed leather overcoats and fur-trimmed
+hunter clothing. Revised native suppression rules target the formal hats,
+capes, robes and beards still visible in the supplied screenshots. Children
+retain fitted plain clothing, infants their swaddling. All five cultures are
+covered; human appearance remains outside these culture-scoped modifiers.
 
-**Complete staging installer:** use [Code > Download ZIP](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/archive/refs/heads/staging/0.5.8.zip), extract into a new folder and run Install-Goblins.cmd. The source and bundled installer both target **0.5.8 / EU5 1.3.11**.
-Close EU5, extract into a new folder and run the installer. Enable one mod copy. The default main branch remains the released 0.5.7.
-Use a new 1337 campaign to test inherited starting-world changes; also check
-portraits in an existing save. This is a staging candidate, not a Steam release. The active installed profile
-has not been changed. Full-build static checks pass. Bundle and isolated-install checks accompany
-the delivered candidate; in-game appearance remains unverified.
+![The Gathering artwork reference](art/events/sources/gathering.png)
 
-See [portrait changes and visual checks](RELEASE_NOTES_0.5.8.md). Clothing uses inspected native leather/hide materials and fitted meshes.
-Custom torn-leather geometry and a measured one-metre height are not claimed.
+**Source and installer: 0.5.8 / EU5 1.3.11.** Download the complete
+[staging ZIP](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/archive/refs/heads/staging/0.5.8.zip),
+extract into a new folder, close EU5 and run **Install-Goblins.cmd**. Restart the
+game and enable one Goblins copy. This is a revised 0.5.8 build, so an older
+0.5.8 archive will not contain the material and outfit-suppression corrections.
+
+Native asset/material checks pass; full-build, bundle and clean-install gate
+results accompany the candidate. **In-game colour, outfit suppression and
+animation acceptance remain pending.** The screenshots validate the reported
+problem, not the new candidate. Main remains the released 0.5.7; Steam is unchanged.
+
+See [changes, evidence and visual checks](RELEASE_NOTES_0.5.8.md).
+Inherited religion, estate, exploration and diplomacy content is retained.
 
 ## Inherited economy and revised exploration
 

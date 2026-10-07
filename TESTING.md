@@ -1,3 +1,11 @@
+# 0.5.8 material and outfit regression checks
+
+Use RELEASE_NOTES_0.5.8.md to repeat the supplied screenshot cases. Verify the
+same character's face and ears under identical lighting, no external tooth
+studs, no formal hat/cape over the hide outfit, and native mouth animation.
+Cover five cultures, seven age/sex types, existing saves, new characters and
+a human negative control. Static material checks do not establish engine results.
+
 # 0.5.8 portrait acceptance
 
 ## 0.5.8 holy-site acceptance
@@ -73,7 +81,7 @@ Static art validation does not establish these engine/UI results.
 
 # 0.5.5 Jaima Gathering acceptance
 
-Start a new 1337 campaign as Shatterfin with the prototype after the 0.5.4 base. Check Jaima, the Mare-Mother, at 66/58/52 and Skritcha as initial eligible successor. When the Gathering starts, read The Tidemother’s Terms; 30 days after its introduction, read The Maternal House Endures. Save/reload during the delay and continue for several months to verify one delivery. Check all buttons and family names. Neither event changes stats, heirs, laws or relationships. Repeat as each other kingdom: its own introduction must fire and neither Shatterfin event should appear. Check voluntary Shatterfin vassalage preserves the maternal house and law. In-game delivery and layout remain unverified by static checks.
+Start a new 1337 campaign as Shatterfin with the prototype after the 0.5.4 base. Check Jaima, the Mare-Mother, at 66/58/52 and Skritcha as initial eligible successor. When the Gathering starts, read The Tidemotherâ€™s Terms; 30 days after its introduction, read The Maternal House Endures. Save/reload during the delay and continue for several months to verify one delivery. Check all buttons and family names. Neither event changes stats, heirs, laws or relationships. Repeat as each other kingdom: its own introduction must fire and neither Shatterfin event should appear. Check voluntary Shatterfin vassalage preserves the maternal house and law. In-game delivery and layout remain unverified by static checks.
 
 ## 0.5.5 clan identity acceptance
 
@@ -111,7 +119,7 @@ Use a NEW 1337 campaign, only the intended 0.5.4 copy active.
 
 Static checks do not establish gameplay acceptance. Earlier-version notes follow.
 
-## 0.5.3 infantry attachment repair — user tested
+## 0.5.3 infantry attachment repair â€” user tested
 
 Native fallback infantry were visible and did not reproduce the crash in the user's test. Custom goblin infantry are now re-enabled through the native attachment workflow: the base graph supplies the skeleton, transform and animation machine; a named shared_pose_entity attachment supplies the visible mesh. The direct root MeshType is removed.
 

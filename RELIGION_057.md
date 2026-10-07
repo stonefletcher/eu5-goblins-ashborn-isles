@@ -11,7 +11,7 @@ directory. The normal full build calls it after Gathering generation and runs it
 focused validator. `tools/build.py` supplies the new display name and description.
 The stable `cm_hunger_below` religion ID, group and all population references remain.
 
-- Six holy sites, one per island, each with a distinct local effect and lore.
+- Nine holy sites across six islands, with unequal counts and importance 1-5 (0.5.8 source update).
 - Eight native religious aspects; two slots, with five clan-specific initial pairs.
 - Initial pairs are assigned on the first eligible monthly pulse only when a crown
   has zero aspects. A persistent flag prevents replenishing removed aspects.
@@ -56,18 +56,27 @@ in-game check. Oathkeeper remains a religious office within the Shaman estate.
 
 ## Holy sites
 
-| Site | District / island | Local effect |
-|---|---|---|
-| First Mouth | Cinder Crown / Cindermaw | +5% production efficiency |
-| Listening Pool | Reedmouth / Brackmaw | +5% monthly food modifier |
-| Lantern Steps | Tidefang / Reefhook | +0.001 monthly prosperity |
-| Mothers' Basin | Shatterfin / Shatterfin | -0.05 unrest |
-| Storm Teeth | Knifeback / Knifeback | +10% defensiveness |
-| Emberroot Hollow | Ember Key / Sootwake | +10% defensiveness |
+| Site | District / island | Importance | Base local effect (per importance) |
+|---|---|---|---|
+| First Mouth | Cinder Crown / Cindermaw | 5 | +5% production efficiency |
+| Blackwood Oathstones | Blackwood / Cindermaw | 2 | +2.5% defensiveness |
+| Ashfield Hearth | Ashfields / Cindermaw | 1 | +2.5% monthly food |
+| Listening Pool | Reedmouth / Brackmaw | 3 | +5% monthly food |
+| Miregrove Witness | Miregrove / Brackmaw | 1 | -0.025 unrest |
+| Lantern Steps | Tidefang / Reefhook | 2 | +0.001 monthly prosperity |
+| Mothers' Basin | Shatterfin / Shatterfin | 4 | -0.05 unrest |
+| Storm Teeth | Knifeback / Knifeback | 1 | +10% defensiveness |
+| Emberroot Hollow | Ember Key / Sootwake | 2 | +10% defensiveness |
 
-All sites have importance 3 and no country modifier. Shatterfin owns two different
-local benefits, not two passive national religious bonuses. Native ownership,
-control, religion and holy-site behavior require engine verification.
+The installed game's holy_sites/readme.txt documents importance 1-5; this is
+spiritual significance, not a building upgrade tier. Its holy_site_types/readme.txt
+states that location modifiers scale with importance. For example, the First Mouth
+has a scripted +25% production effect at importance 5; the Ashfield Hearth has
++2.5% food at importance 1. Confirm the resulting tooltips in a fresh campaign.
+No country modifiers are added. Secondary shrines use modest base effects.
+Cindermaw has three sites, Brackmaw two, and each smaller island one. Existing
+site identities and event links are retained. The Moot of Six Fires still names
+the six islands, not the number of shrines.
 
 ## Traditions and rites
 
@@ -128,7 +137,7 @@ a partial staging tree and must not be installed as a complete mod.
 
 1. Check all five countries: religion name, Favor, two aspects after the first
    month, native aspect selection and no extra grants after save/reload.
-2. Inspect all six holy sites and their local effects, including both Shatterfin
+2. Inspect all nine holy sites and their local effects, including both Shatterfin
    islands. Check conquest, occupation and ownership by a foreign religion.
 3. Use each rite in separate tests. Verify actual prices, affordability, shared
    cooldown, five-year expiry and persistence after save/reload.

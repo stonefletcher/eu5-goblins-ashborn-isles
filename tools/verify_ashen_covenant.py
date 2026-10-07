@@ -2,6 +2,7 @@
 import argparse
 import json
 import re
+from collections import Counter
 from pathlib import Path
 import ashen_covenant as ac
 
@@ -11,8 +12,18 @@ def clean(text):
 def verify(game, out):
     cfg = json.loads((ac.ROOT/'data/island.json').read_text())
     locations = {loc['id']: island['id'] for island in cfg['islands'] for loc in island['locations']}
-    assert len(ac.SITES) == 6
-    assert len({row[2] for row in ac.SITES}) == 6
+    assert len({row[2] for row in ac.SITES}) == len(ac.SITES)
+    assert len({row[0] for row in ac.SITES}) == len(ac.SITES)
+    assert Counter(row[3] for row in ac.SITES) == {
+        'cindermaw': 3, 'brackmaw': 2, 'reefhook': 1,
+        'shatterfin': 1, 'knifeback': 1, 'sootwake': 1}
+    assert set(ac.SITE_IMPORTANCE) == {row[0] for row in ac.SITES}
+    assert all(type(level) is int and 1 <= level <= 5 for level in ac.SITE_IMPORTANCE.values())
+    assert set(ac.SITE_IMPORTANCE.values()) == {1, 2, 3, 4, 5}
+    sites = (out/'in_game/common/holy_sites/ashen_covenant.txt').read_text(encoding='utf-8-sig')
+    emitted = dict((key, int(level)) for key, level in re.findall(
+        r'ac_(\w+) = \{ location = \w+ type = \w+ importance = (\d+)', sites))
+    assert emitted == ac.SITE_IMPORTANCE
     assert {row[3] for row in ac.SITES} == {i['id'] for i in cfg['islands']}
     for row in ac.SITES:
         assert locations[row[2]] == row[3], row
@@ -34,6 +45,8 @@ def verify(game, out):
     text = (out/'main_menu/localization/english/ashen_covenant_l_english.yml').read_text(encoding='utf-8-sig')
     locs = re.findall(r'^ (\S+):', text, re.M)
     assert len(locs) == len(set(locs)), 'Duplicate localization'
+    for key, *_ in ac.SITES:
+        assert all('ac_' + key + suffix in locs for suffix in ('', '_desc', '_site'))
     events = (out/'in_game/events/ashen_covenant.txt').read_text(encoding='utf-8-sig')
     ids = set(re.findall(r'^(ashen_covenant\.\d+) =', events, re.M))
     assert len(ids) == 13
@@ -63,7 +76,7 @@ def verify(game, out):
     native_actions = (game/'in_game/common/generic_actions/general_religion.txt').read_text(encoding='utf-8-sig')
     assert 'source_object = scope:actor.religion' in native_actions
     assert 'add_religious_aspect = scope:target' in native_actions
-    return {'checks': ['six unique sites on six existing islands', 'two valid traditions per starting crown',
+    return {'checks': ['nine unique sites with unequal island counts and native importance 1-5', 'two valid traditions per starting crown',
         'all numeric modifier keys exist in installed EU5', 'script braces and UTF-8 BOM',
         'event localization and existing illustrations', 'event eligibility routing',
         'once-only initialization and Moot dispatch', 'shared rite cooldown and scaled price',

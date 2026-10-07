@@ -1,5 +1,13 @@
 # Goblins of the Ashborn Isles
 
+**Local 0.5.8 holy-site development — `feature/0.5.8-holy-site-variance`.**
+Nine shrines now range from importance 1 to 5: three on Cindermaw, two on
+Brackmaw and one on each smaller island. Existing site/event identities remain.
+Native importance scales local bonuses; secondary shrines have modest effects.
+This source change is not yet included in the inherited staging installer below.
+Focused religion validation passed; new-campaign gameplay review is pending.
+
+
 **0.5.8 portrait development candidate — `staging/0.5.8`.**
 Reworks court, noble and character portraits toward the Gathering artwork:
 small hooded eyes, lean weathered faces, folded ears, smaller teeth, shorter

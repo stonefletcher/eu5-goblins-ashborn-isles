@@ -340,6 +340,7 @@ def add_localization(b,out):
     extra.update(goblin_longevity.LOCALIZATION)
     import ashborn_names
     extra.update(ashborn_names.localization())
+    extra['cm_brinekin_desc']=ashborn_names.BRACKMAW['culture_description']
     extra.update({z['id']:z['name'] for z in b.CFG['coastal_sea']['zones']})
     # Replace existing keys rather than emit duplicate localization.
     extra.update({'cindermaw.1.desc':LORE,'cm_demo_building_tip':'Hooktooth is a city with a marketplace, naval-supplies guild and stockade. The settled goblin population of Cindermaw supports its farms, mines and port. The neighboring goblin captains rule independent countries.','cm_cindermaw_area':'The Ashborn Isles'})
@@ -354,5 +355,6 @@ def add_localization(b,out):
         if re.search(pattern,s):s=re.sub(pattern,lambda m:line,s)
         else:s+=line+'\n'
     b.write(out,rel,s)
-    (b.ROOT/'LORE.md').write_text('# Goblins of the Ashborn Isles\n\n'+LORE+'\n',encoding='utf-8')
+    brack=ashborn_names.BRACKMAW
+    (b.ROOT/'LORE.md').write_text('# Goblins of the Ashborn Isles\n\n'+LORE+'\n\n## Brackmaw — Brineward\n\n'+brack['ruler_story']+'\n\n'+brack['nation_story']+'\n',encoding='utf-8')
 

@@ -26,6 +26,9 @@ For preparation without installation:
 
 ## Implemented
 
+- Brackmaw's Murgash is **the Sluice-King**, an exacting marsh engineer and provision broker (ADM 84, DIP 78, MIL 90). His nickname recalls sacrificing his hall's embankment to save Brackhaven's granaries in the Blackwater Flood. Expanded Brineward culture text and **The Sluice-King's Bargain** introduction connect the marsh houses, tidal gates, coastal workshops and supply oaths to his rivalry with Cindermaw. These are character setup and flavor changes; situation actions and their costs remain unchanged.
+- The prototype installer derives character and localization overrides from the installed 0.5.4 base. It changes only Murgash's three abilities/nickname, the Brineward description and the new nickname label. Other characters and text are preserved. The authored source for both full builds and the add-on is `data/brackmaw.json`.
+
 - Two native situations: Gathering of the Five, followed by Eastern Hunger.
 - All five starting kingdoms participate; kingdom names may change with dynasty.
 - Opening choice and one introductory event for each kingdom, plus response and

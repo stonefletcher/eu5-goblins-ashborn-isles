@@ -41,6 +41,39 @@ foreach ($entry in $manifest.files) {
     New-Item -ItemType Directory -Path (Split-Path $destination -Parent) -Force | Out-Null
     Copy-Item -LiteralPath $origin -Destination $destination -Force
 }
+# Derive two overrides from the installed base; never distribute its native setup.
+# Patch only Murgash and the Brineward text, preserving every other entry.
+$brackPath = Join-Path $PSScriptRoot 'data\brackmaw.json'
+if ((Get-FileHash -LiteralPath $brackPath -Algorithm SHA256).Hash -ne $manifest.brackmaw_sha256) { throw 'Brackmaw source checksum mismatch.' }
+$brack = Get-Content -LiteralPath $brackPath -Raw -Encoding UTF8 | ConvertFrom-Json
+$derivedHashes = @{}
+$charRel = 'main_menu/setup/start/05_characters.txt'
+$chars = [IO.File]::ReadAllText((Join-Path $baseRoot $charRel))
+$rulerPattern = '(?m)^cm_qbr_ruler = \{[^\r\n]*\}'
+$matchesFound = [regex]::Matches($chars, $rulerPattern)
+if ($matchesFound.Count -ne 1) { throw 'Expected exactly one authored Brackmaw ruler in the 0.5.4 base.' }
+$ruler = $matchesFound[0].Value
+if ($ruler -notmatch 'first_name = \{ name = cm_ash_name_murgash \}' -or $ruler -match '\bnickname\s*=') { throw 'Unexpected Brackmaw ruler setup; use the matching 0.5.4 base.' }
+foreach ($stat in @('adm', 'dip', 'mil')) {
+    $pattern = '\b' + $stat + ' = \d+'
+    if ([regex]::Matches($ruler, $pattern).Count -ne 1) { throw "Missing ruler stat: $stat" }
+    $ruler = [regex]::Replace($ruler, $pattern, ($stat + ' = ' + $brack.$stat))
+}
+$ruler = $ruler.Substring(0, $ruler.Length - 1) + 'nickname = { name = ' + $brack.nickname_key + ' } }'
+$chars = $chars.Remove($matchesFound[0].Index, $matchesFound[0].Length).Insert($matchesFound[0].Index, $ruler)
+$locRel = 'main_menu/localization/english/goblins_ashborn_isles_l_english.yml'
+$loc = [IO.File]::ReadAllText((Join-Path $baseRoot $locRel))
+$culturePattern = '(?m)^ cm_brinekin_desc:.*$'
+if ([regex]::Matches($loc, $culturePattern).Count -ne 1 -or $loc -match ('(?m)^ ' + [regex]::Escape($brack.nickname_key) + ':')) { throw 'Unexpected Brineward localization in the base.' }
+$cultureLine = ' cm_brinekin_desc: "' + $brack.culture_description.Replace('"', '\"') + '"'
+$loc = [regex]::Replace($loc, $culturePattern, $cultureLine)
+$loc = $loc.TrimEnd() + "`r`n " + $brack.nickname_key + ': "' + $brack.nickname + '"' + "`r`n"
+foreach ($derived in @(@{path=$charRel; text=$chars; bom=$false}, @{path=$locRel; text=$loc; bom=$true})) {
+    $destination = Join-Path $prepared $derived.path
+    New-Item -ItemType Directory -Path (Split-Path $destination -Parent) -Force | Out-Null
+    [IO.File]::WriteAllText($destination, $derived.text, [Text.UTF8Encoding]::new($derived.bom))
+    $derivedHashes[$derived.path] = (Get-FileHash -LiteralPath $destination -Algorithm SHA256).Hash
+}
 $metadata = @{
     name = 'Goblins 0.5.5 - Gathering Prototype (requires 0.5.4)'
     id = $id
@@ -77,6 +110,9 @@ if (Test-Path -LiteralPath $target) {
 Copy-Item -LiteralPath $prepared -Destination $target -Recurse
 foreach ($entry in $manifest.files) {
     if ((Get-FileHash -LiteralPath (Join-Path $target $entry.path) -Algorithm SHA256).Hash -ne $entry.sha256) { throw 'Installed prototype checksum mismatch.' }
+}
+foreach ($relative in $derivedHashes.Keys) {
+    if ((Get-FileHash -LiteralPath (Join-Path $target $relative) -Algorithm SHA256).Hash -ne $derivedHashes[$relative]) { throw 'Installed Brackmaw override checksum mismatch.' }
 }
 Write-Host "Installed separate prototype at $target"
 Write-Host 'Enable BOTH Goblins 0.5.4 and this prototype. Start a NEW 1337 campaign for testing.'

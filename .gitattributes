@@ -2,3 +2,4 @@
 art/models/goblins/source/Goblin_Male.gltf -text
 # Runtime file hashes must survive Git checkouts on Windows unchanged.
 mod/** -text
+data/brackmaw.json -text

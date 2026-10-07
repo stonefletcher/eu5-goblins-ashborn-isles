@@ -1,5 +1,7 @@
 # 0.5.5 — Gathering prototype
 
+**Brackmaw — Brineward:** Murgash Brackmaw, **the Sluice-King**, built his authority on tidal gates, dry granaries and debts remembered. Brackhaven's timber crews, ropewalks and coastal workshops supply his bid to make every Ashborn crown dependent on his harbor. The marsh houses expect maintained waterways and a voice in the labor he demands. His administration and diplomacy now reflect that identity (84/78/90 ADM/DIP/MIL); his house, family and succession remain intact. The Brineward culture text and Brackmaw's Gathering introduction tell this story in game.
+
 Two situations, seven actions and thirteen events connect all five Ashborn kingdoms to a shared unification struggle and then an eastern coastal ambition. Conquest and consent-based vassalage use native mechanics; unions obtained normally count toward unification. Eastern actions provide paid bonuses and a temporary conquest casus belli, never free foreign land or automatic wars.
 
 **Prototype: static checks pass; in-game parsing, UI, AI and balance remain untested.** Use the small additive installer with the installed **0.5.4** base: download this branch, close EU5, run **Install-Prototype-055.cmd**, then enable both mods and start a new campaign. The regular installer is not a 0.5.5 release package. See [PROTOTYPE_055.md](PROTOTYPE_055.md) for installation, exact mechanics, limitations and tests.

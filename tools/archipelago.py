@@ -271,6 +271,7 @@ def build_map(b,game,out,reports):
 def build_setup(b,game,out):
     import ashborn_names
     import mixed_populations
+    import exploration
     cfg=b.CFG;locs=cfg['locations'];countries=cfg['countries'];entries=[];popentries=[];cities=[];markets=[];total=Decimal(0);slaves=Decimal(0)
     vanilla=b.read(game,'main_menu/setup/start/10_countries.txt');outer,_=b.block_span(vanilla,'countries')
     for c in countries:
@@ -279,7 +280,7 @@ def build_setup(b,game,out):
         entries.append(f'''{c['tag']} = {{
  own_control_core = {{ {ids} }}
  include = "{'cm_tidemothers' if c['tag']=='SFK' else 'cm_captains'}"
- discovered_areas = {{ cm_cindermaw_area cm_ashborn_seas_area }}
+ {exploration.starting_knowledge()}
  capital = {c['capital']}
  court_language = {c['culture']}_dialect
  country_rank = rank_duchy

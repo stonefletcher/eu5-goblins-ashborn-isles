@@ -282,7 +282,7 @@ ga_eastern_hunger = {
     actions.append(action('ga_offer_harbor_pact', 'Offer a Harbor Pact',
         'Offer a normal alliance to another independent Ashborn kingdom. Its ruler may accept or refuse; membership does not satisfy unification.',
         request.replace('EVENT', '2'), country_picker(choices + '\n NOT = { is_allied_with = { target = scope:actor } }'),
-        ai=ai_friendly, price='ga_gathering_pact_price'))
+        ai='add = -1000', price='ga_gathering_pact_price'))
     actions.append(action('ga_send_supplies', 'Send Grain and Iron',
         'Pay 10 gold to send supplies to another independent Ashborn kingdom. The recipient gains 10 gold and improved opinion of you for five years.',
         '''scope:target = {
@@ -362,7 +362,7 @@ ga_eastern_hunger = {
     write(out, 'in_game/common/generic_action_ai_lists/goblins_gathering.txt', '''
 ga_gathering_ai_list = {
     potential = { ga_independent_goblin = yes can_see_situation = situation:ga_gathering_of_five }
-    actions = { ga_offer_harbor_pact ga_send_supplies ga_offer_compact ga_challenge_crown ga_claim_homeland }
+    actions = { ga_send_supplies ga_offer_compact ga_challenge_crown ga_claim_homeland }
 }
 ga_eastern_ai_list = {
     potential = { has_variable = ga_unifier ga_controls_homeland = yes can_see_situation = situation:ga_eastern_hunger }
@@ -414,6 +414,11 @@ ga_cb_eastern_foothold = {
     loc('ga_cb_eastern_foothold', 'Eastern Foothold')
     loc('ga_cb_eastern_foothold_desc', 'Secure the selected coastal province through a normal conquest war. No territory is awarded by the event chain.')
 
+    def reply(num):
+        # Event-local saved scope keeps simultaneous replies from overwriting names.
+        return f'''save_scope_as = ga_offer_respondent
+            var:ga_offer_sender ?= {{ trigger_event_non_silently = ga_gathering.{num} }}'''
+
     cleanup = 'remove_variable = ga_offer_sender remove_variable = ga_offer_pending'
     events = ['namespace = ga_gathering\n']
     events.append(event(1, 'A Seat Among the Five',
@@ -431,7 +436,7 @@ ga_cb_eastern_foothold = {
         option(2, 'a', 'Let our ships stand together.', '''
             create_relation = { first = root second = var:ga_offer_sender type = relation_type:alliance }
             add_opinion_mutual_effect = { target = var:ga_offer_sender modifier = ga_harbor_pact_opinion }
-        ''', 'ga_valid_pact_offer = yes', pact_ai) + '\n' + option(2, 'b', 'Our harbor needs no such pact.', ai='factor = 2'),
+        ''' + reply(16), 'ga_valid_pact_offer = yes', pact_ai) + '\n' + option(2, 'b', 'Our harbor needs no such pact.', reply(17), ai='factor = 2'),
         after=cleanup))
     accept_ai = '''factor = 1
         modifier = { factor = 3 "opinion(var:ga_offer_sender)" >= 150 }
@@ -443,12 +448,17 @@ ga_cb_eastern_foothold = {
             make_subject_of = { target = var:ga_offer_sender type = subject_type:vassal }
             add_country_modifier = { modifier = ga_compact_guarantees years = 10 mode = replace }
             add_opinion = { target = var:ga_offer_sender modifier = ga_oath_honored }
-            var:ga_offer_sender = { trigger_event_non_silently = ga_gathering.4 }
-        ''', 'ga_valid_submission_offer = yes', accept_ai) + '\n' + option(3, 'b', 'Friendship does not purchase our crown.', ai='factor = 2'),
+        ''' + reply(4), 'ga_valid_submission_offer = yes', accept_ai) + '\n' + option(3, 'b', 'Friendship does not purchase our crown.', reply(18), ai='factor = 2'),
         after=cleanup))
     events.append(event(4, 'An Oath Accepted',
-        'Another Ashborn crown has accepted our protection under the Compact. Its dynasty and customs endure beneath our authority. Remaining independent kingdoms may still resist; the gathering ends only when every homeland location is held by us, our vassals, or our junior union partners.',
+        '[SCOPE.sCountry(\'ga_offer_respondent\').GetName] has accepted our protection under the Compact. Its dynasty and customs endure beneath our authority. Remaining independent kingdoms may still resist; the gathering ends only when every homeland location is held by us, our vassals, or our junior union partners.',
         option(4, 'a', 'Honor the oath.', 'add_prestige = 3')))
+    for num, title, desc in [
+        (16, 'Harbor Pact Accepted', "[SCOPE.sCountry('ga_offer_respondent').GetName] has accepted our Harbor Pact. Our kingdoms are now allied, with the usual obligations of an alliance."),
+        (17, 'Harbor Pact Refused', "[SCOPE.sCountry('ga_offer_respondent').GetName] has declined our Harbor Pact. No alliance has been formed."),
+        (18, 'Ashen Compact Refused', "[SCOPE.sCountry('ga_offer_respondent').GetName] has declined our offer to join the Ashen Compact. Its crown remains independent."),
+    ]:
+        events.append(event(num, title, desc, option(num, 'a', 'The answer is received.')))
     events.append(event(5, 'Five Crowns, One Hunger',
         'Every shore of the Ashborn homeland now answers to one authority. Some crowns may have fallen; others endure through oaths or a union. Our dynasty keeps its name. Beyond the smoke, the eastern coasts await. Unification grants no foreign territory.',
         option(5, 'a', 'Let the captains look east.', 'add_prestige = 10 add_country_modifier = { modifier = ga_unification_recovery years = 5 mode = replace }')))

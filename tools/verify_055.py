@@ -209,7 +209,21 @@ def verify(root, game, out):
     followup = declarations['ga_gathering.15']
     assert ('trigger', '=', [('tag', '=', 'SFK'), ('NOT', '=', [('has_variable', '=', 'ga_tidemother_council_seen')])]) in followup
     assert ('immediate', '=', [('set_variable', '=', [('name', '=', 'ga_tidemother_council_seen'), ('value', '=', 'yes')])]) in followup
-    assert len([k for k in declarations if k.startswith('ga_gathering.')]) == 14
+    assert len([k for k in declarations if k.startswith('ga_gathering.')]) == 17
+    # Every diplomatic response must notify the sender before request cleanup.
+    for number, outcomes in [(2, [16, 17]), (3, [4, 18])]:
+        response = declarations[f'ga_gathering.{number}']
+        options = [v for k, _, v in response if k == 'option']
+        for body, outcome in zip(options, outcomes, strict=True):
+            assert ('save_scope_as', '=', 'ga_offer_respondent') in body
+            sender = next(v for k, op, v in body if k == 'var:ga_offer_sender' and op == '?=')
+            assert ('trigger_event_non_silently', '=', f'ga_gathering.{outcome}') in sender
+        after = next(v for k, _, v in response if k == 'after')
+        assert ('remove_variable', '=', 'ga_offer_pending') in after
+        assert ('remove_variable', '=', 'ga_offer_sender') in after
+    ai_actions = next(v for k, _, v in declarations['ga_gathering_ai_list'] if k == 'actions')
+    assert all(k != 'ga_offer_harbor_pact' for k, _, _ in ai_actions)
+    assert ('ai_will_do', '=', [('add', '=', '-1000')]) in declarations['ga_offer_harbor_pact']
     ownership = declarations['ga_controls_homeland']
     locations = [key.split(':', 1)[1] for key, _, _ in flatten(ownership) if key.startswith('location:')]
     assert len(locations) == len(set(locations)) == 72

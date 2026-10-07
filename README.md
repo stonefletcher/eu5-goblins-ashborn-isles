@@ -8,6 +8,8 @@ Five goblin kingdoms share six volcanic islands in the Atlantic. Unite their riv
 
 **0.5.7 exploration correction:** All five crowns start with the Ashborn homeland and nearby Atlantic sea areas discovered, but no foreign land grants. Iberia and the English, French and Moroccan coastlines remain terra incognita until discovered. Known water beside unknown land is intended to provide the coastal silhouettes shown in the reference screenshot; that exact rendering still needs an in-game check. Voyages reveal their named ports on return. The three-year initial delay remains.
 
+**0.5.7 diplomacy fixes:** Harbor Pact acceptance/refusal and Ashen Compact refusal now notify the sender; all result popups identify the responding kingdom. The AI no longer initiates the custom Harbor Pact action. Players can still use it at the existing price, and native alliance diplomacy remains available. Focused script and response-routing checks pass; gameplay verification is pending.
+
 **Source development only: the bundled installer and release metadata remain 0.5.5.** No 0.5.7 full build, package or installation has been produced. Running the bundled installer does not install these new features. The 0.5.6 economic specializations remain in source. A future packaged update will require a **new 1337 campaign**; previously discovered land in existing saves is not hidden by this change.
 
 See [0.5.7 implementation and remaining work](RELIGION_057.md) for balance values, current limitations and verification instructions.

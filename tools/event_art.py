@@ -9,6 +9,7 @@ EVENTS = {
         5: 'unification', 6: 'eastern_hunger', 7: 'unification',
         8: 'eastern_harbor', 10: 'cindermaw', 11: 'brackmaw',
         12: 'reefhook', 13: 'shatterfin', 14: 'sootwake', 15: 'shatterfin',
+        16: 'harbor_pact', 17: 'harbor_pact', 18: 'oath',
     }.items()},
     **{f'goblins_exploration.{n}': art for n, art in {
         1: 'departure', 2: 'iberia', 3: 'charts',

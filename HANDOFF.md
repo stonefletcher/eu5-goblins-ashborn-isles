@@ -29,3 +29,11 @@ Build/install/publish: no full 0.5.7 build, package, installation, push or Works
 upload. Bundled installer, payload and metadata remain 0.5.5. Existing 0.5.6 economy,
 population, exploration timings and reciprocal contact retained; the 0.5.6 land
 visibility grants are superseded. This branch is local development.
+
+Diplomacy follow-up: tools/gathering.py now routes both Harbor Pact responses and
+both Compact responses to named sender popups (existing Compact acceptance reward
+retained). Harbor Pact removed from the AI list with negative desirability; player
+price unchanged. Art reused through tools/event_art.py. Focused generation to
+build/diplomacy-check and verify_055.py pass, including response-routing checks.
+No generated mod payload, package, install or publication for this follow-up.
+Gameplay checklist added to TESTING.md. Concurrent exploration edits preserved.

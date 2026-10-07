@@ -256,3 +256,9 @@ All five Ashborn cultures have 16 male and 16 female name entries, six house nam
   attachment candidate is included and still needs engine acceptance.
 - Test Portugal's companion event on the next eastern voyage return.
 - Later-age infantry sharing medieval equipment artwork is expected in this first pass.
+
+### 0.5.7 diplomatic replies
+- Send Harbor Pacts and Compact offers; exercise acceptance and refusal for each. Confirm the sender sees the correct kingdom and result, and only acceptance creates the relationship.
+- Leave an offer pending, save/reload, then answer it. Repeat with offers involving different kingdoms; confirm names do not cross between result popups.
+- Make acceptance invalid while an offer is pending (war or subject status), then decline and check notification and pending-state cleanup.
+- Observe AI kingdoms for several action cycles: no custom Harbor Pact offers should be sent; ordinary native alliance diplomacy remains possible.

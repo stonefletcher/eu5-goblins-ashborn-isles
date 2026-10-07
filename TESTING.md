@@ -1,5 +1,13 @@
 # 0.5.8 portrait acceptance
 
+## 0.5.8 holy-site acceptance
+
+In a new campaign, confirm nine holy sites: Cindermaw 3, Brackmaw 2, and one
+on each smaller island. Confirm importance 1-5 (First Mouth 5, Mothers' Basin 4),
+local modifier scaling and all existing shrine event links. Check all three new
+site names and descriptions. Gameplay balance and display remain unverified.
+
+
 Follow the age/sex, culture, existing-save and human-control checks in
 RELEASE_NOTES_0.5.8.md. Compare to the Gathering artwork. Confirm adult court and noble portraits select
 hide/leather/fur outfits, with no cloth robe or jacket from the old mixed pool. In-game acceptance is

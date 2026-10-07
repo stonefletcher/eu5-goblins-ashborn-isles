@@ -1,5 +1,5 @@
 """Validate the source-download installer bundle without a local build or EU5."""
-import base64, hashlib, io, json, re, zipfile
+import base64, hashlib, io, json, re, zipfile, tempfile
 from decimal import Decimal
 from datetime import date
 from pathlib import Path
@@ -45,6 +45,16 @@ def verify(root):
             ai=z.read('goblins_ashborn_isles/in_game/common/generic_action_ai_lists/goblins_gathering.txt').decode('utf-8-sig')
             assert 'ga_offer_harbor_pact' not in ai
             assert z.read('goblins_ashborn_isles/in_game/events/ashen_covenant.txt')
+            # Bind delivered religion scripts to their current authored generator.
+            # Version/config checks alone miss changes to shrine counts or importance.
+            import ashen_covenant
+            with tempfile.TemporaryDirectory() as tmp:
+                generated = ashen_covenant.build(Path(tmp))
+                for path in generated['files']:
+                    assert z.read('goblins_ashborn_isles/'+path) == (Path(tmp)/path).read_bytes(), f'Stale bundled religion: {path}'
+            religion_report = json.loads(z.read('reports/religion_057.json'))
+            assert religion_report['sites'] == generated['sites']
+            assert religion_report.get('site_importance') == generated.get('site_importance')
             estates=z.read('goblins_ashborn_isles/in_game/common/customizable_localization/estates.txt').decode('utf-8-sig')
             assert 'localization_key = ga_crown_estate' in estates
         if 'country_population_targets' in config:

@@ -1,4 +1,4 @@
-# Goblins of the Ashborn Isles 0.5.8 — Portrait art pass
+# Goblins of the Ashborn Isles 0.5.8 — Portraits and holy-site variety
 
 Staging candidate, incorporating the completed 0.5.7 release at b4940c7.
 Not a Steam release and not installed into the active game profile.
@@ -11,12 +11,13 @@ Not a Steam release and not installed into the active game profile.
 - Replace oversized eyes and broad mouths with smaller, recessed, hooded eyes,
   stronger brows, lean cheeks and restrained mouths. Keep hooked noses without
   combining maximum nose length, maximum projection and minimum jaw size.
-- Preserve more native skin colour detail: reduce the constant skin replacement
-  from 88% to 60%. Normal-map detail, native ageing and clan colours remain.
+- Use 94% clan skin tint, with native normal detail and ageing retained. Ears
+  share the head skin shader, decal routing and palette.
 - Shorter necks; compact torso strength 0.32 to 0.42 and stoop 0.18 to 0.24.
   These are rig parameters, not measured height in metres. Female height poses
   remain unsupported, so no disabled height attribute is introduced.
-- Smaller jaw-bound teeth; remove native beards to expose goblin facial anatomy.
+- Remove detached external fangs; keep native animated mouth teeth. Remove
+  native beards to expose goblin facial anatomy.
 - Replace the mixed adult cloth wardrobe entirely with inspected native hide
   tunics, fringed leather overcoats and fur-trimmed hunter garments. No Chinese,
   German jacket, Aztec wrap or Syrian scarf-dress entries remain in the adult
@@ -53,3 +54,11 @@ Ashen Compact refusal notifications and removal of AI custom Harbor Pact spam.
 New campaigns are required for inherited starting-world/discovery changes.
 Portrait modifiers should also affect existing culture-matched characters;
 verify this in a saved game rather than assuming the engine refreshes every view.
+
+## Holy-site variety
+
+Nine shrines replace the uniform one-per-island pattern: three on Cindermaw,
+two on Brackmaw, one on each smaller island. Importance now spans 1-5.
+Adds Blackwood Oathstones, Ashfield Hearth and Miregrove Witness, with local
+lore and modest bonuses. Existing site IDs and event links are preserved.
+Static validation passed; fresh-campaign gameplay review is pending.

@@ -1,21 +1,18 @@
 # Goblins of the Ashborn Isles
 
-**Local 0.5.8 holy-site development — `feature/0.5.8-holy-site-variance`.**
-Nine shrines now range from importance 1 to 5: three on Cindermaw, two on
-Brackmaw and one on each smaller island. Existing site/event identities remain.
-Native importance scales local bonuses; secondary shrines have modest effects.
-This source change is not yet included in the inherited staging installer below.
-Focused religion validation passed; new-campaign gameplay review is pending.
+**0.5.8 staging — portraits, tribal clothing and varied holy sites.**
+Nine shrines range from importance 1 to 5: three on Cindermaw, two on Brackmaw
+and one on each smaller island. The First Mouth is the principal sanctuary;
+smaller hearths and oath groves have modest local effects. Existing shrine and
+event identities remain. Native importance scales local bonuses.
 
-
-**0.5.8 portrait development candidate — `staging/0.5.8`.**
-Reworks court, noble and character portraits toward the Gathering artwork:
-small hooded eyes, lean weathered faces, folded ears, smaller teeth, shorter
-necks and more compact, stooped bodies. Culture routing covers the five goblin
-peoples while preserving human characters. Native beards are removed. Adults exclusively select hide tunics, fringed
-leather overcoats and fur-trimmed hunter garments, replacing the earlier mixed
-cloth wardrobe. Children retain fitted plain clothes; infants retain swaddling. Includes the 0.5.7 religion, estate,
-exploration and diplomacy changes.
+Court, noble and character portraits have smaller hooded eyes, lean weathered
+faces, folded ears, smaller teeth, shorter necks and compact, stooped bodies.
+Ears use the skin shader and clan tint. Native beards are removed. Adults select
+hide tunics, fringed leather overcoats or fur-trimmed hunter garments; children
+retain plain clothes and infants swaddling. Includes the 0.5.7 religion, estate,
+exploration and diplomacy changes. Static checks pass; in-game appearance,
+clothing fit and holy-site balance remain unverified. Review in a new campaign.
 
 ![The five Ashborn clans gather beneath their banners](art/events/sources/gathering.png)
 

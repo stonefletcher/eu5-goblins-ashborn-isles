@@ -1,55 +1,59 @@
-# Goblins of the Ashborn Isles 0.5.8 — Portrait art pass
+# Goblins of the Ashborn Isles 0.5.8 — Screenshot-driven portrait revision
 
-Staging candidate, incorporating the completed 0.5.7 release at b4940c7.
-Not a Steam release and not installed into the active game profile.
+## Changes
 
-## Portrait changes
+- Ears now use the native portrait skin shader, skin palette, head-decal routing
+  and skin scattering. Previously they used the attachment shader and a fixed
+  clan texture, bypassing the face's skin-colour and lighting stages.
+- Increase the shared head/torso/ear clan tint from 60% to 94%. This reduces
+  inherited skin-colour differences and the pale-face/coloured-ear split.
+  Native facial normal maps, ageing and facial morphology remain active.
+- Use a neutral ear base with native RRxG normal packing, non-metallic rough
+  skin properties and an explicit ambient-occlusion texture slot.
+- Shorter, more upward-swept ears retain the cupped, rounded, closed geometry.
+- Remove the separate external tusks that appeared as white dots beside the
+  lips. The native animated mouth retains its own teeth.
+- Stronger hooked noses, brow projection and lean cheek definition, retaining
+  individual variation, hooded eyes, shorter necks and compact posture.
+- Replace zero-strength outfit replacements with the native add-template
+  suppression pattern and move the outfit modifier to priority 120. Clear
+  clothes, hats, capes, neckwear and beards before applying the hide wardrobe.
+  This addresses the formal hat/robe combinations shown in the screenshots;
+  successful suppression still needs an engine test.
+- Adults select native hide tunics, fringed leather overcoats and fur-trimmed
+  hunter garments. Children retain fitted plain clothes; infants retain native
+  swaddling. No adult clothing meshes are forced onto child bodies.
+- All five goblin cultures remain covered; no global human skin or outfit
+  definitions are replaced. Inherited 0.5.7 content and the working infantry
+  pipeline are retained.
 
-- Replace the flat ear fans with closed, cupped ears: recessed bowls, raised rims,
-  smooth normals, swept tips and subtle left/right differences. Retain native
-  skeleton bindings and the working shared-pose attachment route.
-- Replace oversized eyes and broad mouths with smaller, recessed, hooded eyes,
-  stronger brows, lean cheeks and restrained mouths. Keep hooked noses without
-  combining maximum nose length, maximum projection and minimum jaw size.
-- Preserve more native skin colour detail: reduce the constant skin replacement
-  from 88% to 60%. Normal-map detail, native ageing and clan colours remain.
-- Shorter necks; compact torso strength 0.32 to 0.42 and stoop 0.18 to 0.24.
-  These are rig parameters, not measured height in metres. Female height poses
-  remain unsupported, so no disabled height attribute is introduced.
-- Smaller jaw-bound teeth; remove native beards to expose goblin facial anatomy.
-- Replace the mixed adult cloth wardrobe entirely with inspected native hide
-  tunics, fringed leather overcoats and fur-trimmed hunter garments. No Chinese,
-  German jacket, Aztec wrap or Syrian scarf-dress entries remain in the adult
-  selection. Children retain fitted plain garments and infants retain swaddling.
-  Custom torn-leather geometry remains future work.
-- Apply by goblin culture to court members, nobles, relatives and generated
-  characters, preserving human appearance and unrelated individual DNA.
-- Keep infant skin/ears separate from adult teeth and compact-body treatment;
-  native child ageing still controls the adult facial morphs.
+## Evidence and validation
 
-## Validation and visual acceptance
+The supplied screenshots show pale/green faces, blue-green ears, external tooth
+studs and formal hats/clothing. The active Goblins playset used the local 0.5.8
+copy, whose outfit modifier matched staging. No duplicate goblin copy was enabled
+in that playset.
 
-Static checks cover all five cultures and seven portrait age/sex types, native
-rig transforms and clothing references, DDS array compatibility, finite mesh
-data, normalized normals/weights and closed consistently wound ear shells.
-Full build and clean-source installer checks are recorded in HANDOFF.md.
+The shader mismatch is verified in the installed game source: PS_attachment
+bypasses the palette/head decals and lacks the skin scattering define; PS_skin
+applies them. Native beard suppression supplies an empty accessory template with
+mode add and a selection range, unlike the old zero-strength replacements.
+These findings explain plausible causes; the revised look is not engine-verified.
 
-No in-game visual acceptance is claimed. Review the court, noble/estate and
-character views at their normal small size and in close-up: men, women,
-children, adolescents, infants and elders from all five cultures; an existing
-save and newly generated characters; a human ruler as a negative control.
-Check blink/talk/idle poses, ear roots and lighting, teeth/lip clipping, neck
-and hand colour seams, hair overlap, clothing fit and portrait framing.
+Checks cover native rigs, all seven portrait types, five cultures, watertight
+ear shells, normals/weights, DDS format, skin shader/decal routing, material
+channels, opacity and wardrobe suppression syntax. Full build, archive and clean
+installation gate results are recorded in HANDOFF.md.
 
-The reference is art/events/sources/gathering.png. Judge whether the faces read
-as weathered, ugly goblins with short adult proportions. A technical mesh
-preview is not a screenshot of the engine result.
+## In-game review
 
-## Inherited 0.5.7 changes
+Fully restart EU5 after installing this newer 0.5.8 candidate. Enable one copy.
+Review the same characters from the screenshots, including Murgash, plus women,
+elders and generated nobles from all five cultures. Check ear/face/neck/hand
+colour under the same portrait lighting, missing tooth studs, blink/talk/idle
+poses, ear attachment at the root, hats/capes/beards and hide outfit selection.
+Check children and infants separately and a human ruler as a negative control.
 
-Retains the Ashen Covenant religion and goblin estate names, homeland-only
-starting land discovery, delayed voyages, Harbor Pact response notifications,
-Ashen Compact refusal notifications and removal of AI custom Harbor Pact spam.
-New campaigns are required for inherited starting-world/discovery changes.
-Portrait modifiers should also affect existing culture-matched characters;
-verify this in a saved game rather than assuming the engine refreshes every view.
+Compare an existing save with a new 1337 campaign. Existing portrait/DNA refresh
+and every GUI's outfit selection need actual game confirmation. No game launch,
+active-profile installation or Steam release was performed for this revision.

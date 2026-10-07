@@ -1,5 +1,26 @@
 # 0.5.5 — Gathering prototype
 
+The prototype also adds **323,941 goblins of minority cultures**, bringing the
+starting population to **1,618,696**. Minorities make up roughly **16–22%** of each
+nation; the home clan remains **78–84%**. All 72 districts across the six islands
+contain all five Ashborn cultures, with varied counts that stay fixed between
+installs. These communities represent migration, captives taken in inter-clan
+raids and their descendants. Of the additions, **231,332 are slaves** and
+**92,609 are free goblins**: laborers, peasants and capital merchants.
+
+| Nation | Added minorities | Of those, slaves | Minority share | Total population |
+|---|---:|---:|---:|---:|
+| Cindermaw | 159,949 | 133,351 | 22.4% | 712,688 |
+| Brackmaw | 73,355 | 50,012 | 18.7% | 391,818 |
+| Reefhook | 21,955 | 10,414 | 16.8% | 130,392 |
+| Shatterfin | 49,120 | 28,543 | 18.7% | 262,607 |
+| Sootwake | 19,562 | 9,012 | 16.1% | 121,191 |
+
+Cindermaw receives the largest influx and slave share. Capitals attract more
+newcomers and free merchants; mining districts favor captive labor. Existing
+populations and classes are preserved. Run the prototype installer again, load
+the prototype after the 0.5.4 base, and start a new campaign.
+
 The 0.5.5 update gives Cindermaw, Brackmaw, Reefhook and Sootwake distinct ruler abilities, expanded cultural traditions, royal-family stories and rewritten Gathering introductions. Their shared Ashborn origins now support four different approaches to power: military leadership, control of supplies, maritime bargaining and woodland independence.
 
 ## Rulers and faction identities
@@ -27,7 +48,7 @@ Drogg's nickname recalls defending Hooktooth with volcanic arrowheads when iron 
 
 The four ruler ability sets above replace their previously shared 66/61/90 values. Brackmaw, Reefhook and Sootwake gain their nicknames; Drogg keeps his existing Stone Fletcher nickname. Expanded culture descriptions and four rewritten introductions bring the new identities into the game. [LORE.md](LORE.md) contains the full ruler, dynasty and national stories.
 
-The house sayings, family interests, military customs, rescue obligations and woodland rights are narrative flavor. They do not add new institutions, court appointments, economic bonuses or diplomatic actions. Existing family relationships, house names, birthdays and succession laws are preserved, as are population, geography and the costs of situation actions.
+The house sayings, family interests, military customs, rescue obligations and woodland rights are narrative flavor. They do not add new institutions, court appointments, economic bonuses or diplomatic actions. Existing family relationships, house names, birthdays and succession laws are preserved, as are geography and the costs of situation actions. The population additions are described above.
 
 Two situations, seven actions and thirteen events connect all five Ashborn kingdoms to a shared unification struggle and then an eastern coastal ambition. Conquest and consent-based vassalage use native mechanics; unions obtained normally count toward unification. Eastern actions provide paid bonuses and a temporary conquest casus belli, never free foreign land or automatic wars.
 

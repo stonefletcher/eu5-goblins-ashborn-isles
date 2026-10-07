@@ -1,0 +1,4570 @@
+{
+  "seed": 1337055,
+  "description": "Additional goblins from other Ashborn islands. Existing home-culture populations and classes are preserved. Sizes are thousands of people.",
+  "locations": {
+    "cm_cinder_crown": [
+      {
+        "type": "slaves",
+        "size": 0.298,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.036,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.038,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.417,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.026,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.031,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.551,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.043,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.043,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.529,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.03,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.06,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_blackwood": [
+      {
+        "type": "slaves",
+        "size": 1.036,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.068,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.056,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.564,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.068,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.098,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.98,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.135,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.129,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.944,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.05,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.066,
+        "culture": "cm_brinekin"
+      }
+    ],
+    "cm_copperfang": [
+      {
+        "type": "slaves",
+        "size": 1.11,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.071,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.081,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.375,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.03,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.052,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.423,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.031,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.035,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.778,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.017,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.035,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_hooktooth": [
+      {
+        "type": "slaves",
+        "size": 4.782,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.278,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.124,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.33,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 5.628,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.666,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.369,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.497,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 5.093,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.473,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.235,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.307,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 7.244,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.401,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.286,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.677,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_ashfields": [
+      {
+        "type": "slaves",
+        "size": 1.873,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.16,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.187,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 2.719,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.162,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.276,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 3.23,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.389,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.37,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.434,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.068,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.129,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_saltjaw": [
+      {
+        "type": "slaves",
+        "size": 1.01,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.051,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.141,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.731,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.088,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.077,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.255,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.101,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.222,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.146,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.103,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.118,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_redpasture": [
+      {
+        "type": "slaves",
+        "size": 2.025,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.264,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.317,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.841,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.072,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.188,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 2.204,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.369,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.323,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.262,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.096,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.267,
+        "culture": "cm_reefkin"
+      }
+    ],
+    "cm_splinter_cove": [
+      {
+        "type": "slaves",
+        "size": 0.927,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.073,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.077,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.585,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.059,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.142,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 2.083,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.187,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.243,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.179,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.142,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.124,
+        "culture": "cm_reefkin"
+      }
+    ],
+    "cm_ironbark": [
+      {
+        "type": "slaves",
+        "size": 1.082,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.046,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.132,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.452,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.054,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.057,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.1,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.096,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.186,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.926,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.07,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.118,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_ashspine": [
+      {
+        "type": "slaves",
+        "size": 0.759,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.056,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.104,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.523,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.045,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.051,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.747,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.077,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.077,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.122,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.055,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.129,
+        "culture": "cm_reefkin"
+      }
+    ],
+    "cm_emberfall": [
+      {
+        "type": "slaves",
+        "size": 1.073,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.108,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.124,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.638,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.068,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.081,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.236,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.09,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.08,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.447,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.047,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.089,
+        "culture": "cm_brinekin"
+      }
+    ],
+    "cm_scorchbrook": [
+      {
+        "type": "slaves",
+        "size": 0.473,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.061,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.073,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.525,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.017,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.044,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.585,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.039,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.106,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.092,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.111,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.117,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_obsidian_cut": [
+      {
+        "type": "slaves",
+        "size": 0.562,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.015,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.033,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.096,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.047,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.081,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.903,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.055,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.119,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.359,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.015,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.023,
+        "culture": "cm_brinekin"
+      }
+    ],
+    "cm_cinder_shelf": [
+      {
+        "type": "slaves",
+        "size": 0.388,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.044,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.056,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.238,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.015,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.03,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.578,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.033,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.062,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.34,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.018,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.047,
+        "culture": "cm_reefkin"
+      }
+    ],
+    "cm_smokehorn": [
+      {
+        "type": "slaves",
+        "size": 0.215,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.033,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.034,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.633,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.036,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.089,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.451,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.052,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.051,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.504,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.065,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.079,
+        "culture": "cm_brinekin"
+      }
+    ],
+    "cm_goldscar": [
+      {
+        "type": "slaves",
+        "size": 0.662,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.055,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.063,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.275,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.008,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.013,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.504,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.022,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.028,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.723,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.029,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.042,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_coaljaw": [
+      {
+        "type": "slaves",
+        "size": 0.626,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.023,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.056,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.259,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.172,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.162,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.125,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.111,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.178,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.11,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.071,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.136,
+        "culture": "cm_reefkin"
+      }
+    ],
+    "cm_silverfang": [
+      {
+        "type": "slaves",
+        "size": 0.73,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.018,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.03,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.568,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.028,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.07,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.537,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.021,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.029,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.388,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.016,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.036,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_netjaw": [
+      {
+        "type": "slaves",
+        "size": 2.634,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.187,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.191,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.848,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.114,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.107,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.743,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.17,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.379,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.435,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.129,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.265,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_saffron_hollow": [
+      {
+        "type": "slaves",
+        "size": 2.381,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.211,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.498,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.656,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.132,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.309,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 2.625,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.206,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.376,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 2.121,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.115,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.127,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_dyer_s_marsh": [
+      {
+        "type": "slaves",
+        "size": 0.659,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.056,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.069,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.449,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.08,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.141,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.812,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.069,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.181,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.397,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.141,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.271,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_grazetooth": [
+      {
+        "type": "slaves",
+        "size": 0.958,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.064,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.175,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.183,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.12,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.143,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.047,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.039,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.086,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.973,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.144,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.141,
+        "culture": "cm_reefkin"
+      }
+    ],
+    "cm_sawtooth": [
+      {
+        "type": "slaves",
+        "size": 1.089,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.088,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.182,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.334,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.044,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.106,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.042,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.043,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.083,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.367,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.145,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.274,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_pitchfang": [
+      {
+        "type": "slaves",
+        "size": 1.023,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.06,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.099,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.14,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.138,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.204,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.828,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.075,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.069,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.944,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.063,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.157,
+        "culture": "cm_reefkin"
+      }
+    ],
+    "cm_goldvein": [
+      {
+        "type": "slaves",
+        "size": 0.575,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.031,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.077,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.486,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.013,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.034,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.987,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.036,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.101,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.236,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.074,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.073,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_clayjaw": [
+      {
+        "type": "slaves",
+        "size": 0.757,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.094,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.094,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.994,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.115,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.097,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.758,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.055,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.141,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.555,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.026,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.048,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_reedfurrow": [
+      {
+        "type": "slaves",
+        "size": 0.409,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.021,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.047,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.711,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.046,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.07,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.711,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.066,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.141,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.546,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.034,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.056,
+        "culture": "cm_brinekin"
+      }
+    ],
+    "cm_quarrystone": [
+      {
+        "type": "slaves",
+        "size": 0.422,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.036,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.047,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.551,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.019,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.054,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.802,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.046,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.06,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.91,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.033,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.085,
+        "culture": "cm_brinekin"
+      }
+    ],
+    "cm_saltlip": [
+      {
+        "type": "slaves",
+        "size": 0.438,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.053,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.067,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.285,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.024,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.059,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.547,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.032,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.045,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.351,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.014,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.043,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_ashgrain": [
+      {
+        "type": "slaves",
+        "size": 0.404,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.029,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.06,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.408,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.021,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.055,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.512,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.029,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.042,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.498,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.035,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.04,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_brackhaven": [
+      {
+        "type": "slaves",
+        "size": 1.764,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.192,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.191,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.357,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.922,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.448,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.337,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.51,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 4.277,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.581,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.248,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.559,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 3.502,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.53,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.465,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 1.104,
+        "culture": "cm_cinderkin"
+      }
+    ],
+    "cm_brinewood": [
+      {
+        "type": "slaves",
+        "size": 0.263,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.076,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.067,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.666,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.099,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.162,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.415,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.079,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.2,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.445,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.051,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.129,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_rustpeak": [
+      {
+        "type": "slaves",
+        "size": 0.242,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.055,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.079,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.552,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.113,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.099,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.238,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.025,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.071,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.203,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.031,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.033,
+        "culture": "cm_cinderkin"
+      }
+    ],
+    "cm_mossfields": [
+      {
+        "type": "slaves",
+        "size": 0.569,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.095,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.273,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.959,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.145,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.168,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.443,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.061,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.122,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.399,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.064,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.092,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_bracksalt": [
+      {
+        "type": "slaves",
+        "size": 0.413,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.096,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.086,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.709,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.113,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.268,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.497,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.129,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.205,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.584,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.065,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.142,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_mossglen": [
+      {
+        "type": "slaves",
+        "size": 0.468,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.143,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.17,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.185,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.031,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.075,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.245,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.036,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.055,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.305,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.044,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.091,
+        "culture": "cm_reefkin"
+      }
+    ],
+    "cm_reedmouth": [
+      {
+        "type": "slaves",
+        "size": 0.452,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.117,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.131,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.489,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.116,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.175,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.251,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.059,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.065,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.171,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.033,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.081,
+        "culture": "cm_reefkin"
+      }
+    ],
+    "cm_blackcrag": [
+      {
+        "type": "slaves",
+        "size": 0.389,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.036,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.063,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.432,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.068,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.099,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.688,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.11,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.251,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.623,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.088,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.086,
+        "culture": "cm_cinderkin"
+      }
+    ],
+    "cm_basalt_steps": [
+      {
+        "type": "slaves",
+        "size": 0.252,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.023,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.065,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.348,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.072,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.061,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.32,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.026,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.062,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.183,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.038,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.067,
+        "culture": "cm_cinderkin"
+      }
+    ],
+    "cm_fumarole_fields": [
+      {
+        "type": "slaves",
+        "size": 0.101,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.019,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.034,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.232,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.024,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.054,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.223,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.049,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.053,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.172,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.061,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.06,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_rustneedle": [
+      {
+        "type": "slaves",
+        "size": 0.258,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.055,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.078,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.114,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.02,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.037,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.147,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.022,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.039,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.39,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.051,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.074,
+        "culture": "cm_cinderkin"
+      }
+    ],
+    "cm_brine_spur": [
+      {
+        "type": "slaves",
+        "size": 0.152,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.017,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.034,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.113,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.018,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.048,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.169,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.024,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.036,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.117,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.034,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.034,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_bracknet": [
+      {
+        "type": "slaves",
+        "size": 2.069,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.373,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.394,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.754,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.18,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.177,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.869,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.117,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.341,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.69,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.187,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.31,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_miregrove": [
+      {
+        "type": "slaves",
+        "size": 0.649,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.123,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.273,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.411,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.055,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.132,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.305,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.059,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.11,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.966,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.239,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.225,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_silverneedle": [
+      {
+        "type": "slaves",
+        "size": 0.246,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.046,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.08,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.336,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.054,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.116,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.389,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.061,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.168,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.279,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.05,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.053,
+        "culture": "cm_reefkin"
+      }
+    ],
+    "cm_mossfurrow": [
+      {
+        "type": "slaves",
+        "size": 1.085,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.142,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.209,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.772,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.157,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.192,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.475,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.081,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.086,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.683,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.122,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.232,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_brinepasture": [
+      {
+        "type": "slaves",
+        "size": 0.451,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.105,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.118,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.111,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.156,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.281,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.658,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.077,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.192,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.932,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.13,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.173,
+        "culture": "cm_cinderkin"
+      }
+    ],
+    "cm_woolfen": [
+      {
+        "type": "slaves",
+        "size": 0.258,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.04,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.044,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.33,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.085,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.119,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.385,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.12,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.142,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.262,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.043,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.13,
+        "culture": "cm_reefkin"
+      }
+    ],
+    "cm_reedfish": [
+      {
+        "type": "slaves",
+        "size": 0.279,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.094,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.1,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.417,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.11,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.115,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.325,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.044,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.128,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.364,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.133,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.116,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_alumcrag": [
+      {
+        "type": "slaves",
+        "size": 0.518,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.1,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.124,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.969,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.194,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.353,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.587,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.062,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.143,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.649,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.067,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.189,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_basaltgrain": [
+      {
+        "type": "slaves",
+        "size": 0.292,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.049,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.052,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.368,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.052,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.069,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.234,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.054,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.075,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.235,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.06,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.072,
+        "culture": "cm_cinderkin"
+      }
+    ],
+    "cm_saffron_vale": [
+      {
+        "type": "slaves",
+        "size": 0.274,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.061,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.11,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.28,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.045,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.055,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.243,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.054,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.045,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.108,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.029,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.033,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_rustforge": [
+      {
+        "type": "slaves",
+        "size": 0.107,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.01,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.027,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.194,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.033,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.058,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.281,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.056,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.05,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.281,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.064,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.06,
+        "culture": "cm_cinderkin"
+      }
+    ],
+    "cm_dyer_s_fen": [
+      {
+        "type": "slaves",
+        "size": 0.151,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.018,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.042,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.206,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.037,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.036,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.096,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.027,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.029,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.138,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.021,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.062,
+        "culture": "cm_reefkin"
+      }
+    ],
+    "cm_reefhook": [
+      {
+        "type": "slaves",
+        "size": 1.028,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.41,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.244,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.706,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.617,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.198,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.172,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.258,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.996,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.651,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.421,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.37,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.98,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.431,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.167,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.258,
+        "culture": "cm_cinderkin"
+      }
+    ],
+    "cm_crooked_reef": [
+      {
+        "type": "slaves",
+        "size": 0.235,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.136,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.167,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.122,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.059,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.082,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.322,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.072,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.189,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.4,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.12,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.209,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_hookrim": [
+      {
+        "type": "slaves",
+        "size": 0.127,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.081,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.079,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.335,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.119,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.213,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.122,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.048,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.047,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.333,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.199,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.229,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_tidefang": [
+      {
+        "type": "slaves",
+        "size": 0.11,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.046,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.061,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.162,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.048,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.089,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.195,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.092,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.216,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.072,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.042,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.059,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_reefnet": [
+      {
+        "type": "slaves",
+        "size": 0.463,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.292,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.261,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.308,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.085,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.18,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.157,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.065,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.174,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.364,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.167,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.327,
+        "culture": "cm_brinekin"
+      }
+    ],
+    "cm_coralpasture": [
+      {
+        "type": "slaves",
+        "size": 0.352,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.218,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.187,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.248,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.093,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.206,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.127,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.061,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.127,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.433,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.222,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.228,
+        "culture": "cm_sootkin"
+      }
+    ],
+    "cm_pearlshore": [
+      {
+        "type": "slaves",
+        "size": 0.386,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.114,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.195,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.178,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.076,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.062,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.295,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.099,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.136,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.212,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.065,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.092,
+        "culture": "cm_cinderkin"
+      }
+    ],
+    "cm_tidegrain": [
+      {
+        "type": "slaves",
+        "size": 0.231,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.139,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.132,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.13,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.028,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.064,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.158,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.04,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.121,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.216,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.129,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.168,
+        "culture": "cm_brinekin"
+      }
+    ],
+    "cm_shatterfin": [
+      {
+        "type": "slaves",
+        "size": 1.277,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.262,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.164,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.182,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 2.47,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 1.198,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.513,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.766,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 2.673,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 1.073,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.468,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.986,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 2.177,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.628,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.268,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.549,
+        "culture": "cm_brinekin"
+      }
+    ],
+    "cm_shardpoint": [
+      {
+        "type": "slaves",
+        "size": 1.177,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.184,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.509,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.906,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.415,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.379,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.529,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.069,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.158,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.078,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.262,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.439,
+        "culture": "cm_reefkin"
+      }
+    ],
+    "cm_stormpasture": [
+      {
+        "type": "slaves",
+        "size": 0.837,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.264,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.514,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.836,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.234,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.604,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.446,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.163,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.187,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.866,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.442,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.485,
+        "culture": "cm_brinekin"
+      }
+    ],
+    "cm_silver_shard": [
+      {
+        "type": "slaves",
+        "size": 0.703,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.17,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.454,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.731,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.155,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.285,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.954,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.28,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.281,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.604,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.168,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.185,
+        "culture": "cm_brinekin"
+      }
+    ],
+    "cm_knifeback": [
+      {
+        "type": "slaves",
+        "size": 1.181,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.143,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.427,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.737,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.478,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.482,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.754,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.327,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.658,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.839,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.23,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.26,
+        "culture": "cm_cinderkin"
+      }
+    ],
+    "cm_silkworm_grove": [
+      {
+        "type": "slaves",
+        "size": 0.997,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.387,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.654,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.412,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.251,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.427,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.535,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.302,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.538,
+        "culture": "cm_sootkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.824,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.213,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.457,
+        "culture": "cm_reefkin"
+      }
+    ],
+    "cm_sootwake": [
+      {
+        "type": "slaves",
+        "size": 0.888,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.362,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.258,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.252,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.815,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.527,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.384,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.51,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 1.636,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.867,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.544,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.689,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.524,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.254,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "burghers",
+        "size": 0.171,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.246,
+        "culture": "cm_shatterkin"
+      }
+    ],
+    "cm_ember_key": [
+      {
+        "type": "slaves",
+        "size": 0.645,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.173,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.362,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.391,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.21,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.46,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.504,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.145,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.289,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.366,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.168,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.337,
+        "culture": "cm_reefkin"
+      }
+    ],
+    "cm_sootgrain": [
+      {
+        "type": "slaves",
+        "size": 0.352,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.141,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.185,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.315,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.103,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.263,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.272,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.202,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.192,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.194,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.095,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.099,
+        "culture": "cm_cinderkin"
+      }
+    ],
+    "cm_alum_key": [
+      {
+        "type": "slaves",
+        "size": 0.578,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.338,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.418,
+        "culture": "cm_brinekin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.893,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.365,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.394,
+        "culture": "cm_cinderkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.22,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.122,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.131,
+        "culture": "cm_shatterkin"
+      },
+      {
+        "type": "slaves",
+        "size": 0.419,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "laborers",
+        "size": 0.115,
+        "culture": "cm_reefkin"
+      },
+      {
+        "type": "peasants",
+        "size": 0.179,
+        "culture": "cm_reefkin"
+      }
+    ]
+  }
+}

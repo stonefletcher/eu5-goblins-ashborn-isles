@@ -25,6 +25,15 @@ Drogg's nickname recalls defending Hooktooth with volcanic arrowheads when iron 
 
 ## What changes in play
 
+**Custom event and situation art:** seventeen original Ashborn paintings cover
+all thirteen Gathering events, the Cindermaw introduction and all six exploration
+and first-contact events. Both situations have custom headers and icons. The five
+clan introductions illustrate their own stories; related oath and unification
+events share matching scenes. The prototype installer includes the textures and
+explicit image references. See [art/events/README.md](art/events/README.md) for
+originals, prompts, mappings and reproducible DDS exports. In-game rendering
+remains pending.
+
 The four ruler ability sets above replace their previously shared 66/61/90 values. Brackmaw, Reefhook and Sootwake gain their nicknames; Drogg keeps his existing Stone Fletcher nickname. Expanded culture descriptions and four rewritten introductions bring the new identities into the game. [LORE.md](LORE.md) contains the full ruler, dynasty and national stories.
 
 The house sayings, family interests, military customs, rescue obligations and woodland rights are narrative flavor. They do not add new institutions, court appointments, economic bonuses or diplomatic actions. Existing family relationships, house names, birthdays and succession laws are preserved, as are population, geography and the costs of situation actions.

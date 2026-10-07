@@ -103,8 +103,16 @@ in-engine acceptance. No claim of engine compatibility follows from static check
 
 ## Rebuild and verify scripts
 
+Seventeen original paintings cover all thirteen new events, both situations and
+the seven existing introduction/exploration events. Events use explicit native
+`image` paths; situation headers and icons resolve by situation ID. Original PNGs
+and complete generation prompts are in `art/events/`. The prototype manifest
+carries every texture and all three event files. The regular installer is still
+the prior 0.5.4 package; these changes ship through the prototype add-on.
+
 ```powershell
 python tools/gathering.py
+python tools/export_event_art.py
 python tools/verify_055.py --game "E:\SteamLibrary\steamapps\common\Europa Universalis V\game"
 ```
 
@@ -113,6 +121,7 @@ configuration. Regenerate the prototype checksum manifest after script changes:
 
 ```powershell
 python tools/prepare_prototype_055.py
+python tools/verify_event_art.py
 ```
 
 Static checks parse script structure, resolve declared native CB/relation/price

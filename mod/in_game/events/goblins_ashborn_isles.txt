@@ -1,11 +1,11 @@
-namespace = cindermaw
+﻿namespace = cindermaw
 cindermaw.1 = {
     type = country_event
     outcome = neutral
     title = cindermaw.1.title
     desc = cindermaw.1.desc
     trigger = { tag = CDM }
-    illustration_tags = { 10 = exterior 10 = armed }
+    image = "gfx/interface/illustrations/event/ashborn/cindermaw.dds"
     option = {
         name = cindermaw.1.a
     }

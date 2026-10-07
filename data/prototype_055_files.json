@@ -127,12 +127,104 @@
       "sha256": "7586d99726efb3c9658c7625a6b0edbfd3a8cad1708ddd88702e397ed226bab5"
     },
     {
+      "path": "in_game/events/goblins_ashborn_isles.txt",
+      "sha256": "3e62fac360d01c6c103702df368ff5f1102a7bfa9b50f42ba937a949ffd26e1d"
+    },
+    {
+      "path": "in_game/events/goblins_exploration.txt",
+      "sha256": "408f9d8459e0baf82dff541a2eb600b3b59c95d1ab7eae9b1fbdb88370d0ea23"
+    },
+    {
       "path": "in_game/events/goblins_gathering.txt",
-      "sha256": "4be0bb938469308e492d6eea69feb96f84b20c50e4bdf6665061684093c9fb43"
+      "sha256": "a18e67ca81bbe67d9a63831adeccfdee82bf8b6d749d82f47d9a2d071869b349"
     },
     {
       "path": "main_menu/common/static_modifiers/goblins_gathering.txt",
       "sha256": "0f8898035d9c23203fd2cc31064eea776acc5194bc01a46d4ec92e6c9aebe5ce"
+    },
+    {
+      "path": "main_menu/gfx/interface/icons/situations/ga_eastern_hunger.dds",
+      "sha256": "1497d02239dd09127ef1a47e3516abd36ade902a08ce4c885abb0219bc247682"
+    },
+    {
+      "path": "main_menu/gfx/interface/icons/situations/ga_gathering_of_five.dds",
+      "sha256": "f3149d95f51cb931ea9f7c9fac2a1414f4229a2ea8ca706bccc2e756a35b60e7"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/africa.dds",
+      "sha256": "df624f1deb38b7d26946784f7b25e20251dbf3e667f815e0ee3562b0eabd2e9e"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/biscay.dds",
+      "sha256": "af6026704c4e22080672e041382705c5ea2b26ad6303a251d6a699916f57c83b"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/brackmaw.dds",
+      "sha256": "b1a2898d5af82eaeaeb273487279649bf09a71ff6edacec22072d1a95d26718c"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/charts.dds",
+      "sha256": "f1a3de958424e0c93a3927dfed28c9de22422d9254222ba550aab4d8bab35ce1"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/cindermaw.dds",
+      "sha256": "daf9ea8c14b8bc85cd45ccfc9306d5c3b5dc096a34adc147c79fa2ce76f06372"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/departure.dds",
+      "sha256": "8eb596f676f2bff3cd9e372a7c3a7f843a0cc382a9d9afe72c3f6931628ef48a"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/eastern_harbor.dds",
+      "sha256": "fd4c69b000e962bf5c2d25162ceb60addbc8f9699a3129b0d98282ca4df45ee6"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/eastern_hunger.dds",
+      "sha256": "7d11a8bb3f1bfe62f3f60afae144df18456c1728d50ab7e960944ffeaa96353c"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/foreign_sails.dds",
+      "sha256": "807bcfb33b02089360179561ae0d19709bf929bb59a8032ed4fd8186fd195ae6"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/gathering.dds",
+      "sha256": "8d0fc8c1f90b9c7e8d210a8fdea59f87db43a5cb9934425f3afdaf75b3cfd0c4"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/harbor_pact.dds",
+      "sha256": "bb43074a6ea3cc46bf733226164137909c700e6c13537baff9bd067774206777"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/iberia.dds",
+      "sha256": "b0477cbb985315db8d7c731f82a574d1f40b8a65d6856a7d32bf6cd405ab3c64"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/oath.dds",
+      "sha256": "ed42213c0222507b7cf5ea7888928ba25960deff2e12e20db513092eafddb6c9"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/reefhook.dds",
+      "sha256": "1dcfe8d1d3cbe4e726ac5c31377557ec1f41410f767e8d8268d7e918c7c2cf0f"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/shatterfin.dds",
+      "sha256": "cd8b30149589febed5766c8762ce037f961be1391e04863a353b00a03a7456a9"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/sootwake.dds",
+      "sha256": "b4d6f2080e9369d04e0e782f1eefae12958daf6d4c6a8dfb4519f957e1c40a3d"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/unification.dds",
+      "sha256": "1767a1c003eca337c3b2593503d3855a60b2c0ea4c60d405da219c053a10a101"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/situation/ga_eastern_hunger.dds",
+      "sha256": "7d11a8bb3f1bfe62f3f60afae144df18456c1728d50ab7e960944ffeaa96353c"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/situation/ga_gathering_of_five.dds",
+      "sha256": "8d0fc8c1f90b9c7e8d210a8fdea59f87db43a5cb9934425f3afdaf75b3cfd0c4"
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",

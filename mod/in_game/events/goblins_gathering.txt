@@ -7,7 +7,7 @@ ga_gathering.1 = {
     title = ga_gathering.1.title
     desc = ga_gathering.1.desc
     trigger = { ga_is_goblin = yes }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/gathering.dds"
     immediate = {  }
     option = {
         name = ga_gathering.1.a
@@ -37,7 +37,7 @@ ga_gathering.2 = {
     title = ga_gathering.2.title
     desc = ga_gathering.2.desc
     trigger = { ga_is_goblin = yes }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/harbor_pact.dds"
     immediate = {  }
     option = {
         name = ga_gathering.2.a
@@ -66,7 +66,7 @@ ga_gathering.3 = {
     title = ga_gathering.3.title
     desc = ga_gathering.3.desc
     trigger = { ga_is_goblin = yes }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
     immediate = {  }
     option = {
         name = ga_gathering.3.a
@@ -98,7 +98,7 @@ ga_gathering.4 = {
     title = ga_gathering.4.title
     desc = ga_gathering.4.desc
     trigger = { ga_is_goblin = yes }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
     immediate = {  }
     option = {
         name = ga_gathering.4.a
@@ -116,7 +116,7 @@ ga_gathering.5 = {
     title = ga_gathering.5.title
     desc = ga_gathering.5.desc
     trigger = { ga_is_goblin = yes }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/unification.dds"
     immediate = {  }
     option = {
         name = ga_gathering.5.a
@@ -134,7 +134,7 @@ ga_gathering.6 = {
     title = ga_gathering.6.title
     desc = ga_gathering.6.desc
     trigger = { ga_is_goblin = yes }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/eastern_hunger.dds"
     immediate = {  }
     option = {
         name = ga_gathering.6.a
@@ -152,7 +152,7 @@ ga_gathering.7 = {
     title = ga_gathering.7.title
     desc = ga_gathering.7.desc
     trigger = { ga_is_goblin = yes }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/unification.dds"
     immediate = {  }
     option = {
         name = ga_gathering.7.a
@@ -170,7 +170,7 @@ ga_gathering.8 = {
     title = ga_gathering.8.title
     desc = ga_gathering.8.desc
     trigger = { ga_is_goblin = yes }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/eastern_harbor.dds"
     immediate = {  }
     option = {
         name = ga_gathering.8.a
@@ -188,7 +188,7 @@ ga_gathering.10 = {
     title = ga_gathering.10.title
     desc = ga_gathering.10.desc
     trigger = { tag = CDM }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/cindermaw.dds"
     immediate = {  }
     option = {
         name = ga_gathering.10.a
@@ -206,7 +206,7 @@ ga_gathering.11 = {
     title = ga_gathering.11.title
     desc = ga_gathering.11.desc
     trigger = { tag = QBR }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/brackmaw.dds"
     immediate = {  }
     option = {
         name = ga_gathering.11.a
@@ -224,7 +224,7 @@ ga_gathering.12 = {
     title = ga_gathering.12.title
     desc = ga_gathering.12.desc
     trigger = { tag = RHK }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/reefhook.dds"
     immediate = {  }
     option = {
         name = ga_gathering.12.a
@@ -242,7 +242,7 @@ ga_gathering.13 = {
     title = ga_gathering.13.title
     desc = ga_gathering.13.desc
     trigger = { tag = SFK }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/shatterfin.dds"
     immediate = {  }
     option = {
         name = ga_gathering.13.a
@@ -260,7 +260,7 @@ ga_gathering.14 = {
     title = ga_gathering.14.title
     desc = ga_gathering.14.desc
     trigger = { tag = SWK }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/sootwake.dds"
     immediate = {  }
     option = {
         name = ga_gathering.14.a

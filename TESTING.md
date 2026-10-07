@@ -1,3 +1,25 @@
+## 0.5.5 art acceptance
+
+Enable the 0.5.4 base and the prepared 0.5.5 prototype. Inspect both situation
+headers and their 128 x 128 icons in the situation list, panel and notifications.
+Check the Gathering council and Eastern Hunger fleet appear without missing
+textures or generic fallback art. Inspect at normal UI scale and one larger scale.
+
+Read all five clan introductions: stone arrow and forge for Cindermaw, tidal gate
+and stores for Brackmaw, split shell and rescue harbor for Reefhook, female ruler
+and maternal household for Shatterfin, scorched branch and woodland for Sootwake.
+Check the harbor pact, oath, unification, eastern preparation and first-harbor
+events. Oath offer/acceptance and both unification perspectives intentionally
+share their corresponding painting. Faces and props must remain readable under
+the native frame, with intact choices and no foreground character overlay.
+
+Complete east, north and south exploration voyages and inspect departure, charts,
+Iberia, Biscay and African coast art. From a contacted foreign country, inspect
+the human scout following goblin sails in Strange Visitors on Our Shores. Check
+the initial Cindermaw lore event uses its forge illustration. Save/reload and reopen
+the active situation. Inspect the error log for missing DDS or image-path errors.
+Static art validation does not establish these engine/UI results.
+
 ## 0.5.5 clan identity acceptance
 
 Cindermaw: check Drogg, The Stone Fletcher, at 78/80/96 ADM/DIP/MIL, with exactly one nickname. Read the expanded Emberblood culture description and the **One Fire, Many Blades** Gathering introduction. Verify Grakka, Grask and Kragga retain their original family links and dates. Military institutions and influence described in the text are flavor; no free forces, imposed allegiance or new diplomatic mechanics are granted.

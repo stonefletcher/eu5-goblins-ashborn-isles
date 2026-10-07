@@ -16,6 +16,8 @@ def main():
     if not args.game:
         ap.error('--game is required to validate exploration locations and areas')
     exploration.build(b,args.game,output,validate_setup=False)
+    import export_event_art
+    export_event_art.build(output)
     report=export_goblin_models.build(output)
     portraits=build_goblin_portraits.build(output)
     import verify_goblin_portraits
@@ -37,6 +39,9 @@ def main():
     paths.append(output/'in_game/common/languages/goblins_ashborn_isles.txt')
     paths.append(output/'in_game/common/auto_modifiers/goblins_longevity.txt')
     paths.extend(output/p for p in ['in_game/common/on_action/goblins_exploration.txt','in_game/events/goblins_exploration.txt','main_menu/localization/english/goblins_exploration_l_english.yml'])
+    from event_art import runtime_paths
+    paths.extend(output / p for p in runtime_paths())
+    paths.append(output / 'in_game/events/goblins_ashborn_isles.txt')
     manifest={'base_release':b.CFG['version'],'stage':'development-models-and-culture-names','engine_tested':False,
               'files':[{'path':p.relative_to(output).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(paths)]}
     (ROOT/'data/main_overlay.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')

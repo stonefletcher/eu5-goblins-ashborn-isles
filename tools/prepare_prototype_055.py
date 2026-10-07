@@ -3,6 +3,7 @@ from pathlib import Path
 import hashlib
 import json
 from clan_identity import SOURCES
+from event_art import runtime_paths
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -13,6 +14,10 @@ def main():
               ROOT / 'mod/main_menu/common/static_modifiers/goblins_gathering.txt',
               ROOT / 'mod/main_menu/localization/english/goblins_gathering_l_english.yml']
     assert len(paths) == 10
+    paths += [ROOT / 'mod/in_game/events/goblins_ashborn_isles.txt',
+              ROOT / 'mod/in_game/events/goblins_exploration.txt']
+    paths += [ROOT / 'mod' / rel for rel in runtime_paths()]
+    paths = sorted(set(paths))
     manifest = {'version': '0.5.5', 'base_version': '0.5.4',
                 'identities': [{'tag': tag, 'path': 'data/'+name+'.json',
                                 'sha256': hashlib.sha256((ROOT / 'data' / (name+'.json')).read_bytes()).hexdigest()}

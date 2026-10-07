@@ -1,3 +1,11 @@
+## Latest 0.5.8 native hair and Drogg checks
+
+- Reject layered custom hair genes; require native hair_styles replacement.
+- Check six male/five female choices with equal weights and fitted child choices.
+- Verify Drogg ID guard, signature crest, cosmetic scar and face-only override.
+- In game inspect hair roots/sides, compare a dozen courtiers and save/reload.
+- Preserve shared skin colour, existing outfits, child safety and human controls.
+
 ## Latest 0.5.8 rough-face and hair checks
 
 - Inspect Drogg, Jaima and Murgash after a full restart; compare supplied screenshots.

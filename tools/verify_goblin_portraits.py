@@ -35,7 +35,8 @@ def verify(out,game=None):
         if '/ashborn/' in path:
             assert (out/'in_game'/path).is_file(),path
         else:
-            assert re.fullmatch(r'gfx/models/portraits/decals/(male|female)_head/\1_head_old_(forehead|eyes|mouth)_1_early_(diffuse|normal)\.dds',path),path
+            assert (re.fullmatch(r'gfx/models/portraits/decals/(male|female)_head/\1_head_old_(forehead|eyes|mouth)_1_early_(diffuse|normal)\.dds',path)
+                    or re.fullmatch(r'gfx/models/portraits/decals/visual_traits/male_head_decal_traits_scars_02_(diffuse|normal)\.dds',path)),path
             if game:
                 native_texture=Path(game)/'in_game'/path
                 assert native_texture.is_file(),path
@@ -57,9 +58,15 @@ def verify(out,game=None):
     assert 'male_body_height' not in genes, 'Do not depend on the disabled female height attribute'
     assert not re.search(r'cm_\w+_(?:skin|features)\s*=', ethnicity), 'Special genes must only be applied by scoped modifiers'
     clans=json.loads((ART/'clans.json').read_text())['clans']
+    generic_modifiers=modifiers.split('cm_ashborn_drogg =')[0]
+    drogg=modifiers.split('cm_ashborn_drogg =')[1]
+    assert 'priority = 140' in drogg
+    assert 'exists = character:cm_cdm_ruler this = character:cm_cdm_ruler' in drogg
+    assert 'gene = cm_drogg_scar' in drogg and 'gene = cm_drogg_scar' not in generic_modifiers
+    assert 'mode = replace gene = hair_styles template = all_hair accessory = male_iroquois_hair_mohawk_regular' in drogg
     for clan in clans:
         ident=clan['id'];tag=clan['culture']+'_gfx'
-        assert modifiers.count('gfx_culture_applicable = '+tag)==1
+        assert generic_modifiers.count('gfx_culture_applicable = '+tag)==1
         assert f'100 = cm_{ident}_ethnicity' in gfx
         assert f'cm_{ident}_ethnicity = ' in ethnicity
         texture = folder/f'{ident}_skin.dds'
@@ -121,13 +128,19 @@ def verify(out,game=None):
     assert outfit_genes.lstrip().startswith('special_genes = {'), 'Goblin clothes must not be ordinary DNA'
     assert 'mode = add gene = cm_ashborn_clothing' in outfit_mods
     assert 'priority = 120' in outfit_mods and 'selection_behavior = max' in outfit_mods
-    assert all(outfit_mods.count('gfx_culture_applicable = '+c['culture']+'_gfx')==1 for c in clans)
+    clothing_mods=outfit_mods.split('cm_ashborn_native_hair =')[0]
+    assert all(clothing_mods.count('gfx_culture_applicable = '+c['culture']+'_gfx')==1 for c in clans)
     assert all(outfit_mods.count('mode = add gene = '+g+' template = '+t+' range = { 0 1 }')==5 for g,t in RESET.items())
     assert 'value = 0' not in outfit_mods, 'Zero-strength replacements failed to clear noble outfits'
     assert OUTFITS['infant']==[(1,'empty')], 'Do not layer clothing over the native infant swaddle'
     assert HAIR['infant']==[(1,'empty')]
-    assert outfit_mods.count('gene = cm_ashborn_hair template = cm_rough_hair')==5
-    assert RESET['hair_styles']=='no_hair', 'Clear old hair before adding the new selection'
+    assert 'cm_ashborn_hair' not in outfit_mods+outfit_genes, 'Separate accessory gene layered two hairstyles'
+    assert 'gene = hair_styles template = no_hair' not in clothing_mods
+    assert outfit_mods.count('mode = replace gene = hair_styles')==sum(len(HAIR[t]) for t in ['male','female','boy','girl'])
+    assert 'selection_behavior = weighted_random priority = 130' in outfit_mods
+    for sex,minimum in [('male',6),('female',5)]:
+        assert len(HAIR[sex])>=minimum and len({name for _,name in HAIR[sex]})==len(HAIR[sex])
+        assert max(w for w,_ in HAIR[sex])/sum(w for w,_ in HAIR[sex])<=.2
     assert not any(token in name for _,name in HAIR['male'] for token in ['bald','long','bob','wig'])
     for sex in ['male','female']:
         assert all('iroquois' in name for _,name in OUTFITS[sex]), 'Adults must select the inspected hide/leather wardrobe'

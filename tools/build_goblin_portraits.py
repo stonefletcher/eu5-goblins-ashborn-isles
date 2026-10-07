@@ -38,6 +38,48 @@ FACE = {
     'gene_neck_length': (.24,.38),
 }
 
+# Drogg gets a deliberate veteran-war-chief profile, rather than another global
+# species retune. His setup ID is stable and this modifier also reaches saves.
+DROGG_FACE = {
+    'gene_head_height': .41, 'gene_head_width': .49,
+    'gene_forehead_height': .34, 'gene_forehead_roundness': .27,
+    'gene_forehead_brow_forward': .78, 'gene_forehead_brow_height': .39,
+    'gene_eye_open': .33, 'gene_eye_size': .36,
+    'gene_jaw_width': .46, 'gene_jaw_height': .45, 'gene_chin_size': .46,
+    'gene_cheek_fat': .29, 'gene_cheek_def': .70, 'gene_cheek_forward': .64,
+    'gene_nose_length': .69, 'gene_nose_tip_forward': .69,
+    'gene_nose_width': .43, 'gene_nose_ridge_def': .73,
+    'gene_mouth_width': .50, 'gene_mouth_corner_height': .43,
+    'gene_mouth_upper_lip_size': .25, 'gene_mouth_lower_lip_size': .29,
+}
+
+def drogg_modifier():
+    dna='\n'.join(f'morph = {{ mode = replace gene = {g} template = template_1 value = {v} }}' for g,v in DROGG_FACE.items())
+    return f'''cm_ashborn_drogg = {{ usage = game selection_behavior = max priority = 140
+ cm_drogg_warchief = {{ ignore_outfit_tags = yes
+ dna_modifiers = {{
+ {dna}
+ accessory = {{ mode = replace gene = hair_styles template = all_hair accessory = male_iroquois_hair_mohawk_regular }}
+ morph = {{ mode = add gene = cm_drogg_scar template = cm_battle_scar value = 1 }}
+ }}
+ weight = {{ base = 0 modifier = {{ add = 1000 exists = this exists = character:cm_cdm_ruler this = character:cm_cdm_ruler gfx_culture_applicable = cm_cinderkin_gfx }} }}
+ }}
+ }}'''
+
+def drogg_scar_gene():
+    return '''cm_drogg_scar = { inheritable = no cm_battle_scar = { index = 0
+ male = { decal = { body_part = head
+ textures = {
+ diffuse = "gfx/models/portraits/decals/visual_traits/male_head_decal_traits_scars_02_diffuse.dds"
+ normal = "gfx/models/portraits/decals/visual_traits/male_head_decal_traits_scars_02_normal.dds"
+ }
+ blend_modes = { diffuse = overlay normal = overlay }
+ alpha_curve = { { 0 0 } { 1 0.65 } }
+ decal_apply_order = post_skin_color priority = 115
+ } }
+ female = { } boy = { } girl = { } adolescent_boy = { } adolescent_girl = { } infant = { }
+ } }'''
+
 def weathering_gene():
     """Restore restrained adult creases AFTER the opaque clan tint.
 
@@ -176,6 +218,7 @@ def build(out):
     # Kept within supported native gene ranges. Individuals retain all other DNA.
     face=FACE
     genes.append(weathering_gene())
+    genes.append(drogg_scar_gene())
     # Reuse the supported torso-only proportion and posture attributes on BOTH
     # sexes. Do not enable the disabled female height animation or infant face.
     # Fade in after childhood so native child/infant growth is not compounded.
@@ -230,6 +273,7 @@ def build(out):
         ident=clan['id'];genes.append(f'cm_{ident}_features = {{ index = {i}\n'+
             '\n'.join(f'{t} = {{ 1 = "cm_{ident}_{"infant" if t=="infant" else "female" if t in ["female","girl","adolescent_girl"] else "male"}_features" }}' for t in TYPES)+'\n}')
     genes.append('} }\n}');modifiers.append('}')
+    modifiers.append(drogg_modifier())
     text(dest/'ashborn_features.asset','\n'.join(assets)+'\n')
     text(out/'in_game/common/genes/zz_ashborn_portraits.txt','\n'.join(genes)+'\n')
     text(out/'in_game/common/ethnicities/ashborn.txt','\n'.join(ethnicities)+'\n')

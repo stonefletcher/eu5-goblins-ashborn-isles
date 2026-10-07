@@ -1,17 +1,19 @@
 # Goblins of the Ashborn Isles
 
-**0.5.8 staging — rougher goblin faces, cropped hair, tribal clothing and varied holy sites.**
+**0.5.8 staging — Drogg character pass, corrected hair layering, varied court styles and holy sites.**
 Nine shrines now span importance 1-5: three on Cindermaw, two on Brackmaw,
 and one on each smaller island. The First Mouth is the principal sanctuary.
 New oath groves and hearths have modest local bonuses; existing shrine IDs and
 event links remain. Native importance scales local effects. Test site counts,
 tooltips and balance in a new campaign.
 
-The latest portrait pass targets Drogg's tall, rounded forehead and long court
-hair: lower, flatter foreheads, sturdier jaws, restrained hooked noses and less
-upturned mouth corners. Adult males use mohawks and short crops; women use
-braids pulled behind the head. Subtle adult brow, eye and mouth creases now
-appear after the green tint, preserving more surface detail.
+The latest portrait pass fixes the separate hair layer that left Drogg's long
+hair beneath a new crest. Hair now replaces the native hairstyle directly:
+six equally weighted adult male choices and five female choices, plus fitted
+child styles. No single adult style carries more than 20% of the pool weight.
+Drogg has his own guarded character modifier: a single signature crest,
+restrained nose, firmer jaw, deliberate facial proportions and a cosmetic
+battle scar. Other characters retain the previous species face settings.
 
 Shared face/ear skin rendering, 94% clan tint, swept ears, compact posture and
 shorter necks are retained. External tooth studs remain removed. The adult
@@ -25,12 +27,12 @@ retain swaddling. All five cultures are covered, without global human changes.
 [staging ZIP](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/archive/refs/heads/staging/0.5.8.zip),
 extract into a new folder, close EU5 and run **Install-Goblins.cmd**. Restart the
 game and enable one Goblins copy. This is a revised 0.5.8 build, so an older
-0.5.8 archive will not contain the latest forehead, hair and weathering changes.
+0.5.8 archive will not contain the latest hair-layer correction and Drogg-specific changes.
 
 Native asset/material checks pass; full-build, bundle and clean-install gate
-results accompany the candidate. The latest user screenshots show improved skin
-matching and clothing. **This newer face, hair and weathering pass still needs
-in-game review**, especially Drogg, Jaima and Murgash. Main remains the released 0.5.7; Steam is unchanged.
+results accompany the candidate. The user screenshots confirm improved skin and clothing but show stacked hair
+and insufficient variety. **The new native hair replacement and Drogg-specific
+portrait still need in-game review**, including save/reload stability. Main remains the released 0.5.7; Steam is unchanged.
 
 See [changes, evidence and visual checks](RELEASE_NOTES_0.5.8.md).
 Inherited religion, estate, exploration and diplomacy content is retained.

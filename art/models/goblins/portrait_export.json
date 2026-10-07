@@ -22,8 +22,17 @@
     "custom_rag_geometry": false,
     "beards_removed": true,
     "adult_leather_garment_weight": 1.0,
-    "hair": "adult mohawks/short crops and tied-back braids; fitted child hair; no infant hair",
+    "hair": "native replacement: six equal male and five equal female choices; no separate hair layer; fitted child choices",
     "children": "native fitted plain clothes; no adult meshes on child rigs"
   },
-  "portrait_stature": "culture-only compact torso 0.42 and stoop 0.24 on both sexes, shorter neck; native child growth preserved; framing and clothing fit need engine review"
+  "portrait_stature": "culture-only compact torso 0.42 and stoop 0.24 on both sexes, shorter neck; native child growth preserved; framing and clothing fit need engine review",
+  "validation": {
+    "status": "static checks passed; in-game appearance unverified",
+    "cultures": 5,
+    "portrait_types": 7,
+    "attachment_triangles": 3024,
+    "native_rig_bindings_checked": true,
+    "native_outfit_references_checked": true,
+    "engine_tested": false
+  }
 }

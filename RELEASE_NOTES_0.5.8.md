@@ -1,51 +1,41 @@
 # Goblins of the Ashborn Isles 0.5.8 — Portrait revision and holy-site variety
 
-## Latest portrait refinement
+## Latest Drogg and hair correction
 
-The user confirms the previous skin/ear/clothing pass looks better. New screenshots
-show Drogg with a high rounded forehead and long smooth hair, while all three
-rulers still have overly smooth faces. This revision targets that evidence.
+The latest screenshot shows Drogg's new crest layered over his long hairstyle.
+The previous code added a custom hair accessory gene while the original native
+hair was still active. This correction removes the separate hair gene and uses
+the native historical-character pattern: mode replace on hair_styles, an explicit
+accessory selection and a higher-priority modifier.
 
-- Lower, flatter foreheads and slightly shorter, broader heads.
-- Firmer jaws/chins without broad orc jaws; less exaggerated nose length and
-  projection; slightly lower mouth corners while retaining individual variation.
-- Culture-scoped adult hair selection: mohawks, short curly crops and short
-  swept hair for men; tied-back braids for women. Long court hair, balding bobs
-  and wigs are excluded from the adult male pool, including Drogg's selection.
-- Subtle native early-age brow, eye and mouth diffuse/normal detail applied
-  after the strong clan tint. Strength varies and fades in between 18 and 30;
-  children, adolescents and infants have empty weathering definitions. Ordinary
-  ageing remains active; no disease or scar traits are assigned.
-- Ear UVs sample a transparent corner of these detail maps, preventing facial
-  creases from appearing on ears. Shared skin rendering and clan tint remain.
-- Preserve cupped swept ears, compact posture, shorter necks, native animated
-  teeth, adult leather/hide/fur clothing and fitted child clothes.
+- Six equal male court choices: short curls, short swept hair, close curls,
+  close textured crop, short straight hair and shaved. Five equal female choices:
+  two pulled-back braids, parted hair, wrapped braids and a close textured crop.
+- Weighted-random native selection replaces the old 50%-mohawk accessory pool.
+  Weights control selection probabilities, not guaranteed exact court counts.
+- Children use age-appropriate hair choices; no hairstyle is forced on infants.
+- Drogg alone has a priority-140 modifier guarded by his existing cm_cdm_ruler
+  ID and goblin culture. He gets a signature crest without the second hair layer,
+  more restrained nose projection, firm jaw, less bulky head proportions and
+  a cosmetic battle scar. No character stats, IDs, relationships or health traits
+  change. Existing-save application requires engine confirmation.
+- Shared ear/face skin, weathering, leather/hide/fur clothes and other goblins'
+  facial ranges are preserved. No native assets are copied into the mod.
 
-## Evidence and validation
+## Validation and game review
 
-The previous attachment/skin shader mismatch is corrected. The new user
-screenshots support improved colour matching and clothing; they do not verify
-this newer forehead, hair or weathering candidate. Native gene definitions,
-sex-specific texture references, fitted hair accessories and mesh bindings are
-checked against EU5 1.3.11. No game-derived textures are redistributed.
+Native assets and modifiers are checked against EU5 1.3.11. Regression checks
+reject the extra hair gene, require native replace operations, check adult pool
+variety/weights and ensure only Drogg receives the named face/scar override.
+Full build, archive and clean installation results are recorded in HANDOFF.md.
+These checks do not establish in-game appearance.
 
-Regression checks cover all five cultures and seven portrait types, native
-rigs, closed ear meshes, DDS format, palette/decal routing, material channels,
-wardrobe/hair suppression, empty child weathering and transparent ear sampling.
-Full build and matching clean-download/isolated-install results are recorded
-in HANDOFF.md. Gameplay acceptance remains pending.
-
-## In-game review
-
-Install this refreshed 0.5.8 package with EU5 closed and fully restart. Check
-Drogg first: forehead height, jaw weight and replacement of his long hair.
-Compare Jaima and Murgash under the same light. Check variation across nobles,
-sexes and clans; weathering should be subtle, ears should keep matching skin,
-and hair should not obscure or clip ears. Check older adults, children, infants
-and a human ruler. Review blink/talk/idle poses and both existing-save portrait
-refresh and a new 1337 campaign. The portrait changes do not alter character
-IDs, relationships, stats or health traits. Active profiles and Steam are not
-modified by this staging preparation.
+After installing and restarting, check Drogg from front and three-quarter views:
+one crest, no long hair beneath it, scar placement and facial expressions. Inspect
+at least a dozen men and women in court, then save/reload to check hairstyle
+stability. Repetition is possible with random selection, but the old heavily
+favoured crest is reserved for Drogg. Review children, infants and a human ruler;
+compare an existing save with a new campaign. In-game acceptance remains pending.
 
 ## Holy-site variety
 

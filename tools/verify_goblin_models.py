@@ -6,6 +6,45 @@ from PIL import Image
 from pdx_binary import read,write
 from export_goblin_models import GLB,ART,MODEL_REL,FLIP,ROOT,trs
 
+def verify_graph(script, game=None):
+    """Validate typed links and the native unit-constructor parameter contract."""
+    nodes={}
+    for match in re.finditer(r'(pdxns:[\w:]+)\s*=\s*\{',script):
+        start=match.end();depth=1;end=start
+        while depth:
+            depth+=(script[end]=='{')-(script[end]=='}');end+=1
+        block=script[start:end-1]
+        ident=int(re.search(r'\bid\s*=\s*(\d+)',block)[1])
+        assert ident not in nodes, 'Duplicate graph node'
+        nodes[ident]=(match[1],block)
+    outputs={'MeshType':{'mesh_components'},'create_skeleton_component':{'skeleton'},
+             'animation_state_machine':{'state_machine_components'},'Float':{'value'},
+             'ConstVector3f':{'value'},'String':{'value'},
+             'create_local_transform':{'local_transform'},
+             'get_schematic_parameter':{'output_arg'},'assemble_entity':{'entity_description'}}
+    dependencies={}
+    for ident,(kind,block) in nodes.items():
+        links=re.findall(r'pin_id="([^"]+)"\s+linked_node=(\d+)\s+linked_pin="([^"]+)"',block)
+        dependencies[ident]=[int(n) for _,n,_ in links]
+        for pin,n,output in links:
+            assert int(n) in nodes, ('Dangling link',ident,n)
+            assert output in outputs[nodes[int(n)][0].split(':')[-1]], ('Wrong output pin',n,output)
+        if kind.endswith(':create_local_transform'):
+            pins={p:int(n) for p,n,_ in links}
+            assert {'translation','scale'}<=pins.keys(), 'Transform needs explicit translation and scale'
+            assert nodes[pins['translation']][0].endswith(':ConstVector3f')
+            assert nodes[pins['scale']][0].endswith(':Float')
+    roots=set(nodes)-{n for values in dependencies.values() for n in values}
+    assert len(roots)==1 and nodes[next(iter(roots))][0].endswith(':assemble_entity')
+    assert 'parameter="CustomAnimationMachineName"' in script
+    if game:
+        native=(Path(game)/'in_game/gfx/models/schematics/unit_skeleton_schematic.schematic').read_text(encoding='utf-8-sig')
+        assert 'parameter="CustomAnimationMachineName"' in native
+        for kind in {k for k,_ in nodes.values()}:
+            # MeshType is present in the native full-body cavalry graph.
+            reference=native if not kind.endswith(':MeshType') else (Path(game)/'in_game/gfx/models/schematics/aux_horse_schematic.schematic').read_text(encoding='utf-8-sig')
+            assert kind+'=' in reference,kind
+
 def verify(out,game=None):
     out=Path(out);folder=out/MODEL_REL;g=GLB(ART/'variants/cindermaw.glb')
     tree=read(folder/'cm_goblin_cindermaw.mesh');shape=tree['children'][0]['children'][0]
@@ -70,23 +109,33 @@ def verify(out,game=None):
     assert clan_count==5 and triangles==2476
     config=json.loads((ART/'clans.json').read_text())
     constructors=(out/'main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt').read_text()
+    attachments=(out/'main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt').read_text(encoding='utf-8-sig')
+    assert constructors.count('animation_state_machine_name = cm_goblin_infantry')==10
+    assert attachments.count('node = shared_pose_entity')==5
+    if game:
+        native_attachments=(Path(game)/'main_menu/gfx/unit_graphics/attachments/torsos/00_european_torsos.txt').read_text(encoding='utf-8-sig')
+        assert 'node = shared_pose_entity' in native_attachments and 'mesh_name =' in native_attachments
     for clan in config['clans']:
         stem='cm_goblin_'+clan['id'];tag=clan['culture']+'_gfx'
         color=Image.open(folder/(stem+'_0_diffuse.dds')).convert('RGBA').getpixel((0,0))
         expected=tuple(bytes.fromhex(clan['skin_srgb'][1:]))+(255,)
         assert color==expected,(clan['id'],color,expected)
         assert f'{tag}:army_light_infantry' in constructors and f'{tag}:army_heavy_infantry' in constructors
+        assert constructors.count(f'attach = {{ 100 = {stem}_body }}')==2
+        assert f'{stem}_body = {{' in attachments and f'mesh_name = "{stem}_mesh"' in attachments
         asset=(folder/(stem+'.asset')).read_text()
         for texture in re.findall(r'"([^"\n]+\.dds)"',asset):assert (folder/texture).is_file()
         for clip in re.findall(r'type = "([^"\n]+\.anim)"',asset):assert (folder/clip).is_file()
         schematic=(out/'in_game/gfx/models/schematics'/(stem+'_schematic.schematic')).read_text()
+        verify_graph(schematic,game)
         ids=set(re.findall(r'(?<!_)\bid=(\d+)',schematic));links=set(re.findall(r'linked_node=(\d+)',schematic));assert links<=ids
-        assert 'mesh_components' in schematic and 'skeleton' in schematic and 'state_machine_components' in schematic
+        assert 'MeshType' not in schematic and 'mesh_components' not in schematic, 'Unit mesh must be created by the attachment factory'
+        assert 'skeleton' in schematic and 'state_machine_components' in schematic
     machine=(out/'main_menu/gfx/animation_state_machines/cm_goblin_infantry.animsm').read_text()
     for clip in re.findall(r'animation="([^"]+)"',machine):assert (folder/(clip+'.anim')).is_file()
     for path in list(folder.glob('*.asset'))+list((out/'in_game/gfx/models/schematics').glob('cm_goblin_*.schematic')):
         text=path.read_text();assert text.count('{')==text.count('}')
-    return {'status':'STATIC MODEL CHECKS PASSED; ENGINE PLAYTEST PENDING','clans':clan_count,'source_joints':23,'exported_bones':len(bones),'triangles_per_clan':triangles,'animations':len(g.g['animations']),'sampled_poses':poses,'maximum_pose_error_cm':maximum,'native_byte_exact_roundtrips':roundtrips,'palettes_and_runtime_references':True,'engine_tested':False}
+    return {'status':'STATIC MODEL CHECKS PASSED; ENGINE PLAYTEST PENDING','runtime_infantry':'factory-created shared-pose goblin attachment','clans':clan_count,'source_joints':23,'exported_bones':len(bones),'triangles_per_clan':triangles,'animations':len(g.g['animations']),'sampled_poses':poses,'maximum_pose_error_cm':maximum,'native_byte_exact_roundtrips':roundtrips,'palettes_and_runtime_references':True,'typed_graph_links_and_unit_parameters':True,'engine_tested':False}
 
 if __name__=='__main__':
     import argparse

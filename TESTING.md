@@ -1,8 +1,30 @@
-# Goblins of the Ashborn Isles 0.5.2 verification
+# 0.5.3 release acceptance status
+
+The user confirmed visible infantry and no recurrence of the reported crash on October 6, 2026. That check is passed; the broader checks below remain useful for regressions. Package validation is performed against a fresh source export, including reconstructed terrain hashes and exact runtime overlay contents.
+
+Check the release version **0.5.3** and enable only one copy. The 0.5.4 demographics/economy/lifespan work and 0.5.5 expansion prototype are excluded. Preserve separate saves and use a new 1337 campaign.
+
+## 0.5.3 infantry attachment repair — user tested
+
+Native fallback infantry were visible and did not reproduce the crash in the user's test. Custom goblin infantry are now re-enabled through the native attachment workflow: the base graph supplies the skeleton, transform and animation machine; a named shared_pose_entity attachment supplies the visible mesh. The direct root MeshType is removed.
+
+The user confirmed on October 6, 2026 that the repaired infantry no longer crashes and appears properly. The precise engine fault is not proven, and exhaustive state coverage is not claimed. Visual refinement is deferred in issue #4: make the units less goofy while preserving this working attachment route. Continue regression checks for movement, combat and save/reload.
+
+## 0.5.3 appearance acceptance - pending
+
+- Inspect all five clans: rulers, family, cabinet, other courtiers, both sexes and every age. Clothing and skin must follow culture, not employer.
+- Check ears and small teeth during idle and jaw movement; check female outfit fit, child coverage and single infant swaddling.
+- Verify crowns/court finery are absent on Ashborn and unchanged elsewhere.
+- Compare infantry height with native units; exercise idle, movement, attack and retreat.
+- Inspect fresh logs for missing accessories, gene errors and texture-array failures.
+- Compare compact torso proportions and mild stoop on adult men and women. Check head/hand/clothing alignment, portrait crop and preserved child growth. Exact full-body height is not certified.
+- Verify the repaired graph no longer logs Invalid entity graph for any of the five clans, and that infantry are visible before accepting the fix.
+
+# Goblins of the Ashborn Isles 0.5.3 verification
 
 ## Build checks
 
-- Require a fresh 0.5.2 validation report against EU5 1.3.11.
+- Require a fresh 0.5.3 validation report against EU5 1.3.11.
 - Check 36 connected land footprints, six islands and preserved vanilla geography.
 - Verify thirteen registered sea zones, connected to each other and native Atlantic lanes.
 - Verify 36 settlement anchors within their own land, fleet/combat anchors and coastal ports.
@@ -98,8 +120,7 @@ Check skin on neck/hands, eyes, ear placement, tusks during animation, save/relo
 and a newly generated character. Send a screenshot and fresh error.log if wrong.
 
 The separate infantry integration currently fails in-game with `Invalid entity
-graph [cm_goblin_cindermaw_schematic]`, producing invisible infantry. Its repair is
-deferred while portraits are prioritised; this portrait pass does not claim to fix it.
+graph [cm_goblin_cindermaw_schematic]`, producing invisible infantry. The 0.5.3 repair candidate supplies explicit translation and the native animation-machine parameter; it requires an engine retest.
 
 
 ## 0.5.2 succession acceptance
@@ -127,3 +148,19 @@ All five Ashborn cultures have 16 male and 16 female name entries, six house nam
 - Run `tools/verify_goblin_portraits.py` against the prepared 0.5.2 output and installed game. The report must pass before packaging.
 - Verify the bundled archive and development overlay include the same corrected textures.
 - Static validation is not an engine playtest; confirm campaign startup and portrait rendering in EU5. The reported missing land in 0.5.1 also requires a separate terrain acceptance pass.
+
+## Companion first contact
+
+- As Portugal, let an Ashborn eastern expedition return: confirm the islands reveal and Strange Visitors on Our Shores appears once, despite owning multiple visited ports.
+- Let another clan visit Portugal: no duplicate popup. Test northern/southern routes for other current port owners, including conquered ports.
+- Confirm Ashborn owners and unowned sea locations do not receive the foreign-contact event.
+- Existing saves: completed voyages do not replay; a future voyage may trigger the first notification.
+# Integrated 0.5.3 infantry artwork
+
+- Fully restart after installation. Inspect infantry recruitment, levies and army cards
+  for each of the five Ashborn cultures; confirm readable goblin illustrations.
+- Check England and Castile retain human unit art and recruitment/stats are unchanged.
+- Verify map infantry spawning and movement separately; the latest shared-pose
+  attachment candidate is included and still needs engine acceptance.
+- Test Portugal's companion event on the next eastern voyage return.
+- Later-age infantry sharing medieval equipment artwork is expected in this first pass.

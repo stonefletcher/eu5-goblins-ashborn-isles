@@ -1,0 +1,15 @@
+﻿cm_goblin_cindermaw_body = {
+ 100 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_cindermaw_mesh" } }
+}
+cm_goblin_brackmaw_body = {
+ 100 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_brackmaw_mesh" } }
+}
+cm_goblin_reefhook_body = {
+ 100 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_reefhook_mesh" } }
+}
+cm_goblin_shatterfin_body = {
+ 100 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_shatterfin_mesh" } }
+}
+cm_goblin_sootwake_body = {
+ 100 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_sootwake_mesh" } }
+}

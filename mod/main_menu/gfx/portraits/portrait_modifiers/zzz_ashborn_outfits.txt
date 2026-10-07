@@ -1,0 +1,47 @@
+﻿cm_ashborn_outfits = { usage = game priority = 100
+cm_cindermaw_rough_clothing = { ignore_outfit_tags = yes
+dna_modifiers = {
+accessory = { mode = replace gene = clothes template = no_clothes value = 0 }
+accessory = { mode = replace gene = headwear template = no_headwear value = 0 }
+accessory = { mode = replace gene = capes template = no_cape value = 0 }
+accessory = { mode = replace gene = neckware_neck template = no_neckware_neck value = 0 }
+accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }
+}
+weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_cinderkin_gfx } } }
+cm_brackmaw_rough_clothing = { ignore_outfit_tags = yes
+dna_modifiers = {
+accessory = { mode = replace gene = clothes template = no_clothes value = 0 }
+accessory = { mode = replace gene = headwear template = no_headwear value = 0 }
+accessory = { mode = replace gene = capes template = no_cape value = 0 }
+accessory = { mode = replace gene = neckware_neck template = no_neckware_neck value = 0 }
+accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }
+}
+weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_brinekin_gfx } } }
+cm_reefhook_rough_clothing = { ignore_outfit_tags = yes
+dna_modifiers = {
+accessory = { mode = replace gene = clothes template = no_clothes value = 0 }
+accessory = { mode = replace gene = headwear template = no_headwear value = 0 }
+accessory = { mode = replace gene = capes template = no_cape value = 0 }
+accessory = { mode = replace gene = neckware_neck template = no_neckware_neck value = 0 }
+accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }
+}
+weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_reefkin_gfx } } }
+cm_shatterfin_rough_clothing = { ignore_outfit_tags = yes
+dna_modifiers = {
+accessory = { mode = replace gene = clothes template = no_clothes value = 0 }
+accessory = { mode = replace gene = headwear template = no_headwear value = 0 }
+accessory = { mode = replace gene = capes template = no_cape value = 0 }
+accessory = { mode = replace gene = neckware_neck template = no_neckware_neck value = 0 }
+accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }
+}
+weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_shatterkin_gfx } } }
+cm_sootwake_rough_clothing = { ignore_outfit_tags = yes
+dna_modifiers = {
+accessory = { mode = replace gene = clothes template = no_clothes value = 0 }
+accessory = { mode = replace gene = headwear template = no_headwear value = 0 }
+accessory = { mode = replace gene = capes template = no_cape value = 0 }
+accessory = { mode = replace gene = neckware_neck template = no_neckware_neck value = 0 }
+accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }
+}
+weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_sootkin_gfx } } }
+}

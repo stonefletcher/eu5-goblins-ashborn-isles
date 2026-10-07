@@ -51,6 +51,12 @@ def verify(b,out,mapstats):
             assert 'exists = owner' in contact and 'owner = {' in contact
             assert 'discover_area = area:cm_cindermaw_area' in contact
             assert 'discover_area = area:cm_ashborn_seas_area' in contact
+            assert 'NOT = { has_variable = ga_received_goblin_first_contact }' in contact
+            assert 'NOT = { OR = {' in contact
+            flag='set_variable = { name = ga_received_goblin_first_contact value = yes }'
+            dispatch='trigger_event_non_silently = { id = goblins_exploration.6 }'
+            assert flag in contact and dispatch in contact
+            assert contact.index(flag)<contact.index(dispatch)
     economy=(out/'in_game/common/on_action/goblins_economy.txt').read_text(encoding='utf-8-sig')
     assert 'NOT = { has_variable = ga_economy_initialized }' in economy
     assert economy.count('change_max_raw_material_workers =')==len(cfg['locations'])

@@ -42,9 +42,9 @@ def geometry(sex,bones):
     y=15.7 if not female else 15.3
     if young:x,y=5.9,9.2
     for sign in [-1,1]:
-        length=5.2 if not young else 3.1
+        length=9.0 if not young else 4.1
         rim=np.array([[x,y-2.1,-1.6],[x+2,y-1.5,-1.0],
-                      [x+length,y+3.2,-.4],[x+1.3,y+2.2,-1.5],
+                      [x+length,y+3.8,-.4],[x+2.0,y+2.2,-1.5],
                       [x-.2,y+1.2,-1.8]])
         front=np.array([x+1.25,y+.15,-2.25]);back=front+np.array([0,0,1.7])
         rim[:,0]*=sign;front[0]*=sign;back[0]*=sign
@@ -56,7 +56,7 @@ def geometry(sex,bones):
         if young:continue
         # Separate jaw-bound teeth follow speech/idle jaw movement.
         joint=names['bn_jaw_main'];rings=[]
-        for h,r,forward in [(0,.48,0),(.8,.34,-.25),(1.65,.16,-.45),(2.25,.015,-.62)]:
+        for h,r,forward in [(0,.22,0),(.25,.16,-.08),(.50,.08,-.16),(.70,.015,-.22)]:
             rings.append([np.array([sign*2.0+r*math.cos(t),10.7+h,-9.05+forward+r*math.sin(t)]) for t in np.linspace(0,2*math.pi,9)[:-1]])
         for k in range(3):
             for i in range(8):
@@ -91,9 +91,27 @@ def build(out):
     # Opt-in visual effects, never ordinary DNA: zero-strength defaults can render globally.
     genes=['special_genes = {\nmorph_genes = {'];accessories=[];assets=[];modifiers=['cm_ashborn_appearance = {\n usage = game'];ethnicities=[]
     # Kept within supported native gene ranges. Individuals retain all other DNA.
-    face={'gene_nose_length':(.82,.96),'gene_nose_tip_forward':(.8,.95),
-          'gene_nose_tip_angle':(.12,.28),'gene_nose_width':(.30,.48),
-          'gene_jaw_width':(.62,.82),'gene_eye_size':(.68,.85),'gene_chin_size':(.28,.45)}
+    face={'gene_nose_length':(.90,1.0),'gene_nose_tip_forward':(.90,1.0),
+          'gene_nose_tip_angle':(.02,.14),'gene_nose_width':(.22,.38),
+          'gene_jaw_width':(.10,.25),'gene_eye_size':(.82,.96),'gene_chin_size':(.08,.20),
+          'gene_head_height':(.20,.34),'gene_jaw_height':(.15,.28),
+          'gene_cheek_forward':(.72,.90),'gene_cheek_width':(.22,.38),
+          'gene_mouth_width':(.68,.84),'gene_mouth_upper_lip_size':(.12,.28)}
+    # Reuse the supported torso-only proportion and posture attributes on BOTH
+    # sexes. Do not enable the disabled female height animation or infant face.
+    # Fade in after childhood so native child/infant growth is not compounded.
+    genes.append('''cm_ashborn_stature = { inheritable = no
+ cm_compact_body = { index = 0
+  male = {
+   setting = { attribute = "body_infant_proportions" value = { min = 0 max = 0.32 }
+    age = { mode = multiply curve = { { 0 0 } { 0.12 0 } { 0.18 1 } { 1 1 } } } }
+   setting = { attribute = "body_hunchback" value = { min = 0 max = 0.18 }
+    age = { mode = multiply curve = { { 0 0 } { 0.12 0 } { 0.18 1 } { 1 1 } } } }
+  }
+  female = male boy = male girl = male adolescent_boy = male adolescent_girl = male
+  infant = { }
+ }
+}''')
     for clan in clans:
         ident=clan['id'];culture=clan['culture'];tag=culture+'_gfx'
         rgb=tuple(bytes.fromhex(clan['skin_srgb'].lstrip('#')))
@@ -104,7 +122,7 @@ def build(out):
             decals+=f'''decal = {{ body_part = {part}
  textures = {{ diffuse = "gfx/models/portraits/ashborn/{ident}_skin.dds" }}
  blend_modes = {{ diffuse = replace }}
- alpha_curve = {{ {{ 0 1 }} {{ 1 1 }} }}
+ alpha_curve = {{ {{ 0 0.88 }} {{ 1 0.88 }} }}
  decal_apply_order = post_skin_color priority = 100
  }}\n'''
         genes.append(f'{gene} = {{ inheritable = no {gene} = {{ index = 0 male = {{ {decals} }} '+
@@ -119,6 +137,7 @@ def build(out):
             assets.append(f'pdxmesh = {{ name = "{name}_mesh" file = "cm_{sex}_features.mesh" {settings} }}\nentity = {{ name = "{name}_entity" pdxmesh = "{name}_mesh" }}')
             accessories.append(f'{name} = {{ entity = {{ required_tags = "" shared_pose_entity = head entity = {name}_entity }} }}')
         dna=f'morph = {{ mode = add gene = {gene} template = {gene} value = 1 }}\naccessory = {{ mode = add gene = cm_ashborn_features template = cm_{ident}_features value = 1 }}\n'
+        dna+='morph = { mode = add gene = cm_ashborn_stature template = cm_compact_body value = 1 }\n'
         dna+='\n'.join(f'morph = {{ mode = replace gene = {g} template = template_1 range = {{ {a} {b} }} }}' for g,(a,b) in face.items())
         modifiers.append(f'cm_{ident}_appearance = {{ ignore_outfit_tags = yes dna_modifiers = {{ {dna} }} weight = {{ base = 0 modifier = {{ add = 100 gfx_culture_applicable = {tag} }} }} }}')
         ethnicities.append(f'cm_{ident}_ethnicity = {{ template = "ethnicity_template"\n'+
@@ -134,7 +153,9 @@ def build(out):
     text(out/'in_game/common/ethnicities/ashborn.txt','\n'.join(ethnicities)+'\n')
     text(out/'main_menu/gfx/portraits/accessories/ashborn.txt','\n'.join(accessories)+'\n')
     text(out/'main_menu/gfx/portraits/portrait_modifiers/zz_ashborn.txt','\n'.join(modifiers)+'\n')
-    return {'engine_tested':False,'cultures':len(clans),'portrait_types':TYPES,'method':'culture modifiers, native facial genes, rigged pointed ears and jaw tusks','infants':'skin and smaller pointed ears; no tusks'}
+    from build_goblin_outfits import build as build_outfits
+    outfits = build_outfits(out, clans)
+    return {'engine_tested':False,'cultures':len(clans),'portrait_types':TYPES,'method':'long swept ears, hooked noses, pinched jaws, prominent cheeks, wide mouths and small teeth','infants':'skin and smaller pointed ears; no tusks or extra stature modifier','outfits':outfits,'portrait_stature':'culture-only compact torso proportions and stoop on both sexes; native child growth preserved; framing and clothing fit need engine review'}
 
 if __name__=='__main__':
     import argparse

@@ -219,6 +219,8 @@ def main():
     models=export_goblin_models.build(out)
     import build_goblin_portraits
     build_goblin_portraits.build(out)
+    import build_infantry_art
+    build_infantry_art.build(game,out)
     import verify_goblin_portraits
     portrait_checks=verify_goblin_portraits.verify(out,game)
     (reports/'portrait_verification.json').write_text(json.dumps(portrait_checks,indent=2),encoding='utf-8')

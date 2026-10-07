@@ -148,21 +148,25 @@ def export_animation(g,anim,path):
     return {'name':anim['name'],'frames':count,'duration':duration,'max_scale_axis_difference':max_nonuniform}
 
 def srgb(x):return 12.92*x if x<=.0031308 else 1.055*x**(1/2.4)-.055
-def write_text(path,text):path.parent.mkdir(parents=True,exist_ok=True);path.write_text(text,encoding='utf-8')
+def write_text(path,text):path.parent.mkdir(parents=True,exist_ok=True);path.write_text(text,encoding='utf-8-sig')
 def schematic(mesh):
     return f'''name="{mesh}_schematic"
 graph={{ nodes={{
- pdxns:ecs:MeshType={{ id=0 node={{ mesh_name="{mesh}_mesh" inputs={{ "Lod_Override_0" }} }} inputs={{}} }}
  pdxns:ecs:create_skeleton_component={{ id=1 node={{ value="{mesh}_mesh" }} inputs={{}} }}
- pdxns:ecs:animation_state_machine={{ id=2 node={{ state_machine_name="cm_goblin_infantry" }} inputs={{}} }}
+ pdxns:ecs:animation_state_machine={{ id=2 node={{}} inputs={{ link={{ pin_id="state_machine_name" linked_node=7 linked_pin="output_arg" }} }} }}
  pdxns:values:Float={{ id=3 node={{ value=0.080000 }} inputs={{}} }}
- pdxns:ecs:create_local_transform={{ id=4 node={{}} inputs={{ link={{ pin_id="scale" linked_node=3 linked_pin="value" }} }} }}
+ pdxns:ecs:create_local_transform={{ id=4 node={{}} inputs={{
+  link={{ pin_id="translation" linked_node=6 linked_pin="value" }}
+  link={{ pin_id="scale" linked_node=3 linked_pin="value" }}
+ }} }}
  pdxns:ecs:assemble_entity={{ id=5 node={{}} inputs={{
-  link={{ pin_id="components" linked_node=0 linked_pin="mesh_components" }}
   link={{ pin_id="components" linked_node=1 linked_pin="skeleton" }}
   link={{ pin_id="components" linked_node=2 linked_pin="state_machine_components" }}
   link={{ pin_id="components" linked_node=4 linked_pin="local_transform" }}
  }} }}
+ pdxns:values:ConstVector3f={{ id=6 node={{ value={{ 0.000000 0.000000 0.000000 }} }} inputs={{}} }}
+ pdxns:ecs:get_schematic_parameter={{ id=7 node={{ parameter="CustomAnimationMachineName" }} inputs={{ link={{ pin_id="String" linked_node=8 linked_pin="value" }} }} }}
+ pdxns:values:String={{ id=8 node={{ value="cm_goblin_infantry" }} inputs={{}} }}
 }} }}
 '''
 
@@ -183,7 +187,7 @@ def state_machine():
 def build(out):
     out=Path(out);directory=out/MODEL_REL;directory.mkdir(parents=True,exist_ok=True)
     config=json.loads((ART/'clans.json').read_text());report={'stage':'native-export-prototype','engine_tested':False,'clans':[]}
-    constructors=[];cultures=[]
+    constructors=[];cultures=[];attachments=[]
     for index,clan in enumerate(config['clans']):
         g=GLB(ART/'variants'/f'{clan["id"]}.glb');name='cm_goblin_'+clan['id']
         export_mesh(g,directory/(name+'.mesh'))
@@ -207,13 +211,26 @@ def build(out):
         asset+='}\n';write_text(directory/(name+'.asset'),asset)
         write_text(out/'in_game/gfx/models/schematics'/f'{name}_schematic.schematic',schematic(name))
         tag=clan['culture']+'_gfx'
+        # As with native infantry, the base graph owns only the skeleton/state
+        # machine. The unit attachment factory creates the drawable shared-pose
+        # child and supplies its unit-material instance data. A root MeshType
+        # bypasses that attachment path (spawn-time crash in the previous build).
+        attachments.append(f'''{name}_body = {{
+ 100 = {{ add_entity = {{ node = shared_pose_entity mesh_name = "{name}_mesh" }} }}
+}}''')
         for category in ['army_light_infantry','army_heavy_infantry']:
-            constructors.append(f'{tag}:{category} = {{ schematic_name = {name}_schematic animation_state_machine_name = cm_goblin_infantry }}')
+            constructors.append(f'''{tag}:{category} = {{
+ schematic_name = {name}_schematic
+ attach = {{ 100 = {name}_body }}
+ animation_state_machine_name = cm_goblin_infantry
+}}''')
         cultures.append(f'{tag} = {{ priority = 600 culture_tag = {tag} ethnicities = {{ 100 = cm_{clan["id"]}_ethnicity }} }}')
         report['clans'].append({'clan':clan['id'],'culture':clan['culture'],'gfx_tag':tag,'bones':len(g.bones),'source_joints':len(g.skin['joints']),'mesh':str(MODEL_REL/(name+'.mesh'))})
     write_text(out/'main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt','\n'.join(constructors)+'\n')
+    write_text(out/'main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt','\n'.join(attachments)+'\n')
     write_text(out/'in_game/gfx/graphical_culture_types/ashborn_goblins.txt','\n'.join(cultures)+'\n')
     write_text(out/'main_menu/gfx/animation_state_machines/cm_goblin_infantry.animsm',state_machine())
+    report['runtime_infantry']='custom goblin skeleton with factory-created shared-pose body attachment; engine retest pending'
     return report
 
 if __name__=='__main__':

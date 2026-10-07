@@ -146,5 +146,6 @@
       "duration": 1.25,
       "max_scale_axis_difference": 6.782381135683746e-05
     }
-  ]
+  ],
+  "runtime_infantry": "custom goblin skeleton with factory-created shared-pose body attachment; engine retest pending"
 }

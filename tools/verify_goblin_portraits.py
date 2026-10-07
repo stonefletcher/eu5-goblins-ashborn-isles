@@ -19,6 +19,10 @@ def verify(out,game=None):
     for entity in re.findall(r'entity = (cm_\w+)',accessories):assert f'name = "{entity}"' in asset,entity
     for name in re.findall(r'1 = "(cm_\w+)"',genes):assert name+' = {' in accessories,name
     assert genes.lstrip().startswith('special_genes = {'), 'Goblin visuals must not be ordinary DNA'
+    assert modifiers.count('mode = add gene = cm_ashborn_stature template = cm_compact_body value = 1')==5
+    assert 'cm_ashborn_stature' not in ethnicity
+    assert 'attribute = "body_infant_proportions"' in genes and 'attribute = "body_hunchback"' in genes
+    assert 'male_body_height' not in genes, 'Do not depend on the disabled female height attribute'
     assert not re.search(r'cm_\w+_(?:skin|features)\s*=', ethnicity), 'Special genes must only be applied by scoped modifiers'
     clans=json.loads((ART/'clans.json').read_text())['clans']
     for clan in clans:
@@ -62,7 +66,30 @@ def verify(out,game=None):
             assert np.allclose(np.array(skin['w'][1]).reshape(-1,4).sum(axis=1),1)
             triangles+=len(t)
     for script in [genes,modifiers,accessories,asset,ethnicity]:assert script.count('{')==script.count('}')
-    return {'status':'static checks passed; in-game appearance unverified','cultures':5,'portrait_types':7,'attachment_triangles':triangles,'native_rig_bindings_checked':bool(game),'engine_tested':False}
+    from build_goblin_outfits import OUTFITS, RESET
+    outfit_genes=(out/'in_game/common/genes/zz_ashborn_outfits.txt').read_text(encoding='utf-8-sig')
+    outfit_mods=(out/'main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt').read_text(encoding='utf-8-sig')
+    for script in [outfit_genes,outfit_mods]:assert script.count('{')==script.count('}')
+    assert outfit_genes.lstrip().startswith('special_genes = {'), 'Goblin clothes must not be ordinary DNA'
+    assert 'mode = add gene = cm_ashborn_clothing' in outfit_mods
+    assert 'priority = 100' in outfit_mods
+    assert all(outfit_mods.count('gfx_culture_applicable = '+c['culture']+'_gfx')==1 for c in clans)
+    assert all('mode = replace gene = '+g+' template = '+t in outfit_mods for g,t in RESET.items())
+    assert OUTFITS['infant']==[(1,'empty')], 'Do not layer clothing over the native infant swaddle'
+    if game:
+        native_accessories=(Path(game)/'main_menu/gfx/portraits/accessories/clothes.txt').read_text(encoding='utf-8-sig')
+        native_genes='\n'.join(p.read_text(encoding='utf-8-sig') for p in (Path(game)/'in_game/common/genes').glob('*.txt'))
+        for choices in OUTFITS.values():
+            for _,name in choices:
+                assert name=='empty' or re.search(r'(?m)^'+re.escape(name)+r'\s*=\s*\{',native_accessories),name
+        for template in RESET.values():assert re.search(r'\b'+template+r'\s*=\s*\{',native_genes),template
+        for gene in re.findall(r'mode = replace gene = (gene_\w+)',modifiers):
+            assert re.search(r'\b'+gene+r'\s*=\s*\{',native_genes),gene
+        for sex in ['male','female']:
+            body=(Path(game)/f'in_game/gfx/models/portraits/{sex}_body/{sex}_body.asset').read_text(encoding='utf-8-sig')
+            for attribute in ['body_infant_proportions','body_hunchback']:
+                assert re.search(r'attribute\s*=\s*\{\s*name\s*=\s*"'+attribute+'"',body),(sex,attribute)
+    return {'status':'static checks passed; in-game appearance unverified','cultures':5,'portrait_types':7,'attachment_triangles':triangles,'native_rig_bindings_checked':bool(game),'native_outfit_references_checked':bool(game),'engine_tested':False}
 
 if __name__=='__main__':
     import argparse

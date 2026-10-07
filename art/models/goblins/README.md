@@ -1,18 +1,20 @@
+> Current: 0.5.3 art pass. The clan lineup is current; animation-sheet notes below are historical. Current checks are in native_validation.json and portrait_export.json.
+
 # Ashborn goblin model prototypes
 
 **Native infantry prototype integrated into main. Editable GLB sources and the first EU5 mesh/animation export are included; in-game rendering is still unverified.**
 
 ![Five clan model variants](preview/clan_lineup.svg)
 
-The common body is short (1.12 metres in the first Idle frame) with a large head, a broad lower jaw, a hooked nose, longer pointed ears, narrow slanted eyes, uneven tusks and a crooked mouth. Skin is matte. Clan differences are deliberately modest and concentrate on green pigmentation.
+The common body is short (0.92 metres in the first Idle frame) with a large head, a narrow lower jaw, a hooked nose, longer pointed ears, narrow slanted eyes, small uneven teeth and a crooked mouth. Skin is matte. Clan differences are deliberately modest and concentrate on green pigmentation.
 
 | Clan | Country | Culture | Skin | sRGB |
 |---|---|---|---|---|
-| Cindermaw | CDM | Emberblood | Warm olive | #71834B |
-| Brackmaw | QBR | Brineward | Sea green | #56856B |
-| Reefhook | RHK | Reefstrider | Yellow moss | #82965B |
-| Shatterfin | SFK | Stormfang | Blue green | #537B76 |
-| Sootwake | SWK | Ashveil | Dark forest green | #51634B |
+| Cindermaw | CDM | Emberblood | Warm olive | #626A52 |
+| Brackmaw | QBR | Brineward | Sea green | #56675D |
+| Reefhook | RHK | Reefstrider | Yellow moss | #6C7157 |
+| Shatterfin | SFK | Stormfang | Blue green | #526461 |
+| Sootwake | SWK | Ashveil | Dark forest green | #4C584B |
 
 ## Models
 
@@ -50,15 +52,15 @@ With Node.js installed, run from the repository root:
 node art/models/goblins/tools/build.mjs
 ```
 
-The script verifies the upstream Git blob hash, applies the common sculpt, assigns the five skin palettes, generates GLB files and regenerates the geometry contact sheet. It uses only Node built-ins. The generator has now run locally on Windows with Node.js. All five rebuilt GLBs matched the art branch blob hashes exactly.
+The script verifies the upstream Git blob hash, applies the common sculpt, assigns the five skin palettes, generates GLB files and regenerates the geometry contact sheet. It uses only Node built-ins. The generator has now run locally on Windows with Node.js. All five variants are regenerated from the pinned source and current recipes.
 
-Edit clans.json to change the palette or target height. The checked-in variants are the result of the checked-in sculpt and generator. EU5's final world scale must be calibrated against a native unit; 1.12 m here is an art-source measurement.
+Edit clans.json to change the palette or target height. The checked-in variants are the result of the checked-in sculpt and generator. EU5's final world scale must be calibrated against a native unit; 0.92 m here is an art-source measurement.
 
 ## Verification and next integration step
 
 [validation.json](validation.json) records checks performed on the generated files: GLB header/chunk round trip, every accessor's bounds and finite values, triangle indices, skin weights, joint indices, animation timestamps/quaternions, preserved original animation metadata/skin topology, common ground/height and 51 sampled animation poses. The five skin variants and representative action poses were visually inspected through a CPU skinning renderer.
 
-Native export now uses tools/export_goblin_models.py and tools/pdx_binary.py. Five clan meshes use native unit materials, with 17 shared animation clips and 25 exported bones (23 original joints plus two transform ancestors). Original scalar stature is retained; tiny exporter scale noise is averaged to match native scalar animation records. Native units use the same 0.08 schematic scale; goblin source height is 1.12 m before that world scale.
+Native export now uses tools/export_goblin_models.py and tools/pdx_binary.py. Five clan meshes use native unit materials, with 17 shared animation clips and 25 exported bones (23 original joints plus two transform ancestors). Original scalar stature is retained; tiny exporter scale noise is averaged to match native scalar animation records. Native units use the same 0.08 schematic scale; goblin source height is 0.92 m before that world scale.
 
 [native_validation.json](native_validation.json) records independent decoded skinning checks on 51 poses, finite vertices and unit weights, animation quaternions, consistent bone indexing and byte-exact round trips of installed native files. The largest measured pose difference is about 0.00111 cm. The game bindings select each clan for light/heavy infantry. Idle, movement, attack, retreat and charge are wired; the death clip is exported but its in-game trigger remains unverified.
 

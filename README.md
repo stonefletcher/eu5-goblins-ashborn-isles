@@ -1,12 +1,20 @@
-# Goblins of the Ashborn Isles
+# Goblins of the Ashborn Isles - 0.5.3
 
 ![Goblins of the Ashborn Isles](art/Goblins_Banner.png)
 
-Five goblin nations rise from a volcanic Atlantic archipelago in this fantasy **Europa Universalis V** mod. Start in **1337**, unite rival clans, develop their ports and mines, and decide how the Ashborn will face the wider world.
+**0.5.3 is the current demo release for EU5 1.3.11 (Pavia).** Download the [prepared installer](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.3), extract it into a fresh folder and run `Install-Goblins.cmd` with EU5 closed. Restart and start a **new 1337 campaign**.
 
-**Version 0.5.2 - Shatterfin Tidemothers.** Targets EU5 **1.3.11 (Pavia)**, Steam build **24187685**. Static checks and installer preparation passed; in-game acceptance testing is pending.
+This release consolidates the five-clan portrait pass, culture-scoped recruitment illustrations, repaired map infantry, companion first-contact event and full Workshop preparation. The source is integrated into `main`; `staging/0.5.3` retains the release candidate. Later 0.5.4 balance/demographic changes and the 0.5.5 expansion prototype are separate development work.
 
-**Download and install:** use the prepared **Goblins_Ashborn_Isles_0.5.2.zip** from [GitHub Releases](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.2), or Code > Download ZIP from `main`. Both include the 0.5.2 installer, 36-location terrain, goblin infantry, corrected portrait textures, Ashborn names and Shatterfin maternal seniority. Extract, run `Install-Goblins.cmd` with EU5 closed, then start a new 1337 campaign.
+## What changed in 0.5.3
+
+- **Goblin portraits:** longer ears and hooked noses, smaller jaws and teeth, subdued clan skin palettes, compact adult torso proportions and plain native clothing. Appearance follows Ashborn culture; human characters retain their own appearance.
+- **Map infantry:** custom clan meshes use the native shared-pose attachment route. The user confirmed visible infantry and no recurrence of the reported crash on October 6, 2026. Movement, combat and save/reload remain regression checks; appearance refinement is tracked in [issue #4](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/issues/4).
+- **Recruitment art:** original painted goblin infantry illustrations apply to the five Ashborn cultures. Native unit statistics and human artwork are preserved.
+- **First contact:** owners of ports visited by an Ashborn expedition receive **Strange Visitors on Our Shores** once per non-Ashborn country. Reciprocal discovery follows current ownership and does not replay completed voyages.
+- **Release delivery:** the source download contains a matching, hash-checked 0.5.3 installer bundle. Workshop uploads use the full reconstructed mod, with terrain caches and its 512 x 512 thumbnail.
+
+Packaging and static checks do not certify all gameplay. Recruitment illustrations, companion-event behavior, portrait/clothing fit, succession edge cases, long-term balance and multiplayer retain the checks in [TESTING.md](TESTING.md). See [WORKSHOP_UPLOAD.md](WORKSHOP_UPLOAD.md) for updating the existing Steam listing.
 
 [Repository](https://github.com/stonefletcher/eu5-goblins-ashborn-isles) | [Origins and lore](LORE.md) | [Testing checklist](TESTING.md) | [Release notes](RELEASE_NOTES.md)
 
@@ -40,7 +48,7 @@ Native animation checks compare 51 decoded poses against their GLB sources, with
 
 The islands lie between the Azores and Portugal. Six distinct silhouettes use bays, headlands and curved internal borders. **Thirteen compact coastal sea zones** follow the surrounding vanilla Atlantic boundaries, with separate northern, western and eastern waters around Cindermaw and a southern channel. All new zones are navigable and connected to native routes; vanilla land and navigable sea pixels are preserved.
 
-The 0.5.1 terrain pass reduces land area by 12% relative to 0.5.0 while retaining the surrounding sea basin. Cindermaw-Brackmaw and Brackmaw-Sootwake have at least 24 map pixels of shoreline clearance, enforced by the build. Each island has individually authored bays and broad headlands, with subdued small coastal erosion rather than a repeated scalloped outline. Reefhook remains about 20% larger than either Shatterfin's combined islands or Sootwake.
+The 0.5.1 terrain pass reduces land area by 12% relative to 0.5.0 while retaining the surrounding sea basin. CindermawÃ¢â‚¬â€œBrackmaw and BrackmawÃ¢â‚¬â€œSootwake have at least 24 map pixels of shoreline clearance, enforced by the build. Each island has individually authored bays and broad headlands, with subdued small coastal erosion rather than a repeated scalloped outline. Reefhook remains about 20% larger than either Shatterfin's combined islands or Sootwake.
 
 The landscape now follows island geology rather than location seeds or gameplay terrain tags. Cindermaw has a connected volcanic mountain spine, branching foothills, eroded valleys and a crater. Each island has its own relief, woodland distribution, beaches, exposed rock and short river catchments. Wider craters have raised rims; weathered lava aprons and dry lee slopes add dark ground and exposed rock. Woodland retreats from volcanic ground and remains strongest in sheltered, moist valleys. Native Madeira and Sao Miguel height tiles were examined as references for ridges and coastal transitions. The game uses 32 world units for the entire 16-bit height range; our much larger islands have higher peaks than those native small islands.
 
@@ -74,11 +82,11 @@ The opening lore event now has a single **The Ashborn rise.** option. The two ol
 
 **Dedicated foreign coveting/fear mechanics are not implemented yet.** England, Castile/Spain and other powers do not yet have scripted ambitions toward these islands. Portrait appearance testing, deeper clan diplomacy, long-term balance and multiplayer testing remain future work.
 
-## Install the test build
+## Install 0.5.3
 
-You can also use GitHub's **Code > Download ZIP** on `feature/shatterfin-matriarchy`: extract it and run `Install-Goblins.cmd`. The installer reconstructs and verifies the bundled release archive automatically before installing. A source-only archive without `.release/` still requires building first.
+You can also use GitHub's **Code > Download ZIP** on `main` or `staging/0.5.3`: extract it and run `Install-Goblins.cmd`. The installer reconstructs and verifies the bundled release archive automatically before installing. A source-only archive without `.release/` still requires building first.
 
-1. Close EU5 completely and extract **Goblins_Ashborn_Isles_0.5.2.zip** into a writable folder.
+1. Close EU5 completely and extract **Goblins_Ashborn_Isles_0.5.3.zip** into a writable folder.
 2. Double-click **Install-Goblins.cmd**. The installer prepares terrain caches from your matching EU5 installation, checks hashes, backs up the previous installation and installs `goblins_ashborn_isles` under the EU5 user-data `mod` folder.
 3. Existing playset references to `cindermaw_demo` are migrated. Enable **Goblins of the Ashborn Isles** alone for this test.
 4. Restart EU5 and start a **new 1337 campaign**. Do not reuse a save from an earlier map layout.
@@ -87,7 +95,7 @@ If game detection fails, run `Install-Goblins.ps1 -GamePath "E:\SteamLibrary\ste
 
 ## Build from source
 
-Python 3.11+, NumPy and Pillow are required. For a source archive, first extract **Goblins_Ashborn_Isles_Source_0.5.2.zip**, which contains the complete authored source tree.
+Python 3.11+, NumPy and Pillow are required. For the complete authored source tree, use GitHub's **Code > Download ZIP** on `main` or the source archive attached automatically to tag `v0.5.3`.
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -103,6 +111,9 @@ The banner is `art/Goblins_Banner.png`; the 512 x 512 Workshop thumbnail is `.me
 
 | Version | Changes |
 |---|---|
+| 0.5.3 | Revised culture-scoped goblin portraits and clothing; user-tested shared-pose infantry repair; goblin recruitment illustrations; companion first-contact event; matching prepared installer and full Workshop packaging. |
+| 0.5.2 | Shatterfin maternal dynastic seniority, goblin families and names, and human portrait isolation fix. |
+| 0.5.1 | Wider channels, 36 land locations, reduced island footprints and stronger geological terrain checks. |
 | 0.5.0 | Larger islands, larger Reefhook, 26 locations/expanded provinces; independent geology and material painting, trees, rocks and rivers; Ironfang Monarchy and changeable strongest-male succession; mutual exploration contact; village/RGO/capital production and reduced starting upkeep; one-button introduction. In-game testing pending. |
 | 0.4.1 | Fix radial height discontinuities at island centres; soften terrain boundaries and regular ridge patterns; stronger mountain and hill relief in native world units; centre-continuity and final-cache coverage/relief checks for all 19 locations; decoded-cache preview. Rendering acceptance remains pending. |
 | 0.4.0 | Thirteen compact sea zones; continuous coastal slopes and filtered terrain mips; remove invalid regional heightmap override; sea VFX anchors; local-only starting knowledge and optional exploration voyages for all five clans. Runtime acceptance remains pending. |
@@ -112,16 +123,16 @@ The banner is `art/Goblins_Banner.png`; the 512 x 512 Workshop thumbnail is `.me
 
 ## Compatibility and testing
 
-Follow **TESTING.md** before treating this as release-ready. Restart and a new campaign are required after map changes. Other map or starting-world mods may conflict, including Crusader States without a compatibility build. Rebuild after game updates; installation rejects mismatched terrain caches. Achievements, multiplayer and long-term balance are untested.
+Use **TESTING.md** for the remaining acceptance and regression checks. Restart and a new campaign are required after map changes. Other map or starting-world mods may conflict, including Crusader States without a compatibility build. Rebuild after game updates; installation rejects mismatched terrain caches. Achievements, multiplayer and long-term balance are untested.
 
 To disable, choose a vanilla playset, restart EU5 and use an unmodded campaign. EU5 and its assets belong to Paradox. The banner and thumbnail were created with image generation.
 
 ## Publishing prepared releases
 
-The main branch stores the authored source tree and the merged prepared release under `.release/`, so Download ZIP can install without a local build. Release branches carry hash-listed base64 chunks of the locally built install/source archives. The publishing workflow verifies their sizes, SHA-256 hashes and ZIP integrity, then creates a GitHub test release tagged at the manifest's source commit. It will not overwrite an existing release. The installer verifies and unpacks the prepared archive into `.prepared-release-VERSION/` when no built mod is present.
+The main branch stores the authored source tree and the merged prepared release under `.release/`, so Download ZIP can install without a local build. Release branches carry hash-listed base64 chunks of the locally built install/source archives. The publishing workflow verifies their sizes, SHA-256 hashes and ZIP integrity, then creates the GitHub release tagged at the manifest's full source commit SHA. It will not overwrite an existing release. The installer verifies and unpacks the prepared archive into `.prepared-release-VERSION/` when no built mod is present.
 
 
-## Culture-based portrait test pass (main only)
+## Historical portrait integration notes
 
 All five Ashborn cultures now select their own portrait ethnicity and deterministic
 appearance modifier. The rules follow the character's culture, not their employer,
@@ -151,7 +162,7 @@ graph [cm_goblin_cindermaw_schematic]`, producing invisible infantry. Its repair
 deferred while portraits are prioritised; this portrait pass does not claim to fix it.
 
 
-## 0.5.2 ? Shatterfin Tidemothers (feature branch)
+## Historical 0.5.2 â€” Shatterfin Tidemothers (feature branch)
 
 Shatterfin alone starts with **Tidemother Monarchy** and **Seniority of the
 Tidemothers**. Normal monarchy institutions and the existing naval modifiers
@@ -175,13 +186,9 @@ an unrelated woman. The engine's handling of an exhausted candidate list needs
 in-game testing. Existing campaigns are not forcibly migrated: use a new 1337
 campaign for the authored dynasty and government setup.
 
-This branch includes the 0.5.1 terrain source and the portrait test pass. Its
-prepared installer and metadata are **0.5.2**. The branch remains separate from
-main; the published 0.5.0 release is unchanged. Static setup and build checks do
-not certify in-game succession, maternal inheritance or portrait rendering.
+The 0.5.2 Tidemother setup and portrait isolation fix are included in 0.5.3. Static setup checks do not certify succession edge cases, maternal inheritance or every portrait rendering state.
 
 
 Naming proposals for all five Ashborn cultures are in [NAMING_PROPOSALS.md](NAMING_PROPOSALS.md). The approved dialect system is implemented in this version.
 
 All five Ashborn cultures have 16 male and 16 female name entries, six house names and six lowborn names each. Four additional royal families and 15 adult courtiers are authored. Drogg Cindermaw bears the nickname "the Stone Fletcher"; Jaima Shatterfin bears "the Mare-Mother". Cabinet appointments remain native, drawing on culture-specific names and the available court.
-

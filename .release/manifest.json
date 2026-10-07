@@ -1,12 +1,12 @@
 {
-  "version": "0.5.6",
-  "source_commit": "90b5245d05c52af02b17b29f00a61ae6f0f8f643",
-  "source_config_sha256": "140394c6efc02c68de2acab42bde28ff28b5927dfb568d9cc00edeea7a3f65bc",
+  "version": "0.5.8",
+  "source_commit": "b6f7d3809a657b7e67a696ebbcf26d93e9eafebd",
+  "source_config_sha256": "dbddb1fe549977031d736645e15e2514ef4ddb3f93cb25c901be8d8cd23c422f",
   "assets": [
     {
-      "name": "Goblins_Ashborn_Isles_0.5.6.zip",
-      "size": 271181985,
-      "sha256": "3950fcc6c13203a2831a51f4ca833c2603ee183cc9eb2a4e4df6a4b6ebc1a8de",
+      "name": "Goblins_Ashborn_Isles_0.5.8.zip",
+      "size": 288272320,
+      "sha256": "575161f9499da444441e50db0b88e0dde0ce9ac6ca4e4c844a29a92ab790011d",
       "chunks": [
         "assets/Goblins_Ashborn_Isles_0.5.2.zip.0000.b64",
         "assets/Goblins_Ashborn_Isles_0.5.2.zip.0001.b64",
@@ -533,9 +533,41 @@
         "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0031.b64",
         "assets/Goblins_Ashborn_Isles_0.5.6.zip.update.790544641d38.0032.b64",
         "assets/overlay-ed49992d8db8-0000.b64",
-        "assets/Goblins_Ashborn_Isles_0.5.6.zip.docs.4be00ab140e5.0000.b64"
+        "assets/Goblins_Ashborn_Isles_0.5.6.zip.docs.4be00ab140e5.0000.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0000.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0001.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0002.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0003.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0004.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0005.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0006.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0007.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0008.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0009.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0010.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0011.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0012.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0013.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0014.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0015.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0016.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0017.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0018.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0019.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0020.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0021.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0022.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0023.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0024.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0025.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0026.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0027.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0028.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0029.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0030.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0031.b64",
+        "assets/Goblins_Ashborn_Isles_0.5.8.zip.update.afc7f62fe2ad.0032.b64"
       ]
     }
-  ],
-  "release_branch": "release/v0.5.6"
+  ]
 }

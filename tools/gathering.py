@@ -6,6 +6,7 @@ The prototype deliberately leaves wars, peace, unions and succession to native E
 from pathlib import Path
 import argparse
 import json
+from clan_identity import PROFILES
 
 ROOT = Path(__file__).resolve().parents[1]
 TAGS = ['CDM', 'QBR', 'RHK', 'SFK', 'SWK']
@@ -460,11 +461,11 @@ ga_cb_eastern_foothold = {
         'Our realm has secured a European coastal foothold while the homeland remains united. It was acquired through the ordinary rules of diplomacy and war. The situation rewards the achievement with prestige and a temporary naval recovery benefit. No further territory is bestowed.',
         option(8, 'a', 'The eastern horizon is open.', 'add_prestige = 10 add_country_modifier = { modifier = ga_first_eastern_harbor years = 5 mode = replace }')))
     signatures = [
-        (10, 'CDM', 'The Forges Must Be Fed', 'Our forge captains see strength in a united archipelago. We can seek recognition through war, or supply those willing to stand beside us.', 'Let the forges serve our claim.'),
-        (11, 'QBR', 'Bread Before Banners', 'Our traders know that an empty hold wins no war. Supplies and a reliable pact can draw another crown closer, but every gift costs our treasury.', 'Feed the pact before the war.'),
-        (12, 'RHK', 'The Shoals Have Their Price', 'Our captains know the shoals others fear. A powerful friend may keep our harbor safe; an oath would bring the usual obligations of vassalage. Neither need be accepted blindly.', 'Our harbor has a voice.'),
+        (10, 'CDM', *(PROFILES['CDM'][k] for k in ('event_title','event_description','event_answer'))),
+        (11, 'QBR', *(PROFILES['QBR'][k] for k in ('event_title','event_description','event_answer'))),
+        (12, 'RHK', *(PROFILES['RHK'][k] for k in ('event_title','event_description','event_answer'))),
         (13, 'SFK', 'The Tidemother\'s Terms', 'No pact shall erase the maternal house. The Ashen Compact preserves our ruling dynasty and current succession law. We may lead the gathering ourselves, or accept protection on those terms.', 'The Tidemother keeps her crown.'),
-        (14, 'SWK', 'No Axe Without Leave', 'The woodland captains fear tribute as much as invasion. An alliance can protect our independence; a stronger patron may make submission worthwhile. Our decision remains ours.', 'Weigh the oath carefully.')
+        (14, 'SWK', *(PROFILES['SWK'][k] for k in ('event_title','event_description','event_answer')))
     ]
     for num, tag, title, desc, answer in signatures:
         events.append(event(num, title, desc, option(num, 'a', answer), trigger=f'tag = {tag}'))

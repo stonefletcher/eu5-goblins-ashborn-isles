@@ -1,0 +1,13 @@
+{
+  "nickname_key": "cm_sluice_king",
+  "nickname": "The Sluice-King",
+  "adm": 84,
+  "dip": 78,
+  "mil": 90,
+  "culture_description": "The Brineward measure power in full storehouses and controlled waterways. Across Brackmaw's salt marshes, reed-cutters, eel-fishers and timber crews maintain raised causeways and tidal gates; Brackhaven's ropewalks and coastal workshops turn their labor into seaworthy hulls. House Brackmaw claims the crown because it keeps the channels open and the granaries dry. Bargains are witnessed on notched tide-staves, and a broken supply oath stains a house for generations. They honor the Hunger Below by lowering the first catch through a sluice at the ebb.",
+  "ruler_story": "Murgash Brackmaw, the Sluice-King, earned his name during the Blackwater Flood. He ordered his own hall's embankment cut to spare Brackhaven's granaries, then bound the feuding marsh houses to rebuild the tidal gates together. Patient, exacting and fiercely proud of his house, he remembers every debt and inspects the sluices himself. His enemies say he prices friendship by the barrel. Murgash answers that hungry allies cannot hold a causeway.",
+  "nation_story": "Brackmaw's strength runs through its waterways. Raised roads join the reedlands to Brackhaven, where timber, rope and preserved fish provision the coast. The marsh houses guard their own gates and demand a voice whenever the crown calls for labor. Murgash seeks to make Brackhaven the indispensable harbor of the Ashborn Isles: every pact supplied from its storehouses, every fleet dependent on its workshops. Cindermaw's appetite for timber and provisions offers both a market and a point of pressure. Yet a neglected embankment or a house denied its due can close the channels on which his authority rests.",
+  "event_title": "The Sluice-King's Bargain",
+  "event_description": "Murgash earned the name Sluice-King when he sacrificed his own hall's embankment to save Brackhaven's granaries. Now the marsh houses bring their notched tide-staves to court: timber owed, fish salted, gates repaired. He would bind the other crowns as he bound the reedlands, through supplies they cannot afford to lose. Cindermaw needs our timber; the smaller harbors need our stores. Paid aid and carefully chosen alliances can carry Brackmaw's influence beyond the marshes, but each gift drains the treasury and each promise must be honored.",
+  "event_answer": "Let every crown reckon what it owes Brackhaven."
+}

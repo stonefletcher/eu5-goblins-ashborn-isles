@@ -1,7 +1,8 @@
 # 0.5.6 economy development handoff
 
 Checkout: work/eu5-goblins, staging/0.5.6, based on GitHub main.
-Economic pass commit: d776785. User requested the 0.5.6 staging branch.
+Economic pass commit: d776785. Staging branch published to GitHub. README now
+describes the economic pass and distinguishes staging source from the 0.5.5 bundle.
 Goal: lore/geography-based economies with vanilla-scale infrastructure and viable
 small crowns. See ECONOMY_056.md for decisions, comparisons and campaign checks.
 

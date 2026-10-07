@@ -4,13 +4,33 @@ Five goblin kingdoms share six volcanic islands in the Atlantic. Unite their riv
 
 ![The five Ashborn clans gather beneath their banners](art/events/sources/gathering.png)
 
-**Version 0.5.5 — The Gathering of the Five.** This complete mod is built for **EU5 1.3.11** and requires a **new 1337 campaign**. English text is included. Gameplay acceptance of the new situations and artwork is still pending.
+**0.5.6 staging — economic pass.** This branch contains the next version's economic changes on top of **0.5.5 — The Gathering of the Five**, targeting **EU5 1.3.11**. English text is included. The bundled installer is still **0.5.5**; the 0.5.6 economy has passed focused static checks but has not been packaged or tested in-game. Starting-world updates require a **new 1337 campaign**.
 
-## Install and play
+## What is changing in 0.5.6?
+
+The first economic pass gives each crown a distinct role, with buildings scaled to its lore, geography and available workers. Starting infrastructure was compared with installed vanilla states including Serbia, Navarre, Scotland and Cyprus.
+
+| Kingdom | Economic focus | Starting building levels |
+|---|---|---:|
+| Cindermaw | Tools, weapons and metalworking, supported by a broader rural economy | 47 |
+| Brackmaw | Provisions, cloth and naval supplies | 36 |
+| Shatterfin | Maritime industry, wharves and sailcloth | 16 |
+| Reefhook | Fishing, pearls and harbor trade | 12 |
+| Sootwake | Timber, charcoal and small repair industries | 12 |
+
+**Hooktooth starts with one full market**, intended to support trade between the specialized island economies. Actual market membership and access still need in-game verification. Separate national markets have not been added.
+
+Rural buildings follow local resources and vegetation. Additional extraction investment is reduced from 387 to 126 across the Isles, particularly at precious-goods deposits and previously oversized sites. These are bonuses to native capacity, not total output or treasury income. All **1,618,696 people, population classes, 72 districts, resources and geography** are preserved.
+
+Focused checks passed for native building ranks/resources, generated buildings, population totals, production staffing, economic specialization and guarded market/investment setup. Profitability, food security and affordability of starting forces remain pending fresh-campaign tests. Building-level counts describe infrastructure, not equivalent income.
+
+See the [0.5.6 economic design and validation notes](ECONOMY_056.md) for comparisons, trade dependencies and the playtest checklist. **Downloading this staging branch and running its existing installer installs the bundled 0.5.5 content, not the new economy.** A full 0.5.6 build and package are still required.
+
+## Install and play the released 0.5.5 version
 
 The full 0.5.5 package includes the islands, goblin characters, Gathering campaign, mixed populations and custom artwork. No earlier version is required.
 
-1. Download **Goblins_Ashborn_Isles_0.5.5.zip** when available from the [release downloads](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases), or open the [0.5.5 staging branch](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/tree/staging/0.5.5) and choose **Code → Download ZIP**.
+1. Download **Goblins_Ashborn_Isles_0.5.5.zip** from the [0.5.5 release](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.5).
 2. Extract the complete ZIP into a writable folder and close EU5 completely.
 3. Run **Install-Goblins.cmd** from the extracted folder. Let it finish preparing and installing the mod.
 4. Enable **Goblins of the Ashborn Isles** in your EU5 playset. **Disable Goblins 0.5.5 - Gathering Prototype** if you used the earlier add-on: its content is now included in the full mod.
@@ -91,6 +111,7 @@ Report problems through [GitHub Issues](https://github.com/stonefletcher/eu5-gob
 
 ## More information
 
+- [0.5.6 economy changes and validation](ECONOMY_056.md)
 - [Origins, cultures and royal families](LORE.md)
 - [Release history](RELEASE_NOTES.md)
 - [Gathering rules and the earlier prototype](PROTOTYPE_055.md)

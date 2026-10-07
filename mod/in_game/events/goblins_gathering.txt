@@ -1,0 +1,272 @@
+﻿namespace = ga_gathering
+
+ga_gathering.1 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.1.title
+    desc = ga_gathering.1.desc
+    trigger = { ga_is_goblin = yes }
+    illustration_tags = { 10 = exterior }
+    immediate = {  }
+    option = {
+        name = ga_gathering.1.a
+        trigger = {  }
+        ai_chance = { factor = 3 }
+        add_prestige = 5 add_country_modifier = { modifier = ga_gathering_claimant years = 5 mode = replace }
+    }
+option = {
+        name = ga_gathering.1.b
+        trigger = {  }
+        ai_chance = { factor = 3 }
+        add_country_modifier = { modifier = ga_gathering_claimant years = 5 mode = replace }
+    }
+option = {
+        name = ga_gathering.1.c
+        trigger = {  }
+        ai_chance = { factor = 2 }
+        add_country_modifier = { modifier = ga_gathering_defiant years = 5 mode = replace }
+    }
+    after = {  }
+}
+
+ga_gathering.2 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.2.title
+    desc = ga_gathering.2.desc
+    trigger = { ga_is_goblin = yes }
+    illustration_tags = { 10 = exterior }
+    immediate = {  }
+    option = {
+        name = ga_gathering.2.a
+        trigger = { ga_valid_pact_offer = yes }
+        ai_chance = { factor = 1
+        modifier = { factor = 4 "opinion(var:ga_offer_sender)" >= 50 }
+        modifier = { factor = 2 relative_strength = { target = var:ga_offer_sender value <= 0.75 } } }
+        
+            create_relation = { first = root second = var:ga_offer_sender type = relation_type:alliance }
+            add_opinion_mutual_effect = { target = var:ga_offer_sender modifier = ga_harbor_pact_opinion }
+        
+    }
+option = {
+        name = ga_gathering.2.b
+        trigger = {  }
+        ai_chance = { factor = 2 }
+        
+    }
+    after = { remove_variable = ga_offer_sender remove_variable = ga_offer_pending }
+}
+
+ga_gathering.3 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.3.title
+    desc = ga_gathering.3.desc
+    trigger = { ga_is_goblin = yes }
+    illustration_tags = { 10 = exterior }
+    immediate = {  }
+    option = {
+        name = ga_gathering.3.a
+        trigger = { ga_valid_submission_offer = yes }
+        ai_chance = { factor = 1
+        modifier = { factor = 3 "opinion(var:ga_offer_sender)" >= 150 }
+        modifier = { factor = 3 relative_strength = { target = var:ga_offer_sender value <= 0.4 } }
+        modifier = { factor = 0.5 tag = SFK } }
+        
+            make_subject_of = { target = var:ga_offer_sender type = subject_type:vassal }
+            add_country_modifier = { modifier = ga_compact_guarantees years = 10 mode = replace }
+            add_opinion = { target = var:ga_offer_sender modifier = ga_oath_honored }
+            var:ga_offer_sender = { trigger_event_non_silently = ga_gathering.4 }
+        
+    }
+option = {
+        name = ga_gathering.3.b
+        trigger = {  }
+        ai_chance = { factor = 2 }
+        
+    }
+    after = { remove_variable = ga_offer_sender remove_variable = ga_offer_pending }
+}
+
+ga_gathering.4 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.4.title
+    desc = ga_gathering.4.desc
+    trigger = { ga_is_goblin = yes }
+    illustration_tags = { 10 = exterior }
+    immediate = {  }
+    option = {
+        name = ga_gathering.4.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        add_prestige = 3
+    }
+    after = {  }
+}
+
+ga_gathering.5 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.5.title
+    desc = ga_gathering.5.desc
+    trigger = { ga_is_goblin = yes }
+    illustration_tags = { 10 = exterior }
+    immediate = {  }
+    option = {
+        name = ga_gathering.5.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        add_prestige = 10 add_country_modifier = { modifier = ga_unification_recovery years = 5 mode = replace }
+    }
+    after = {  }
+}
+
+ga_gathering.6 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.6.title
+    desc = ga_gathering.6.desc
+    trigger = { ga_is_goblin = yes }
+    illustration_tags = { 10 = exterior }
+    immediate = {  }
+    option = {
+        name = ga_gathering.6.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}
+
+ga_gathering.7 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.7.title
+    desc = ga_gathering.7.desc
+    trigger = { ga_is_goblin = yes }
+    illustration_tags = { 10 = exterior }
+    immediate = {  }
+    option = {
+        name = ga_gathering.7.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}
+
+ga_gathering.8 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.8.title
+    desc = ga_gathering.8.desc
+    trigger = { ga_is_goblin = yes }
+    illustration_tags = { 10 = exterior }
+    immediate = {  }
+    option = {
+        name = ga_gathering.8.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        add_prestige = 10 add_country_modifier = { modifier = ga_first_eastern_harbor years = 5 mode = replace }
+    }
+    after = {  }
+}
+
+ga_gathering.10 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.10.title
+    desc = ga_gathering.10.desc
+    trigger = { tag = CDM }
+    illustration_tags = { 10 = exterior }
+    immediate = {  }
+    option = {
+        name = ga_gathering.10.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}
+
+ga_gathering.11 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.11.title
+    desc = ga_gathering.11.desc
+    trigger = { tag = QBR }
+    illustration_tags = { 10 = exterior }
+    immediate = {  }
+    option = {
+        name = ga_gathering.11.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}
+
+ga_gathering.12 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.12.title
+    desc = ga_gathering.12.desc
+    trigger = { tag = RHK }
+    illustration_tags = { 10 = exterior }
+    immediate = {  }
+    option = {
+        name = ga_gathering.12.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}
+
+ga_gathering.13 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.13.title
+    desc = ga_gathering.13.desc
+    trigger = { tag = SFK }
+    illustration_tags = { 10 = exterior }
+    immediate = {  }
+    option = {
+        name = ga_gathering.13.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}
+
+ga_gathering.14 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.14.title
+    desc = ga_gathering.14.desc
+    trigger = { tag = SWK }
+    illustration_tags = { 10 = exterior }
+    immediate = {  }
+    option = {
+        name = ga_gathering.14.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        
+    }
+    after = {  }
+}

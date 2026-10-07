@@ -1,0 +1,29 @@
+{
+  "version": "0.5.5",
+  "script_files": 9,
+  "situations": 2,
+  "events": 13,
+  "homeland_locations": 72,
+  "localization_keys": 83,
+  "ownership_scenarios": [
+    "All homeland directly owned",
+    "European-classified Ashborn homeland is excluded from foothold completion",
+    "A genuinely foreign coastal foothold counts",
+    "Mixed direct land and four vassals",
+    "Shatterfin junior union partner",
+    "Vassal beneath a junior union partner",
+    "Multiple nested vassal links",
+    "Foothold held by a qualifying junior partner counts",
+    "Tributary in the subject chain blocks completion",
+    "An unowned homeland district blocks completion",
+    "One foreign-held district blocks completion",
+    "Foreign vassal legitimately holding homeland counts",
+    "Union under a different senior crown blocks completion",
+    "A foreign-controlled claimant cannot win"
+  ],
+  "native_references_checked": true,
+  "no_free_foreign_land_units_or_wars": true,
+  "static_checks_passed": true,
+  "engine_parser_tested": false,
+  "gameplay_tested": false
+}

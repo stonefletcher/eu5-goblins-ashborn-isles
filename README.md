@@ -1,3 +1,9 @@
+# 0.5.5 — Gathering prototype
+
+Two situations, seven actions and thirteen events connect all five Ashborn kingdoms to a shared unification struggle and then an eastern coastal ambition. Conquest and consent-based vassalage use native mechanics; unions obtained normally count toward unification. Eastern actions provide paid bonuses and a temporary conquest casus belli, never free foreign land or automatic wars.
+
+**Prototype: static checks pass; in-game parsing, UI, AI and balance remain untested.** Use the small additive installer with the installed **0.5.4** base: download this branch, close EU5, run **Install-Prototype-055.cmd**, then enable both mods and start a new campaign. The regular installer is not a 0.5.5 release package. See [PROTOTYPE_055.md](PROTOTYPE_055.md) for installation, exact mechanics, limitations and tests.
+
 # 0.5.4 — Districts and Dynasties
 
 Built on tested staging/0.5.3. EU5 1.3.11; a new 1337 campaign is required.
@@ -235,3 +241,4 @@ not certify in-game succession, maternal inheritance or portrait rendering.
 Naming proposals for all five Ashborn cultures are in [NAMING_PROPOSALS.md](NAMING_PROPOSALS.md). The approved dialect system is implemented in this version.
 
 All five Ashborn cultures have 16 male and 16 female name entries, six house names and six lowborn names each. Four additional royal families and 15 adult courtiers are authored. Drogg Cindermaw bears the nickname "the Stone Fletcher"; Jaima Shatterfin bears "the Mare-Mother". Cabinet appointments remain native, drawing on culture-specific names and the available court.
+

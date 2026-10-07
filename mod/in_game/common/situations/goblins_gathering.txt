@@ -1,0 +1,66 @@
+﻿ga_gathering_of_five = {
+    monthly_spawn_chance = monthly_spawn_chance_unique
+    can_start = {
+        current_date >= 1337.7.1
+        any_country = { ga_independent_goblin = yes }
+    }
+    can_end = { any_country = { ga_controls_homeland = yes } }
+    visible = { ga_is_goblin = yes }
+    on_start = {
+        every_country = {
+            limit = { ga_is_goblin = yes }
+            add_to_global_variable_list = { name = ga_five_kingdoms target = this }
+            trigger_event_non_silently = { id = ga_gathering.1 days = 1 }
+        }
+    }
+    on_monthly = {
+        every_country = {
+            limit = { ga_is_goblin = yes }
+            if = {
+                limit = { NOT = { has_variable = ga_signature_seen } }
+                set_variable = { name = ga_signature_seen value = yes }
+                if = { limit = { tag = CDM } trigger_event_non_silently = ga_gathering.10 }
+                if = { limit = { tag = QBR } trigger_event_non_silently = ga_gathering.11 }
+                if = { limit = { tag = RHK } trigger_event_non_silently = ga_gathering.12 }
+                if = { limit = { tag = SFK } trigger_event_non_silently = ga_gathering.13 }
+                if = { limit = { tag = SWK } trigger_event_non_silently = ga_gathering.14 }
+            }
+        }
+    }
+    on_ending = {
+        every_country = {
+            limit = { ga_controls_homeland = yes }
+            set_variable = { name = ga_unifier value = yes }
+            trigger_event_non_silently = ga_gathering.5
+            every_subject = {
+                limit = { ga_is_goblin = yes is_subject_type = vassal }
+                trigger_event_non_silently = ga_gathering.7
+            }
+            union ?= {
+                every_international_organization_member = {
+                    limit = { ga_is_goblin = yes is_junior_partner = yes }
+                    trigger_event_non_silently = ga_gathering.7
+                }
+            }
+        }
+    }
+}
+
+ga_eastern_hunger = {
+    monthly_spawn_chance = monthly_spawn_chance_unique
+    can_start = { any_country = { has_variable = ga_unifier ga_controls_homeland = yes } }
+    can_end = { any_country = { has_variable = ga_unifier ga_has_european_foothold = yes } }
+    visible = { ga_is_goblin = yes }
+    on_start = {
+        every_country = {
+            limit = { has_variable = ga_unifier ga_controls_homeland = yes }
+            trigger_event_non_silently = ga_gathering.6
+        }
+    }
+    on_ending = {
+        every_country = {
+            limit = { has_variable = ga_unifier ga_has_european_foothold = yes }
+            trigger_event_non_silently = ga_gathering.8
+        }
+    }
+}

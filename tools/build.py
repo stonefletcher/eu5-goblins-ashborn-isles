@@ -221,6 +221,8 @@ def main():
     economy['longevity']=goblin_longevity.verify(sys.modules[__name__],out)
     import exploration
     discovery=exploration.build(sys.modules[__name__],game,out)
+    import gathering
+    gathering_report=gathering.build(out,CFG)
     import export_goblin_models
     models=export_goblin_models.build(out)
     import build_goblin_portraits
@@ -238,6 +240,9 @@ def main():
     features=verify_features.verify(sys.modules[__name__],out,mapstats)
     import verify_054
     features['version_054']=verify_054.verify(sys.modules[__name__],game,out,mapstats)
+    from verify_055 import verify as verify_gathering
+    features['version_055']=verify_gathering(ROOT,game,out)
+    (reports/'gathering.json').write_text(json.dumps(gathering_report,indent=2),encoding='utf-8')
     (reports/'feature_verification.json').write_text(json.dumps(features,indent=2),encoding='utf-8')
     (reports/'model_export.json').write_text(json.dumps(models,indent=2),encoding='utf-8')
     (reports/'model_verification.json').write_text(json.dumps(model_checks,indent=2),encoding='utf-8')

@@ -1,0 +1,83 @@
+[CmdletBinding()]
+param([switch]$PrepareOnly, [string]$UserDataPath, [string]$OutputPath)
+$ErrorActionPreference = 'Stop'
+$slug = 'goblins_055_prototype'
+$id = 'alex.goblins_055_prototype'
+if (-not $UserDataPath) {
+    $UserDataPath = Join-Path ([Environment]::GetFolderPath('MyDocuments')) 'Paradox Interactive\Europa Universalis V'
+}
+$userRoot = [IO.Path]::GetFullPath($UserDataPath)
+$modRoot = [IO.Path]::GetFullPath((Join-Path $userRoot 'mod'))
+$baseRoot = Join-Path $modRoot 'goblins_ashborn_isles'
+$baseMetadata = Join-Path $baseRoot '.metadata\metadata.json'
+if (-not (Test-Path -LiteralPath $baseMetadata)) { throw 'Install Goblins 0.5.4 before preparing this add-on.' }
+$base = Get-Content -LiteralPath $baseMetadata -Raw | ConvertFrom-Json
+if ($base.id -ne 'alex.goblins_ashborn_isles' -or $base.version -ne '0.5.4') {
+    throw 'This prototype add-on requires the installed Goblins of the Ashborn Isles 0.5.4. Do not enable it with a full 0.5.5 build.'
+}
+$manifest = Get-Content -LiteralPath (Join-Path $PSScriptRoot 'data\prototype_055_files.json') -Raw | ConvertFrom-Json
+$definitions = [IO.File]::ReadAllText((Join-Path $baseRoot 'in_game\map_data\definitions.txt'))
+foreach ($location in $manifest.homeland_locations) {
+    if ($definitions -notmatch ('\b' + [regex]::Escape($location) + '\b')) { throw "Missing 0.5.4 homeland district: $location" }
+}
+if (-not $OutputPath) { $OutputPath = Join-Path $PSScriptRoot "build\$slug" }
+$prepared = [IO.Path]::GetFullPath($OutputPath)
+$source = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot 'mod'))
+if ($prepared -eq $baseRoot -or $prepared -eq $modRoot -or $prepared -eq $userRoot -or $prepared -eq $source) { throw 'Invalid output directory.' }
+if ((Test-Path -LiteralPath $prepared) -and @(Get-ChildItem -LiteralPath $prepared -Force).Count -gt 0) {
+    $existingMetadata = Join-Path $prepared '.metadata\metadata.json'
+    if (-not (Test-Path -LiteralPath $existingMetadata)) { throw 'Output directory contains unrelated files.' }
+    $existing = Get-Content -LiteralPath $existingMetadata -Raw | ConvertFrom-Json
+    if ($existing.id -ne $id) { throw 'Output directory contains another mod.' }
+}
+New-Item -ItemType Directory -Path $prepared -Force | Out-Null
+if ((Get-Item -LiteralPath $prepared).Attributes -band [IO.FileAttributes]::ReparsePoint) { throw 'Output directory must not be a link.' }
+foreach ($entry in $manifest.files) {
+    if ($entry.path -notmatch '^[A-Za-z0-9_./-]+$' -or $entry.path.Split('/') -contains '..' -or $entry.path.StartsWith('/')) { throw 'Unsafe manifest path.' }
+    $origin = Join-Path $source $entry.path
+    if ((Get-FileHash -LiteralPath $origin -Algorithm SHA256).Hash -ne $entry.sha256) { throw "Prototype source checksum mismatch: $($entry.path)" }
+    $destination = [IO.Path]::GetFullPath((Join-Path $prepared $entry.path))
+    if (-not $destination.StartsWith($prepared.TrimEnd('\') + '\', [StringComparison]::OrdinalIgnoreCase)) { throw 'Unsafe output file.' }
+    New-Item -ItemType Directory -Path (Split-Path $destination -Parent) -Force | Out-Null
+    Copy-Item -LiteralPath $origin -Destination $destination -Force
+}
+$metadata = @{
+    name = 'Goblins 0.5.5 - Gathering Prototype (requires 0.5.4)'
+    id = $id
+    version = '0.5.5'
+    game_id = 'eu5'
+    supported_game_version = '1.3.11'
+    short_description = 'Test add-on: enable WITH Goblins 0.5.4. Two situations, clan diplomacy and eastern conquest incentives. New campaign recommended.'
+    tags = @('Alternative history', 'Gameplay')
+    relationships = @()
+    game_custom_data = @{}
+}
+$metaDir = Join-Path $prepared '.metadata'
+New-Item -ItemType Directory -Path $metaDir -Force | Out-Null
+[IO.File]::WriteAllText((Join-Path $metaDir 'metadata.json'), ($metadata | ConvertTo-Json -Depth 10), [Text.UTF8Encoding]::new($false))
+$thumbnail = Join-Path $baseRoot '.metadata\thumbnail.png'
+if (Test-Path -LiteralPath $thumbnail) { Copy-Item -LiteralPath $thumbnail -Destination (Join-Path $metaDir 'thumbnail.png') -Force }
+if ($PrepareOnly) { Write-Host "Prepared $slug at $prepared"; return }
+if (Get-Process -Name eu5 -ErrorAction SilentlyContinue) { throw 'Close Europa Universalis V before installing the prototype.' }
+$target = [IO.Path]::GetFullPath((Join-Path $modRoot $slug))
+if ([IO.Path]::GetDirectoryName($target) -ne $modRoot) { throw 'Invalid prototype install path.' }
+foreach ($path in @($userRoot, $modRoot, $target)) {
+    if ((Test-Path -LiteralPath $path) -and ((Get-Item -LiteralPath $path).Attributes -band [IO.FileAttributes]::ReparsePoint)) { throw "Install path is a link: $path" }
+}
+if (Test-Path -LiteralPath $target) {
+    $oldMeta = Get-Content -LiteralPath (Join-Path $target '.metadata\metadata.json') -Raw | ConvertFrom-Json
+    if ($oldMeta.id -ne $id) { throw 'Another mod occupies the prototype destination.' }
+    $backupRoot = [IO.Path]::GetFullPath((Join-Path $userRoot 'goblins_prototype_backups'))
+    New-Item -ItemType Directory -Path $backupRoot -Force | Out-Null
+    if ((Get-Item -LiteralPath $backupRoot).Attributes -band [IO.FileAttributes]::ReparsePoint) { throw 'Backup directory is a link.' }
+    $backup = [IO.Path]::GetFullPath((Join-Path $backupRoot ($slug + '_' + (Get-Date -Format 'yyyyMMdd_HHmmss_fff'))))
+    if ([IO.Path]::GetDirectoryName($backup) -ne $backupRoot) { throw 'Invalid backup target.' }
+    Move-Item -LiteralPath $target -Destination $backup
+}
+Copy-Item -LiteralPath $prepared -Destination $target -Recurse
+foreach ($entry in $manifest.files) {
+    if ((Get-FileHash -LiteralPath (Join-Path $target $entry.path) -Algorithm SHA256).Hash -ne $entry.sha256) { throw 'Installed prototype checksum mismatch.' }
+}
+Write-Host "Installed separate prototype at $target"
+Write-Host 'Enable BOTH Goblins 0.5.4 and this prototype. Start a NEW 1337 campaign for testing.'
+Write-Host 'The base mod and playsets were not modified. Disable the prototype to return to the base mod.'

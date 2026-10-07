@@ -1,6 +1,6 @@
 # 0.5.5 complete-release handoff
 
-Checkout: work/repo, staging/0.5.5. Art/flag/player-guide PR #9 merged at e5539c4.
+Checkout: work/repo, release/v0.5.5. Art/flag/player-guide PR #9 merged at e5539c4.
 Release source: 393d6badf5118a4d6884dee76eafa4da0628da17.
 Verified bundled tree: 3b7861b3fdc3a940cd321d1fb1d3ebe78e8de337.
 
@@ -25,4 +25,10 @@ only this handoff; verified release content remains the tree identified above.
 
 Pending: user-run in-game UI/art, AI and balance acceptance. Disable the earlier
 Gathering Prototype add-on and start a new 1337 campaign. No active installation,
-game launch, GitHub release, release tag or Workshop publication was performed.
+game launch or Workshop publication was performed.
+
+Published: GitHub release v0.5.5 (non-draft, non-prerelease), tagged at e2276ec,
+with the full installer and focused RELEASE_NOTES_0.5.5.md. Publishing workflow
+37653002068 passed. Published asset size/digest and a fresh downloaded ZIP match
+the SHA-256 above. Release URL:
+https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.5.5

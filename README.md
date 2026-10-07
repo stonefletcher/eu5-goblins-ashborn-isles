@@ -128,3 +128,6 @@ Report problems through [GitHub Issues](https://github.com/stonefletcher/eu5-gob
 - [Clan flag sources and export details](art/flags/README.md)
 
 Europa Universalis V and its game assets belong to Paradox. This is an unofficial fantasy mod. Event paintings were created with image generation; editable clan emblems and artwork provenance are included in the linked art documentation.
+
+
+One Fire, Many Blades now offers a shorter council scene with three five-year bonuses: Grask's drills (+5% land morale), Kragga's envoys (+0.5 diplomatic reputation), or Grakka's accounts (+10% army maintenance efficiency). This introduction is independent of the opening Gathering choice. Native personality_events.10 provides the alternative five-year reward pattern; native the_rule_of_god includes 5% land morale, and modifier definitions confirm maintenance efficiency is positive-benefit. Existing once-only monthly routing is preserved. Generator, profile, generated outputs and manifest updated. Native-reference/ownership and art checks passed. Runtime acceptance pending. Source-only branch; no install or push.

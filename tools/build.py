@@ -213,6 +213,9 @@ def main():
     economy=build_setup(game,out);localization(out);archipelago.add_localization(sys.modules[__name__],out)
     import economy as starting_economy
     economy['production']=starting_economy.build(sys.modules[__name__],game,out)
+    import dynastic_clans
+    dynastic_clans.build(sys.modules[__name__],game,out)
+    economy['dynastic_clans']=dynastic_clans.verify(sys.modules[__name__],out)
     import exploration
     discovery=exploration.build(sys.modules[__name__],game,out)
     import export_goblin_models
@@ -230,6 +233,8 @@ def main():
     checks=validate(game,out,mapstats,economy)
     import verify_features
     features=verify_features.verify(sys.modules[__name__],out,mapstats)
+    import verify_054
+    features['version_054']=verify_054.verify(sys.modules[__name__],game,out,mapstats)
     (reports/'feature_verification.json').write_text(json.dumps(features,indent=2),encoding='utf-8')
     (reports/'model_export.json').write_text(json.dumps(models,indent=2),encoding='utf-8')
     (reports/'model_verification.json').write_text(json.dumps(model_checks,indent=2),encoding='utf-8')

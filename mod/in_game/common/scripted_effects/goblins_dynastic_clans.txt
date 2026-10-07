@@ -1,0 +1,27 @@
+﻿# Native effect updates the dynasty name and adjective. Stable country tags remain intact.
+ga_update_dynastic_clan_name = {
+    if = {
+        limit = {
+            OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK }
+            government_type = government_type:monarchy
+            has_regent = no
+            ruler ?= { has_dynasty = no }
+        }
+        ruler = { found_dynasty = random }
+    }
+    if = {
+        limit = {
+            OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK }
+            government_type = government_type:monarchy
+            has_regent = no
+            ruler ?= { has_dynasty = yes }
+            OR = {
+                NOT = { has_variable = ga_named_dynasty }
+                NOT = { ruler = { dynasty = root.var:ga_named_dynasty } }
+            }
+        }
+        ruler = { save_scope_as = new_ruler }
+        change_country_dynastic_name = {}
+        set_variable = { name = ga_named_dynasty value = ruler.dynasty }
+    }
+}

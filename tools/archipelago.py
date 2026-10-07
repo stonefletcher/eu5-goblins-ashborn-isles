@@ -33,7 +33,7 @@ def prepare(cfg):
         island['center']=[value+delta for value,delta in zip(island['center'],island.get('position_adjustment',[0,0]))]
         island['radius']=[rx*scale,ry*scale]
         for l in island['locations']:
-            seq+=1;l['color']=f'ed12{seq:02x}';l['country']=island['country'];l['culture']=countries[l['country']]['culture'];l['island']=island['id']
+            seq+=1;l.setdefault('color',f'ed12{seq:02x}');l['country']=island['country'];l['culture']=countries[l['country']]['culture'];l['island']=island['id']
             l['point']=[island['center'][i]+l['seed'][i]*island['radius'][i] for i in range(2)]
             locs.append(l)
     cfg['locations']=locs
@@ -304,6 +304,10 @@ def build_setup(b,game,out):
         laborers=Decimal('1.5') if l['good'] in ['iron','copper','clay','stone','salt','tar'] else Decimal('.5')
         parts=[('nobles',Decimal('.1')),('clergy',Decimal('.2')),('burghers',burghers),('laborers',laborers),('peasants',n-captive-burghers-laborers-Decimal('.3'))]
         if captive:parts.append(('slaves',captive))
+        if 'pop_classes' in l:
+            parts=[(typ,Decimal(str(value))) for typ,value in l['pop_classes'].items()]
+            assert all(value>=0 for _,value in parts) and sum(value for _,value in parts)==n,l['id']
+            captive=dict(parts).get('slaves',Decimal(0))
         rows=[f' define_pop = {{ type = {typ} size = {v:.3f} culture = {l["culture"]} religion = cm_hunger_below }}' for typ,v in parts]
         popentries.append(l['id']+' = {\n'+'\n'.join(rows)+'\n}');total+=n;slaves+=captive
     b.write(out,'in_game/common/town_setups/goblins_ashborn_isles.txt','\n'.join(town_templates)+'\n')
@@ -337,7 +341,11 @@ def add_localization(b,out):
     extra.update({z['id']:z['name'] for z in b.CFG['coastal_sea']['zones']})
     # Replace existing keys rather than emit duplicate localization.
     extra.update({'cindermaw.1.desc':LORE,'cm_demo_building_tip':'Hooktooth is a city with a marketplace, naval-supplies guild and stockade. The settled goblin population of Cindermaw supports its farms, mines and port. The neighboring goblin captains rule independent countries.','cm_cindermaw_area':'The Ashborn Isles'})
-    for l in b.CFG['locations']:extra.setdefault(l['province'],l['province'].replace('cm_','').replace('_province','').replace('_',' ').title())
+    import dynastic_clans
+    extra.update(dynastic_clans.LOCALIZATION)
+    for l in b.CFG['locations']:
+        extra[l['id']]=l['name']
+        extra.setdefault(l['province'],l['province'].replace('cm_','').replace('_province','').replace('_',' ').title())
     for k,v in extra.items():
         line=' '+k+': "'+v.replace('"','\\"')+'"'
         pattern=r'(?m)^ '+re.escape(k)+r':.*$'

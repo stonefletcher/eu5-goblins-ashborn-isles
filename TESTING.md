@@ -1,3 +1,21 @@
+# 0.5.4 acceptance checklist
+
+Use a NEW 1337 campaign, only the intended 0.5.4 copy active.
+
+1. Confirm 72 land locations and 30 provinces, with complete borders, settlements, ports and navigable channels.
+2. Starting population before simulation: CDM 368,134; QBR 210,677; RHK 35,067; SFK 35,442; SWK 33,374. Total 682,694. Check burgher/laborer employment alongside peasants.
+3. All five capitals: marketplace level 2, granary level 1 and tools/cloth/pottery guilds. Check wheat windmills and iron/copper smelters have usable production methods.
+4. First monthly pulse grants RGO investment once. Save/reload and advance another year to check for repeated grants.
+5. Inspect Goldscar/Goldvein, Silverfang/Silverneedle/Silver Shard, Saffron Hollow/Vale, Dyer's Marsh/Fen, Silkworm Grove, Pearlshore and Alumcrag/Alum Key. Original resource districts remain beside them.
+6. Run all clans for 1, 5 and 10 years; record treasury balance, tax/trade income, building profitability, employment, market access and provincial food. Check luxury production does not starve basic industry of workers.
+7. Each Ironfang dynastic son (MIL 82) initially qualifies ahead of unrelated courtier MIL 86. In a disposable save, raise another eligible dynastic adult man's MIL and check he leads. Minors, women, foreign rulers and blocked candidates remain excluded.
+8. With no eligible adult men in the dynasty, no unrelated courtier may become eligible under this law. Test the native crisis/alternative-law path separately.
+9. Force a new dynasty or successful pretender takeover in a disposable save: displayed country name/adjective should follow the new house, with tag, territory, relations and events intact. Directly reassign a ruler's dynasty, advance a month and check reconciliation. A regent must not rename the country.
+10. Shatterfin retains Jaima, the Mare-Mother, and maternal seniority: Skritcha is the initial eligible successor; stronger men cannot inherit. A new maternal house also updates the country name.
+11. Regression: human portraits, goblin courts, visible infantry, recruitment art, voyages and reciprocal first contact.
+
+Static checks do not establish gameplay acceptance. Earlier-version notes follow.
+
 ## 0.5.3 infantry attachment repair — user tested
 
 Native fallback infantry were visible and did not reproduce the crash in the user's test. Custom goblin infantry are now re-enabled through the native attachment workflow: the base graph supplies the skeleton, transform and animation machine; a named shared_pose_entity attachment supplies the visible mesh. The direct root MeshType is removed.

@@ -8,7 +8,7 @@ import archipelago, landscape
 def verify(b,out,mapstats):
     cfg=b.CFG
     counts={c['tag']:sum(l['country']==c['tag'] for l in cfg['locations']) for c in cfg['countries']}
-    assert counts=={'CDM':15,'QBR':12,'RHK':4,'SFK':3,'SWK':2},counts
+    assert counts=={'CDM':30,'QBR':24,'RHK':8,'SFK':6,'SWK':4},counts
     ratios={}
     for island in cfg['islands']:
         expected=np.pi*np.prod(cfg['radius'])*cfg['island_size_multiplier']*island['area_ratio']
@@ -60,9 +60,8 @@ def verify(b,out,mapstats):
     economy=(out/'in_game/common/on_action/goblins_economy.txt').read_text(encoding='utf-8-sig')
     assert 'NOT = { has_variable = ga_economy_initialized }' in economy
     assert economy.count('change_max_raw_material_workers =')==len(cfg['locations'])
-    assert sum(round(l['pop']*1000) for l in cfg['locations'])==593647
+    assert sum(round(l['pop']*1000) for l in cfg['locations'])==cfg['population_target']==682694
     return {'area_ratios_vs_target':ratios,'geography':geography,'location_counts':counts,'administrative_terrain_independence':True,
             'rivers':river_count,'validated_scenery_transforms':scenery_count,
             'reciprocal_routes_checked':list(ROUTES),'rgo_initialization_guard':True,
             'engine_tested':False}
-

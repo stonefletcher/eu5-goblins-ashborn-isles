@@ -1,5 +1,6 @@
 ﻿cm_rule_of_the_strongest = {
     all_in_country = yes
+    all_in_dynasty = yes
     allow_children = no
     allow_female = no
     allow_male = yes
@@ -16,6 +17,9 @@
         is_female = no
         age_in_years >= 18
         culture = { has_culture_group = culture_group:cm_goblin_group }
+        has_dynasty = yes
+        exists = scope:target.last_valid_ruler.dynasty
+        dynasty = scope:target.last_valid_ruler.dynasty
         NOT = { modifier:blocked_from_being_ruler = yes }
     }
     calc = {
@@ -44,5 +48,6 @@
     }
     succession_effect = {
         scope:new_ruler = { change_character_estate = estate_type:crown_estate }
+        ga_update_dynastic_clan_name = yes
     }
 }

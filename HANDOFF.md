@@ -1,7 +1,7 @@
-# 0.5.3 consolidated staging
+# 0.5.4 development handoff
 
-Canonical branch: staging/0.5.3. Base ff8a431 includes portraits, opt-in human isolation fix, native shared-pose infantry repair, first-contact companion event and culture-scoped recruitment illustrations. Workshop preparation merged from 90cbd3c. The packaging-only isolation commit 693914e is superseded: applying its old overlay would remove the now-complete exploration integration.
+Checkout: work/goblins in the 2026-10-06/new-chat-5 workspace. Branch staging/0.5.4; base cd7409e0cdbc4937ede49ef1c499b29fcce3f08f (tested staging/0.5.3, not older main).
 
-User confirmed infantry visible and no longer crashing on October 6, 2026. Appearance refinement deferred to GitHub issue #4. Recruitment illustrations and first-contact event have static checks but await gameplay acceptance. Preserve the working graphics attachment route.
+Scope: +15% population, 72 locations/30 provinces, economic buildings/RGOs, dynasty-only Ironfang succession and native ruling-house country names. Shatterfin maternal seniority retained. Source generators and configuration updated; 0.5.3 portrait, infantry and contact fixes preserved.
 
-Run exact-tree clean-download installer validation before handoff. No active installation, game launch or Workshop publication is implied. Existing source branches/worktrees remain intact; use this branch for further integration.
+Gameplay acceptance remains pending. No active installation, game launch, main merge or Workshop publication is authorized or implied by this handoff. Verify current build/bundle/remote state and use TESTING.md.

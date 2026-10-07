@@ -426,5 +426,7 @@
         "assets/overlay-8cfe6529589a-0000.b64"
       ]
     }
-  ]
+  ],
+  "source_tag_correction_from": "cd7409e0cdbc4937ede49ef1c499b29fcce3f08f",
+  "release_branch": "release/v0.5.3"
 }

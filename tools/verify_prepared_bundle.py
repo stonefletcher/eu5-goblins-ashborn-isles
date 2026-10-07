@@ -73,7 +73,7 @@ def verify(root):
             authored=(root/'mod'/path).read_bytes()
             assert digest(authored)==item['sha256'],f'Overlay checksum mismatch: {path}'
             assert z.read('goblins_ashborn_isles/'+path)==authored,f'Stale bundled art: {path}'
-        if version=='0.5.5':
+        if (root/'data/prototype_055_files.json').is_file():
             prototype=json.loads((root/'data/prototype_055_files.json').read_text())
             for item in prototype['files']:
                 path=item['path']

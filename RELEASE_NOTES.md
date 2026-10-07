@@ -1,3 +1,7 @@
+# 0.5.6 installer repair candidate
+
+Combines the staging economy and exploration pacing with situation layouts, concise completion tooltips, named modifiers and three Cindermaw council rewards. Rebuilds the complete installer payload against the current source configuration. New campaign required. Runtime testing pending.
+
 # 0.5.5 — The Gathering of the Five
 
 Complete release candidate for EU5 1.3.11. Start a new 1337 campaign. Disable the

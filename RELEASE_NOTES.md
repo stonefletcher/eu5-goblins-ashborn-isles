@@ -1,3 +1,29 @@
+# 0.5.5 — The Gathering of the Five
+
+Complete release candidate for EU5 1.3.11. Start a new 1337 campaign. Disable the
+earlier Gathering Prototype add-on: this full mod includes its content and
+installs without a 0.5.4 prerequisite.
+
+- Unite the 72 homeland districts through conquest, vassalage or senior unions
+  in the Gathering of the Five, then pursue a European coastal foothold through
+  Eastern Hunger.
+- Seven situation actions support alliances, paid aid, voluntary submission,
+  war goals and fleet preparation. Offers can be refused; conquests follow
+  normal EU5 declarations, warfare and peace rules.
+- Five clan introductions, expanded royal-family stories, revised ruler
+  abilities and Shatterfin's maternal-house follow-up. Existing family
+  relationships and succession laws are preserved.
+- 323,941 additional minority-culture goblins bring the Isles to 1,618,696 people.
+  All five Ashborn cultures live in every district.
+- Seventeen original paintings cover all 21 authored events. Both situations
+  have custom headers and icons; all five clans have matching custom flags.
+- One regular installer and a matching 0.5.5 terrain/package bundle replace the
+  separate prototype installation. The README is now a player guide.
+
+In-game acceptance of the new situations, art, AI behavior and balance remains
+pending. Automated checks and package verification do not establish gameplay
+readiness. Earlier release notes follow.
+
 ## 0.5.5 Jaima Gathering update
 
 Shatterfin is included in the ruler table at Jaima’s unchanged 66/58/52 ADM/DIP/MIL. Expanded The Tidemother’s Terms and new The Maternal House Endures give her two Shatterfin-only narrative events. The follow-up is scheduled 30 days after the introduction and guarded against repeats. All five kingdoms retain their introductions; total events rise from 13 to 14. Maternal seniority, family setup, situation costs and population additions are preserved. README, prototype guide and generated lore now cover her role. Static and packaging checks are separate from pending gameplay acceptance.

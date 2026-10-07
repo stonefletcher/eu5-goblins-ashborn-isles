@@ -73,6 +73,17 @@ def verify(root):
             authored=(root/'mod'/path).read_bytes()
             assert digest(authored)==item['sha256'],f'Overlay checksum mismatch: {path}'
             assert z.read('goblins_ashborn_isles/'+path)==authored,f'Stale bundled art: {path}'
+        if version=='0.5.5':
+            prototype=json.loads((root/'data/prototype_055_files.json').read_text())
+            for item in prototype['files']:
+                path=item['path']
+                assert z.read('goblins_ashborn_isles/'+path)==(root/'mod'/path).read_bytes(),f'Stale or missing Gathering content: {path}'
+            for name in ['README.md','RELEASE_NOTES.md','TESTING.md','LORE.md','PROTOTYPE_055.md','STEAM_DESCRIPTION.txt','STEAM_CHANGELOG.txt','art/events/sources/gathering.png']:
+                packed=z.read(name);authored=(root/name).read_bytes()
+                if name.endswith(('.md','.txt')):
+                    packed=packed.decode('utf-8-sig').replace('\r\n','\n')
+                    authored=authored.decode('utf-8-sig').replace('\r\n','\n')
+                assert packed==authored,f'Stale packaged guide: {name}'
     return {'version':version,'overlay_files':len(overlay['files']),'archive_bytes':len(raw),'status':'prepared bundle verified'}
 
 if __name__=='__main__':

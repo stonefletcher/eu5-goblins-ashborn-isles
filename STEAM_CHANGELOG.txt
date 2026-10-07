@@ -1,0 +1,12 @@
+[h2]0.5.5 — The Gathering of the Five[/h2]
+[list]
+[*]Two connected situations: unite the five kingdoms, then establish a European coastal foothold.
+[*]Seven diplomatic and military actions, five clan introductions and Shatterfin's maternal-house follow-up.
+[*]Expanded ruler and dynasty stories; existing succession laws are preserved.
+[*]Mixed Ashborn cultures in every district; total population is now 1,618,696.
+[*]Seventeen original paintings cover all 21 authored events, with custom headers and icons for both situations.
+[*]Five custom clan flags match the Gathering banners.
+[*]Complete 0.5.5 installer; the earlier prototype add-on is no longer needed.
+[/list]
+[b]EU5 1.3.11. Start a new 1337 campaign and disable the separate Gathering Prototype add-on.[/b]
+New situation UI, artwork, AI behavior and balance still require in-game acceptance.

@@ -1,4 +1,9 @@
-# 0.5.5 prototype — The Gathering of the Five
+# Earlier 0.5.5 prototype — The Gathering of the Five
+
+**Archived add-on instructions:** the full 0.5.5 release includes this content.
+Install it with `Install-Goblins.cmd` and disable the separate prototype. The
+installation steps below apply only to the earlier add-on with 0.5.4. Gameplay
+rules and test cases remain useful.
 
 Built on `staging/0.5.4` for EU5 1.3.11. **Static checks passed; engine parsing,
 UI behavior, AI use and gameplay balance have not been tested.**

@@ -1,44 +1,20 @@
-# 0.5.5 event art and clan flags handoff
+# 0.5.5 complete-release preparation
 
-Checkout: work/repo; art/events-situations-055, based on staging/0.5.5 at
-8fd0358 (initial art base 51c01d8). Goal: custom art for all events/situations and clan flags matching the supplied Gathering image.
+Checkout: work/repo, staging/0.5.5. Art/flag/player-guide PR #9 merged at e5539c4.
+Goal: replace the 0.5.4 bundled payload with a full, installable 0.5.5 release.
 
-Completed: 17 original built-in imagegen paintings with full prompts and source
-hashes under art/events. Explicit native image references cover all 21 authored
-events, including the 14 Gathering events and the seven older introduction and
-exploration/contact events. Both situations receive headers and icons. Twenty-one
-BC1 DDS textures have native dimensions and full mip chains. Related oath and
-unification events intentionally share scenes. All five clan introductions have
-distinct lore-based paintings. Event generators and full-build/overlay export
-paths preserve art assignments. The prototype checksum manifest ships all textures
-and all three event files (39 entries, including five custom flag textures and their country arms). Added art/flag validation and CI.
+Full build against installed EU5 1.3.11 passed static validation: 72 districts,
+1,618,696 goblins, Gathering/Eastern Hunger, all clan identities and succession.
+Event/situation art and all five clan flags are integrated. The full build
+preserves the earlier infantry/portrait pipeline. Gameplay acceptance remains
+pending; no game launch or active installation has been performed.
 
-Checks: DDS decoding, dimensions, mip payloads, prompt/source hashes, explicit
-image references and prototype checksums pass. Existing native-reference checks
-and all 14 ownership scenarios pass. Parsed event trees preserve gameplay and
-localization references. Preparation against the installed 0.5.4 base preserves
-unrelated character/localization entries and agrees with the full-build clan
-generator. Final clean-export and isolated-install results are recorded in the PR.
+Player README, release notes, Workshop description/changelog and test guidance
+now describe one full mod and regular installer. The earlier prototype guide is
+marked historical; disable that add-on when using the complete 0.5.5 mod.
+Package verification now checks all 39 Gathering/art/flag files and current docs.
 
-Flags: five hand-authored SVG/PNG emblems recreate the reference volcano, reeds,
-curling wave, shark-and-waves and spiked helmet. data/clan_flags.json supplies
-matching RGB fields. Native textured emblems use 384 x 256 BC3 with alpha and
-nine mip levels. Full builds no longer clone Cindermaw's skull flag. Sources,
-exporter, prototype manifest and CI include all five. Final clean-source and
-package verification results are recorded in PR #9.
-
-README: replaced the accumulated development/release fragments with one player
-guide: separate base/add-on installation, five clan summaries, campaign goals,
-current artwork/features, troubleshooting and links to detailed documentation.
-Removed obsolete population totals, succession rules and installation paths.
-User authorized merging PR #9 into staging/0.5.5; verify final merge state on GitHub.
-
-State: no active game installation, launch or Workshop publication. This
-remains the additive prototype on 0.5.4; the pre-existing regular .release bundle
-is still 0.5.4 and is not a new full 0.5.5 release. The prototype installer is the
-delivery path for this art pass. In-game rendering, crop/UI scale and override
-precedence remain pending; TESTING.md has the art acceptance checklist.
-
-Concurrent staging updates preserved: mixed-population additions (1,618,696 total),
-Jaima's expanded introduction and delayed maternal-house event, and revised ruler
-nickname origins. Maternal-house follow-up shares Shatterfin's council painting.
+Next: bundle the new build with matching overlay/config hashes, verify the exact
+Git export through the regular PrepareOnly installer and isolated installation,
+then publish the matching source/bundle on staging. GitHub/Workshop release
+publication is not part of preparation. Record final gate results in outputs.

@@ -9,7 +9,8 @@ surrounds, no skull-and-swords fallback and no duplicate Cindermaw arms. Restart
 fully after installing to refresh flag art; check a new campaign and save/reload.
 Native flag shape and lighting can change the appearance from the flat preview.
 
-Enable the 0.5.4 base and the prepared 0.5.5 prototype. Inspect both situation
+Install the full 0.5.5 release with Install-Goblins.cmd and disable the separate
+Gathering Prototype add-on. Start a new 1337 campaign. Inspect both situation
 headers and their 128 x 128 icons in the situation list, panel and notifications.
 Check the Gathering council and Eastern Hunger fleet appear without missing
 textures or generic fallback art. Inspect at normal UI scale and one larger scale.

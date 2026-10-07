@@ -1,5 +1,5 @@
 [h1]Goblins of the Ashborn Isles[/h1]
-[b]A fantasy Europa Universalis V demo — Version 0.5.3[/b]
+[b]A fantasy Europa Universalis V mod — Version 0.5.5[/b]
 
 Fire rose from the Atlantic. When the smoke cleared, new islands stood between the Azores and Portugal — and goblins already walked their shores.
 
@@ -16,18 +16,21 @@ Lead one of the Ashborn clans in a new 1337 campaign. Build your island realm, c
 [*][b]Sootwake Clan — Ashveil:[/b] A small woodland realm with a distinct culture, court and future to forge.
 [/list]
 
-[h2]What is in the demo?[/h2]
+[h2]What is in the mod?[/h2]
 [list]
-[*][b]A new Atlantic homeland:[/b] Six volcanic islands, 36 land locations and 13 coastal sea zones, with custom terrain, ports, settlements and resources.
+[*][b]A new Atlantic homeland:[/b] Six volcanic islands, 72 districts and 13 coastal sea zones, with custom terrain, ports, settlements and resources. Mixed Ashborn cultures bring the starting population to 1,618,696.
 [*][b]A shared goblin identity:[/b] Five Ashborn cultures, Cinder Tongue, the Hunger Below faith, and original clan names, dynasties and royal families.
-[*][b]Two paths to power:[/b] Four Ironfang Monarchies follow Rule of the Strongest, favouring eligible adult men by military ability. Shatterfin follows the senior eligible woman of its ruling maternal dynasty.
+[*][b]Two paths to power:[/b] Four Ironfang Monarchies favor the strongest eligible adult Ashborn man within the ruling dynasty. Shatterfin follows maternal seniority.
+[*][b]Gather the Five:[/b] Unite the kingdoms through conquest, vassalage or senior unions. Seven situation actions support alliances, paid aid, voluntary submission and war goals. Each clan has its own introduction and royal-family story.
+[*][b]Eastern Hunger:[/b] Prepare your fleet and pursue a European coastal foothold through normal EU5 warfare.
+[*][b]Original artwork:[/b] Seventeen paintings cover all 21 authored events. Both situations have custom headers and icons, and five clan flags match the Gathering banners.
 [*][b]Voyages into the unknown:[/b] Fund expeditions toward Iberia, northern waters and northwest Africa. Returning crews bring charts — and contact reveals the isles to the countries they visit.
 [*][b]An island economy:[/b] Develop a shared market, fishing villages, mines, ports and modest urban industries.
 [*][b]Goblin character and unit art:[/b] Clan-based portrait appearances and custom infantry assets. The 0.5.3 art pass introduces more subdued skin colours, revised goblin features and rougher clothing; visuals remain under development.
 [/list]
 
-[h2]Demo status[/h2]
-This is an early development demo, not a finished overhaul. Terrain, portraits, unit rendering, succession and economic balance are still being tested and refined. Updates may require a fresh campaign. Multiplayer and achievement compatibility are unverified.
+[h2]Development status[/h2]
+The complete 0.5.5 package includes the earlier Gathering prototype content. Disable the separate prototype add-on. New situation UI, artwork, AI behavior and balance still require in-game acceptance. Multiplayer and achievement compatibility are unverified.
 
 Dedicated foreign invasion ambitions and fear mechanics are planned, but are not included in this demo. England and Castile do not yet receive special scripted objectives to conquer the Ashborn Isles.
 

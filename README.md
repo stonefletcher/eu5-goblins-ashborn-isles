@@ -1,11 +1,25 @@
 # 0.5.5 — Gathering prototype
 
 The prototype also adds **323,941 goblins of minority cultures**, bringing the
-starting population to **1,618,696**. Minorities make up roughly **16–22%** of each nation; the home clan remains **78–84%**. Every district gains all four other
-Ashborn cultures, with uneven, fixed populations. Of the newcomers, **231,332 are
-slaves**; the remainder are laborers, peasants and capital merchants. Cindermaw
-receives the largest influx and slave share. Existing populations and classes
-are preserved. Run the prototype installer again and start a new campaign.
+starting population to **1,618,696**. Minorities make up roughly **16–22%** of each
+nation; the home clan remains **78–84%**. All 72 districts across the six islands
+contain all five Ashborn cultures, with varied counts that stay fixed between
+installs. These communities represent migration, captives taken in inter-clan
+raids and their descendants. Of the additions, **231,332 are slaves** and
+**92,609 are free goblins**: laborers, peasants and capital merchants.
+
+| Nation | Added minorities | Of those, slaves | Minority share | Total population |
+|---|---:|---:|---:|---:|
+| Cindermaw | 159,949 | 133,351 | 22.4% | 712,688 |
+| Brackmaw | 73,355 | 50,012 | 18.7% | 391,818 |
+| Reefhook | 21,955 | 10,414 | 16.8% | 130,392 |
+| Shatterfin | 49,120 | 28,543 | 18.7% | 262,607 |
+| Sootwake | 19,562 | 9,012 | 16.1% | 121,191 |
+
+Cindermaw receives the largest influx and slave share. Capitals attract more
+newcomers and free merchants; mining districts favor captive labor. Existing
+populations and classes are preserved. Run the prototype installer again, load
+the prototype after the 0.5.4 base, and start a new campaign.
 
 Two situations, seven actions and thirteen events connect all five Ashborn kingdoms to a shared unification struggle and then an eastern coastal ambition. Conquest and consent-based vassalage use native mechanics; unions obtained normally count toward unification. Eastern actions provide paid bonuses and a temporary conquest casus belli, never free foreign land or automatic wars.
 

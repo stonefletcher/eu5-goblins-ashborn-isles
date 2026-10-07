@@ -323,8 +323,8 @@ def build_setup(b,game,out):
     b.write(out,rel,b.inject(b.read(game,rel),'monarchy','heir_selection = cm_rule_of_the_strongest\nheir_selection = cm_tidemother_seniority'))
     b.write(out,'in_game/setup/countries/goblins_ashborn_isles.txt','\n'.join(f'{c["tag"]} = {{ color = rgb {{ {" ".join(map(str,c["color"]))} }} color2 = rgb {{ 36 31 29 }} culture_definition = {c["culture"]} religion_definition = cm_hunger_below is_historic = no }}' for c in countries)+'\n')
     b.write(out,'in_game/common/cultures/goblins_ashborn_isles.txt','\n'.join(f'{c["culture"]} = {{ language = {c["culture"]}_dialect color = rgb {{ {" ".join(map(str,c["color"]))} }} tags = {{ european_gfx {c["culture"]}_gfx }} culture_groups = {{ cm_goblin_group }} opinions = {{ }} }}' for c in countries)+'\n')
-    flag=(b.ROOT/'mod/main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt').read_text()
-    b.write(out,'main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt','\n'.join(flag.replace('CDM =',c['tag']+' =').replace('color2 = red', 'color2 = '+['red','blue','yellow','purple','orange'][i]) for i,c in enumerate(countries)))
+    import build_clan_flags
+    build_clan_flags.build(out)
     return {'total_population':int(total*1000),'enslaved_population':int(slaves*1000),'starting_gold':{c['tag']:c['gold'] for c in countries},'rgo_expansion_levels':{l['id']:l['rgo_expansion'] for l in locs},'starting_buildings':{l['id']:l['buildings'] for l in locs},'vanilla_population_entries_unchanged':True,'country_populations':{c['tag']:sum(int((Decimal(str(l['pop']))+mixed_populations.extra(l['id']))*1000) for l in locs if l['country']==c['tag']) for c in countries}}
 
 def add_localization(b,out):

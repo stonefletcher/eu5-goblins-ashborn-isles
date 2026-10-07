@@ -224,6 +224,8 @@ def main():
     discovery=exploration.build(sys.modules[__name__],game,out)
     import gathering
     gathering_report=gathering.build(out,CFG)
+    import export_event_art
+    export_event_art.build(out)
     import export_goblin_models
     models=export_goblin_models.build(out)
     import build_goblin_portraits

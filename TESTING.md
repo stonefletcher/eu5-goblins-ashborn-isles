@@ -1,3 +1,34 @@
+## 0.5.5 art acceptance
+
+Check all five country shields and land/naval flags against the Gathering banner
+reference: Cindermaw black volcano/rust orange; Brackmaw ivory reeds/olive;
+Reefhook ivory curling wave/teal; Shatterfin ivory shark and three waves/slate
+blue; Sootwake ivory spiked helmet/charcoal. Check diplomacy and country headers,
+small situation participants, map armies and ships. Confirm transparent emblem
+surrounds, no skull-and-swords fallback and no duplicate Cindermaw arms. Restart
+fully after installing to refresh flag art; check a new campaign and save/reload.
+Native flag shape and lighting can change the appearance from the flat preview.
+
+Enable the 0.5.4 base and the prepared 0.5.5 prototype. Inspect both situation
+headers and their 128 x 128 icons in the situation list, panel and notifications.
+Check the Gathering council and Eastern Hunger fleet appear without missing
+textures or generic fallback art. Inspect at normal UI scale and one larger scale.
+
+Read all five clan introductions: stone arrow and forge for Cindermaw, tidal gate
+and stores for Brackmaw, split shell and rescue harbor for Reefhook, female ruler
+and maternal household for Shatterfin, scorched branch and woodland for Sootwake.
+Check the harbor pact, oath, unification, eastern preparation and first-harbor
+events. Oath offer/acceptance and both unification perspectives intentionally
+share their corresponding painting. Faces and props must remain readable under
+the native frame, with intact choices and no foreground character overlay.
+
+Complete east, north and south exploration voyages and inspect departure, charts,
+Iberia, Biscay and African coast art. From a contacted foreign country, inspect
+the human scout following goblin sails in Strange Visitors on Our Shores. Check
+the initial Cindermaw lore event uses its forge illustration. Save/reload and reopen
+the active situation. Inspect the error log for missing DDS or image-path errors.
+Static art validation does not establish these engine/UI results.
+
 # 0.5.5 Jaima Gathering acceptance
 
 Start a new 1337 campaign as Shatterfin with the prototype after the 0.5.4 base. Check Jaima, the Mare-Mother, at 66/58/52 and Skritcha as initial eligible successor. When the Gathering starts, read The Tidemother’s Terms; 30 days after its introduction, read The Maternal House Endures. Save/reload during the delay and continue for several months to verify one delivery. Check all buttons and family names. Neither event changes stats, heirs, laws or relationships. Repeat as each other kingdom: its own introduction must fire and neither Shatterfin event should appear. Check voluntary Shatterfin vassalage preserves the maternal house and law. In-game delivery and layout remain unverified by static checks.

@@ -7,6 +7,7 @@ from pathlib import Path
 import argparse
 import json
 from clan_identity import PROFILES, SHATTERFIN
+from event_art import image
 
 ROOT = Path(__file__).resolve().parents[1]
 TAGS = ['CDM', 'QBR', 'RHK', 'SFK', 'SWK']
@@ -32,7 +33,7 @@ def event(num, title, desc, body, trigger='ga_is_goblin = yes', immediate='', af
     title = {key}.title
     desc = {key}.desc
     trigger = {{ {trigger} }}
-    illustration_tags = {{ 10 = exterior }}
+    image = "{image(key)}"
     immediate = {{ {immediate} }}
     {body}
     after = {{ {after} }}

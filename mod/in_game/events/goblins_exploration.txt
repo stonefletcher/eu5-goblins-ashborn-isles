@@ -6,7 +6,7 @@ goblins_exploration.1 = {
     title = goblins_exploration.1.title
     desc = goblins_exploration.1.desc
     trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/departure.dds"
     option = {
         name = goblins_exploration.1.east
         trigger = { gold >= 5 NOT = { has_variable = ga_charted_east } }
@@ -28,7 +28,7 @@ goblins_exploration.3 = {
     title = goblins_exploration.3.title
     desc = goblins_exploration.3.desc
     trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/charts.dds"
     option = {
         name = goblins_exploration.3.north
         trigger = { gold >= 10 NOT = { has_variable = ga_charted_north } }
@@ -57,7 +57,7 @@ goblins_exploration.6 = {
     title = goblins_exploration.6.title
     desc = goblins_exploration.6.desc
     trigger = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/foreign_sails.dds"
     option = { name = goblins_exploration.6.a }
 }
 
@@ -67,7 +67,7 @@ goblins_exploration.2 = {
     title = goblins_exploration.2.title
     desc = goblins_exploration.2.desc
     trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/iberia.dds"
     option = {
         name = goblins_exploration.2.a
         discover_area = area:iberian_west_coast_area
@@ -137,7 +137,7 @@ goblins_exploration.4 = {
     title = goblins_exploration.4.title
     desc = goblins_exploration.4.desc
     trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/biscay.dds"
     option = {
         name = goblins_exploration.4.a
         discover_area = area:bay_of_biscay_area
@@ -244,7 +244,7 @@ goblins_exploration.5 = {
     title = goblins_exploration.5.title
     desc = goblins_exploration.5.desc
     trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-    illustration_tags = { 10 = exterior }
+    image = "gfx/interface/illustrations/event/ashborn/africa.dds"
     option = {
         name = goblins_exploration.5.a
         discover_area = area:nw_africa_coast_area

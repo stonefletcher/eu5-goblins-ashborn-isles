@@ -1,9 +1,9 @@
-# Brackmaw 0.5.5 handoff
+# 0.5.5 clan identity handoff
 
-Base: staging/0.5.5 at 294d5f2; feature/brackmaw-sluice-king-055. Goal: distinguish Brackmaw/Brineward and nickname its starting ruler.
+Checkout: work/brackmaw; feature/brackmaw-sluice-king-055, extending c541748. Base staging/0.5.5 at 294d5f2. PR #7 targets staging/0.5.5 and now covers three clans.
 
-Implemented: Murgash Brackmaw, The Sluice-King; ADM/DIP/MIL 84/78/90. Marsh engineering, supply oaths and coastal industry in culture text, lore and Gathering introduction. Shared data/brackmaw.json feeds full-build courts/localization and the prototype installer. Installer derives two overrides from installed 0.5.4 without editing that base or committing game-derived setup. Other characters, family dates, succession, population, terrain, actions and costs are preserved.
+Implemented: Murgash Brackmaw, The Sluice-King (84/78/90 ADM/DIP/MIL); Skrezz Reefhook, The Wreck-Taker (62/88/90); Snikh Sootwake, The Blackbough (80/54/90). Each has shared authored data, expanded culture text, lore and Gathering introduction. Reefhook's dynasty has rescue-beacon/pilotage obligations and a salvage saying; Sootwake's dynasty has firebreak/cutting-right obligations and a rootwood-table tradition. Existing brothers and consorts have narrative interests, without new appointments or mechanics. House names, family relationships, ages, succession, population, geography and situation costs remain intact.
 
-Checks: 0.5.5 native-reference/ownership checks; Brackmaw comparison against installed base and full-build generator. Exact-tree clean preparation/isolated installation results recorded in the PR. In-game override precedence, name display and event text remain user-run acceptance; no game launch, active-mod installation, main merge or Workshop publication performed.
+Shared tools/clan_identity.py feeds full-build generators and the prototype manifest. Installer derives two overrides from the installed 0.5.4 base and preserves all entries outside the three rulers and intended culture/nickname text. No native game-derived setup is committed. tools/verify_brackmaw.py now checks all three identities and full-build/add-on agreement.
 
-Build/publish: small 0.5.5 prototype remains an add-on to 0.5.4, with refreshed file/data hashes; regular installer remains the prior release. Next: review PR, merge into staging/0.5.5, test a new 1337 campaign with base and add-on enabled.
+Checks: 0.5.5 static native references and 14 ownership scenarios; clan preservation and generator comparison. Exact-tree clean preparation/isolated installation results recorded in PR #7. In-game names, override precedence, UI and balance remain pending; TESTING.md has acceptance steps. No active mod installation, game launch, merge or Workshop upload performed. Regular installer is the prior release; this branch uses the small prototype add-on to 0.5.4.

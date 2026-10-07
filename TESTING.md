@@ -1,3 +1,9 @@
+## 0.5.5 clan identity acceptance
+
+Enable the 0.5.4 base and the prepared 0.5.5 add-on, then start a new 1337 campaign. Check Murgash Brackmaw, The Sluice-King (84/78/90 ADM/DIP/MIL), Skrezz Reefhook, The Wreck-Taker (62/88/90), and Snikh Sootwake, The Blackbough (80/54/90). Their culture descriptions should show the expanded Brineward, Reefstrider and Ashveil customs. House names, parents, spouses, children, birthdays and strongest-dynasty succession should match the base. Krizzek and Zhor remain the adult dynastic successors at start.
+
+Run each kingdom to the Gathering introduction. Check The Sluice-King's Bargain, The Wreck-Taker's Share and Beneath the Blackbough for readable text, correct family names and intact buttons. These are narrative changes: rescue shares, cutting rights, house sayings and court interests do not add new actions or economic bonuses. Disable the add-on and start a separate base-only campaign to confirm the base's original names, abilities and descriptions return. In-game display, override precedence and event layout remain unverified by static tests.
+
 ## 0.5.4 demographic revision acceptance
 
 Start a new 1337 campaign. Check total populations: CDM 552,739; QBR 318,463; RHK 108,437; SFK 213,487; SWK 101,629. Verify ruler ages are CDM 38, QBR 36, RHK 27, SFK 39 and SWK 29, eligible heirs remain adults and Jaima retains maternal seniority.

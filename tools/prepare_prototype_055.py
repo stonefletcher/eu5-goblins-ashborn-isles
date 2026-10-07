@@ -2,6 +2,7 @@
 from pathlib import Path
 import hashlib
 import json
+from clan_identity import SOURCES
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -13,7 +14,9 @@ def main():
               ROOT / 'mod/main_menu/localization/english/goblins_gathering_l_english.yml']
     assert len(paths) == 10
     manifest = {'version': '0.5.5', 'base_version': '0.5.4',
-                'brackmaw_sha256': hashlib.sha256((ROOT / 'data/brackmaw.json').read_bytes()).hexdigest(),
+                'identities': [{'tag': tag, 'path': 'data/'+name+'.json',
+                                'sha256': hashlib.sha256((ROOT / 'data' / (name+'.json')).read_bytes()).hexdigest()}
+                               for tag,name in SOURCES.items()],
                 'homeland_locations': [x['id'] for island in cfg['islands'] for x in island['locations']],
                 'files': [{'path': p.relative_to(ROOT / 'mod').as_posix(),
                            'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in paths]}

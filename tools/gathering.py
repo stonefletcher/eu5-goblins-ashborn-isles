@@ -6,9 +6,9 @@ The prototype deliberately leaves wars, peace, unions and succession to native E
 from pathlib import Path
 import argparse
 import json
+from clan_identity import PROFILES
 
 ROOT = Path(__file__).resolve().parents[1]
-BRACKMAW = json.loads((ROOT / 'data/brackmaw.json').read_text(encoding='utf-8'))
 TAGS = ['CDM', 'QBR', 'RHK', 'SFK', 'SWK']
 TEXT = {}
 
@@ -462,10 +462,10 @@ ga_cb_eastern_foothold = {
         option(8, 'a', 'The eastern horizon is open.', 'add_prestige = 10 add_country_modifier = { modifier = ga_first_eastern_harbor years = 5 mode = replace }')))
     signatures = [
         (10, 'CDM', 'The Forges Must Be Fed', 'Our forge captains see strength in a united archipelago. We can seek recognition through war, or supply those willing to stand beside us.', 'Let the forges serve our claim.'),
-        (11, 'QBR', BRACKMAW['event_title'], BRACKMAW['event_description'], BRACKMAW['event_answer']),
-        (12, 'RHK', 'The Shoals Have Their Price', 'Our captains know the shoals others fear. A powerful friend may keep our harbor safe; an oath would bring the usual obligations of vassalage. Neither need be accepted blindly.', 'Our harbor has a voice.'),
+        (11, 'QBR', *(PROFILES['QBR'][k] for k in ('event_title','event_description','event_answer'))),
+        (12, 'RHK', *(PROFILES['RHK'][k] for k in ('event_title','event_description','event_answer'))),
         (13, 'SFK', 'The Tidemother\'s Terms', 'No pact shall erase the maternal house. The Ashen Compact preserves our ruling dynasty and current succession law. We may lead the gathering ourselves, or accept protection on those terms.', 'The Tidemother keeps her crown.'),
-        (14, 'SWK', 'No Axe Without Leave', 'The woodland captains fear tribute as much as invasion. An alliance can protect our independence; a stronger patron may make submission worthwhile. Our decision remains ours.', 'Weigh the oath carefully.')
+        (14, 'SWK', *(PROFILES['SWK'][k] for k in ('event_title','event_description','event_answer')))
     ]
     for num, tag, title, desc, answer in signatures:
         events.append(event(num, title, desc, option(num, 'a', answer), trigger=f'tag = {tag}'))

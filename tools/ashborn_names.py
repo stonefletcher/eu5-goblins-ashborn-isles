@@ -1,8 +1,5 @@
 """Shared Ashborn language with five naming dialects and authored royal courts."""
-from pathlib import Path
-import json
-
-BRACKMAW = json.loads((Path(__file__).resolve().parents[1] / 'data/brackmaw.json').read_text(encoding='utf-8'))
+from clan_identity import PROFILES
 
 POOLS={
  'CDM':('Emberblood','cm_cinderkin',
@@ -44,7 +41,7 @@ def localization():
         for i,name in enumerate(houses.split()):result[house_key(tag,i)]=name
     result['cm_stone_fletcher']='The Stone Fletcher'
     result['cm_mare_mother']='The Mare-Mother'
-    result[BRACKMAW['nickname_key']]=BRACKMAW['nickname']
+    for profile in PROFILES.values():result[profile['nickname_key']]=profile['nickname']
     return result
 
 def build_names(b,out):
@@ -80,14 +77,14 @@ def build_courts(b,out):
         for i in range(1 if tag=='SFK' else 0,4):dynasties.append(f'{house_key(tag,i)} = {{ name = {{ name = {house_key(tag,i)} }} home = {capital} }}')
         if tag!='SFK':
             nickname=' nickname = { name = cm_stone_fletcher }' if tag=='CDM' else ''
-            if tag=='QBR':nickname=' nickname = { name = '+BRACKMAW['nickname_key']+' }'
+            if tag in PROFILES:nickname=' nickname = { name = '+PROFILES[tag]['nickname_key']+' }'
             ancestry=''
             if tag in {'RHK','SWK'}:
                 father_birth,brother_birth=('1282.2.11','1305.10.16') if tag=='RHK' else ('1281.5.20','1303.1.14')
                 person(prefix+'_father',males[5],tag,culture,capital,house_key(tag,0),father_birth,extra='death_date = 1334.9.6',stats=(63,57,88))
                 ancestry=' father = '+prefix+'_father'
                 person(prefix+'_brother',males[1],tag,culture,capital,house_key(tag,0),brother_birth,extra=ancestry,stats=(59,55,82))
-            stats=tuple(BRACKMAW[k] for k in ('adm','dip','mil')) if tag=='QBR' else (66,61,90)
+            stats=tuple(PROFILES[tag][k] for k in ('adm','dip','mil')) if tag in PROFILES else (66,61,90)
             person(prefix+'_ruler',males[0],tag,culture,capital,house_key(tag,0),leader_birth,extra='spouse = '+prefix+'_consort'+nickname+ancestry,stats=stats)
             person(prefix+'_consort',females[0],tag,culture,capital,house_key(tag,1),consort_birth,True,'spouse = '+prefix+'_ruler',stats=(70,68,50))
             parents=f'father = {prefix}_ruler mother = {prefix}_consort'
@@ -113,5 +110,5 @@ def verify(b,out):
     for k in localization():assert k+': ' in loc or k+':0 ' in loc,k
     assert 'nickname = { name = cm_stone_fletcher }' in chars
     assert 'nickname = { name = cm_mare_mother }' in chars
-    assert 'nickname = { name = '+BRACKMAW['nickname_key']+' }' in chars
+    for profile in PROFILES.values():assert 'nickname = { name = '+profile['nickname_key']+' }' in chars
     return {'cultures':5,'male_name_entries':80,'female_name_entries':80,'houses':30,'lowborn_name_entries':30,'authored_family_and_court_characters':43,'engine_generation_tested':False}

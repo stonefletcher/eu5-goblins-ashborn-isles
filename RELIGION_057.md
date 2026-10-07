@@ -29,6 +29,31 @@ The stable `cm_hunger_below` religion ID, group and all population references re
 - Religion-specific country bonuses are removed on the next monthly pulse after
   conversion away. Initialization and Moot history remain, preventing repeat grants.
 
+## Goblin estate names
+
+The full build runs `tools/goblin_estates.py` to insert Ashborn-specific names
+before the native estate-name alternatives. The condition checks the country's
+primary culture against all five Ashborn cultures, so other countries keep their
+existing names and goblin countries retain these labels if their religion changes.
+
+| Native estate | Goblin name |
+|---|---|
+| Crown | Boss Clan |
+| Nobility | Bigfangs |
+| Clergy | Shamans |
+| Burghers | Coinclutchers |
+| Commoners | Muckgrubs |
+| Tribes, if enabled | Warbands |
+| Dhimmi, if enabled | Outsiders |
+| Cossacks, if enabled | Freebooters |
+
+These are estate display names only; population classes, privileges, estate IDs
+and mechanics are unchanged. The generator preserves every native alternative
+and fallback, and validates that removing its insertions restores the original
+file. The generated native-file override remains in ignored build output.
+Static parsing and priority checks passed; the estate panel still needs an
+in-game check. Oathkeeper remains a religious office within the Shaman estate.
+
 ## Holy sites
 
 | Site | District / island | Local effect |

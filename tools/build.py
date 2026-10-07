@@ -227,6 +227,8 @@ def main():
     gathering_report=gathering.build(out,CFG)
     import ashen_covenant
     religion_report=ashen_covenant.build(out)
+    import goblin_estates
+    religion_report['estate_names']=goblin_estates.build(sys.modules[__name__],game,out)
     from verify_ashen_covenant import verify as verify_religion
     religion_report['validation']=verify_religion(game,out)
     (reports/'religion_057.json').write_text(json.dumps(religion_report,indent=2),encoding='utf-8')

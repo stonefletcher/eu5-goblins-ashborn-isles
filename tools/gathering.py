@@ -202,7 +202,8 @@ ga_has_european_foothold = {{
 }}
 '''
     write(out, 'in_game/common/scripted_triggers/goblins_gathering.txt', triggers + harbor_bargains.triggers() + compact_talks.triggers())
-    write(out, 'in_game/common/on_action/goblins_gathering.txt', harbor_bargains.maintenance().replace("on_actions = { ga_hb_contract_pulse }", "on_actions = { ga_hb_contract_pulse ga_cp_history_pulse }") + compact_talks.pulse())
+    from build_clan_flags import recovery_on_action
+    write(out, 'in_game/common/on_action/goblins_gathering.txt', harbor_bargains.maintenance().replace("on_actions = { ga_hb_contract_pulse }", "on_actions = { ga_hb_contract_pulse ga_cp_history_pulse ga_clan_flags_060_pulse }") + compact_talks.pulse() + recovery_on_action())
 
     # Use native monthly situation evaluation; no external global pulse override.
     situations = '''

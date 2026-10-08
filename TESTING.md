@@ -1,5 +1,7 @@
 # 0.6.0 acceptance
 
+- Clan flag repair: start as Giltfang and confirm a brass fang with chain links on dark blue instead of the yellow/blue procedural flag. Check all six authored clan emblems. Load a pre-fix 0.6.0 save, advance to the next monthly pulse, and confirm the same repair occurs once. Later intentional flag changes must not be reset by subsequent pulses. This visual check is still pending.
+
 - Quiet Road: sail from Chainhaven to Cindermaw using only ordinary coastal tiles, with a stop at Lantern Haven. Check both sides of the new island and the lower eastern gate. Confirm all three Lantern Cay districts start owned, controlled and cored by Cindermaw, share starting discovery, and count toward unification. Verify the three trimmed current tiles remain connected and navigable.
 - Northern world: start a NEW campaign as Giltfang and each older crown. Confirm mutual discovery of all 97 districts and coastal sea tiles, separate Chainhaven and Hooktooth markets, and 100 gold. Sail and transport between Chainhaven, Tolltooth, every older island and native coastal waters. Inspect coastlines, ports, rivers and sea-zone borders at several zoom levels.
 - Trade: advance the two markets through several monthly updates. Inspect market membership, goods shortages/surpluses, merchant capacity and actual import/export routes. Static registration and connected seas do not prove profitable or automatic trade.

@@ -1,4 +1,4 @@
-"""Export five reference-matched clan flags using native textured emblems."""
+"""Export the clan flags and explicitly bind their authored coat-of-arms IDs."""
 from pathlib import Path
 import argparse
 import hashlib
@@ -11,6 +11,25 @@ ROOT = Path(__file__).resolve().parents[1]
 FLAGS = json.loads((ROOT / 'data/clan_flags.json').read_text(encoding='utf-8'))
 COATS = 'main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt'
 TEXTURES = 'main_menu/gfx/coat_of_arms/textured_emblems'
+
+
+def recovery_on_action():
+    """Repair saved procedural flags once, without overriding later flag changes."""
+    choices = '\n'.join(
+        f'        if = {{ limit = {{ tag = {tag} }} change_country_flag = {tag} }}'
+        for tag in FLAGS)
+    return '''
+ga_clan_flags_060_pulse = {
+    trigger = {
+        OR = { ''' + ' '.join(f'tag = {tag}' for tag in FLAGS) + ''' }
+        NOT = { has_variable = ga_clan_flags_060_applied }
+    }
+    effect = {
+''' + choices + '''
+        set_variable = { name = ga_clan_flags_060_applied value = yes }
+    }
+}
+'''
 
 
 def runtime_paths():

@@ -38,11 +38,33 @@ def verify(out, game=None):
         assert (ROOT / 'art/flags/sources' / (FLAGS[tag]['source'] + '.svg')).is_file()
     for rel in runtime_paths():
         assert shipped.get(rel) == hashlib.sha256((out / rel).read_bytes()).hexdigest(), 'Stale flag manifest: ' + rel
+    # Valid textures alone do not bind a country's flag: the old setup omitted
+    # these assignments and the engine displayed procedural flags instead.
+    setup_path = out / 'main_menu/setup/start/10_countries.txt'
+    if setup_path.exists():
+        from build import block_span
+        setup = setup_path.read_text(encoding='utf-8-sig')
+        for tag in FLAGS:
+            left, right = block_span(setup, tag)
+            assert re.search(r'(?m)^\s*flag\s*=\s*"'+tag+r'"\s*$', setup[left:right]), 'Unbound starting flag: '+tag
+    actions = dict((key, value) for key, _, value in parse((out / 'in_game/common/on_action/goblins_gathering.txt').read_text(encoding='utf-8-sig')))
+    pulse = dict((key, value) for key, _, value in actions['monthly_country_pulse'])
+    assert ('ga_clan_flags_060_pulse', None, None) in pulse['on_actions']
+    repair = dict((key, value) for key, _, value in actions['ga_clan_flags_060_pulse'])
+    assert repair['trigger'] == [('OR', '=', [('tag', '=', tag) for tag in FLAGS]),
+                                 ('NOT', '=', [('has_variable', '=', 'ga_clan_flags_060_applied')])]
+    assert repair['effect'] == [('if', '=', [('limit', '=', [('tag', '=', tag)]), ('change_country_flag', '=', tag)]) for tag in FLAGS] + [
+        ('set_variable', '=', [('name', '=', 'ga_clan_flags_060_applied'), ('value', '=', 'yes')])]
     if game:
         assert (game / 'main_menu/gfx/coat_of_arms/patterns/pattern_solid.dds').is_file()
         native = (game / 'main_menu/common/coat_of_arms/coat_of_arms/pre_scripted_countries.txt').read_text(encoding='utf-8-sig')
         assert 'textured_emblem = {' in native and 'color1 = rgb {' in native
+        native_setup = (game / 'main_menu/setup/start/10_countries.txt').read_text(encoding='utf-8-sig')
+        assert 'flag = "ASK"' in native_setup
+        native_effects = (game / 'in_game/events/situations/fall_of_delhi.txt').read_text(encoding='utf-8-sig')
+        assert 'change_country_flag = BAH' in native_effects
     return {'clan_flags': len(FLAGS), 'custom_alpha_emblems': len(FLAGS), 'full_mip_chains': True,
+            'explicit_starting_flags': setup_path.exists(), 'saved_flag_repair_once': True,
             'prototype_hashes_checked': True, 'native_schema_checked': bool(game),
             'engine_render_tested': False}
 

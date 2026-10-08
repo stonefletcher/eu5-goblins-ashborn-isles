@@ -1,4 +1,4 @@
-﻿monthly_country_pulse = { on_actions = { ga_hb_contract_pulse ga_cp_history_pulse } }
+﻿monthly_country_pulse = { on_actions = { ga_hb_contract_pulse ga_cp_history_pulse ga_clan_flags_060_pulse } }
 ga_hb_contract_pulse = {
     trigger = { has_variable = ga_hb_committed }
     effect = {
@@ -149,5 +149,21 @@ if = { limit = { country_exists = c:GTF NOT = { tag = GTF } is_allied_with = { t
             NOT = { OR = { is_subject_type = ga_compact_autonomy is_subject_type = ga_compact_protection } } }
             remove_variable = has_locked_subject_type remove_variable = ga_cp_owns_type_lock
         }
+    }
+}
+
+ga_clan_flags_060_pulse = {
+    trigger = {
+        OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK tag = GTF }
+        NOT = { has_variable = ga_clan_flags_060_applied }
+    }
+    effect = {
+        if = { limit = { tag = CDM } change_country_flag = CDM }
+        if = { limit = { tag = QBR } change_country_flag = QBR }
+        if = { limit = { tag = RHK } change_country_flag = RHK }
+        if = { limit = { tag = SFK } change_country_flag = SFK }
+        if = { limit = { tag = SWK } change_country_flag = SWK }
+        if = { limit = { tag = GTF } change_country_flag = GTF }
+        set_variable = { name = ga_clan_flags_060_applied value = yes }
     }
 }

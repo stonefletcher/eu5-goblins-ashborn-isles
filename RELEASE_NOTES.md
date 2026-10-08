@@ -1,5 +1,11 @@
 # 0.6.0 - Staging: optimization and gameplay
 
+Flag repair: all six crowns explicitly select their authored coat of arms at
+creation. A one-time monthly migration corrects saved procedural placeholders,
+including Giltfang's blue circle on yellow. Install with EU5 closed, restart,
+load an existing 0.6.0 save and advance to the next month. This repair alone
+does not require a new campaign; in-game rendering still needs confirmation.
+
 Giltfang joins the Ashborn as the sixth crown. Its northern main island and
 Tolltooth companion have a combined land area of 89.97% of Brackmaw, with nine
 new coastal sea tiles connected to the existing Atlantic network. Chainhaven

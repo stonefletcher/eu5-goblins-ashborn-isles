@@ -304,6 +304,7 @@ def build_setup(b,game,out):
         assert not re.search(r'(?m)^\s*'+c['tag']+r'\s*=\s*\{',vanilla),c['tag']+' collision'
         ids=' '.join(l['id'] for l in locs if l['country']==c['tag'])
         entries.append(f'''{c['tag']} = {{
+ flag = "{c['tag']}"
  own_control_core = {{ {ids} }}
  include = "{'cm_tidemothers' if c['tag']=='SFK' else 'cm_captains'}"
  {exploration.starting_knowledge()}

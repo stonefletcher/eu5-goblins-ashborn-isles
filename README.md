@@ -20,6 +20,15 @@ use readable conditions, broken punctuation is repaired, and both parties
 receive signing receipts listing the actual payment, benefit, burden and term.
 Earlier portrait, wardrobe, hair, Drogg and holy-site fixes are retained.
 
+Clan flags now explicitly select their authored coat of arms at campaign
+creation. A one-time monthly repair also replaces saved procedural placeholders
+for all six clans, including Giltfang's incorrect blue circle on yellow.
+Giltfang uses a brass fang and chain links on a dark blue field. For an existing
+0.6.0 campaign, install with EU5 closed, restart, load the save and advance to
+the next monthly pulse. The flag repair itself does not require a new campaign.
+Assignment, one-time guards, textures and package hashes are checked; actual
+flag rendering after the repair still requires gameplay confirmation.
+
 Starting projects now cost **25 gold**, a quarter of the 100-gold opening
 treasury; the AI keeps a 20-gold reserve. Food rewards explicitly raise
 the **province food storage limit**, with tooltip guidance to the native

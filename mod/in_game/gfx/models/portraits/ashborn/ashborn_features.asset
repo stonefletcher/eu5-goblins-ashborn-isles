@@ -1,105 +1,90 @@
 ﻿pdxmesh = { name = "cm_cindermaw_male_features_mesh" file = "cm_male_features.mesh" meshsettings = { name = "ashborn_features" index = 0
- texture_diffuse = "cindermaw_skin.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
-meshsettings = { name = "ashborn_features" index = 1
- texture_diffuse = "ivory.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
-entity = { name = "cm_cindermaw_male_features_entity" pdxmesh = "cm_cindermaw_male_features_mesh" }
+entity = { name = "cm_cindermaw_male_features_entity" pdxmesh = "cm_cindermaw_male_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
 pdxmesh = { name = "cm_cindermaw_female_features_mesh" file = "cm_female_features.mesh" meshsettings = { name = "ashborn_features" index = 0
- texture_diffuse = "cindermaw_skin.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
-meshsettings = { name = "ashborn_features" index = 1
- texture_diffuse = "ivory.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
-entity = { name = "cm_cindermaw_female_features_entity" pdxmesh = "cm_cindermaw_female_features_mesh" }
+entity = { name = "cm_cindermaw_female_features_entity" pdxmesh = "cm_cindermaw_female_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
 pdxmesh = { name = "cm_cindermaw_infant_features_mesh" file = "cm_infant_features.mesh" meshsettings = { name = "ashborn_features" index = 0
- texture_diffuse = "cindermaw_skin.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
-entity = { name = "cm_cindermaw_infant_features_entity" pdxmesh = "cm_cindermaw_infant_features_mesh" }
+entity = { name = "cm_cindermaw_infant_features_entity" pdxmesh = "cm_cindermaw_infant_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
 pdxmesh = { name = "cm_brackmaw_male_features_mesh" file = "cm_male_features.mesh" meshsettings = { name = "ashborn_features" index = 0
- texture_diffuse = "brackmaw_skin.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
-meshsettings = { name = "ashborn_features" index = 1
- texture_diffuse = "ivory.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
-entity = { name = "cm_brackmaw_male_features_entity" pdxmesh = "cm_brackmaw_male_features_mesh" }
+entity = { name = "cm_brackmaw_male_features_entity" pdxmesh = "cm_brackmaw_male_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
 pdxmesh = { name = "cm_brackmaw_female_features_mesh" file = "cm_female_features.mesh" meshsettings = { name = "ashborn_features" index = 0
- texture_diffuse = "brackmaw_skin.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
-meshsettings = { name = "ashborn_features" index = 1
- texture_diffuse = "ivory.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
-entity = { name = "cm_brackmaw_female_features_entity" pdxmesh = "cm_brackmaw_female_features_mesh" }
+entity = { name = "cm_brackmaw_female_features_entity" pdxmesh = "cm_brackmaw_female_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
 pdxmesh = { name = "cm_brackmaw_infant_features_mesh" file = "cm_infant_features.mesh" meshsettings = { name = "ashborn_features" index = 0
- texture_diffuse = "brackmaw_skin.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
-entity = { name = "cm_brackmaw_infant_features_entity" pdxmesh = "cm_brackmaw_infant_features_mesh" }
+entity = { name = "cm_brackmaw_infant_features_entity" pdxmesh = "cm_brackmaw_infant_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
 pdxmesh = { name = "cm_reefhook_male_features_mesh" file = "cm_male_features.mesh" meshsettings = { name = "ashborn_features" index = 0
- texture_diffuse = "reefhook_skin.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
-meshsettings = { name = "ashborn_features" index = 1
- texture_diffuse = "ivory.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
-entity = { name = "cm_reefhook_male_features_entity" pdxmesh = "cm_reefhook_male_features_mesh" }
+entity = { name = "cm_reefhook_male_features_entity" pdxmesh = "cm_reefhook_male_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
 pdxmesh = { name = "cm_reefhook_female_features_mesh" file = "cm_female_features.mesh" meshsettings = { name = "ashborn_features" index = 0
- texture_diffuse = "reefhook_skin.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
-meshsettings = { name = "ashborn_features" index = 1
- texture_diffuse = "ivory.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
-entity = { name = "cm_reefhook_female_features_entity" pdxmesh = "cm_reefhook_female_features_mesh" }
+entity = { name = "cm_reefhook_female_features_entity" pdxmesh = "cm_reefhook_female_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
 pdxmesh = { name = "cm_reefhook_infant_features_mesh" file = "cm_infant_features.mesh" meshsettings = { name = "ashborn_features" index = 0
- texture_diffuse = "reefhook_skin.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
-entity = { name = "cm_reefhook_infant_features_entity" pdxmesh = "cm_reefhook_infant_features_mesh" }
+entity = { name = "cm_reefhook_infant_features_entity" pdxmesh = "cm_reefhook_infant_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
 pdxmesh = { name = "cm_shatterfin_male_features_mesh" file = "cm_male_features.mesh" meshsettings = { name = "ashborn_features" index = 0
- texture_diffuse = "shatterfin_skin.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
-meshsettings = { name = "ashborn_features" index = 1
- texture_diffuse = "ivory.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
-entity = { name = "cm_shatterfin_male_features_entity" pdxmesh = "cm_shatterfin_male_features_mesh" }
+entity = { name = "cm_shatterfin_male_features_entity" pdxmesh = "cm_shatterfin_male_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
 pdxmesh = { name = "cm_shatterfin_female_features_mesh" file = "cm_female_features.mesh" meshsettings = { name = "ashborn_features" index = 0
- texture_diffuse = "shatterfin_skin.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
-meshsettings = { name = "ashborn_features" index = 1
- texture_diffuse = "ivory.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
-entity = { name = "cm_shatterfin_female_features_entity" pdxmesh = "cm_shatterfin_female_features_mesh" }
+entity = { name = "cm_shatterfin_female_features_entity" pdxmesh = "cm_shatterfin_female_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
 pdxmesh = { name = "cm_shatterfin_infant_features_mesh" file = "cm_infant_features.mesh" meshsettings = { name = "ashborn_features" index = 0
- texture_diffuse = "shatterfin_skin.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
-entity = { name = "cm_shatterfin_infant_features_entity" pdxmesh = "cm_shatterfin_infant_features_mesh" }
+entity = { name = "cm_shatterfin_infant_features_entity" pdxmesh = "cm_shatterfin_infant_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
 pdxmesh = { name = "cm_sootwake_male_features_mesh" file = "cm_male_features.mesh" meshsettings = { name = "ashborn_features" index = 0
- texture_diffuse = "sootwake_skin.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
-meshsettings = { name = "ashborn_features" index = 1
- texture_diffuse = "ivory.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
-entity = { name = "cm_sootwake_male_features_entity" pdxmesh = "cm_sootwake_male_features_mesh" }
+entity = { name = "cm_sootwake_male_features_entity" pdxmesh = "cm_sootwake_male_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
 pdxmesh = { name = "cm_sootwake_female_features_mesh" file = "cm_female_features.mesh" meshsettings = { name = "ashborn_features" index = 0
- texture_diffuse = "sootwake_skin.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
-meshsettings = { name = "ashborn_features" index = 1
- texture_diffuse = "ivory.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
-entity = { name = "cm_sootwake_female_features_entity" pdxmesh = "cm_sootwake_female_features_mesh" }
+entity = { name = "cm_sootwake_female_features_entity" pdxmesh = "cm_sootwake_female_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
 pdxmesh = { name = "cm_sootwake_infant_features_mesh" file = "cm_infant_features.mesh" meshsettings = { name = "ashborn_features" index = 0
- texture_diffuse = "sootwake_skin.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
- shader = "portrait_attachment" shader_file = "gfx/FX/jomini/portrait.shader" }
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
-entity = { name = "cm_sootwake_infant_features_entity" pdxmesh = "cm_sootwake_infant_features_mesh" }
+entity = { name = "cm_sootwake_infant_features_entity" pdxmesh = "cm_sootwake_infant_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }

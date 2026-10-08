@@ -15,20 +15,58 @@ def verify(out,game=None):
     gfx=(out/'in_game/gfx/graphical_culture_types/ashborn_goblins.txt').read_text(encoding='utf-8-sig')
     accessories=(out/'main_menu/gfx/portraits/accessories/ashborn.txt').read_text(encoding='utf-8-sig')
     asset=(folder/'ashborn_features.asset').read_text(encoding='utf-8-sig')
+    # Regression: attachments bypass skin palette, decal and scattering stages.
+    assert asset.count('shader = "portrait_skin"')==15
+    assert 'shader = "portrait_attachment"' not in asset, 'Ear material must use skin lighting'
+    assert asset.count('portrait_decal = { body_part = head }')==15
+    assert asset.count('texture_diffuse = "ear_base.dds"')==15
+    assert Image.open(folder/'ear_base.dds').getpixel((0,0))[3]==255
+    normal=Image.open(folder/'normal.dds').getpixel((0,0))
+    assert normal[1]==normal[3]==128, 'RRxG normals use green and alpha'
+    properties=Image.open(folder/'properties.dds').getpixel((0,0))
+    assert properties[2]==0 and properties[3]>=180, 'Skin must remain non-metallic and rough'
+    from build_goblin_portraits import SKIN_OPACITY
+    assert SKIN_OPACITY>=.9
+    # Shader equation: residual pre-decal face/ear colour difference is <=6%.
+    assert (1-SKIN_OPACITY)*255 <= 15.31
+    assert genes.count(f'{{ 0 {SKIN_OPACITY} }} {{ 1 {SKIN_OPACITY} }}')==10
     for path in re.findall(r'"([^"\n]+\.(?:mesh|dds))"',asset):assert (folder/path).is_file(),path
-    for path in re.findall(r'"(gfx/[^"\n]+\.dds)"',genes):assert (out/'in_game'/path).is_file(),path
+    for path in re.findall(r'"(gfx/[^"\n]+\.dds)"',genes):
+        if '/ashborn/' in path:
+            assert (out/'in_game'/path).is_file(),path
+        else:
+            assert (re.fullmatch(r'gfx/models/portraits/decals/(male|female)_head/\1_head_old_(forehead|eyes|mouth)_1_early_(diffuse|normal)\.dds',path)
+                    or re.fullmatch(r'gfx/models/portraits/decals/visual_traits/male_head_decal_traits_scars_02_(diffuse|normal)\.dds',path)),path
+            if game:
+                native_texture=Path(game)/'in_game'/path
+                assert native_texture.is_file(),path
+                if path.endswith('_diffuse.dds'):
+                    with Image.open(native_texture) as im:
+                        assert im.getpixel((int(im.width*.01),int(im.height*.01)))[3]==0, 'Ear UV must avoid facial weathering'
     for entity in re.findall(r'entity = (cm_\w+)',accessories):assert f'name = "{entity}"' in asset,entity
     for name in re.findall(r'1 = "(cm_\w+)"',genes):assert name+' = {' in accessories,name
     assert genes.lstrip().startswith('special_genes = {'), 'Goblin visuals must not be ordinary DNA'
     assert modifiers.count('mode = add gene = cm_ashborn_stature template = cm_compact_body value = 1')==5
     assert 'cm_ashborn_stature' not in ethnicity
+    assert 'cm_ashborn_weathering' not in ethnicity
+    assert modifiers.count('gene = cm_ashborn_weathering')==5
+    from build_goblin_portraits import weathering_gene
+    weathering=weathering_gene()
+    assert weathering.count('post_skin_color priority = 110')==6, 'Weathering must survive the clan tint'
+    for typ in TYPES[2:]: assert typ+' = { }' in weathering, 'No adult weathering on children'
     assert 'attribute = "body_infant_proportions"' in genes and 'attribute = "body_hunchback"' in genes
     assert 'male_body_height' not in genes, 'Do not depend on the disabled female height attribute'
     assert not re.search(r'cm_\w+_(?:skin|features)\s*=', ethnicity), 'Special genes must only be applied by scoped modifiers'
     clans=json.loads((ART/'clans.json').read_text())['clans']
+    generic_modifiers=modifiers.split('cm_ashborn_drogg =')[0]
+    drogg=modifiers.split('cm_ashborn_drogg =')[1]
+    assert 'priority = 140' in drogg
+    assert 'exists = character:cm_cdm_ruler this = character:cm_cdm_ruler' in drogg
+    assert 'gene = cm_drogg_scar' in drogg and 'gene = cm_drogg_scar' not in generic_modifiers
+    assert 'mode = replace gene = hair_styles template = all_hair accessory = male_hair_short_straight_pomp' in drogg
     for clan in clans:
         ident=clan['id'];tag=clan['culture']+'_gfx'
-        assert modifiers.count('gfx_culture_applicable = '+tag)==1
+        assert generic_modifiers.count('gfx_culture_applicable = '+tag)==1
         assert f'100 = cm_{ident}_ethnicity' in gfx
         assert f'cm_{ident}_ethnicity = ' in ethnicity
         texture = folder/f'{ident}_skin.dds'
@@ -51,6 +89,7 @@ def verify(out,game=None):
     triangles=0
     for sex in ['male','female','infant']:
         shape=read(folder/f'cm_{sex}_features.mesh')['children'][0]['children'][0]
+        assert sum(c['name']=='mesh' for c in shape['children'])==1, 'External tusks must not return'
         bones=next(c['children'] for c in shape['children'] if c['name']=='skeleton')
         if game:
             native=Path(game)/'in_game/gfx/models/portraits'
@@ -60,6 +99,7 @@ def verify(out,game=None):
             for bone in bones:assert np.allclose(bone['props']['tx'][1],nb[bone['name']]['props']['tx'][1]),bone['name']
         for mesh_index,mesh in enumerate(c for c in shape['children'] if c['name']=='mesh'):
             p=np.array(mesh['props']['p'][1]).reshape(-1,3);t=np.array(mesh['props']['tri'][1]).reshape(-1,3)
+            assert np.allclose(mesh['props']['u0'][1],.01), 'Ear UV must sample outside the facial crease masks'
             skin=next(c['props'] for c in mesh['children'] if c['name']=='skin')
             assert np.isfinite(p).all() and t.min()>=0 and t.max()<len(p)
             area=np.cross(p[t[:,1]]-p[t[:,0]],p[t[:,2]]-p[t[:,0]])
@@ -81,16 +121,27 @@ def verify(out,game=None):
             assert np.allclose(np.array(skin['w'][1]).reshape(-1,4).sum(axis=1),1)
             triangles+=len(t)
     for script in [genes,modifiers,accessories,asset,ethnicity]:assert script.count('{')==script.count('}')
-    from build_goblin_outfits import OUTFITS, RESET
+    from build_goblin_outfits import OUTFITS, RESET, HAIR
     outfit_genes=(out/'in_game/common/genes/zz_ashborn_outfits.txt').read_text(encoding='utf-8-sig')
     outfit_mods=(out/'main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt').read_text(encoding='utf-8-sig')
     for script in [outfit_genes,outfit_mods]:assert script.count('{')==script.count('}')
     assert outfit_genes.lstrip().startswith('special_genes = {'), 'Goblin clothes must not be ordinary DNA'
     assert 'mode = add gene = cm_ashborn_clothing' in outfit_mods
-    assert 'priority = 100' in outfit_mods
-    assert all(outfit_mods.count('gfx_culture_applicable = '+c['culture']+'_gfx')==1 for c in clans)
-    assert all('mode = replace gene = '+g+' template = '+t in outfit_mods for g,t in RESET.items())
+    assert 'priority = 120' in outfit_mods and 'selection_behavior = max' in outfit_mods
+    clothing_mods=outfit_mods.split('cm_ashborn_native_hair =')[0]
+    assert all(clothing_mods.count('gfx_culture_applicable = '+c['culture']+'_gfx')==1 for c in clans)
+    assert all(outfit_mods.count('mode = add gene = '+g+' template = '+t+' range = { 0 1 }')==5 for g,t in RESET.items())
+    assert 'value = 0' not in outfit_mods, 'Zero-strength replacements failed to clear noble outfits'
     assert OUTFITS['infant']==[(1,'empty')], 'Do not layer clothing over the native infant swaddle'
+    assert HAIR['infant']==[(1,'empty')]
+    assert 'cm_ashborn_hair' not in outfit_mods+outfit_genes, 'Separate accessory gene layered two hairstyles'
+    assert 'gene = hair_styles template = no_hair' not in clothing_mods
+    assert outfit_mods.count('mode = replace gene = hair_styles')==sum(len(HAIR[t]) for t in ['male','female','boy','girl'])
+    assert 'selection_behavior = weighted_random priority = 130' in outfit_mods
+    for sex,minimum in [('male',6),('female',5)]:
+        assert len(HAIR[sex])>=minimum and len({name for _,name in HAIR[sex]})==len(HAIR[sex])
+        assert max(w for w,_ in HAIR[sex])/sum(w for w,_ in HAIR[sex])<=.2
+    assert not any(token in name for _,name in HAIR['male'] for token in ['bald','long','bob','wig'])
     for sex in ['male','female']:
         assert all('iroquois' in name for _,name in OUTFITS[sex]), 'Adults must select the inspected hide/leather wardrobe'
     assert not any('chinese' in name for choices in OUTFITS.values() for _,name in choices)
@@ -101,11 +152,16 @@ def verify(out,game=None):
             for _,name in choices:
                 assert name=='empty' or re.search(r'(?m)^'+re.escape(name)+r'\s*=\s*\{',native_accessories),name
         for template in RESET.values():assert re.search(r'\b'+template+r'\s*=\s*\{',native_genes),template
+        native_hair=(Path(game)/'main_menu/gfx/portraits/accessories/hair.txt').read_text(encoding='utf-8-sig')
+        for choices in HAIR.values():
+            for _,name in choices:
+                assert name=='empty' or re.search(r'(?m)^\s*'+re.escape(name)+r'\s*=\s*\{',native_hair),name
         for gene in re.findall(r'mode = replace gene = (gene_\w+)',modifiers):
             assert re.search(r'\b'+gene+r'\s*=\s*\{',native_genes),gene
         from build_goblin_portraits import FACE
         assert FACE['gene_eye_size'][1] < .5, 'Avoid the previous enlarged cartoon eyes'
         assert FACE['gene_mouth_width'][1] < .65, 'Avoid the previous broad grin'
+        assert FACE['gene_forehead_height'][1]<.5, 'Avoid the tall rounded forehead seen on Drogg'
         assert RESET.get('beards') == 'no_beard'
         for sex in ['male','female']:
             body=(Path(game)/f'in_game/gfx/models/portraits/{sex}_body/{sex}_body.asset').read_text(encoding='utf-8-sig')

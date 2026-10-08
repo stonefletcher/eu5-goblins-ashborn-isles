@@ -573,6 +573,8 @@ ga_cb_eastern_foothold = {
     ]:
         loc(key, text)
     compact_talks.extra(out, write, loc)
+    import gathering_panel
+    gathering_panel.build(write, loc, out, homeland, TAGS)
     situation_progress.build(out, homeland, write, loc)
     localization = 'l_english:\n' + '\n'.join(' ' + k + ': "' + v.replace('"', '\\"').replace('\n', r'\n') + '"' for k, v in TEXT.items())
     write(out, 'main_menu/localization/english/goblins_gathering_l_english.yml', localization)

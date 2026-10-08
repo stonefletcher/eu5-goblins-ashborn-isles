@@ -20,6 +20,41 @@ RESET = {'clothes': 'no_clothes', 'headwear': 'no_headwear',
          'capes': 'no_cape', 'neckware_neck': 'no_neckware_neck',
          'beards': 'no_beard'}
 
+# Equal weights: no dominant adult style. Drogg has a separate signature crest.
+HAIR = {
+    'male': [(1, 'male_german_hair_short_curly'),
+             (1, 'male_hair_short_straight_pomp'),
+             (1, 'male_syrian_hair_curly_regular'),
+             (1, 'male_ashanti_hair_short_afro'),
+             (1, 'male_german_hair_crown_short'), (1, 'empty')],
+    'female': [(1, 'female_syrian_braided_back_hair'),
+               (1, 'female_german_braid_hair_behind'),
+               (1, 'female_iroquois_straight_parted_hair'),
+               (1, 'female_aztec_horn_braid_hair'),
+               (1, 'female_ashanti_hair_short_afro')],
+    'boy': [(1, 'boy_short_hair_a'), (1, 'boy_german_hair_bob_short'),
+            (1, 'male_syrian_hair_curly_regular')],
+    'girl': [(1, 'female_hair_long_basic'), (1, 'female_ashanti_hair_short_afro')],
+    'infant': [(1, 'empty')],
+}
+
+def hair_modifiers(clans):
+    lines=['cm_ashborn_native_hair = { usage = game selection_behavior = weighted_random priority = 130']
+    cultures='OR = { '+' '.join('gfx_culture_applicable = '+c['culture']+'_gfx' for c in clans)+' }'
+    for sex,choices in HAIR.items():
+        if sex=='infant': continue
+        female=sex in ['female','girl']
+        age='age_in_years >= 18' if sex in ['male','female'] else 'age_in_years >= 3 age_in_years < 18'
+        for index,(weight,name) in enumerate(choices):
+            template='no_hair' if name=='empty' else 'all_hair'
+            selection='' if name=='empty' else 'accessory = '+name
+            lines.append(f'''cm_hair_{sex}_{index} = {{ ignore_outfit_tags = yes
+ dna_modifiers = {{ accessory = {{ mode = replace gene = hair_styles template = {template} {selection} range = {{ 0 1 }} }} }}
+ weight = {{ base = 0 modifier = {{ add = {weight} {cultures} is_female = {'yes' if female else 'no'} {age} }} }}
+ }}''')
+    lines.append('}')
+    return '\n'.join(lines)
+
 def build(out, clans):
     from build_goblin_portraits import text
     out = Path(out)
@@ -30,18 +65,22 @@ def build(out, clans):
         genes.append(sex + ' = { ' + ' '.join(f'{w} = "{a}"' for w, a in choices) + ' }')
     genes += ['adolescent_boy = boy adolescent_girl = girl', '} } } }']
     text(out/'in_game/common/genes/zz_ashborn_outfits.txt', '\n'.join(genes)+'\n')
-    mods = ['cm_ashborn_outfits = { usage = game priority = 100']
+    mods = ['cm_ashborn_outfits = { usage = game selection_behavior = max priority = 120']
     for clan in clans:
-        dna = [f'accessory = {{ mode = replace gene = {g} template = {t} value = 0 }}'
+        # Match native beard/headwear suppression: add the empty template with a
+        # selection range. A zero-strength replace did not suppress noble outfits.
+        dna = [f'accessory = {{ mode = add gene = {g} template = {t} range = {{ 0 1 }} }}'
                for g, t in RESET.items()]
         dna.append('accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }')
         mods.append(f'cm_{clan["id"]}_rough_clothing = {{ ignore_outfit_tags = yes\n'
                     'dna_modifiers = {\n'+'\n'.join(dna)+'\n}\n'
                     f'weight = {{ base = 0 modifier = {{ add = 100 gfx_culture_applicable = {clan["culture"]}_gfx }} }} }}')
     mods.append('}')
+    mods.append(hair_modifiers(clans))
     text(out/'main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt', '\n'.join(mods)+'\n')
-    return {'method':'native hide tunics, fringed leather overcoats and fur-trimmed hunter garments; culture-scoped, priority 100',
-            'royal_clothes_and_crowns_removed':True, 'engine_tested':False,
+    return {'method':'native hide tunics, fringed leather overcoats and fur-trimmed hunter garments; culture-scoped native add-template suppression, priority 120',
+            'royal_clothes_and_crowns_suppression':'configured; in-game confirmation pending', 'engine_tested':False,
             'custom_rag_geometry':False, 'beards_removed':True,
             'adult_leather_garment_weight':1.0,
+            'hair':'native replacement: six equal male and five equal female choices; no separate hair layer; fitted child choices',
             'children':'native fitted plain clothes; no adult meshes on child rigs'}

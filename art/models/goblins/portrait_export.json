@@ -10,15 +10,19 @@
     "adolescent_girl",
     "infant"
   ],
-  "method": "cupped smooth ears, hooded recessed eyes, lean weathered cheeks, hooked noses and restrained mouths; 60% skin tint preserves more native colour detail",
+  "method": "shorter swept cupped ears using native skin shader and shared head decal; lower flatter forehead, sturdier jaw, restrained hooked nose, adult weathering and cropped/braided hair; 94% shared clan tint retained",
+  "skin_opacity": 0.94,
+  "ear_material": "portrait_skin with head decal routing and skin palette",
+  "teeth": "native animated mouth teeth only; detached external fangs removed",
   "infants": "skin and smaller pointed ears; no tusks or extra stature modifier",
   "outfits": {
-    "method": "native hide tunics, fringed leather overcoats and fur-trimmed hunter garments; culture-scoped, priority 100",
-    "royal_clothes_and_crowns_removed": true,
+    "method": "native hide tunics, fringed leather overcoats and fur-trimmed hunter garments; culture-scoped native add-template suppression, priority 120",
+    "royal_clothes_and_crowns_suppression": "configured; in-game confirmation pending",
     "engine_tested": false,
     "custom_rag_geometry": false,
     "beards_removed": true,
     "adult_leather_garment_weight": 1.0,
+    "hair": "native replacement: six equal male and five equal female choices; no separate hair layer; fitted child choices",
     "children": "native fitted plain clothes; no adult meshes on child rigs"
   },
   "portrait_stature": "culture-only compact torso 0.42 and stoop 0.24 on both sexes, shorter neck; native child growth preserved; framing and clothing fit need engine review",
@@ -26,7 +30,7 @@
     "status": "static checks passed; in-game appearance unverified",
     "cultures": 5,
     "portrait_types": 7,
-    "attachment_triangles": 3216,
+    "attachment_triangles": 3024,
     "native_rig_bindings_checked": true,
     "native_outfit_references_checked": true,
     "engine_tested": false

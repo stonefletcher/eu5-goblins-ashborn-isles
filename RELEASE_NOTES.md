@@ -1,5 +1,18 @@
 # 0.6.0 - Staging: optimization and gameplay
 
+This combined 0.6.0 candidate includes the earlier portrait material, wardrobe,
+hair and Drogg fixes, nine holy sites with varied importance, and the five-crown
+standings panel alongside all 0.5.9 gameplay and optimization work. The initial
+0.6.0 staging package accidentally used an older base for those features; this
+replacement restores them without reverting Harbor Bargains, Compact talks,
+opening projects, Covenant stories, voyage controls or the 100-gold starts.
+Ear attachments again use the native skin material and head-decal routing.
+Static and packaged regression checks cover both generations of changes;
+in-game ear colour and panel layout still require visual confirmation.
+Reinstall this corrected 0.6.0 package with EU5 closed. Portrait fixes apply after
+restart; use a new campaign to test starting gold and the complete starting setup.
+
+
 Loading cleanup: register all seven action prices and their cost labels; resolve
 the Covenant language to the existing Cindermaw dialect; register the
 Harbor Bargains AI actions with eligibility and reserve checks; repair unavailable-target icons and longevity text;

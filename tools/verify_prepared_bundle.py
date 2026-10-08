@@ -79,6 +79,8 @@ def verify(root):
                 verify_stories(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_exploration_progress import verify as verify_voyages
                 verify_voyages(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                from verify_combined_candidate import verify as verify_combined
+                verify_combined(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
             else:
                 assert 'ga_offer_harbor_pact' not in ai
             assert z.read('goblins_ashborn_isles/in_game/events/ashen_covenant.txt')

@@ -209,6 +209,10 @@
       "sha256": "44ac426f58749600611571404ac75440f636f9ae43be82e6012dc3dbad7b3131"
     },
     {
+      "path": "in_game/common/script_values/ga_gathering_ui.txt",
+      "sha256": "7cf0814a0acd1065b5b888357414b48790064b245cff876d618f70d5ae96f785"
+    },
+    {
       "path": "in_game/common/script_values/goblins_gathering.txt",
       "sha256": "1e96c87b3a2d549c766ed4ff4fdf794f93d49eb5f1625233c33186f433723cb5"
     },
@@ -238,11 +242,11 @@
     },
     {
       "path": "in_game/gui/panels/situation/ga_eastern_hunger.gui",
-      "sha256": "929dc10d36cb37b1dca936a21fdd6f4ef436723428ca3fb4f34270913cbec184"
+      "sha256": "bf84a5b8bb54f5e2f4664ae37c02ccc7f237cf83c260c848fd57b9843a4862be"
     },
     {
       "path": "in_game/gui/panels/situation/ga_gathering_of_five.gui",
-      "sha256": "a882a82709409d9bb2cbdf3889486046bf2eaa8560b738fa9bab20dfa8d61f52"
+      "sha256": "c7e5edd8e98b6a511601cbdbfe6e3bb8b6f93ca68135bde000dae3eb548fb5f0"
     },
     {
       "path": "main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt",
@@ -366,7 +370,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "4b945e6dfe829ee67fe7d87f471058e01b954210f51e022cc3437a8052c6250a"
+      "sha256": "2fd968bd7d49aefef34b6d499397c33ebd7cfd0dbd6ece26c9dedc00f5920d37"
     }
   ]
 }

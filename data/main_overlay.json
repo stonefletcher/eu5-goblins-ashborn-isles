@@ -13,7 +13,7 @@
     },
     {
       "path": "in_game/common/ethnicities/ashborn.txt",
-      "sha256": "6626a02b5bf390af7a6e9af8e09021d4ede0068deb8df9102a387d73e9b29c1c"
+      "sha256": "0e8b6d4f6faecc6f99a0a2a9ef07f02b6d707ca038da6839dcdd0586553c0008"
     },
     {
       "path": "in_game/common/genes/zz_ashborn_outfits.txt",
@@ -21,7 +21,7 @@
     },
     {
       "path": "in_game/common/genes/zz_ashborn_portraits.txt",
-      "sha256": "9cca78832b8313bfdb7695aea9bb5e61d57eac79bc441e5e85e3e5970b8cef66"
+      "sha256": "f11dd73746be61a506073992cff3117bd97a60bdd31c49537197725d3f2fca72"
     },
     {
       "path": "in_game/common/languages/goblins_ashborn_isles.txt",
@@ -49,7 +49,7 @@
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/ashborn_features.asset",
-      "sha256": "97991f238cba7f0205d7bd08657ad2c6ec4d72554846f539ca10b7854e7e7c6d"
+      "sha256": "9cadd54d6cbb9f1adf0a9b1004a3eb24cd56cc9db4ff904f671e16668cc5370d"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/brackmaw_skin.dds",
@@ -61,15 +61,15 @@
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/cm_female_features.mesh",
-      "sha256": "d0cd859ec21ed8be779a75c079612b5c9d5ab74fddb359754bdabbebd20df2ca"
+      "sha256": "6363b5b76f24950fd3cbb58cdd9088924ebbb4015ecddb0970b9a1bba4f1aa91"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/cm_infant_features.mesh",
-      "sha256": "5bb8692ce00d358cb8dbac8d2d72c98bad68764474b20b8a3b9e0a3731cd5e1e"
+      "sha256": "32adc1bf24a379c7b0470a66284b904f59f55a8e4bbe43ac211c33ddf797a216"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/cm_male_features.mesh",
-      "sha256": "c2250bc6fa8a8aefef6b8d02ad58fcd853140fc710082964aacb342c13574f2f"
+      "sha256": "7292ed610d357d9fe3253e33504d7dd1f4a713cecf18bab7a4f6901593076a0d"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/ivory.dds",
@@ -81,7 +81,7 @@
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/properties.dds",
-      "sha256": "542b71f8dc2f6cd170d739cd810e1feef7c1e1215fa135062536e5e898f35cbe"
+      "sha256": "e2aeb7cf6602e720bae851f090f7cbcd191111a2d35f363fa4276d0fee36848e"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/reefhook_skin.dds",
@@ -745,11 +745,11 @@
     },
     {
       "path": "main_menu/gfx/portraits/portrait_modifiers/zz_ashborn.txt",
-      "sha256": "c3de833a353423b40575c7389688450cd8f630d20f66d136b7a97ff5135a2723"
+      "sha256": "653aa47db86ad89a0f3a098df6ac04c247024072a74ee292b902960ec0c37040"
     },
     {
       "path": "main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt",
-      "sha256": "fae29e5a5973e5ac6aac9eeef305f210c6671c33f2763a0878f2ba0865b42a13"
+      "sha256": "222c88b88b10a4b1f387aef63cfa23bf7a0f1ce550c0093f2361594b225dbaae"
     },
     {
       "path": "main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt",
@@ -765,7 +765,7 @@
     },
     {
       "path": "main_menu/localization/english/ashen_covenant_l_english.yml",
-      "sha256": "e89199182ee890810351282560db7f382256ddb8ba4d6f4d4e43874bc27e9bfd"
+      "sha256": "89d58d0f44d947fe45b7d32de7a995bf2a6fe94b833534bcc75f42db0d5fff49"
     },
     {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",
@@ -6294,6 +6294,18 @@
     {
       "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_cm_sootkin_gfx.dds",
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "in_game/common/script_values/ga_gathering_ui.txt",
+      "sha256": "7cf0814a0acd1065b5b888357414b48790064b245cff876d618f70d5ae96f785"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/ear_base.dds",
+      "sha256": "8e9e1913b0fe07e9f0acb7fa2f31ff3a9890c1ca1e491cc3bef6e767337612e6"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/ssao.dds",
+      "sha256": "78ba67633a169c3d5151609e4207868336ae52d2bc88e7424c73a0452f2e638f"
     }
   ]
 }

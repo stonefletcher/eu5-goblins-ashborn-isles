@@ -24,6 +24,7 @@ def main():
     paths += [ROOT / 'mod' / rel for rel in flag_paths()]
     from exploration_progress import FILES as exploration_paths
     paths += [ROOT / 'mod' / rel for rel in exploration_paths]
+    paths += [ROOT / 'mod/in_game/common/script_values/ga_gathering_ui.txt']
     paths = sorted(set(paths))
     import mixed_populations
     population_additions = {ident: '\n'.join(mixed_populations.rows(ident)) for ident in mixed_populations.additions()}

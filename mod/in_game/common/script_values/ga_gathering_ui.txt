@@ -1,0 +1,8 @@
+﻿ga_gathering_realm_locations = { value = ga_ui_homeland_count }
+ga_gathering_crown_status = {
+    value = 0
+    if = { limit = { ga_independent_goblin = yes } add = 1 }
+    else_if = { limit = { is_junior_partner = yes } add = 3 }
+    else_if = { limit = { OR = { is_subject_type = vassal is_subject_type = ga_compact_autonomy is_subject_type = ga_compact_protection } } add = 2 }
+    else = { add = 4 }
+}

@@ -39,12 +39,6 @@
             layoutpolicy_horizontal = expanding
             max_width = 400
             autoresize = yes
-            text = "ga_eastern_hunger_desc"
-        }
-        text_multi = {
-            layoutpolicy_horizontal = expanding
-            max_width = 400
-            autoresize = yes
             text = "ga_ui_homeland_progress"
         }
         text_multi = {
@@ -67,6 +61,12 @@
             max_width = 400
             autoresize = yes
             text = "ga_ui_eastern_route"
+        }
+        text_multi = {
+            layoutpolicy_horizontal = expanding
+            max_width = 400
+            autoresize = yes
+            text = "ga_eastern_hunger_desc"
         }
         text_single = {
             layoutpolicy_horizontal = expanding

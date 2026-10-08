@@ -1,52 +1,118 @@
-﻿cm_ashborn_outfits = { usage = game priority = 100
+﻿cm_ashborn_outfits = { usage = game selection_behavior = max priority = 120
 cm_cindermaw_rough_clothing = { ignore_outfit_tags = yes
 dna_modifiers = {
-accessory = { mode = replace gene = clothes template = no_clothes value = 0 }
-accessory = { mode = replace gene = headwear template = no_headwear value = 0 }
-accessory = { mode = replace gene = capes template = no_cape value = 0 }
-accessory = { mode = replace gene = neckware_neck template = no_neckware_neck value = 0 }
-accessory = { mode = replace gene = beards template = no_beard value = 0 }
+accessory = { mode = add gene = clothes template = no_clothes range = { 0 1 } }
+accessory = { mode = add gene = headwear template = no_headwear range = { 0 1 } }
+accessory = { mode = add gene = capes template = no_cape range = { 0 1 } }
+accessory = { mode = add gene = neckware_neck template = no_neckware_neck range = { 0 1 } }
+accessory = { mode = add gene = beards template = no_beard range = { 0 1 } }
 accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }
 }
 weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_cinderkin_gfx } } }
 cm_brackmaw_rough_clothing = { ignore_outfit_tags = yes
 dna_modifiers = {
-accessory = { mode = replace gene = clothes template = no_clothes value = 0 }
-accessory = { mode = replace gene = headwear template = no_headwear value = 0 }
-accessory = { mode = replace gene = capes template = no_cape value = 0 }
-accessory = { mode = replace gene = neckware_neck template = no_neckware_neck value = 0 }
-accessory = { mode = replace gene = beards template = no_beard value = 0 }
+accessory = { mode = add gene = clothes template = no_clothes range = { 0 1 } }
+accessory = { mode = add gene = headwear template = no_headwear range = { 0 1 } }
+accessory = { mode = add gene = capes template = no_cape range = { 0 1 } }
+accessory = { mode = add gene = neckware_neck template = no_neckware_neck range = { 0 1 } }
+accessory = { mode = add gene = beards template = no_beard range = { 0 1 } }
 accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }
 }
 weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_brinekin_gfx } } }
 cm_reefhook_rough_clothing = { ignore_outfit_tags = yes
 dna_modifiers = {
-accessory = { mode = replace gene = clothes template = no_clothes value = 0 }
-accessory = { mode = replace gene = headwear template = no_headwear value = 0 }
-accessory = { mode = replace gene = capes template = no_cape value = 0 }
-accessory = { mode = replace gene = neckware_neck template = no_neckware_neck value = 0 }
-accessory = { mode = replace gene = beards template = no_beard value = 0 }
+accessory = { mode = add gene = clothes template = no_clothes range = { 0 1 } }
+accessory = { mode = add gene = headwear template = no_headwear range = { 0 1 } }
+accessory = { mode = add gene = capes template = no_cape range = { 0 1 } }
+accessory = { mode = add gene = neckware_neck template = no_neckware_neck range = { 0 1 } }
+accessory = { mode = add gene = beards template = no_beard range = { 0 1 } }
 accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }
 }
 weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_reefkin_gfx } } }
 cm_shatterfin_rough_clothing = { ignore_outfit_tags = yes
 dna_modifiers = {
-accessory = { mode = replace gene = clothes template = no_clothes value = 0 }
-accessory = { mode = replace gene = headwear template = no_headwear value = 0 }
-accessory = { mode = replace gene = capes template = no_cape value = 0 }
-accessory = { mode = replace gene = neckware_neck template = no_neckware_neck value = 0 }
-accessory = { mode = replace gene = beards template = no_beard value = 0 }
+accessory = { mode = add gene = clothes template = no_clothes range = { 0 1 } }
+accessory = { mode = add gene = headwear template = no_headwear range = { 0 1 } }
+accessory = { mode = add gene = capes template = no_cape range = { 0 1 } }
+accessory = { mode = add gene = neckware_neck template = no_neckware_neck range = { 0 1 } }
+accessory = { mode = add gene = beards template = no_beard range = { 0 1 } }
 accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }
 }
 weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_shatterkin_gfx } } }
 cm_sootwake_rough_clothing = { ignore_outfit_tags = yes
 dna_modifiers = {
-accessory = { mode = replace gene = clothes template = no_clothes value = 0 }
-accessory = { mode = replace gene = headwear template = no_headwear value = 0 }
-accessory = { mode = replace gene = capes template = no_cape value = 0 }
-accessory = { mode = replace gene = neckware_neck template = no_neckware_neck value = 0 }
-accessory = { mode = replace gene = beards template = no_beard value = 0 }
+accessory = { mode = add gene = clothes template = no_clothes range = { 0 1 } }
+accessory = { mode = add gene = headwear template = no_headwear range = { 0 1 } }
+accessory = { mode = add gene = capes template = no_cape range = { 0 1 } }
+accessory = { mode = add gene = neckware_neck template = no_neckware_neck range = { 0 1 } }
+accessory = { mode = add gene = beards template = no_beard range = { 0 1 } }
 accessory = { mode = add gene = cm_ashborn_clothing template = cm_rough_clothing range = { 0 1 } }
 }
 weight = { base = 0 modifier = { add = 100 gfx_culture_applicable = cm_sootkin_gfx } } }
+}
+cm_ashborn_native_hair = { usage = game selection_behavior = weighted_random priority = 130
+cm_hair_male_0 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = all_hair accessory = male_german_hair_short_curly range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = no age_in_years >= 18 } }
+ }
+cm_hair_male_1 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = all_hair accessory = male_hair_short_straight_pomp range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = no age_in_years >= 18 } }
+ }
+cm_hair_male_2 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = all_hair accessory = male_syrian_hair_curly_regular range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = no age_in_years >= 18 } }
+ }
+cm_hair_male_3 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = all_hair accessory = male_ashanti_hair_short_afro range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = no age_in_years >= 18 } }
+ }
+cm_hair_male_4 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = all_hair accessory = male_german_hair_crown_short range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = no age_in_years >= 18 } }
+ }
+cm_hair_male_5 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = no_hair  range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = no age_in_years >= 18 } }
+ }
+cm_hair_female_0 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = all_hair accessory = female_syrian_braided_back_hair range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = yes age_in_years >= 18 } }
+ }
+cm_hair_female_1 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = all_hair accessory = female_german_braid_hair_behind range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = yes age_in_years >= 18 } }
+ }
+cm_hair_female_2 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = all_hair accessory = female_iroquois_straight_parted_hair range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = yes age_in_years >= 18 } }
+ }
+cm_hair_female_3 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = all_hair accessory = female_aztec_horn_braid_hair range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = yes age_in_years >= 18 } }
+ }
+cm_hair_female_4 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = all_hair accessory = female_ashanti_hair_short_afro range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = yes age_in_years >= 18 } }
+ }
+cm_hair_boy_0 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = all_hair accessory = boy_short_hair_a range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = no age_in_years >= 3 age_in_years < 18 } }
+ }
+cm_hair_boy_1 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = all_hair accessory = boy_german_hair_bob_short range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = no age_in_years >= 3 age_in_years < 18 } }
+ }
+cm_hair_boy_2 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = all_hair accessory = male_syrian_hair_curly_regular range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = no age_in_years >= 3 age_in_years < 18 } }
+ }
+cm_hair_girl_0 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = all_hair accessory = female_hair_long_basic range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = yes age_in_years >= 3 age_in_years < 18 } }
+ }
+cm_hair_girl_1 = { ignore_outfit_tags = yes
+ dna_modifiers = { accessory = { mode = replace gene = hair_styles template = all_hair accessory = female_ashanti_hair_short_afro range = { 0 1 } } }
+ weight = { base = 0 modifier = { add = 1 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx } is_female = yes age_in_years >= 3 age_in_years < 18 } }
+ }
 }

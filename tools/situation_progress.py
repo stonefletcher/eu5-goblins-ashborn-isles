@@ -50,6 +50,8 @@ def build(out, homeland, write, loc):
         else: content += paragraph('ga_ui_eastern_route')
         path = 'in_game/gui/panels/situation/'+situation+'.gui'
         text = (out/path).read_text(encoding='utf-8-sig')
-        text = text.replace('        text_single = {', '        '+content.rstrip()+'\n        text_single = {', 1)
+        anchor = 'blockoverride "situation_panel_main_content" {'
+        assert text.count(anchor) == 1
+        text = text.replace(anchor, anchor+'\n        '+content.rstrip(), 1)
         text = text.replace('situation_panel = {', 'situation_panel = {\n    '+ended_panel(), 1)
         write(out, path, '\n'.join(line.rstrip() for line in text.splitlines())+'\n')

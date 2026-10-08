@@ -40,6 +40,21 @@ SITES = [
     ('emberroot', 'The Emberroot Hollow', 'cm_ember_key', 'sootwake', 'local_defensive', .10,
      'A charred stump marks the first sheltered hearth. Funeral ash is laid beneath young trees, and Root-wardens keep the surrounding seed grove from the charcoal axes.'),
 ]
+# Importance is spiritual reach, not settlement size or an upgrade level.
+# Native holy-site location modifiers are multiplied by this importance.
+SITE_IMPORTANCE = {
+    'first_mouth': 5, 'listening_pool': 3, 'lantern_steps': 2,
+    'mothers_basin': 4, 'storm_teeth': 1, 'emberroot': 2,
+    'blackwood_oathstones': 2, 'ashfield_hearth': 1, 'miregrove_witness': 1,
+}
+SITES.extend([
+    ('blackwood_oathstones', 'The Blackwood Oathstones', 'cm_blackwood', 'cindermaw', 'local_defensive', .025,
+     'Woodcutters bind charcoal-black cords around stones on the old forest path. Each cord promises a firebreak kept or a household sheltered; broken oaths are recited before the next cutting.'),
+    ('ashfield_hearth', 'The Ashfield Hearth', 'cm_ashfields', 'cindermaw', 'local_monthly_food_modifier', .025,
+     'Field households carry a pinch of the first grain to a low hearth built from cooling lava. Its keepers feed hungry neighbors before burning the offering. Few pilgrims come from beyond the nearby farms.'),
+    ('miregrove_witness', 'The Miregrove Witness', 'cm_miregrove', 'brackmaw', 'local_unrest', -.025,
+     'A crooked grove above the floodwater shelters the oath stakes of neighboring marsh houses. Disputes over channels are spoken before its roots, where witnesses remember promises longer than chiefs do.'),
+])
 RITES = {
     'returning_ash': ('Feast of Returning Ash', 'Fund a communal feast and name the dead.', 'stability_cost_efficiency', .10),
     'water_lanterns': ('Lanterns Upon the Water', 'Provision beacon keepers and the households of missing crews.', 'naval_morale_modifier', .10),
@@ -93,7 +108,7 @@ def build(out):
     for key, name, location, island, modifier, value, desc in SITES:
         loc('ac_' + key, name); loc('ac_' + key + '_desc', desc)
         loc('ac_' + key + '_site', name)
-        sites.append(f'ac_{key} = {{ location = {location} type = ac_{key}_site importance = 3 religions = {{ {RELIGION} }} }}')
+        sites.append(f'ac_{key} = {{ location = {location} type = ac_{key}_site importance = {SITE_IMPORTANCE[key]} religions = {{ {RELIGION} }} }}')
         types.append(f'ac_{key}_site = {{ location_modifier = {{ {modifier} = {value} }} }}')
     write('in_game/common/holy_sites/ashen_covenant.txt', '\n'.join(sites))
     write('in_game/common/holy_site_types/ashen_covenant.txt', '\n'.join(types))
@@ -175,7 +190,7 @@ ac_covenant_stories = {{
  random_events = {{ chance_to_happen = 5 {' '.join(f'10 = ashen_covenant.{s[0]}' for s in STORIES)} }}
 }}''')
     write('main_menu/localization/english/ashen_covenant_l_english.yml', 'l_english:\n' + '\n'.join(' ' + k + ': "' + v.replace('"', '\\"') + '"' for k, v in text.items()))
-    return {'version': '0.5.7', 'sites': len(SITES), 'aspects': len(ASPECTS), 'rites': len(RITES), 'events': len(STORIES) + 1, 'files': paths, 'engine_tested': False}
+    return {'version': '0.5.7', 'sites': len(SITES), 'site_importance': SITE_IMPORTANCE, 'aspects': len(ASPECTS), 'rites': len(RITES), 'events': len(STORIES) + 1, 'files': paths, 'engine_tested': False}
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)

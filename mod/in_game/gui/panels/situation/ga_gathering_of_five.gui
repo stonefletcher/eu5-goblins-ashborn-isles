@@ -34,13 +34,11 @@
     }
 
     blockoverride "situation_subheader_content" {}
+    blockoverride "situation_header_left" {
+        visible = yes
+        text_single = { text = "ga_gathering_header" fontsize = 13 }
+    }
     blockoverride "situation_panel_main_content" {
-        text_multi = {
-            layoutpolicy_horizontal = expanding
-            max_width = 400
-            autoresize = yes
-            text = "ga_gathering_of_five_desc"
-        }
         text_multi = {
             layoutpolicy_horizontal = expanding
             max_width = 400
@@ -80,12 +78,386 @@
             autoresize = yes
             text = "ga_ui_history_note"
         }
-        text_single = {
-            layoutpolicy_horizontal = expanding
-            text = "END_REQUIREMENTS"
+        situation_card_common = {
+            blockoverride "common_header_icon" {}
+            blockoverride "common_header_text" { text = "ga_gathering_race" }
+            blockoverride "common_bottom_content" {
+                text_multi = {
+                    layoutpolicy_horizontal = expanding
+                    max_width = 460
+                    autoresize = yes
+                    text = "ga_gathering_of_five_desc"
+                }
+            }
         }
-        TooltipRequirementsList = {
-            textcontext = "[SituationView.GetActiveSituation.GetSituation.GetEndConditions]"
+        vbox = {
+            layoutpolicy_horizontal = expanding
+            spacing = 4
+            text_single = { text = "ga_gathering_standings" fontsize = 13 }
+
+            vbox = {
+                datacontext = "[GetCountry('CDM')]"
+                layoutpolicy_horizontal = expanding
+                using = bg_paper_card
+                using = bg_cabinet_card_frame
+                margin = { 8 6 }
+                spacing = 3
+                hbox = {
+                    layoutpolicy_horizontal = expanding
+                    spacing = 8
+                    country_flag_small = {
+                        size = { 42 28 }
+                        tooltipwidget = { using = CountryTooltip }
+                    }
+                    vbox = {
+                        layoutpolicy_horizontal = expanding
+                        text_single = {
+                            layoutpolicy_horizontal = expanding
+                            autoresize = yes
+                            text = "[Country.GetName]"
+                        }
+                        text_single = {
+                            visible = "[Country.Exists]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "[Country.GetGovernment.GetRulerOrRegent.GetName]"
+                        }
+                    }
+                    text_single = {
+                        visible = "[Not(Country.Exists)]"
+                        text = "ga_gathering_annexed"
+                        tooltip = "ga_gathering_annexed_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)1'))]"
+                        text = "ga_gathering_realm_count"
+                        tooltip = "ga_gathering_progress_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)2'))]"
+                        text = "ga_gathering_vassal"
+                        tooltip = "ga_gathering_dependent_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)3'))]"
+                        text = "ga_gathering_junior"
+                        tooltip = "ga_gathering_dependent_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)4'))]"
+                        text = "ga_gathering_subject"
+                        tooltip = "ga_gathering_other_subject_tt"
+                    }
+                }
+                progressbar = {
+                    visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)1'))]"
+                    layoutpolicy_horizontal = expanding
+                    size = { -1 8 }
+                    min = 0
+                    max = 72
+                    value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
+                    progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
+                    noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
+                    tooltip = "ga_gathering_progress_tt"
+                }
+            }
+
+            vbox = {
+                datacontext = "[GetCountry('QBR')]"
+                layoutpolicy_horizontal = expanding
+                using = bg_paper_card
+                using = bg_cabinet_card_frame
+                margin = { 8 6 }
+                spacing = 3
+                hbox = {
+                    layoutpolicy_horizontal = expanding
+                    spacing = 8
+                    country_flag_small = {
+                        size = { 42 28 }
+                        tooltipwidget = { using = CountryTooltip }
+                    }
+                    vbox = {
+                        layoutpolicy_horizontal = expanding
+                        text_single = {
+                            layoutpolicy_horizontal = expanding
+                            autoresize = yes
+                            text = "[Country.GetName]"
+                        }
+                        text_single = {
+                            visible = "[Country.Exists]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "[Country.GetGovernment.GetRulerOrRegent.GetName]"
+                        }
+                    }
+                    text_single = {
+                        visible = "[Not(Country.Exists)]"
+                        text = "ga_gathering_annexed"
+                        tooltip = "ga_gathering_annexed_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)1'))]"
+                        text = "ga_gathering_realm_count"
+                        tooltip = "ga_gathering_progress_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)2'))]"
+                        text = "ga_gathering_vassal"
+                        tooltip = "ga_gathering_dependent_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)3'))]"
+                        text = "ga_gathering_junior"
+                        tooltip = "ga_gathering_dependent_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)4'))]"
+                        text = "ga_gathering_subject"
+                        tooltip = "ga_gathering_other_subject_tt"
+                    }
+                }
+                progressbar = {
+                    visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)1'))]"
+                    layoutpolicy_horizontal = expanding
+                    size = { -1 8 }
+                    min = 0
+                    max = 72
+                    value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
+                    progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
+                    noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
+                    tooltip = "ga_gathering_progress_tt"
+                }
+            }
+
+            vbox = {
+                datacontext = "[GetCountry('RHK')]"
+                layoutpolicy_horizontal = expanding
+                using = bg_paper_card
+                using = bg_cabinet_card_frame
+                margin = { 8 6 }
+                spacing = 3
+                hbox = {
+                    layoutpolicy_horizontal = expanding
+                    spacing = 8
+                    country_flag_small = {
+                        size = { 42 28 }
+                        tooltipwidget = { using = CountryTooltip }
+                    }
+                    vbox = {
+                        layoutpolicy_horizontal = expanding
+                        text_single = {
+                            layoutpolicy_horizontal = expanding
+                            autoresize = yes
+                            text = "[Country.GetName]"
+                        }
+                        text_single = {
+                            visible = "[Country.Exists]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "[Country.GetGovernment.GetRulerOrRegent.GetName]"
+                        }
+                    }
+                    text_single = {
+                        visible = "[Not(Country.Exists)]"
+                        text = "ga_gathering_annexed"
+                        tooltip = "ga_gathering_annexed_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)1'))]"
+                        text = "ga_gathering_realm_count"
+                        tooltip = "ga_gathering_progress_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)2'))]"
+                        text = "ga_gathering_vassal"
+                        tooltip = "ga_gathering_dependent_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)3'))]"
+                        text = "ga_gathering_junior"
+                        tooltip = "ga_gathering_dependent_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)4'))]"
+                        text = "ga_gathering_subject"
+                        tooltip = "ga_gathering_other_subject_tt"
+                    }
+                }
+                progressbar = {
+                    visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)1'))]"
+                    layoutpolicy_horizontal = expanding
+                    size = { -1 8 }
+                    min = 0
+                    max = 72
+                    value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
+                    progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
+                    noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
+                    tooltip = "ga_gathering_progress_tt"
+                }
+            }
+
+            vbox = {
+                datacontext = "[GetCountry('SFK')]"
+                layoutpolicy_horizontal = expanding
+                using = bg_paper_card
+                using = bg_cabinet_card_frame
+                margin = { 8 6 }
+                spacing = 3
+                hbox = {
+                    layoutpolicy_horizontal = expanding
+                    spacing = 8
+                    country_flag_small = {
+                        size = { 42 28 }
+                        tooltipwidget = { using = CountryTooltip }
+                    }
+                    vbox = {
+                        layoutpolicy_horizontal = expanding
+                        text_single = {
+                            layoutpolicy_horizontal = expanding
+                            autoresize = yes
+                            text = "[Country.GetName]"
+                        }
+                        text_single = {
+                            visible = "[Country.Exists]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "[Country.GetGovernment.GetRulerOrRegent.GetName]"
+                        }
+                    }
+                    text_single = {
+                        visible = "[Not(Country.Exists)]"
+                        text = "ga_gathering_annexed"
+                        tooltip = "ga_gathering_annexed_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)1'))]"
+                        text = "ga_gathering_realm_count"
+                        tooltip = "ga_gathering_progress_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)2'))]"
+                        text = "ga_gathering_vassal"
+                        tooltip = "ga_gathering_dependent_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)3'))]"
+                        text = "ga_gathering_junior"
+                        tooltip = "ga_gathering_dependent_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)4'))]"
+                        text = "ga_gathering_subject"
+                        tooltip = "ga_gathering_other_subject_tt"
+                    }
+                }
+                progressbar = {
+                    visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)1'))]"
+                    layoutpolicy_horizontal = expanding
+                    size = { -1 8 }
+                    min = 0
+                    max = 72
+                    value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
+                    progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
+                    noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
+                    tooltip = "ga_gathering_progress_tt"
+                }
+            }
+
+            vbox = {
+                datacontext = "[GetCountry('SWK')]"
+                layoutpolicy_horizontal = expanding
+                using = bg_paper_card
+                using = bg_cabinet_card_frame
+                margin = { 8 6 }
+                spacing = 3
+                hbox = {
+                    layoutpolicy_horizontal = expanding
+                    spacing = 8
+                    country_flag_small = {
+                        size = { 42 28 }
+                        tooltipwidget = { using = CountryTooltip }
+                    }
+                    vbox = {
+                        layoutpolicy_horizontal = expanding
+                        text_single = {
+                            layoutpolicy_horizontal = expanding
+                            autoresize = yes
+                            text = "[Country.GetName]"
+                        }
+                        text_single = {
+                            visible = "[Country.Exists]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "[Country.GetGovernment.GetRulerOrRegent.GetName]"
+                        }
+                    }
+                    text_single = {
+                        visible = "[Not(Country.Exists)]"
+                        text = "ga_gathering_annexed"
+                        tooltip = "ga_gathering_annexed_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)1'))]"
+                        text = "ga_gathering_realm_count"
+                        tooltip = "ga_gathering_progress_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)2'))]"
+                        text = "ga_gathering_vassal"
+                        tooltip = "ga_gathering_dependent_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)3'))]"
+                        text = "ga_gathering_junior"
+                        tooltip = "ga_gathering_dependent_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)4'))]"
+                        text = "ga_gathering_subject"
+                        tooltip = "ga_gathering_other_subject_tt"
+                    }
+                }
+                progressbar = {
+                    visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)1'))]"
+                    layoutpolicy_horizontal = expanding
+                    size = { -1 8 }
+                    min = 0
+                    max = 72
+                    value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
+                    progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
+                    noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
+                    tooltip = "ga_gathering_progress_tt"
+                }
+            }
+
+        }
+        situation_card_expandable = {
+            blockoverride "header_text" { text = "ga_gathering_rules" }
+            blockoverride "header_icon" { texture = "gfx/interface/icons/disasters/end_requirements_green.dds" }
+            blockoverride "header_button_onclick" { onclick = "[SituationView.Vars.Toggle('ga_rules_collapsed')]" }
+            blockoverride "bottom_content_onclick" { visible = "[Not(SituationView.Vars.Exists('ga_rules_collapsed'))]" }
+            blockoverride "icon_replace_visible_yes" { visible = "[Not(SituationView.Vars.Exists('ga_rules_collapsed'))]" }
+            blockoverride "icon_replace_visible_not" { visible = "[SituationView.Vars.Exists('ga_rules_collapsed')]" }
+            blockoverride "bottom_content" {
+                vbox = {
+                    layoutpolicy_horizontal = expanding
+                    spacing = 8
+                    text_multi = {
+                        layoutpolicy_horizontal = expanding
+                        max_width = 460
+                        autoresize = yes
+                        text = "ga_gathering_paths"
+                    }
+                    TooltipRequirementsList = {
+                        textcontext = "[SituationView.GetActiveSituation.GetSituation.GetEndConditions]"
+                    }
+                }
+            }
         }
     }
 }

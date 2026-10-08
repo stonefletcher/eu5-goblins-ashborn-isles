@@ -1,5 +1,65 @@
 ﻿special_genes = {
 morph_genes = {
+cm_ashborn_weathering = { inheritable = no cm_weathered = { index = 0
+male = {
+decal = { body_part = head
+ textures = { diffuse = "gfx/models/portraits/decals/male_head/male_head_old_forehead_1_early_diffuse.dds" normal = "gfx/models/portraits/decals/male_head/male_head_old_forehead_1_early_normal.dds" }
+ blend_modes = { diffuse = multiply normal = overlay }
+ alpha_curve = { { 0 0 } { 1 0.42 } }
+ age = { mode = multiply curve = { { 0 0 } { 0.18 0 } { 0.30 1 } { 1 1 } } }
+ decal_apply_order = post_skin_color priority = 110
+ }
+decal = { body_part = head
+ textures = { diffuse = "gfx/models/portraits/decals/male_head/male_head_old_eyes_1_early_diffuse.dds" normal = "gfx/models/portraits/decals/male_head/male_head_old_eyes_1_early_normal.dds" }
+ blend_modes = { diffuse = multiply normal = overlay }
+ alpha_curve = { { 0 0 } { 1 0.42 } }
+ age = { mode = multiply curve = { { 0 0 } { 0.18 0 } { 0.30 1 } { 1 1 } } }
+ decal_apply_order = post_skin_color priority = 110
+ }
+decal = { body_part = head
+ textures = { diffuse = "gfx/models/portraits/decals/male_head/male_head_old_mouth_1_early_diffuse.dds" normal = "gfx/models/portraits/decals/male_head/male_head_old_mouth_1_early_normal.dds" }
+ blend_modes = { diffuse = multiply normal = overlay }
+ alpha_curve = { { 0 0 } { 1 0.42 } }
+ age = { mode = multiply curve = { { 0 0 } { 0.18 0 } { 0.30 1 } { 1 1 } } }
+ decal_apply_order = post_skin_color priority = 110
+ }
+}
+female = {
+decal = { body_part = head
+ textures = { diffuse = "gfx/models/portraits/decals/female_head/female_head_old_forehead_1_early_diffuse.dds" normal = "gfx/models/portraits/decals/female_head/female_head_old_forehead_1_early_normal.dds" }
+ blend_modes = { diffuse = multiply normal = overlay }
+ alpha_curve = { { 0 0 } { 1 0.42 } }
+ age = { mode = multiply curve = { { 0 0 } { 0.18 0 } { 0.30 1 } { 1 1 } } }
+ decal_apply_order = post_skin_color priority = 110
+ }
+decal = { body_part = head
+ textures = { diffuse = "gfx/models/portraits/decals/female_head/female_head_old_eyes_1_early_diffuse.dds" normal = "gfx/models/portraits/decals/female_head/female_head_old_eyes_1_early_normal.dds" }
+ blend_modes = { diffuse = multiply normal = overlay }
+ alpha_curve = { { 0 0 } { 1 0.42 } }
+ age = { mode = multiply curve = { { 0 0 } { 0.18 0 } { 0.30 1 } { 1 1 } } }
+ decal_apply_order = post_skin_color priority = 110
+ }
+decal = { body_part = head
+ textures = { diffuse = "gfx/models/portraits/decals/female_head/female_head_old_mouth_1_early_diffuse.dds" normal = "gfx/models/portraits/decals/female_head/female_head_old_mouth_1_early_normal.dds" }
+ blend_modes = { diffuse = multiply normal = overlay }
+ alpha_curve = { { 0 0 } { 1 0.42 } }
+ age = { mode = multiply curve = { { 0 0 } { 0.18 0 } { 0.30 1 } { 1 1 } } }
+ decal_apply_order = post_skin_color priority = 110
+ }
+}
+boy = { } girl = { } adolescent_boy = { } adolescent_girl = { } infant = { } } }
+cm_drogg_scar = { inheritable = no cm_battle_scar = { index = 0
+ male = { decal = { body_part = head
+ textures = {
+ diffuse = "gfx/models/portraits/decals/visual_traits/male_head_decal_traits_scars_02_diffuse.dds"
+ normal = "gfx/models/portraits/decals/visual_traits/male_head_decal_traits_scars_02_normal.dds"
+ }
+ blend_modes = { diffuse = overlay normal = overlay }
+ alpha_curve = { { 0 0 } { 1 0.65 } }
+ decal_apply_order = post_skin_color priority = 115
+ } }
+ female = { } boy = { } girl = { } adolescent_boy = { } adolescent_girl = { } infant = { }
+ } }
 cm_ashborn_stature = { inheritable = no
  cm_compact_body = { index = 0
   male = {
@@ -15,65 +75,65 @@ cm_ashborn_stature = { inheritable = no
 cm_cindermaw_skin = { inheritable = no cm_cindermaw_skin = { index = 0 male = { decal = { body_part = head
  textures = { diffuse = "gfx/models/portraits/ashborn/cindermaw_skin.dds" }
  blend_modes = { diffuse = replace }
- alpha_curve = { { 0 0.60 } { 1 0.60 } }
+ alpha_curve = { { 0 0.94 } { 1 0.94 } }
  decal_apply_order = post_skin_color priority = 100
  }
 decal = { body_part = torso
  textures = { diffuse = "gfx/models/portraits/ashborn/cindermaw_skin.dds" }
  blend_modes = { diffuse = replace }
- alpha_curve = { { 0 0.60 } { 1 0.60 } }
+ alpha_curve = { { 0 0.94 } { 1 0.94 } }
  decal_apply_order = post_skin_color priority = 100
  }
  } female = male boy = male girl = male adolescent_boy = male adolescent_girl = male infant = male } }
 cm_brackmaw_skin = { inheritable = no cm_brackmaw_skin = { index = 0 male = { decal = { body_part = head
  textures = { diffuse = "gfx/models/portraits/ashborn/brackmaw_skin.dds" }
  blend_modes = { diffuse = replace }
- alpha_curve = { { 0 0.60 } { 1 0.60 } }
+ alpha_curve = { { 0 0.94 } { 1 0.94 } }
  decal_apply_order = post_skin_color priority = 100
  }
 decal = { body_part = torso
  textures = { diffuse = "gfx/models/portraits/ashborn/brackmaw_skin.dds" }
  blend_modes = { diffuse = replace }
- alpha_curve = { { 0 0.60 } { 1 0.60 } }
+ alpha_curve = { { 0 0.94 } { 1 0.94 } }
  decal_apply_order = post_skin_color priority = 100
  }
  } female = male boy = male girl = male adolescent_boy = male adolescent_girl = male infant = male } }
 cm_reefhook_skin = { inheritable = no cm_reefhook_skin = { index = 0 male = { decal = { body_part = head
  textures = { diffuse = "gfx/models/portraits/ashborn/reefhook_skin.dds" }
  blend_modes = { diffuse = replace }
- alpha_curve = { { 0 0.60 } { 1 0.60 } }
+ alpha_curve = { { 0 0.94 } { 1 0.94 } }
  decal_apply_order = post_skin_color priority = 100
  }
 decal = { body_part = torso
  textures = { diffuse = "gfx/models/portraits/ashborn/reefhook_skin.dds" }
  blend_modes = { diffuse = replace }
- alpha_curve = { { 0 0.60 } { 1 0.60 } }
+ alpha_curve = { { 0 0.94 } { 1 0.94 } }
  decal_apply_order = post_skin_color priority = 100
  }
  } female = male boy = male girl = male adolescent_boy = male adolescent_girl = male infant = male } }
 cm_shatterfin_skin = { inheritable = no cm_shatterfin_skin = { index = 0 male = { decal = { body_part = head
  textures = { diffuse = "gfx/models/portraits/ashborn/shatterfin_skin.dds" }
  blend_modes = { diffuse = replace }
- alpha_curve = { { 0 0.60 } { 1 0.60 } }
+ alpha_curve = { { 0 0.94 } { 1 0.94 } }
  decal_apply_order = post_skin_color priority = 100
  }
 decal = { body_part = torso
  textures = { diffuse = "gfx/models/portraits/ashborn/shatterfin_skin.dds" }
  blend_modes = { diffuse = replace }
- alpha_curve = { { 0 0.60 } { 1 0.60 } }
+ alpha_curve = { { 0 0.94 } { 1 0.94 } }
  decal_apply_order = post_skin_color priority = 100
  }
  } female = male boy = male girl = male adolescent_boy = male adolescent_girl = male infant = male } }
 cm_sootwake_skin = { inheritable = no cm_sootwake_skin = { index = 0 male = { decal = { body_part = head
  textures = { diffuse = "gfx/models/portraits/ashborn/sootwake_skin.dds" }
  blend_modes = { diffuse = replace }
- alpha_curve = { { 0 0.60 } { 1 0.60 } }
+ alpha_curve = { { 0 0.94 } { 1 0.94 } }
  decal_apply_order = post_skin_color priority = 100
  }
 decal = { body_part = torso
  textures = { diffuse = "gfx/models/portraits/ashborn/sootwake_skin.dds" }
  blend_modes = { diffuse = replace }
- alpha_curve = { { 0 0.60 } { 1 0.60 } }
+ alpha_curve = { { 0 0.94 } { 1 0.94 } }
  decal_apply_order = post_skin_color priority = 100
  }
  } female = male boy = male girl = male adolescent_boy = male adolescent_girl = male infant = male } }

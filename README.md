@@ -21,10 +21,14 @@ receive signing receipts listing the actual payment, benefit, burden and term.
 Earlier portrait, wardrobe, hair, Drogg and holy-site fixes are retained.
 
 Use a NEW campaign: the world map, country roster and markets have changed.
-Install with EU5 closed. Static checks cover geography, native definitions,
-all-six-crown event scenarios, terrain reconstruction and package hashes.
+Install with EU5 closed. The source and bundled installer both target 0.6.0.
+Static geography, native definitions, six-crown event scenarios and terrain
+checks passed. A clean source export reconstructed the installer successfully;
+all 1,974 files matched in both an isolated install and the active local copy.
+The previous local version was backed up and verified.
 In-game sailing, market trade, UI layout and rendering remain playtest checks.
-This is local 0.6.0 staging work, separate from GitHub releases and Workshop.
+Use this `staging/0.6` branch for the Giltfang candidate; the default branch,
+GitHub releases and Steam Workshop are separate publication targets.
 
 
 Included gameplay:

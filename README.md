@@ -38,9 +38,9 @@ Install with EU5 closed. The source and bundled installer both target 0.6.0.
 Static geography, native definitions, six-crown event scenarios and terrain
 checks passed, including 132 project scenarios and an ordinary coastal route
 through the Quiet Road. Terrain seams have zero measured error across 97
-land districts and 75 ports. The matching installer is being refreshed for
-Lantern Cay and the 25-gold projects; clean-download installation is the
-remaining staging gate. Earlier Giltfang installs were verified and backed up.
+land districts and 75 ports. The matching 0.6.0 installer archive has passed
+source, script, checksum and player-guide verification and includes Lantern
+Cay, the 25-gold projects and food tooltip guidance.
 In-game sailing, market trade, UI layout and rendering remain playtest checks.
 Use this `staging/0.6` branch for the Giltfang candidate; the default branch,
 GitHub releases and Steam Workshop are separate publication targets.

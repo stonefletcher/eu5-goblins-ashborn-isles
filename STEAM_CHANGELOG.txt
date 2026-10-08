@@ -1,10 +1,40 @@
+[h2]0.6.0 - Giltfang and the Quiet Road[/h2]
+[list]
+[*]New sixth crown: Giltfang, with Chainhaven market, Tolltooth, lore, court and artwork.
+[*]All goblins start with mutual homeland discovery; six-crown event and situation integration.
+[*]Lantern Cay belongs to Cindermaw. Ordinary coastal passages connect the northern and southern islands, with the lower eastern sea approach opened.
+[*]Separate Ashborn Voyages situation, clearer choices and hover rewards, readable requirements, corrected text and detailed signed-pact receipts.
+[*]Starting projects cost 25 gold. Food storage bonuses now explain what they change and where to inspect them.
+[*]Explicit clan flags and a one-time saved-placeholder repair, including Giltfang.
+[*]Previous portrait, Drogg, hairstyle, wardrobe and holy-site fixes retained.
+[/list]
+[b]EU5 1.3.11. Start a new 1337 campaign when upgrading from 0.5.x.[/b] Existing 0.6.0 saves receive the flag repair after restart and the next month. Static and installer checks passed; gameplay and visual confirmation remain pending.
+
+[h2]Version 0.5.8 - Faces, Shrines and the Gathering[/h2]
+[list]
+[*]Rougher goblin portraits, leather/hide/fur clothing and varied native hairstyles without stacked hair.
+[*]Drogg's distinct face, cosmetic battle scar and short swept-back haircut.
+[*]Nine holy sites with importance 1-5 and varied island distribution.
+[*]Gathering kingdom cards show rulers, live realm progress, annexed crowns and subject states, with expandable rules.
+[/list]
+[b]EU5 1.3.11. New 1337 campaign required. In-game appearance, save/reload and balance review remain pending.[/b]
+
+[h2]0.5.8 Drogg and hair correction (staging)[/h2]
+Native hairstyle replacement removes the extra hair layer. Six equal male and five female styles; Drogg-specific face, crest and cosmetic scar. Engine review pending.
+
+[h2]0.5.8 rough-face follow-up (staging only)[/h2]
+Lower foreheads, sturdier jaws, cropped/braided adult hair and subtle adult facial weathering. Improved shared skin and leather wardrobe retained. New appearance awaits game review.
+
+[h2]0.5.8 material follow-up (staging)[/h2]
+Shared skin rendering for ears/faces, stronger clan tint, shorter swept ears, stronger brows/noses/cheeks, external tooth studs removed and corrected outfit suppression. Engine acceptance pending.
+
 [h2]0.5.8 portrait candidate (unpublished)[/h2]
 Folded ears, smaller hooded eyes, lean faces, shorter necks, compact posture, smaller teeth, beard removal and an adult hide/leather/fur wardrobe. In-game appearance pending.
 
 [h2]0.5.6[/h2]
 Specialized economies, delayed exploration, situation panels, tooltip and modifier fixes, and three Cindermaw council rewards. Complete matching installer; new 1337 campaign required. Gameplay acceptance pending.
 
-[h2]0.5.5 — The Gathering of the Five[/h2]
+[h2]0.5.5 â€” The Gathering of the Five[/h2]
 [list]
 [*]Two connected situations: unite the five kingdoms, then establish a European coastal foothold.
 [*]Seven diplomatic and military actions, five clan introductions and Shatterfin's maternal-house follow-up.

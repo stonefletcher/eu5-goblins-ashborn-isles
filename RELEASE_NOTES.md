@@ -1,4 +1,4 @@
-# 0.6.0 - Staging: optimization and gameplay
+# 0.6.0 - Giltfang and the Quiet Road
 
 Flag repair: all six crowns explicitly select their authored coat of arms at
 creation. A one-time monthly migration corrects saved procedural placeholders,

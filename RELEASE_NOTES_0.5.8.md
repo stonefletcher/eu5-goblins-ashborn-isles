@@ -1,55 +1,14 @@
-# Goblins of the Ashborn Isles 0.5.8 — Portrait art pass
+# Goblins of the Ashborn Isles 0.5.8
 
-Staging candidate, incorporating the completed 0.5.7 release at b4940c7.
-Not a Steam release and not installed into the active game profile.
+- Rougher goblin portraits, shared face/ear skin, compact proportions and leather/hide/fur clothing.
+- Native hairstyle replacement fixes layered hair; six equal male and five equal female adult choices, with fitted child styles.
+- Drogg has short swept-back hair, a distinct face and a cosmetic battle scar.
+- Nine holy sites with importance 1–5: three on Cindermaw, two on Brackmaw and one on each smaller island.
+- Redesigned Gathering panel opens to five kingdom cards, current rulers and live realm control; annexed and subject states remain clear, with expandable unification rules.
+- Inherits Ashen Covenant religion, specialized economies, delayed exploration, named diplomatic replies and reduced Harbor Pact AI spam.
 
-## Portrait changes
+## Installation and validation
 
-- Replace the flat ear fans with closed, cupped ears: recessed bowls, raised rims,
-  smooth normals, swept tips and subtle left/right differences. Retain native
-  skeleton bindings and the working shared-pose attachment route.
-- Replace oversized eyes and broad mouths with smaller, recessed, hooded eyes,
-  stronger brows, lean cheeks and restrained mouths. Keep hooked noses without
-  combining maximum nose length, maximum projection and minimum jaw size.
-- Preserve more native skin colour detail: reduce the constant skin replacement
-  from 88% to 60%. Normal-map detail, native ageing and clan colours remain.
-- Shorter necks; compact torso strength 0.32 to 0.42 and stoop 0.18 to 0.24.
-  These are rig parameters, not measured height in metres. Female height poses
-  remain unsupported, so no disabled height attribute is introduced.
-- Smaller jaw-bound teeth; remove native beards to expose goblin facial anatomy.
-- Replace the mixed adult cloth wardrobe entirely with inspected native hide
-  tunics, fringed leather overcoats and fur-trimmed hunter garments. No Chinese,
-  German jacket, Aztec wrap or Syrian scarf-dress entries remain in the adult
-  selection. Children retain fitted plain garments and infants retain swaddling.
-  Custom torn-leather geometry remains future work.
-- Apply by goblin culture to court members, nobles, relatives and generated
-  characters, preserving human appearance and unrelated individual DNA.
-- Keep infant skin/ears separate from adult teeth and compact-body treatment;
-  native child ageing still controls the adult facial morphs.
+EU5 1.3.11. Extract the full installer ZIP to a fresh folder, close EU5 and run Install-Goblins.cmd. Enable only one Goblins copy. A new 1337 campaign is required for holy sites and starting-world content.
 
-## Validation and visual acceptance
-
-Static checks cover all five cultures and seven portrait age/sex types, native
-rig transforms and clothing references, DDS array compatibility, finite mesh
-data, normalized normals/weights and closed consistently wound ear shells.
-Full build and clean-source installer checks are recorded in HANDOFF.md.
-
-No in-game visual acceptance is claimed. Review the court, noble/estate and
-character views at their normal small size and in close-up: men, women,
-children, adolescents, infants and elders from all five cultures; an existing
-save and newly generated characters; a human ruler as a negative control.
-Check blink/talk/idle poses, ear roots and lighting, teeth/lip clipping, neck
-and hand colour seams, hair overlap, clothing fit and portrait framing.
-
-The reference is art/events/sources/gathering.png. Judge whether the faces read
-as weathered, ugly goblins with short adult proportions. A technical mesh
-preview is not a screenshot of the engine result.
-
-## Inherited 0.5.7 changes
-
-Retains the Ashen Covenant religion and goblin estate names, homeland-only
-starting land discovery, delayed voyages, Harbor Pact response notifications,
-Ashen Compact refusal notifications and removal of AI custom Harbor Pact spam.
-New campaigns are required for inherited starting-world/discovery changes.
-Portrait modifiers should also affect existing culture-matched characters;
-verify this in a saved game rather than assuming the engine refreshes every view.
+Native portrait assets and script checks, archive integrity, exact clean-source preparation and isolated installation are required before publication. Visual appearance, live panel updates, save/reload stability and balance remain pending in-game review. Existing saves may receive UI and portrait changes after restart; starting-world changes do not apply retroactively.

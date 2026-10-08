@@ -20,6 +20,9 @@ for filename in ['10_countries.txt','06_pops.txt','07_cities_and_buildings.txt',
     if not (output/'main_menu/setup/start'/filename).is_file():raise SystemExit('Incomplete campaign setup.')
 dist=ROOT/'dist';dist.mkdir(exist_ok=True)
 docs=['README.md','RELEASE_NOTES.md','TESTING.md','LORE.md','Install-Goblins.ps1','Install-Goblins.cmd']
+docs += ['WORKSHOP_UPLOAD.md', 'STEAM_DESCRIPTION.txt', 'STEAM_CHANGELOG.txt']
+if (ROOT/f'RELEASE_NOTES_{version}.md').is_file():
+    docs.append(f'RELEASE_NOTES_{version}.md')
 with zipfile.ZipFile(dist/f'Goblins_Ashborn_Isles_{version}.zip','w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
     for p in sorted((ROOT/'build/goblins_ashborn_isles').rglob('*')):
         if p.is_file() and not (p.suffix=='.bin' and 'terrain_cache' in p.parts):z.write(p,'goblins_ashborn_isles/'+p.relative_to(ROOT/'build/goblins_ashborn_isles').as_posix())

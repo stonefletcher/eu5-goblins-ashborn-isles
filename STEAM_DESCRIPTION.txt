@@ -1,61 +1,41 @@
 [h1]Goblins of the Ashborn Isles[/h1]
-[b]A fantasy Europa Universalis V mod — Version 0.5.7[/b]
+[b]Version 0.6.0 | Europa Universalis V 1.3.11 | New 1337 campaign required[/b]
 
-Fire rose from the Atlantic. When the smoke cleared, new islands stood between the Azores and Portugal — and goblins already walked their shores.
+Fire rose from the Atlantic. When the smoke cleared, goblin crowns claimed the new islands between the Azores and Portugal. Lead one of six rival nations, build your harbors, bargain with neighboring crowns and chart foreign shores.
 
-Now five rival nations carve a living from volcanic ridges, sheltered harbours and treacherous seas. Captains quarrel, mines ring beneath the mountains, and the world beyond the horizon waits to be discovered.
-
-Lead one of the Ashborn clans in a new 1337 campaign. Build your island realm, chart foreign shores, and decide whether your neighbours will become trading partners, rivals, or the first conquests of a goblin empire.
-
-[h2]Version 0.5.7 - Oaths of Ash and Salt[/h2]
+[h2]New in 0.6.0[/h2]
 [list]
-[*]Ashen Covenant: six holy sites, eight traditions, Covenant Favor, three rites, twelve stories and the Moot of Six Fires.
-[*]Named acceptance and refusal popups for Harbor Pacts and Ashen Compact offers.
-[*]AI no longer initiates the custom Harbor Pact; players retain it at the same price.
-[*]Foreign land begins undiscovered. Nearby waters remain known; voyages reveal ports on return after the existing opening delay.
-[*]Goblin estate names.
-[*]Retains specialized economies, repaired situation panels, concise tooltips and Cindermaw council choices from 0.5.6.
-[/list]
-[b]EU5 1.3.11. New 1337 campaign required. Gameplay and balance testing remain pending.[/b]
-Religion uses existing art; pilgrimage and damaged-site restoration are not implemented.
-
-[h2]Five clans. One archipelago.[/h2]
-[list]
-[*][b]Cindermaw — Emberblood:[/b] The largest Ashborn realm, with the city of Hooktooth at its heart. King Drogg, "the Stone Fletcher," rules a land of forges and volcanic ridges.
-[*][b]Brackmaw — Brineward:[/b] A substantial rival centred on Brackhaven, with its own marshland identity and ruling house.
-[*][b]Reefhook Clan — Reefstrider:[/b] A smaller island realm shaped by shoals, fisheries and the sea.
-[*][b]Shatterfin Clan — Stormfang:[/b] Home of the Tidemothers. Jaima "the Mare-Mother" leads a ruling house whose succession follows senior women through the maternal line.
-[*][b]Sootwake Clan — Ashveil:[/b] A small woodland realm with a distinct culture, court and future to forge.
+[*][b]Giltfang, the sixth crown:[/b] Vrekk the Brass-Tooth rules Chainhaven and Tolltooth. The new realm is about 10% smaller than Brackmaw, with 22 districts, its own court, culture, lore, flag and opening artwork.
+[*][b]Two markets:[/b] Chainhaven has its own market beside Hooktooth's southern market. All six goblin crowns begin knowing the homeland and surrounding waters.
+[*][b]Lantern Cay and the Quiet Road:[/b] Cindermaw gains a three-district outpost. Reworked sea tiles and an open eastern approach connect north and south through ordinary coastal water without requiring fast-current tiles.
+[*][b]Six crowns throughout:[/b] Giltfang participates in shared situations, events, bargains, Compact charters, religion and unification.
+[*][b]Clearer choices:[/b] Shorter prompts, highlighted costs and rewards on hover, readable requirements, repaired text and signed-pact receipts explaining both partners' commitments.
+[*][b]Ashborn Voyages:[/b] A separate situation for expedition preparation, sailing, arrival, rest and charted routes.
+[*][b]Starting projects:[/b] Three projects per clan now cost 25 gold from a 100-gold treasury. Food bonuses explain province storage capacity rather than implying food production.
+[*][b]Correct clan flags:[/b] Explicit emblem assignments and a one-time monthly repair for placeholders saved in an existing 0.6.0 campaign.
 [/list]
 
-[h2]What is in the mod?[/h2]
+[h2]Six clans, nine islands[/h2]
 [list]
-[*][b]A new Atlantic homeland:[/b] Six volcanic islands, 72 districts and 13 coastal sea zones, with custom terrain, ports, settlements and resources. Mixed Ashborn cultures bring the starting population to 1,618,696.
-[*][b]A shared goblin identity:[/b] Five Ashborn cultures, Cinder Tongue, the Ashen Covenant faith, and original clan names, dynasties and royal families.
-[*][b]Two paths to power:[/b] Four Ironfang Monarchies favor the strongest eligible adult Ashborn man within the ruling dynasty. Shatterfin follows maternal seniority.
-[*][b]Gather the Five:[/b] Unite the kingdoms through conquest, vassalage or senior unions. Seven situation actions support alliances, paid aid, voluntary submission and war goals. Each clan has its own introduction and royal-family story.
-[*][b]Eastern Hunger:[/b] Prepare your fleet and pursue a European coastal foothold through normal EU5 warfare.
-[*][b]Original artwork:[/b] Original paintings illustrate clan, diplomacy, exploration and religious stories. Both situations have custom headers and icons, and five clan flags match the Gathering banners.
-[*][b]Voyages into the unknown:[/b] Fund expeditions toward Iberia, northern waters and northwest Africa. Returning crews bring charts — and contact reveals the isles to the countries they visit.
-[*][b]An island economy:[/b] Develop a shared market, fishing villages, mines, ports and modest urban industries.
-[*][b]Goblin character and unit art:[/b] Clan-based portrait appearances and custom infantry assets. The 0.5.3 art pass introduces more subdued skin colours, revised goblin features and rougher clothing; visuals remain under development.
+[*][b]Cindermaw / Emberblood:[/b] Drogg the Stone Fletcher rules the forge city of Hooktooth and the largest island realm.
+[*][b]Brackmaw / Brineward:[/b] Marshes, storehouses and the rival crown of Brackhaven.
+[*][b]Reefhook / Reefstrider:[/b] Shoals, fisheries and a seafaring court.
+[*][b]Shatterfin / Stormfang:[/b] The Tidemothers and a ruling house following maternal seniority.
+[*][b]Sootwake / Ashveil:[/b] Woodland crafts, charcoal and quiet uplands.
+[*][b]Giltfang / Cinderweight:[/b] Copper, salt, honest weights and armed harbor crews under Vrekk the Brass-Tooth.
 [/list]
+
+The archipelago contains 97 districts, 28 coastal sea tiles, 75 ports and twelve sacred sites. Gather the crowns through conquest, vassalage or senior unions. Negotiate Harbor Bargains and Compact charters, follow Ashen Covenant rites and stories, and send voyages toward Iberia, northern waters and northwest Africa. The Eastern Hunger supports a European foothold through normal EU5 warfare.
+
+[h2]Installation and saves[/h2]
+Enable only one Goblins copy and disable the old Gathering Prototype add-on. Restart EU5 and start a [b]new 1337 campaign[/b] when upgrading from 0.5.x: the world map and starting setup have changed. Existing 0.6.0 saves can receive the flag repair after restarting and advancing to the next month.
+
+Other map, terrain or starting-world mods may conflict. Keep separate saves.
 
 [h2]Development status[/h2]
-The complete 0.5.7 package includes the earlier Gathering prototype content. Disable the separate prototype add-on. New situation UI, artwork, AI behavior and balance still require in-game acceptance. Multiplayer and achievement compatibility are unverified.
+Static map, script, artwork, archive and isolated-installation checks passed. Sailing, actual trade, UI rendering, flag appearance and save/reload behavior still need gameplay confirmation. Multiplayer and achievements are unverified. Dedicated foreign invasion ambitions and fear mechanics are not included.
 
-Dedicated foreign invasion ambitions and fear mechanics are planned, but are not included in this demo. England and Castile do not yet receive special scripted objectives to conquer the Ashborn Isles.
-
-[h2]Starting a campaign[/h2]
-[list]
-[*]Built for [b]Europa Universalis V 1.3.11 (Pavia)[/b].
-[*]Enable the mod, restart the game and start a [b]new 1337 campaign[/b].
-[*]For initial testing, enable this mod on its own. Other map, terrain shader or starting-world mods may conflict, including Crusader States without a compatibility patch.
-[*]Keep separate saves. To return to vanilla, disable the mod, restart and use an unmodded campaign.
-[/list]
-
-[h2]Feedback[/h2]
-Bug reports and screenshots are welcome. Please include your mod version, selected clan, enabled mods, whether you started a new campaign, and steps to reproduce the issue.
+Previous portrait, skin, hairstyle, Drogg, wardrobe and holy-site fixes are retained. Report issues with your version, clan, enabled mods and reproduction steps; screenshots and saves are welcome.
 
 [h2]Credits[/h2]
-Original mod setting and development by Stonefletcher. Base goblin infantry model: Quaternius, Ultimate Animated Character Pack (CC0), adapted for the Ashborn clans. Banner and thumbnail created with AI image generation. Europa Universalis V and its original assets belong to Paradox Interactive.
+Original setting and development by Stonefletcher. Base goblin infantry model: Quaternius, Ultimate Animated Character Pack (CC0). Paintings, banner and thumbnail use AI-generated artwork. Europa Universalis V and its original assets belong to Paradox Interactive.

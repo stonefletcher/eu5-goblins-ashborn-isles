@@ -2,6 +2,7 @@
 from pathlib import Path
 import argparse
 import json
+import covenant_stories
 
 LORE_SECTION = '## The Ashen Covenant\n\nThe Ashborn call their shared faith the Ashen Covenant. Beneath the islands sleeps\nthe Hunger Below, whose fire makes land and whose appetite may consume it. Some\nsay the first goblins were born from that fire; others remember passages that\nclosed behind them. No common account settles the mystery.\n\n"What keeps you living must be fed." Fire, water, roots and the remembered dead\nlend their gifts, and every gift creates an obligation. A chief owes protection\nand provisions to the households that supply his crews. A rescued sailor owes\nlabor to the beacon keepers. A woodcutter owes care to the grove that shelters the\nnext generation. Offerings are useful things: food, rope, charcoal and finished\ncraftwork, with animal sacrifice at some feasts.\n\nThe Returning Mother receives the household cords of Shatterfin. Brackmaw\'s Reed\nListener witnesses agreements beside water. Reefhook tends lamps for the Lantern\nDead, including strangers whose names are lost. Sootwake\'s Rootkeeper shelters\nburial trees and seed groves. At the Storm Teeth, crews honor the Tooth in the\nGale. These powers belong to the shared faith; migrating households carry their\nobservances between islands rather than changing religion at a border.\n\nOathkeepers preserve names, witness agreements, heal and interpret omens. They\nmay be women or men; inheritance, apprenticeship and public recognition vary by\nshrine. Their authority can restrain a chief, but gifts and family loyalties can\nalso purchase a convenient interpretation. The island crowns have no common\nreligious head at the beginning of the campaign.\n\nThe sacred places are young: fissures, pools, cairns, ropes and living groves on\nrecently emerged islands. Carried relics and remembered chants hint at an older\npast without proving where the Ashborn came from. The covenant can welcome an\noutsider adopted into a household, yet its promise of reciprocal duties also\nraises difficult questions about those held in slavery.\n\n'
 
@@ -46,7 +47,7 @@ RITES = {
 }
 
 # Event-specific eligibility is checked by native random_events before selection.
-# Both options are available without payment; only the funded choice is gated.
+# Each story has two distinct approaches and a neutral defer option.
 STORIES = [
     (1, 'The Mountain Answers', 'A tremor opens a narrow cavity beneath the First Mouth. Miners want to follow the warm draft; the Ember-speakers demand that the listening fissure be made safe first.', 'owns = location:cm_cinder_crown', 'cindermaw', 'Secure the fissure and hear the witnesses.', 'Let the miners follow the draft.'),
     (2, 'The Flood Remembers', 'The stakes at the Listening Pool name a wealthy house that promised labor after the last flood. Its heirs now deny the debt. The Reed-witnesses bring the old flood marks before the crown.', 'owns = location:cm_reedmouth', 'brackmaw', 'Fund the repairs and uphold the oath.', 'Accept the heirs\' objection.'),
@@ -76,7 +77,7 @@ def build(out):
     write('in_game/common/religions/goblins_ashborn_isles.txt', f'''{RELIGION} = {{
  color = rgb {{ 160 56 36 }}
  group = cm_ashen_faiths
- language = cm_cinder_tongue
+ language = cm_cinderkin_dialect
  tags = {{ folk_african_gfx pagan_gfx }}
  religious_aspects = 2
  has_religious_influence = yes
@@ -97,6 +98,11 @@ def build(out):
     write('in_game/common/holy_sites/ashen_covenant.txt', '\n'.join(sites))
     write('in_game/common/holy_site_types/ashen_covenant.txt', '\n'.join(types))
     write('in_game/common/prices/ashen_covenant.txt', 'ac_major_rite = { scaled_gold = 2 religious_influence = 20 }')
+    write('main_menu/common/modifier_type_definitions/ashen_covenant.txt',
+          'ac_major_rite_cost_modifier = { color = bad percent = yes game_data = { category = country } }')
+    loc('ac_major_rite', 'Major Covenant Rite')
+    loc('MODIFIER_TYPE_NAME_ac_major_rite_cost_modifier', 'Major Covenant Rite Cost')
+    loc('MODIFIER_TYPE_DESC_ac_major_rite_cost_modifier', 'Changes the cost of performing a major Covenant rite.')
     mods, actions = [], []
     for key, (name, desc, modifier, value) in RITES.items():
         loc('ac_' + key, name)
@@ -124,24 +130,9 @@ def build(out):
     write('in_game/common/generic_actions/ashen_covenant.txt', '\n'.join(actions))
     write('in_game/common/generic_action_ai_lists/ashen_covenant.txt',
           f'ac_rites_ai = {{ potential = {{ religion = religion:{RELIGION} }} actions = {{ ' + ' '.join('ac_' + k for k in RITES) + ' } }')
-    write('main_menu/common/static_modifiers/ashen_covenant.txt', '\n'.join(mods))
+    write('main_menu/common/static_modifiers/ashen_covenant.txt', '\n'.join(mods) + '\n' + covenant_stories.modifiers(loc))
     events = ['namespace = ashen_covenant']
-    for num, title, desc, eligibility, art, yes, no in STORIES:
-        prefix = f'ashen_covenant.{num}'
-        loc(prefix + '.title', title); loc(prefix + '.desc', desc)
-        loc(prefix + '.a', yes); loc(prefix + '.b', no)
-        events.append(f'''{prefix} = {{
- type = country_event
- category = situation_event
- outcome = neutral
- title = {prefix}.title
- desc = {prefix}.desc
- image = "gfx/interface/illustrations/event/ashborn/{art}.dds"
- trigger = {{ religion = religion:{RELIGION} NOT = {{ has_variable = ac_story_cooldown }} {eligibility} }}
- immediate = {{ set_variable = {{ name = ac_story_cooldown years = 3 }} }}
- option = {{ name = {prefix}.a trigger = {{ gold >= 5 }} ai_chance = {{ factor = 3 }} add_gold = -5 add_religious_influence = 5 add_prestige = 2 }}
- option = {{ name = {prefix}.b ai_chance = {{ factor = 1 }} add_religious_influence = -3 }}
-}}''')
+    events.extend(covenant_stories.event(row, loc) for row in STORIES)
     prefix = 'ashen_covenant.20'
     loc(prefix + '.title', 'The Moot of Six Fires')
     loc(prefix + '.desc', 'The islands answer to a common realm, but their Oathkeepers speak with many voices. Ember-speakers ask who will witness the crown\'s promises. Tide-mothers insist that no common authority erase their household cords. The gathered custodians await a settlement: renew the local covenants, or appoint a First Oathkeeper to serve the united realm?')
@@ -160,6 +151,7 @@ def build(out):
     for tag, pair in STARTING.items():
         starts.append(f'if = {{ limit = {{ tag = {tag} num_of_religious_aspects = 0 }} ' + ' '.join(f'add_religious_aspect = religious_aspect:ac_{key}' for key in pair) + ' }')
     cleanup = ' '.join(f'remove_country_modifier = ac_{key}' for key in list(RITES) + ['local_covenants', 'first_oathkeeper'])
+    cleanup += ' ' + covenant_stories.cleanup() + ' remove_variable = ac_story_open'
     write('in_game/common/on_action/ashen_covenant.txt', f'''monthly_country_pulse = {{ on_actions = {{ ac_covenant_monthly ac_covenant_stories }} }}
 ac_covenant_monthly = {{
  trigger = {{ OR = {{ religion = religion:{RELIGION} has_variable = ac_initialized }} }}
@@ -170,12 +162,12 @@ ac_covenant_monthly = {{
     set_variable = {{ name = ac_story_cooldown years = 1 }}
     {' '.join(starts)}
    }}
-   if = {{ limit = {{ has_variable = ga_unifier ga_controls_homeland = yes NOT = {{ has_variable = ac_moot_held }} }}
+   if = {{ limit = {{ has_variable = ga_unifier NOT = {{ has_variable = ac_moot_held }} ga_controls_homeland = yes }}
     set_variable = {{ name = ac_moot_held value = yes }}
     trigger_event_non_silently = {{ id = ashen_covenant.20 }}
    }}
   }}
-  else = {{ {cleanup} }}
+  else = {{ {cleanup} remove_variable = ac_initialized }}
  }}
 }}
 ac_covenant_stories = {{

@@ -12,6 +12,7 @@ from pdx_binary import node,read,write
 ROOT=Path(__file__).resolve().parents[1]
 ART=ROOT/'art/models/goblins'
 MODEL_REL=Path('in_game/gfx/models/units/ashborn_goblins')
+TEXTURE_REGISTRATION=Path('main_menu/gfx/unit_graphics/texture_variations/zz_ashborn_goblins.txt')
 FLIP=np.diag([100.,100.,-100.,1.]);UNFLIP=np.linalg.inv(FLIP)
 
 def prop(typ,a):return (typ,np.asarray(a).ravel().tolist())
@@ -228,6 +229,11 @@ def build(out):
         report['clans'].append({'clan':clan['id'],'culture':clan['culture'],'gfx_tag':tag,'bones':len(g.bones),'source_joints':len(g.skin['joints']),'mesh':str(MODEL_REL/(name+'.mesh'))})
     write_text(out/'main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt','\n'.join(constructors)+'\n')
     write_text(out/'main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt','\n'.join(attachments)+'\n')
+    # The unit attachment factory has a separate texture-variation registry.
+    # These meshes already contain authored clan palettes and need no recoloring.
+    # Use the native fixed-texture contract in an additive, mod-only file.
+    write_text(out/TEXTURE_REGISTRATION, 'assets_without_texture_variation = {\n' +
+               ''.join(f' cm_goblin_{clan["id"]}_mesh\n' for clan in config['clans']) + '}\n')
     write_text(out/'in_game/gfx/graphical_culture_types/ashborn_goblins.txt','\n'.join(cultures)+'\n')
     write_text(out/'main_menu/gfx/animation_state_machines/cm_goblin_infantry.animsm',state_machine())
     report['runtime_infantry']='custom goblin skeleton with factory-created shared-pose body attachment; engine retest pending'

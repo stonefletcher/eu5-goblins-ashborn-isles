@@ -1,327 +1,395 @@
 ﻿namespace = goblins_exploration
-
-goblins_exploration.1 = {
-    type = country_event
-    outcome = neutral
-    title = goblins_exploration.1.title
-    desc = goblins_exploration.1.desc
-    trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-    image = "gfx/interface/illustrations/event/ashborn/departure.dds"
-    option = {
-        name = goblins_exploration.1.east
-        trigger = { gold >= 5 NOT = { has_variable = ga_charted_east } }
-        add_gold = -5
-        trigger_event_non_silently = { id = goblins_exploration.2 months = 4 }
-        ai_chance = { factor = 10 }
+goblins_exploration.1 = { type = country_event outcome = neutral
+            title = goblins_exploration.1.title desc = goblins_exploration.1.desc
+            trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } image = "gfx/interface/illustrations/event/ashborn/departure.dds"
+            option = { name = goblins_exploration.1.east
+                trigger = { custom_tooltip = { text = ga_exp_offer_tt OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } NOT = { has_variable = ga_charted_east } gold >= 5 } }
+                ai_chance = { factor = 10 } custom_tooltip = goblins_exploration.1.east_terms
+                hidden_effect = { if = { limit = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } NOT = { has_variable = ga_charted_east } gold >= 5 }
+                    if = { limit = { NOT = { has_variable = ga_exp_serial } }
+        set_variable = { name = ga_exp_serial value = 0 } }
+        change_variable = { name = ga_exp_serial add = 1 }
+        save_scope_value_as = { name = ga_exp_token value = var:ga_exp_serial }
+                    add_gold = -5
+                    set_variable = { name = ga_exp_route value = 1 }
+                    remove_variable = ga_exp_resting
+                    set_variable = { name = ga_exp_remaining_1 value = yes months = 4 } set_variable = { name = ga_exp_remaining_2 value = yes months = 3 } set_variable = { name = ga_exp_remaining_3 value = yes months = 2 } set_variable = { name = ga_exp_remaining_4 value = yes months = 1 }
+                    trigger_event_non_silently = { id = goblins_exploration.2 months = 4 }
+                } }
+            }
+option = { name = goblins_exploration.1.wait trigger = { has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } }
+                ai_chance = { factor = 1 } custom_tooltip = goblins_exploration.1.wait_terms
+                hidden_effect = { if = { limit = { has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } }
+                    if = { limit = { NOT = { has_variable = ga_exp_serial } }
+        set_variable = { name = ga_exp_serial value = 0 } }
+        change_variable = { name = ga_exp_serial add = 1 }
+        save_scope_value_as = { name = ga_exp_token value = var:ga_exp_serial } remove_variable = ga_exploration_pending remove_variable = ga_exp_paused set_variable = { name = ga_exploration_cooldown value = yes months = 6 } set_variable = { name = ga_exp_postponed value = yes months = 6 }
+                } } }
+option = { name = goblins_exploration.1.pause trigger = { has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } }
+                ai_chance = { factor = 0 } custom_tooltip = goblins_exploration.1.pause_terms
+                hidden_effect = { if = { limit = { has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } }
+                    if = { limit = { NOT = { has_variable = ga_exp_serial } }
+        set_variable = { name = ga_exp_serial value = 0 } }
+        change_variable = { name = ga_exp_serial add = 1 }
+        save_scope_value_as = { name = ga_exp_token value = var:ga_exp_serial } remove_variable = ga_exploration_pending set_variable = { name = ga_exp_paused value = yes }
+                } } }
+option = { name = ga_exp_stale trigger = { NOT = { has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } } }
+            ai_chance = { factor = 1 } custom_tooltip = ga_exp_stale_tt }
+        }
+goblins_exploration.3 = { type = country_event outcome = neutral
+            title = goblins_exploration.3.title desc = goblins_exploration.3.desc
+            trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } image = "gfx/interface/illustrations/event/ashborn/charts.dds"
+            option = { name = goblins_exploration.3.north
+                trigger = { custom_tooltip = { text = ga_exp_offer_tt OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } NOT = { has_variable = ga_charted_north } gold >= 10 has_variable = ga_charted_east } }
+                ai_chance = { factor = 10 } custom_tooltip = goblins_exploration.3.north_terms
+                hidden_effect = { if = { limit = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } NOT = { has_variable = ga_charted_north } gold >= 10 has_variable = ga_charted_east }
+                    if = { limit = { NOT = { has_variable = ga_exp_serial } }
+        set_variable = { name = ga_exp_serial value = 0 } }
+        change_variable = { name = ga_exp_serial add = 1 }
+        save_scope_value_as = { name = ga_exp_token value = var:ga_exp_serial }
+                    add_gold = -10
+                    set_variable = { name = ga_exp_route value = 2 }
+                    remove_variable = ga_exp_resting
+                    set_variable = { name = ga_exp_remaining_1 value = yes months = 6 } set_variable = { name = ga_exp_remaining_2 value = yes months = 5 } set_variable = { name = ga_exp_remaining_3 value = yes months = 4 } set_variable = { name = ga_exp_remaining_4 value = yes months = 3 } set_variable = { name = ga_exp_remaining_5 value = yes months = 2 } set_variable = { name = ga_exp_remaining_6 value = yes months = 1 }
+                    trigger_event_non_silently = { id = goblins_exploration.4 months = 6 }
+                } }
+            }
+option = { name = goblins_exploration.3.south
+                trigger = { custom_tooltip = { text = ga_exp_offer_tt OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } NOT = { has_variable = ga_charted_south } gold >= 10 has_variable = ga_charted_east } }
+                ai_chance = { factor = 10 } custom_tooltip = goblins_exploration.3.south_terms
+                hidden_effect = { if = { limit = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } NOT = { has_variable = ga_charted_south } gold >= 10 has_variable = ga_charted_east }
+                    if = { limit = { NOT = { has_variable = ga_exp_serial } }
+        set_variable = { name = ga_exp_serial value = 0 } }
+        change_variable = { name = ga_exp_serial add = 1 }
+        save_scope_value_as = { name = ga_exp_token value = var:ga_exp_serial }
+                    add_gold = -10
+                    set_variable = { name = ga_exp_route value = 3 }
+                    remove_variable = ga_exp_resting
+                    set_variable = { name = ga_exp_remaining_1 value = yes months = 6 } set_variable = { name = ga_exp_remaining_2 value = yes months = 5 } set_variable = { name = ga_exp_remaining_3 value = yes months = 4 } set_variable = { name = ga_exp_remaining_4 value = yes months = 3 } set_variable = { name = ga_exp_remaining_5 value = yes months = 2 } set_variable = { name = ga_exp_remaining_6 value = yes months = 1 }
+                    trigger_event_non_silently = { id = goblins_exploration.5 months = 6 }
+                } }
+            }
+option = { name = goblins_exploration.3.wait trigger = { has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } }
+                ai_chance = { factor = 1 } custom_tooltip = goblins_exploration.3.wait_terms
+                hidden_effect = { if = { limit = { has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } }
+                    if = { limit = { NOT = { has_variable = ga_exp_serial } }
+        set_variable = { name = ga_exp_serial value = 0 } }
+        change_variable = { name = ga_exp_serial add = 1 }
+        save_scope_value_as = { name = ga_exp_token value = var:ga_exp_serial } remove_variable = ga_exploration_pending remove_variable = ga_exp_paused set_variable = { name = ga_exploration_cooldown value = yes months = 6 } set_variable = { name = ga_exp_postponed value = yes months = 6 }
+                } } }
+option = { name = goblins_exploration.3.pause trigger = { has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } }
+                ai_chance = { factor = 0 } custom_tooltip = goblins_exploration.3.pause_terms
+                hidden_effect = { if = { limit = { has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } }
+                    if = { limit = { NOT = { has_variable = ga_exp_serial } }
+        set_variable = { name = ga_exp_serial value = 0 } }
+        change_variable = { name = ga_exp_serial add = 1 }
+        save_scope_value_as = { name = ga_exp_token value = var:ga_exp_serial } remove_variable = ga_exploration_pending set_variable = { name = ga_exp_paused value = yes }
+                } } }
+option = { name = ga_exp_stale trigger = { NOT = { has_variable = ga_exploration_pending OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_route } } }
+            ai_chance = { factor = 1 } custom_tooltip = ga_exp_stale_tt }
+        }
+goblins_exploration.2 = { type = country_event outcome = neutral
+            title = goblins_exploration.2.title desc = goblins_exploration.2.desc
+            trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } has_variable = ga_exploration_pending NOT = { has_variable = ga_charted_east } OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token var:ga_exp_route = 1 } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } } image = "gfx/interface/illustrations/event/ashborn/iberia.dds"
+            immediate = { if = { limit = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } has_variable = ga_exploration_pending NOT = { has_variable = ga_charted_east } OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token var:ga_exp_route = 1 } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } }
+                discover_area = area:iberian_west_coast_area
+location:lisbon = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_lisbon
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:porto = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_porto
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:setubal = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_setubal
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+                if = { limit = { NOT = { has_variable = ga_exp_serial } }
+        set_variable = { name = ga_exp_serial value = 0 } }
+        change_variable = { name = ga_exp_serial add = 1 }
+        save_scope_value_as = { name = ga_exp_token value = var:ga_exp_serial }
+                set_variable = { name = ga_charted_east value = yes }
+                remove_variable = ga_exploration_pending remove_variable = ga_exp_route
+                set_variable = { name = ga_exploration_cooldown value = yes months = 12 }
+                set_variable = { name = ga_exp_resting value = yes }
+                save_scope_value_as = { name = ga_exp_report_ready value = 1 }
+            } }
+            option = { name = goblins_exploration.2.a trigger = { }
+                hidden_effect = { if = { limit = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } has_variable = ga_exploration_pending NOT = { has_variable = ga_charted_east } OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token var:ga_exp_route = 1 } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } discover_area = area:iberian_west_coast_area
+location:lisbon = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_lisbon
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:porto = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_porto
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:setubal = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_setubal
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+                if = { limit = { NOT = { has_variable = ga_exp_serial } }
+        set_variable = { name = ga_exp_serial value = 0 } }
+        change_variable = { name = ga_exp_serial add = 1 }
+        save_scope_value_as = { name = ga_exp_token value = var:ga_exp_serial }
+                set_variable = { name = ga_charted_east value = yes }
+                remove_variable = ga_exploration_pending remove_variable = ga_exp_route
+                set_variable = { name = ga_exploration_cooldown value = yes months = 12 }
+                set_variable = { name = ga_exp_resting value = yes } } }
+            }
+        }
+goblins_exploration.4 = { type = country_event outcome = neutral
+            title = goblins_exploration.4.title desc = goblins_exploration.4.desc
+            trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } has_variable = ga_exploration_pending NOT = { has_variable = ga_charted_north } OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token var:ga_exp_route = 2 } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } } image = "gfx/interface/illustrations/event/ashborn/biscay.dds"
+            immediate = { if = { limit = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } has_variable = ga_exploration_pending NOT = { has_variable = ga_charted_north } OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token var:ga_exp_route = 2 } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } }
+                discover_area = area:bay_of_biscay_area
+discover_area = area:english_channel_area
+location:brest = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_brest
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:la_rochelle = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_la_rochelle
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:bordeaux = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_bordeaux
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:plymouth = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_plymouth
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:southampton = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_southampton
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+                if = { limit = { NOT = { has_variable = ga_exp_serial } }
+        set_variable = { name = ga_exp_serial value = 0 } }
+        change_variable = { name = ga_exp_serial add = 1 }
+        save_scope_value_as = { name = ga_exp_token value = var:ga_exp_serial }
+                set_variable = { name = ga_charted_north value = yes }
+                remove_variable = ga_exploration_pending remove_variable = ga_exp_route
+                set_variable = { name = ga_exploration_cooldown value = yes months = 12 }
+                set_variable = { name = ga_exp_resting value = yes }
+                save_scope_value_as = { name = ga_exp_report_ready value = 1 }
+            } }
+            option = { name = goblins_exploration.4.a trigger = { }
+                hidden_effect = { if = { limit = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } has_variable = ga_exploration_pending NOT = { has_variable = ga_charted_north } OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token var:ga_exp_route = 2 } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } discover_area = area:bay_of_biscay_area
+discover_area = area:english_channel_area
+location:brest = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_brest
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:la_rochelle = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_la_rochelle
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:bordeaux = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_bordeaux
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:plymouth = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_plymouth
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:southampton = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_southampton
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+                if = { limit = { NOT = { has_variable = ga_exp_serial } }
+        set_variable = { name = ga_exp_serial value = 0 } }
+        change_variable = { name = ga_exp_serial add = 1 }
+        save_scope_value_as = { name = ga_exp_token value = var:ga_exp_serial }
+                set_variable = { name = ga_charted_north value = yes }
+                remove_variable = ga_exploration_pending remove_variable = ga_exp_route
+                set_variable = { name = ga_exploration_cooldown value = yes months = 12 }
+                set_variable = { name = ga_exp_resting value = yes } } }
+            }
+        }
+goblins_exploration.5 = { type = country_event outcome = neutral
+            title = goblins_exploration.5.title desc = goblins_exploration.5.desc
+            trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } has_variable = ga_exploration_pending NOT = { has_variable = ga_charted_south } OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token var:ga_exp_route = 3 } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } } image = "gfx/interface/illustrations/event/ashborn/africa.dds"
+            immediate = { if = { limit = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } has_variable = ga_exploration_pending NOT = { has_variable = ga_charted_south } OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token var:ga_exp_route = 3 } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } }
+                discover_area = area:nw_africa_coast_area
+location:cadiz = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_cadiz
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:tangier = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_tangier
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:ceuta = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_ceuta
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:strait_of_gibraltar = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_strait_of_gibraltar
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+                if = { limit = { NOT = { has_variable = ga_exp_serial } }
+        set_variable = { name = ga_exp_serial value = 0 } }
+        change_variable = { name = ga_exp_serial add = 1 }
+        save_scope_value_as = { name = ga_exp_token value = var:ga_exp_serial }
+                set_variable = { name = ga_charted_south value = yes }
+                remove_variable = ga_exploration_pending remove_variable = ga_exp_route
+                set_variable = { name = ga_exploration_cooldown value = yes months = 12 }
+                set_variable = { name = ga_exp_resting value = yes }
+                save_scope_value_as = { name = ga_exp_report_ready value = 1 }
+            } }
+            option = { name = goblins_exploration.5.a trigger = { }
+                hidden_effect = { if = { limit = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } has_variable = ga_exploration_pending NOT = { has_variable = ga_charted_south } OR = { AND = { exists = scope:ga_exp_token var:ga_exp_serial = scope:ga_exp_token var:ga_exp_route = 3 } AND = { NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } } NOT = { has_variable = ga_exp_serial } NOT = { exists = scope:ga_exp_token } } discover_area = area:nw_africa_coast_area
+location:cadiz = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_cadiz
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:tangier = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_tangier
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:ceuta = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_ceuta
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+location:strait_of_gibraltar = { discover_location = root
+                if = { limit = { exists = owner } owner = {
+                    save_scope_as = ga_exp_contact_strait_of_gibraltar
+                    discover_area = area:cm_cindermaw_area
+                    discover_area = area:cm_ashborn_seas_area
+                    if = { limit = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } NOT = { has_variable = ga_received_goblin_first_contact } }
+                        set_variable = { name = ga_received_goblin_first_contact value = yes }
+                        trigger_event_non_silently = { id = goblins_exploration.6 } }
+                } } }
+                if = { limit = { NOT = { has_variable = ga_exp_serial } }
+        set_variable = { name = ga_exp_serial value = 0 } }
+        change_variable = { name = ga_exp_serial add = 1 }
+        save_scope_value_as = { name = ga_exp_token value = var:ga_exp_serial }
+                set_variable = { name = ga_charted_south value = yes }
+                remove_variable = ga_exploration_pending remove_variable = ga_exp_route
+                set_variable = { name = ga_exploration_cooldown value = yes months = 12 }
+                set_variable = { name = ga_exp_resting value = yes } } }
+            }
+        }
+goblins_exploration.6 = { type = country_event outcome = neutral
+        title = goblins_exploration.6.title desc = goblins_exploration.6.desc
+        trigger = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } }
+        image = "gfx/interface/illustrations/event/ashborn/foreign_sails.dds"
+        option = { name = goblins_exploration.6.a trigger = { } }
     }
-    option = {
-        name = goblins_exploration.1.wait
-        remove_variable = ga_exploration_pending
-        set_variable = { name = ga_exploration_cooldown months = 6 }
-        ai_chance = { factor = 1 }
-    }
-}
-
-goblins_exploration.3 = {
-    type = country_event
-    outcome = neutral
-    title = goblins_exploration.3.title
-    desc = goblins_exploration.3.desc
-    trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-    image = "gfx/interface/illustrations/event/ashborn/charts.dds"
-    option = {
-        name = goblins_exploration.3.north
-        trigger = { gold >= 10 NOT = { has_variable = ga_charted_north } }
-        add_gold = -10
-        trigger_event_non_silently = { id = goblins_exploration.4 months = 6 }
-        ai_chance = { factor = 10 }
-    }
-    option = {
-        name = goblins_exploration.3.south
-        trigger = { gold >= 10 NOT = { has_variable = ga_charted_south } }
-        add_gold = -10
-        trigger_event_non_silently = { id = goblins_exploration.5 months = 6 }
-        ai_chance = { factor = 10 }
-    }
-    option = {
-        name = goblins_exploration.3.wait
-        remove_variable = ga_exploration_pending
-        set_variable = { name = ga_exploration_cooldown months = 6 }
-        ai_chance = { factor = 1 }
-    }
-}
-
-goblins_exploration.6 = {
-    type = country_event
-    outcome = neutral
-    title = goblins_exploration.6.title
-    desc = goblins_exploration.6.desc
-    trigger = { NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } } }
-    image = "gfx/interface/illustrations/event/ashborn/foreign_sails.dds"
-    option = { name = goblins_exploration.6.a }
-}
-
-goblins_exploration.2 = {
-    type = country_event
-    outcome = neutral
-    title = goblins_exploration.2.title
-    desc = goblins_exploration.2.desc
-    trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-    image = "gfx/interface/illustrations/event/ashborn/iberia.dds"
-    option = {
-        name = goblins_exploration.2.a
-        discover_area = area:iberian_west_coast_area
-        location:lisbon = {
-            discover_location = root
-            if = {
-                limit = { exists = owner }
-                owner = {
-                    discover_area = area:cm_cindermaw_area
-                    discover_area = area:cm_ashborn_seas_area
-                    if = {
-                        limit = {
-                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-                            NOT = { has_variable = ga_received_goblin_first_contact }
-                        }
-                        set_variable = { name = ga_received_goblin_first_contact value = yes }
-                        trigger_event_non_silently = { id = goblins_exploration.6 }
-                    }
-                }
-            }
-        }
-        location:porto = {
-            discover_location = root
-            if = {
-                limit = { exists = owner }
-                owner = {
-                    discover_area = area:cm_cindermaw_area
-                    discover_area = area:cm_ashborn_seas_area
-                    if = {
-                        limit = {
-                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-                            NOT = { has_variable = ga_received_goblin_first_contact }
-                        }
-                        set_variable = { name = ga_received_goblin_first_contact value = yes }
-                        trigger_event_non_silently = { id = goblins_exploration.6 }
-                    }
-                }
-            }
-        }
-        location:setubal = {
-            discover_location = root
-            if = {
-                limit = { exists = owner }
-                owner = {
-                    discover_area = area:cm_cindermaw_area
-                    discover_area = area:cm_ashborn_seas_area
-                    if = {
-                        limit = {
-                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-                            NOT = { has_variable = ga_received_goblin_first_contact }
-                        }
-                        set_variable = { name = ga_received_goblin_first_contact value = yes }
-                        trigger_event_non_silently = { id = goblins_exploration.6 }
-                    }
-                }
-            }
-        }
-        set_variable = { name = ga_charted_east value = yes }
-        remove_variable = ga_exploration_pending
-        set_variable = { name = ga_exploration_cooldown months = 12 }
-    }
-}
-
-goblins_exploration.4 = {
-    type = country_event
-    outcome = neutral
-    title = goblins_exploration.4.title
-    desc = goblins_exploration.4.desc
-    trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-    image = "gfx/interface/illustrations/event/ashborn/biscay.dds"
-    option = {
-        name = goblins_exploration.4.a
-        discover_area = area:bay_of_biscay_area
-        discover_area = area:english_channel_area
-        location:brest = {
-            discover_location = root
-            if = {
-                limit = { exists = owner }
-                owner = {
-                    discover_area = area:cm_cindermaw_area
-                    discover_area = area:cm_ashborn_seas_area
-                    if = {
-                        limit = {
-                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-                            NOT = { has_variable = ga_received_goblin_first_contact }
-                        }
-                        set_variable = { name = ga_received_goblin_first_contact value = yes }
-                        trigger_event_non_silently = { id = goblins_exploration.6 }
-                    }
-                }
-            }
-        }
-        location:la_rochelle = {
-            discover_location = root
-            if = {
-                limit = { exists = owner }
-                owner = {
-                    discover_area = area:cm_cindermaw_area
-                    discover_area = area:cm_ashborn_seas_area
-                    if = {
-                        limit = {
-                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-                            NOT = { has_variable = ga_received_goblin_first_contact }
-                        }
-                        set_variable = { name = ga_received_goblin_first_contact value = yes }
-                        trigger_event_non_silently = { id = goblins_exploration.6 }
-                    }
-                }
-            }
-        }
-        location:bordeaux = {
-            discover_location = root
-            if = {
-                limit = { exists = owner }
-                owner = {
-                    discover_area = area:cm_cindermaw_area
-                    discover_area = area:cm_ashborn_seas_area
-                    if = {
-                        limit = {
-                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-                            NOT = { has_variable = ga_received_goblin_first_contact }
-                        }
-                        set_variable = { name = ga_received_goblin_first_contact value = yes }
-                        trigger_event_non_silently = { id = goblins_exploration.6 }
-                    }
-                }
-            }
-        }
-        location:plymouth = {
-            discover_location = root
-            if = {
-                limit = { exists = owner }
-                owner = {
-                    discover_area = area:cm_cindermaw_area
-                    discover_area = area:cm_ashborn_seas_area
-                    if = {
-                        limit = {
-                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-                            NOT = { has_variable = ga_received_goblin_first_contact }
-                        }
-                        set_variable = { name = ga_received_goblin_first_contact value = yes }
-                        trigger_event_non_silently = { id = goblins_exploration.6 }
-                    }
-                }
-            }
-        }
-        location:southampton = {
-            discover_location = root
-            if = {
-                limit = { exists = owner }
-                owner = {
-                    discover_area = area:cm_cindermaw_area
-                    discover_area = area:cm_ashborn_seas_area
-                    if = {
-                        limit = {
-                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-                            NOT = { has_variable = ga_received_goblin_first_contact }
-                        }
-                        set_variable = { name = ga_received_goblin_first_contact value = yes }
-                        trigger_event_non_silently = { id = goblins_exploration.6 }
-                    }
-                }
-            }
-        }
-        set_variable = { name = ga_charted_north value = yes }
-        remove_variable = ga_exploration_pending
-        set_variable = { name = ga_exploration_cooldown months = 12 }
-    }
-}
-
-goblins_exploration.5 = {
-    type = country_event
-    outcome = neutral
-    title = goblins_exploration.5.title
-    desc = goblins_exploration.5.desc
-    trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-    image = "gfx/interface/illustrations/event/ashborn/africa.dds"
-    option = {
-        name = goblins_exploration.5.a
-        discover_area = area:nw_africa_coast_area
-        location:cadiz = {
-            discover_location = root
-            if = {
-                limit = { exists = owner }
-                owner = {
-                    discover_area = area:cm_cindermaw_area
-                    discover_area = area:cm_ashborn_seas_area
-                    if = {
-                        limit = {
-                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-                            NOT = { has_variable = ga_received_goblin_first_contact }
-                        }
-                        set_variable = { name = ga_received_goblin_first_contact value = yes }
-                        trigger_event_non_silently = { id = goblins_exploration.6 }
-                    }
-                }
-            }
-        }
-        location:tangier = {
-            discover_location = root
-            if = {
-                limit = { exists = owner }
-                owner = {
-                    discover_area = area:cm_cindermaw_area
-                    discover_area = area:cm_ashborn_seas_area
-                    if = {
-                        limit = {
-                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-                            NOT = { has_variable = ga_received_goblin_first_contact }
-                        }
-                        set_variable = { name = ga_received_goblin_first_contact value = yes }
-                        trigger_event_non_silently = { id = goblins_exploration.6 }
-                    }
-                }
-            }
-        }
-        location:ceuta = {
-            discover_location = root
-            if = {
-                limit = { exists = owner }
-                owner = {
-                    discover_area = area:cm_cindermaw_area
-                    discover_area = area:cm_ashborn_seas_area
-                    if = {
-                        limit = {
-                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-                            NOT = { has_variable = ga_received_goblin_first_contact }
-                        }
-                        set_variable = { name = ga_received_goblin_first_contact value = yes }
-                        trigger_event_non_silently = { id = goblins_exploration.6 }
-                    }
-                }
-            }
-        }
-        location:strait_of_gibraltar = {
-            discover_location = root
-            if = {
-                limit = { exists = owner }
-                owner = {
-                    discover_area = area:cm_cindermaw_area
-                    discover_area = area:cm_ashborn_seas_area
-                    if = {
-                        limit = {
-                            NOT = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
-                            NOT = { has_variable = ga_received_goblin_first_contact }
-                        }
-                        set_variable = { name = ga_received_goblin_first_contact value = yes }
-                        trigger_event_non_silently = { id = goblins_exploration.6 }
-                    }
-                }
-            }
-        }
-        set_variable = { name = ga_charted_south value = yes }
-        remove_variable = ga_exploration_pending
-        set_variable = { name = ga_exploration_cooldown months = 12 }
-    }
-}

@@ -1,5 +1,5 @@
 {
-  "base_release": "0.5.8",
+  "base_release": "0.6.0",
   "stage": "development-models-and-culture-names",
   "engine_tested": false,
   "files": [
@@ -25,11 +25,15 @@
     },
     {
       "path": "in_game/common/languages/goblins_ashborn_isles.txt",
-      "sha256": "94b72157a79243b35e74d79caf41c98ac66c90c57027479ab4fa69a4dfa92680"
+      "sha256": "e078ef9682651d5f5933c8eb6a1683152364697bcee4cf0c2bf0a34af626643a"
     },
     {
       "path": "in_game/common/on_action/goblins_exploration.txt",
-      "sha256": "6e1c65bcda7bc75847a0c18b3ff484b66f5e674f564b386b7694a820280a93b0"
+      "sha256": "6c6c78a7db6b4da5085bc052d1dafb97695309ebaac88c2a257687cb73cad6c0"
+    },
+    {
+      "path": "in_game/common/religions/goblins_ashborn_isles.txt",
+      "sha256": "6d9c33e700c10157f1074261cc4faf8d6c294e5c1632c49ada7dc383667e5370"
     },
     {
       "path": "in_game/events/goblins_ashborn_isles.txt",
@@ -37,7 +41,7 @@
     },
     {
       "path": "in_game/events/goblins_exploration.txt",
-      "sha256": "408f9d8459e0baf82dff541a2eb600b3b59c95d1ab7eae9b1fbdb88370d0ea23"
+      "sha256": "ba451797ecfda9d2dae3a59e49feddcfd0cd5155e41ef1b437c5afa2704fd315"
     },
     {
       "path": "in_game/gfx/graphical_culture_types/ashborn_goblins.txt",
@@ -624,6 +628,10 @@
       "sha256": "6d1230cb0bc5e1e9315b9956b108d914e671c68c04bb303683b0a9cd13918834"
     },
     {
+      "path": "main_menu/common/modifier_type_definitions/ashen_covenant.txt",
+      "sha256": "2b1897da8afe4860f6db724b1371ff495c95830aae407ec09affa7d659da9336"
+    },
+    {
       "path": "main_menu/gfx/animation_state_machines/cm_goblin_infantry.animsm",
       "sha256": "68ad69d94ac1255993e54ca6538ec2fe8fc667a8cf6ffd36f121474f72f4961e"
     },
@@ -748,16 +756,24 @@
       "sha256": "f5e45b71ee974b50413339fb8490d699675bb498a2074d2c026893c703fac146"
     },
     {
+      "path": "main_menu/gfx/unit_graphics/texture_variations/zz_ashborn_goblins.txt",
+      "sha256": "5c3a6d6aca7d00048d571de0725933f47f90c6d5a56bfceaf51ec55f5ce50647"
+    },
+    {
       "path": "main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt",
       "sha256": "ed4672009f266ca54d162166c6b4d83a994abd575fa989f1a53509c0b25c052a"
     },
     {
+      "path": "main_menu/localization/english/ashen_covenant_l_english.yml",
+      "sha256": "e89199182ee890810351282560db7f382256ddb8ba4d6f4d4e43874bc27e9bfd"
+    },
+    {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",
-      "sha256": "5f1c6c015de43731c88b7c367658c7ebd250cab4676e515db80579417251fba0"
+      "sha256": "d90d182c32a93e0d084a5483f5ed143d0eb701fb4a78f3b0fb9731c8a78d0e1a"
     },
     {
       "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
-      "sha256": "5b873c3c0a13fe51125e1bd33fe064625c250ad0dfc39a2036cfa3baba27ac2a"
+      "sha256": "2547c6f1917707d0a5951f849de39ebff0346ef5f1276891f5e456e4d7bb674a"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_absolutism_cawa_cm_cinderkin_gfx.dds",

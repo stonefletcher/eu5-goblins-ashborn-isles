@@ -1,3 +1,31 @@
+# 0.6.0 acceptance
+- Starting treasury: start a fresh campaign as each of the five clans and confirm 100 gold before purchases or time advances. Opening projects still cost 10 gold, AI retains 20, and exploration still costs 5/10/10. Existing saves should receive no treasury grant.
+- Exploration: check both active and ended Ashborn panels, Review Ashborn Voyages, every status and remaining-time range; six-month reminders, stopped reminders/manual reopening, 36-month first offer and 12-month rest. Verify 5/10/10-gold boundaries, 4/6/6-month voyages, no overlapping purchases, unchanged coastal-only discovery, arrival-owner reports after conquest and one contact notice per foreign country. Test real save/reload at offer, departure and arrival; upgrade older pending offers, queued voyages and already-open returns. Confirm report dismissal adds no reward and no monthly progress popups occur.
+- Covenant stories: exercise both approaches and neutral defer in all twelve stories. Verify five-gold and three-Favor boundaries, AI twenty-gold reserve, three-year effects, replacement of prior story consequences, no prestige and no penalty for defer. Test conversion, loss of site/aspect eligibility, duplicate/stale replies, existing pending events and save/reload. Confirm three-year cooldown, unchanged frequency and untouched major rites/Moot. Inspect option tooltips, estate effects and fresh logs.
+- Early clan projects: test all fifteen project choices across the five clans. Every introduction must show three project alternatives and one free decline when funds allow. Check exact 10-gold affordability, five-year modifiers, free decline, no repeat purchase and the AI 20-gold reserve. Verify Shatterfin succession and its existing follow-up remain unchanged. Already-seen introductions must not replay; existing accounts bonuses must keep their original strength and expiry. Check save/reload and UI wording in the game.
+- Situation progress: inspect both panels at normal and enlarged UI scales. Check the live homeland count after annexation, loss/release of subjects, Compact ratification and save/reload. It must reach 72 exactly when the player meets unification requirements. In Open Compact Talks, inspect independent, dependent and at-war crowns; unmet requirements must be readable while the crowns remain disabled. Verify annexed/self entries are absent, AI still rejects ineligible targets, and event/panel opening frame times remain acceptable. No engine layout or timing claim is made by static checks.
+- Compact talks: complete a newly tracked five-year bargain and a three-year alliance (overlap allowed), then open talks in the Gathering. Test both charters through client terms, patron agreement and final client ratification. Refuse at each stage; invalidate with war, rivalry, alliance loss, strength, rank or opinion changes. Test expiry, duplicate/stale replies and save/reload at every stage. Verify autonomy tribute/integration, protection war-call exclusion/defence/upkeep, own ruling house, native subject-type switch lock, release cleanup and unification credit. Verify AI frequency and charter choice. Existing-save tracking starts now; inspect monthly boundary behavior. Engine playtesting remains pending.
+
+- Harbor Bargains: test both direct agreements, both counteroffers, free refusal and insufficient money at signing. Verify buyer debit equals supplier credit, both modifiers and five-year expiry, one contract per crown, 180-day talk expiry, two-year quiet period and five-year pair lock. Test stale replies, simultaneous approaches, save/reload, war/rivalry/annexation, and an old pending pact refund. Inspect AI offer frequency and ensure it retains 20 gold. Watch event-open frame times and tooltip readability. Native engine acceptance is still pending.
+
+- Reefhook beacons: below 10 gold, the paid choice must be unavailable; at exactly 10 gold, it leaves 0 and grants +5% naval morale recovery for five years. Decline changes no gold or modifiers. Check expiry, save/reload and no repeated introduction.
+
+- Brackmaw sluices: at 9 gold the paid choice must be unavailable; at exactly 10 gold it must leave 0 gold and grant +10% food storage capacity for five years. Declining leaves gold and modifiers unchanged. Check expiry and save/reload, and confirm an already-seen introduction is not repeated.
+
+- Loading cleanup: check fresh logs for the eight custom price registrations, Covenant language, Harbor Pact AI-list registration, duplicate names, selector icons and opinion expiry warnings. Verify action cost labels, bounded AI Harbor Bargain offers, and five-/ten-year opinion expiry. Existing-save behavior also needs an engine check.
+
+- Mesh registration: use a fresh EU5 process with only this candidate enabled. Inspect light/heavy infantry for all five clans, movement/combat and save/reload; compare with human infantry. Check fresh logs for `attachment without a texture variation assigned`, `has not assigned a texture variation` and `Could not find NamedIndex` referencing `cm_goblin_*_mesh`. Compare against the retained pre-fix package if appearance regresses. Passing static checks is not engine acceptance.
+
+- In separate new campaigns, choose each Gathering response. Each grants exactly +5 prestige and its one distinct five-year benefit. Check the modifier name, effect, expiry and option tooltip. No follow-up popup or permanent restriction is added.
+- Load a save with the older Claimant or Defiant benefit: its original effect and remaining duration must be preserved.
+
+- Compare identical saves, speed and graphics settings against 0.5.8. Record frame-time spikes for A Seat Among the Five, clan introductions, diplomatic replies and Covenant stories. Compare first and repeated opens.
+- Run monthly ticks with the Gathering open; each living crown receives its introduction once. Check annexed crowns and save/reload.
+- Check direct, vassal and union unification. Foreign/unowned districts must still block completion. Verify Eastern action eligibility and tooltips.
+- After the Moot, confirm no repeat popup. Convert away: modifiers clear. Convert back: initialization resumes without duplicate starting aspects.
+- Review all seven portrait age/sex types, clothing fit, skin seams and expressions, plus human portraits. Check infantry idle, walking, combat, retreat and death.
+- Review situation panels, flags and images at multiple UI scales, then inspect the fresh error log.
+
 # 0.5.8 portrait acceptance
 
 Follow the age/sex, culture, existing-save and human-control checks in
@@ -265,10 +293,10 @@ All five Ashborn cultures have 16 male and 16 female name entries, six house nam
 - Later-age infantry sharing medieval equipment artwork is expected in this first pass.
 
 ### 0.5.7 diplomatic replies
-- Send Harbor Pacts and Compact offers; exercise acceptance and refusal for each. Confirm the sender sees the correct kingdom and result, and only acceptance creates the relationship.
+- Historical 0.5.7 response checks are superseded by the Harbor Bargain and staged Compact checks above.
 - Leave an offer pending, save/reload, then answer it. Repeat with offers involving different kingdoms; confirm names do not cross between result popups.
 - Make acceptance invalid while an offer is pending (war or subject status), then decline and check notification and pending-state cleanup.
-- Observe AI kingdoms for several action cycles: no custom Harbor Pact offers should be sent; ordinary native alliance diplomacy remains possible.
+- Observe bounded AI Harbor Bargain and Compact offers under their current eligibility and cooldown rules; ordinary native alliance diplomacy remains possible.
 
 ## 0.5.6 Gathering popup regression
 

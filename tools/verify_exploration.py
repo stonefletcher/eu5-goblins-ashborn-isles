@@ -7,9 +7,11 @@ import build as b
 import exploration as e
 
 
-def verify(game, out):
-    b.build_setup(game, out)
-    report = e.build(b, game, out)
+def verify(game, out, rebuild=True):
+    if rebuild:
+        b.build_setup(game, out)
+        e.build(b, game, out)
+    report = {"runtime_verified":False}
     definitions = b.read(game, 'in_game/map_data/definitions.txt')
     known = set()
     for key in e.STARTING_REGIONS + e.STARTING_SEA_AREAS + e.STARTING_PROVINCES:
@@ -33,7 +35,7 @@ def verify(game, out):
         assert 'discovered_locations' not in block and 'discover_location' not in block
     assert not {'paris', 'london', 'fez_region', 'beijing'} & known
     actions = (out/'in_game/common/on_action/goblins_exploration.txt').read_text(encoding='utf-8-sig')
-    assert 'name = ga_exploration_cooldown months = 36' in actions
+    assert 'name = ga_exploration_cooldown value = yes months = 36' in actions
     assert 'NOT = { has_variable = ga_exploration_initialized }' in actions
     assert 'NOT = { has_variable = ga_exploration_pending }' in actions
     events = (out/'in_game/events/goblins_exploration.txt').read_text(encoding='utf-8-sig')
@@ -42,7 +44,7 @@ def verify(game, out):
         offer = events[start:end]
         assert 'discover_area' not in offer and 'discover_location' not in offer
         assert 'remove_variable = ga_exploration_pending' in offer
-        assert 'name = ga_exploration_cooldown months = 6' in offer
+        assert 'name = ga_exploration_cooldown value = yes months = 6' in offer
     for route, config in e.ROUTES.items():
         assert f"id = goblins_exploration.{config['event']} months = {config['months']}" in events
         start, end = b.block_span(events, f"goblins_exploration.{config['event']}")
@@ -50,15 +52,14 @@ def verify(game, out):
         for location in config['locations']:
             left, right = b.block_span(arrival, 'location:' + location)
             assert 'discover_location = root' in arrival[left:right]
-        assert arrival.count('limit = { exists = owner }') == len(config['locations'])
-        assert arrival.count('NOT = { has_variable = ga_received_goblin_first_contact }') == len(config['locations'])
+        assert arrival.count('limit = { exists = owner }') == 2 * len(config['locations'])
+        assert arrival.count('NOT = { has_variable = ga_received_goblin_first_contact }') == 2 * len(config['locations'])
         assert f'name = ga_charted_{route} value = yes' in arrival
-        assert 'name = ga_exploration_cooldown months = 12' in arrival
+        assert 'name = ga_exploration_cooldown value = yes months = 12' in arrival
     assert 'lift_fog_of_war' not in actions + events
     report['checks'] = ['native map references', 'starting knowledge for all five crowns',
                         'sea-only foreign starting knowledge', 'undiscovered ports revealed on voyage completion', 'three-year initial cooldown',
                         'pending/retry guards', 'delayed owner-scoped first contact']
-    (out/'exploration-audit.json').write_text(json.dumps(report, indent=2)+'\n')
     return report
 
 

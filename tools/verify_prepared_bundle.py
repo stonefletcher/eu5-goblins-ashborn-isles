@@ -24,6 +24,9 @@ def verify(root):
     with zipfile.ZipFile(io.BytesIO(raw)) as z:
         assert len(z.namelist())==len(set(z.namelist())),'Duplicate archive members'
         assert z.testzip() is None,'ZIP CRC failure'
+        if tuple(map(int, version.split('.'))) >= (0, 5, 9):
+            allowed = {'README.md','RELEASE_NOTES.md','TESTING.md','LORE.md','Install-Goblins.ps1','Install-Goblins.cmd','reports/validation.json'}
+            assert all(n.startswith(('goblins_ashborn_isles/', 'terrain_patch/')) or n in allowed for n in z.namelist()), 'Development content in player archive'
         metadata=json.loads(z.read('goblins_ashborn_isles/.metadata/metadata.json'))
         terrain=json.loads(z.read('terrain_patch/manifest.json'))
         report=json.loads(z.read('reports/validation.json'))
@@ -37,13 +40,47 @@ def verify(root):
             assert z.read('goblins_ashborn_isles/'+str(Path(item['path']).with_suffix('.info')).replace('\\','/'))
         for name in ['10_countries.txt','06_pops.txt','07_cities_and_buildings.txt','03_markets.txt']:
             assert z.read('goblins_ashborn_isles/main_menu/setup/start/'+name)
+        # Configuration binding alone cannot catch a stale generated treasury.
+        country_setup=z.read('goblins_ashborn_isles/main_menu/setup/start/10_countries.txt').decode('utf-8-sig')
+        starting_gold={}
+        for country in config['countries']:
+            tag=country['tag']
+            match=re.search(r'(?m)^\s*'+re.escape(tag)+r'\s*=\s*\{',country_setup)
+            assert match,tag
+            depth=1;end=match.end()
+            while depth:
+                depth+=(country_setup[end]=='{')-(country_setup[end]=='}');end+=1
+            body=country_setup[match.end():end]
+            currency=re.search(r'\bcurrency_data\s*=\s*\{([^{}]*)\}',body)
+            assert currency,tag
+            amount=re.search(r'\bgold\s*=\s*(-?[\d.]+)',currency[1])
+            assert amount and Decimal(amount[1])==Decimal(str(country['gold'])),f'Stale starting gold: {tag}'
+            starting_gold[tag]=country['gold']
+        assert report['economy']['starting_gold']==starting_gold,'Stale treasury validation report'
         if tuple(map(int, version.split('.'))) >= (0, 5, 7):
             # Verify new features in delivered bytes, not only their source files.
             events=z.read('goblins_ashborn_isles/in_game/events/goblins_gathering.txt').decode('utf-8-sig')
-            for number in [4, 16, 17, 18]:
-                assert f'trigger_event_non_silently = ga_gathering.{number}' in events
+            dispatches=events+z.read('goblins_ashborn_isles/in_game/common/generic_actions/goblins_gathering.txt').decode('utf-8-sig')
+            for number in [17, 18, 20, 21, 22, 23, 24, 25, 30, 31, 32, 33, 34, 35]:
+                assert f'trigger_event_non_silently = ga_gathering.{number}' in dispatches
             ai=z.read('goblins_ashborn_isles/in_game/common/generic_action_ai_lists/goblins_gathering.txt').decode('utf-8-sig')
-            assert 'ga_offer_harbor_pact' not in ai
+            if tuple(map(int, version.split('.'))) >= (0, 5, 9):
+                from verify_script_registration import verify as verify_scripts
+                verify_scripts(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                from verify_harbor_bargains import verify as verify_bargains
+                verify_bargains(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                from verify_compact_talks import verify as verify_compact
+                verify_compact(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                from verify_situation_progress import verify as verify_progress
+                verify_progress(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                from verify_early_projects import verify as verify_projects
+                verify_projects(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                from verify_covenant_stories import verify as verify_stories
+                verify_stories(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                from verify_exploration_progress import verify as verify_voyages
+                verify_voyages(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+            else:
+                assert 'ga_offer_harbor_pact' not in ai
             assert z.read('goblins_ashborn_isles/in_game/events/ashen_covenant.txt')
             estates=z.read('goblins_ashborn_isles/in_game/common/customizable_localization/estates.txt').decode('utf-8-sig')
             assert 'localization_key = ga_crown_estate' in estates
@@ -88,8 +125,8 @@ def verify(root):
             for item in prototype['files']:
                 path=item['path']
                 assert z.read('goblins_ashborn_isles/'+path)==(root/'mod'/path).read_bytes(),f'Stale or missing Gathering content: {path}'
-            for name in ['README.md','RELEASE_NOTES.md','TESTING.md','LORE.md','PROTOTYPE_055.md','STEAM_DESCRIPTION.txt','STEAM_CHANGELOG.txt','art/events/sources/gathering.png']:
-                packed=z.read(name);authored=(root/name).read_bytes()
+            for name in ['README.md','RELEASE_NOTES.md','TESTING.md','LORE.md']:
+                packed=z.read(name);authored=(root/('PLAYER_README.md' if name == 'README.md' and tuple(map(int, version.split('.'))) >= (0, 5, 9) else name)).read_bytes()
                 if name.endswith(('.md','.txt')):
                     packed=packed.decode('utf-8-sig').replace('\r\n','\n')
                     authored=authored.decode('utf-8-sig').replace('\r\n','\n')

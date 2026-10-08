@@ -10,14 +10,14 @@ ga_owner_in_claimant_realm = {
     OR = {
         this = scope:ga_claimant
         AND = {
-            is_subject_type = vassal
+            OR = { is_subject_type = vassal is_subject_type = ga_compact_autonomy is_subject_type = ga_compact_protection }
             any_overlord_or_above = {
                 OR = { this = scope:ga_claimant junior_union_with = { target = scope:ga_claimant } }
             }
             any_overlord_or_above = {
                 OR = {
                     this = scope:ga_claimant
-                    is_subject_type = vassal
+                    OR = { is_subject_type = vassal is_subject_type = ga_compact_autonomy is_subject_type = ga_compact_protection }
                     junior_union_with = { target = scope:ga_claimant }
                 }
                 count = all
@@ -215,5 +215,99 @@ ga_has_european_foothold = {
             is_coastal = yes
             NOT = { area = area:cm_cindermaw_area }
         }
+    }
+}
+
+ga_hb_free = { ga_independent_goblin = yes at_war = no
+    NOT = { has_variable = ga_hb_pending }
+    NOT = { has_variable = ga_hb_committed }
+    NOT = { has_variable = ga_hb_recent_offer }
+    NOT = { has_variable = ga_offer_pending }
+    NOT = { has_variable = ga_cp_pending } }
+# Snapshotted scopes and serial prevent an expired popup using a later request.
+ga_hb_session_matches = {
+    country_exists = scope:ga_hb_requester
+    country_exists = scope:ga_hb_provider
+    scope:ga_hb_requester = {
+        has_variable = ga_hb_pending has_variable = ga_hb_is_requester
+        var:ga_hb_nonce = scope:ga_hb_token
+        var:ga_hb_partner = scope:ga_hb_provider
+    }
+    scope:ga_hb_provider = {
+        has_variable = ga_hb_pending NOT = { has_variable = ga_hb_is_requester }
+        var:ga_hb_nonce = scope:ga_hb_token
+        var:ga_hb_partner = scope:ga_hb_requester
+    }
+}
+ga_hb_valid = {
+    ga_hb_session_matches = yes
+    scope:ga_hb_requester = {
+        ga_independent_goblin = yes at_war = no
+        NOT = { has_variable = ga_hb_committed }
+        NOT = { is_rival_of = scope:ga_hb_provider }
+        NOT = { is_enemy_of = scope:ga_hb_provider }
+        "opinion(scope:ga_hb_provider)" >= 25
+    }
+    scope:ga_hb_provider = {
+        ga_independent_goblin = yes at_war = no
+        NOT = { has_variable = ga_hb_committed }
+        NOT = { is_rival_of = scope:ga_hb_requester }
+        NOT = { is_enemy_of = scope:ga_hb_requester }
+        "opinion(scope:ga_hb_requester)" >= 25
+    }
+}
+ga_hb_offer_valid = {
+    ga_hb_valid = yes
+    scope:ga_hb_requester = { NOT = { has_variable = ga_hb_countered } }
+}
+ga_hb_counter_valid = {
+    ga_hb_valid = yes
+    scope:ga_hb_requester = { has_variable = ga_hb_countered }
+}
+
+ga_cp_session_matches = {
+    country_exists = scope:ga_cp_requester
+    country_exists = scope:ga_cp_provider
+    scope:ga_cp_requester = {
+        has_variable = ga_cp_pending has_variable = ga_cp_is_requester
+        var:ga_cp_nonce = scope:ga_cp_token
+        var:ga_cp_partner = scope:ga_cp_provider
+    }
+    scope:ga_cp_provider = {
+        has_variable = ga_cp_pending NOT = { has_variable = ga_cp_is_requester }
+        var:ga_cp_nonce = scope:ga_cp_token
+        var:ga_cp_partner = scope:ga_cp_requester
+    }
+}
+ga_cp_free = {
+    custom_tooltip = { text = ga_ui_independent_tt ga_independent_goblin = yes }
+    custom_tooltip = { text = ga_ui_peace_tt at_war = no }
+    custom_tooltip = { text = ga_ui_compact_free_tt NOT = { has_variable = ga_cp_pending } }
+    custom_tooltip = { text = ga_ui_harbor_free_tt NOT = { has_variable = ga_hb_pending } }
+    custom_tooltip = { text = ga_ui_legacy_free_tt NOT = { has_variable = ga_offer_pending } }
+    custom_tooltip = { text = ga_ui_quiet_tt NOT = { has_variable = ga_cp_recent_offer } }
+}
+ga_cp_valid = {
+    ga_cp_session_matches = yes
+    scope:ga_cp_requester = {
+        ga_independent_goblin = yes
+        at_war = no
+        NOT = { has_variable = ga_hb_pending }
+        NOT = { is_rival_of = scope:ga_cp_provider } NOT = { is_enemy_of = scope:ga_cp_provider }
+        is_allied_with = { target = scope:ga_cp_provider }
+        OR = { AND = { scope:ga_cp_provider = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:ga_cp_provider = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:ga_cp_provider = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:ga_cp_provider = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:ga_cp_provider = { tag = SWK } has_variable = ga_cp_honored_SWK } }
+OR = { AND = { scope:ga_cp_provider = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:ga_cp_provider = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:ga_cp_provider = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:ga_cp_provider = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:ga_cp_provider = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } }
+    }
+    scope:ga_cp_provider = {
+        ga_independent_goblin = yes
+        at_war = no
+        NOT = { has_variable = ga_hb_pending }
+        NOT = { is_rival_of = scope:ga_cp_requester } NOT = { is_enemy_of = scope:ga_cp_requester }
+        is_allied_with = { target = scope:ga_cp_requester }
+        "opinion(scope:ga_cp_requester)" >= 150
+        relative_strength = { target = scope:ga_cp_requester value <= 0.65 }
+        scope:ga_cp_requester.country_rank_level >= country_rank_level
+        OR = { AND = { scope:ga_cp_requester = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:ga_cp_requester = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:ga_cp_requester = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:ga_cp_requester = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:ga_cp_requester = { tag = SWK } has_variable = ga_cp_honored_SWK } }
+OR = { AND = { scope:ga_cp_requester = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:ga_cp_requester = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:ga_cp_requester = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:ga_cp_requester = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:ga_cp_requester = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } }
     }
 }

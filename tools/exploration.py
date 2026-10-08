@@ -44,17 +44,9 @@ TEXT = {
     'goblins_exploration.5.a':'The sea is wider than our old stories claimed.',
 }
 
-def voyage_option(route,offer):
-    r=ROUTES[route]
-    return f'''    option = {{
-        name = goblins_exploration.{offer}.{route}
-        trigger = {{ gold >= {r['cost']} NOT = {{ has_variable = ga_charted_{route} }} }}
-        add_gold = -{r['cost']}
-        trigger_event_non_silently = {{ id = goblins_exploration.{r['event']} months = {r['months']} }}
-        ai_chance = {{ factor = 10 }}
-    }}'''
-
 def build(b,game,out,validate_setup=True):
+    # Runtime state and presentation live together; starting knowledge stays here.
+    from exploration_progress import build_runtime
     names=b.parse_names(game);defs=b.read(game,'in_game/map_data/definitions.txt')
     for key in STARTING_REGIONS + STARTING_SEA_AREAS + STARTING_PROVINCES:
         b.block_span(defs,key)
@@ -62,101 +54,7 @@ def build(b,game,out,validate_setup=True):
         for area in route['areas']:b.block_span(defs,area)
         for name in route['locations']:assert name in names,name
     tags=' '.join('tag = '+c['tag'] for c in b.CFG['countries'])
-    on_action=f'''ga_exploration_monthly = {{
-    trigger = {{ OR = {{ {tags} }} }}
-    effect = {{
-        if = {{
-            limit = {{ NOT = {{ has_variable = ga_exploration_initialized }} }}
-            set_variable = {{ name = ga_exploration_initialized value = yes }}
-            set_variable = {{ name = ga_exploration_cooldown months = {FIRST_OFFER_MONTHS} }}
-        }}
-        if = {{
-            limit = {{
-                NOT = {{ has_variable = ga_exploration_cooldown }}
-                NOT = {{ has_variable = ga_exploration_pending }}
-                NOT = {{ AND = {{ has_variable = ga_charted_north has_variable = ga_charted_south }} }}
-            }}
-            set_variable = {{ name = ga_exploration_pending value = yes }}
-            if = {{
-                limit = {{ NOT = {{ has_variable = ga_charted_east }} }}
-                trigger_event_non_silently = {{ id = goblins_exploration.1 }}
-            }}
-            else = {{ trigger_event_non_silently = {{ id = goblins_exploration.3 }} }}
-        }}
-    }}
-}}
-'''
-    events=['namespace = goblins_exploration\n']
-    for num,routes in [(1,['east']),(3,['north','south'])]:
-        events.append(f'''goblins_exploration.{num} = {{
-    type = country_event
-    outcome = neutral
-    title = goblins_exploration.{num}.title
-    desc = goblins_exploration.{num}.desc
-    trigger = {{ OR = {{ {tags} }} }}
-    image = "{event_art.image(f'goblins_exploration.{num}')}"
-'''+ '\n'.join(voyage_option(route,num) for route in routes)+f'''
-    option = {{
-        name = goblins_exploration.{num}.wait
-        remove_variable = ga_exploration_pending
-        set_variable = {{ name = ga_exploration_cooldown months = 6 }}
-        ai_chance = {{ factor = 1 }}
-    }}
-}}
-''')
-    events.append(f'''goblins_exploration.6 = {{
-    type = country_event
-    outcome = neutral
-    title = goblins_exploration.6.title
-    desc = goblins_exploration.6.desc
-    trigger = {{ NOT = {{ OR = {{ {tags} }} }} }}
-    image = "{event_art.image('goblins_exploration.6')}"
-    option = {{ name = goblins_exploration.6.a }}
-}}
-''')
-    for route,r in ROUTES.items():
-        num=r['event']
-        effects='\n'.join('        discover_area = area:'+area for area in r['areas'])
-        # Scope through current owners, so conquest or a changed start date does
-        # not reveal the isles to an unrelated hard-coded country tag.
-        for name in r['locations']:
-            effects+=f'''\n        location:{name} = {{
-            discover_location = root
-            if = {{
-                limit = {{ exists = owner }}
-                owner = {{
-                    discover_area = area:cm_cindermaw_area
-                    discover_area = area:cm_ashborn_seas_area
-                    if = {{
-                        limit = {{
-                            NOT = {{ OR = {{ {tags} }} }}
-                            NOT = {{ has_variable = ga_received_goblin_first_contact }}
-                        }}
-                        set_variable = {{ name = ga_received_goblin_first_contact value = yes }}
-                        trigger_event_non_silently = {{ id = goblins_exploration.6 }}
-                    }}
-                }}
-            }}
-        }}'''
-        events.append(f'''goblins_exploration.{num} = {{
-    type = country_event
-    outcome = neutral
-    title = goblins_exploration.{num}.title
-    desc = goblins_exploration.{num}.desc
-    trigger = {{ OR = {{ {tags} }} }}
-    image = "{event_art.image(f'goblins_exploration.{num}')}"
-    option = {{
-        name = goblins_exploration.{num}.a
-{effects}
-        set_variable = {{ name = ga_charted_{route} value = yes }}
-        remove_variable = ga_exploration_pending
-        set_variable = {{ name = ga_exploration_cooldown months = 12 }}
-    }}
-}}
-''')
-    b.write(out,'in_game/common/on_action/goblins_exploration.txt',on_action)
-    b.write(out,'in_game/events/goblins_exploration.txt','\n'.join(events))
-    b.write(out,'main_menu/localization/english/goblins_exploration_l_english.yml','l_english:\n'+'\n'.join(' '+k+': "'+v.replace('\n',r'\n')+'"' for k,v in TEXT.items())+'\n')
+    build_runtime(b, out, tags, ROUTES, TEXT, FIRST_OFFER_MONTHS)
     # Runtime-only installer overlays do not contain generated starting setup.
     # Full builds always retain these starting-knowledge checks.
     if validate_setup:

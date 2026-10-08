@@ -1,4 +1,38 @@
 ﻿situation_panel = {
+    blockoverride "panel_header" {
+        vbox = {
+            layoutpolicy_horizontal = expanding
+            window_header_alt = {
+                blockoverride "header_text_object" {
+                    hbox = {
+                        spacing = 5 expand = {}
+                        icon = { size = { 30 30 } texture = "[SituationView.GetActiveSituation.GetIcon]" }
+                        text_single = {
+                            align = nobaseline using = Font_Type_Headers using = Font_Size_Big
+                            maximumsize = { 390 -1 } autoresize = yes default_format = "#header_titles"
+                            text = "[SituationView.GetActiveSituation.GetName]"
+                        }
+                        expand = {}
+                    }
+                }
+            }
+            vbox = {
+                visible = "[SituationView.GetActiveSituation.HasEnded]"
+                layoutpolicy_horizontal = expanding spacing = 5 margin = { 10 10 }
+                text_multi = {
+            layoutpolicy_horizontal = expanding max_width = 400 autoresize = yes
+            text = "ga_exp_panel_status"
+        }
+        action_button_default = {
+            size = { 400 40 }
+            actor = "[GetPlayer]"
+            left_action = { action_name = "ga_commission_voyage" }
+        }
+
+            }
+        }
+    }
+
     blockoverride "situation_subheader_content" {}
     blockoverride "situation_panel_main_content" {
         text_multi = {
@@ -6,6 +40,33 @@
             max_width = 400
             autoresize = yes
             text = "ga_eastern_hunger_desc"
+        }
+        text_multi = {
+            layoutpolicy_horizontal = expanding
+            max_width = 400
+            autoresize = yes
+            text = "ga_ui_homeland_progress"
+        }
+        text_multi = {
+            layoutpolicy_horizontal = expanding
+            max_width = 400
+            autoresize = yes
+            text = "ga_ui_homeland_rules"
+        }
+        text_multi = {
+            layoutpolicy_horizontal = expanding max_width = 400 autoresize = yes
+            text = "ga_exp_panel_status"
+        }
+        action_button_default = {
+            size = { 400 40 }
+            actor = "[GetPlayer]"
+            left_action = { action_name = "ga_commission_voyage" }
+        }
+        text_multi = {
+            layoutpolicy_horizontal = expanding
+            max_width = 400
+            autoresize = yes
+            text = "ga_ui_eastern_route"
         }
         text_single = {
             layoutpolicy_horizontal = expanding

@@ -3,6 +3,7 @@ from datetime import date
 import re
 
 LOCALIZATION = {
+    'AUTO_MODIFIER_NAME_ga_goblin_longevity': 'Goblin Longevity',
     'ga_goblin_longevity': 'Goblin Longevity',
     'ga_goblin_longevity_desc': 'Ashborn goblins have a natural life expectancy fifteen years longer than humans under otherwise equal conditions.',
 }

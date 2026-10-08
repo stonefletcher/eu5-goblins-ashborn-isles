@@ -6,3 +6,8 @@ ga_eastern_ai_list = {
     potential = { has_variable = ga_unifier ga_controls_homeland = yes can_see_situation = situation:ga_eastern_hunger }
     actions = { ga_prepare_crossing ga_plan_eastern_foothold }
 }
+# Both parties reserve their sole negotiation slot; AI also retains 20 gold.
+ga_harbor_bargains_ai_list = {
+    potential = { ga_hb_free = yes gold >= 30 can_see_situation = situation:ga_gathering_of_five }
+    actions = { ga_offer_harbor_pact ga_seek_pilot_bargain }
+}

@@ -2,12 +2,11 @@
     type = situation
     show_message = no
     potential = { scope:actor = { ga_is_goblin = yes is_subject = no is_junior_partner = no  } }
-    allow = { scope:actor = { at_war = no  } }
+    allow = { scope:actor = { at_war = no ga_hb_free = yes gold >= 10 } }
     automation_tick = never
     ai_tick = monthly
     ai_tick_frequency = 6
-    cooldown = { type = ga_offer_harbor_pact years = 3 }
-    price = price:ga_gathering_pact_price
+    cooldown = { type = ga_offer_harbor_pact years = 2 }
     select_trigger = {
         looking_for_a = situation
         interaction_source_list = { situation:ga_gathering_of_five = { add_to_list = source } }
@@ -29,18 +28,244 @@
             is_subject = no
             is_junior_partner = no
             at_war = no
-            NOT = { has_variable = ga_offer_pending }
-            NOT = { is_rival_of = scope:actor }
-            NOT = { is_enemy_of = scope:actor }
- NOT = { is_allied_with = { target = scope:actor } }
+            ga_hb_free = yes this != scope:actor
+            "opinion(scope:actor)" >= 25
+            NOT = { is_rival_of = scope:actor } NOT = { is_enemy_of = scope:actor }
+            scope:actor = {
+                "opinion(scope:target)" >= 25
+                NOT = { is_rival_of = scope:target } NOT = { is_enemy_of = scope:target }
+                NOT = { AND = { scope:target = { tag = CDM } has_variable = ga_hb_lock_CDM } }
+NOT = { AND = { scope:target = { tag = QBR } has_variable = ga_hb_lock_QBR } }
+NOT = { AND = { scope:target = { tag = RHK } has_variable = ga_hb_lock_RHK } }
+NOT = { AND = { scope:target = { tag = SFK } has_variable = ga_hb_lock_SFK } }
+NOT = { AND = { scope:target = { tag = SWK } has_variable = ga_hb_lock_SWK } }
+ }
+NOT = { AND = { scope:actor = { tag = CDM } has_variable = ga_hb_lock_CDM } }
+NOT = { AND = { scope:actor = { tag = QBR } has_variable = ga_hb_lock_QBR } }
+NOT = { AND = { scope:actor = { tag = RHK } has_variable = ga_hb_lock_RHK } }
+NOT = { AND = { scope:actor = { tag = SFK } has_variable = ga_hb_lock_SFK } }
+NOT = { AND = { scope:actor = { tag = SWK } has_variable = ga_hb_lock_SWK } }
         }
     }
-    effect = { if = { limit = { exists = scope:target } scope:target = {
-        set_variable = { name = ga_offer_sender value = scope:actor }
-        set_variable = { name = ga_offer_pending value = yes }
-        trigger_event_non_silently = ga_gathering.2
-    } } }
-    ai_will_do = { add = -1000 }
+    effect = { if = { limit = { exists = scope:target } hidden_effect = { if = { limit = { scope:actor = { ga_hb_free = yes gold >= 10 } scope:target = { ga_hb_free = yes this != scope:actor
+            "opinion(scope:actor)" >= 25
+            NOT = { is_rival_of = scope:actor } NOT = { is_enemy_of = scope:actor }
+            scope:actor = {
+                "opinion(scope:target)" >= 25
+                NOT = { is_rival_of = scope:target } NOT = { is_enemy_of = scope:target }
+                NOT = { AND = { scope:target = { tag = CDM } has_variable = ga_hb_lock_CDM } }
+NOT = { AND = { scope:target = { tag = QBR } has_variable = ga_hb_lock_QBR } }
+NOT = { AND = { scope:target = { tag = RHK } has_variable = ga_hb_lock_RHK } }
+NOT = { AND = { scope:target = { tag = SFK } has_variable = ga_hb_lock_SFK } }
+NOT = { AND = { scope:target = { tag = SWK } has_variable = ga_hb_lock_SWK } }
+ }
+NOT = { AND = { scope:actor = { tag = CDM } has_variable = ga_hb_lock_CDM } }
+NOT = { AND = { scope:actor = { tag = QBR } has_variable = ga_hb_lock_QBR } }
+NOT = { AND = { scope:actor = { tag = RHK } has_variable = ga_hb_lock_RHK } }
+NOT = { AND = { scope:actor = { tag = SFK } has_variable = ga_hb_lock_SFK } }
+NOT = { AND = { scope:actor = { tag = SWK } has_variable = ga_hb_lock_SWK } } } } scope:actor = {
+        save_scope_as = ga_hb_requester
+        if = { limit = { NOT = { has_variable = ga_hb_serial } }
+            set_variable = { name = ga_hb_serial value = 0 } }
+        change_variable = { name = ga_hb_serial add = 1 }
+        save_scope_value_as = { name = ga_hb_token value = var:ga_hb_serial }
+        set_variable = { name = ga_hb_pending value = yes days = 180 }
+        set_variable = { name = ga_hb_is_requester value = yes days = 180 }
+        set_variable = { name = ga_hb_nonce value = scope:ga_hb_token days = 180 }
+        set_variable = { name = ga_hb_partner value = scope:target days = 180 }
+        set_variable = { name = ga_hb_recent_offer value = yes years = 2 }
+        remove_variable = ga_hb_countered
+    }
+    scope:target = {
+        save_scope_as = ga_hb_provider
+        set_variable = { name = ga_hb_pending value = yes days = 180 }
+        set_variable = { name = ga_hb_nonce value = scope:ga_hb_token days = 180 }
+        set_variable = { name = ga_hb_partner value = scope:actor days = 180 }
+        set_variable = { name = ga_hb_recent_offer value = yes years = 2 }
+        remove_variable = ga_hb_is_requester
+        remove_variable = ga_hb_countered
+    }
+    scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = CDM } }
+            set_variable = { name = ga_hb_lock_CDM value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = CDM } }
+            set_variable = { name = ga_hb_lock_CDM value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = QBR } }
+            set_variable = { name = ga_hb_lock_QBR value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = QBR } }
+            set_variable = { name = ga_hb_lock_QBR value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = RHK } }
+            set_variable = { name = ga_hb_lock_RHK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = RHK } }
+            set_variable = { name = ga_hb_lock_RHK value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = SFK } }
+            set_variable = { name = ga_hb_lock_SFK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = SFK } }
+            set_variable = { name = ga_hb_lock_SFK value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = SWK } }
+            set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = SWK } }
+            set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
+    }
+ scope:target = { trigger_event_non_silently = ga_gathering.20 } } } } }
+    ai_will_do = { add = -1000
+            if = { limit = { scope:actor = { gold >= 30 } exists = scope:target }
+                add = 1005
+                if = { limit = { scope:target = { tag = QBR } } add = 10 }
+            } }
+}
+
+ga_seek_pilot_bargain = {
+    type = situation
+    show_message = no
+    potential = { scope:actor = { ga_is_goblin = yes is_subject = no is_junior_partner = no  } }
+    allow = { scope:actor = { at_war = no ga_hb_free = yes gold >= 10 } }
+    automation_tick = never
+    ai_tick = monthly
+    ai_tick_frequency = 6
+    cooldown = { type = ga_seek_pilot_bargain years = 2 }
+    select_trigger = {
+        looking_for_a = situation
+        interaction_source_list = { situation:ga_gathering_of_five = { add_to_list = source } }
+        target_flag = recipient
+        name = choose_situation
+        column = { data = name }
+        visible = { this = situation:ga_gathering_of_five situation_is_active = yes }
+    }
+    select_trigger = {
+        looking_for_a = country
+        source_global_list = ga_five_kingdoms
+        target_flag = target
+        name = ga_choose_kingdom
+        none_available_msg_key = ga_no_kingdom_available
+        column = { data = name }
+        visible = {
+            ga_is_goblin = yes
+            this != scope:actor
+            is_subject = no
+            is_junior_partner = no
+            at_war = no
+            ga_hb_free = yes this != scope:actor
+            "opinion(scope:actor)" >= 25
+            NOT = { is_rival_of = scope:actor } NOT = { is_enemy_of = scope:actor }
+            scope:actor = {
+                "opinion(scope:target)" >= 25
+                NOT = { is_rival_of = scope:target } NOT = { is_enemy_of = scope:target }
+                NOT = { AND = { scope:target = { tag = CDM } has_variable = ga_hb_lock_CDM } }
+NOT = { AND = { scope:target = { tag = QBR } has_variable = ga_hb_lock_QBR } }
+NOT = { AND = { scope:target = { tag = RHK } has_variable = ga_hb_lock_RHK } }
+NOT = { AND = { scope:target = { tag = SFK } has_variable = ga_hb_lock_SFK } }
+NOT = { AND = { scope:target = { tag = SWK } has_variable = ga_hb_lock_SWK } }
+ }
+NOT = { AND = { scope:actor = { tag = CDM } has_variable = ga_hb_lock_CDM } }
+NOT = { AND = { scope:actor = { tag = QBR } has_variable = ga_hb_lock_QBR } }
+NOT = { AND = { scope:actor = { tag = RHK } has_variable = ga_hb_lock_RHK } }
+NOT = { AND = { scope:actor = { tag = SFK } has_variable = ga_hb_lock_SFK } }
+NOT = { AND = { scope:actor = { tag = SWK } has_variable = ga_hb_lock_SWK } }
+        }
+    }
+    effect = { if = { limit = { exists = scope:target } hidden_effect = { if = { limit = { scope:actor = { ga_hb_free = yes gold >= 10 } scope:target = { ga_hb_free = yes this != scope:actor
+            "opinion(scope:actor)" >= 25
+            NOT = { is_rival_of = scope:actor } NOT = { is_enemy_of = scope:actor }
+            scope:actor = {
+                "opinion(scope:target)" >= 25
+                NOT = { is_rival_of = scope:target } NOT = { is_enemy_of = scope:target }
+                NOT = { AND = { scope:target = { tag = CDM } has_variable = ga_hb_lock_CDM } }
+NOT = { AND = { scope:target = { tag = QBR } has_variable = ga_hb_lock_QBR } }
+NOT = { AND = { scope:target = { tag = RHK } has_variable = ga_hb_lock_RHK } }
+NOT = { AND = { scope:target = { tag = SFK } has_variable = ga_hb_lock_SFK } }
+NOT = { AND = { scope:target = { tag = SWK } has_variable = ga_hb_lock_SWK } }
+ }
+NOT = { AND = { scope:actor = { tag = CDM } has_variable = ga_hb_lock_CDM } }
+NOT = { AND = { scope:actor = { tag = QBR } has_variable = ga_hb_lock_QBR } }
+NOT = { AND = { scope:actor = { tag = RHK } has_variable = ga_hb_lock_RHK } }
+NOT = { AND = { scope:actor = { tag = SFK } has_variable = ga_hb_lock_SFK } }
+NOT = { AND = { scope:actor = { tag = SWK } has_variable = ga_hb_lock_SWK } } } } scope:actor = {
+        save_scope_as = ga_hb_requester
+        if = { limit = { NOT = { has_variable = ga_hb_serial } }
+            set_variable = { name = ga_hb_serial value = 0 } }
+        change_variable = { name = ga_hb_serial add = 1 }
+        save_scope_value_as = { name = ga_hb_token value = var:ga_hb_serial }
+        set_variable = { name = ga_hb_pending value = yes days = 180 }
+        set_variable = { name = ga_hb_is_requester value = yes days = 180 }
+        set_variable = { name = ga_hb_nonce value = scope:ga_hb_token days = 180 }
+        set_variable = { name = ga_hb_partner value = scope:target days = 180 }
+        set_variable = { name = ga_hb_recent_offer value = yes years = 2 }
+        remove_variable = ga_hb_countered
+    }
+    scope:target = {
+        save_scope_as = ga_hb_provider
+        set_variable = { name = ga_hb_pending value = yes days = 180 }
+        set_variable = { name = ga_hb_nonce value = scope:ga_hb_token days = 180 }
+        set_variable = { name = ga_hb_partner value = scope:actor days = 180 }
+        set_variable = { name = ga_hb_recent_offer value = yes years = 2 }
+        remove_variable = ga_hb_is_requester
+        remove_variable = ga_hb_countered
+    }
+    scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = CDM } }
+            set_variable = { name = ga_hb_lock_CDM value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = CDM } }
+            set_variable = { name = ga_hb_lock_CDM value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = QBR } }
+            set_variable = { name = ga_hb_lock_QBR value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = QBR } }
+            set_variable = { name = ga_hb_lock_QBR value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = RHK } }
+            set_variable = { name = ga_hb_lock_RHK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = RHK } }
+            set_variable = { name = ga_hb_lock_RHK value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = SFK } }
+            set_variable = { name = ga_hb_lock_SFK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = SFK } }
+            set_variable = { name = ga_hb_lock_SFK value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = SWK } }
+            set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = SWK } }
+            set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
+    }
+ scope:target = { trigger_event_non_silently = ga_gathering.21 } } } } }
+    ai_will_do = { add = -1000
+            if = { limit = { scope:actor = { gold >= 30 } exists = scope:target }
+                add = 1005
+                if = { limit = { scope:target = { tag = RHK } } add = 10 }
+            } }
 }
 
 ga_send_supplies = {
@@ -94,12 +319,11 @@ ga_offer_compact = {
     type = situation
     show_message = no
     potential = { scope:actor = { ga_is_goblin = yes is_subject = no is_junior_partner = no  } }
-    allow = { scope:actor = { at_war = no  } }
+    allow = { scope:actor = { at_war = no ga_cp_free = yes } }
     automation_tick = never
     ai_tick = monthly
     ai_tick_frequency = 6
-    cooldown = { type = ga_offer_compact years = 3 }
-    price = price:ga_gathering_compact_price
+    cooldown = { type = ga_offer_compact years = 2 }
     select_trigger = {
         looking_for_a = situation
         interaction_source_list = { situation:ga_gathering_of_five = { add_to_list = source } }
@@ -110,36 +334,138 @@ ga_offer_compact = {
     }
     select_trigger = {
         looking_for_a = country
-        source_global_list = ga_five_kingdoms
-        target_flag = target
-        name = ga_choose_kingdom
-        none_available_msg_key = ga_no_kingdom_available
+        interaction_source_list = { c:CDM ?= { add_to_list = source } c:QBR ?= { add_to_list = source } c:RHK ?= { add_to_list = source } c:SFK ?= { add_to_list = source } c:SWK ?= { add_to_list = source } }
+        target_flag = target name = ga_choose_kingdom none_available_msg_key = ga_ui_no_crown
         column = { data = name }
-        visible = {
-            ga_is_goblin = yes
-            this != scope:actor
-            is_subject = no
-            is_junior_partner = no
-            at_war = no
-            NOT = { has_variable = ga_offer_pending }
-            NOT = { is_rival_of = scope:actor }
-            NOT = { is_enemy_of = scope:actor }
-            is_allied_with = { target = scope:actor }
-            relative_strength = { target = scope:actor value <= 0.65 }
-            "opinion(scope:actor)" >= 125
-            scope:actor.country_rank_level >= country_rank_level
-        }
+        show_why_not_enabled = yes
+        visible = { ga_is_goblin = yes this != scope:actor country_exists = this }
+        enabled = { ga_cp_free = yes custom_tooltip = { text = ga_ui_pair_wait_tt NOT = { AND = { scope:actor = { tag = CDM } has_variable = ga_cp_lock_CDM } }
+NOT = { AND = { scope:actor = { tag = QBR } has_variable = ga_cp_lock_QBR } }
+NOT = { AND = { scope:actor = { tag = RHK } has_variable = ga_cp_lock_RHK } }
+NOT = { AND = { scope:actor = { tag = SFK } has_variable = ga_cp_lock_SFK } }
+NOT = { AND = { scope:actor = { tag = SWK } has_variable = ga_cp_lock_SWK } } }
+        scope:actor = { ga_cp_free = yes custom_tooltip = { text = ga_ui_pair_wait_tt NOT = { AND = { scope:target = { tag = CDM } has_variable = ga_cp_lock_CDM } }
+NOT = { AND = { scope:target = { tag = QBR } has_variable = ga_cp_lock_QBR } }
+NOT = { AND = { scope:target = { tag = RHK } has_variable = ga_cp_lock_RHK } }
+NOT = { AND = { scope:target = { tag = SFK } has_variable = ga_cp_lock_SFK } }
+NOT = { AND = { scope:target = { tag = SWK } has_variable = ga_cp_lock_SWK } } } }
+        scope:actor = {
+        custom_tooltip = { text = ga_ui_independent_tt ga_independent_goblin = yes }
+        custom_tooltip = { text = ga_ui_peace_tt at_war = no }
+        custom_tooltip = { text = ga_ui_harbor_free_tt NOT = { has_variable = ga_hb_pending } }
+        custom_tooltip = { text = ga_ui_friendly_tt NOT = { is_rival_of = scope:target } NOT = { is_enemy_of = scope:target } }
+        custom_tooltip = { text = ga_ui_allied_tt is_allied_with = { target = scope:target } }
+        custom_tooltip = { text = ga_ui_bargain_tt OR = { AND = { scope:target = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_cp_honored_SWK } } }
+custom_tooltip = { text = ga_ui_alliance_age_tt OR = { AND = { scope:target = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } } }
     }
-    effect = { if = { limit = { exists = scope:target } scope:target = {
-        set_variable = { name = ga_offer_sender value = scope:actor }
-        set_variable = { name = ga_offer_pending value = yes }
-        trigger_event_non_silently = ga_gathering.3
-    } } }
-    ai_will_do = { add = 5
-        if = { limit = { exists = scope:target }
-            add = { value = "scope:actor.opinion(scope:target)" multiply = 0.2 desc = ga_relations }
-            if = { limit = { scope:actor = { is_allied_with = { target = scope:target } } } add = 15 }
-        } }
+    scope:target = {
+        custom_tooltip = { text = ga_ui_independent_tt ga_independent_goblin = yes }
+        custom_tooltip = { text = ga_ui_peace_tt at_war = no }
+        custom_tooltip = { text = ga_ui_harbor_free_tt NOT = { has_variable = ga_hb_pending } }
+        custom_tooltip = { text = ga_ui_friendly_tt NOT = { is_rival_of = scope:actor } NOT = { is_enemy_of = scope:actor } }
+        custom_tooltip = { text = ga_ui_allied_tt is_allied_with = { target = scope:actor } }
+        custom_tooltip = { text = ga_ui_opinion_tt "opinion(scope:actor)" >= 150 }
+        custom_tooltip = { text = ga_ui_strength_tt relative_strength = { target = scope:actor value <= 0.65 } }
+        custom_tooltip = { text = ga_ui_rank_tt scope:actor.country_rank_level >= country_rank_level }
+        custom_tooltip = { text = ga_ui_bargain_tt OR = { AND = { scope:actor = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:actor = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:actor = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:actor = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:actor = { tag = SWK } has_variable = ga_cp_honored_SWK } } }
+custom_tooltip = { text = ga_ui_alliance_age_tt OR = { AND = { scope:actor = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:actor = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:actor = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:actor = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:actor = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } } }
+    } }
+    }
+    effect = { if = { limit = { exists = scope:target } hidden_effect = { if = { limit = { scope:target = { ga_cp_free = yes custom_tooltip = { text = ga_ui_pair_wait_tt NOT = { AND = { scope:actor = { tag = CDM } has_variable = ga_cp_lock_CDM } }
+NOT = { AND = { scope:actor = { tag = QBR } has_variable = ga_cp_lock_QBR } }
+NOT = { AND = { scope:actor = { tag = RHK } has_variable = ga_cp_lock_RHK } }
+NOT = { AND = { scope:actor = { tag = SFK } has_variable = ga_cp_lock_SFK } }
+NOT = { AND = { scope:actor = { tag = SWK } has_variable = ga_cp_lock_SWK } } }
+        scope:actor = { ga_cp_free = yes custom_tooltip = { text = ga_ui_pair_wait_tt NOT = { AND = { scope:target = { tag = CDM } has_variable = ga_cp_lock_CDM } }
+NOT = { AND = { scope:target = { tag = QBR } has_variable = ga_cp_lock_QBR } }
+NOT = { AND = { scope:target = { tag = RHK } has_variable = ga_cp_lock_RHK } }
+NOT = { AND = { scope:target = { tag = SFK } has_variable = ga_cp_lock_SFK } }
+NOT = { AND = { scope:target = { tag = SWK } has_variable = ga_cp_lock_SWK } } } }
+        scope:actor = {
+        custom_tooltip = { text = ga_ui_independent_tt ga_independent_goblin = yes }
+        custom_tooltip = { text = ga_ui_peace_tt at_war = no }
+        custom_tooltip = { text = ga_ui_harbor_free_tt NOT = { has_variable = ga_hb_pending } }
+        custom_tooltip = { text = ga_ui_friendly_tt NOT = { is_rival_of = scope:target } NOT = { is_enemy_of = scope:target } }
+        custom_tooltip = { text = ga_ui_allied_tt is_allied_with = { target = scope:target } }
+        custom_tooltip = { text = ga_ui_bargain_tt OR = { AND = { scope:target = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_cp_honored_SWK } } }
+custom_tooltip = { text = ga_ui_alliance_age_tt OR = { AND = { scope:target = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:target = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:target = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:target = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:target = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } } }
+    }
+    scope:target = {
+        custom_tooltip = { text = ga_ui_independent_tt ga_independent_goblin = yes }
+        custom_tooltip = { text = ga_ui_peace_tt at_war = no }
+        custom_tooltip = { text = ga_ui_harbor_free_tt NOT = { has_variable = ga_hb_pending } }
+        custom_tooltip = { text = ga_ui_friendly_tt NOT = { is_rival_of = scope:actor } NOT = { is_enemy_of = scope:actor } }
+        custom_tooltip = { text = ga_ui_allied_tt is_allied_with = { target = scope:actor } }
+        custom_tooltip = { text = ga_ui_opinion_tt "opinion(scope:actor)" >= 150 }
+        custom_tooltip = { text = ga_ui_strength_tt relative_strength = { target = scope:actor value <= 0.65 } }
+        custom_tooltip = { text = ga_ui_rank_tt scope:actor.country_rank_level >= country_rank_level }
+        custom_tooltip = { text = ga_ui_bargain_tt OR = { AND = { scope:actor = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:actor = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:actor = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:actor = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:actor = { tag = SWK } has_variable = ga_cp_honored_SWK } } }
+custom_tooltip = { text = ga_ui_alliance_age_tt OR = { AND = { scope:actor = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:actor = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:actor = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:actor = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:actor = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } } }
+    } } } scope:actor = {
+        save_scope_as = ga_cp_requester
+        if = { limit = { NOT = { has_variable = ga_cp_serial } }
+            set_variable = { name = ga_cp_serial value = 0 } }
+        change_variable = { name = ga_cp_serial add = 1 }
+        save_scope_value_as = { name = ga_cp_token value = var:ga_cp_serial }
+        set_variable = { name = ga_cp_pending value = yes days = 180 }
+        set_variable = { name = ga_cp_is_requester value = yes days = 180 }
+        set_variable = { name = ga_cp_nonce value = scope:ga_cp_token days = 180 }
+        set_variable = { name = ga_cp_partner value = scope:target days = 180 }
+        set_variable = { name = ga_cp_recent_offer value = yes years = 2 }
+        remove_variable = ga_cp_countered
+    }
+    scope:target = {
+        save_scope_as = ga_cp_provider
+        set_variable = { name = ga_cp_pending value = yes days = 180 }
+        set_variable = { name = ga_cp_nonce value = scope:ga_cp_token days = 180 }
+        set_variable = { name = ga_cp_partner value = scope:actor days = 180 }
+        set_variable = { name = ga_cp_recent_offer value = yes years = 2 }
+        remove_variable = ga_cp_is_requester
+        remove_variable = ga_cp_countered
+    }
+    scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = CDM } }
+            set_variable = { name = ga_cp_lock_CDM value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = CDM } }
+            set_variable = { name = ga_cp_lock_CDM value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = QBR } }
+            set_variable = { name = ga_cp_lock_QBR value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = QBR } }
+            set_variable = { name = ga_cp_lock_QBR value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = RHK } }
+            set_variable = { name = ga_cp_lock_RHK value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = RHK } }
+            set_variable = { name = ga_cp_lock_RHK value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = SFK } }
+            set_variable = { name = ga_cp_lock_SFK value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = SFK } }
+            set_variable = { name = ga_cp_lock_SFK value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = SWK } }
+            set_variable = { name = ga_cp_lock_SWK value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = SWK } }
+            set_variable = { name = ga_cp_lock_SWK value = yes years = 5 } }
+    }
+ scope:actor = { set_variable = { name = ga_cp_stage value = 1 days = 180 } }
+ scope:target = { trigger_event_non_silently = ga_gathering.30 } } } } }
+    ai_will_do = { add = 5 }
 }
 
 ga_challenge_crown = {
@@ -231,8 +557,8 @@ ga_claim_homeland = {
 ga_prepare_crossing = {
     type = situation
     show_message = no
-    potential = { scope:actor = { ga_is_goblin = yes is_subject = no is_junior_partner = no ga_controls_homeland = yes has_variable = ga_unifier } }
-    allow = { scope:actor = { at_war = no ga_controls_homeland = yes } }
+    potential = { scope:actor = { ga_is_goblin = yes is_subject = no is_junior_partner = no has_variable = ga_unifier custom_tooltip = { text = ga_gathering_complete_tt ga_controls_homeland = yes } } }
+    allow = { scope:actor = { at_war = no  } }
     automation_tick = never
     ai_tick = monthly
     ai_tick_frequency = 6
@@ -254,7 +580,7 @@ ga_prepare_crossing = {
 ga_plan_eastern_foothold = {
     type = situation
     show_message = no
-    potential = { scope:actor = { ga_is_goblin = yes is_subject = no is_junior_partner = no ga_controls_homeland = yes has_variable = ga_unifier } }
+    potential = { scope:actor = { ga_is_goblin = yes is_subject = no is_junior_partner = no has_variable = ga_unifier custom_tooltip = { text = ga_gathering_complete_tt ga_controls_homeland = yes } } }
     allow = { scope:actor = { at_war = no  } }
     automation_tick = never
     ai_tick = monthly

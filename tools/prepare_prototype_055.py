@@ -13,7 +13,8 @@ def main():
     paths += [ROOT / 'mod/in_game/events/goblins_gathering.txt',
               ROOT / 'mod/main_menu/common/static_modifiers/goblins_gathering.txt',
               ROOT / 'mod/main_menu/localization/english/goblins_gathering_l_english.yml']
-    assert len(paths) == 10
+    assert len(paths) == 13
+    paths += [ROOT / 'mod/main_menu/common/modifier_type_definitions/goblins_gathering.txt']
     paths += [ROOT / 'mod/in_game/gui/panels/situation' / (key + '.gui')
               for key in ('ga_gathering_of_five', 'ga_eastern_hunger')]
     paths += [ROOT / 'mod/in_game/events/goblins_ashborn_isles.txt',
@@ -21,6 +22,8 @@ def main():
     paths += [ROOT / 'mod' / rel for rel in runtime_paths()]
     from build_clan_flags import runtime_paths as flag_paths
     paths += [ROOT / 'mod' / rel for rel in flag_paths()]
+    from exploration_progress import FILES as exploration_paths
+    paths += [ROOT / 'mod' / rel for rel in exploration_paths]
     paths = sorted(set(paths))
     import mixed_populations
     population_additions = {ident: '\n'.join(mixed_populations.rows(ident)) for ident in mixed_populations.additions()}

@@ -4,7 +4,34 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 from pdx_binary import read,write
-from export_goblin_models import GLB,ART,MODEL_REL,FLIP,ROOT,trs
+from export_goblin_models import GLB,ART,MODEL_REL,FLIP,ROOT,trs,TEXTURE_REGISTRATION
+
+def verify_texture_registration(out, game=None):
+    """Check the attachment registry as well as the separate mesh asset registry."""
+    from verify_055 import parse
+    out=Path(out)
+    attachments=(out/'main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt').read_text(encoding='utf-8-sig')
+    meshes=re.findall(r'mesh_name\s*=\s*"([^"]+)"',attachments)
+    expected={f'cm_goblin_{c["id"]}_mesh' for c in json.loads((ART/'clans.json').read_text())['clans']}
+    assert set(meshes)==expected and len(meshes)==len(expected)
+    path=out/TEXTURE_REGISTRATION
+    assert path.is_file(), 'Goblin attachments are missing texture-variation registration'
+    rows=parse(path.read_text(encoding='utf-8-sig'))
+    assert len(rows)==1 and rows[0][:2]==('assets_without_texture_variation','='), 'Use the native fixed-texture registry'
+    entries=rows[0][2]
+    assert all(op is None and value is None for _,op,value in entries)
+    names=[name for name,_,_ in entries]
+    assert set(names)==expected and len(names)==len(expected), 'Every clan mesh must be registered exactly once'
+    assert not (out/'main_menu/gfx/unit_graphics/texture_variations/assets_without_texture_variations.txt').exists(), 'Do not replace the native registry'
+    for name in names:
+        asset=(out/MODEL_REL/(name.removesuffix('_mesh')+'.asset')).read_text(encoding='utf-8-sig')
+        assert f'name = "{name}"' in asset, f'Unresolved texture registration: {name}'
+    if game:
+        native=Path(game)/'main_menu/gfx/unit_graphics/texture_variations/assets_without_texture_variations.txt'
+        native_rows=parse(native.read_text(encoding='utf-8-sig'))
+        assert native_rows[0][:2]==rows[0][:2]
+        assert all(op is None and value is None for _,op,value in native_rows[0][2])
+    return {'registered_fixed_palette_meshes':len(names),'native_contract_checked':bool(game),'native_registry_preserved':True}
 
 def verify_graph(script, game=None):
     """Validate typed links and the native unit-constructor parameter contract."""
@@ -108,6 +135,7 @@ def verify(out,game=None):
         candidate=read(p);assert candidate==tree,'Clan geometry should be shared; palettes are external textures';clan_count+=1
     assert clan_count==5 and triangles==2476
     config=json.loads((ART/'clans.json').read_text())
+    texture_registration=verify_texture_registration(out,game)
     constructors=(out/'main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt').read_text()
     attachments=(out/'main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt').read_text(encoding='utf-8-sig')
     assert constructors.count('animation_state_machine_name = cm_goblin_infantry')==10
@@ -135,7 +163,7 @@ def verify(out,game=None):
     for clip in re.findall(r'animation="([^"]+)"',machine):assert (folder/(clip+'.anim')).is_file()
     for path in list(folder.glob('*.asset'))+list((out/'in_game/gfx/models/schematics').glob('cm_goblin_*.schematic')):
         text=path.read_text();assert text.count('{')==text.count('}')
-    return {'status':'STATIC MODEL CHECKS PASSED; ENGINE PLAYTEST PENDING','runtime_infantry':'factory-created shared-pose goblin attachment','clans':clan_count,'source_joints':23,'exported_bones':len(bones),'triangles_per_clan':triangles,'animations':len(g.g['animations']),'sampled_poses':poses,'maximum_pose_error_cm':maximum,'native_byte_exact_roundtrips':roundtrips,'palettes_and_runtime_references':True,'typed_graph_links_and_unit_parameters':True,'engine_tested':False}
+    return {'status':'STATIC MODEL CHECKS PASSED; ENGINE PLAYTEST PENDING','runtime_infantry':'factory-created shared-pose goblin attachment','clans':clan_count,'source_joints':23,'exported_bones':len(bones),'triangles_per_clan':triangles,'animations':len(g.g['animations']),'sampled_poses':poses,'maximum_pose_error_cm':maximum,'native_byte_exact_roundtrips':roundtrips,'palettes_and_runtime_references':True,'typed_graph_links_and_unit_parameters':True,'texture_registration':texture_registration,'engine_tested':False}
 
 if __name__=='__main__':
     import argparse

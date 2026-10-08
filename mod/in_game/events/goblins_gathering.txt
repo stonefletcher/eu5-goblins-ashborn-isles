@@ -13,19 +13,19 @@ ga_gathering.1 = {
         name = ga_gathering.1.a
         trigger = {  }
         ai_chance = { factor = 3 }
-        add_prestige = 5 add_country_modifier = { modifier = ga_gathering_claimant years = 5 mode = replace }
+        add_prestige = 5 add_country_modifier = { modifier = ga_gathering_leadership years = 5 mode = replace }
     }
 option = {
         name = ga_gathering.1.b
         trigger = {  }
         ai_chance = { factor = 3 }
-        add_country_modifier = { modifier = ga_gathering_claimant years = 5 mode = replace }
+        add_prestige = 5 add_country_modifier = { modifier = ga_gathering_cooperation years = 5 mode = replace }
     }
 option = {
         name = ga_gathering.1.c
         trigger = {  }
         ai_chance = { factor = 2 }
-        add_country_modifier = { modifier = ga_gathering_defiant years = 5 mode = replace }
+        add_prestige = 5 add_country_modifier = { modifier = ga_gathering_independence years = 5 mode = replace }
     }
     after = {  }
 }
@@ -40,22 +40,13 @@ ga_gathering.2 = {
     image = "gfx/interface/illustrations/event/ashborn/harbor_pact.dds"
     immediate = {  }
     option = {
-        name = ga_gathering.2.a
-        trigger = { ga_valid_pact_offer = yes }
-        ai_chance = { factor = 1
-        modifier = { factor = 4 "opinion(var:ga_offer_sender)" >= 50 }
-        modifier = { factor = 2 relative_strength = { target = var:ga_offer_sender value <= 0.75 } } }
-        
-            create_relation = { first = root second = var:ga_offer_sender type = relation_type:alliance }
-            add_opinion_mutual_effect = { target = var:ga_offer_sender modifier = ga_harbor_pact_opinion }
-        save_scope_as = ga_offer_respondent
-            var:ga_offer_sender ?= { trigger_event_non_silently = ga_gathering.16 }
-    }
-option = {
         name = ga_gathering.2.b
         trigger = {  }
-        ai_chance = { factor = 2 }
-        save_scope_as = ga_offer_respondent
+        ai_chance = { factor = 1 }
+        if = { limit = { has_variable = ga_offer_pending has_variable = ga_offer_sender }
+                var:ga_offer_sender ?= { add_gold = 5 }
+            }
+save_scope_as = ga_offer_respondent
             var:ga_offer_sender ?= { trigger_event_non_silently = ga_gathering.17 }
     }
     after = { remove_variable = ga_offer_sender remove_variable = ga_offer_pending }
@@ -71,24 +62,10 @@ ga_gathering.3 = {
     image = "gfx/interface/illustrations/event/ashborn/oath.dds"
     immediate = {  }
     option = {
-        name = ga_gathering.3.a
-        trigger = { ga_valid_submission_offer = yes }
-        ai_chance = { factor = 1
-        modifier = { factor = 3 "opinion(var:ga_offer_sender)" >= 150 }
-        modifier = { factor = 3 relative_strength = { target = var:ga_offer_sender value <= 0.4 } }
-        modifier = { factor = 0.5 tag = SFK } }
-        
-            make_subject_of = { target = var:ga_offer_sender type = subject_type:vassal }
-            add_country_modifier = { modifier = ga_compact_guarantees years = 10 mode = replace }
-            add_opinion = { target = var:ga_offer_sender modifier = ga_oath_honored }
-        save_scope_as = ga_offer_respondent
-            var:ga_offer_sender ?= { trigger_event_non_silently = ga_gathering.4 }
-    }
-option = {
         name = ga_gathering.3.b
         trigger = {  }
-        ai_chance = { factor = 2 }
-        save_scope_as = ga_offer_respondent
+        ai_chance = { factor = 1 }
+        if = { limit = { has_variable = ga_offer_pending has_variable = ga_offer_sender } var:ga_offer_sender ?= { add_gold = 10 } } save_scope_as = ga_offer_respondent
             var:ga_offer_sender ?= { trigger_event_non_silently = ga_gathering.18 }
     }
     after = { remove_variable = ga_offer_sender remove_variable = ga_offer_pending }
@@ -249,21 +226,39 @@ ga_gathering.10 = {
     immediate = {  }
     option = {
         name = ga_gathering.10.a
-        trigger = {  }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
-        add_country_modifier = { modifier = ga_cindermaw_drilled_captains years = 5 mode = replace }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_cdm value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_cindermaw_drilled_captains years = 5 mode = replace }
+        } }
     }
 option = {
         name = ga_gathering.10.b
-        trigger = {  }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
-        add_country_modifier = { modifier = ga_cindermaw_court_envoys years = 5 mode = replace }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_cdm value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_cindermaw_court_envoys years = 5 mode = replace }
+        } }
     }
 option = {
         name = ga_gathering.10.c
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_cdm value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_cindermaw_funded_accounts years = 5 mode = replace }
+        } }
+    }
+option = {
+        name = ga_gathering.10.d
         trigger = {  }
         ai_chance = { factor = 1 }
-        add_country_modifier = { modifier = ga_cindermaw_counted_stores years = 5 mode = replace }
+        hidden_effect = { set_variable = { name = ga_early_project_resolved_cdm value = yes } }
     }
     after = {  }
 }
@@ -278,10 +273,40 @@ ga_gathering.11 = {
     image = "gfx/interface/illustrations/event/ashborn/brackmaw.dds"
     immediate = {  }
     option = {
+        name = ga_gathering.11.b
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_qbr value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_brackmaw_repaired_sluices years = 5 mode = replace }
+        } }
+    }
+option = {
+        name = ga_gathering.11.c
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_qbr value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_brackmaw_marsh_workshops years = 5 mode = replace }
+        } }
+    }
+option = {
+        name = ga_gathering.11.d
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_qbr value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_brackmaw_causeway_defenses years = 5 mode = replace }
+        } }
+    }
+option = {
         name = ga_gathering.11.a
         trigger = {  }
         ai_chance = { factor = 1 }
-        
+        hidden_effect = { set_variable = { name = ga_early_project_resolved_qbr value = yes } }
     }
     after = {  }
 }
@@ -296,10 +321,40 @@ ga_gathering.12 = {
     image = "gfx/interface/illustrations/event/ashborn/reefhook.dds"
     immediate = {  }
     option = {
+        name = ga_gathering.12.b
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_rhk value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_reefhook_restored_beacons years = 5 mode = replace }
+        } }
+    }
+option = {
+        name = ga_gathering.12.c
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_rhk value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_reefhook_repair_yards years = 5 mode = replace }
+        } }
+    }
+option = {
+        name = ga_gathering.12.d
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_rhk value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_reefhook_pilot_envoys years = 5 mode = replace }
+        } }
+    }
+option = {
         name = ga_gathering.12.a
         trigger = {  }
         ai_chance = { factor = 1 }
-        
+        hidden_effect = { set_variable = { name = ga_early_project_resolved_rhk value = yes } }
     }
     after = {  }
 }
@@ -314,10 +369,40 @@ ga_gathering.13 = {
     image = "gfx/interface/illustrations/event/ashborn/shatterfin.dds"
     immediate = {  }
     option = {
+        name = ga_gathering.13.b
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_sfk value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_shatterfin_crew_households years = 5 mode = replace }
+        } }
+    }
+option = {
+        name = ga_gathering.13.c
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_sfk value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_shatterfin_storm_crews years = 5 mode = replace }
+        } }
+    }
+option = {
+        name = ga_gathering.13.d
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_sfk value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_shatterfin_house_delegates years = 5 mode = replace }
+        } }
+    }
+option = {
         name = ga_gathering.13.a
         trigger = {  }
         ai_chance = { factor = 1 }
-        
+        hidden_effect = { set_variable = { name = ga_early_project_resolved_sfk value = yes } }
     }
     after = { trigger_event_non_silently = { id = ga_gathering.15 days = 30 } }
 }
@@ -332,10 +417,40 @@ ga_gathering.14 = {
     image = "gfx/interface/illustrations/event/ashborn/sootwake.dds"
     immediate = {  }
     option = {
+        name = ga_gathering.14.b
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_swk value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_sootwake_woodland_wardens years = 5 mode = replace }
+        } }
+    }
+option = {
+        name = ga_gathering.14.c
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_swk value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_sootwake_charcoal_workshops years = 5 mode = replace }
+        } }
+    }
+option = {
+        name = ga_gathering.14.d
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_swk value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_sootwake_sheltered_stores years = 5 mode = replace }
+        } }
+    }
+option = {
         name = ga_gathering.14.a
         trigger = {  }
         ai_chance = { factor = 1 }
-        
+        hidden_effect = { set_variable = { name = ga_early_project_resolved_swk value = yes } }
     }
     after = {  }
 }
@@ -354,6 +469,1076 @@ ga_gathering.15 = {
         trigger = {  }
         ai_chance = { factor = 1 }
         
+    }
+    after = {  }
+}
+
+ga_gathering.20 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.20.title
+    desc = ga_gathering.20.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/harbor_pact.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.20.a
+        trigger = { custom_tooltip = { text = ga_hb_eligibility_tt ga_hb_offer_valid = yes scope:ga_hb_requester = { gold >= 10
+        OR = { is_ai = no gold >= 30 } } } }
+        ai_chance = { factor = 2
+            modifier = { factor = 3 tag = QBR } }
+        custom_tooltip = ga_hb_20_a_result_tt
+hidden_effect = { if = { limit = { ga_hb_offer_valid = yes scope:ga_hb_requester = { gold >= 10
+        OR = { is_ai = no gold >= 30 } } }
+        scope:ga_hb_requester = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_hb_provisions_received years = 5 mode = replace }
+            set_variable = { name = ga_hb_committed value = yes }
+            set_variable = { name = ga_hb_tracks_term value = yes }
+            set_variable = { name = ga_hb_term_running value = yes years = 5 }
+            set_variable = { name = ga_hb_contract_partner value = scope:ga_hb_provider }
+        }
+        scope:ga_hb_provider = {
+            add_gold = 10
+            add_country_modifier = { modifier = ga_hb_provisions_supplied years = 5 mode = replace }
+            set_variable = { name = ga_hb_committed value = yes }
+            set_variable = { name = ga_hb_tracks_term value = yes }
+            set_variable = { name = ga_hb_term_running value = yes years = 5 }
+            set_variable = { name = ga_hb_contract_partner value = scope:ga_hb_requester }
+        }
+        scope:ga_hb_requester ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_provider has_variable = ga_hb_is_requester }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    }
+scope:ga_hb_provider ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_requester NOT = { has_variable = ga_hb_is_requester } }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    }
+        scope:ga_hb_requester = {
+            trigger_event_non_silently = ga_gathering.24 }
+    } }
+    }
+option = {
+        name = ga_gathering.20.b
+        trigger = { custom_tooltip = { text = ga_hb_eligibility_tt ga_hb_offer_valid = yes } }
+        ai_chance = { factor = 1
+            modifier = { factor = 4 tag = RHK } }
+        custom_tooltip = ga_hb_20_b_result_tt
+hidden_effect = { if = { limit = { ga_hb_offer_valid = yes }
+            scope:ga_hb_requester = {
+                set_variable = { name = ga_hb_countered value = yes days = 180 }
+                trigger_event_non_silently = ga_gathering.23
+            }
+        } }
+    }
+option = {
+        name = ga_gathering.20.c
+        trigger = {  }
+        ai_chance = { factor = 2 }
+        custom_tooltip = ga_hb_20_c_result_tt
+hidden_effect = { if = { limit = { ga_hb_session_matches = yes }
+        scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = CDM } }
+            set_variable = { name = ga_hb_lock_CDM value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = CDM } }
+            set_variable = { name = ga_hb_lock_CDM value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = QBR } }
+            set_variable = { name = ga_hb_lock_QBR value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = QBR } }
+            set_variable = { name = ga_hb_lock_QBR value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = RHK } }
+            set_variable = { name = ga_hb_lock_RHK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = RHK } }
+            set_variable = { name = ga_hb_lock_RHK value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = SFK } }
+            set_variable = { name = ga_hb_lock_SFK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = SFK } }
+            set_variable = { name = ga_hb_lock_SFK value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = SWK } }
+            set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = SWK } }
+            set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
+    }
+        scope:ga_hb_requester = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
+        scope:ga_hb_provider = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
+        scope:ga_hb_requester = { trigger_event_non_silently = ga_gathering.25 }
+    }
+    scope:ga_hb_requester ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_provider has_variable = ga_hb_is_requester }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    }
+scope:ga_hb_provider ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_requester NOT = { has_variable = ga_hb_is_requester } }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    } }
+    }
+    after = {  }
+}
+
+ga_gathering.21 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.21.title
+    desc = ga_gathering.21.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/harbor_pact.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.21.a
+        trigger = { custom_tooltip = { text = ga_hb_eligibility_tt ga_hb_offer_valid = yes scope:ga_hb_requester = { gold >= 10
+        OR = { is_ai = no gold >= 30 } } } }
+        ai_chance = { factor = 2
+            modifier = { factor = 3 tag = RHK } }
+        custom_tooltip = ga_hb_21_a_result_tt
+hidden_effect = { if = { limit = { ga_hb_offer_valid = yes scope:ga_hb_requester = { gold >= 10
+        OR = { is_ai = no gold >= 30 } } }
+        scope:ga_hb_requester = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_hb_pilots_received years = 5 mode = replace }
+            set_variable = { name = ga_hb_committed value = yes }
+            set_variable = { name = ga_hb_tracks_term value = yes }
+            set_variable = { name = ga_hb_term_running value = yes years = 5 }
+            set_variable = { name = ga_hb_contract_partner value = scope:ga_hb_provider }
+        }
+        scope:ga_hb_provider = {
+            add_gold = 10
+            add_country_modifier = { modifier = ga_hb_pilots_supplied years = 5 mode = replace }
+            set_variable = { name = ga_hb_committed value = yes }
+            set_variable = { name = ga_hb_tracks_term value = yes }
+            set_variable = { name = ga_hb_term_running value = yes years = 5 }
+            set_variable = { name = ga_hb_contract_partner value = scope:ga_hb_requester }
+        }
+        scope:ga_hb_requester ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_provider has_variable = ga_hb_is_requester }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    }
+scope:ga_hb_provider ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_requester NOT = { has_variable = ga_hb_is_requester } }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    }
+        scope:ga_hb_requester = {
+            trigger_event_non_silently = ga_gathering.24 }
+    } }
+    }
+option = {
+        name = ga_gathering.21.b
+        trigger = { custom_tooltip = { text = ga_hb_eligibility_tt ga_hb_offer_valid = yes } }
+        ai_chance = { factor = 1
+            modifier = { factor = 4 tag = QBR } }
+        custom_tooltip = ga_hb_21_b_result_tt
+hidden_effect = { if = { limit = { ga_hb_offer_valid = yes }
+            scope:ga_hb_requester = {
+                set_variable = { name = ga_hb_countered value = yes days = 180 }
+                trigger_event_non_silently = ga_gathering.22
+            }
+        } }
+    }
+option = {
+        name = ga_gathering.21.c
+        trigger = {  }
+        ai_chance = { factor = 2 }
+        custom_tooltip = ga_hb_21_c_result_tt
+hidden_effect = { if = { limit = { ga_hb_session_matches = yes }
+        scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = CDM } }
+            set_variable = { name = ga_hb_lock_CDM value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = CDM } }
+            set_variable = { name = ga_hb_lock_CDM value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = QBR } }
+            set_variable = { name = ga_hb_lock_QBR value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = QBR } }
+            set_variable = { name = ga_hb_lock_QBR value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = RHK } }
+            set_variable = { name = ga_hb_lock_RHK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = RHK } }
+            set_variable = { name = ga_hb_lock_RHK value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = SFK } }
+            set_variable = { name = ga_hb_lock_SFK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = SFK } }
+            set_variable = { name = ga_hb_lock_SFK value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = SWK } }
+            set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = SWK } }
+            set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
+    }
+        scope:ga_hb_requester = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
+        scope:ga_hb_provider = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
+        scope:ga_hb_requester = { trigger_event_non_silently = ga_gathering.25 }
+    }
+    scope:ga_hb_requester ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_provider has_variable = ga_hb_is_requester }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    }
+scope:ga_hb_provider ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_requester NOT = { has_variable = ga_hb_is_requester } }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    } }
+    }
+    after = {  }
+}
+
+ga_gathering.22 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.22.title
+    desc = ga_gathering.22.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/harbor_pact.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.22.a
+        trigger = { custom_tooltip = { text = ga_hb_eligibility_tt ga_hb_counter_valid = yes scope:ga_hb_requester = { gold >= 15
+        OR = { is_ai = no gold >= 35 } } } }
+        ai_chance = { factor = 2 }
+        custom_tooltip = ga_hb_22_a_result_tt
+hidden_effect = { if = { limit = { ga_hb_counter_valid = yes scope:ga_hb_requester = { gold >= 15
+        OR = { is_ai = no gold >= 35 } } }
+        scope:ga_hb_requester = {
+            add_gold = -15
+            add_country_modifier = { modifier = ga_hb_provisions_received years = 5 mode = replace }
+            set_variable = { name = ga_hb_committed value = yes }
+            set_variable = { name = ga_hb_tracks_term value = yes }
+            set_variable = { name = ga_hb_term_running value = yes years = 5 }
+            set_variable = { name = ga_hb_contract_partner value = scope:ga_hb_provider }
+        }
+        scope:ga_hb_provider = {
+            add_gold = 15
+            add_country_modifier = { modifier = ga_hb_provisions_supplied years = 5 mode = replace }
+            set_variable = { name = ga_hb_committed value = yes }
+            set_variable = { name = ga_hb_tracks_term value = yes }
+            set_variable = { name = ga_hb_term_running value = yes years = 5 }
+            set_variable = { name = ga_hb_contract_partner value = scope:ga_hb_requester }
+        }
+        scope:ga_hb_requester ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_provider has_variable = ga_hb_is_requester }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    }
+scope:ga_hb_provider ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_requester NOT = { has_variable = ga_hb_is_requester } }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    }
+        scope:ga_hb_provider = {
+            trigger_event_non_silently = ga_gathering.24 }
+    } }
+    }
+option = {
+        name = ga_gathering.22.b
+        trigger = {  }
+        ai_chance = { factor = 2 }
+        custom_tooltip = ga_hb_22_b_result_tt
+hidden_effect = { if = { limit = { ga_hb_session_matches = yes }
+        scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = CDM } }
+            set_variable = { name = ga_hb_lock_CDM value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = CDM } }
+            set_variable = { name = ga_hb_lock_CDM value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = QBR } }
+            set_variable = { name = ga_hb_lock_QBR value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = QBR } }
+            set_variable = { name = ga_hb_lock_QBR value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = RHK } }
+            set_variable = { name = ga_hb_lock_RHK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = RHK } }
+            set_variable = { name = ga_hb_lock_RHK value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = SFK } }
+            set_variable = { name = ga_hb_lock_SFK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = SFK } }
+            set_variable = { name = ga_hb_lock_SFK value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = SWK } }
+            set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = SWK } }
+            set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
+    }
+        scope:ga_hb_requester = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
+        scope:ga_hb_provider = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
+        scope:ga_hb_provider = { trigger_event_non_silently = ga_gathering.25 }
+    }
+    scope:ga_hb_requester ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_provider has_variable = ga_hb_is_requester }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    }
+scope:ga_hb_provider ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_requester NOT = { has_variable = ga_hb_is_requester } }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    } }
+    }
+    after = {  }
+}
+
+ga_gathering.23 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.23.title
+    desc = ga_gathering.23.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/harbor_pact.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.23.a
+        trigger = { custom_tooltip = { text = ga_hb_eligibility_tt ga_hb_counter_valid = yes scope:ga_hb_requester = { gold >= 15
+        OR = { is_ai = no gold >= 35 } } } }
+        ai_chance = { factor = 2 }
+        custom_tooltip = ga_hb_23_a_result_tt
+hidden_effect = { if = { limit = { ga_hb_counter_valid = yes scope:ga_hb_requester = { gold >= 15
+        OR = { is_ai = no gold >= 35 } } }
+        scope:ga_hb_requester = {
+            add_gold = -15
+            add_country_modifier = { modifier = ga_hb_pilots_received years = 5 mode = replace }
+            set_variable = { name = ga_hb_committed value = yes }
+            set_variable = { name = ga_hb_tracks_term value = yes }
+            set_variable = { name = ga_hb_term_running value = yes years = 5 }
+            set_variable = { name = ga_hb_contract_partner value = scope:ga_hb_provider }
+        }
+        scope:ga_hb_provider = {
+            add_gold = 15
+            add_country_modifier = { modifier = ga_hb_pilots_supplied years = 5 mode = replace }
+            set_variable = { name = ga_hb_committed value = yes }
+            set_variable = { name = ga_hb_tracks_term value = yes }
+            set_variable = { name = ga_hb_term_running value = yes years = 5 }
+            set_variable = { name = ga_hb_contract_partner value = scope:ga_hb_requester }
+        }
+        scope:ga_hb_requester ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_provider has_variable = ga_hb_is_requester }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    }
+scope:ga_hb_provider ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_requester NOT = { has_variable = ga_hb_is_requester } }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    }
+        scope:ga_hb_provider = {
+            trigger_event_non_silently = ga_gathering.24 }
+    } }
+    }
+option = {
+        name = ga_gathering.23.b
+        trigger = {  }
+        ai_chance = { factor = 2 }
+        custom_tooltip = ga_hb_23_b_result_tt
+hidden_effect = { if = { limit = { ga_hb_session_matches = yes }
+        scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = CDM } }
+            set_variable = { name = ga_hb_lock_CDM value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = CDM } }
+            set_variable = { name = ga_hb_lock_CDM value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = QBR } }
+            set_variable = { name = ga_hb_lock_QBR value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = QBR } }
+            set_variable = { name = ga_hb_lock_QBR value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = RHK } }
+            set_variable = { name = ga_hb_lock_RHK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = RHK } }
+            set_variable = { name = ga_hb_lock_RHK value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = SFK } }
+            set_variable = { name = ga_hb_lock_SFK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = SFK } }
+            set_variable = { name = ga_hb_lock_SFK value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = SWK } }
+            set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = SWK } }
+            set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
+    }
+        scope:ga_hb_requester = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
+        scope:ga_hb_provider = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
+        scope:ga_hb_provider = { trigger_event_non_silently = ga_gathering.25 }
+    }
+    scope:ga_hb_requester ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_provider has_variable = ga_hb_is_requester }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    }
+scope:ga_hb_provider ?= {
+        if = { limit = { has_variable = ga_hb_pending var:ga_hb_nonce = scope:ga_hb_token
+            var:ga_hb_partner = scope:ga_hb_requester NOT = { has_variable = ga_hb_is_requester } }
+            remove_variable = ga_hb_pending
+remove_variable = ga_hb_partner
+remove_variable = ga_hb_nonce
+remove_variable = ga_hb_is_requester
+remove_variable = ga_hb_countered
+        }
+    } }
+    }
+    after = {  }
+}
+
+ga_gathering.24 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.24.title
+    desc = ga_gathering.24.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/harbor_pact.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.24.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        hidden_effect = {  }
+    }
+    after = {  }
+}
+
+ga_gathering.25 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.25.title
+    desc = ga_gathering.25.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/harbor_pact.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.25.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        hidden_effect = {  }
+    }
+    after = {  }
+}
+
+ga_gathering.30 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.30.title
+    desc = ga_gathering.30.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.30.autonomy
+        trigger = { custom_tooltip = { text = ga_cp_ready_tt ga_cp_valid = yes scope:ga_cp_requester = { var:ga_cp_stage = 1 } } }
+        ai_chance = { factor = 3 modifier = { factor = 2 tag = SFK } }
+        custom_tooltip = ga_cp_30_autonomy_terms_tt
+hidden_effect = { if = { limit = { ga_cp_valid = yes scope:ga_cp_requester = { var:ga_cp_stage = 1 } }
+            save_scope_value_as = { name = ga_cp_charter value = 1 }
+            scope:ga_cp_requester = {
+                set_variable = { name = ga_cp_stage value = 2 days = 180 }
+                trigger_event_non_silently = ga_gathering.31
+            }
+        } }
+    }
+option = {
+        name = ga_gathering.30.protection
+        trigger = { custom_tooltip = { text = ga_cp_ready_tt ga_cp_valid = yes scope:ga_cp_requester = { var:ga_cp_stage = 1 } } }
+        ai_chance = { factor = 3 }
+        custom_tooltip = ga_cp_30_protection_terms_tt
+hidden_effect = { if = { limit = { ga_cp_valid = yes scope:ga_cp_requester = { var:ga_cp_stage = 1 } }
+            save_scope_value_as = { name = ga_cp_charter value = 2 }
+            scope:ga_cp_requester = {
+                set_variable = { name = ga_cp_stage value = 2 days = 180 }
+                trigger_event_non_silently = ga_gathering.32
+            }
+        } }
+    }
+option = {
+        name = ga_gathering.30.refuse
+        trigger = {  }
+        ai_chance = { factor = 2 }
+        hidden_effect = { if = { limit = { ga_cp_session_matches = yes }
+        scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = CDM } }
+            set_variable = { name = ga_cp_lock_CDM value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = CDM } }
+            set_variable = { name = ga_cp_lock_CDM value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = QBR } }
+            set_variable = { name = ga_cp_lock_QBR value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = QBR } }
+            set_variable = { name = ga_cp_lock_QBR value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = RHK } }
+            set_variable = { name = ga_cp_lock_RHK value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = RHK } }
+            set_variable = { name = ga_cp_lock_RHK value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = SFK } }
+            set_variable = { name = ga_cp_lock_SFK value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = SFK } }
+            set_variable = { name = ga_cp_lock_SFK value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = SWK } }
+            set_variable = { name = ga_cp_lock_SWK value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = SWK } }
+            set_variable = { name = ga_cp_lock_SWK value = yes years = 5 } }
+    }
+        scope:ga_cp_requester = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }
+        scope:ga_cp_provider = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }
+        scope:ga_cp_requester = { trigger_event_non_silently = ga_gathering.35 }
+    }
+    scope:ga_cp_requester ?= {
+        if = { limit = { has_variable = ga_cp_pending var:ga_cp_nonce = scope:ga_cp_token
+            var:ga_cp_partner = scope:ga_cp_provider has_variable = ga_cp_is_requester }
+            remove_variable = ga_cp_pending
+remove_variable = ga_cp_partner
+remove_variable = ga_cp_nonce
+remove_variable = ga_cp_is_requester
+remove_variable = ga_cp_countered
+        }
+    }
+scope:ga_cp_provider ?= {
+        if = { limit = { has_variable = ga_cp_pending var:ga_cp_nonce = scope:ga_cp_token
+            var:ga_cp_partner = scope:ga_cp_requester NOT = { has_variable = ga_cp_is_requester } }
+            remove_variable = ga_cp_pending
+remove_variable = ga_cp_partner
+remove_variable = ga_cp_nonce
+remove_variable = ga_cp_is_requester
+remove_variable = ga_cp_countered
+        }
+    } }
+    }
+    after = {  }
+}
+
+ga_gathering.31 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.31.title
+    desc = ga_gathering.31.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.31.a
+        trigger = { custom_tooltip = { text = ga_cp_ready_tt ga_cp_valid = yes scope:ga_cp_requester = { var:ga_cp_stage = 2 } scope:ga_cp_charter = 1 } }
+        ai_chance = { factor = 3 }
+        custom_tooltip = ga_cp_31_a_terms_tt
+hidden_effect = { if = { limit = { ga_cp_valid = yes scope:ga_cp_requester = { var:ga_cp_stage = 2 } scope:ga_cp_charter = 1 }
+            scope:ga_cp_requester = { set_variable = { name = ga_cp_stage value = 3 days = 180 } }
+            scope:ga_cp_provider = { trigger_event_non_silently = ga_gathering.33 }
+        } }
+    }
+option = {
+        name = ga_gathering.31.b
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { ga_cp_session_matches = yes }
+        scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = CDM } }
+            set_variable = { name = ga_cp_lock_CDM value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = CDM } }
+            set_variable = { name = ga_cp_lock_CDM value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = QBR } }
+            set_variable = { name = ga_cp_lock_QBR value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = QBR } }
+            set_variable = { name = ga_cp_lock_QBR value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = RHK } }
+            set_variable = { name = ga_cp_lock_RHK value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = RHK } }
+            set_variable = { name = ga_cp_lock_RHK value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = SFK } }
+            set_variable = { name = ga_cp_lock_SFK value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = SFK } }
+            set_variable = { name = ga_cp_lock_SFK value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = SWK } }
+            set_variable = { name = ga_cp_lock_SWK value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = SWK } }
+            set_variable = { name = ga_cp_lock_SWK value = yes years = 5 } }
+    }
+        scope:ga_cp_requester = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }
+        scope:ga_cp_provider = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }
+        scope:ga_cp_provider = { trigger_event_non_silently = ga_gathering.35 }
+    }
+    scope:ga_cp_requester ?= {
+        if = { limit = { has_variable = ga_cp_pending var:ga_cp_nonce = scope:ga_cp_token
+            var:ga_cp_partner = scope:ga_cp_provider has_variable = ga_cp_is_requester }
+            remove_variable = ga_cp_pending
+remove_variable = ga_cp_partner
+remove_variable = ga_cp_nonce
+remove_variable = ga_cp_is_requester
+remove_variable = ga_cp_countered
+        }
+    }
+scope:ga_cp_provider ?= {
+        if = { limit = { has_variable = ga_cp_pending var:ga_cp_nonce = scope:ga_cp_token
+            var:ga_cp_partner = scope:ga_cp_requester NOT = { has_variable = ga_cp_is_requester } }
+            remove_variable = ga_cp_pending
+remove_variable = ga_cp_partner
+remove_variable = ga_cp_nonce
+remove_variable = ga_cp_is_requester
+remove_variable = ga_cp_countered
+        }
+    } }
+    }
+    after = {  }
+}
+
+ga_gathering.32 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.32.title
+    desc = ga_gathering.32.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.32.a
+        trigger = { custom_tooltip = { text = ga_cp_ready_tt ga_cp_valid = yes scope:ga_cp_requester = { var:ga_cp_stage = 2 } scope:ga_cp_charter = 2 } }
+        ai_chance = { factor = 3 }
+        custom_tooltip = ga_cp_32_a_terms_tt
+hidden_effect = { if = { limit = { ga_cp_valid = yes scope:ga_cp_requester = { var:ga_cp_stage = 2 } scope:ga_cp_charter = 2 }
+            scope:ga_cp_requester = { set_variable = { name = ga_cp_stage value = 3 days = 180 } }
+            scope:ga_cp_provider = { trigger_event_non_silently = ga_gathering.33 }
+        } }
+    }
+option = {
+        name = ga_gathering.32.b
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { ga_cp_session_matches = yes }
+        scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = CDM } }
+            set_variable = { name = ga_cp_lock_CDM value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = CDM } }
+            set_variable = { name = ga_cp_lock_CDM value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = QBR } }
+            set_variable = { name = ga_cp_lock_QBR value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = QBR } }
+            set_variable = { name = ga_cp_lock_QBR value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = RHK } }
+            set_variable = { name = ga_cp_lock_RHK value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = RHK } }
+            set_variable = { name = ga_cp_lock_RHK value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = SFK } }
+            set_variable = { name = ga_cp_lock_SFK value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = SFK } }
+            set_variable = { name = ga_cp_lock_SFK value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = SWK } }
+            set_variable = { name = ga_cp_lock_SWK value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = SWK } }
+            set_variable = { name = ga_cp_lock_SWK value = yes years = 5 } }
+    }
+        scope:ga_cp_requester = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }
+        scope:ga_cp_provider = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }
+        scope:ga_cp_provider = { trigger_event_non_silently = ga_gathering.35 }
+    }
+    scope:ga_cp_requester ?= {
+        if = { limit = { has_variable = ga_cp_pending var:ga_cp_nonce = scope:ga_cp_token
+            var:ga_cp_partner = scope:ga_cp_provider has_variable = ga_cp_is_requester }
+            remove_variable = ga_cp_pending
+remove_variable = ga_cp_partner
+remove_variable = ga_cp_nonce
+remove_variable = ga_cp_is_requester
+remove_variable = ga_cp_countered
+        }
+    }
+scope:ga_cp_provider ?= {
+        if = { limit = { has_variable = ga_cp_pending var:ga_cp_nonce = scope:ga_cp_token
+            var:ga_cp_partner = scope:ga_cp_requester NOT = { has_variable = ga_cp_is_requester } }
+            remove_variable = ga_cp_pending
+remove_variable = ga_cp_partner
+remove_variable = ga_cp_nonce
+remove_variable = ga_cp_is_requester
+remove_variable = ga_cp_countered
+        }
+    } }
+    }
+    after = {  }
+}
+
+ga_gathering.33 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.33.title
+    desc = ga_gathering.33.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.33.autonomy
+        trigger = { custom_tooltip = { text = ga_cp_ready_tt ga_cp_valid = yes scope:ga_cp_requester = { var:ga_cp_stage = 3 } scope:ga_cp_charter = 1 } }
+        ai_chance = { factor = 10 }
+        custom_tooltip = ga_cp_33_autonomy_terms_tt
+hidden_effect = { if = { limit = { ga_cp_valid = yes scope:ga_cp_requester = { var:ga_cp_stage = 3 } OR = { scope:ga_cp_charter = 1 scope:ga_cp_charter = 2 } }
+        if = { limit = { scope:ga_cp_charter = 1 }
+            make_subject_of = { target = scope:ga_cp_requester type = subject_type:ga_compact_autonomy }
+        } if = { limit = { scope:ga_cp_charter = 2 }
+            make_subject_of = { target = scope:ga_cp_requester type = subject_type:ga_compact_protection }
+        }
+        set_variable = { name = has_locked_subject_type value = yes }
+        set_variable = { name = ga_cp_owns_type_lock value = yes }
+        scope:ga_cp_requester ?= {
+        if = { limit = { has_variable = ga_cp_pending var:ga_cp_nonce = scope:ga_cp_token
+            var:ga_cp_partner = scope:ga_cp_provider has_variable = ga_cp_is_requester }
+            remove_variable = ga_cp_pending
+remove_variable = ga_cp_partner
+remove_variable = ga_cp_nonce
+remove_variable = ga_cp_is_requester
+remove_variable = ga_cp_countered remove_variable = ga_cp_stage
+        }
+    }
+scope:ga_cp_provider ?= {
+        if = { limit = { has_variable = ga_cp_pending var:ga_cp_nonce = scope:ga_cp_token
+            var:ga_cp_partner = scope:ga_cp_requester NOT = { has_variable = ga_cp_is_requester } }
+            remove_variable = ga_cp_pending
+remove_variable = ga_cp_partner
+remove_variable = ga_cp_nonce
+remove_variable = ga_cp_is_requester
+remove_variable = ga_cp_countered remove_variable = ga_cp_stage
+        }
+    }
+        scope:ga_cp_requester = { trigger_event_non_silently = ga_gathering.34 }
+    } }
+    }
+option = {
+        name = ga_gathering.33.protection
+        trigger = { custom_tooltip = { text = ga_cp_ready_tt ga_cp_valid = yes scope:ga_cp_requester = { var:ga_cp_stage = 3 } scope:ga_cp_charter = 2 } }
+        ai_chance = { factor = 10 }
+        custom_tooltip = ga_cp_33_protection_terms_tt
+hidden_effect = { if = { limit = { ga_cp_valid = yes scope:ga_cp_requester = { var:ga_cp_stage = 3 } OR = { scope:ga_cp_charter = 1 scope:ga_cp_charter = 2 } }
+        if = { limit = { scope:ga_cp_charter = 1 }
+            make_subject_of = { target = scope:ga_cp_requester type = subject_type:ga_compact_autonomy }
+        } if = { limit = { scope:ga_cp_charter = 2 }
+            make_subject_of = { target = scope:ga_cp_requester type = subject_type:ga_compact_protection }
+        }
+        set_variable = { name = has_locked_subject_type value = yes }
+        set_variable = { name = ga_cp_owns_type_lock value = yes }
+        scope:ga_cp_requester ?= {
+        if = { limit = { has_variable = ga_cp_pending var:ga_cp_nonce = scope:ga_cp_token
+            var:ga_cp_partner = scope:ga_cp_provider has_variable = ga_cp_is_requester }
+            remove_variable = ga_cp_pending
+remove_variable = ga_cp_partner
+remove_variable = ga_cp_nonce
+remove_variable = ga_cp_is_requester
+remove_variable = ga_cp_countered remove_variable = ga_cp_stage
+        }
+    }
+scope:ga_cp_provider ?= {
+        if = { limit = { has_variable = ga_cp_pending var:ga_cp_nonce = scope:ga_cp_token
+            var:ga_cp_partner = scope:ga_cp_requester NOT = { has_variable = ga_cp_is_requester } }
+            remove_variable = ga_cp_pending
+remove_variable = ga_cp_partner
+remove_variable = ga_cp_nonce
+remove_variable = ga_cp_is_requester
+remove_variable = ga_cp_countered remove_variable = ga_cp_stage
+        }
+    }
+        scope:ga_cp_requester = { trigger_event_non_silently = ga_gathering.34 }
+    } }
+    }
+option = {
+        name = ga_gathering.33.withdraw
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        hidden_effect = { if = { limit = { ga_cp_session_matches = yes }
+        scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = CDM } }
+            set_variable = { name = ga_cp_lock_CDM value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = CDM } }
+            set_variable = { name = ga_cp_lock_CDM value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = QBR } }
+            set_variable = { name = ga_cp_lock_QBR value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = QBR } }
+            set_variable = { name = ga_cp_lock_QBR value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = RHK } }
+            set_variable = { name = ga_cp_lock_RHK value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = RHK } }
+            set_variable = { name = ga_cp_lock_RHK value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = SFK } }
+            set_variable = { name = ga_cp_lock_SFK value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = SFK } }
+            set_variable = { name = ga_cp_lock_SFK value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = SWK } }
+            set_variable = { name = ga_cp_lock_SWK value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = SWK } }
+            set_variable = { name = ga_cp_lock_SWK value = yes years = 5 } }
+    }
+        scope:ga_cp_requester = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }
+        scope:ga_cp_provider = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }
+        scope:ga_cp_requester = { trigger_event_non_silently = ga_gathering.35 }
+    }
+    scope:ga_cp_requester ?= {
+        if = { limit = { has_variable = ga_cp_pending var:ga_cp_nonce = scope:ga_cp_token
+            var:ga_cp_partner = scope:ga_cp_provider has_variable = ga_cp_is_requester }
+            remove_variable = ga_cp_pending
+remove_variable = ga_cp_partner
+remove_variable = ga_cp_nonce
+remove_variable = ga_cp_is_requester
+remove_variable = ga_cp_countered
+        }
+    }
+scope:ga_cp_provider ?= {
+        if = { limit = { has_variable = ga_cp_pending var:ga_cp_nonce = scope:ga_cp_token
+            var:ga_cp_partner = scope:ga_cp_requester NOT = { has_variable = ga_cp_is_requester } }
+            remove_variable = ga_cp_pending
+remove_variable = ga_cp_partner
+remove_variable = ga_cp_nonce
+remove_variable = ga_cp_is_requester
+remove_variable = ga_cp_countered
+        }
+    } }
+    }
+    after = {  }
+}
+
+ga_gathering.34 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.34.title
+    desc = ga_gathering.34.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.34.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        hidden_effect = { }
+    }
+    after = {  }
+}
+
+ga_gathering.35 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.35.title
+    desc = ga_gathering.35.desc
+    trigger = { ga_is_goblin = yes }
+    image = "gfx/interface/illustrations/event/ashborn/oath.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.35.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        hidden_effect = { }
     }
     after = {  }
 }

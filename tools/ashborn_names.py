@@ -49,8 +49,8 @@ def build_names(b,out):
     for tag,(label,culture,males,females,houses,lowborn) in POOLS.items():
         sections.append(f'{dialect(culture)} = {{ male_names = {{ '+ ' '.join(map(key,males.split()))+' } female_names = { '+' '.join(map(key,females.split()))+' } dynasty_names = { '+' '.join(house_key(tag,i) for i,_ in enumerate(houses.split()))+' } lowborn = { '+' '.join(map(key,lowborn.split()))+' } }')
     # Shared root retains a complete Goblin fallback without borrowing human names.
-    all_males=' '.join(key(n) for p in POOLS.values() for n in p[2].split())
-    all_females=' '.join(key(n) for p in POOLS.values() for n in p[3].split())
+    all_males=' '.join(dict.fromkeys(key(n) for p in POOLS.values() for n in p[2].split()))
+    all_females=' '.join(dict.fromkeys(key(n) for p in POOLS.values() for n in p[3].split()))
     all_houses=' '.join(house_key(t,i) for t,p in POOLS.items() for i,_ in enumerate(p[4].split()))
     b.write(out,'in_game/common/languages/goblins_ashborn_isles.txt',f'cm_cinder_tongue = {{ color = rgb {{ 117 140 48 }} family = cm_goblin_language_family male_names = {{ {all_males} }} female_names = {{ {all_females} }} dynasty_names = {{ {all_houses} }} dialects = {{ '+ '\n'.join(sections)+' } }\n')
 

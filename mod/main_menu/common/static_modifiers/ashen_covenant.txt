@@ -3,3 +3,26 @@ ac_water_lanterns = { naval_morale_modifier = 0.1 }
 ac_first_oath = { clergy_estate_target_satisfaction = 0.1 }
 ac_local_covenants = { tolerance_heathen = 1 }
 ac_first_oathkeeper = { stability_cost_efficiency = 0.1 }
+ac_story_1_0 = { clergy_estate_target_satisfaction = 0.05 }
+ac_story_1_1 = { global_production_efficiency = 0.05 }
+ac_story_2_0 = { global_food_capacity_modifier = 0.1 }
+ac_story_2_1 = { global_food_capacity_modifier = 0.1 nobles_estate_target_satisfaction = -0.05 }
+ac_story_3_0 = { tolerance_heathen = 0.5 }
+ac_story_3_1 = { tolerance_heathen = -0.5 }
+ac_story_4_0 = { diplomatic_reputation = 0.5 nobles_estate_target_satisfaction = -0.025 }
+ac_story_4_1 = { nobles_estate_target_satisfaction = 0.05 clergy_estate_target_satisfaction = -0.025 }
+ac_story_5_0 = { naval_morale_recovery = 0.05 }
+ac_story_5_1 = { naval_morale_modifier = 0.05 global_sailors_modifier = -0.05 }
+ac_story_6_0 = { navy_maintenance_efficiency = 0.05 }
+ac_story_6_1 = { global_production_efficiency = 0.05 }
+ac_story_7_0 = { global_sailors_modifier = 0.05 }
+ac_story_7_1 = { naval_morale_recovery = 0.05 nobles_estate_target_satisfaction = -0.05 }
+ac_story_8_0 = { clergy_estate_target_satisfaction = 0.05 }
+ac_story_8_1 = { stability_cost_efficiency = 0.05 diplomatic_reputation = -0.25 }
+ac_story_9_0 = { clergy_estate_target_satisfaction = 0.05 nobles_estate_target_satisfaction = -0.025 }
+ac_story_9_1 = { nobles_estate_target_satisfaction = 0.05 }
+ac_story_10_0 = { tolerance_heathen = 0.5 }
+ac_story_10_1 = { clergy_estate_target_satisfaction = 0.05 diplomatic_reputation = -0.25 }
+ac_story_11_0 = { global_monthly_food_modifier = 0.05 }
+ac_story_11_1 = { global_food_capacity_modifier = 0.1 }
+ac_story_12_1 = { land_morale_modifier = 0.03 }

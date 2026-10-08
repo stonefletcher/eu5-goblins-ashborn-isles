@@ -174,31 +174,55 @@
   "files": [
     {
       "path": "in_game/common/biases/goblins_gathering.txt",
-      "sha256": "a4df89d4ee940a6ab23129df33cebf885217ab76d11173654f394cb8e379cbbf"
+      "sha256": "1ca43e2b6916f4a317a4fff7659584fd158ddafb04bad40d2eacd915d5b9c470"
     },
     {
       "path": "in_game/common/casus_belli/goblins_gathering.txt",
       "sha256": "b3898d705bb97d276923b9270513124b25ba43ab89097086bfbe379200a352e6"
     },
     {
+      "path": "in_game/common/customizable_localization/goblins_exploration.txt",
+      "sha256": "e212669169871fe793b2c440390ac63768accd073f4bba3afba796c0fbf95155"
+    },
+    {
       "path": "in_game/common/generic_action_ai_lists/goblins_gathering.txt",
-      "sha256": "8cd11f57a1b489a4063b2d3d5b871c4fcce124ed9e4a5a1a17a285e390a05927"
+      "sha256": "d0a64d88cff24370ae25a52d428980cfbca74639f867fcad9a1afba6223979d9"
+    },
+    {
+      "path": "in_game/common/generic_actions/goblins_exploration.txt",
+      "sha256": "81eefcd1e448df7823cef4d935319aaf494a93f6becfbe14fb4c0de39a84b4cf"
     },
     {
       "path": "in_game/common/generic_actions/goblins_gathering.txt",
-      "sha256": "e3a4901165d1f4ab4160508f977329936317536da670428080aef8d48c71affe"
+      "sha256": "d5290c79730665f2de68dac51291e816b6cb89d2a3f61e8c652c6e68d0778e04"
+    },
+    {
+      "path": "in_game/common/on_action/goblins_exploration.txt",
+      "sha256": "6c6c78a7db6b4da5085bc052d1dafb97695309ebaac88c2a257687cb73cad6c0"
+    },
+    {
+      "path": "in_game/common/on_action/goblins_gathering.txt",
+      "sha256": "aa9f02e234a60ed3939e644aa7c12b51c200804315728c5a5485915ba295187c"
     },
     {
       "path": "in_game/common/prices/goblins_gathering.txt",
-      "sha256": "fe3ad3a43793c9026b0478771dd9a507d62f2590d72a0efdcc14b6673186c5e5"
+      "sha256": "44ac426f58749600611571404ac75440f636f9ae43be82e6012dc3dbad7b3131"
+    },
+    {
+      "path": "in_game/common/script_values/goblins_gathering.txt",
+      "sha256": "1e96c87b3a2d549c766ed4ff4fdf794f93d49eb5f1625233c33186f433723cb5"
     },
     {
       "path": "in_game/common/scripted_triggers/goblins_gathering.txt",
-      "sha256": "4e6df0974329db0b8396a7b95cf60246cce7177233c164b23976083967418ba8"
+      "sha256": "5a35524d81cf0209d559a758fcef16101fd8c5f206449bceae27b479222d2579"
     },
     {
       "path": "in_game/common/situations/goblins_gathering.txt",
-      "sha256": "db9083371e6d40d3a745d99625d329e416433a5de1babc8e8610865b045d15d0"
+      "sha256": "dbaeea0e3a92dcf720279504f750f929534041df781a74d1c8037708fab57837"
+    },
+    {
+      "path": "in_game/common/subject_types/goblins_gathering.txt",
+      "sha256": "b96da04aabe6de95328afc142fb53386e728b0d3287efb5ccc5e0ebbc54d6b35"
     },
     {
       "path": "in_game/events/goblins_ashborn_isles.txt",
@@ -206,27 +230,31 @@
     },
     {
       "path": "in_game/events/goblins_exploration.txt",
-      "sha256": "408f9d8459e0baf82dff541a2eb600b3b59c95d1ab7eae9b1fbdb88370d0ea23"
+      "sha256": "ba451797ecfda9d2dae3a59e49feddcfd0cd5155e41ef1b437c5afa2704fd315"
     },
     {
       "path": "in_game/events/goblins_gathering.txt",
-      "sha256": "94e823573086a0be82c190ac544c57500a3871510bc2151f6436f89aaa555e2c"
+      "sha256": "a63b60e5db0ea0e55c8da4c6e5e291d6789161edeb6a3ca2a7ddf81cd0c17d83"
     },
     {
       "path": "in_game/gui/panels/situation/ga_eastern_hunger.gui",
-      "sha256": "3a0b66b6f31d083ee891b9f863493d806888420336fdef7efbf9fb80331a3aed"
+      "sha256": "929dc10d36cb37b1dca936a21fdd6f4ef436723428ca3fb4f34270913cbec184"
     },
     {
       "path": "in_game/gui/panels/situation/ga_gathering_of_five.gui",
-      "sha256": "a471dd7d1b7588c630b567105830e7e60af40d7b3ef0b9ee06aec7f61e3703f1"
+      "sha256": "a882a82709409d9bb2cbdf3889486046bf2eaa8560b738fa9bab20dfa8d61f52"
     },
     {
       "path": "main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt",
       "sha256": "6d1230cb0bc5e1e9315b9956b108d914e671c68c04bb303683b0a9cd13918834"
     },
     {
+      "path": "main_menu/common/modifier_type_definitions/goblins_gathering.txt",
+      "sha256": "1b0dbf4521bebe766bde3dd3b12357fc882fed01f7cc3cd5a3c4d583b269f45d"
+    },
+    {
       "path": "main_menu/common/static_modifiers/goblins_gathering.txt",
-      "sha256": "557d9e4556ce5019a91b386fe2b0c74ec467c63e97ea261879f6cf8f3d988ff8"
+      "sha256": "0619fe6f32de06533a5c3303c61f9165de6f3171d57a1b8cb6d64609886746fb"
     },
     {
       "path": "main_menu/gfx/coat_of_arms/textured_emblems/te_ashborn_brackmaw.dds",
@@ -333,8 +361,12 @@
       "sha256": "8d0fc8c1f90b9c7e8d210a8fdea59f87db43a5cb9934425f3afdaf75b3cfd0c4"
     },
     {
+      "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
+      "sha256": "2547c6f1917707d0a5951f849de39ebff0346ef5f1276891f5e456e4d7bb674a"
+    },
+    {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "7e293a5f32a1d85accea5137e24c671acf1bf23167153dceab42202d0b22f49b"
+      "sha256": "4b945e6dfe829ee67fe7d87f471058e01b954210f51e022cc3437a8052c6250a"
     }
   ]
 }

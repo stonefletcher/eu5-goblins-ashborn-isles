@@ -4,6 +4,7 @@ import json
 import re
 from pathlib import Path
 import ashen_covenant as ac
+from verify_055 import parse
 
 def clean(text):
     return re.sub(r'"(?:\\.|[^"\\])*"|#[^\r\n]*', '', text)
@@ -20,6 +21,8 @@ def verify(game, out):
     assert all(len(set(pair)) == 2 and set(pair) <= ac.ASPECTS.keys() for pair in ac.STARTING.values())
     native_mods = '\n'.join(p.read_text(encoding='utf-8-sig') for p in (game/'main_menu/common/modifier_type_definitions').glob('*.txt'))
     mod_ids = set(re.findall(r'(?m)^\s*(\w+)\s*=\s*\{', native_mods))
+    for _,_,body in parse((out/'main_menu/common/static_modifiers/ashen_covenant.txt').read_text(encoding='utf-8-sig')):
+        for modifier,_,_ in body: assert modifier in mod_ids, modifier
     for modifier in {r[2] for r in ac.ASPECTS.values()} | {r[2] for r in ac.RITES.values()} | {s[4] for s in ac.SITES} | {'monthly_religious_influence', 'maximum_religious_influence'}:
         assert modifier in mod_ids, f'Unknown modifier {modifier}'
     files = [p for p in out.rglob('*') if p.is_file() and (p.stem == 'ashen_covenant' or p.name == 'ashen_covenant_l_english.yml')]
@@ -46,6 +49,9 @@ def verify(game, out):
     assert hooks.index('name = ac_moot_held value = yes') < hooks.index('id = ashen_covenant.20')
     assert 'num_of_religious_aspects = 0' in hooks
     assert 'NOT = { has_variable = ac_initialized }' in hooks
+    assert 'has_variable = ga_unifier NOT = { has_variable = ac_moot_held } ga_controls_homeland = yes' in hooks
+    cleanup_branch = hooks.split('else = {', 1)[1].split('ac_covenant_stories', 1)[0]
+    assert 'remove_variable = ac_initialized' in cleanup_branch
     actions = (out/'in_game/common/generic_actions/ashen_covenant.txt').read_text(encoding='utf-8-sig')
     for key in ac.RITES:
         assert f'remove_country_modifier = ac_{key}' in hooks

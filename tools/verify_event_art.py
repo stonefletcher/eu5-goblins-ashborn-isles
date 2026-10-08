@@ -12,7 +12,7 @@ from verify_055 import parse
 def verify(out, check_manifest=True):
     found = {}
     for path in sorted((out / 'in_game/events').glob('*.txt')):
-        if not path.name.startswith('goblins_'):
+        if not (path.name.startswith('goblins_') or path.name == 'ashen_covenant.txt'):
             continue
         assert path.read_bytes().startswith(b'\xef\xbb\xbf'), path
         for key, _, fields in parse(path.read_text(encoding='utf-8-sig')):

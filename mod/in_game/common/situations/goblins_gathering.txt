@@ -18,8 +18,51 @@
         }
     }
     on_monthly = {
-        every_country = {
-            limit = { ga_is_goblin = yes }
+        c:CDM ?= {
+            if = {
+                limit = { NOT = { has_variable = ga_signature_seen } }
+                set_variable = { name = ga_signature_seen value = yes }
+                if = { limit = { tag = CDM } trigger_event_non_silently = ga_gathering.10 }
+                if = { limit = { tag = QBR } trigger_event_non_silently = ga_gathering.11 }
+                if = { limit = { tag = RHK } trigger_event_non_silently = ga_gathering.12 }
+                if = { limit = { tag = SFK } trigger_event_non_silently = ga_gathering.13 }
+                if = { limit = { tag = SWK } trigger_event_non_silently = ga_gathering.14 }
+            }
+        }
+        c:QBR ?= {
+            if = {
+                limit = { NOT = { has_variable = ga_signature_seen } }
+                set_variable = { name = ga_signature_seen value = yes }
+                if = { limit = { tag = CDM } trigger_event_non_silently = ga_gathering.10 }
+                if = { limit = { tag = QBR } trigger_event_non_silently = ga_gathering.11 }
+                if = { limit = { tag = RHK } trigger_event_non_silently = ga_gathering.12 }
+                if = { limit = { tag = SFK } trigger_event_non_silently = ga_gathering.13 }
+                if = { limit = { tag = SWK } trigger_event_non_silently = ga_gathering.14 }
+            }
+        }
+        c:RHK ?= {
+            if = {
+                limit = { NOT = { has_variable = ga_signature_seen } }
+                set_variable = { name = ga_signature_seen value = yes }
+                if = { limit = { tag = CDM } trigger_event_non_silently = ga_gathering.10 }
+                if = { limit = { tag = QBR } trigger_event_non_silently = ga_gathering.11 }
+                if = { limit = { tag = RHK } trigger_event_non_silently = ga_gathering.12 }
+                if = { limit = { tag = SFK } trigger_event_non_silently = ga_gathering.13 }
+                if = { limit = { tag = SWK } trigger_event_non_silently = ga_gathering.14 }
+            }
+        }
+        c:SFK ?= {
+            if = {
+                limit = { NOT = { has_variable = ga_signature_seen } }
+                set_variable = { name = ga_signature_seen value = yes }
+                if = { limit = { tag = CDM } trigger_event_non_silently = ga_gathering.10 }
+                if = { limit = { tag = QBR } trigger_event_non_silently = ga_gathering.11 }
+                if = { limit = { tag = RHK } trigger_event_non_silently = ga_gathering.12 }
+                if = { limit = { tag = SFK } trigger_event_non_silently = ga_gathering.13 }
+                if = { limit = { tag = SWK } trigger_event_non_silently = ga_gathering.14 }
+            }
+        }
+        c:SWK ?= {
             if = {
                 limit = { NOT = { has_variable = ga_signature_seen } }
                 set_variable = { name = ga_signature_seen value = yes }
@@ -37,7 +80,7 @@
             set_variable = { name = ga_unifier value = yes }
             trigger_event_non_silently = ga_gathering.5
             every_subject = {
-                limit = { ga_is_goblin = yes is_subject_type = vassal }
+                limit = { ga_is_goblin = yes OR = { is_subject_type = vassal is_subject_type = ga_compact_autonomy is_subject_type = ga_compact_protection } }
                 trigger_event_non_silently = ga_gathering.7
             }
             union ?= {

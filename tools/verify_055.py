@@ -100,9 +100,23 @@ def ownership_checks(definitions, ids):
             answers.append(result)
         return all(answers)
     def complete(): return evaluate(definitions['ga_controls_homeland'], 'CDM')
+    def progress(rows):
+        nonlocal claimant
+        total = 0
+        for key, _, value in rows:
+            if key == 'value': total = int(value)
+            elif key == 'add': total += int(value)
+            elif key == 'save_temporary_scope_as': claimant = 'CDM'
+            elif key == 'if':
+                limit = next(v for k, _, v in value if k == 'limit')
+                if evaluate(limit, 'CDM'): total += progress([row for row in value if row[0] != 'limit'])
+            else: raise AssertionError(('Unknown progress operation', key))
+        return total
     scenarios = []
     def check(name, expected):
         assert complete() == expected, name
+        count = progress(definitions['ga_ui_homeland_count'])
+        assert 0 <= count <= len(ids) and (count == len(ids)) == expected, (name, count)
         scenarios.append(name)
     check('All homeland directly owned', True)
     assert evaluate(definitions['ga_owns_entire_homeland'], 'CDM')
@@ -123,6 +137,9 @@ def ownership_checks(definitions, ids):
     countries['QBR'].update(overlord='RHK')
     countries['SWK'].update(overlord='QBR')
     check('Multiple nested vassal links', True)
+    countries['QBR']['subject'] = 'ga_compact_autonomy'
+    countries['SWK']['subject'] = 'ga_compact_protection'
+    check('Nested autonomy and protection charters count toward unification', True)
     owners['porto'] = 'SFK'
     assert evaluate(definitions['ga_has_european_foothold'], 'CDM')
     scenarios.append('Foothold held by a qualifying junior partner counts')
@@ -132,8 +149,10 @@ def ownership_checks(definitions, ids):
     countries['QBR']['subject'] = 'vassal'
     owners[ids[-1]] = None
     check('An unowned homeland district blocks completion', False)
+    assert progress(definitions['ga_ui_homeland_count']) == len(ids)-1
     owners[ids[-1]] = 'POR'
     check('One foreign-held district blocks completion', False)
+    assert progress(definitions['ga_ui_homeland_count']) == len(ids)-1
     countries['POR'].update(subject='vassal', overlord='CDM')
     check('Foreign vassal legitimately holding homeland counts', True)
     countries['SFK']['senior'] = 'POR'
@@ -142,6 +161,10 @@ def ownership_checks(definitions, ids):
     countries['POR'].update(subject=None, overlord=None)
     countries['CDM'].update(subject='vassal', overlord='POR')
     check('A foreign-controlled claimant cannot win', False)
+    assert progress(definitions['ga_ui_homeland_count']) == 0
+    countries['CDM'].update(subject=None, overlord=None)
+    countries['POR'].update(subject='vassal', overlord='CDM')
+    check('Restored independence restores live progress', True)
     return scenarios
 
 def verify(root, game, out):
@@ -150,7 +173,7 @@ def verify(root, game, out):
     ids = [x['id'] for x in cfg['locations']]
     scripts = sorted(out.glob('in_game/common/**/goblins_gathering.txt'))
     scripts += [out / 'in_game/events/goblins_gathering.txt', out / 'main_menu/common/static_modifiers/goblins_gathering.txt']
-    assert len(scripts) == 9, f'Expected 9 script files, got {len(scripts)}'
+    assert len(scripts) == 12, f'Expected 12 script files, got {len(scripts)}'
     ast = {}; declarations = {}; raw = ''
     for path in scripts:
         text = read(path); raw += text
@@ -178,6 +201,16 @@ def verify(root, game, out):
     for key, op, modifiers in ast[out / 'main_menu/common/static_modifiers/goblins_gathering.txt']:
         for modifier, _, _ in modifiers:
             assert re.search(r'(?m)^\s*' + re.escape(modifier) + r'\s*=\s*\{', native_modifiers), modifier
+    for _, _, body in ast[out / 'in_game/common/subject_types/goblins_gathering.txt']:
+        for key, _, value in body:
+            if key in ['subject_modifier', 'overlord_modifier']:
+                for modifier, _, _ in value:
+                    assert re.search(r'(?m)^\s*' + re.escape(modifier) + r'\s*=\s*\{', native_modifiers), modifier
+    native_vassal = read(game / 'in_game/common/subject_types/vassal.txt')
+    assert 'annexation_min_years_before = 10' in native_vassal and 'annexation_speed = 1' in native_vassal
+    native_prices = '\n'.join(read(p) for p in (game / 'in_game/common/prices').glob('*.txt'))
+    price_defs = {k: v for k, _, v in parse(native_prices)}
+    assert ('scaled_gold', '=', '0.2') in price_defs['subject_pays_vassal'], 'Recheck half-base tribute against native game'
     for modifier in re.findall(r'\bmodifier\s*=\s*(ga_\w+)', raw):
         assert modifier in declarations, modifier
     locpath = out / 'main_menu/localization/english/goblins_gathering_l_english.yml'
@@ -225,6 +258,9 @@ def verify(root, game, out):
     # Every crown must receive its own introduction; Shatterfin has a guarded follow-up.
     situation = declarations['ga_gathering_of_five']
     monthly = next(v for k, _, v in situation if k == 'on_monthly')
+    assert {k for k, _, _ in monthly} == {'c:' + tag for tag in ['CDM', 'QBR', 'RHK', 'SFK', 'SWK']}
+    assert all(op == '?=' for _, op, _ in monthly)
+    assert not any(k == 'every_country' for k, _, _ in flatten(monthly))
     for tag, number in [('CDM', 10), ('QBR', 11), ('RHK', 12), ('SFK', 13), ('SWK', 14)]:
         introduction = declarations[f'ga_gathering.{number}']
         assert ('trigger', '=', [('tag', '=', tag)]) in introduction
@@ -236,9 +272,9 @@ def verify(root, game, out):
     followup = declarations['ga_gathering.15']
     assert ('trigger', '=', [('tag', '=', 'SFK'), ('NOT', '=', [('has_variable', '=', 'ga_tidemother_council_seen')])]) in followup
     assert ('immediate', '=', [('set_variable', '=', [('name', '=', 'ga_tidemother_council_seen'), ('value', '=', 'yes')])]) in followup
-    assert len([k for k in declarations if k.startswith('ga_gathering.')]) == 17
+    assert len([k for k in declarations if k.startswith('ga_gathering.')]) == 29
     # Every diplomatic response must notify the sender before request cleanup.
-    for number, outcomes in [(2, [16, 17]), (3, [4, 18])]:
+    for number, outcomes in [(2, [17]), (3, [18])]:
         response = declarations[f'ga_gathering.{number}']
         options = [v for k, _, v in response if k == 'option']
         for body, outcome in zip(options, outcomes, strict=True):
@@ -250,7 +286,8 @@ def verify(root, game, out):
         assert ('remove_variable', '=', 'ga_offer_sender') in after
     ai_actions = next(v for k, _, v in declarations['ga_gathering_ai_list'] if k == 'actions')
     assert all(k != 'ga_offer_harbor_pact' for k, _, _ in ai_actions)
-    assert ('ai_will_do', '=', [('add', '=', '-1000')]) in declarations['ga_offer_harbor_pact']
+    harbor_ai = next(v for k, _, v in declarations['ga_harbor_bargains_ai_list'] if k == 'actions')
+    assert {k for k, _, _ in harbor_ai} == {'ga_offer_harbor_pact', 'ga_seek_pilot_bargain'}
     ownership = declarations['ga_controls_homeland']
     locations = [key.split(':', 1)[1] for key, _, _ in flatten(ownership) if key.startswith('location:')]
     assert len(locations) == len(set(locations)) == 72
@@ -260,11 +297,9 @@ def verify(root, game, out):
     for name in forbidden:
         assert not re.search(r'\b' + name + r'\s*=', raw), f'Forbidden grant/forced operation: {name}'
     # The sole scripted subject grant must require explicit recipient consent.
-    assert len(re.findall(r'\bmake_subject_of\s*=', raw)) == 1
-    submission = declarations['ga_gathering.3']
-    accepted = next(value for key, _, value in submission if key == 'option')
-    assert any(key == 'trigger' and any(k == 'ga_valid_submission_offer' for k, _, _ in value)
-               for key, _, value in accepted)
+    grants = [k for k, body in declarations.items() if any(key == 'make_subject_of' for key, _, _ in flatten(body))]
+    assert grants == ['ga_gathering.33'], grants
+    assert all('ga_cp_valid' in str(body) for k, _, body in declarations['ga_gathering.33'] if k == 'option' and 'make_subject_of' in str(body))
     cb = declarations['ga_cb_eastern_foothold']
     assert ('war_goal_type', '=', 'conquer_province') in cb
     assert any(key == 'province' for key, _, _ in cb)

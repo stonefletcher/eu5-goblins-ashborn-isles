@@ -8,6 +8,10 @@ import argparse
 import json
 from clan_identity import PROFILES, SHATTERFIN
 from event_art import image
+import harbor_bargains
+import compact_talks
+import situation_progress
+import early_projects
 
 ROOT = Path(__file__).resolve().parents[1]
 TAGS = ['CDM', 'QBR', 'RHK', 'SFK', 'SWK']
@@ -82,9 +86,10 @@ def action(key, name, desc, effect, selector='', allow='', ai='add = 10',
     loc(key, name)
     loc(key + '_desc', desc)
     sit = 'ga_eastern_hunger' if eastern else 'ga_gathering_of_five'
-    extra = 'ga_controls_homeland = yes has_variable = ga_unifier' if eastern else ''
+    extra = 'has_variable = ga_unifier custom_tooltip = { text = ga_gathering_complete_tt ga_controls_homeland = yes }' if eastern else ''
     if selector:
         effect = 'if = { limit = { exists = scope:target } ' + effect + ' }'
+    price_line = f'    price = price:{price}\n' if price else ''
     return f'''{key} = {{
     type = situation
     show_message = no
@@ -94,8 +99,7 @@ def action(key, name, desc, effect, selector='', allow='', ai='add = 10',
     ai_tick = monthly
     ai_tick_frequency = 6
     cooldown = {{ type = {key} years = {years} }}
-    {('price = price:' + price) if price else ''}
-    {situation_picker(sit)}
+{price_line}    {situation_picker(sit)}
     {selector}
     effect = {{ {effect} }}
     ai_will_do = {{ {ai} }}
@@ -190,7 +194,8 @@ ga_has_european_foothold = {{
     }}
 }}
 '''
-    write(out, 'in_game/common/scripted_triggers/goblins_gathering.txt', triggers)
+    write(out, 'in_game/common/scripted_triggers/goblins_gathering.txt', triggers + harbor_bargains.triggers() + compact_talks.triggers())
+    write(out, 'in_game/common/on_action/goblins_gathering.txt', harbor_bargains.maintenance().replace("on_actions = { ga_hb_contract_pulse }", "on_actions = { ga_hb_contract_pulse ga_cp_history_pulse }") + compact_talks.pulse())
 
     # Use native monthly situation evaluation; no external global pulse override.
     situations = '''
@@ -271,6 +276,14 @@ ga_eastern_hunger = {
     }
 }
 '''
+    # Only these five tags are eligible; avoid a global scan every month.
+    monthly_start = situations.index('    on_monthly = {')
+    monthly_end = situations.index('    on_ending = {', monthly_start)
+    monthly = situations[monthly_start:monthly_end]
+    body = monthly[monthly.index('            if = {'):monthly.rindex('        }')]
+    bounded = '    on_monthly = {\n' + ''.join(
+        '        c:' + tag + ' ?= {\n' + body + '        }\n' for tag in TAGS) + '    }\n'
+    situations = situations[:monthly_start] + bounded + situations[monthly_end:]
     write(out, 'in_game/common/situations/goblins_gathering.txt', situations)
     # Native panels are resolved by situation ID; definitions alone render no UI.
     # Inherit the game's illustration, start date, scrolling and action list.
@@ -313,24 +326,14 @@ situation_panel = {
             if = { limit = { scope:actor = { is_allied_with = { target = scope:target } } } add = 15 }
         }'''
     actions = []
-    actions.append(action('ga_offer_harbor_pact', 'Offer a Harbor Pact',
-        'Offer a normal alliance to another independent Ashborn kingdom. Its ruler may accept or refuse; membership does not satisfy unification.',
-        request.replace('EVENT', '2'), country_picker(choices + '\n NOT = { is_allied_with = { target = scope:actor } }'),
-        ai='add = -1000', price='ga_gathering_pact_price'))
+    actions.extend(harbor_bargains.actions(action, country_picker))
     actions.append(action('ga_send_supplies', 'Send Grain and Iron',
         'Pay 10 gold to send supplies to another independent Ashborn kingdom. The recipient gains 10 gold and improved opinion of you for five years.',
         '''scope:target = {
             add_gold = 10
             add_opinion = { target = scope:actor modifier = ga_received_supplies }
         }''', country_picker(choices), ai=ai_friendly, years=5, price='ga_gathering_aid_price'))
-    actions.append(action('ga_offer_compact', 'Negotiate the Ashen Compact',
-        'Offer voluntary vassalage to an allied kingdom with at least 125 opinion, at most 65% of your strength, and no higher country rank. The recipient must consent. Its dynasty and succession laws remain in place.',
-        request.replace('EVENT', '3'), country_picker(choices + '''
-            is_allied_with = { target = scope:actor }
-            relative_strength = { target = scope:actor value <= 0.65 }
-            "opinion(scope:actor)" >= 125
-            scope:actor.country_rank_level >= country_rank_level'''),
-        ai=ai_friendly, years=3, price='ga_gathering_compact_price'))
+    actions.append(compact_talks.action(action, country_picker))
     war_ai = '''add = -100
         if = { limit = { exists = scope:target scope:actor = { wants_to_attack = scope:target } } add = 140 }
         if = { limit = { scope:actor = { manpower_percentage < 0.5 } } subtract = 1000 }'''
@@ -349,7 +352,7 @@ situation_panel = {
     actions.append(action('ga_prepare_crossing', 'Prepare the Eastern Crossing',
         'Pay 20 gold for five years of 15% lower transport construction cost and 5% higher naval morale. Ships, armies and land must still be obtained through normal gameplay. Available once every ten years.',
         '''scope:actor = { add_country_modifier = { modifier = ga_crossing_preparations years = 5 mode = replace } }''',
-        allow='ga_controls_homeland = yes', ai='add = 20', years=10, price='ga_gathering_crossing_price', eastern=True))
+        ai='add = 20', years=10, price='ga_gathering_crossing_price', eastern=True))
     coastal = '''select_trigger = {
         looking_for_a = province
         target_flag = target
@@ -402,6 +405,11 @@ ga_eastern_ai_list = {
     potential = { has_variable = ga_unifier ga_controls_homeland = yes can_see_situation = situation:ga_eastern_hunger }
     actions = { ga_prepare_crossing ga_plan_eastern_foothold }
 }
+# Both parties reserve their sole negotiation slot; AI also retains 20 gold.
+ga_harbor_bargains_ai_list = {
+    potential = { ga_hb_free = yes gold >= 30 can_see_situation = situation:ga_gathering_of_five }
+    actions = { ga_offer_harbor_pact ga_seek_pilot_bargain }
+}
 ''')
     write(out, 'in_game/common/prices/goblins_gathering.txt', '''
 ga_gathering_pact_price = { gold = 5 }
@@ -411,10 +419,21 @@ ga_gathering_claim_price = { prestige = 5 }
 ga_gathering_crossing_price = { gold = 20 }
 ga_gathering_target_price = { gold = 10 }
 ''')
+    price_types = []
+    for suffix, label in [('pact', 'Harbor Pact'), ('aid', 'Send Supplies'),
+                          ('compact', 'Offer Compact'), ('claim', 'Claim the Homeland'),
+                          ('crossing', 'Prepare the Crossing'), ('target', 'Plan an Eastern Foothold')]:
+        price = 'ga_gathering_' + suffix + '_price'
+        modifier = price + '_cost_modifier'
+        loc(price, label)
+        loc('MODIFIER_TYPE_NAME_' + modifier, label + ' Cost')
+        loc('MODIFIER_TYPE_DESC_' + modifier, 'Changes the cost of this action.')
+        price_types.append(f'{modifier} = {{ color = bad percent = yes game_data = {{ category = country }} }}')
+    write(out, 'main_menu/common/modifier_type_definitions/goblins_gathering.txt', '\n'.join(price_types))
     write(out, 'in_game/common/biases/goblins_gathering.txt', '''
-ga_harbor_pact_opinion = { value = 35 months = 120 yearly_decay = 3 }
-ga_received_supplies = { value = 30 months = 60 yearly_decay = 5 }
-ga_oath_honored = { value = 25 months = 120 yearly_decay = 2 }
+ga_harbor_pact_opinion = { value = 35 months = 120 }
+ga_received_supplies = { value = 30 months = 60 }
+ga_oath_honored = { value = 25 months = 120 }
 ''')
     for key, text in [('ga_harbor_pact_opinion', 'The Harbor Pact'), ('ga_received_supplies', 'Grain and Iron Received'), ('ga_oath_honored', 'The Ashen Oath')]:
         loc(key, text)
@@ -422,20 +441,30 @@ ga_oath_honored = { value = 25 months = 120 yearly_decay = 2 }
 ga_cindermaw_drilled_captains = { land_morale_modifier = 0.05 }
 ga_cindermaw_court_envoys = { diplomatic_reputation = 0.5 }
 ga_cindermaw_counted_stores = { army_maintenance_efficiency = 0.10 }
+ga_brackmaw_repaired_sluices = { global_food_capacity_modifier = 0.10 }
+ga_reefhook_restored_beacons = { naval_morale_recovery = 0.05 }
 ga_gathering_claimant = { diplomatic_reputation = 0.5 }
 ga_gathering_defiant = { naval_morale_modifier = 0.05 }
+ga_gathering_leadership = { land_morale_modifier = 0.05 }
+ga_gathering_cooperation = { diplomatic_reputation = 0.5 }
+ga_gathering_independence = { global_defensive = 0.10 }
 ga_compact_guarantees = { subject_loyalty = 10 }
 ga_unification_recovery = { global_monthly_control = 0.002 }
 ga_crossing_preparations = { navy_transport_build_cost_modifier = -0.15 naval_morale_modifier = 0.05 }
 ga_first_eastern_harbor = { naval_morale_recovery = 0.05 }
-''')
+''' + harbor_bargains.modifiers(loc) + '\n' + early_projects.modifiers(loc))
     for key, text in [('ga_gathering_claimant', 'Claimant Among the Five'), ('ga_gathering_defiant', 'Our Shores, Our Crown'), ('ga_compact_guarantees', 'Guarantees of the Ashen Compact'), ('ga_unification_recovery', 'Five Crowns, One Hunger'), ('ga_crossing_preparations', 'The Eastern Crossing'), ('ga_first_eastern_harbor', 'The First Eastern Harbor')]:
         loc('STATIC_MODIFIER_NAME_' + key, text)
         loc('STATIC_MODIFIER_DESC_' + key, text + '. A temporary benefit from the Ashborn situation.')
     for key, name, description in [
+        ('ga_gathering_leadership', 'Lead the Five', 'Our captains prepare to lead the Ashborn. Army morale increases by 5% for five years.'),
+        ('ga_gathering_cooperation', 'Stand Together', 'Our envoys seek partners among the crowns. Diplomatic reputation increases by 0.5 for five years.'),
+        ('ga_gathering_independence', 'Guard Our Shores', 'Our households prepare to defend their independence. Defensiveness increases by 10% for five years.'),
         ('ga_cindermaw_drilled_captains', 'One Fire, Many Blades', 'Grask drills the rival captains to hold their companies together beneath Cindermaw banners.'),
         ('ga_cindermaw_court_envoys', 'A Place at the Forge', 'Kragga carries offers of patronage and protection to the other Ashborn courts.'),
         ('ga_cindermaw_counted_stores', "Grakka's Muster Accounts", 'Grakka counts stores and wages before the captains promise another campaign.'),
+        ('ga_brackmaw_repaired_sluices', 'Dry Granaries, Sound Gates', 'Repaired tidal gates protect the granaries. Food storage capacity increases by 10% for five years.'),
+        ('ga_reefhook_restored_beacons', 'Lights Along the Shoals', 'Restored rescue beacons give returning crews confidence. Naval morale recovery increases by 5% for five years.'),
     ]:
         loc('STATIC_MODIFIER_NAME_' + key, name)
         loc('STATIC_MODIFIER_DESC_' + key, description)
@@ -466,33 +495,24 @@ ga_cb_eastern_foothold = {
     cleanup = 'remove_variable = ga_offer_sender remove_variable = ga_offer_pending'
     events = ['namespace = ga_gathering\n']
     events.append(event(1, 'A Seat Among the Five',
-        'The mountains have shaken and the five crowns send their captains to the gathering. The Hunger Below binds us, but no crown commands all our shores. Shall we claim leadership, seek partners, or guard our independence? Use the Gathering of the Five situation to negotiate pacts, send aid, offer voluntary vassalage or obtain war justifications. Every homeland location must fall under one authority before the eastward ambition begins.',
+        'The mountains have shaken and the five crowns send their captains to the gathering. The Hunger Below binds us, but no crown commands all our shores. Shall we claim leadership, seek partners, or guard our independence? Use the Gathering of the Five situation to bargain for provisions or pilots, send aid, offer voluntary vassalage or obtain war justifications. Harbor Bargains purchase services, not alliances. Every homeland location must fall under one authority before the eastward ambition begins.',
         '\n'.join([
-            option(1, 'a', 'Our crown shall lead them.', 'add_prestige = 5 add_country_modifier = { modifier = ga_gathering_claimant years = 5 mode = replace }', ai='factor = 3'),
-            option(1, 'b', 'Find those worth standing beside.', 'add_country_modifier = { modifier = ga_gathering_claimant years = 5 mode = replace }', ai='factor = 3'),
-            option(1, 'c', 'Our shores answer to us alone.', 'add_country_modifier = { modifier = ga_gathering_defiant years = 5 mode = replace }', ai='factor = 2')
+            option(1, 'a', 'Our crown shall lead them.', 'add_prestige = 5 add_country_modifier = { modifier = ga_gathering_leadership years = 5 mode = replace }', ai='factor = 3'),
+            option(1, 'b', 'Find those worth standing beside.', 'add_prestige = 5 add_country_modifier = { modifier = ga_gathering_cooperation years = 5 mode = replace }', ai='factor = 3'),
+            option(1, 'c', 'Our shores answer to us alone.', 'add_prestige = 5 add_country_modifier = { modifier = ga_gathering_independence years = 5 mode = replace }', ai='factor = 2')
         ])))
-    pact_ai = '''factor = 1
-        modifier = { factor = 4 "opinion(var:ga_offer_sender)" >= 50 }
-        modifier = { factor = 2 relative_strength = { target = var:ga_offer_sender value <= 0.75 } }'''
-    events.append(event(2, 'A Harbor Pact Offered',
-        '[ROOT.GetCountry.MakeScope.GetVariable(\'ga_offer_sender\').GetCountry.GetName] offers a pact between our harbors. Acceptance creates an ordinary alliance, with its usual obligations. We retain our crown and independence; a pact is not submission.',
-        option(2, 'a', 'Let our ships stand together.', '''
-            create_relation = { first = root second = var:ga_offer_sender type = relation_type:alliance }
-            add_opinion_mutual_effect = { target = var:ga_offer_sender modifier = ga_harbor_pact_opinion }
-        ''' + reply(16), 'ga_valid_pact_offer = yes', pact_ai) + '\n' + option(2, 'b', 'Our harbor needs no such pact.', reply(17), ai='factor = 2'),
+    # Keep the old event ID so a saved pending request closes without granting an alliance.
+    events.append(event(2, 'An Earlier Harbor Offer',
+        'This offer predates the new Harbor Bargains. It cannot create an alliance. Close it to return the old five-gold offer fee to its sender; new talks use the situation actions.',
+        option(2, 'b', 'Return the fee and close the old offer.', '''if = { limit = { has_variable = ga_offer_pending has_variable = ga_offer_sender }
+                var:ga_offer_sender ?= { add_gold = 5 }
+            }
+''' + reply(17)),
         after=cleanup))
-    accept_ai = '''factor = 1
-        modifier = { factor = 3 "opinion(var:ga_offer_sender)" >= 150 }
-        modifier = { factor = 3 relative_strength = { target = var:ga_offer_sender value <= 0.4 } }
-        modifier = { factor = 0.5 tag = SFK }'''
-    events.append(event(3, 'The Price of an Oath',
-        '[ROOT.GetCountry.MakeScope.GetVariable(\'ga_offer_sender\').GetCountry.GetName] asks us to join the Ashen Compact as a vassal. Our ruling house and succession customs remain, including the Tidemother law where it is in force. Normal vassal tribute and obligations apply. A ten-year loyalty benefit represents guarantees made at the gathering. We may refuse.',
-        option(3, 'a', 'Keep our house and customs; we shall swear.', '''
-            make_subject_of = { target = var:ga_offer_sender type = subject_type:vassal }
-            add_country_modifier = { modifier = ga_compact_guarantees years = 10 mode = replace }
-            add_opinion = { target = var:ga_offer_sender modifier = ga_oath_honored }
-        ''' + reply(4), 'ga_valid_submission_offer = yes', accept_ai) + '\n' + option(3, 'b', 'Friendship does not purchase our crown.', reply(18), ai='factor = 2'),
+    events.append(event(3, 'An Earlier Compact Offer',
+        'This offer predates charter negotiations. Close it to return the ten-gold fee to its sender. It cannot create a subject; new Compact talks require proven cooperation and two seals.',
+        option(3, 'b', 'Return the fee and close the old offer.',
+               'if = { limit = { has_variable = ga_offer_pending has_variable = ga_offer_sender } var:ga_offer_sender ?= { add_gold = 10 } } ' + reply(18)),
         after=cleanup))
     events.append(event(4, 'An Oath Accepted',
         '[SCOPE.sCountry(\'ga_offer_respondent\').GetName] has accepted our protection under the Compact. Its dynasty and customs endure beneath our authority. Remaining independent kingdoms may still resist; the gathering ends only when every homeland location is held by us, our vassals, or our junior union partners.',
@@ -525,20 +545,16 @@ ga_cb_eastern_foothold = {
     for num, tag, title, desc, answer in signatures:
         after = 'trigger_event_non_silently = { id = ga_gathering.15 days = 30 }' if tag == 'SFK' else ''
         choices = option(num, 'a', answer)
-        if tag == 'CDM':
-            choices = '\n'.join([
-                option(num, 'a', 'Grask, make these captains fight as one.',
-                       'add_country_modifier = { modifier = ga_cindermaw_drilled_captains years = 5 mode = replace }'),
-                option(num, 'b', 'Kragga, give the other crowns a reason to follow.',
-                       'add_country_modifier = { modifier = ga_cindermaw_court_envoys years = 5 mode = replace }'),
-                option(num, 'c', 'Grakka, put our stores and wages in order.',
-                       'add_country_modifier = { modifier = ga_cindermaw_counted_stores years = 5 mode = replace }'),
-            ])
+        if tag in early_projects.PROJECTS:
+            choices, project_text = early_projects.choices(tag, option)
+            desc += '\\n\\n' + project_text
         events.append(event(num, title, desc, choices, trigger=f'tag = {tag}', after=after))
     events.append(event(15, SHATTERFIN['followup_title'], SHATTERFIN['followup_description'],
         option(15, 'a', SHATTERFIN['followup_answer']),
         trigger='tag = SFK NOT = { has_variable = ga_tidemother_council_seen }',
         immediate='set_variable = { name = ga_tidemother_council_seen value = yes }'))
+    events.extend(harbor_bargains.events(event, option, loc))
+    events.extend(compact_talks.events(event, option, loc))
     write(out, 'in_game/events/goblins_gathering.txt', '\n'.join(events))
 
     for key, text in [
@@ -550,12 +566,14 @@ ga_cb_eastern_foothold = {
         ('ga_eastern_start_tt', 'A recognized Ashborn unifier still holds the entire homeland within its realm.'),
         ('ga_eastern_complete_tt', 'A recognized Ashborn unifier holds the homeland and a coastal European foothold within its realm.'),
         ('ga_choose_kingdom', 'Choose an Ashborn Kingdom'),
-        ('ga_no_kingdom_available', 'No eligible independent Ashborn kingdom is available.'),
+        ('ga_no_kingdom_available', '@trigger_no! No eligible independent Ashborn kingdom is available.'),
         ('ga_choose_eastern_province', 'Choose a European Coastal Province'),
-        ('ga_no_eastern_target', 'No eligible discovered European coastal province. Explore first, and check alliances, truces and diplomatic restrictions.'),
+        ('ga_no_eastern_target', '@trigger_no! No eligible discovered European coastal province. Explore first, and check alliances, truces and diplomatic restrictions.'),
         ('ga_relations', 'Relations with the other kingdom')
     ]:
         loc(key, text)
+    compact_talks.extra(out, write, loc)
+    situation_progress.build(out, homeland, write, loc)
     localization = 'l_english:\n' + '\n'.join(' ' + k + ': "' + v.replace('"', '\\"').replace('\n', r'\n') + '"' for k, v in TEXT.items())
     write(out, 'main_menu/localization/english/goblins_gathering_l_english.yml', localization)
     return {'version': '0.5.5', 'homeland_locations': len(homeland), 'kingdoms': TAGS,

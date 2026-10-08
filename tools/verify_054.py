@@ -5,7 +5,7 @@ import re
 
 def verify(b,game,out,mapstats):
     cfg=b.CFG;locs=cfg['locations'];baseline=cfg['baseline_locations'];byid={l['id']:l for l in locs}
-    assert len(byid)==len(locs)==94 and len({l['color'] for l in locs})==94
+    assert len(byid)==len(locs)==97 and len({l['color'] for l in locs})==97
     assert set(baseline)<=set(byid)
     assert sum(Decimal(str(l['pop'])) for l in locs)==Decimal(cfg['population_target'])/1000
     for l in locs:
@@ -18,10 +18,11 @@ def verify(b,game,out,mapstats):
         previous=cfg['population_revision_baseline']['locations']
         old_combined=Decimal(str(previous[ident]))+Decimal(str(previous[children[0]['id']]))
         tag=byid[ident]['country']
-        factor=Decimal(cfg['country_population_targets'][tag])/cfg['population_revision_baseline']['country_populations'][tag]
+        original_target=cfg['country_population_targets'][tag]-cfg.get('outpost_population_additions',{}).get(tag,0)
+        factor=Decimal(original_target)/cfg['population_revision_baseline']['country_populations'][tag]
         assert abs(combined-old_combined*factor)<=Decimal('.004')
         assert children[0]['province']!=byid[ident]['province']
-    assert len({l['province'] for l in locs})==38
+    assert len({l['province'] for l in locs})==39
     # Check generated setup, not just input configuration.
     pops=(out/'main_menu/setup/start/06_pops.txt').read_text(encoding='utf-8-sig')
     for l in locs:

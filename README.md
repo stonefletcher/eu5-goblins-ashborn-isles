@@ -20,12 +20,27 @@ use readable conditions, broken punctuation is repaired, and both parties
 receive signing receipts listing the actual payment, benefit, burden and term.
 Earlier portrait, wardrobe, hair, Drogg and holy-site fixes are retained.
 
+Starting projects now cost **25 gold**, a quarter of the 100-gold opening
+treasury; the AI keeps a 20-gold reserve. Food rewards explicitly raise
+the **province food storage limit**, with tooltip guidance to the native
+stockpile display and its modifier breakdown. They do not create food
+or increase monthly production.
+
+Lantern Cay is a new three-district Cindermaw outpost beside an ordinary
+coastal passage between the northern and southern islands. The lower
+eastern impassable strip is open, and parts of three nearby current
+tiles become coastal water. The route does not require fast-current
+tiles. The Isles now contain nine islands, 97 districts and 28 coastal
+sea tiles; Cindermaw gains 18,000 people on the new cay.
+
 Use a NEW campaign: the world map, country roster and markets have changed.
 Install with EU5 closed. The source and bundled installer both target 0.6.0.
 Static geography, native definitions, six-crown event scenarios and terrain
-checks passed. A clean source export reconstructed the installer successfully;
-all 1,974 files matched in both an isolated install and the active local copy.
-The previous local version was backed up and verified.
+checks passed, including 132 project scenarios and an ordinary coastal route
+through the Quiet Road. Terrain seams have zero measured error across 97
+land districts and 75 ports. The matching installer is being refreshed for
+Lantern Cay and the 25-gold projects; clean-download installation is the
+remaining staging gate. Earlier Giltfang installs were verified and backed up.
 In-game sailing, market trade, UI layout and rendering remain playtest checks.
 Use this `staging/0.6` branch for the Giltfang candidate; the default branch,
 GitHub releases and Steam Workshop are separate publication targets.
@@ -56,7 +71,7 @@ All six Ashborn clans now start with 100 gold in new campaigns, replacing
 Cindermaw's 50, Brackmaw's 35 and the other clans' 20. This uses the explicit
 100-gold setup of small vanilla countries such as Oneida, Onondaga and Cayuga as
 a benchmark; it is not a claim that every vanilla country starts with 100.
-Project prices, AI reserves, recurring income and war actions are unchanged.
+Opening projects now cost 25 gold. AI reserves, recurring income and war actions are unchanged.
 Existing saves retain their current treasury; start a new campaign for this change.
 
 Exploration now shows preparation, pending decisions, the route at sea with a
@@ -83,7 +98,7 @@ traditions and the Moot settlement are unchanged. Old pending popups without a n
 session token can only be deferred safely. In-game balance and save/reload need testing.
 
 All six clans now receive three mutually exclusive projects plus a free keep-the-gold
-option in their existing introduction. Every project costs 10 gold and lasts five
+option in their existing introduction. Every project costs 25 gold and lasts five
 years; AI buyers keep 20 gold. Cindermaw chooses army morale, diplomacy or army
 upkeep. Brackmaw chooses storage, production or fort defense. Reefhook chooses
 naval recovery, fleet upkeep or diplomacy. Shatterfin chooses monthly sailors,
@@ -92,7 +107,7 @@ Benefits are shown on each choice. Existing project rewards and already-seen
 introductions remain unchanged; choosing one project blocks the other two.
 
 Situation progress: both panels now show your qualifying realm's live homeland
-location count out of 94, using the same ownership rules as unification. The
+location count out of 97, using the same ownership rules as unification. The
 Gathering explains the Compact route. Its partner selector keeps existing crowns
 visible when they fail requirements and explains bargain history, alliance age,
 opinion, strength, rank, peace, pending offers and cooldowns. Annexed crowns and
@@ -143,13 +158,13 @@ Script and installation checks are separate from pending in-game acceptance.
 
 
 Reefhook can restore its rescue beacons in its existing introduction: pay
-10 gold for +5% naval morale recovery for five years, or keep the money.
-The paid choice requires at least 10 gold. Already-seen introductions do
+25 gold for +5% naval morale recovery for five years, or keep the money.
+The paid choice requires at least 25 gold. Already-seen introductions do
 not replay, and no additional popup is added.
 
 Brackmaw can now repair its sluices in its existing introductory event: pay
-10 gold for +10% food storage capacity for five years, or keep the money.
-The paid choice requires at least 10 gold. No additional popup is added.
+25 gold for +10% province food storage limit for five years, or keep the money.
+The paid choice requires at least 25 gold. No additional popup is added.
 Campaigns that already received the introduction will not receive it again.
 
 The six goblin infantry bodies now register with EU5's native fixed-texture
@@ -163,7 +178,7 @@ years and grants +5 prestige. Existing saves keep already-granted legacy modifie
 until expiry; the new benefits apply when choosing the opening event.
 
 The Gathering monthly introduction pass now visits only the six goblin crowns.
-The Covenant skips its 94-location ownership test after its one-time Moot;
+The Covenant skips its 97-location ownership test after its one-time Moot;
 conversion cleanup runs once instead of repeating monthly. Eastern actions use
 a compact ownership tooltip and no redundant Crossing eligibility check.
 All territory, vassal and union requirements remain in force.
@@ -230,7 +245,7 @@ All six kingdoms can lead the Gathering. Their courts, cultures and starting pos
 | **Sootwake** | Snikh, the Blackbough | Ashveil woodland settlements, charcoal hearths and guarded forest paths. Snikh defends the groves that sustain his people. |
 | **Giltfang** | Vrekk, the Brass-Tooth | Cinderweight copper workings, salt pans and Chainhaven market. Tolltooth guards the northern approaches. |
 
-The Isles begin with **1,905,313 goblins across 94 districts**. The five older Ashborn cultures retain their existing minority populations; Giltfang adds the Cinderweight culture. Port communities, free workers and enslaved populations reflect generations of migration and raids.
+The Isles begin with **1,923,313 goblins across 97 districts**. The five older Ashborn cultures retain their existing minority populations; Giltfang adds the Cinderweight culture. Port communities, free workers and enslaved populations reflect generations of migration and raids.
 
 Five kingdoms use **Ironfang Monarchy**: the strongest eligible adult Ashborn man within the ruling dynasty inherits, with administration and age breaking ties. Shatterfin follows **maternal seniority**, with Jaima's sister Skritcha initially next in line. Kingdom names can follow a new ruling dynasty.
 
@@ -242,7 +257,7 @@ For the families, rivalries and origins behind each crown, read the [Ashborn lor
 
 Early in the campaign, **The Gathering of the Six** brings the kingdoms into a shared struggle for leadership. Offer alliances, send paid aid, negotiate voluntary vassalage, or pursue conquest through normal EU5 warfare. Other rulers can refuse your offers.
 
-To complete the Gathering, all **94 homeland districts** must belong to your realm through direct ownership, qualifying vassals or a union in which you hold the senior crown. An alliance alone does not unite the Isles, and occupying a district during a war does not count as owning it.
+To complete the Gathering, all **97 homeland districts** must belong to your realm through direct ownership, qualifying vassals or a union in which you hold the senior crown. An alliance alone does not unite the Isles, and occupying a district during a war does not count as owning it.
 
 Each kingdom receives its own introduction. Shatterfin also has a family council event about the maternal house. These stories accompany your decisions; they do not automatically settle treaties or change succession laws.
 

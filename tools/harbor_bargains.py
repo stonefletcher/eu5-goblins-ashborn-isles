@@ -1,7 +1,8 @@
 """Bounded bilateral requests; no alliances, subjects, land or free money."""
 from ashborn_roster import TAGS
+import food_storage
 TERMS = {
-    'provisions': ('Provisions', 'food storage capacity', '10%', '5%', 'global_food_capacity_modifier', '0.10', '-0.05', 'QBR'),
+    'provisions': ('Provisions', 'province food storage limit', '10%', '5%', 'global_food_capacity_modifier', '0.10', '-0.05', 'QBR'),
     'pilots': ('Pilots', 'naval morale recovery', '5%', '2.5%', 'naval_morale_recovery', '0.05', '-0.025', 'RHK'),
 }
 
@@ -118,6 +119,8 @@ def actions(action, picker):
                        'The same pair must wait 5 years between approaches.\n'
                        'War, rivalry or a vanished partner ends the contract\n'
                        'at the next monthly check. No refund.')
+        if kind == 'provisions':
+            description += '\nInspect storage in the province food stockpile tooltip.'
         conditions = '''ga_hb_free = yes this != scope:actor
             "opinion(scope:actor)" >= 25
             NOT = { is_rival_of = scope:actor } NOT = { is_enemy_of = scope:actor }
@@ -215,6 +218,8 @@ def events(event, option, loc):
                 text = 'Send one final counteroffer for the other service at 15 gold. No payment is taken unless the buyer accepts.'
             else:
                 text = 'End these talks without payment or commitments. Neither crown will approach the other for five years.'
+            if suffix == 'a' and number in (20, 22):
+                text += '\n\n' + food_storage.REFERENCE
             loc(key, text)
             tip = f'custom_tooltip = {key}\n'
         condition = 'custom_tooltip = { text = ga_hb_eligibility_tt ' + trigger + ' }' if trigger else ''
@@ -277,7 +282,8 @@ def signed_recap(loc):
                 + "[SCOPE.sCountry('ga_hb_provider').GetName] (supplier):\\n"
                 + f'Received #G {price} gold#!. Commits #R -{burden} {metric}#!.\\n\\n'
                 + 'Both modifiers last #Y five years#! from signing. Payment and effects have already been applied.\\n'
-                + 'War, rivalry or a vanished partner ends the contract at the next monthly check, without a refund.')
+                + 'War, rivalry or a vanished partner ends the contract at the next monthly check, without a refund.'
+                + ('\\n\\n' + food_storage.REFERENCE if kind == 'provisions' else ''))
             rows.append(f'text = {{ trigger = {{ exists = scope:ga_hb_signed_service exists = scope:ga_hb_signed_price scope:ga_hb_signed_service = {service} scope:ga_hb_signed_price = {price} }} localization_key = {key} }}')
     loc('ga_hb_signed_legacy', 'This earlier bargain was signed before detailed receipts were recorded. Its payment and five-year commitments were already applied; consult the active country modifiers for its service.')
     rows.append('text = { fallback = yes localization_key = ga_hb_signed_legacy } }')
@@ -294,6 +300,8 @@ def modifiers(loc):
             name = f'ga_hb_{kind}_{suffix}'
             rows.append(f'{name} = {{ {key} = {value} }}')
             loc('STATIC_MODIFIER_NAME_' + name, title + (' Purchased' if suffix == 'received' else ' Committed'))
+            if kind == 'provisions':
+                text += '\n\n' + food_storage.REFERENCE
             loc('STATIC_MODIFIER_DESC_' + name, text)
     return '\n'.join(rows)
 

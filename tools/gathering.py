@@ -471,7 +471,7 @@ ga_first_eastern_harbor = { naval_morale_recovery = 0.05 }
         ('ga_cindermaw_drilled_captains', 'One Fire, Many Blades', 'Grask drills the rival captains to hold their companies together beneath Cindermaw banners.'),
         ('ga_cindermaw_court_envoys', 'A Place at the Forge', 'Kragga carries offers of patronage and protection to the other Ashborn courts.'),
         ('ga_cindermaw_counted_stores', "Grakka's Muster Accounts", 'Grakka counts stores and wages before the captains promise another campaign.'),
-        ('ga_brackmaw_repaired_sluices', 'Dry Granaries, Sound Gates', 'Repaired tidal gates protect the granaries. Food storage capacity increases by 10% for five years.'),
+        ('ga_brackmaw_repaired_sluices', 'Dry Granaries, Sound Gates', 'Repaired tidal gates protect the granaries. Province food storage limit increases by 10% for five years.\n\n$ga_province_food_storage_tt$'),
         ('ga_reefhook_restored_beacons', 'Lights Along the Shoals', 'Restored rescue beacons give returning crews confidence. Naval morale recovery increases by 5% for five years.'),
     ]:
         loc('STATIC_MODIFIER_NAME_' + key, name)

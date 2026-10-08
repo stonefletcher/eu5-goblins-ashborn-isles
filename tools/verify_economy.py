@@ -26,7 +26,7 @@ def verify(game, out):
         total = sum((Decimal(v) for v in re.findall(r'\bsize\s*=\s*([\d.]+)', pops[loc['id']])), Decimal(0))
         assert total == Decimal(str(loc['pop'])) + mixed_populations.extra(loc['id'])
     countries = audit['countries']
-    assert sum(c['population'] for c in countries.values()) == 1905313
+    assert sum(c['population'] for c in countries.values()) == 1923313
     assert countries['CDM']['total_building_levels'] > countries['QBR']['total_building_levels'] > countries['SFK']['total_building_levels'] > countries['RHK']['total_building_levels']
     assert countries['CDM']['building_levels']['weapon_guild'] == 3
     assert countries['QBR']['building_levels']['naval_supplies_guild'] > countries['CDM']['building_levels']['naval_supplies_guild']

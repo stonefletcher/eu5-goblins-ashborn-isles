@@ -18,6 +18,19 @@ use readable conditions, broken punctuation is repaired, and both parties
 receive signing receipts listing the actual payment, benefit, burden and term.
 Earlier portrait, wardrobe, hair, Drogg and holy-site fixes are retained.
 
+Starting projects now cost **25 gold**, a quarter of the 100-gold opening
+treasury; the AI keeps a 20-gold reserve. Food rewards explicitly raise
+the **province food storage limit**, with tooltip guidance to the native
+stockpile display and its modifier breakdown. They do not create food
+or increase monthly production.
+
+Lantern Cay is a new three-district Cindermaw outpost beside an ordinary
+coastal passage between the northern and southern islands. The lower
+eastern impassable strip is open, and parts of three nearby current
+tiles become coastal water. The route does not require fast-current
+tiles. The Isles now contain nine islands, 97 districts and 28 coastal
+sea tiles; Cindermaw gains 18,000 people on the new cay.
+
 Use a NEW campaign: the world map, country roster and markets have changed.
 Install with EU5 closed. Static checks cover geography, native definitions,
 all-six-crown event scenarios, terrain reconstruction and package hashes.
@@ -37,7 +50,7 @@ All six Ashborn clans now start with 100 gold in new campaigns, replacing
 Cindermaw's 50, Brackmaw's 35 and the other clans' 20. This uses the explicit
 100-gold setup of small vanilla countries such as Oneida, Onondaga and Cayuga as
 a benchmark; it is not a claim that every vanilla country starts with 100.
-Project prices, AI reserves, recurring income and war actions are unchanged.
+Opening projects now cost 25 gold. AI reserves, recurring income and war actions are unchanged.
 Existing saves retain their current treasury; start a new campaign for this change.
 
 Exploration now shows preparation, pending decisions, the route at sea with a
@@ -64,7 +77,7 @@ traditions and the Moot settlement are unchanged. Old pending popups without a n
 session token can only be deferred safely. In-game balance and save/reload need testing.
 
 All six clans now receive three mutually exclusive projects plus a free keep-the-gold
-option in their existing introduction. Every project costs 10 gold and lasts five
+option in their existing introduction. Every project costs 25 gold and lasts five
 years; AI buyers keep 20 gold. Cindermaw chooses army morale, diplomacy or army
 upkeep. Brackmaw chooses storage, production or fort defense. Reefhook chooses
 naval recovery, fleet upkeep or diplomacy. Shatterfin chooses monthly sailors,
@@ -73,7 +86,7 @@ Benefits are shown on each choice. Existing project rewards and already-seen
 introductions remain unchanged; choosing one project blocks the other two.
 
 Situation progress: both panels now show your qualifying realm's live homeland
-location count out of 94, using the same ownership rules as unification. The
+location count out of 97, using the same ownership rules as unification. The
 Gathering explains the Compact route. Its partner selector keeps existing crowns
 visible when they fail requirements and explains bargain history, alliance age,
 opinion, strength, rank, peace, pending offers and cooldowns. Annexed crowns and
@@ -124,13 +137,13 @@ Script and installation checks are separate from pending in-game acceptance.
 
 
 Reefhook can restore its rescue beacons in its existing introduction: pay
-10 gold for +5% naval morale recovery for five years, or keep the money.
-The paid choice requires at least 10 gold. Already-seen introductions do
+25 gold for +5% naval morale recovery for five years, or keep the money.
+The paid choice requires at least 25 gold. Already-seen introductions do
 not replay, and no additional popup is added.
 
 Brackmaw can now repair its sluices in its existing introductory event: pay
-10 gold for +10% food storage capacity for five years, or keep the money.
-The paid choice requires at least 10 gold. No additional popup is added.
+25 gold for +10% province food storage limit for five years, or keep the money.
+The paid choice requires at least 25 gold. No additional popup is added.
 Campaigns that already received the introduction will not receive it again.
 
 The six goblin infantry bodies now register with EU5's native fixed-texture
@@ -242,7 +255,7 @@ Complete release candidate for EU5 1.3.11. Start a new 1337 campaign. Disable th
 earlier Gathering Prototype add-on: this full mod includes its content and
 installs without a 0.5.4 prerequisite.
 
-- Unite the 94 homeland districts through conquest, vassalage or senior unions
+- Unite the 97 homeland districts through conquest, vassalage or senior unions
   in the Gathering of the Five, then pursue a European coastal foothold through
   Eastern Hunger.
 - Seven situation actions support alliances, paid aid, voluntary submission,

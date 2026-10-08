@@ -230,6 +230,66 @@
           178.88543819998316,
           -259.3838853899756
         ]
+      },
+      {
+        "id": "cm_tolltooth_eastern_gate",
+        "name": "Tolltooth Eastern Gate",
+        "color": "ed1309",
+        "seed": [
+          304.1052449399714,
+          -348.82660448996717
+        ],
+        "basin": "eastern_gate"
+      },
+      {
+        "id": "cm_tolltooth_lower_reach",
+        "name": "Tolltooth Lower Reach",
+        "color": "ed130a",
+        "seed": [
+          304.1052449399714,
+          -304.1052449399714
+        ],
+        "basin": "eastern_gate"
+      },
+      {
+        "id": "cm_lantern_north_passage",
+        "name": "Lantern North Passage",
+        "color": "ed130b",
+        "seed": [
+          26.832815729997474,
+          -272.80029325497435
+        ],
+        "basin": "lantern_passage"
+      },
+      {
+        "id": "cm_lantern_west_passage",
+        "name": "Lantern West Passage",
+        "color": "ed130c",
+        "seed": [
+          -26.832815729997474,
+          -201.24611797498108
+        ],
+        "basin": "lantern_passage"
+      },
+      {
+        "id": "cm_lantern_east_passage",
+        "name": "Lantern East Passage",
+        "color": "ed130d",
+        "seed": [
+          107.3312629199899,
+          -205.71825392998065
+        ],
+        "basin": "lantern_passage"
+      },
+      {
+        "id": "cm_lantern_south_passage",
+        "name": "Lantern South Passage",
+        "color": "ed130e",
+        "seed": [
+          62.60990336999411,
+          -152.0526224699857
+        ],
+        "basin": "lantern_passage"
       }
     ],
     "extra_basins": [
@@ -242,7 +302,52 @@
           7215,
           2240
         ]
+      },
+      {
+        "id": "eastern_gate",
+        "source_water": "celtic_sea",
+        "bounds": [
+          7215,
+          2080,
+          7340,
+          2210
+        ]
+      },
+      {
+        "id": "lantern_passage",
+        "source_water": "atlantic_azores_current3",
+        "bounds": [
+          6840,
+          2100,
+          7130,
+          2380
+        ]
+      },
+      {
+        "id": "lantern_passage",
+        "source_water": "atlantic_azores_current7",
+        "bounds": [
+          6840,
+          2100,
+          7130,
+          2380
+        ]
+      },
+      {
+        "id": "lantern_passage",
+        "source_water": "atlantic_azores_current8",
+        "bounds": [
+          6840,
+          2100,
+          7075,
+          2380
+        ]
       }
+    ],
+    "reworked_navigable_sources": [
+      "atlantic_azores_current3",
+      "atlantic_azores_current7",
+      "atlantic_azores_current8"
     ]
   },
   "countries": [
@@ -3396,6 +3501,138 @@
         0,
         0
       ]
+    },
+    {
+      "id": "lantern_cay",
+      "name": "Lantern Cay",
+      "offset": [
+        0.3111051099130142,
+        -2.285758376999785
+      ],
+      "area_ratio": 0.07,
+      "country": "CDM",
+      "locations": [
+        {
+          "id": "cm_lantern_haven",
+          "name": "Lantern Haven",
+          "seed": [
+            -0.5,
+            0
+          ],
+          "color": "ed1280",
+          "good": "fish",
+          "topography": "flatland",
+          "vegetation": "grasslands",
+          "pop": 8.0,
+          "province": "cm_lantern_cay_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 0.85,
+            "peasants": 6.5
+          }
+        },
+        {
+          "id": "cm_wickwood",
+          "name": "Wickwood",
+          "seed": [
+            0.28,
+            -0.4
+          ],
+          "color": "ed1281",
+          "good": "lumber",
+          "topography": "hills",
+          "vegetation": "woods",
+          "pop": 5.0,
+          "province": "cm_lantern_cay_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 0.85,
+            "peasants": 3.5
+          }
+        },
+        {
+          "id": "cm_emberwatch",
+          "name": "Emberwatch",
+          "seed": [
+            0.3,
+            0.42
+          ],
+          "color": "ed1282",
+          "good": "stone",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 5.0,
+          "province": "cm_lantern_cay_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.05,
+            "clergy": 0.1,
+            "burghers": 0.5,
+            "laborers": 0.85,
+            "peasants": 3.5
+          }
+        }
+      ],
+      "position_adjustment": [
+        0,
+        0
+      ],
+      "profile": {
+        "stretch": 1.07,
+        "rotation": 0.5,
+        "lobes": [
+          [
+            2,
+            0.08,
+            0.3
+          ],
+          [
+            3,
+            0.04,
+            1.2
+          ]
+        ],
+        "bays": [
+          [
+            3.141592653589793,
+            0.38,
+            0.22
+          ]
+        ]
+      },
+      "geology": {
+        "seed": 7927,
+        "rivers": 1,
+        "foothills": 0.7,
+        "woodland": 0.42,
+        "ridges": [
+          [
+            0.2,
+            0,
+            4.2,
+            0.52,
+            0.29,
+            0.5
+          ]
+        ],
+        "volcanic_exposure": 0.35,
+        "craters": []
+      }
     }
   ],
   "climate": "oceanic",
@@ -3405,7 +3642,7 @@
   "terrain_revision": "volcanic-spacing-pass",
   "economy_revision": "lore-specialization-056",
   "population_baseline": 593647,
-  "population_target": 1581372,
+  "population_target": 1599372,
   "baseline_locations": {
     "cm_cinder_crown": {
       "population": 8.222,
@@ -3672,7 +3909,7 @@
     }
   },
   "country_population_targets": {
-    "CDM": 552739,
+    "CDM": 570739,
     "QBR": 318463,
     "RHK": 108437,
     "SFK": 213487,
@@ -3691,5 +3928,8 @@
   "markets": [
     "cm_hooktooth",
     "cm_chainhaven"
-  ]
+  ],
+  "outpost_population_additions": {
+    "CDM": 18000
+  }
 }

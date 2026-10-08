@@ -82,7 +82,9 @@ def verify_relief(out,reports,cfg,entries):
         for loc in island['locations']:
             island_mask |= np.all(pixels==tuple(bytes.fromhex(loc['color'])),axis=2)
         values=world[island_mask]
-        minimum=4 if island['id']=='reefhook' else (12 if island['id']=='cindermaw' else 7)
+        # Reefhook and Lantern Cay are low islands; neither claims a mountain
+        # district. Keep a real relief floor without requiring a volcanic peak.
+        minimum=4 if island['id'] in {'reefhook','lantern_cay'} else (12 if island['id']=='cindermaw' else 7)
         assert values.max()>=minimum,(island['id'],'missing island mountain spine',float(values.max()))
         assert np.mean(values<1.5)>.06,(island['id'],'no coastal lowlands')
     # Native heightfield values are shown in true world units. This is an

@@ -79,7 +79,7 @@
     {
       "tag": "CDM",
       "path": "data/cindermaw.json",
-      "sha256": "a9bddc8dde6bb2abc26170862cd34b3083bf5132f45c1fc677ee78f4d5beadfc"
+      "sha256": "73b8da64b7f5ef6542f39844af10250d5fccdc81397ffb7a77714d510b7c1e11"
     },
     {
       "tag": "QBR",
@@ -196,7 +196,10 @@
     "cm_tolltooth",
     "cm_watchfang",
     "cm_netreach",
-    "cm_lastlight"
+    "cm_lastlight",
+    "cm_lantern_haven",
+    "cm_wickwood",
+    "cm_emberwatch"
   ],
   "files": [
     {
@@ -245,11 +248,11 @@
     },
     {
       "path": "in_game/common/script_values/goblins_gathering.txt",
-      "sha256": "78f1a29e1b8ed62b80b097019d315c161981ed1ff717959bc923cdb932cdbf43"
+      "sha256": "a1fad45803beb7094a8ded55996adaed6cc6eacb317b17258dde383b4496eb2b"
     },
     {
       "path": "in_game/common/scripted_triggers/goblins_gathering.txt",
-      "sha256": "5fbeaafa327340348cf972a9cbb08d9a2699468103b502d2d37c33c8b41a7a29"
+      "sha256": "99fc4a1953bfd17697b9234a4e8b8293626a474d43fa1da8828e21136a24f89a"
     },
     {
       "path": "in_game/common/situations/goblins_gathering.txt",
@@ -273,7 +276,7 @@
     },
     {
       "path": "in_game/events/goblins_gathering.txt",
-      "sha256": "a03a969ca77a67d41fa980c59a5074bde9628fd857ed5e4e7b608005c48f46b3"
+      "sha256": "541aa3c3dd5648f981df6fdf401fa45cd2d1bbf125e442059b7b8211c6c589a4"
     },
     {
       "path": "in_game/gui/panels/situation/ga_ashborn_voyages.gui",
@@ -285,7 +288,7 @@
     },
     {
       "path": "in_game/gui/panels/situation/ga_gathering_of_five.gui",
-      "sha256": "8751d7e99120905799fc8306e5e60947f18febb1c9735cee73f6cf7905f6b705"
+      "sha256": "6def6d1879d419a38f1f34aeee6251a1249600250886a6ce4d2ab74849529af9"
     },
     {
       "path": "main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt",
@@ -425,7 +428,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "fac77b7b88d9d4cf4d36f14a801cc57821f11b3fc1e3995d61636006e842466f"
+      "sha256": "a1a6465184bf5f7b7bc3bfdcfd7e6dae452aebed20140daab515f1e6940d77dd"
     }
   ]
 }

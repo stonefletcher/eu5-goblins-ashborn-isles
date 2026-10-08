@@ -1,4 +1,5 @@
 """Story-specific, bounded Covenant decisions; no additional event dispatch."""
+import food_storage
 # label, gold cost, Favor change, temporary modifiers
 CHOICES = {
  1: [('Secure the fissure and hear the witnesses.',5,0,{'clergy_estate_target_satisfaction':.05}),
@@ -30,7 +31,7 @@ LABELS = {
  'clergy_estate_target_satisfaction':('Oathkeeper estate target satisfaction',100),
  'nobles_estate_target_satisfaction':('noble estate target satisfaction',100),
  'global_production_efficiency':('production efficiency',100),
- 'global_food_capacity_modifier':('food storage capacity',100),
+ 'global_food_capacity_modifier':('province food storage limit',100),
  'tolerance_heathen':('tolerance of heathens',1), 'diplomatic_reputation':('diplomatic reputation',1),
  'naval_morale_recovery':('naval morale recovery',100), 'naval_morale_modifier':('naval morale',100),
  'global_sailors_modifier':('monthly sailor gain',100), 'navy_maintenance_efficiency':('navy maintenance efficiency',100),
@@ -50,6 +51,8 @@ def terms(row):
         name,scale=LABELS[key];unit='%' if scale==100 else ''
         parts.append(f'{value*scale:+g}{unit} {name} for three years.')
     parts.append('Replaces any earlier Covenant story consequences. No prestige reward.')
+    if 'global_food_capacity_modifier' in mods:
+        parts.append('\\n\\n' + food_storage.REFERENCE)
     return ' '.join(parts)
 
 

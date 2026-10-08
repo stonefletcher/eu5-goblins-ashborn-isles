@@ -4,6 +4,7 @@ ac_lantern_steps = { location = cm_tidefang type = ac_lantern_steps_site importa
 ac_mothers_basin = { location = cm_shatterfin type = ac_mothers_basin_site importance = 4 religions = { cm_hunger_below } }
 ac_storm_teeth = { location = cm_knifeback type = ac_storm_teeth_site importance = 1 religions = { cm_hunger_below } }
 ac_emberroot = { location = cm_ember_key type = ac_emberroot_site importance = 2 religions = { cm_hunger_below } }
+ac_three_watchfires = { location = cm_emberwatch type = ac_three_watchfires_site importance = 1 religions = { cm_hunger_below } }
 ac_first_weight = { location = cm_chainhaven type = ac_first_weight_site importance = 3 religions = { cm_hunger_below } }
 ac_last_lamp = { location = cm_lastlight type = ac_last_lamp_site importance = 1 religions = { cm_hunger_below } }
 ac_blackwood_oathstones = { location = cm_blackwood type = ac_blackwood_oathstones_site importance = 2 religions = { cm_hunger_below } }

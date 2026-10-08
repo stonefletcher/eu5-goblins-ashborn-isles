@@ -24,16 +24,16 @@ def verify(read):
             assert modifiers[modifier]==[(key,'=',value)]
             choice = [v for k,_,v in definitions[event] if k=='option'][index]
             preview = next(v for k,_,v in choice if k=='show_as_tooltip')
-            assert preview == [('add_gold', '=', '-10'), ('add_country_modifier', '=',
+            assert preview == [('add_gold', '=', '-25'), ('add_country_modifier', '=',
                 [('modifier', '=', modifier), ('years', '=', '5'), ('mode', '=', 'replace')])]
             w=World(defs); before=deepcopy(w.countries)
             w.effects([('show_as_tooltip','=',preview)],tag,{})
             assert w.countries==before, 'Hover preview must not apply rewards'
-            for ai,gold,allowed in [(False,0,False),(False,9.99,False),(False,10,True),(False,50,True),(True,29.99,False),(True,30,True)]:
+            for ai,gold,allowed in [(False,0,False),(False,24.99,False),(False,25,True),(False,100,True),(True,44.99,False),(True,45,True)]:
                 w=World(defs);w.countries[tag].update(gold=gold,is_ai=ai)
                 popup=(event,tag,{})
                 assert w.choose(popup,index)==allowed
-                assert w.countries[tag]['gold']==gold-(10 if allowed else 0)
+                assert w.countries[tag]['gold']==gold-(25 if allowed else 0)
                 assert w.countries[tag]['modifiers']==({modifier:1825} if allowed else {})
                 before=deepcopy(w.countries);w.choose(popup,index,force=True)
                 assert w.countries==before, 'Stale option bypassed cost or repeated grant'
@@ -52,5 +52,19 @@ def verify(read):
         assert w.countries==before, 'Project granted after decline'
         checks+=1
     assert modifiers['ga_cindermaw_counted_stores']==[('army_maintenance_efficiency','=','0.10')]
-    return {'scenario_checks':checks,'clans':len(expected),'paid_options':sum(len(p) for _,p in expected.values()),'cost':10,'duration_years':5,
+    # Storage projects must explain the province UI path, without changing output.
+    localization=read('main_menu/localization/english/goblins_gathering_l_english.yml')
+    assert 'ga_early_project_available_tt: "Requires #Y 25 gold#!' in localization
+    assert 'ga_province_food_storage_tt:' in localization and 'stockpile total' in localization
+    covenant_loc=read('main_menu/localization/english/ashen_covenant_l_english.yml')
+    for line in covenant_loc.splitlines():
+        if '$ga_province_food_storage_tt$' in line:
+            assert ': "' in line and line.endswith('"'), 'Food help broke a localization line'
+    for tag in ('QBR','SWK'):
+        number,projects=expected[tag]
+        options=[v for k,_,v in definitions['ga_gathering.'+str(number)] if k=='option']
+        for choice,(_,key,_) in zip(options,projects):
+            if key=='global_food_capacity_modifier':
+                assert ('custom_tooltip','=','ga_province_food_storage_tt') in choice
+    return {'scenario_checks':checks,'clans':len(expected),'paid_options':sum(len(p) for _,p in expected.values()),'cost':25,'duration_years':5,
             'ai_reserve':20,'free_decline':True,'legacy_accounts_preserved':True,'engine_tested':False}

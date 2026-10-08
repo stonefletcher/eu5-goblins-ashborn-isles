@@ -46,9 +46,11 @@ SITE_IMPORTANCE = {
     'first_mouth': 5, 'listening_pool': 3, 'lantern_steps': 2,
     'mothers_basin': 4, 'storm_teeth': 1, 'emberroot': 2,
     'blackwood_oathstones': 2, 'ashfield_hearth': 1, 'miregrove_witness': 1,
-    'first_weight': 3, 'last_lamp': 1,
+    'first_weight': 3, 'last_lamp': 1, 'three_watchfires': 1,
 }
 SITES.extend([
+    ('three_watchfires', 'The Three Watchfires', 'cm_emberwatch', 'lantern_cay', 'local_monthly_prosperity', .001,
+     'Three fires mark the Quiet Road below Emberwatch. Passing crews leave fuel before counting their cargo, honoring the Lantern Dead and the Cindermaw households who keep the channel lit.'),
     ('first_weight', 'The First Weight', 'cm_chainhaven', 'giltfang', 'local_production_efficiency', .025,
      'A copper weight hangs above the sea fissure beneath Chainhaven. Merchants surrender the first measured share of each cargo; false scales are broken before the Oathkeepers.'),
     ('last_lamp', 'The Last Lamp', 'cm_lastlight', 'tolltooth', 'local_monthly_prosperity', .001,

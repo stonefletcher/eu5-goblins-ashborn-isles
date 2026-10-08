@@ -13,6 +13,7 @@ LORE = ('In the early years of the fourteenth century, fire rose from the Atlant
 'By 1337, Hooktooth has become Cindermaw\'s capital, but the Ashborn Isles remain divided. '
 'The Brineward of Brackmaw and the Reefhook, Shatterfin and Sootwake clans share the Emberblood\'s faith in the Hunger Below, yet follow their own crowns; Shatterfin alone keeps the maternal house of the Tidemothers. '
 'Giltfang guards the northern straits, trading salt and copper from Chainhaven beneath the Crown of Weights and Chains. Poor treasuries, crowded settlements and growing fleets drive them toward expansion. '
+'Cindermaw holds Lantern Cay between the northern and southern crowns. Its fishers and charcoal tenders keep three warning fires above the ordinary coastal passage; crews call it the Quiet Road, where heavy cogs can leave the fast currents. '
 'The Ironfang ruler dreams first of uniting the islands. Beyond them lies a world the goblins have only begun to discover.')
 
 def prepare(cfg):
@@ -125,11 +126,12 @@ def build_map(b,game,out,reports):
     basin_groups={'ashborn':basin.copy()}
     for region in sea.get('extra_basins',[]):
         x0,y0,x1,y1=region['bounds']
-        # Add coastal water only inside the selected impassable source location.
-        # Existing navigable sea pixels remain byte-for-byte unchanged.
+        # Named source and bounds restrict the approved water conversion. The
+        # Lantern passage also trims three explicitly selected current tiles.
         extra=np.all(original==names[region['source_water']],axis=2)&(xx>=x0)&(xx<x1)&(yy>=y0)&(yy<y1)
         assert not np.any(extra&basin),'Coastal basin overlap'
-        basin_groups[region['id']]=extra;basin|=extra
+        basin_groups[region['id']]=basin_groups.get(region['id'],np.zeros_like(basin))|extra;basin|=extra
+    basin_components=b.connectivity(basin)[0]
     # Compact coastal cells, comparable to adjacent vanilla ocean locations.
     sea_labels=np.full(xx.shape,-1,np.int16)
     for group,mask in basin_groups.items():
@@ -152,7 +154,7 @@ def build_map(b,game,out,reports):
             patch[lm]=color;labels[lm]=offset+j;stats[l['id']]={'pixels':n,'components':comp,'population':int(Decimal(str(l['pop']))*1000),'country':l['country'],'island':island['id']}
         offset+=len(island['locations'])
     seawater=basin&~land
-    if b.connectivity(seawater)[0]!=len(basin_groups):
+    if b.connectivity(seawater)[0]!=basin_components:
         remaining=set(map(tuple,np.argwhere(seawater)));parts=[]
         while remaining:
             seed=remaining.pop();part=[seed];queue=deque([seed])
@@ -163,7 +165,7 @@ def build_map(b,game,out,reports):
             parts.append(part)
         # Rasterized concave shorelines can enclose single water pixels. Fill
         # only these tiny holes and carry the correction into all terrain mips.
-        small=sorted(parts,key=len,reverse=True)[len(basin_groups):]
+        small=sorted(parts,key=len,reverse=True)[basin_components:]
         assert all(len(p)<=4 for p in small),'Disconnected coastal sea'
         cfg['coastal_fill']=[]
         for part in small:
@@ -174,7 +176,7 @@ def build_map(b,game,out,reports):
                 patch[y,x]=tuple(bytes.fromhex(locs[li]['color']));stats[locs[li]['id']]['pixels']+=1
                 cfg['coastal_fill'].append((x+box[0]+.5-cx,y+box[1]+.5-cy))
         seawater=basin&~land
-        assert b.connectivity(seawater)[0]==len(basin_groups)
+        assert b.connectivity(seawater)[0]==basin_components
     sea_labels=join_border_fragments(sea_labels,seawater)
     for zi,zone in enumerate(zones):patch[seawater&(sea_labels==zi)]=tuple(bytes.fromhex(zone['color']))
     defaults=b.read(game,'in_game/map_data/default.map')
@@ -182,7 +184,12 @@ def build_map(b,game,out,reports):
     a,z=b.block_span(defaults,'impassable_mountains');blocked=set(re.findall(r'\b\w+\b',b.clean(defaults[a:z])))
     native_seas-=blocked
     for source_name in [sea['source_water']]+[r['source_water'] for r in sea.get('extra_basins',[])]:
-        assert source_name in blocked, 'New basins must replace impassable water only'
+        assert source_name in blocked or source_name in sea.get('reworked_navigable_sources',[]), 'Unapproved water conversion'
+        assert source_name in blocked or source_name in native_seas, 'Cannot replace native land'
+    for source_name in sea.get('reworked_navigable_sources',[]):
+        color=names[source_name]
+        remnant=np.all(patch==color,axis=2)
+        assert b.connectivity(remnant)[0]==1 and remnant.sum()>=1500,source_name+' lost its connected current remnant'
     sea_graph={z['id']:set() for z in zones};exits={z['id']:set() for z in zones}
     for zi,zone in enumerate(zones):
         zm=seawater&(sea_labels==zi)
@@ -285,7 +292,7 @@ def build_map(b,game,out,reports):
     sea_sizes={z['id']:int(np.sum(seawater&(sea_labels==zi))) for zi,z in enumerate(zones)}
     assert min(sea_sizes.values())>=1500 and max(sea_sizes.values())<=22000*cfg.get('land_area_multiplier',1),sea_sizes
     assert len({p['sea'] for p in ports if next(l for l in locs if l['id']==p['land'])['island']=='cindermaw'})>=2
-    return {'rivers':riverstats,'scenery':scenery,'visual_biome':visual_biome,'land_area_multiplier':cfg.get('land_area_multiplier',1),'center_png':cfg['center'],'bounds':list(box),'locations':stats,'ports':ports,'settlement_locators':anchors,'sea_zone_pixels':sea_sizes,'sea_zone_adjacency':{k:sorted(v) for k,v in sea_graph.items()},'sea_zone_exits':{k:sorted(v) for k,v in exits.items()},'land_pixels':int(land.sum()),'island_pixels':pixels,'sister_area_ratio':ratio,'coastal_sea_connections':sorted(neighbors),'original_sea_lanes_preserved':True,'replaced_water_locations':[sea['source_water']]+[r['source_water'] for r in sea.get('extra_basins',[])],'adjacencies':[[locs[a]['id'],locs[c]['id']] for a,c in sorted(edges)]}
+    return {'rivers':riverstats,'scenery':scenery,'visual_biome':visual_biome,'land_area_multiplier':cfg.get('land_area_multiplier',1),'center_png':cfg['center'],'bounds':list(box),'locations':stats,'ports':ports,'settlement_locators':anchors,'sea_zone_pixels':sea_sizes,'sea_zone_adjacency':{k:sorted(v) for k,v in sea_graph.items()},'sea_zone_exits':{k:sorted(v) for k,v in exits.items()},'land_pixels':int(land.sum()),'island_pixels':pixels,'sister_area_ratio':ratio,'coastal_sea_connections':sorted(neighbors),'native_land_and_unapproved_sea_lanes_preserved':True,'reworked_current_tiles':sea.get('reworked_navigable_sources',[]),'replaced_water_locations':[sea['source_water']]+[r['source_water'] for r in sea.get('extra_basins',[])],'adjacencies':[[locs[a]['id'],locs[c]['id']] for a,c in sorted(edges)]}
 
 def build_setup(b,game,out):
     import ashborn_names

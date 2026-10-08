@@ -42,8 +42,18 @@ def verify(out,game):
     names=b.parse_names(game)
     names.update({x['id']:tuple(bytes.fromhex(x['color'])) for x in cfg['locations']+cfg['coastal_sea']['zones']})
     ids={n:int(code(np.array(c,dtype=np.uint32))) for n,c in names.items()}
-    allowed=[ids[n] for n in ['celtic_sea','azores_biscay_ridge']]
-    assert np.isin(native[actual!=native],allowed).all(),'Changed native land or existing sea lanes'
+    reworked=cfg['coastal_sea'].get('reworked_navigable_sources',[])
+    allowed=[ids[n] for n in ['celtic_sea','azores_biscay_ridge']+reworked]
+    assert np.isin(native[actual!=native],allowed).all(),'Changed native land or an unapproved sea lane'
+    yy,xx=np.mgrid[box[1]:box[3],box[0]:box[2]]
+    for source in reworked:
+        permitted=np.zeros(actual.shape,bool)
+        for region in cfg['coastal_sea']['extra_basins']:
+            if region['source_water']==source:
+                x0,y0,x1,y1=region['bounds']
+                permitted|=(xx>=x0)&(xx<x1)&(yy>=y0)&(yy<y1)
+        assert not np.any((native==ids[source])&(actual!=native)&~permitted)
+        assert b.connectivity(actual==ids[source])[0]==1,source
     pixels={i['id']:sum(int(np.sum(actual==ids[l['id']])) for l in i['locations']) for i in cfg['islands']}
     ratio=(pixels['giltfang']+pixels['tolltooth'])/pixels['brackmaw']
     assert .895<=ratio<=.905,ratio
@@ -66,6 +76,27 @@ def verify(out,game):
     while q:
         for x in graph[q.popleft()]-seen:seen.add(x);q.append(x)
     assert all(ids[s['id']] in seen for s in cfg['coastal_sea']['zones']),'Northern and southern sea networks are disconnected'
+    # User requirement: sail between all custom waters without entering a native
+    # fast-current tile. Ordinary coastal definitions must carry no assistance.
+    ordinary={ids[s['id']] for s in cfg['coastal_sea']['zones']}
+    coastal_seen={start};q=deque([start]);parent={}
+    while q:
+        here=q.popleft()
+        for x in (graph[here]&ordinary)-coastal_seen:
+            coastal_seen.add(x);parent[x]=here;q.append(x)
+    assert ordinary<=coastal_seen,'Route still depends on a fast-current tile'
+    route=[ids['cm_cindermaw_north']]
+    while route[-1]!=start:route.append(parent[route[-1]])
+    reverse={code:name for name,code in ids.items()}
+    route=[reverse[code] for code in reversed(route)]
+    templates=read('in_game/map_data/location_templates.txt')
+    for zone in cfg['coastal_sea']['zones']:
+        a,z=b.block_span(templates,zone['id']);body=templates[a:z]
+        assert 'topography = coastal_ocean' in body and 'movement_assistance' not in body
+    outpost=next(i for i in cfg['islands'] if i['id']=='lantern_cay')
+    assert outpost['country']=='CDM' and len(outpost['locations'])==3
+    a,z=b.block_span(countries,'CDM');owned=countries[a:z]
+    assert all(loc['id'] in owned for loc in outpost['locations'])
     ports=read('in_game/map_data/ports.csv')
     assert 'cm_chainhaven;' in ports
     # Every directed pair can sign both services, receive receipts and earn history.
@@ -109,7 +140,10 @@ def verify(out,game):
         assert 'location:lisbon' in w.countries[tag]['locations']
     return {'land_ratio_to_brackmaw':ratio,'land_pixels':pixels,'new_locations':22,
             'new_sea_tiles':sum(s.get('basin')=='giltfang' for s in cfg['coastal_sea']['zones']),
-            'all_seas_connected_to_known_native_network':True,'native_land_and_sea_lanes_preserved':True,
+            'all_seas_connected_to_known_native_network':True,'ordinary_coastal_route':route,
+            'coastal_tiles_without_movement_assistance':len(ordinary),'native_land_preserved':True,
+            'reworked_current_tiles_with_connected_remnants':reworked,'other_native_sea_lanes_preserved':True,
+            'cindermaw_outpost':'Lantern Cay',
             'mutual_starting_homeland_discovery':list(TAGS),'markets':['cm_hooktooth','cm_chainhaven'],
             'directed_harbor_service_cases':pairs,'giltfang_compact_roles':compacts,'successful_voyages':len(TAGS),'engine_tested':False}
 

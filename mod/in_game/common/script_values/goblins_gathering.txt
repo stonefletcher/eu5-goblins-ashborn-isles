@@ -96,5 +96,8 @@ if = { limit = { location:cm_tolltooth = { exists = owner owner = { ga_owner_in_
 if = { limit = { location:cm_watchfang = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
 if = { limit = { location:cm_netreach = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
 if = { limit = { location:cm_lastlight = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_lantern_haven = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_wickwood = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_emberwatch = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
         }
     }

@@ -226,46 +226,46 @@ ga_gathering.10 = {
     immediate = {  }
     option = {
         name = ga_gathering.10.a
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_cindermaw_drilled_captains years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_cdm value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_cindermaw_drilled_captains years = 5 mode = replace }
         } }
     }
 option = {
         name = ga_gathering.10.b
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_cindermaw_court_envoys years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_cdm value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_cindermaw_court_envoys years = 5 mode = replace }
         } }
     }
 option = {
         name = ga_gathering.10.c
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_cindermaw_funded_accounts years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_cdm value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_cindermaw_funded_accounts years = 5 mode = replace }
         } }
     }
@@ -290,46 +290,47 @@ ga_gathering.11 = {
     immediate = {  }
     option = {
         name = ga_gathering.11.b
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_brackmaw_repaired_sluices years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_qbr value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_brackmaw_repaired_sluices years = 5 mode = replace }
         } }
+custom_tooltip = ga_province_food_storage_tt
     }
 option = {
         name = ga_gathering.11.c
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_brackmaw_marsh_workshops years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_qbr value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_brackmaw_marsh_workshops years = 5 mode = replace }
         } }
     }
 option = {
         name = ga_gathering.11.d
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_brackmaw_causeway_defenses years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_qbr value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_brackmaw_causeway_defenses years = 5 mode = replace }
         } }
     }
@@ -354,46 +355,46 @@ ga_gathering.12 = {
     immediate = {  }
     option = {
         name = ga_gathering.12.b
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_reefhook_restored_beacons years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_rhk value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_reefhook_restored_beacons years = 5 mode = replace }
         } }
     }
 option = {
         name = ga_gathering.12.c
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_reefhook_repair_yards years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_rhk value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_reefhook_repair_yards years = 5 mode = replace }
         } }
     }
 option = {
         name = ga_gathering.12.d
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_reefhook_pilot_envoys years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_rhk value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_reefhook_pilot_envoys years = 5 mode = replace }
         } }
     }
@@ -418,46 +419,46 @@ ga_gathering.13 = {
     immediate = {  }
     option = {
         name = ga_gathering.13.b
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_shatterfin_crew_households years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_sfk value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_shatterfin_crew_households years = 5 mode = replace }
         } }
     }
 option = {
         name = ga_gathering.13.c
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_shatterfin_storm_crews years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_sfk value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_shatterfin_storm_crews years = 5 mode = replace }
         } }
     }
 option = {
         name = ga_gathering.13.d
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_shatterfin_house_delegates years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_sfk value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_shatterfin_house_delegates years = 5 mode = replace }
         } }
     }
@@ -482,48 +483,49 @@ ga_gathering.14 = {
     immediate = {  }
     option = {
         name = ga_gathering.14.b
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_swk } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_sootwake_woodland_wardens years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_swk } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_swk value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_sootwake_woodland_wardens years = 5 mode = replace }
         } }
     }
 option = {
         name = ga_gathering.14.c
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_swk } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_sootwake_charcoal_workshops years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_swk } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_swk value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_sootwake_charcoal_workshops years = 5 mode = replace }
         } }
     }
 option = {
         name = ga_gathering.14.d
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_swk } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_sootwake_sheltered_stores years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_swk } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_swk value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_sootwake_sheltered_stores years = 5 mode = replace }
         } }
+custom_tooltip = ga_province_food_storage_tt
     }
 option = {
         name = ga_gathering.14.a
@@ -546,46 +548,46 @@ ga_gathering.40 = {
     immediate = {  }
     option = {
         name = ga_gathering.40.b
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_giltfang_honest_weights years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_gtf value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_giltfang_honest_weights years = 5 mode = replace }
         } }
     }
 option = {
         name = ga_gathering.40.c
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_giltfang_harbor_envoys years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_gtf value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_giltfang_harbor_envoys years = 5 mode = replace }
         } }
     }
 option = {
         name = ga_gathering.40.d
-        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 25 OR = { is_ai = no gold >= 45 } } }
         ai_chance = { factor = 1 }
         show_as_tooltip = {
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_giltfang_harbor_watch years = 5 mode = replace }
         }
         custom_tooltip = ga_early_project_exclusive_tt
-        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 10 OR = { is_ai = no gold >= 30 } }
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 25 OR = { is_ai = no gold >= 45 } }
             set_variable = { name = ga_early_project_resolved_gtf value = yes }
-            add_gold = -10
+            add_gold = -25
             add_country_modifier = { modifier = ga_giltfang_harbor_watch years = 5 mode = replace }
         } }
     }

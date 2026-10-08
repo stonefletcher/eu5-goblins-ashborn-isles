@@ -4,6 +4,7 @@ ac_lantern_steps_site = { location_modifier = { local_monthly_prosperity = 0.001
 ac_mothers_basin_site = { location_modifier = { local_unrest = -0.05 } }
 ac_storm_teeth_site = { location_modifier = { local_defensive = 0.1 } }
 ac_emberroot_site = { location_modifier = { local_defensive = 0.1 } }
+ac_three_watchfires_site = { location_modifier = { local_monthly_prosperity = 0.001 } }
 ac_first_weight_site = { location_modifier = { local_production_efficiency = 0.025 } }
 ac_last_lamp_site = { location_modifier = { local_monthly_prosperity = 0.001 } }
 ac_blackwood_oathstones_site = { location_modifier = { local_defensive = 0.025 } }

@@ -1,0 +1,416 @@
+﻿# Initial RGO investment runs once on the first monthly pulse.
+ga_economy_monthly = {
+    trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK tag = GTF } }
+    effect = {
+        if = {
+            limit = { NOT = { has_variable = ga_economy_initialized } }
+            set_variable = { name = ga_economy_initialized value = yes }
+        if = {
+            limit = { tag = CDM }
+            if = {
+                limit = { owns = location:cm_cinder_crown }
+                location:cm_cinder_crown = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_blackwood }
+                location:cm_blackwood = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_copperfang }
+                location:cm_copperfang = { change_max_raw_material_workers = 2 }
+            }
+            if = {
+                limit = { owns = location:cm_hooktooth }
+                location:cm_hooktooth = { change_max_raw_material_workers = 6 }
+            }
+            if = {
+                limit = { owns = location:cm_ashfields }
+                location:cm_ashfields = { change_max_raw_material_workers = 3 }
+            }
+            if = {
+                limit = { owns = location:cm_saltjaw }
+                location:cm_saltjaw = { change_max_raw_material_workers = 2 }
+            }
+            if = {
+                limit = { owns = location:cm_redpasture }
+                location:cm_redpasture = { change_max_raw_material_workers = 2 }
+            }
+            if = {
+                limit = { owns = location:cm_splinter_cove }
+                location:cm_splinter_cove = { change_max_raw_material_workers = 2 }
+            }
+            if = {
+                limit = { owns = location:cm_ironbark }
+                location:cm_ironbark = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_ashspine }
+                location:cm_ashspine = { change_max_raw_material_workers = 2 }
+            }
+            if = {
+                limit = { owns = location:cm_emberfall }
+                location:cm_emberfall = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_scorchbrook }
+                location:cm_scorchbrook = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_obsidian_cut }
+                location:cm_obsidian_cut = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_cinder_shelf }
+                location:cm_cinder_shelf = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_smokehorn }
+                location:cm_smokehorn = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_goldscar }
+                location:cm_goldscar = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_coaljaw }
+                location:cm_coaljaw = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_silverfang }
+                location:cm_silverfang = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_netjaw }
+                location:cm_netjaw = { change_max_raw_material_workers = 3 }
+            }
+            if = {
+                limit = { owns = location:cm_saffron_hollow }
+                location:cm_saffron_hollow = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_dyer_s_marsh }
+                location:cm_dyer_s_marsh = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_grazetooth }
+                location:cm_grazetooth = { change_max_raw_material_workers = 2 }
+            }
+            if = {
+                limit = { owns = location:cm_sawtooth }
+                location:cm_sawtooth = { change_max_raw_material_workers = 2 }
+            }
+            if = {
+                limit = { owns = location:cm_pitchfang }
+                location:cm_pitchfang = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_goldvein }
+                location:cm_goldvein = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_clayjaw }
+                location:cm_clayjaw = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_reedfurrow }
+                location:cm_reedfurrow = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_quarrystone }
+                location:cm_quarrystone = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_saltlip }
+                location:cm_saltlip = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_ashgrain }
+                location:cm_ashgrain = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_lantern_haven }
+                location:cm_lantern_haven = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_wickwood }
+                location:cm_wickwood = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_emberwatch }
+                location:cm_emberwatch = { change_max_raw_material_workers = 1 }
+            }
+        }
+        if = {
+            limit = { tag = QBR }
+            if = {
+                limit = { owns = location:cm_brackhaven }
+                location:cm_brackhaven = { change_max_raw_material_workers = 5 }
+            }
+            if = {
+                limit = { owns = location:cm_brinewood }
+                location:cm_brinewood = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_rustpeak }
+                location:cm_rustpeak = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_mossfields }
+                location:cm_mossfields = { change_max_raw_material_workers = 3 }
+            }
+            if = {
+                limit = { owns = location:cm_bracksalt }
+                location:cm_bracksalt = { change_max_raw_material_workers = 3 }
+            }
+            if = {
+                limit = { owns = location:cm_mossglen }
+                location:cm_mossglen = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_reedmouth }
+                location:cm_reedmouth = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_blackcrag }
+                location:cm_blackcrag = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_basalt_steps }
+                location:cm_basalt_steps = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_fumarole_fields }
+                location:cm_fumarole_fields = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_rustneedle }
+                location:cm_rustneedle = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_brine_spur }
+                location:cm_brine_spur = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_bracknet }
+                location:cm_bracknet = { change_max_raw_material_workers = 5 }
+            }
+            if = {
+                limit = { owns = location:cm_miregrove }
+                location:cm_miregrove = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_silverneedle }
+                location:cm_silverneedle = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_mossfurrow }
+                location:cm_mossfurrow = { change_max_raw_material_workers = 3 }
+            }
+            if = {
+                limit = { owns = location:cm_brinepasture }
+                location:cm_brinepasture = { change_max_raw_material_workers = 2 }
+            }
+            if = {
+                limit = { owns = location:cm_woolfen }
+                location:cm_woolfen = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_reedfish }
+                location:cm_reedfish = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_alumcrag }
+                location:cm_alumcrag = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_basaltgrain }
+                location:cm_basaltgrain = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_saffron_vale }
+                location:cm_saffron_vale = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_rustforge }
+                location:cm_rustforge = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_dyer_s_fen }
+                location:cm_dyer_s_fen = { change_max_raw_material_workers = 1 }
+            }
+        }
+        if = {
+            limit = { tag = RHK }
+            if = {
+                limit = { owns = location:cm_reefhook }
+                location:cm_reefhook = { change_max_raw_material_workers = 3 }
+            }
+            if = {
+                limit = { owns = location:cm_crooked_reef }
+                location:cm_crooked_reef = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_hookrim }
+                location:cm_hookrim = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_tidefang }
+                location:cm_tidefang = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_reefnet }
+                location:cm_reefnet = { change_max_raw_material_workers = 3 }
+            }
+            if = {
+                limit = { owns = location:cm_coralpasture }
+                location:cm_coralpasture = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_pearlshore }
+                location:cm_pearlshore = { change_max_raw_material_workers = 2 }
+            }
+            if = {
+                limit = { owns = location:cm_tidegrain }
+                location:cm_tidegrain = { change_max_raw_material_workers = 1 }
+            }
+        }
+        if = {
+            limit = { tag = SFK }
+            if = {
+                limit = { owns = location:cm_shatterfin }
+                location:cm_shatterfin = { change_max_raw_material_workers = 5 }
+            }
+            if = {
+                limit = { owns = location:cm_shardpoint }
+                location:cm_shardpoint = { change_max_raw_material_workers = 2 }
+            }
+            if = {
+                limit = { owns = location:cm_stormpasture }
+                location:cm_stormpasture = { change_max_raw_material_workers = 4 }
+            }
+            if = {
+                limit = { owns = location:cm_silver_shard }
+                location:cm_silver_shard = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_knifeback }
+                location:cm_knifeback = { change_max_raw_material_workers = 6 }
+            }
+            if = {
+                limit = { owns = location:cm_silkworm_grove }
+                location:cm_silkworm_grove = { change_max_raw_material_workers = 1 }
+            }
+        }
+        if = {
+            limit = { tag = SWK }
+            if = {
+                limit = { owns = location:cm_sootwake }
+                location:cm_sootwake = { change_max_raw_material_workers = 3 }
+            }
+            if = {
+                limit = { owns = location:cm_ember_key }
+                location:cm_ember_key = { change_max_raw_material_workers = 4 }
+            }
+            if = {
+                limit = { owns = location:cm_sootgrain }
+                location:cm_sootgrain = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_alum_key }
+                location:cm_alum_key = { change_max_raw_material_workers = 1 }
+            }
+        }
+        if = {
+            limit = { tag = GTF }
+            if = {
+                limit = { owns = location:cm_chainhaven }
+                location:cm_chainhaven = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_brassridge }
+                location:cm_brassridge = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_coinfall }
+                location:cm_coinfall = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_saltwake }
+                location:cm_saltwake = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_weighstone }
+                location:cm_weighstone = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_coppercut }
+                location:cm_coppercut = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_blackmeasure }
+                location:cm_blackmeasure = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_fangstead }
+                location:cm_fangstead = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_cinderfurrow }
+                location:cm_cinderfurrow = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_oathforge }
+                location:cm_oathforge = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_chainwood }
+                location:cm_chainwood = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_ashbarley }
+                location:cm_ashbarley = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_scalebreak }
+                location:cm_scalebreak = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_tallyrock }
+                location:cm_tallyrock = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_brinepans }
+                location:cm_brinepans = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_ledgerfen }
+                location:cm_ledgerfen = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_emberhollow }
+                location:cm_emberhollow = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_lockshore }
+                location:cm_lockshore = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_tolltooth }
+                location:cm_tolltooth = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_watchfang }
+                location:cm_watchfang = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_netreach }
+                location:cm_netreach = { change_max_raw_material_workers = 1 }
+            }
+            if = {
+                limit = { owns = location:cm_lastlight }
+                location:cm_lastlight = { change_max_raw_material_workers = 1 }
+            }
+        }
+        }
+    }
+}

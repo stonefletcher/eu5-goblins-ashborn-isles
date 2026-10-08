@@ -1,3 +1,4 @@
+from ashborn_roster import TAGS
 """Execute the generated negotiation subset against adversarial country scenarios.
 
 This is a script-level regression harness, not an EU5 engine emulator/playtest.
@@ -15,7 +16,7 @@ class World:
         self.countries = {tag: dict(gold=50., vars={}, modifiers={}, exists=True,
                                    at_war=False, is_subject=False, is_junior_partner=False,
                                    is_ai=False, rivals=set(), enemies=set(), wars=set())
-                          for tag in ['CDM', 'QBR', 'RHK', 'SFK', 'SWK']}
+                          for tag in TAGS}
         self.opinion = 50
         self.queue = []
         for country in self.countries.values():
@@ -90,7 +91,9 @@ class World:
     def effects(self, rows, country, scopes):
         for k, op, v in rows:
             data = self.countries[country]
-            if k == 'hidden_effect':
+            if k == 'show_as_tooltip':
+                continue  # Native effect preview; never executes gameplay effects.
+            elif k == 'hidden_effect':
                 self.effects(v, country, scopes)
             elif k == 'custom_tooltip':
                 assert isinstance(v, str)
@@ -164,7 +167,7 @@ def verify(read):
     def passed(name): scenarios.append(name)
     for action, kind in [('ga_offer_harbor_pact', 'provisions'), ('ga_seek_pilot_bargain', 'pilots')]:
         w = World(definitions); popup = w.offer(action=action)
-        assert sum(c['gold'] for c in w.countries.values()) == 250
+        assert sum(c['gold'] for c in w.countries.values()) == 50 * len(w.countries)
         assert w.choose(popup, 0)
         assert (w.countries['CDM']['gold'], w.countries['QBR']['gold']) == (40, 60)
         for tag, suffix in [('CDM', 'received'), ('QBR', 'supplied')]:

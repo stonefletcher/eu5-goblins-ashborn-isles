@@ -140,6 +140,108 @@
           -180,
           -140
         ]
+      },
+      {
+        "id": "cm_chainhaven_roads",
+        "name": "Chainhaven Roads",
+        "color": "ed1300",
+        "seed": [
+          -107.3312629199899,
+          -420.38077976996044
+        ],
+        "basin": "giltfang"
+      },
+      {
+        "id": "cm_giltfang_north",
+        "name": "Giltfang North",
+        "color": "ed1301",
+        "seed": [
+          -53.66563145999495,
+          -509.823498869952
+        ],
+        "basin": "giltfang"
+      },
+      {
+        "id": "cm_giltfang_west",
+        "name": "Giltfang West",
+        "color": "ed1302",
+        "seed": [
+          -196.77398201998147,
+          -402.49223594996215
+        ],
+        "basin": "giltfang"
+      },
+      {
+        "id": "cm_giltfang_passage",
+        "name": "Giltfang Passage",
+        "color": "ed1303",
+        "seed": [
+          26.832815729997474,
+          -317.52165280497013
+        ],
+        "basin": "giltfang"
+      },
+      {
+        "id": "cm_tolltooth_sound",
+        "name": "Tolltooth Sound",
+        "color": "ed1304",
+        "seed": [
+          98.38699100999074,
+          -429.3250516799596
+        ],
+        "basin": "giltfang"
+      },
+      {
+        "id": "cm_tolltooth_east",
+        "name": "Tolltooth East",
+        "color": "ed1305",
+        "seed": [
+          223.60679774997897,
+          -371.18728426496506
+        ],
+        "basin": "giltfang"
+      },
+      {
+        "id": "cm_giltfang_south",
+        "name": "Giltfang South",
+        "color": "ed1306",
+        "seed": [
+          -116.27553482998906,
+          -304.1052449399714
+        ],
+        "basin": "giltfang"
+      },
+      {
+        "id": "cm_giltfang_outer_roads",
+        "name": "Giltfang Outer Roads",
+        "color": "ed1307",
+        "basin": "giltfang",
+        "seed": [
+          187.82971010998233,
+          -518.7677707799512
+        ]
+      },
+      {
+        "id": "cm_tolltooth_approach",
+        "name": "Tolltooth Approach",
+        "color": "ed1308",
+        "basin": "giltfang",
+        "seed": [
+          178.88543819998316,
+          -259.3838853899756
+        ]
+      }
+    ],
+    "extra_basins": [
+      {
+        "id": "giltfang",
+        "source_water": "celtic_sea",
+        "bounds": [
+          6675,
+          1890,
+          7215,
+          2240
+        ]
       }
     ]
   },
@@ -217,6 +319,21 @@
         158,
         78,
         59
+      ]
+    },
+    {
+      "tag": "GTF",
+      "name": "Giltfang",
+      "adjective": "Giltfang",
+      "culture": "cm_giltkin",
+      "culture_name": "Cinderweight",
+      "capital": "cm_chainhaven",
+      "rank": "town",
+      "gold": 100,
+      "color": [
+        182,
+        143,
+        61
       ]
     }
   ],
@@ -2595,6 +2712,690 @@
         16,
         -40
       ]
+    },
+    {
+      "id": "giltfang",
+      "name": "Giltfang",
+      "offset": [
+        -0.3111051099130142,
+        -4.670897552999561
+      ],
+      "area_ratio": 0.47,
+      "country": "GTF",
+      "locations": [
+        {
+          "id": "cm_chainhaven",
+          "name": "Chainhaven",
+          "seed": [
+            -0.110737,
+            -0.064009
+          ],
+          "color": "ed1261",
+          "good": "fish",
+          "topography": "flatland",
+          "vegetation": "grasslands",
+          "pop": 32.172,
+          "province": "cm_giltfang_1_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "marketplace": 3,
+            "stockade": 1,
+            "naval_supplies_guild": 1
+          },
+          "pop_classes": {
+            "nobles": 0.386,
+            "clergy": 0.772,
+            "burghers": 5.147,
+            "laborers": 3.217,
+            "peasants": 21.65,
+            "soldiers": 1
+          }
+        },
+        {
+          "id": "cm_brassridge",
+          "name": "Brassridge",
+          "seed": [
+            -0.296835,
+            1.031928
+          ],
+          "color": "ed1262",
+          "good": "copper",
+          "topography": "mountains",
+          "vegetation": "sparse",
+          "pop": 16.08,
+          "province": "cm_giltfang_1_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1,
+            "local_smelters": 1
+          },
+          "pop_classes": {
+            "nobles": 0.192,
+            "clergy": 0.385,
+            "burghers": 0.884,
+            "laborers": 3.698,
+            "peasants": 10.921
+          }
+        },
+        {
+          "id": "cm_coinfall",
+          "name": "Coinfall",
+          "seed": [
+            0.571164,
+            -0.899499
+          ],
+          "color": "ed1263",
+          "good": "stone",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 10.405,
+          "province": "cm_giltfang_1_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.124,
+            "clergy": 0.249,
+            "burghers": 0.572,
+            "laborers": 2.393,
+            "peasants": 7.067
+          }
+        },
+        {
+          "id": "cm_saltwake",
+          "name": "Saltwake",
+          "seed": [
+            0.935415,
+            0.09473
+          ],
+          "color": "ed1264",
+          "good": "salt",
+          "topography": "flatland",
+          "vegetation": "sparse",
+          "pop": 11.351,
+          "province": "cm_giltfang_2_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.136,
+            "clergy": 0.272,
+            "burghers": 0.624,
+            "laborers": 2.61,
+            "peasants": 7.709
+          }
+        },
+        {
+          "id": "cm_weighstone",
+          "name": "Weighstone",
+          "seed": [
+            -0.436034,
+            -0.888644
+          ],
+          "color": "ed1265",
+          "good": "clay",
+          "topography": "flatland",
+          "vegetation": "grasslands",
+          "pop": 14.188,
+          "province": "cm_giltfang_2_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.17,
+            "clergy": 0.34,
+            "burghers": 0.78,
+            "laborers": 3.263,
+            "peasants": 9.635
+          }
+        },
+        {
+          "id": "cm_coppercut",
+          "name": "Coppercut",
+          "seed": [
+            0.485879,
+            0.777793
+          ],
+          "color": "ed1266",
+          "good": "copper",
+          "topography": "mountains",
+          "vegetation": "sparse",
+          "pop": 14.188,
+          "province": "cm_giltfang_2_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1,
+            "local_smelters": 1
+          },
+          "pop_classes": {
+            "nobles": 0.17,
+            "clergy": 0.34,
+            "burghers": 0.78,
+            "laborers": 3.263,
+            "peasants": 9.635
+          }
+        },
+        {
+          "id": "cm_blackmeasure",
+          "name": "Blackmeasure",
+          "seed": [
+            -0.569958,
+            0.422686
+          ],
+          "color": "ed1267",
+          "good": "iron",
+          "topography": "mountains",
+          "vegetation": "sparse",
+          "pop": 11.351,
+          "province": "cm_giltfang_3_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1,
+            "local_smelters": 1
+          },
+          "pop_classes": {
+            "nobles": 0.136,
+            "clergy": 0.272,
+            "burghers": 0.624,
+            "laborers": 2.61,
+            "peasants": 7.709
+          }
+        },
+        {
+          "id": "cm_fangstead",
+          "name": "Fangstead",
+          "seed": [
+            0.45842,
+            -0.298868
+          ],
+          "color": "ed1268",
+          "good": "wool",
+          "topography": "flatland",
+          "vegetation": "grasslands",
+          "pop": 13.243,
+          "province": "cm_giltfang_3_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.158,
+            "clergy": 0.317,
+            "burghers": 0.728,
+            "laborers": 1.324,
+            "peasants": 10.716
+          }
+        },
+        {
+          "id": "cm_cinderfurrow",
+          "name": "Cinderfurrow",
+          "seed": [
+            -0.604551,
+            -0.337586
+          ],
+          "color": "ed1269",
+          "good": "wheat",
+          "topography": "flatland",
+          "vegetation": "grasslands",
+          "pop": 15.134,
+          "province": "cm_giltfang_3_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.181,
+            "clergy": 0.363,
+            "burghers": 0.832,
+            "laborers": 1.513,
+            "peasants": 12.245
+          }
+        },
+        {
+          "id": "cm_oathforge",
+          "name": "Oathforge",
+          "seed": [
+            -0.002875,
+            0.498351
+          ],
+          "color": "ed126a",
+          "good": "iron",
+          "topography": "mountains",
+          "vegetation": "sparse",
+          "pop": 11.351,
+          "province": "cm_giltfang_4_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1,
+            "local_smelters": 1
+          },
+          "pop_classes": {
+            "nobles": 0.136,
+            "clergy": 0.272,
+            "burghers": 0.624,
+            "laborers": 2.61,
+            "peasants": 7.709
+          }
+        },
+        {
+          "id": "cm_chainwood",
+          "name": "Chainwood",
+          "seed": [
+            0.069042,
+            -0.678597
+          ],
+          "color": "ed126b",
+          "good": "lumber",
+          "topography": "hills",
+          "vegetation": "woods",
+          "pop": 14.188,
+          "province": "cm_giltfang_4_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.17,
+            "clergy": 0.34,
+            "burghers": 0.78,
+            "laborers": 1.418,
+            "peasants": 11.48
+          }
+        },
+        {
+          "id": "cm_ashbarley",
+          "name": "Ashbarley",
+          "seed": [
+            0.43791,
+            0.221091
+          ],
+          "color": "ed126c",
+          "good": "wheat",
+          "topography": "flatland",
+          "vegetation": "grasslands",
+          "pop": 15.134,
+          "province": "cm_giltfang_4_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.181,
+            "clergy": 0.363,
+            "burghers": 0.832,
+            "laborers": 1.513,
+            "peasants": 12.245
+          }
+        },
+        {
+          "id": "cm_scalebreak",
+          "name": "Scalebreak",
+          "seed": [
+            0.815175,
+            -0.53481
+          ],
+          "color": "ed126d",
+          "good": "livestock",
+          "topography": "flatland",
+          "vegetation": "grasslands",
+          "pop": 10.405,
+          "province": "cm_giltfang_5_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.124,
+            "clergy": 0.249,
+            "burghers": 0.572,
+            "laborers": 1.04,
+            "peasants": 8.42
+          }
+        },
+        {
+          "id": "cm_tallyrock",
+          "name": "Tallyrock",
+          "seed": [
+            0.102484,
+            0.917465
+          ],
+          "color": "ed126e",
+          "good": "stone",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 8.513,
+          "province": "cm_giltfang_5_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.102,
+            "clergy": 0.204,
+            "burghers": 0.468,
+            "laborers": 1.957,
+            "peasants": 5.782
+          }
+        },
+        {
+          "id": "cm_brinepans",
+          "name": "Brinepans",
+          "seed": [
+            -0.077459,
+            -1.033613
+          ],
+          "color": "ed126f",
+          "good": "salt",
+          "topography": "flatland",
+          "vegetation": "sparse",
+          "pop": 11.351,
+          "province": "cm_giltfang_5_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.136,
+            "clergy": 0.272,
+            "burghers": 0.624,
+            "laborers": 2.61,
+            "peasants": 7.709
+          }
+        },
+        {
+          "id": "cm_ledgerfen",
+          "name": "Ledgerfen",
+          "seed": [
+            -0.238997,
+            -0.452586
+          ],
+          "color": "ed1270",
+          "good": "wheat",
+          "topography": "flatland",
+          "vegetation": "grasslands",
+          "pop": 11.351,
+          "province": "cm_giltfang_6_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.136,
+            "clergy": 0.272,
+            "burghers": 0.624,
+            "laborers": 1.135,
+            "peasants": 9.184
+          }
+        },
+        {
+          "id": "cm_emberhollow",
+          "name": "Emberhollow",
+          "seed": [
+            0.704407,
+            0.471155
+          ],
+          "color": "ed1271",
+          "good": "lumber",
+          "topography": "hills",
+          "vegetation": "woods",
+          "pop": 14.188,
+          "province": "cm_giltfang_6_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.17,
+            "clergy": 0.34,
+            "burghers": 0.78,
+            "laborers": 1.418,
+            "peasants": 11.48
+          }
+        },
+        {
+          "id": "cm_lockshore",
+          "name": "Lockshore",
+          "seed": [
+            -0.555195,
+            0.775067
+          ],
+          "color": "ed1272",
+          "good": "fish",
+          "topography": "flatland",
+          "vegetation": "grasslands",
+          "pop": 11.351,
+          "province": "cm_giltfang_6_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.136,
+            "clergy": 0.272,
+            "burghers": 0.624,
+            "laborers": 1.135,
+            "peasants": 9.184
+          }
+        }
+      ],
+      "profile": {
+        "stretch": 0.83,
+        "rotation": 0,
+        "lobes": [
+          [
+            2,
+            0.11,
+            0.3
+          ],
+          [
+            3,
+            0.05,
+            1.2
+          ]
+        ],
+        "bays": [
+          [
+            3.141592653589793,
+            0.48,
+            0.56
+          ],
+          [
+            1.2,
+            0.2,
+            0.1
+          ]
+        ]
+      },
+      "geology": {
+        "seed": 7311,
+        "rivers": 3,
+        "foothills": 1.0,
+        "woodland": 0.48,
+        "ridges": [
+          [
+            0.42,
+            -0.35,
+            11,
+            0.22,
+            0.29,
+            -0.2
+          ],
+          [
+            0.5,
+            0.2,
+            9,
+            0.22,
+            0.31,
+            0.1
+          ]
+        ],
+        "volcanic_exposure": 0.6,
+        "craters": []
+      },
+      "position_adjustment": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "tolltooth",
+      "name": "Tolltooth",
+      "offset": [
+        1.20553230091293,
+        -4.323064756499593
+      ],
+      "area_ratio": 0.07,
+      "country": "GTF",
+      "locations": [
+        {
+          "id": "cm_tolltooth",
+          "name": "Tolltooth",
+          "seed": [
+            -0.763648,
+            0.029047
+          ],
+          "color": "ed1273",
+          "good": "fish",
+          "topography": "flatland",
+          "vegetation": "grasslands",
+          "pop": 15.134,
+          "province": "cm_tolltooth_1_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.181,
+            "clergy": 0.363,
+            "burghers": 2.421,
+            "laborers": 1.513,
+            "peasants": 10.656
+          }
+        },
+        {
+          "id": "cm_watchfang",
+          "name": "Watchfang",
+          "seed": [
+            1.127268,
+            -0.196057
+          ],
+          "color": "ed1274",
+          "good": "stone",
+          "topography": "hills",
+          "vegetation": "sparse",
+          "pop": 8.513,
+          "province": "cm_tolltooth_1_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.102,
+            "clergy": 0.204,
+            "burghers": 0.468,
+            "laborers": 1.957,
+            "peasants": 5.782
+          }
+        },
+        {
+          "id": "cm_netreach",
+          "name": "Netreach",
+          "seed": [
+            0.273419,
+            0.804674
+          ],
+          "color": "ed1275",
+          "good": "fish",
+          "topography": "flatland",
+          "vegetation": "grasslands",
+          "pop": 9.459,
+          "province": "cm_tolltooth_1_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.113,
+            "clergy": 0.227,
+            "burghers": 0.52,
+            "laborers": 0.945,
+            "peasants": 7.654
+          }
+        },
+        {
+          "id": "cm_lastlight",
+          "name": "Lastlight",
+          "seed": [
+            0.086244,
+            -0.821228
+          ],
+          "color": "ed1276",
+          "good": "lumber",
+          "topography": "hills",
+          "vegetation": "woods",
+          "pop": 7.567,
+          "province": "cm_tolltooth_2_province",
+          "rgo_expansion": 1,
+          "buildings": {
+            "market_village": 1
+          },
+          "pop_classes": {
+            "nobles": 0.09,
+            "clergy": 0.181,
+            "burghers": 0.416,
+            "laborers": 0.756,
+            "peasants": 6.124
+          }
+        }
+      ],
+      "profile": {
+        "stretch": 1.12,
+        "rotation": -0.35,
+        "lobes": [
+          [
+            2,
+            0.08,
+            0.4
+          ],
+          [
+            3,
+            0.045,
+            1.2
+          ]
+        ],
+        "bays": [
+          [
+            3.141592653589793,
+            0.35,
+            0.22
+          ]
+        ]
+      },
+      "geology": {
+        "seed": 7517,
+        "rivers": 1,
+        "foothills": 1.0,
+        "woodland": 0.48,
+        "ridges": [
+          [
+            0.1,
+            0,
+            5,
+            0.5,
+            0.28,
+            -0.35
+          ]
+        ],
+        "volcanic_exposure": 0.6,
+        "craters": []
+      },
+      "position_adjustment": [
+        0,
+        0
+      ]
     }
   ],
   "climate": "oceanic",
@@ -2604,7 +3405,7 @@
   "terrain_revision": "volcanic-spacing-pass",
   "economy_revision": "lore-specialization-056",
   "population_baseline": 593647,
-  "population_target": 1294755,
+  "population_target": 1581372,
   "baseline_locations": {
     "cm_cinder_crown": {
       "population": 8.222,
@@ -2875,7 +3676,8 @@
     "QBR": 318463,
     "RHK": 108437,
     "SFK": 213487,
-    "SWK": 101629
+    "SWK": 101629,
+    "GTF": 286617
   },
   "goblin_life_expectancy_bonus_years": 15,
   "starting_ruler_ages": {
@@ -2883,6 +3685,11 @@
     "QBR": 36,
     "RHK": 27,
     "SFK": 39,
-    "SWK": 29
-  }
+    "SWK": 29,
+    "GTF": 36
+  },
+  "markets": [
+    "cm_hooktooth",
+    "cm_chainhaven"
+  ]
 }

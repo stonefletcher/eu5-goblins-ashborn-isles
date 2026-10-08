@@ -13,3 +13,6 @@ cm_shatterfin_infant_features = { entity = { required_tags = "" shared_pose_enti
 cm_sootwake_male_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_sootwake_male_features_entity } }
 cm_sootwake_female_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_sootwake_female_features_entity } }
 cm_sootwake_infant_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_sootwake_infant_features_entity } }
+cm_giltfang_male_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_giltfang_male_features_entity } }
+cm_giltfang_female_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_giltfang_female_features_entity } }
+cm_giltfang_infant_features = { entity = { required_tags = "" shared_pose_entity = head entity = cm_giltfang_infant_features_entity } }

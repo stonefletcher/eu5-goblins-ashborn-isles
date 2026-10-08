@@ -25,7 +25,7 @@ ASPECTS = {
 }
 STARTING = {'CDM': ('offering_smoke', 'first_share'), 'QBR': ('common_hearth', 'many_hearths'),
             'RHK': ('crew_home', 'shore_spirits'), 'SFK': ('crew_home', 'remembered_dead'),
-            'SWK': ('cutting_oath', 'remembered_dead')}
+            'SWK': ('cutting_oath', 'remembered_dead'), 'GTF': ('common_hearth', 'first_share')}
 SITES = [
     ('first_mouth', 'The First Mouth', 'cm_cinder_crown', 'cindermaw', 'local_production_efficiency', .05,
      'A warm fissure beneath Cinder Crown. Ember-speakers listen through hollow stone tubes while forge crews surrender their first work. No one agrees whether the first goblins were born here or escaped through it.'),
@@ -46,8 +46,13 @@ SITE_IMPORTANCE = {
     'first_mouth': 5, 'listening_pool': 3, 'lantern_steps': 2,
     'mothers_basin': 4, 'storm_teeth': 1, 'emberroot': 2,
     'blackwood_oathstones': 2, 'ashfield_hearth': 1, 'miregrove_witness': 1,
+    'first_weight': 3, 'last_lamp': 1,
 }
 SITES.extend([
+    ('first_weight', 'The First Weight', 'cm_chainhaven', 'giltfang', 'local_production_efficiency', .025,
+     'A copper weight hangs above the sea fissure beneath Chainhaven. Merchants surrender the first measured share of each cargo; false scales are broken before the Oathkeepers.'),
+    ('last_lamp', 'The Last Lamp', 'cm_lastlight', 'tolltooth', 'local_monthly_prosperity', .001,
+     'Tolltooth households keep a lamp for crews still beyond the horizon. Its flame is tended before any toll is counted, for a lost crew can repay no debt.'),
     ('blackwood_oathstones', 'The Blackwood Oathstones', 'cm_blackwood', 'cindermaw', 'local_defensive', .025,
      'Woodcutters bind charcoal-black cords around stones on the old forest path. Each cord promises a firebreak kept or a household sheltered; broken oaths are recited before the next cutting.'),
     ('ashfield_hearth', 'The Ashfield Hearth', 'cm_ashfields', 'cindermaw', 'local_monthly_food_modifier', .025,

@@ -13,3 +13,6 @@ cm_goblin_shatterfin_body = {
 cm_goblin_sootwake_body = {
  100 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_sootwake_mesh" } }
 }
+cm_goblin_giltfang_body = {
+ 100 = { add_entity = { node = shared_pose_entity mesh_name = "cm_goblin_giltfang_mesh" } }
+}

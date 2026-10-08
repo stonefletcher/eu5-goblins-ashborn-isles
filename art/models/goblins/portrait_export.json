@@ -1,6 +1,6 @@
 {
   "engine_tested": false,
-  "cultures": 5,
+  "cultures": 6,
   "portrait_types": [
     "male",
     "female",
@@ -28,7 +28,7 @@
   "portrait_stature": "culture-only compact torso 0.42 and stoop 0.24 on both sexes, shorter neck; native child growth preserved; framing and clothing fit need engine review",
   "validation": {
     "status": "static checks passed; in-game appearance unverified",
-    "cultures": 5,
+    "cultures": 6,
     "portrait_types": 7,
     "attachment_triangles": 3024,
     "native_rig_bindings_checked": true,

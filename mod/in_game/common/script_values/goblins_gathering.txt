@@ -74,5 +74,27 @@ if = { limit = { location:cm_sootwake = { exists = owner owner = { ga_owner_in_c
 if = { limit = { location:cm_ember_key = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
 if = { limit = { location:cm_sootgrain = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
 if = { limit = { location:cm_alum_key = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_chainhaven = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_brassridge = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_coinfall = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_saltwake = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_weighstone = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_coppercut = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_blackmeasure = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_fangstead = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_cinderfurrow = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_oathforge = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_chainwood = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_ashbarley = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_scalebreak = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_tallyrock = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_brinepans = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_ledgerfen = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_emberhollow = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_lockshore = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_tolltooth = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_watchfang = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_netreach = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
+if = { limit = { location:cm_lastlight = { exists = owner owner = { ga_owner_in_claimant_realm = yes } } } add = 1 }
         }
     }

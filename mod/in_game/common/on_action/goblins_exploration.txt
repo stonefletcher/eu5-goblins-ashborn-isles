@@ -1,5 +1,5 @@
 ﻿ga_exploration_monthly = {
-        trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+        trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK tag = GTF } }
         effect = {
             if = { limit = { NOT = { has_variable = ga_exploration_initialized } }
                 set_variable = { name = ga_exploration_initialized value = yes }

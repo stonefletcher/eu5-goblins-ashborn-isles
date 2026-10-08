@@ -5,7 +5,7 @@ import event_art
 FIRST_OFFER_MONTHS = 36
 STARTING_REGIONS = []
 STARTING_SEA_AREAS = ['iberian_west_coast_area', 'bay_of_biscay_area',
-                      'english_channel_area', 'nw_africa_coast_area']
+                      'english_channel_area', 'nw_africa_coast_area', 'azores_sea_area']
 # Known sea beside undiscovered land is the intended coastal-silhouette state.
 # Never reveal mainland provinces/regions merely to expose their shorelines.
 STARTING_PROVINCES = []

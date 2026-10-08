@@ -5,7 +5,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EVENTS = {
     'cindermaw.1': 'cindermaw',
     **{f'ga_gathering.{n}': art for n, art in {
-        1: 'gathering', 2: 'harbor_pact', 3: 'oath', 4: 'oath',
+        40: 'giltfang', 1: 'gathering', 2: 'harbor_pact', 3: 'oath', 4: 'oath',
         5: 'unification', 6: 'eastern_hunger', 7: 'unification',
         8: 'eastern_harbor', 10: 'cindermaw', 11: 'brackmaw',
         12: 'reefhook', 13: 'shatterfin', 14: 'sootwake', 15: 'shatterfin',
@@ -23,7 +23,7 @@ EVENTS = {
 from ashen_covenant import STORIES
 EVENTS.update({f'ashen_covenant.{row[0]}': row[4] for row in STORIES})
 EVENTS['ashen_covenant.20'] = 'unification'
-SITUATIONS = {'ga_gathering_of_five': 'gathering', 'ga_eastern_hunger': 'eastern_hunger'}
+SITUATIONS = {'ga_gathering_of_five': 'gathering', 'ga_eastern_hunger': 'eastern_hunger', 'ga_ashborn_voyages': 'charts'}
 ART = sorted(set(EVENTS.values()) | set(SITUATIONS.values()))
 EVENT_DIR = 'main_menu/gfx/interface/illustrations/event/ashborn'
 

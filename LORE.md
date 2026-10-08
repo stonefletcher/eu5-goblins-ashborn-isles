@@ -1,6 +1,6 @@
 # Goblins of the Ashborn Isles
 
-In the early years of the fourteenth century, fire rose from the Atlantic. Months of eruptions left behind black volcanic islands. When the smoke cleared, goblins already walked their shores. No one saw them arrive. Some captains claim the mountains birthed them; others speak of passages beneath the earth that have since collapsed. Fishing camps became villages, crude mines opened in the ridges, and rival crews fought over sheltered harbors. By 1337, Hooktooth has become Cindermaw's capital, but the Ashborn Isles remain divided. The Brineward of Brackmaw and the Reefhook, Shatterfin and Sootwake clans share the Emberblood's faith in the Hunger Below, yet follow their own crowns; Shatterfin alone keeps the maternal house of the Tidemothers. Poor treasuries, crowded settlements and growing fleets drive them toward expansion. The Ironfang ruler dreams first of uniting the islands. Beyond them lies a world the goblins have only begun to discover.
+In the early years of the fourteenth century, fire rose from the Atlantic. Months of eruptions left behind black volcanic islands. When the smoke cleared, goblins already walked their shores. No one saw them arrive. Some captains claim the mountains birthed them; others speak of passages beneath the earth that have since collapsed. Fishing camps became villages, crude mines opened in the ridges, and rival crews fought over sheltered harbors. By 1337, Hooktooth has become Cindermaw's capital, but the Ashborn Isles remain divided. The Brineward of Brackmaw and the Reefhook, Shatterfin and Sootwake clans share the Emberblood's faith in the Hunger Below, yet follow their own crowns; Shatterfin alone keeps the maternal house of the Tidemothers. Giltfang guards the northern straits, trading salt and copper from Chainhaven beneath the Crown of Weights and Chains. Poor treasuries, crowded settlements and growing fleets drive them toward expansion. The Ironfang ruler dreams first of uniting the islands. Beyond them lies a world the goblins have only begun to discover.
 
 ## The Ashen Covenant
 
@@ -67,6 +67,16 @@ Snikh Sootwake, the Blackbough, earned his name in the Red Hollow fire. When smo
 House Sootwake descends from Sizh's band of hearth keepers, who joined scattered clearings through guarded paths and common firebreaks. Its saying is 'Roots outlast fire.' The family seats its children at an unpainted rootwood table, where each generation cuts a new mark beside the old ones. Snikh's older brother Zhor is the adult dynastic successor under the existing strength law and argues that the house owes its wardens generous timber rights. Consort Zheska of House Cinderhush speaks for the charcoal settlements that need the same trees. Their children Khash and Khazra inherit a house whose unity depends on balancing those claims.
 
 Sootwake's expanding settlements give the crown more hands, hearths and mouths to feed. Timber and charcoal can buy independence, yet selling too much leaves bare hills and exposed roads. Snikh wants enough cleared land to feed his people while preserving a forest through which invaders must follow paths his wardens know. Brackmaw's workshops and Cindermaw's forges both want Ashveil wood; their contracts can enrich the kingdom or divide its court. Woodland households defend their cutting rights, and the crown cannot demand endless labor without losing the trust that keeps its scattered settlements together.
+
+## Giltfang - Cinderweight
+
+Vrekk Giltfang, the Brass-Tooth, lost part of his jaw when a rival challenged his copper weights. He returned with a brass tooth and bought the debts of the rival household. Their warehouse became his palace. He intends to make the other crowns depend on a harbor they cannot command.
+
+House Giltfang first settled quarrels over wreckage hauled onto steaming beaches. Its scales became accepted throughout the northern harbors, and the weighing fee paid for armed crews. The house keeps both the weights and the crown.
+
+Chainhaven lies inside a sheltered volcanic bay on Giltfang. Copper workings and salt pans supply its market, while the smaller island of Tolltooth watches the northern approaches. Limited grain and timber leave the merchant houses dependent on cargo from the older islands. Their first weighed offering descends into a sea fissure below the counting hall.
+
+Hooktooth controls the old trade. Vrekk wants Chainhaven to become the northern exchange, buying provisions from Brackmaw and timber from Sootwake while hiring Reefhook pilots and bargaining with Shatterfin captains. He measures success in ships that cannot sail without his credit.
 
 ## Shatterfin — Stormfang
 

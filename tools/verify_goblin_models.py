@@ -133,13 +133,13 @@ def verify(out,game=None):
     clan_count=0
     for p in folder.glob('cm_goblin_*.mesh'):
         candidate=read(p);assert candidate==tree,'Clan geometry should be shared; palettes are external textures';clan_count+=1
-    assert clan_count==5 and triangles==2476
+    assert clan_count==len(json.loads((ART/'clans.json').read_text())['clans']) and triangles==2476
     config=json.loads((ART/'clans.json').read_text())
     texture_registration=verify_texture_registration(out,game)
     constructors=(out/'main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt').read_text()
     attachments=(out/'main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt').read_text(encoding='utf-8-sig')
-    assert constructors.count('animation_state_machine_name = cm_goblin_infantry')==10
-    assert attachments.count('node = shared_pose_entity')==5
+    assert constructors.count('animation_state_machine_name = cm_goblin_infantry')==2*clan_count
+    assert attachments.count('node = shared_pose_entity')==clan_count
     if game:
         native_attachments=(Path(game)/'main_menu/gfx/unit_graphics/attachments/torsos/00_european_torsos.txt').read_text(encoding='utf-8-sig')
         assert 'node = shared_pose_entity' in native_attachments and 'mesh_name =' in native_attachments

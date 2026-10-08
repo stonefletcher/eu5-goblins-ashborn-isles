@@ -228,6 +228,11 @@ ga_gathering.10 = {
         name = ga_gathering.10.a
         trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_cindermaw_drilled_captains years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
         hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } }
             set_variable = { name = ga_early_project_resolved_cdm value = yes }
             add_gold = -10
@@ -238,6 +243,11 @@ option = {
         name = ga_gathering.10.b
         trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_cindermaw_court_envoys years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
         hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } }
             set_variable = { name = ga_early_project_resolved_cdm value = yes }
             add_gold = -10
@@ -248,6 +258,11 @@ option = {
         name = ga_gathering.10.c
         trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_cindermaw_funded_accounts years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
         hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_cdm } gold >= 10 OR = { is_ai = no gold >= 30 } }
             set_variable = { name = ga_early_project_resolved_cdm value = yes }
             add_gold = -10
@@ -258,7 +273,8 @@ option = {
         name = ga_gathering.10.d
         trigger = {  }
         ai_chance = { factor = 1 }
-        hidden_effect = { set_variable = { name = ga_early_project_resolved_cdm value = yes } }
+        custom_tooltip = ga_early_project_decline_tt
+hidden_effect = { set_variable = { name = ga_early_project_resolved_cdm value = yes } }
     }
     after = {  }
 }
@@ -276,6 +292,11 @@ ga_gathering.11 = {
         name = ga_gathering.11.b
         trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_brackmaw_repaired_sluices years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
         hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } }
             set_variable = { name = ga_early_project_resolved_qbr value = yes }
             add_gold = -10
@@ -286,6 +307,11 @@ option = {
         name = ga_gathering.11.c
         trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_brackmaw_marsh_workshops years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
         hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } }
             set_variable = { name = ga_early_project_resolved_qbr value = yes }
             add_gold = -10
@@ -296,6 +322,11 @@ option = {
         name = ga_gathering.11.d
         trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_brackmaw_causeway_defenses years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
         hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_qbr } gold >= 10 OR = { is_ai = no gold >= 30 } }
             set_variable = { name = ga_early_project_resolved_qbr value = yes }
             add_gold = -10
@@ -306,7 +337,8 @@ option = {
         name = ga_gathering.11.a
         trigger = {  }
         ai_chance = { factor = 1 }
-        hidden_effect = { set_variable = { name = ga_early_project_resolved_qbr value = yes } }
+        custom_tooltip = ga_early_project_decline_tt
+hidden_effect = { set_variable = { name = ga_early_project_resolved_qbr value = yes } }
     }
     after = {  }
 }
@@ -324,6 +356,11 @@ ga_gathering.12 = {
         name = ga_gathering.12.b
         trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_reefhook_restored_beacons years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
         hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } }
             set_variable = { name = ga_early_project_resolved_rhk value = yes }
             add_gold = -10
@@ -334,6 +371,11 @@ option = {
         name = ga_gathering.12.c
         trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_reefhook_repair_yards years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
         hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } }
             set_variable = { name = ga_early_project_resolved_rhk value = yes }
             add_gold = -10
@@ -344,6 +386,11 @@ option = {
         name = ga_gathering.12.d
         trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_reefhook_pilot_envoys years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
         hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_rhk } gold >= 10 OR = { is_ai = no gold >= 30 } }
             set_variable = { name = ga_early_project_resolved_rhk value = yes }
             add_gold = -10
@@ -354,7 +401,8 @@ option = {
         name = ga_gathering.12.a
         trigger = {  }
         ai_chance = { factor = 1 }
-        hidden_effect = { set_variable = { name = ga_early_project_resolved_rhk value = yes } }
+        custom_tooltip = ga_early_project_decline_tt
+hidden_effect = { set_variable = { name = ga_early_project_resolved_rhk value = yes } }
     }
     after = {  }
 }
@@ -372,6 +420,11 @@ ga_gathering.13 = {
         name = ga_gathering.13.b
         trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_shatterfin_crew_households years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
         hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } }
             set_variable = { name = ga_early_project_resolved_sfk value = yes }
             add_gold = -10
@@ -382,6 +435,11 @@ option = {
         name = ga_gathering.13.c
         trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_shatterfin_storm_crews years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
         hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } }
             set_variable = { name = ga_early_project_resolved_sfk value = yes }
             add_gold = -10
@@ -392,6 +450,11 @@ option = {
         name = ga_gathering.13.d
         trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_shatterfin_house_delegates years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
         hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_sfk } gold >= 10 OR = { is_ai = no gold >= 30 } }
             set_variable = { name = ga_early_project_resolved_sfk value = yes }
             add_gold = -10
@@ -402,7 +465,8 @@ option = {
         name = ga_gathering.13.a
         trigger = {  }
         ai_chance = { factor = 1 }
-        hidden_effect = { set_variable = { name = ga_early_project_resolved_sfk value = yes } }
+        custom_tooltip = ga_early_project_decline_tt
+hidden_effect = { set_variable = { name = ga_early_project_resolved_sfk value = yes } }
     }
     after = { trigger_event_non_silently = { id = ga_gathering.15 days = 30 } }
 }
@@ -420,6 +484,11 @@ ga_gathering.14 = {
         name = ga_gathering.14.b
         trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_sootwake_woodland_wardens years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
         hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } }
             set_variable = { name = ga_early_project_resolved_swk value = yes }
             add_gold = -10
@@ -430,6 +499,11 @@ option = {
         name = ga_gathering.14.c
         trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_sootwake_charcoal_workshops years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
         hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } }
             set_variable = { name = ga_early_project_resolved_swk value = yes }
             add_gold = -10
@@ -440,6 +514,11 @@ option = {
         name = ga_gathering.14.d
         trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } } }
         ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_sootwake_sheltered_stores years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
         hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_swk } gold >= 10 OR = { is_ai = no gold >= 30 } }
             set_variable = { name = ga_early_project_resolved_swk value = yes }
             add_gold = -10
@@ -450,7 +529,72 @@ option = {
         name = ga_gathering.14.a
         trigger = {  }
         ai_chance = { factor = 1 }
-        hidden_effect = { set_variable = { name = ga_early_project_resolved_swk value = yes } }
+        custom_tooltip = ga_early_project_decline_tt
+hidden_effect = { set_variable = { name = ga_early_project_resolved_swk value = yes } }
+    }
+    after = {  }
+}
+
+ga_gathering.40 = {
+    type = country_event
+    category = situation_event
+    outcome = neutral
+    title = ga_gathering.40.title
+    desc = ga_gathering.40.desc
+    trigger = { tag = GTF }
+    image = "gfx/interface/illustrations/event/ashborn/giltfang.dds"
+    immediate = {  }
+    option = {
+        name = ga_gathering.40.b
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_giltfang_honest_weights years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_gtf value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_giltfang_honest_weights years = 5 mode = replace }
+        } }
+    }
+option = {
+        name = ga_gathering.40.c
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_giltfang_harbor_envoys years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_gtf value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_giltfang_harbor_envoys years = 5 mode = replace }
+        } }
+    }
+option = {
+        name = ga_gathering.40.d
+        trigger = { custom_tooltip = { text = ga_early_project_available_tt NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 10 OR = { is_ai = no gold >= 30 } } }
+        ai_chance = { factor = 1 }
+        show_as_tooltip = {
+            add_gold = -10
+            add_country_modifier = { modifier = ga_giltfang_harbor_watch years = 5 mode = replace }
+        }
+        custom_tooltip = ga_early_project_exclusive_tt
+        hidden_effect = { if = { limit = { NOT = { has_variable = ga_early_project_resolved_gtf } gold >= 10 OR = { is_ai = no gold >= 30 } }
+            set_variable = { name = ga_early_project_resolved_gtf value = yes }
+            add_gold = -10
+            add_country_modifier = { modifier = ga_giltfang_harbor_watch years = 5 mode = replace }
+        } }
+    }
+option = {
+        name = ga_gathering.40.a
+        trigger = {  }
+        ai_chance = { factor = 1 }
+        custom_tooltip = ga_early_project_decline_tt
+hidden_effect = { set_variable = { name = ga_early_project_resolved_gtf value = yes } }
     }
     after = {  }
 }
@@ -491,6 +635,8 @@ ga_gathering.20 = {
         custom_tooltip = ga_hb_20_a_result_tt
 hidden_effect = { if = { limit = { ga_hb_offer_valid = yes scope:ga_hb_requester = { gold >= 10
         OR = { is_ai = no gold >= 30 } } }
+        save_scope_value_as = { name = ga_hb_signed_service value = 1 }
+        save_scope_value_as = { name = ga_hb_signed_price value = 10 }
         scope:ga_hb_requester = {
             add_gold = -10
             add_country_modifier = { modifier = ga_hb_provisions_received years = 5 mode = replace }
@@ -528,6 +674,8 @@ remove_variable = ga_hb_countered
         }
     }
         scope:ga_hb_requester = {
+            trigger_event_non_silently = ga_gathering.24 }
+        scope:ga_hb_provider = {
             trigger_event_non_silently = ga_gathering.24 }
     } }
     }
@@ -590,6 +738,14 @@ scope:ga_hb_requester = {
         if = { limit = { scope:ga_hb_requester = { tag = SWK } }
             set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
     }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = GTF } }
+            set_variable = { name = ga_hb_lock_GTF value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = GTF } }
+            set_variable = { name = ga_hb_lock_GTF value = yes years = 5 } }
+    }
         scope:ga_hb_requester = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
         scope:ga_hb_provider = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
         scope:ga_hb_requester = { trigger_event_non_silently = ga_gathering.25 }
@@ -636,6 +792,8 @@ ga_gathering.21 = {
         custom_tooltip = ga_hb_21_a_result_tt
 hidden_effect = { if = { limit = { ga_hb_offer_valid = yes scope:ga_hb_requester = { gold >= 10
         OR = { is_ai = no gold >= 30 } } }
+        save_scope_value_as = { name = ga_hb_signed_service value = 2 }
+        save_scope_value_as = { name = ga_hb_signed_price value = 10 }
         scope:ga_hb_requester = {
             add_gold = -10
             add_country_modifier = { modifier = ga_hb_pilots_received years = 5 mode = replace }
@@ -673,6 +831,8 @@ remove_variable = ga_hb_countered
         }
     }
         scope:ga_hb_requester = {
+            trigger_event_non_silently = ga_gathering.24 }
+        scope:ga_hb_provider = {
             trigger_event_non_silently = ga_gathering.24 }
     } }
     }
@@ -735,6 +895,14 @@ scope:ga_hb_requester = {
         if = { limit = { scope:ga_hb_requester = { tag = SWK } }
             set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
     }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = GTF } }
+            set_variable = { name = ga_hb_lock_GTF value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = GTF } }
+            set_variable = { name = ga_hb_lock_GTF value = yes years = 5 } }
+    }
         scope:ga_hb_requester = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
         scope:ga_hb_provider = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
         scope:ga_hb_requester = { trigger_event_non_silently = ga_gathering.25 }
@@ -780,6 +948,8 @@ ga_gathering.22 = {
         custom_tooltip = ga_hb_22_a_result_tt
 hidden_effect = { if = { limit = { ga_hb_counter_valid = yes scope:ga_hb_requester = { gold >= 15
         OR = { is_ai = no gold >= 35 } } }
+        save_scope_value_as = { name = ga_hb_signed_service value = 1 }
+        save_scope_value_as = { name = ga_hb_signed_price value = 15 }
         scope:ga_hb_requester = {
             add_gold = -15
             add_country_modifier = { modifier = ga_hb_provisions_received years = 5 mode = replace }
@@ -816,6 +986,8 @@ remove_variable = ga_hb_is_requester
 remove_variable = ga_hb_countered
         }
     }
+        scope:ga_hb_requester = {
+            trigger_event_non_silently = ga_gathering.24 }
         scope:ga_hb_provider = {
             trigger_event_non_silently = ga_gathering.24 }
     } }
@@ -866,6 +1038,14 @@ scope:ga_hb_requester = {
         if = { limit = { scope:ga_hb_requester = { tag = SWK } }
             set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
     }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = GTF } }
+            set_variable = { name = ga_hb_lock_GTF value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = GTF } }
+            set_variable = { name = ga_hb_lock_GTF value = yes years = 5 } }
+    }
         scope:ga_hb_requester = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
         scope:ga_hb_provider = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
         scope:ga_hb_provider = { trigger_event_non_silently = ga_gathering.25 }
@@ -911,6 +1091,8 @@ ga_gathering.23 = {
         custom_tooltip = ga_hb_23_a_result_tt
 hidden_effect = { if = { limit = { ga_hb_counter_valid = yes scope:ga_hb_requester = { gold >= 15
         OR = { is_ai = no gold >= 35 } } }
+        save_scope_value_as = { name = ga_hb_signed_service value = 2 }
+        save_scope_value_as = { name = ga_hb_signed_price value = 15 }
         scope:ga_hb_requester = {
             add_gold = -15
             add_country_modifier = { modifier = ga_hb_pilots_received years = 5 mode = replace }
@@ -947,6 +1129,8 @@ remove_variable = ga_hb_is_requester
 remove_variable = ga_hb_countered
         }
     }
+        scope:ga_hb_requester = {
+            trigger_event_non_silently = ga_gathering.24 }
         scope:ga_hb_provider = {
             trigger_event_non_silently = ga_gathering.24 }
     } }
@@ -996,6 +1180,14 @@ scope:ga_hb_requester = {
     scope:ga_hb_provider = {
         if = { limit = { scope:ga_hb_requester = { tag = SWK } }
             set_variable = { name = ga_hb_lock_SWK value = yes years = 5 } }
+    }
+scope:ga_hb_requester = {
+        if = { limit = { scope:ga_hb_provider = { tag = GTF } }
+            set_variable = { name = ga_hb_lock_GTF value = yes years = 5 } }
+    }
+    scope:ga_hb_provider = {
+        if = { limit = { scope:ga_hb_requester = { tag = GTF } }
+            set_variable = { name = ga_hb_lock_GTF value = yes years = 5 } }
     }
         scope:ga_hb_requester = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
         scope:ga_hb_provider = { set_variable = { name = ga_hb_recent_offer value = yes years = 2 } }
@@ -1141,6 +1333,14 @@ scope:ga_cp_requester = {
         if = { limit = { scope:ga_cp_requester = { tag = SWK } }
             set_variable = { name = ga_cp_lock_SWK value = yes years = 5 } }
     }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = GTF } }
+            set_variable = { name = ga_cp_lock_GTF value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = GTF } }
+            set_variable = { name = ga_cp_lock_GTF value = yes years = 5 } }
+    }
         scope:ga_cp_requester = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }
         scope:ga_cp_provider = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }
         scope:ga_cp_requester = { trigger_event_non_silently = ga_gathering.35 }
@@ -1233,6 +1433,14 @@ scope:ga_cp_requester = {
         if = { limit = { scope:ga_cp_requester = { tag = SWK } }
             set_variable = { name = ga_cp_lock_SWK value = yes years = 5 } }
     }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = GTF } }
+            set_variable = { name = ga_cp_lock_GTF value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = GTF } }
+            set_variable = { name = ga_cp_lock_GTF value = yes years = 5 } }
+    }
         scope:ga_cp_requester = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }
         scope:ga_cp_provider = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }
         scope:ga_cp_provider = { trigger_event_non_silently = ga_gathering.35 }
@@ -1324,6 +1532,14 @@ scope:ga_cp_requester = {
     scope:ga_cp_provider = {
         if = { limit = { scope:ga_cp_requester = { tag = SWK } }
             set_variable = { name = ga_cp_lock_SWK value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = GTF } }
+            set_variable = { name = ga_cp_lock_GTF value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = GTF } }
+            set_variable = { name = ga_cp_lock_GTF value = yes years = 5 } }
     }
         scope:ga_cp_requester = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }
         scope:ga_cp_provider = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }
@@ -1478,6 +1694,14 @@ scope:ga_cp_requester = {
     scope:ga_cp_provider = {
         if = { limit = { scope:ga_cp_requester = { tag = SWK } }
             set_variable = { name = ga_cp_lock_SWK value = yes years = 5 } }
+    }
+scope:ga_cp_requester = {
+        if = { limit = { scope:ga_cp_provider = { tag = GTF } }
+            set_variable = { name = ga_cp_lock_GTF value = yes years = 5 } }
+    }
+    scope:ga_cp_provider = {
+        if = { limit = { scope:ga_cp_requester = { tag = GTF } }
+            set_variable = { name = ga_cp_lock_GTF value = yes years = 5 } }
     }
         scope:ga_cp_requester = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }
         scope:ga_cp_provider = { set_variable = { name = ga_cp_recent_offer value = yes years = 2 } }

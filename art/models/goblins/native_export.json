@@ -41,6 +41,14 @@
       "bones": 25,
       "source_joints": 23,
       "mesh": "in_game\\gfx\\models\\units\\ashborn_goblins\\cm_goblin_sootwake.mesh"
+    },
+    {
+      "clan": "giltfang",
+      "culture": "cm_giltkin",
+      "gfx_tag": "cm_giltkin_gfx",
+      "bones": 25,
+      "source_joints": 23,
+      "mesh": "in_game\\gfx\\models\\units\\ashborn_goblins\\cm_goblin_giltfang.mesh"
     }
   ],
   "animations": [

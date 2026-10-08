@@ -10,7 +10,7 @@ def verify(out, game=None):
     text = (out / COATS).read_text(encoding='utf-8-sig')
     # The existing script parser does not consume typed RGB literals.
     coats = parse(re.sub(r'=\s*rgb\s*\{', '= {', text))
-    assert len(coats) == 5 and {key for key, _, _ in coats} == set(FLAGS), 'Missing/duplicate country arms'
+    assert len(coats) == len(FLAGS) and {key for key, _, _ in coats} == set(FLAGS), 'Missing/duplicate country arms'
     manifest = json.loads((ROOT / 'data/prototype_055_files.json').read_text(encoding='utf-8'))
     shipped = {row['path']: row['sha256'] for row in manifest['files']}
     for tag, _, fields in coats:
@@ -42,7 +42,7 @@ def verify(out, game=None):
         assert (game / 'main_menu/gfx/coat_of_arms/patterns/pattern_solid.dds').is_file()
         native = (game / 'main_menu/common/coat_of_arms/coat_of_arms/pre_scripted_countries.txt').read_text(encoding='utf-8-sig')
         assert 'textured_emblem = {' in native and 'color1 = rgb {' in native
-    return {'clan_flags': 5, 'custom_alpha_emblems': 5, 'full_mip_chains': True,
+    return {'clan_flags': len(FLAGS), 'custom_alpha_emblems': len(FLAGS), 'full_mip_chains': True,
             'prototype_hashes_checked': True, 'native_schema_checked': bool(game),
             'engine_render_tested': False}
 

@@ -6,6 +6,7 @@ FILES = [
     'in_game/events/goblins_exploration.txt',
     'in_game/common/generic_actions/goblins_exploration.txt',
     'in_game/common/customizable_localization/goblins_exploration.txt',
+    'in_game/common/situations/goblins_voyages.txt',
     'main_menu/localization/english/goblins_exploration_l_english.yml',
 ]
 COMPLETE = 'has_variable = ga_charted_east has_variable = ga_charted_north has_variable = ga_charted_south'
@@ -35,7 +36,7 @@ def dispatch():
 
 
 def panel():
-    # Own-country action has no situation-active gate, including in ended panels.
+    # Own-country action preserves existing voyage eligibility and saved progress.
     return '''text_multi = {
             layoutpolicy_horizontal = expanding max_width = 400 autoresize = yes
             text = "ga_exp_panel_status"
@@ -48,34 +49,38 @@ def panel():
         '''
 
 
-def ended_panel():
-    # Native common.gui hides the entire body after a situation ends. Keep the
-    # normal header and place the voyage controls below it only in that state.
-    return '''blockoverride "panel_header" {
-        vbox = {
-            layoutpolicy_horizontal = expanding
-            window_header_alt = {
-                blockoverride "header_text_object" {
-                    hbox = {
-                        spacing = 5 expand = {}
-                        icon = { size = { 30 30 } texture = "[SituationView.GetActiveSituation.GetIcon]" }
-                        text_single = {
-                            align = nobaseline using = Font_Type_Headers using = Font_Size_Big
-                            maximumsize = { 390 -1 } autoresize = yes default_format = "#header_titles"
-                            text = "[SituationView.GetActiveSituation.GetName]"
-                        }
-                        expand = {}
-                    }
-                }
-            }
-            vbox = {
-                visible = "[SituationView.GetActiveSituation.HasEnded]"
-                layoutpolicy_horizontal = expanding spacing = 5 margin = { 10 10 }
-                '''+panel()+'''
-            }
+def build_situation(b, out, loc, dynamic, routes):
+    from ashborn_roster import TAGS as tags
+    loc('ga_ashborn_voyages', 'Ashborn Voyages')
+    loc('ga_ashborn_voyages_desc', 'Chart the shores beyond the Ashborn Isles. Choose a route, fund its crew and await their report. Each crown keeps its own charts and voyage progress.')
+    loc('ga_exp_situation_complete_tt', 'All surviving Ashborn crowns have charted the eastern, northern and southern routes.')
+    loc('ga_exp_route_heading', '#bold Our sea charts#!')
+    end = '\n'.join(f'OR = {{ NOT = {{ country_exists = c:{tag} }} c:{tag} = {{ {COMPLETE} }} }}' for tag in tags)
+    b.write(out, 'in_game/common/situations/goblins_voyages.txt', '''ga_ashborn_voyages = {
+        monthly_spawn_chance = monthly_spawn_chance_unique
+        can_start = { current_date >= 1337.7.1 OR = {
+            '''+' '.join('country_exists = c:'+tag for tag in tags)+''' } }
+        can_end = { custom_tooltip = { text = ga_exp_situation_complete_tt
+            '''+end+''' } }
+        visible = { OR = { '''+' '.join('tag = '+tag for tag in tags)+''' } }
+    }''')
+    content = ''
+    for route, row in routes.items():
+        key = 'ga_exp_chart_'+route
+        dynamic(key, [(f'has_variable = ga_charted_{route}', key+'_done', '#G Charted#!'),
+                      (f'has_variable = ga_exp_route var:ga_exp_route = {list(routes).index(route)+1}', key+'_sea', '#Y At sea#!')], 'Uncharted')
+        loc(key+'_row', f"#bold {route.title()} route#!: [GetPlayer.Custom('{key}')]\nCost: #Y {row['cost']} gold#!. Travel: #Y {row['months']} months#!.")
+        content += 'text_multi = { layoutpolicy_horizontal = expanding max_width = 400 autoresize = yes text = "'+key+'_row" }\n'
+    b.write(out, 'in_game/gui/panels/situation/ga_ashborn_voyages.gui', '''situation_panel = {
+        blockoverride "situation_subheader_content" {}
+        blockoverride "situation_panel_main_content" {
+            text_multi = { layoutpolicy_horizontal = expanding max_width = 400 autoresize = yes text = "ga_ashborn_voyages_desc" }
+            '''+panel()+'''
+            text_single = { text = "ga_exp_route_heading" }
+            '''+content+'''
+            TooltipRequirementsList = { textcontext = "[SituationView.GetActiveSituation.GetSituation.GetEndConditions]" }
         }
-    }
-    '''
+    }''')
 
 
 def build_runtime(b, out, tags, routes, old_text, first_months):
@@ -95,7 +100,7 @@ def build_runtime(b, out, tags, routes, old_text, first_months):
     loc('ga_commission_voyage_desc', "[SCOPE.sCountry('actor').Custom('ga_exp_status')]\n\nOpen the available routes without paying. Payment happens only when you commission a voyage. Reminders remain stopped unless you choose to be reminded in six months. The first offer requires 36 months of preparation; crews rest for 12 months after returning.")
     loc('ga_exp_ready_tt', 'Preparation or the current waiting period has finished, no offer or voyage is pending, and at least one route remains uncharted.')
     loc('ga_exp_offer_tt', 'This is the current offer, no expedition is at sea, this route remains uncharted, and its price is available.')
-    loc('ga_exp_panel_status', "Ashborn voyages: [GetPlayer.Custom('ga_exp_status')]\nUse Review Ashborn Voyages to reopen available routes. This also works from an ended Ashborn situation panel.")
+    loc('ga_exp_panel_status', "Ashborn voyages: [GetPlayer.Custom('ga_exp_status')]\nUse Review Ashborn Voyages to reopen available routes. Routes and expedition reports are managed here, independently of unification.")
     loc('ga_exp_stale', 'Close this old message.')
     loc('ga_exp_stale_tt', 'This message is no longer current. Closing it changes nothing.')
     rows = [(COMPLETE, 'ga_exp_completed', 'Completed — all three routes are charted.')]
@@ -136,6 +141,8 @@ def build_runtime(b, out, tags, routes, old_text, first_months):
         effect = {{ scope:actor = {{ if = {{ limit = {{ OR = {{ {tags} }} {FREE} }} {dispatch()} }} }} }}
     }}''')
 
+    build_situation(b, out, loc, dynamic, routes)
+
     events = ['namespace = goblins_exploration']
     for num, keys in [(1, ['east']), (3, ['north', 'south'])]:
         prefix = f'goblins_exploration.{num}'
@@ -166,7 +173,7 @@ def build_runtime(b, out, tags, routes, old_text, first_months):
             ('pause', "Stop reminders; I will commission a voyage myself.", 'set_variable = { name = ga_exp_paused value = yes }', 0),
         ]:
             loc(prefix+'.'+key, label)
-            loc(prefix+'.'+key+'_terms', 'No payment. '+('Review Ashborn Voyages on either Ashborn situation panel to reopen an available route. Reminders stay off after manual voyages.' if key == 'pause' else 'The next automatic offer is six months away. This also restores reminders if they were stopped.'))
+            loc(prefix+'.'+key+'_terms', 'No payment. '+('Review Ashborn Voyages in the Ashborn Voyages situation to reopen an available route. Reminders stay off after manual voyages.' if key == 'pause' else 'The next automatic offer is six months away. This also restores reminders if they were stopped.'))
             options.append(f'''option = {{ name = {prefix}.{key} trigger = {{ {session} }}
                 ai_chance = {{ factor = {chance} }} custom_tooltip = {prefix}.{key}_terms
                 hidden_effect = {{ if = {{ limit = {{ {session} }}
@@ -230,4 +237,4 @@ def build_runtime(b, out, tags, routes, old_text, first_months):
     }}''')
     b.write(out, FILES[1], '\n'.join(events))
     b.write(out, FILES[3], '\n'.join(custom))
-    b.write(out, FILES[4], 'l_english:\n'+'\n'.join(' '+k+': "'+v.replace('\n',r'\n')+'"' for k,v in text.items())+'\n')
+    b.write(out, FILES[-1], 'l_english:\n'+'\n'.join(' '+k+': "'+v.replace('\n',r'\n')+'"' for k,v in text.items())+'\n')

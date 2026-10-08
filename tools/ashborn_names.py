@@ -2,6 +2,11 @@
 from clan_identity import PROFILES
 
 POOLS={
+ 'GTF':('Cinderweight','cm_giltkin',
+ 'Vrekk Skarn Krizz Drazk Korrik Grizz Vrazh Krek Zark Borrik Trazk Krunn Drizz Krazh Zurr Ghrak',
+ 'Zhezzra Krizha Vrazka Skarra Drazha Brekka Korrza Grizha Trazza Zurrka Krazra Vrekka Shazra Brizka Zarkha Krezza',
+ 'Giltfang Brassjaw Chainclaw Coinbite Scaletooth Locktusk',
+ 'Brass-Eye Chainhand Saltknuckle Coin-Eater Copperfoot Lockjaw'),
  'CDM':('Emberblood','cm_cinderkin',
  'Drogg Grask Korgat Throkk Gorrak Kragg Mograt Drukk Grond Krazg Vorgg Brakk Garkuk Ogrash Krogmar Rukk',
  'Grakka Kragga Mograz Drakka Gorzha Bragga Korgra Urgza Vrogga Ragra Krugga Drazka Zoggra Garsha Mograkka Krazha',
@@ -58,6 +63,7 @@ def ruler(tag):return 'cm_sfk_maarka' if tag=='SFK' else 'cm_'+tag.lower()+'_rul
 
 # Authored variation is reproducible across builds; dates keep families plausible.
 COURT_DATES = {
+ 'GTF': ('1301.9.3', '1299.12.11', '1317.11.2', '1319.6.19', ('1300.4.8', '1306.10.23', '1309.9.2')),
  'CDM': ('1299.3.12', '1298.6.4', '1317.8.8', '1319.2.15', ('1304.2.3', '1308.8.5', '1302.11.6')),
  'QBR': ('1301.1.17', '1300.5.8', '1318.7.26', '1319.10.5', ('1310.4.18', '1305.9.21', '1297.3.9')),
  'RHK': ('1310.9.26', '1311.2.14', '1330.4.19', '1332.8.27', ('1306.6.11', '1311.1.28', '1294.10.16')),

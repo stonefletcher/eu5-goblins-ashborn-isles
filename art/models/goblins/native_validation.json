@@ -1,7 +1,7 @@
 {
   "status": "STATIC MODEL CHECKS PASSED; ENGINE PLAYTEST PENDING",
   "runtime_infantry": "factory-created shared-pose goblin attachment",
-  "clans": 5,
+  "clans": 6,
   "source_joints": 23,
   "exported_bones": 25,
   "triangles_per_clan": 2476,
@@ -12,7 +12,7 @@
   "palettes_and_runtime_references": true,
   "typed_graph_links_and_unit_parameters": true,
   "texture_registration": {
-    "registered_fixed_palette_meshes": 5,
+    "registered_fixed_palette_meshes": 6,
     "native_contract_checked": true,
     "native_registry_preserved": true
   },

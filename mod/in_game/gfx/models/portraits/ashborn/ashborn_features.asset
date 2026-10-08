@@ -88,3 +88,21 @@ pdxmesh = { name = "cm_sootwake_infant_features_mesh" file = "cm_infant_features
  shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
  }
 entity = { name = "cm_sootwake_infant_features_entity" pdxmesh = "cm_sootwake_infant_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
+pdxmesh = { name = "cm_giltfang_male_features_mesh" file = "cm_male_features.mesh" meshsettings = { name = "ashborn_features" index = 0
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
+ }
+entity = { name = "cm_giltfang_male_features_entity" pdxmesh = "cm_giltfang_male_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
+pdxmesh = { name = "cm_giltfang_female_features_mesh" file = "cm_female_features.mesh" meshsettings = { name = "ashborn_features" index = 0
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
+ }
+entity = { name = "cm_giltfang_female_features_entity" pdxmesh = "cm_giltfang_female_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }
+pdxmesh = { name = "cm_giltfang_infant_features_mesh" file = "cm_infant_features.mesh" meshsettings = { name = "ashborn_features" index = 0
+ texture_diffuse = "ear_base.dds" texture_normal = "normal.dds" texture_specular = "properties.dds"
+ texture = { file = "ssao.dds" index = 3 }
+ shader = "portrait_skin" shader_file = "gfx/FX/jomini/portrait.shader" }
+ }
+entity = { name = "cm_giltfang_infant_features_entity" pdxmesh = "cm_giltfang_infant_features_mesh" game_data = { portrait_entity_user_data = { color_mask_remap_interval = { interval = { 0 1 } } portrait_decal = { body_part = head } } } }

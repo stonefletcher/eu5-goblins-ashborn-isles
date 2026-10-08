@@ -5,15 +5,15 @@
   "files": [
     {
       "path": "in_game/common/auto_modifiers/goblins_longevity.txt",
-      "sha256": "01094a39409907090be73663c28a695845b06db805530ad981ac429b217c05e4"
+      "sha256": "aa4cab1d1095f84b5042a42ccbe9902eff163e646a53e7027a7b045635b77a33"
     },
     {
       "path": "in_game/common/cultures/goblins_ashborn_isles.txt",
-      "sha256": "9430b73ceeb019b07c8e1fe01803653285ec4e652580a526a0f78e8e46674664"
+      "sha256": "4d4a363bfe50686d322b8f518f0b5127504fcad218d4b6a4f5703a8e21cfe202"
     },
     {
       "path": "in_game/common/ethnicities/ashborn.txt",
-      "sha256": "0e8b6d4f6faecc6f99a0a2a9ef07f02b6d707ca038da6839dcdd0586553c0008"
+      "sha256": "b7a85d1a94b9ef016f114a9c8b3b533dff31cee0e315c9900259fad29abd4b54"
     },
     {
       "path": "in_game/common/genes/zz_ashborn_outfits.txt",
@@ -21,15 +21,15 @@
     },
     {
       "path": "in_game/common/genes/zz_ashborn_portraits.txt",
-      "sha256": "f11dd73746be61a506073992cff3117bd97a60bdd31c49537197725d3f2fca72"
+      "sha256": "0da011f62513177e9035aa0022f60a23439aa007e57d980439371bd4025cd7c0"
     },
     {
       "path": "in_game/common/languages/goblins_ashborn_isles.txt",
-      "sha256": "e078ef9682651d5f5933c8eb6a1683152364697bcee4cf0c2bf0a34af626643a"
+      "sha256": "5cc5908e94e99b8ae4b4b4078a47eba26851603aa3978ab95857ec86d47d7cae"
     },
     {
       "path": "in_game/common/on_action/goblins_exploration.txt",
-      "sha256": "6c6c78a7db6b4da5085bc052d1dafb97695309ebaac88c2a257687cb73cad6c0"
+      "sha256": "011e823fba356289900343df16c07eb63f629e444c9263e656f3479bc2aa7d21"
     },
     {
       "path": "in_game/common/religions/goblins_ashborn_isles.txt",
@@ -41,15 +41,15 @@
     },
     {
       "path": "in_game/events/goblins_exploration.txt",
-      "sha256": "ba451797ecfda9d2dae3a59e49feddcfd0cd5155e41ef1b437c5afa2704fd315"
+      "sha256": "f965ac634fc3aec92f6d6a7d472caed5db2aa1d7358816322396052afdadd77d"
     },
     {
       "path": "in_game/gfx/graphical_culture_types/ashborn_goblins.txt",
-      "sha256": "5e1a4758dd9e690da548eb0e7ad9a2e9a552add699e989f4608fbc6886504053"
+      "sha256": "48ce9fb0642f012035f448bdae94c7403e7f6586b358edd43531918ddf2af80e"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/ashborn_features.asset",
-      "sha256": "9cadd54d6cbb9f1adf0a9b1004a3eb24cd56cc9db4ff904f671e16668cc5370d"
+      "sha256": "9b2a925a2a764b7cbae680b451361bd377eab255a9c7575130b2cdc03f43270c"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/brackmaw_skin.dds",
@@ -70,6 +70,14 @@
     {
       "path": "in_game/gfx/models/portraits/ashborn/cm_male_features.mesh",
       "sha256": "7292ed610d357d9fe3253e33504d7dd1f4a713cecf18bab7a4f6901593076a0d"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/ear_base.dds",
+      "sha256": "8e9e1913b0fe07e9f0acb7fa2f31ff3a9890c1ca1e491cc3bef6e767337612e6"
+    },
+    {
+      "path": "in_game/gfx/models/portraits/ashborn/giltfang_skin.dds",
+      "sha256": "922ddbe26f850431ce498271587a44c5c4f285d5a267e336f56dec8c435e9cf6"
     },
     {
       "path": "in_game/gfx/models/portraits/ashborn/ivory.dds",
@@ -96,12 +104,20 @@
       "sha256": "61b3cbef16b799829f6a4d9605a9e28c18a9b14bfbbbbd2a00279cf62204c8d4"
     },
     {
+      "path": "in_game/gfx/models/portraits/ashborn/ssao.dds",
+      "sha256": "78ba67633a169c3d5151609e4207868336ae52d2bc88e7424c73a0452f2e638f"
+    },
+    {
       "path": "in_game/gfx/models/schematics/cm_goblin_brackmaw_schematic.schematic",
       "sha256": "a447370c8061d0e4b8877c86fc6fe8677ebe9376f692103755711bb340b15063"
     },
     {
       "path": "in_game/gfx/models/schematics/cm_goblin_cindermaw_schematic.schematic",
       "sha256": "1c2e6fd278dae0aa85a0b448d426f3b8fd0bca2d3729ce807d7d52780e1e0ad9"
+    },
+    {
+      "path": "in_game/gfx/models/schematics/cm_goblin_giltfang_schematic.schematic",
+      "sha256": "216fbc35fe64ad7e5fdcf238263c652add9e13ab05b2cf7844b377fc8de30372"
     },
     {
       "path": "in_game/gfx/models/schematics/cm_goblin_reefhook_schematic.schematic",
@@ -298,6 +314,94 @@
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_Defeat.anim",
       "sha256": "4a450655581c512e3417aa371d087ee6b0fcd5d80d971c40090c01e095f24e8e"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang.asset",
+      "sha256": "5f76aac4724cdbd85418743f8406315be05c4cdcf9226e9084a836163c11cfe8"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang.mesh",
+      "sha256": "42fe925fa63c1f84ca4e713cd965be4f116658733cbf063089be7fa8e07e16a7"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_0_diffuse.dds",
+      "sha256": "d4163a7672c441a48589266f091af399216d88e07ae7a39549b448c4e4245f0e"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_0_mask.dds",
+      "sha256": "78ba67633a169c3d5151609e4207868336ae52d2bc88e7424c73a0452f2e638f"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_0_normal.dds",
+      "sha256": "bf4ca0c2d7d5a74298c0f80571ee553abaa950389ea4d151a266fd8c022eedb6"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_0_properties.dds",
+      "sha256": "5cb059de0f4f17493b43336b1fd68cd2604a0a0b2a3d14207f3c61ab5f18a87c"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_1_diffuse.dds",
+      "sha256": "d0a348e915daac43d603d2ad8323b35f94a967e07fa58c6a2499f6976b2e19f1"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_1_mask.dds",
+      "sha256": "78ba67633a169c3d5151609e4207868336ae52d2bc88e7424c73a0452f2e638f"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_1_normal.dds",
+      "sha256": "bf4ca0c2d7d5a74298c0f80571ee553abaa950389ea4d151a266fd8c022eedb6"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_1_properties.dds",
+      "sha256": "ea86c068ac88708c5c362fa3aed5092ad520839fea56cdd0763f731d8d6165fc"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_2_diffuse.dds",
+      "sha256": "79828a164e1394d9233e66f5a1c60a5daf391665855a21d87d4649440ac42cbf"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_2_mask.dds",
+      "sha256": "78ba67633a169c3d5151609e4207868336ae52d2bc88e7424c73a0452f2e638f"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_2_normal.dds",
+      "sha256": "bf4ca0c2d7d5a74298c0f80571ee553abaa950389ea4d151a266fd8c022eedb6"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_2_properties.dds",
+      "sha256": "62c06bffd8e5e83ac59e93c79c0454657b22b61a89987048228bf1141bc146f1"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_3_diffuse.dds",
+      "sha256": "fa33d6076b88095deccf4851be2adf5fbbb33c170c4832d9faaf2ed765981c9f"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_3_mask.dds",
+      "sha256": "78ba67633a169c3d5151609e4207868336ae52d2bc88e7424c73a0452f2e638f"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_3_normal.dds",
+      "sha256": "bf4ca0c2d7d5a74298c0f80571ee553abaa950389ea4d151a266fd8c022eedb6"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_3_properties.dds",
+      "sha256": "fe8c4a9a11dd9fcc8e672ddb308b66d402f5702607a5488ab30b99be22b2420c"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_4_diffuse.dds",
+      "sha256": "d4163a7672c441a48589266f091af399216d88e07ae7a39549b448c4e4245f0e"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_4_mask.dds",
+      "sha256": "78ba67633a169c3d5151609e4207868336ae52d2bc88e7424c73a0452f2e638f"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_4_normal.dds",
+      "sha256": "bf4ca0c2d7d5a74298c0f80571ee553abaa950389ea4d151a266fd8c022eedb6"
+    },
+    {
+      "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_giltfang_4_properties.dds",
+      "sha256": "5cb059de0f4f17493b43336b1fd68cd2604a0a0b2a3d14207f3c61ab5f18a87c"
     },
     {
       "path": "in_game/gfx/models/units/ashborn_goblins/cm_goblin_Idle.anim",
@@ -625,7 +729,7 @@
     },
     {
       "path": "main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt",
-      "sha256": "6d1230cb0bc5e1e9315b9956b108d914e671c68c04bb303683b0a9cd13918834"
+      "sha256": "da5ad1f064bc6cc2a2c9f7ef3e97b996c63269705ea83004dba86ab7f00e8f59"
     },
     {
       "path": "main_menu/common/modifier_type_definitions/ashen_covenant.txt",
@@ -644,6 +748,10 @@
       "sha256": "a54fb78ecb8719cbc180dfbbdf331806fcc1d38addb42bead4047ccfc7451b00"
     },
     {
+      "path": "main_menu/gfx/coat_of_arms/textured_emblems/te_ashborn_giltfang.dds",
+      "sha256": "3edf6d4e0c01e3c9d39bd20e9efe4ff4aae8c1ec9c7f829f5d002dcfd0dfc82b"
+    },
+    {
       "path": "main_menu/gfx/coat_of_arms/textured_emblems/te_ashborn_reefhook.dds",
       "sha256": "bb0390d2c0540c4f7467434f2179d28cc7a781a936f1f751a19e6d7eb559deb1"
     },
@@ -656,12 +764,16 @@
       "sha256": "4a4cb6be70f700391f225a36145ca3e3b252eb328b434d7a4a3957f2a39e141d"
     },
     {
+      "path": "main_menu/gfx/interface/icons/situations/ga_ashborn_voyages.dds",
+      "sha256": "8c4c254099f44381da630752a7e1a464afa3babcb9bdba4004eab14c9d2d08d9"
+    },
+    {
       "path": "main_menu/gfx/interface/icons/situations/ga_eastern_hunger.dds",
       "sha256": "1497d02239dd09127ef1a47e3516abd36ade902a08ce4c885abb0219bc247682"
     },
     {
       "path": "main_menu/gfx/interface/icons/situations/ga_gathering_of_five.dds",
-      "sha256": "f3149d95f51cb931ea9f7c9fac2a1414f4229a2ea8ca706bccc2e756a35b60e7"
+      "sha256": "8e5ffe6a862db733b1f2a10633a571233c2a845bc583f1d050b4576862d723e8"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/africa.dds",
@@ -701,7 +813,11 @@
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/gathering.dds",
-      "sha256": "8d0fc8c1f90b9c7e8d210a8fdea59f87db43a5cb9934425f3afdaf75b3cfd0c4"
+      "sha256": "df047021b8df645fdd8421d8776c7fde973239788f1ab9ebd2244884af6821f4"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/giltfang.dds",
+      "sha256": "6ef5c79a2f0d5876c6bd71c27bf5cebd3d6fa992f211358bd6ac4fb84acf4d78"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/harbor_pact.dds",
@@ -732,48 +848,52 @@
       "sha256": "1767a1c003eca337c3b2593503d3855a60b2c0ea4c60d405da219c053a10a101"
     },
     {
+      "path": "main_menu/gfx/interface/illustrations/situation/ga_ashborn_voyages.dds",
+      "sha256": "f1a3de958424e0c93a3927dfed28c9de22422d9254222ba550aab4d8bab35ce1"
+    },
+    {
       "path": "main_menu/gfx/interface/illustrations/situation/ga_eastern_hunger.dds",
       "sha256": "7d11a8bb3f1bfe62f3f60afae144df18456c1728d50ab7e960944ffeaa96353c"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/situation/ga_gathering_of_five.dds",
-      "sha256": "8d0fc8c1f90b9c7e8d210a8fdea59f87db43a5cb9934425f3afdaf75b3cfd0c4"
+      "sha256": "df047021b8df645fdd8421d8776c7fde973239788f1ab9ebd2244884af6821f4"
     },
     {
       "path": "main_menu/gfx/portraits/accessories/ashborn.txt",
-      "sha256": "66b32d2aade57a59f6993f8d70e1d8365c677f8edb4d05ba42aeb31310862e30"
+      "sha256": "4b6354b8382003ff63938e71494ba1e979a55fc9dca64b1a5f7d36b38d544fb0"
     },
     {
       "path": "main_menu/gfx/portraits/portrait_modifiers/zz_ashborn.txt",
-      "sha256": "653aa47db86ad89a0f3a098df6ac04c247024072a74ee292b902960ec0c37040"
+      "sha256": "23ad6fcd6098639f8195ba401be2984e962fe5fad583f4b50997c1b5afd3eeea"
     },
     {
       "path": "main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt",
-      "sha256": "222c88b88b10a4b1f387aef63cfa23bf7a0f1ce550c0093f2361594b225dbaae"
+      "sha256": "39593bfe10bc1970f619da5631ff56bf0ef12ad36b6b5b08576bdd806d3a76b8"
     },
     {
       "path": "main_menu/gfx/unit_graphics/attachments/zz_ashborn_goblins.txt",
-      "sha256": "f5e45b71ee974b50413339fb8490d699675bb498a2074d2c026893c703fac146"
+      "sha256": "5dc3d9ee552087726ed3b39f0adf89fd91f73e6c3f590d0f31cf4ce55407b0fb"
     },
     {
       "path": "main_menu/gfx/unit_graphics/texture_variations/zz_ashborn_goblins.txt",
-      "sha256": "5c3a6d6aca7d00048d571de0725933f47f90c6d5a56bfceaf51ec55f5ce50647"
+      "sha256": "4d06bea42a0fc2fa0b7a6b3aacf37cc516cface5a76ae673ce955c8d7d88b020"
     },
     {
       "path": "main_menu/gfx/unit_graphics/units/zz_ashborn_goblins.txt",
-      "sha256": "ed4672009f266ca54d162166c6b4d83a994abd575fa989f1a53509c0b25c052a"
+      "sha256": "4bfa69a70c27f442351667e873b1cd25a8aba616cbd654a6d96a82718d51d3e2"
     },
     {
       "path": "main_menu/localization/english/ashen_covenant_l_english.yml",
-      "sha256": "89d58d0f44d947fe45b7d32de7a995bf2a6fe94b833534bcc75f42db0d5fff49"
+      "sha256": "2ceb30d1bc1eff2d35b0eaf237862b8e3b7a27d04d62292883a0664a04d2e8f6"
     },
     {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",
-      "sha256": "d90d182c32a93e0d084a5483f5ed143d0eb701fb4a78f3b0fb9731c8a78d0e1a"
+      "sha256": "e02e47c76672264425866947c14c1ecd3e1312bbc4342112381c8f9155163432"
     },
     {
       "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
-      "sha256": "2547c6f1917707d0a5951f849de39ebff0346ef5f1276891f5e456e4d7bb674a"
+      "sha256": "4eb28bc3278f86302475f9f56e5d7174ad40f527bc1f48e32b0516ada1055e16"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_absolutism_cawa_cm_cinderkin_gfx.dds",
@@ -6296,16 +6416,1108 @@
       "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
-      "path": "in_game/common/script_values/ga_gathering_ui.txt",
-      "sha256": "7cf0814a0acd1065b5b888357414b48790064b245cff876d618f70d5ae96f785"
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_absolutism_cawa_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
     },
     {
-      "path": "in_game/gfx/models/portraits/ashborn/ear_base.dds",
-      "sha256": "8e9e1913b0fe07e9f0acb7fa2f31ff3a9890c1ca1e491cc3bef6e767337612e6"
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_absolutism_cawa_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     },
     {
-      "path": "in_game/gfx/models/portraits/ashborn/ssao.dds",
-      "sha256": "78ba67633a169c3d5151609e4207868336ae52d2bc88e7424c73a0452f2e638f"
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_absolutism_janissaries_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_absolutism_janissaries_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_age_1_traditions_heavy_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_age_1_traditions_heavy_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_age_1_traditions_light_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_age_1_traditions_light_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_age_2_renaissance_heavy_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_age_2_renaissance_heavy_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_age_2_renaissance_light_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_age_2_renaissance_light_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_age_3_discovery_heavy_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_age_3_discovery_heavy_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_age_3_discovery_light_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_age_3_discovery_light_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_age_4_reformation_heavy_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_age_4_reformation_heavy_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_age_4_reformation_light_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_age_4_reformation_light_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_age_5_absolutism_heavy_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_age_5_absolutism_heavy_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_age_5_absolutism_light_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_age_5_absolutism_light_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_age_6_revolutions_heavy_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_age_6_revolutions_heavy_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_age_6_revolutions_light_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_age_6_revolutions_light_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_akritai_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_akritai_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_almogavars_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_almogavars_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_archers_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_archers_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_arquebusiers_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_arquebusiers_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_austrian_grenzer_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_austrian_grenzer_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_bavarian_jager_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_bavarian_jager_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_black_guard_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_black_guard_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_cacadores_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_cacadores_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_caroleans_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_caroleans_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_catalan_crossbowmen_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_catalan_crossbowmen_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_caterans_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_caterans_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_cawa_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_cawa_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_champions_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_champions_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_chieftains_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_chieftains_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_clan_retainers_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_clan_retainers_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_conscripts_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_conscripts_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_crossbowmen_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_crossbowmen_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_crusader_knights_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_crusader_knights_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_crusader_knights_base_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_crusader_knights_base_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_crusader_knights_levy_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_crusader_knights_levy_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_dahomey_amazons_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_dahomey_amazons_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_discovery_cawa_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_discovery_cawa_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_discovery_conquistadors_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_discovery_conquistadors_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_discovery_janissaries_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_discovery_janissaries_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_eagle_warrior_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_eagle_warrior_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_early_arquebusiers_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_early_arquebusiers_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_early_longbowmen_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_early_longbowmen_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_early_paik_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_early_paik_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_early_paik_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_early_paik_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_experimental_riflemen_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_experimental_riflemen_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_farari_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_farari_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_feudal_levy_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_feudal_levy_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_flintlock_levy_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_flintlock_levy_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_florentine_citizen_militia_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_florentine_citizen_militia_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_footmen_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_footmen_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_footmen_levy_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_footmen_levy_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_fusiliers_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_fusiliers_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_gallowglass_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_gallowglass_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_gebirgsschutzen_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_gebirgsschutzen_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_genoese_crossbowmen_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_genoese_crossbowmen_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_ghilman_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_ghilman_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_greek_fire_discovery_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_greek_fire_discovery_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_greek_fire_renaissance_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_greek_fire_renaissance_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_grenadiers_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_grenadiers_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_gurkha_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_gurkha_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_hajduk_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_hajduk_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_halberdiers_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_halberdiers_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_handgonners_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_handgonners_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_heavy_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_heavy_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_hesse_jager_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_hesse_jager_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_hunters_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_hunters_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_iron_helmet_musketeers_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_iron_helmet_musketeers_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_jaguar_warrior_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_jaguar_warrior_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_jazayerchi_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_jazayerchi_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_kerns_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_kerns_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_khmer_ballista_elephant_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_khmer_ballista_elephant_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_landsknechte_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_landsknechte_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_late_almogavars_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_late_almogavars_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_late_crusader_knights_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_late_crusader_knights_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_late_crusader_knights_base_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_late_crusader_knights_base_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_late_crusader_knights_levy_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_late_crusader_knights_levy_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_late_gallowglass_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_late_gallowglass_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_late_karambit_warrior_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_late_karambit_warrior_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_late_longbowmen_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_late_longbowmen_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_late_paik_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_late_paik_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_late_paik_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_late_paik_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_legionaries_1_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_legionaries_1_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_legionaries_2_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_legionaries_2_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_legionaries_3_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_legionaries_3_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_legionaries_4_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_legionaries_4_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_legionaries_5_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_legionaries_5_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_legionaries_6_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_legionaries_6_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_light_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_light_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_lodge_warriors_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_lodge_warriors_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_longbowmen_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_longbowmen_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_lour_lances_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_lour_lances_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_mamluk_unit_renaissance_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_mamluk_unit_renaissance_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_mamluk_unit_traditions_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_mamluk_unit_traditions_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_mandekalu_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_mandekalu_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_matchlock_levy_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_matchlock_levy_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_mauricians_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_mauricians_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_men_at_arms_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_men_at_arms_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_men_at_arms_levy_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_men_at_arms_levy_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_militiamen_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_militiamen_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_moa_hunters_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_moa_hunters_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_musketeers_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_musketeers_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_naft_throwers_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_naft_throwers_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_paik_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_paik_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_paik_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_paik_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_pandur_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_pandur_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_peasant_levy_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_peasant_levy_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_pikemen_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_pikemen_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_pontifical_swiss_guard_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_pontifical_swiss_guard_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_prussian_grenadiers_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_prussian_grenadiers_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_redcoats_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_redcoats_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_reformation_cawa_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_reformation_cawa_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_reformation_janissaries_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_reformation_janissaries_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_reformed_gallowglass_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_reformed_gallowglass_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_reislaufer_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_reislaufer_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_renaissance_cawa_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_renaissance_cawa_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_renaissance_conquistadors_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_renaissance_conquistadors_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_renaissance_janissaries_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_renaissance_janissaries_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_revolutions_cawa_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_revolutions_cawa_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_revolutions_janissaries_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_revolutions_janissaries_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_saxon_defensioner_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_saxon_defensioner_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_schiltron_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_schiltron_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_scottish_highlander_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_scottish_highlander_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_sharpshooters_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_sharpshooters_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_sofa_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_sofa_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_tercio_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_tercio_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_the_black_army_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_the_black_army_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_tofangchi_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_tofangchi_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_tribesmen_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_tribesmen_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_varangians_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_varangians_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_varangians_2_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_varangians_2_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_varangians_3_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_varangians_3_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_varangians_4_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_varangians_4_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_varangians_5_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_varangians_5_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_varangians_6_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_varangians_6_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_villagers_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_villagers_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_wagenburg_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_wagenburg_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_war_party_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_war_party_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_a_warriors_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_a_warriors_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/army_infantry_cm_giltkin_gfx.dds",
+      "sha256": "ec91203700ff6c4cc9d568ef38066126e99a1f31cd4e0a7dd0584f6aa0b48fd5"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/units/masks/army_infantry_cm_giltkin_gfx.dds",
+      "sha256": "828c58405d843e6d1bd5c00c50bf80d4cd606c9d1244f2286d95b41eaa0df151"
     }
   ]
 }

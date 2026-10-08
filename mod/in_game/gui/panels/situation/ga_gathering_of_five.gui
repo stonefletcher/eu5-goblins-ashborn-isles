@@ -1,38 +1,4 @@
 ﻿situation_panel = {
-    blockoverride "panel_header" {
-        vbox = {
-            layoutpolicy_horizontal = expanding
-            window_header_alt = {
-                blockoverride "header_text_object" {
-                    hbox = {
-                        spacing = 5 expand = {}
-                        icon = { size = { 30 30 } texture = "[SituationView.GetActiveSituation.GetIcon]" }
-                        text_single = {
-                            align = nobaseline using = Font_Type_Headers using = Font_Size_Big
-                            maximumsize = { 390 -1 } autoresize = yes default_format = "#header_titles"
-                            text = "[SituationView.GetActiveSituation.GetName]"
-                        }
-                        expand = {}
-                    }
-                }
-            }
-            vbox = {
-                visible = "[SituationView.GetActiveSituation.HasEnded]"
-                layoutpolicy_horizontal = expanding spacing = 5 margin = { 10 10 }
-                text_multi = {
-            layoutpolicy_horizontal = expanding max_width = 400 autoresize = yes
-            text = "ga_exp_panel_status"
-        }
-        action_button_default = {
-            size = { 400 40 }
-            actor = "[GetPlayer]"
-            left_action = { action_name = "ga_commission_voyage" }
-        }
-
-            }
-        }
-    }
-
     blockoverride "situation_subheader_content" {}
     blockoverride "situation_header_left" {
         visible = yes
@@ -50,15 +16,6 @@
             max_width = 400
             autoresize = yes
             text = "ga_ui_homeland_rules"
-        }
-        text_multi = {
-            layoutpolicy_horizontal = expanding max_width = 400 autoresize = yes
-            text = "ga_exp_panel_status"
-        }
-        action_button_default = {
-            size = { 400 40 }
-            actor = "[GetPlayer]"
-            left_action = { action_name = "ga_commission_voyage" }
         }
         text_multi = {
             layoutpolicy_horizontal = expanding
@@ -155,7 +112,7 @@
                     layoutpolicy_horizontal = expanding
                     size = { -1 8 }
                     min = 0
-                    max = 72
+                    max = 94
                     value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
                     progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
                     noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
@@ -223,7 +180,7 @@
                     layoutpolicy_horizontal = expanding
                     size = { -1 8 }
                     min = 0
-                    max = 72
+                    max = 94
                     value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
                     progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
                     noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
@@ -291,7 +248,7 @@
                     layoutpolicy_horizontal = expanding
                     size = { -1 8 }
                     min = 0
-                    max = 72
+                    max = 94
                     value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
                     progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
                     noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
@@ -359,7 +316,7 @@
                     layoutpolicy_horizontal = expanding
                     size = { -1 8 }
                     min = 0
-                    max = 72
+                    max = 94
                     value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
                     progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
                     noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
@@ -427,7 +384,75 @@
                     layoutpolicy_horizontal = expanding
                     size = { -1 8 }
                     min = 0
-                    max = 72
+                    max = 94
+                    value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
+                    progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
+                    noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"
+                    tooltip = "ga_gathering_progress_tt"
+                }
+            }
+
+            vbox = {
+                datacontext = "[GetCountry('GTF')]"
+                layoutpolicy_horizontal = expanding
+                using = bg_paper_card
+                using = bg_cabinet_card_frame
+                margin = { 8 6 }
+                spacing = 3
+                hbox = {
+                    layoutpolicy_horizontal = expanding
+                    spacing = 8
+                    country_flag_small = {
+                        size = { 42 28 }
+                        tooltipwidget = { using = CountryTooltip }
+                    }
+                    vbox = {
+                        layoutpolicy_horizontal = expanding
+                        text_single = {
+                            layoutpolicy_horizontal = expanding
+                            autoresize = yes
+                            text = "[Country.GetName]"
+                        }
+                        text_single = {
+                            visible = "[Country.Exists]"
+                            layoutpolicy_horizontal = expanding
+                            fontsize = 13
+                            autoresize = yes
+                            text = "[Country.GetGovernment.GetRulerOrRegent.GetName]"
+                        }
+                    }
+                    text_single = {
+                        visible = "[Not(Country.Exists)]"
+                        text = "ga_gathering_annexed"
+                        tooltip = "ga_gathering_annexed_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)1'))]"
+                        text = "ga_gathering_realm_count"
+                        tooltip = "ga_gathering_progress_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)2'))]"
+                        text = "ga_gathering_vassal"
+                        tooltip = "ga_gathering_dependent_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)3'))]"
+                        text = "ga_gathering_junior"
+                        tooltip = "ga_gathering_dependent_tt"
+                    }
+                    text_single = {
+                        visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)4'))]"
+                        text = "ga_gathering_subject"
+                        tooltip = "ga_gathering_other_subject_tt"
+                    }
+                }
+                progressbar = {
+                    visible = "[And(Country.Exists, EqualTo_CFixedPoint(Country.MakeScope.ScriptValue('ga_gathering_crown_status'), '(CFixedPoint)1'))]"
+                    layoutpolicy_horizontal = expanding
+                    size = { -1 8 }
+                    min = 0
+                    max = 94
                     value = "[FixedPointToFloat(Country.MakeScope.ScriptValue('ga_gathering_realm_locations'))]"
                     progresstexture = "gfx/interface/progressbars/progress_bar_yellow.dds"
                     noprogresstexture = "gfx/interface/icons/unit_view/moral_bar_transparent.dds"

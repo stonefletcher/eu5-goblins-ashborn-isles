@@ -3,6 +3,6 @@
 ga_goblin_longevity = {
     type = character
     category = character
-    potential_trigger = { OR = { culture = culture:cm_cinderkin culture = culture:cm_brinekin culture = culture:cm_reefkin culture = culture:cm_shatterkin culture = culture:cm_sootkin } }
+    potential_trigger = { OR = { culture = culture:cm_cinderkin culture = culture:cm_brinekin culture = culture:cm_reefkin culture = culture:cm_shatterkin culture = culture:cm_sootkin culture = culture:cm_giltkin } }
     character_life_expectancy = 15
 }

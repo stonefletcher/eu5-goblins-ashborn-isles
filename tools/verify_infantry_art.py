@@ -9,7 +9,7 @@ def verify(game):
     report=json.loads((root/'art/infantry/validation.json').read_text())
     assert report['unit_types']==art.infantry_types(game)
     assert {'a_footmen','a_archers','a_villagers'} <= set(report['unit_types'])
-    assert len(report['culture_tags'])==5
+    assert len(report['culture_tags'])==len(__import__('ashborn_roster').TAGS)
     files=set(report['files'])
     assert files=={p.relative_to(root/'mod').as_posix() for p in (root/'mod'/art.REL).rglob('*.dds')}
     for name in files:

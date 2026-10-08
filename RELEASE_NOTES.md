@@ -1,16 +1,29 @@
 # 0.6.0 - Staging: optimization and gameplay
 
-This combined 0.6.0 candidate includes the earlier portrait material, wardrobe,
-hair and Drogg fixes, nine holy sites with varied importance, and the five-crown
-standings panel alongside all 0.5.9 gameplay and optimization work. The initial
-0.6.0 staging package accidentally used an older base for those features; this
-replacement restores them without reverting Harbor Bargains, Compact talks,
-opening projects, Covenant stories, voyage controls or the 100-gold starts.
-Ear attachments again use the native skin material and head-decal routing.
-Static and packaged regression checks cover both generations of changes;
-in-game ear colour and panel layout still require visual confirmation.
-Reinstall this corrected 0.6.0 package with EU5 closed. Portrait fixes apply after
-restart; use a new campaign to test starting gold and the complete starting setup.
+Giltfang joins the Ashborn as the sixth crown. Its northern main island and
+Tolltooth companion have a combined land area of 89.97% of Brackmaw, with nine
+new coastal sea tiles connected to the existing Atlantic network. Chainhaven
+starts with its own market; Hooktooth keeps the southern market. Every goblin
+crown begins knowing all Ashborn land and surrounding coastal tiles.
+
+Vrekk the Brass-Tooth leads the Cinderweight from the Crown of Weights and
+Chains. Giltfang has 22 districts, its own court, flag, portraits, opening story
+and three projects, plus sacred sites at Chainhaven and Tolltooth. All six
+crowns participate in the Gathering, Eastern Hunger, Harbor Bargains,
+Compact talks, Covenant stories and the separate Ashborn Voyages situation.
+
+Harbor descriptions now wrap into short lines. Project buttons use short
+labels and show highlighted native costs and rewards on hover. Requirements
+use readable conditions, broken punctuation is repaired, and both parties
+receive signing receipts listing the actual payment, benefit, burden and term.
+Earlier portrait, wardrobe, hair, Drogg and holy-site fixes are retained.
+
+Use a NEW campaign: the world map, country roster and markets have changed.
+Install with EU5 closed. Static checks cover geography, native definitions,
+all-six-crown event scenarios, terrain reconstruction and package hashes.
+In-game sailing, market trade, UI layout and rendering remain playtest checks.
+This is local 0.6.0 staging work, separate from GitHub releases and Workshop.
+
 
 
 Loading cleanup: register all seven action prices and their cost labels; resolve
@@ -20,7 +33,7 @@ deduplicate shared character names. Opinion bonuses now use their stated
 fixed durations (supplies five years, pacts/oaths ten) without conflicting
 annual decay. Legacy opinion modifiers remain available for existing saves.
 
-All five Ashborn clans now start with 100 gold in new campaigns, replacing
+All six Ashborn clans now start with 100 gold in new campaigns, replacing
 Cindermaw's 50, Brackmaw's 35 and the other clans' 20. This uses the explicit
 100-gold setup of small vanilla countries such as Oneida, Onondaga and Cayuga as
 a benchmark; it is not a claim that every vanilla country starts with 100.
@@ -28,9 +41,8 @@ Project prices, AI reserves, recurring income and war actions are unchanged.
 Existing saves retain their current treasury; start a new campaign for this change.
 
 Exploration now shows preparation, pending decisions, the route at sea with a
-remaining-time range, crew rest and completed charts on both Ashborn situation
-panels. Review Ashborn Voyages reopens available routes, including from ended
-panels. Offers show the price, duration, destinations and reciprocal discovery
+remaining-time range, crew rest and completed charts in the separate Ashborn
+Voyages situation. Review Ashborn Voyages reopens available routes there. Offers show the price, duration, destinations and reciprocal discovery
 before payment. Choose a six-month reminder or stop reminders and commission
 manually. Stops persist across voyages; choosing a six-month reminder restores
 automatic offers. Arrival reports record the current owners of visited ports.
@@ -51,7 +63,7 @@ existing three-year cooldown and event frequency remain. Major rites, religious
 traditions and the Moot settlement are unchanged. Old pending popups without a new
 session token can only be deferred safely. In-game balance and save/reload need testing.
 
-All five clans now receive three mutually exclusive projects plus a free keep-the-gold
+All six clans now receive three mutually exclusive projects plus a free keep-the-gold
 option in their existing introduction. Every project costs 10 gold and lasts five
 years; AI buyers keep 20 gold. Cindermaw chooses army morale, diplomacy or army
 upkeep. Brackmaw chooses storage, production or fort defense. Reefhook chooses
@@ -61,7 +73,7 @@ Benefits are shown on each choice. Existing project rewards and already-seen
 introductions remain unchanged; choosing one project blocks the other two.
 
 Situation progress: both panels now show your qualifying realm's live homeland
-location count out of 72, using the same ownership rules as unification. The
+location count out of 94, using the same ownership rules as unification. The
 Gathering explains the Compact route. Its partner selector keeps existing crowns
 visible when they fail requirements and explains bargain history, alliance age,
 opinion, strength, rank, peace, pending offers and cooldowns. Annexed crowns and
@@ -121,7 +133,7 @@ Brackmaw can now repair its sluices in its existing introductory event: pay
 The paid choice requires at least 10 gold. No additional popup is added.
 Campaigns that already received the introduction will not receive it again.
 
-The five goblin infantry bodies now register with EU5's native fixed-texture
+The six goblin infantry bodies now register with EU5's native fixed-texture
 attachment list. This addresses the missing texture-variation registration reported
 by the engine. Geometry, palettes, animations and the shared-pose attachment route
 are unchanged. Static checks pass; a fresh engine test must confirm the errors stop.
@@ -224,13 +236,13 @@ Full build and static checks passed. Clean-source preparation and isolated insta
 
 Combines the staging economy and exploration pacing with situation layouts, concise completion tooltips, named modifiers and three Cindermaw council rewards. Rebuilds the complete installer payload against the current source configuration. New campaign required. Runtime testing pending.
 
-# 0.5.5 — The Gathering of the Five
+# 0.5.5 — The Gathering of the Six
 
 Complete release candidate for EU5 1.3.11. Start a new 1337 campaign. Disable the
 earlier Gathering Prototype add-on: this full mod includes its content and
 installs without a 0.5.4 prerequisite.
 
-- Unite the 72 homeland districts through conquest, vassalage or senior unions
+- Unite the 94 homeland districts through conquest, vassalage or senior unions
   in the Gathering of the Five, then pursue a European coastal foothold through
   Eastern Hunger.
 - Seven situation actions support alliances, paid aid, voluntary submission,
@@ -252,7 +264,7 @@ readiness. Earlier release notes follow.
 
 ## 0.5.5 Jaima Gathering update
 
-Shatterfin is included in the ruler table at Jaima’s unchanged 66/58/52 ADM/DIP/MIL. Expanded The Tidemother’s Terms and new The Maternal House Endures give her two Shatterfin-only narrative events. The follow-up is scheduled 30 days after the introduction and guarded against repeats. All five kingdoms retain their introductions; total events rise from 13 to 14. Maternal seniority, family setup, situation costs and population additions are preserved. README, prototype guide and generated lore now cover her role. Static and packaging checks are separate from pending gameplay acceptance.
+Shatterfin is included in the ruler table at Jaima’s unchanged 66/58/52 ADM/DIP/MIL. Expanded The Tidemother’s Terms and new The Maternal House Endures give her two Shatterfin-only narrative events. The follow-up is scheduled 30 days after the introduction and guarded against repeats. All six kingdoms retain their introductions; total events rise from 13 to 14. Maternal seniority, family setup, situation costs and population additions are preserved. README, prototype guide and generated lore now cover her role. Static and packaging checks are separate from pending gameplay acceptance.
 
 ## 0.5.4 demographic revision
 
@@ -368,7 +380,7 @@ For **Europa Universalis V 1.3.11 (Pavia)**. **Close the game, install, and star
 - Every island gains approximately 25% land area. Reefhook gains extra land and is about 20% larger than either smaller rival clan. Native land and navigable sea lanes are preserved.
 - Cindermaw now has 12 locations in 6 provinces; Brackmaw has 8 in 4. The smaller clans retain two locations each. National population totals remain unchanged.
 - Terrain follows continuous island geology: Cindermaw's mountain spine, irregular foothills, craters, eroded valleys, beaches, woodland, exposed rock and short rivers. Ground materials no longer change at administrative borders. Native tree and rock meshes add visible scenery to all six islands.
-- All five clans use **Ironfang Monarchy**, a unique reform with native monarchy mechanics. **Rule of the Strongest** selects an eligible adult male Goblinkin by Military ability, with administration and age breaking ties. The rule can be changed; removing the reform restores ordinary succession if necessary.
+- All six clans use **Ironfang Monarchy**, a unique reform with native monarchy mechanics. **Rule of the Strongest** selects an eligible adult male Goblinkin by Military ability, with administration and age breaking ties. The rule can be changed; removing the reform restores ordinary succession if necessary.
 - Voyages now reveal the Ashborn Isles to the current owners of the ports the goblins visit. Unrelated countries receive no scripted reveal.
 - Every clan starts with modest capital industry and developed rural settlements: 27 village levels, two fiber-crop farms, and seven capital guilds. New clay, tar, fiber and wool sites supply production. A one-time first-month initialization adds 70 RGO capacity levels.
 - The old 15% tax-income penalty is removed. Cindermaw's first-month force is reduced to 1 footmen unit, 2 galleys and 3 cogs. Starting treasuries and development receive modest increases; unnecessary stockades in minor capitals are removed.

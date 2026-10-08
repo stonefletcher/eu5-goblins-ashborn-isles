@@ -6,6 +6,7 @@ The prototype deliberately leaves wars, peace, unions and succession to native E
 from pathlib import Path
 import argparse
 import json
+import textwrap
 from clan_identity import PROFILES, SHATTERFIN
 from event_art import image
 import harbor_bargains
@@ -14,7 +15,7 @@ import situation_progress
 import early_projects
 
 ROOT = Path(__file__).resolve().parents[1]
-TAGS = ['CDM', 'QBR', 'RHK', 'SFK', 'SWK']
+from ashborn_roster import TAGS
 TEXT = {}
 
 def loc(key, value):
@@ -84,17 +85,23 @@ def country_picker(conditions):
 def action(key, name, desc, effect, selector='', allow='', ai='add = 10',
            years=3, price=None, eastern=False):
     loc(key, name)
-    loc(key + '_desc', desc)
+    # Country-selection tooltips do not wrap these descriptions themselves.
+    # Keep explicit paragraphs and serialize native localization line breaks.
+    loc(key + '_desc', '\n'.join(textwrap.fill(paragraph, width=68,
+        break_long_words=False, break_on_hyphens=False)
+        for paragraph in desc.split('\n')))
     sit = 'ga_eastern_hunger' if eastern else 'ga_gathering_of_five'
     extra = 'has_variable = ga_unifier custom_tooltip = { text = ga_gathering_complete_tt ga_controls_homeland = yes }' if eastern else ''
     if selector:
         effect = 'if = { limit = { exists = scope:target } ' + effect + ' }'
     price_line = f'    price = price:{price}\n' if price else ''
+    # Harbor/Compact eligibility already supplies the readable peace check.
+    peace = '' if allow.startswith(('ga_hb_free', 'ga_cp_free')) else 'at_war = no'
     return f'''{key} = {{
     type = situation
     show_message = no
     potential = {{ scope:actor = {{ ga_is_goblin = yes is_subject = no is_junior_partner = no {extra} }} }}
-    allow = {{ scope:actor = {{ at_war = no {allow} }} }}
+    allow = {{ scope:actor = {{ {peace} {allow} }} }}
     automation_tick = never
     ai_tick = monthly
     ai_tick_frequency = 6
@@ -229,6 +236,7 @@ ga_gathering_of_five = {
                 if = { limit = { tag = RHK } trigger_event_non_silently = ga_gathering.12 }
                 if = { limit = { tag = SFK } trigger_event_non_silently = ga_gathering.13 }
                 if = { limit = { tag = SWK } trigger_event_non_silently = ga_gathering.14 }
+                if = { limit = { tag = GTF } trigger_event_non_silently = ga_gathering.40 }
             }
         }
     }
@@ -453,11 +461,11 @@ ga_unification_recovery = { global_monthly_control = 0.002 }
 ga_crossing_preparations = { navy_transport_build_cost_modifier = -0.15 naval_morale_modifier = 0.05 }
 ga_first_eastern_harbor = { naval_morale_recovery = 0.05 }
 ''' + harbor_bargains.modifiers(loc) + '\n' + early_projects.modifiers(loc))
-    for key, text in [('ga_gathering_claimant', 'Claimant Among the Five'), ('ga_gathering_defiant', 'Our Shores, Our Crown'), ('ga_compact_guarantees', 'Guarantees of the Ashen Compact'), ('ga_unification_recovery', 'Five Crowns, One Hunger'), ('ga_crossing_preparations', 'The Eastern Crossing'), ('ga_first_eastern_harbor', 'The First Eastern Harbor')]:
+    for key, text in [('ga_gathering_claimant', 'Claimant Among the Six'), ('ga_gathering_defiant', 'Our Shores, Our Crown'), ('ga_compact_guarantees', 'Guarantees of the Ashen Compact'), ('ga_unification_recovery', 'Six Crowns, One Hunger'), ('ga_crossing_preparations', 'The Eastern Crossing'), ('ga_first_eastern_harbor', 'The First Eastern Harbor')]:
         loc('STATIC_MODIFIER_NAME_' + key, text)
         loc('STATIC_MODIFIER_DESC_' + key, text + '. A temporary benefit from the Ashborn situation.')
     for key, name, description in [
-        ('ga_gathering_leadership', 'Lead the Five', 'Our captains prepare to lead the Ashborn. Army morale increases by 5% for five years.'),
+        ('ga_gathering_leadership', 'Lead the Six', 'Our captains prepare to lead the Ashborn. Army morale increases by 5% for five years.'),
         ('ga_gathering_cooperation', 'Stand Together', 'Our envoys seek partners among the crowns. Diplomatic reputation increases by 0.5 for five years.'),
         ('ga_gathering_independence', 'Guard Our Shores', 'Our households prepare to defend their independence. Defensiveness increases by 10% for five years.'),
         ('ga_cindermaw_drilled_captains', 'One Fire, Many Blades', 'Grask drills the rival captains to hold their companies together beneath Cindermaw banners.'),
@@ -494,8 +502,8 @@ ga_cb_eastern_foothold = {
 
     cleanup = 'remove_variable = ga_offer_sender remove_variable = ga_offer_pending'
     events = ['namespace = ga_gathering\n']
-    events.append(event(1, 'A Seat Among the Five',
-        'The mountains have shaken and the five crowns send their captains to the gathering. The Hunger Below binds us, but no crown commands all our shores. Shall we claim leadership, seek partners, or guard our independence? Use the Gathering of the Five situation to bargain for provisions or pilots, send aid, offer voluntary vassalage or obtain war justifications. Harbor Bargains purchase services, not alliances. Every homeland location must fall under one authority before the eastward ambition begins.',
+    events.append(event(1, 'A Seat Among the Six',
+        'The mountains have shaken and the six crowns send their captains to the gathering. The Hunger Below binds us, but no crown commands all our shores. Shall we claim leadership, seek partners, or guard our independence? Use the Gathering of the Six situation to bargain for provisions or pilots, send aid, offer voluntary vassalage or obtain war justifications. Harbor Bargains purchase services, not alliances. Every homeland location must fall under one authority before the eastward ambition begins.',
         '\n'.join([
             option(1, 'a', 'Our crown shall lead them.', 'add_prestige = 5 add_country_modifier = { modifier = ga_gathering_leadership years = 5 mode = replace }', ai='factor = 3'),
             option(1, 'b', 'Find those worth standing beside.', 'add_prestige = 5 add_country_modifier = { modifier = ga_gathering_cooperation years = 5 mode = replace }', ai='factor = 3'),
@@ -523,7 +531,7 @@ ga_cb_eastern_foothold = {
         (18, 'Ashen Compact Refused', "[SCOPE.sCountry('ga_offer_respondent').GetName] has declined our offer to join the Ashen Compact. Its crown remains independent."),
     ]:
         events.append(event(num, title, desc, option(num, 'a', 'The answer is received.')))
-    events.append(event(5, 'Five Crowns, One Hunger',
+    events.append(event(5, 'Six Crowns, One Hunger',
         'Every shore of the Ashborn homeland now answers to one authority. Some crowns may have fallen; others endure through oaths or a union. Our dynasty keeps its name. Beyond the smoke, the eastern coasts await. Unification grants no foreign territory.',
         option(5, 'a', 'Let the captains look east.', 'add_prestige = 10 add_country_modifier = { modifier = ga_unification_recovery years = 5 mode = replace }')))
     events.append(event(6, 'Beyond the Ashen Horizon',
@@ -540,26 +548,28 @@ ga_cb_eastern_foothold = {
         (11, 'QBR', *(PROFILES['QBR'][k] for k in ('event_title','event_description','event_answer'))),
         (12, 'RHK', *(PROFILES['RHK'][k] for k in ('event_title','event_description','event_answer'))),
         (13, 'SFK', *(SHATTERFIN[k] for k in ('event_title','event_description','event_answer'))),
-        (14, 'SWK', *(PROFILES['SWK'][k] for k in ('event_title','event_description','event_answer')))
+        (14, 'SWK', *(PROFILES['SWK'][k] for k in ('event_title','event_description','event_answer'))),
+        (40, 'GTF', *(PROFILES['GTF'][k] for k in ('event_title','event_description','event_answer')))
     ]
     for num, tag, title, desc, answer in signatures:
         after = 'trigger_event_non_silently = { id = ga_gathering.15 days = 30 }' if tag == 'SFK' else ''
         choices = option(num, 'a', answer)
         if tag in early_projects.PROJECTS:
             choices, project_text = early_projects.choices(tag, option)
-            desc += '\\n\\n' + project_text
+            # Project costs and rewards are shown by native option tooltips.
         events.append(event(num, title, desc, choices, trigger=f'tag = {tag}', after=after))
     events.append(event(15, SHATTERFIN['followup_title'], SHATTERFIN['followup_description'],
         option(15, 'a', SHATTERFIN['followup_answer']),
         trigger='tag = SFK NOT = { has_variable = ga_tidemother_council_seen }',
         immediate='set_variable = { name = ga_tidemother_council_seen value = yes }'))
     events.extend(harbor_bargains.events(event, option, loc))
+    write(out, 'in_game/common/customizable_localization/goblins_harbor_receipts.txt', harbor_bargains.signed_recap(loc))
     events.extend(compact_talks.events(event, option, loc))
     write(out, 'in_game/events/goblins_gathering.txt', '\n'.join(events))
 
     for key, text in [
-        ('ga_gathering_of_five', 'The Gathering of the Five'),
-        ('ga_gathering_of_five_desc', 'The five Ashborn kingdoms compete to unite their homeland through conquest, vassalage or unions. Alliances help cooperation but do not complete the struggle. Every starting goblin location must be held within one realm.'),
+        ('ga_gathering_of_five', 'The Gathering of the Six'),
+        ('ga_gathering_of_five_desc', 'The six Ashborn kingdoms compete to unite their homeland through conquest, vassalage or unions. Alliances help cooperation but do not complete the struggle. Every starting goblin location must be held within one realm.'),
         ('ga_eastern_hunger', 'The Eastern Hunger'),
         ('ga_eastern_hunger_desc', 'The united Ashborn look toward Europe. Chart a coast, pay for preparations and obtain a temporary conquest casus belli. A European coastal foothold completes this ambition; wars and peace deals follow the normal rules.'),
         ('ga_gathering_complete_tt', 'One independent Ashborn crown holds every homeland location through direct ownership, vassalage or junior union partners. Alliances and tributaries do not count.'),

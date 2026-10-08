@@ -56,6 +56,15 @@
       "skin_srgb": "#4C584B",
       "shade": "soot olive",
       "culture_name": "Ashveil"
+    },
+    {
+      "id": "giltfang",
+      "name": "Giltfang",
+      "country": "GTF",
+      "culture": "cm_giltkin",
+      "skin_srgb": "#68634C",
+      "shade": "tarnished olive",
+      "culture_name": "Cinderweight"
     }
   ]
 }

@@ -200,18 +200,17 @@ def verify(read):
         assert dispatches==[{'id':f'goblins_exploration.{r["event"]}','months':str(r['months'])}]
     for sit in ['ga_gathering_of_five','ga_eastern_hunger']:
         gui=read(f'in_game/gui/panels/situation/{sit}.gui')
-        assert gui.count('action_name = "ga_commission_voyage"')==2
-        assert 'blockoverride "panel_header"' in gui and 'SituationView.GetActiveSituation.HasEnded' in gui
-        # The header must not consume the main body's first text insertion.
-        body=gui[gui.index('blockoverride "situation_panel_main_content"'):]
-        header=gui[:gui.index('blockoverride "situation_panel_main_content"')]
-        assert 'ga_ui_homeland_progress' in body and 'ga_ui_homeland_progress' not in header
-        assert body.count('action_name = "ga_commission_voyage"')==1
+        assert 'ga_commission_voyage' not in gui
+        assert 'ga_exp_panel_status' not in gui
+    gui=read('in_game/gui/panels/situation/ga_ashborn_voyages.gui')
+    assert gui.count('action_name = "ga_commission_voyage"')==1
+    for route in ROUTES: assert 'ga_exp_chart_'+route+'_row' in gui
+    assert 'ga_ashborn_voyages' in defs
     localization=read(FILES[-1])
     for rows in defs.values():
         for key,_,value in flatten(rows):
             if key=='localization_key':assert '\n '+value+':' in localization,value
-    passed('native calendar-month prices/durations and active/ended panel controls retained; all custom text registered')
+    passed('native calendar-month prices/durations and dedicated voyage situation controls; all custom text registered')
     return {'scenario_groups':len(scenarios),'scenarios':scenarios,'additional_monthly_scans':0,
             'new_event_ids':0,'engine_playtested':False}
 

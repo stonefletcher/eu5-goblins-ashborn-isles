@@ -1,6 +1,7 @@
 {
   "events": {
     "cindermaw.1": "cindermaw",
+    "ga_gathering.40": "giltfang",
     "ga_gathering.1": "gathering",
     "ga_gathering.2": "harbor_pact",
     "ga_gathering.3": "oath",
@@ -18,6 +19,18 @@
     "ga_gathering.16": "harbor_pact",
     "ga_gathering.17": "harbor_pact",
     "ga_gathering.18": "oath",
+    "ga_gathering.20": "harbor_pact",
+    "ga_gathering.21": "harbor_pact",
+    "ga_gathering.22": "harbor_pact",
+    "ga_gathering.23": "harbor_pact",
+    "ga_gathering.24": "harbor_pact",
+    "ga_gathering.25": "harbor_pact",
+    "ga_gathering.30": "oath",
+    "ga_gathering.31": "oath",
+    "ga_gathering.32": "oath",
+    "ga_gathering.33": "oath",
+    "ga_gathering.34": "oath",
+    "ga_gathering.35": "oath",
     "goblins_exploration.1": "departure",
     "goblins_exploration.2": "iberia",
     "goblins_exploration.3": "charts",
@@ -40,9 +53,10 @@
   },
   "situations": {
     "ga_gathering_of_five": "gathering",
-    "ga_eastern_hunger": "eastern_hunger"
+    "ga_eastern_hunger": "eastern_hunger",
+    "ga_ashborn_voyages": "charts"
   },
-  "original_paintings": 17,
+  "original_paintings": 18,
   "format": "DDS BC1/DXT1, full mip chain",
   "files": [
     {
@@ -123,7 +137,15 @@
         1080,
         440
       ],
-      "sha256": "8d0fc8c1f90b9c7e8d210a8fdea59f87db43a5cb9934425f3afdaf75b3cfd0c4"
+      "sha256": "df047021b8df645fdd8421d8776c7fde973239788f1ab9ebd2244884af6821f4"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/event/ashborn/giltfang.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "6ef5c79a2f0d5876c6bd71c27bf5cebd3d6fa992f211358bd6ac4fb84acf4d78"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/event/ashborn/harbor_pact.dds",
@@ -187,7 +209,7 @@
         1080,
         440
       ],
-      "sha256": "8d0fc8c1f90b9c7e8d210a8fdea59f87db43a5cb9934425f3afdaf75b3cfd0c4"
+      "sha256": "df047021b8df645fdd8421d8776c7fde973239788f1ab9ebd2244884af6821f4"
     },
     {
       "path": "main_menu/gfx/interface/icons/situations/ga_gathering_of_five.dds",
@@ -195,7 +217,7 @@
         128,
         128
       ],
-      "sha256": "f3149d95f51cb931ea9f7c9fac2a1414f4229a2ea8ca706bccc2e756a35b60e7"
+      "sha256": "8e5ffe6a862db733b1f2a10633a571233c2a845bc583f1d050b4576862d723e8"
     },
     {
       "path": "main_menu/gfx/interface/illustrations/situation/ga_eastern_hunger.dds",
@@ -212,6 +234,22 @@
         128
       ],
       "sha256": "1497d02239dd09127ef1a47e3516abd36ade902a08ce4c885abb0219bc247682"
+    },
+    {
+      "path": "main_menu/gfx/interface/illustrations/situation/ga_ashborn_voyages.dds",
+      "size": [
+        1080,
+        440
+      ],
+      "sha256": "f1a3de958424e0c93a3927dfed28c9de22422d9254222ba550aab4d8bab35ce1"
+    },
+    {
+      "path": "main_menu/gfx/interface/icons/situations/ga_ashborn_voyages.dds",
+      "size": [
+        128,
+        128
+      ],
+      "sha256": "8c4c254099f44381da630752a7e1a464afa3babcb9bdba4004eab14c9d2d08d9"
     }
   ],
   "engine_tested": false

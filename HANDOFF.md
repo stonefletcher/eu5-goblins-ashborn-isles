@@ -1,54 +1,43 @@
-# Combined 0.6.0 handoff
+# Goblins 0.6.0 - Giltfang and UI cleanup
 
 Checkout: C:/Users/alexa/Documents/Codex/2026-10-07/0/work/goblins-059
-Branch: staging/0.6. Combined package commit: a58117fa27c8455321d25d72789cd76f8a2513d3.
-Source binding: 992ed124f81977cc0b0249519f791dc488bd927e.
-Remote: https://github.com/stonefletcher/eu5-goblins-ashborn-isles.git
-Only staging push/local installation authorized; no main merge, published release or Workshop update.
+Branch: staging/0.6. User authorized implementing the full cleanup and new nation,
+navigable seas, mutual starting discovery and a separate Giltfang market.
+No GitHub push, release, Workshop update or game launch requested. No subagents.
 
-## Integration correction
-User reported blue ears after installing initial 0.6.0. Audit proved the old local
-0.5.9 and initial 0.6.0 candidates had identical 1,664 files except version metadata.
-The older candidate itself omitted subsequent released portrait, holy-site and
-standings changes. Promotion had preserved the incomplete integration.
-Restored origin/main portrait generators, native-contract checks and full runtime:
-native skin/head-decal ear material, SSAO/ear-base assets, UVs, morphology,
-weathering, wardrobe suppression, hair and Drogg. Portrait files match upstream.
-Merged nine varied holy sites into newer Covenant generator without reverting
-story choices, cleanup optimizations or corrected language/price registration.
-Restored five founding-crown standings with shared current ownership counter,
-both Compact types, newer diplomacy explanations and active/ended voyage buttons.
-Combined-candidate guards run against built AND packaged files.
+Completed source and full build: GTF Giltfang + Tolltooth (22 districts, combined
+89.9666% of Brackmaw), nine new native coastal tiles, Chainhaven market, court,
+Cinderweight culture, flag, lore, paintings, portraits and army art. Six-crown
+Gathering/Eastern Hunger, all Harbor/Compact/Covenant/voyage eligibility.
+All six start knowing the homeland and adjacent seas plus the native Azores
+currents connecting north/south; foreign land still waits for voyages.
+Wrapped harbor prompts, short project options with native reward previews,
+readable requirements, repaired punctuation, both-party signed receipts,
+and an independent Ashborn Voyages situation. Eleven holy sites.
+Original five-country populations and prior portrait fixes retained.
+New campaign REQUIRED; do not reuse earlier-map saves.
 
-## Preserved gameplay
-All five clans start 100 gold in new campaigns; project costs 10 and AI reserve 20.
-Three one-off projects per clan, distinct openings, paid Harbor Bargains and
-consensual Compact charters, history gates, cooldowns and stale/legacy guards.
-12 Covenant stories each have two approaches plus neutral defer, 3-year effects.
-Exploration keeps status, timers, manual reopening and arrival-owner reports;
-36-month start, 5/10/10 gold, 4/6/6-month voyages and 12-month rest unchanged.
-Event optimization, model texture registration and cleaned player archive remain.
+Checks passed: full map/setup/terrain validation; 277 height tiles, 549 shared
+borders with zero error. All 94 districts and 72 ports validated. Independent
+raster graph proves all 22 seas connect using STARTING KNOWN native water.
+60 directed Harbor service cases, both GTF Compact roles/types, six voyages,
+132 project checks, 22 adverse Harbor scenarios, 28 Compact scenarios, voyage
+state/legacy tests and native art/religion registration pass. No engine playtest.
+Build: build/goblins_ashborn_isles; reports/validation.json includes final checks.
+The last setup refresh changed only discovery/assets; terrain hashes retained.
 
-## Verified state
-Full script simulations/native art checks pass. Clean exact Git export and
-isolated installation: E:/CodexScratch/Goblins060Combined20261007/source and /profile.
-Bundle CRC/source/overlay checks, stale-source rejection and all 1667 hashes pass.
-Locally installed same candidate with EU5 closed; playsets unchanged.
-Backup verified byte-for-byte: C:\Users\alexa\Documents\Paradox Interactive\Europa Universalis V\goblins_backups\goblins_ashborn_isles_20261007_222137_427.
-Previous 0.5.8 backup remains goblins_ashborn_isles_20261007_220606_592.
-ZIP: Goblins_Ashborn_Isles_0.6.0.zip, 213040607 bytes, SHA256 d55fc3766a9ecac3b92f09625daa18ca71f5a8a6fec47921218accc95ef28ed9.
-Updated ZIP and receipts in chat outputs. No engine launch or visual acceptance.
-Next: user checks ear/face colour, Drogg/clothing, standings and nine shrines.
-Verify pushed remote head/README before final handoff.
+Packaging/local install are next: commit reviewed source, build matching player
+ZIP and .release, export exact Git tree to NEW E:/CodexScratch folder, run top-level
+PrepareOnly and fresh isolated profile install, compare all hashes, then install
+the same candidate into the active Goblins local mod with EU5 closed.
+Current active local installation was audited byte-for-byte against the previous
+combined package d55fc3766a9ecac3b92f09625daa18ca71f5a8a6fec47921218accc95ef28ed9:
+no extra, missing or modified files. EU5 was closed at latest check.
+Active path: C:/Users/alexa/Documents/Paradox Interactive/Europa Universalis V/mod/goblins_ashborn_isles
+Playset Goblins uses that path. Preserve playsets and previous backups.
 
-## Remaining work and tools
-Approval queue: subjugation access/clarity, overseas consolidation, foreign reactions.
-No unapproved project discounts, AI reserve reduction or war-action changes.
-Other log leads: ambiguous map location, sea-effect bounds, reserved Covenant state.
+Game: E:/SteamLibrary/steamapps/common/Europa Universalis V/game, 1.3.11.
 Python: C:/Users/alexa/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe
-Game: E:/SteamLibrary/steamapps/common/Europa Universalis V/game (1.3.11).
-build/ junction -> E:/CodexScratch/Goblins059Scripts20261007/build.
-Helpers outside repo: verify_060_combined.py, check_combined_local.py.
-Historical staging/0.5.9 and archive/0.6-prepublication retained locally.
-Never bypass running-game gate. Earlier scratch cleanup denied; preserve old scratch.
-No subagents. Apply eu5-modding release/clean-export workflow before future pushes.
+build/ junction: E:/CodexScratch/Goblins059Scripts20261007/build
+Task work/ helpers and outputs: C:/Users/alexa/Documents/Codex/2026-10-07/gobl
+Do not delete unrelated scratch; do not bypass installer running-game gate.

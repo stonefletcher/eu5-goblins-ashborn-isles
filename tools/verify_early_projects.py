@@ -13,6 +13,7 @@ def verify(read):
         'SFK': (13, [('ga_shatterfin_crew_households','global_sailors_modifier','0.05'),('ga_shatterfin_storm_crews','naval_morale_modifier','0.05'),('ga_shatterfin_house_delegates','diplomatic_reputation','0.5')]),
         'SWK': (14, [('ga_sootwake_woodland_wardens','global_defensive','0.10'),('ga_sootwake_charcoal_workshops','global_production_efficiency','0.05'),('ga_sootwake_sheltered_stores','global_food_capacity_modifier','0.10')]),
     }
+    expected['GTF'] = (40, [('ga_giltfang_honest_weights','global_production_efficiency','0.05'),('ga_giltfang_harbor_envoys','diplomatic_reputation','0.5'),('ga_giltfang_harbor_watch','global_defensive','0.10')])
     checks=0
     for tag,(number,projects) in expected.items():
         event='ga_gathering.'+str(number)
@@ -21,6 +22,13 @@ def verify(read):
         defs=deepcopy(definitions);defs[event]=[row for row in defs[event] if row[0]!='after']
         for index,(modifier,key,value) in enumerate(projects):
             assert modifiers[modifier]==[(key,'=',value)]
+            choice = [v for k,_,v in definitions[event] if k=='option'][index]
+            preview = next(v for k,_,v in choice if k=='show_as_tooltip')
+            assert preview == [('add_gold', '=', '-10'), ('add_country_modifier', '=',
+                [('modifier', '=', modifier), ('years', '=', '5'), ('mode', '=', 'replace')])]
+            w=World(defs); before=deepcopy(w.countries)
+            w.effects([('show_as_tooltip','=',preview)],tag,{})
+            assert w.countries==before, 'Hover preview must not apply rewards'
             for ai,gold,allowed in [(False,0,False),(False,9.99,False),(False,10,True),(False,50,True),(True,29.99,False),(True,30,True)]:
                 w=World(defs);w.countries[tag].update(gold=gold,is_ai=ai)
                 popup=(event,tag,{})
@@ -44,5 +52,5 @@ def verify(read):
         assert w.countries==before, 'Project granted after decline'
         checks+=1
     assert modifiers['ga_cindermaw_counted_stores']==[('army_maintenance_efficiency','=','0.10')]
-    return {'scenario_checks':checks,'clans':5,'paid_options':15,'cost':10,'duration_years':5,
+    return {'scenario_checks':checks,'clans':len(expected),'paid_options':sum(len(p) for _,p in expected.values()),'cost':10,'duration_years':5,
             'ai_reserve':20,'free_decline':True,'legacy_accounts_preserved':True,'engine_tested':False}

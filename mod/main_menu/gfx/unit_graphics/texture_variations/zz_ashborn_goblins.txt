@@ -4,4 +4,5 @@
  cm_goblin_reefhook_mesh
  cm_goblin_shatterfin_mesh
  cm_goblin_sootwake_mesh
+ cm_goblin_giltfang_mesh
 }

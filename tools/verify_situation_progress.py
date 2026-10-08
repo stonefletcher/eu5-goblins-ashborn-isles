@@ -1,3 +1,4 @@
+from ashborn_roster import TAGS
 """Check UI explanations and live progress against delivered gameplay predicates."""
 import re
 from verify_055 import parse, flatten, ownership_checks
@@ -11,14 +12,14 @@ def verify(read):
     count = definitions['ga_ui_homeland_count']
     ids = [k[9:] for k, _, _ in flatten(count) if k.startswith('location:')]
     actual = [k[9:] for k, _, _ in flatten(definitions['ga_controls_homeland']) if k.startswith('location:')]
-    assert len(ids) == len(set(ids)) == 72 and ids == actual
+    assert len(ids) == len(set(ids)) == 94 and ids == actual
     assert not any(k in {'set_variable','change_variable','every_country','every_location'} for k, _, _ in flatten(count))
     scenarios = ownership_checks(definitions, ids)
     action = definitions['ga_offer_compact']
     selector = next(v for k, _, v in action if k == 'select_trigger' and ('looking_for_a', '=', 'country') in v)
     fields = dict((k, v) for k, _, v in selector)
     assert fields['show_why_not_enabled'] == 'yes'
-    assert [k for k, _, _ in fields['interaction_source_list']] == ['c:'+t for t in ['CDM','QBR','RHK','SFK','SWK']]
+    assert [k for k, _, _ in fields['interaction_source_list']] == ['c:'+t for t in TAGS]
     w = World(definitions); scopes = dict(actor='CDM', target='QBR')
     assert w.condition(fields['visible'], 'QBR', scopes)
     assert not w.condition(fields['enabled'], 'QBR', scopes)

@@ -3,3 +3,4 @@ cm_brinekin_gfx = { priority = 600 culture_tag = cm_brinekin_gfx ethnicities = {
 cm_reefkin_gfx = { priority = 600 culture_tag = cm_reefkin_gfx ethnicities = { 100 = cm_reefhook_ethnicity } }
 cm_shatterkin_gfx = { priority = 600 culture_tag = cm_shatterkin_gfx ethnicities = { 100 = cm_shatterfin_ethnicity } }
 cm_sootkin_gfx = { priority = 600 culture_tag = cm_sootkin_gfx ethnicities = { 100 = cm_sootwake_ethnicity } }
+cm_giltkin_gfx = { priority = 600 culture_tag = cm_giltkin_gfx ethnicities = { 100 = cm_giltfang_ethnicity } }

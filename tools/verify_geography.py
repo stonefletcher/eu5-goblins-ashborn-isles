@@ -8,7 +8,11 @@ import archipelago
 
 def verify_geography(cfg,preview=None):
     import build
-    yy,xx=np.mgrid[2310:2930,6580:7190]
+    x0=min(int(i['center'][0]-2*i['radius'][0]) for i in cfg['islands'])
+    y0=min(int(i['center'][1]-2*i['radius'][1]) for i in cfg['islands'])
+    x1=max(int(i['center'][0]+2*i['radius'][0])+1 for i in cfg['islands'])
+    y1=max(int(i['center'][1]+2*i['radius'][1])+1 for i in cfg['islands'])
+    yy,xx=np.mgrid[y0:y1,x0:x1]
     masks={};borders={};minimum={}
     canvas=np.zeros((*xx.shape,3),np.uint8);canvas[:]=[22,43,58]
     colors=[(153,116,82),(124,137,105),(168,147,90),(150,144,143),(124,133,148),(127,103,95)]
@@ -28,7 +32,7 @@ def verify_geography(cfg,preview=None):
             tile=mask&(district==j);components,pixels=build.connectivity(tile)
             assert components==1 and pixels>=100,(loc['id'],components,pixels)
             sizes.append(pixels)
-            canvas[tile]=np.clip(np.array(colors[ii])+((j%3)-1)*13,0,255)
+            canvas[tile]=np.clip(np.array(colors[ii%len(colors)])+((j%3)-1)*13,0,255)
         internal=mask & ((district!=np.roll(district,1,0))|(district!=np.roll(district,1,1)))
         canvas[internal]=[63,61,56];canvas[edge]=[204,189,157]
         minimum[island['id']]=min(sizes)
@@ -43,9 +47,9 @@ def verify_geography(cfg,preview=None):
         assert gaps[pair]>=24,(pair,'channel narrower than 24 map pixels',gaps[pair])
     assert min(gaps.values())>=10,('narrow island gap',gaps)
     if preview:
-        im=Image.fromarray(canvas).resize((915,930));d=ImageDraw.Draw(im)
+        im=Image.fromarray(canvas);im.thumbnail((1100,1400));d=ImageDraw.Draw(im)
         for i in cfg['islands']:
-            x,y=i['center'];d.text(((x-6580)*1.5,(y-2310)*1.5),i['name'],fill='white',stroke_width=2,stroke_fill='black')
+            x,y=i['center'];d.text(((x-x0)*im.width/(x1-x0),(y-y0)*im.height/(y1-y0)),i['name'],fill='white',stroke_width=2,stroke_fill='black')
         preview.parent.mkdir(parents=True,exist_ok=True);im.save(preview)
     return {'shoreline_distance_pixels':gaps,'minimum_tile_pixels':minimum}
 

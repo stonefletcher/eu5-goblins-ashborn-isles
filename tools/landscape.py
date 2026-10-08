@@ -255,8 +255,9 @@ def write_visual_biome(b,game,out,box):
     names=b.parse_names(game);inverse={v:k for k,v in names.items()}
     templates=b.read(game,'in_game/map_data/location_templates.txt')
     top=dict(re.findall(r'(?m)^\s*(\w+)\s*=\s*\{[^\n]*?topography\s*=\s*(\w+)',templates))
+    replaced_water={b.CFG['coastal_sea']['source_water']} | {r['source_water'] for r in b.CFG['coastal_sea'].get('extra_basins',[])}
     for color in np.unique(native.reshape(-1,3),axis=0):
-        name=inverse[tuple(color)];assert top.get(name) in b.WATER or name==b.CFG['coastal_sea']['source_water'],(name,'native land in visual biome bounds')
+        name=inverse[tuple(color)];assert top.get(name) in b.WATER or name in replaced_water,(name,'native land in visual biome bounds')
     x0,y0,x1,y1=box
     code=f'''\n\t\t// Ashborn visual biome; native location/combat/vegetation rules unchanged.
 \t\tif ( WorldSpacePosXZ.x >= {x0}.0f && WorldSpacePosXZ.x <= {x1}.0f &&

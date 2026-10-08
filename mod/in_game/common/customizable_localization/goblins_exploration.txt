@@ -19,6 +19,18 @@ text = { trigger = { has_variable = ga_exp_remaining_3 } localization_key = ga_e
 text = { trigger = { has_variable = ga_exp_remaining_2 } localization_key = ga_exp_remaining_2_text }
 text = { trigger = { has_variable = ga_exp_remaining_1 } localization_key = ga_exp_remaining_1_text }
 text = { fallback = yes localization_key = ga_exp_remaining_default } }
+ga_exp_chart_east = { type = country
+text = { trigger = { has_variable = ga_charted_east } localization_key = ga_exp_chart_east_done }
+text = { trigger = { has_variable = ga_exp_route var:ga_exp_route = 1 } localization_key = ga_exp_chart_east_sea }
+text = { fallback = yes localization_key = ga_exp_chart_east_default } }
+ga_exp_chart_north = { type = country
+text = { trigger = { has_variable = ga_charted_north } localization_key = ga_exp_chart_north_done }
+text = { trigger = { has_variable = ga_exp_route var:ga_exp_route = 2 } localization_key = ga_exp_chart_north_sea }
+text = { fallback = yes localization_key = ga_exp_chart_north_default } }
+ga_exp_chart_south = { type = country
+text = { trigger = { has_variable = ga_charted_south } localization_key = ga_exp_chart_south_done }
+text = { trigger = { has_variable = ga_exp_route var:ga_exp_route = 3 } localization_key = ga_exp_chart_south_sea }
+text = { fallback = yes localization_key = ga_exp_chart_south_default } }
 ga_exp_contact_lisbon = { type = country
 text = { trigger = { exists = scope:ga_exp_contact_lisbon } localization_key = ga_exp_contact_lisbon_owner }
 text = { fallback = yes localization_key = ga_exp_contact_lisbon_default } }

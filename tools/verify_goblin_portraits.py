@@ -9,6 +9,7 @@ from build_goblin_portraits import ROOT,ART,REL,TYPES
 
 def verify(out,game=None):
     out=Path(out);folder=out/REL
+    clans=json.loads((ART/'clans.json').read_text())['clans']
     genes=(out/'in_game/common/genes/zz_ashborn_portraits.txt').read_text(encoding='utf-8-sig')
     modifiers=(out/'main_menu/gfx/portraits/portrait_modifiers/zz_ashborn.txt').read_text(encoding='utf-8-sig')
     ethnicity=(out/'in_game/common/ethnicities/ashborn.txt').read_text(encoding='utf-8-sig')
@@ -16,10 +17,10 @@ def verify(out,game=None):
     accessories=(out/'main_menu/gfx/portraits/accessories/ashborn.txt').read_text(encoding='utf-8-sig')
     asset=(folder/'ashborn_features.asset').read_text(encoding='utf-8-sig')
     # Regression: attachments bypass skin palette, decal and scattering stages.
-    assert asset.count('shader = "portrait_skin"')==15
+    assert asset.count('shader = "portrait_skin"')==3*len(clans)
     assert 'shader = "portrait_attachment"' not in asset, 'Ear material must use skin lighting'
-    assert asset.count('portrait_decal = { body_part = head }')==15
-    assert asset.count('texture_diffuse = "ear_base.dds"')==15
+    assert asset.count('portrait_decal = { body_part = head }')==3*len(clans)
+    assert asset.count('texture_diffuse = "ear_base.dds"')==3*len(clans)
     assert Image.open(folder/'ear_base.dds').getpixel((0,0))[3]==255
     normal=Image.open(folder/'normal.dds').getpixel((0,0))
     assert normal[1]==normal[3]==128, 'RRxG normals use green and alpha'
@@ -29,7 +30,7 @@ def verify(out,game=None):
     assert SKIN_OPACITY>=.9
     # Shader equation: residual pre-decal face/ear colour difference is <=6%.
     assert (1-SKIN_OPACITY)*255 <= 15.31
-    assert genes.count(f'{{ 0 {SKIN_OPACITY} }} {{ 1 {SKIN_OPACITY} }}')==10
+    assert genes.count(f'{{ 0 {SKIN_OPACITY} }} {{ 1 {SKIN_OPACITY} }}')==2*len(clans)
     for path in re.findall(r'"([^"\n]+\.(?:mesh|dds))"',asset):assert (folder/path).is_file(),path
     for path in re.findall(r'"(gfx/[^"\n]+\.dds)"',genes):
         if '/ashborn/' in path:
@@ -46,10 +47,10 @@ def verify(out,game=None):
     for entity in re.findall(r'entity = (cm_\w+)',accessories):assert f'name = "{entity}"' in asset,entity
     for name in re.findall(r'1 = "(cm_\w+)"',genes):assert name+' = {' in accessories,name
     assert genes.lstrip().startswith('special_genes = {'), 'Goblin visuals must not be ordinary DNA'
-    assert modifiers.count('mode = add gene = cm_ashborn_stature template = cm_compact_body value = 1')==5
+    assert modifiers.count('mode = add gene = cm_ashborn_stature template = cm_compact_body value = 1')==len(clans)
     assert 'cm_ashborn_stature' not in ethnicity
     assert 'cm_ashborn_weathering' not in ethnicity
-    assert modifiers.count('gene = cm_ashborn_weathering')==5
+    assert modifiers.count('gene = cm_ashborn_weathering')==len(clans)
     from build_goblin_portraits import weathering_gene
     weathering=weathering_gene()
     assert weathering.count('post_skin_color priority = 110')==6, 'Weathering must survive the clan tint'
@@ -130,7 +131,7 @@ def verify(out,game=None):
     assert 'priority = 120' in outfit_mods and 'selection_behavior = max' in outfit_mods
     clothing_mods=outfit_mods.split('cm_ashborn_native_hair =')[0]
     assert all(clothing_mods.count('gfx_culture_applicable = '+c['culture']+'_gfx')==1 for c in clans)
-    assert all(outfit_mods.count('mode = add gene = '+g+' template = '+t+' range = { 0 1 }')==5 for g,t in RESET.items())
+    assert all(outfit_mods.count('mode = add gene = '+g+' template = '+t+' range = { 0 1 }')==len(clans) for g,t in RESET.items())
     assert 'value = 0' not in outfit_mods, 'Zero-strength replacements failed to clear noble outfits'
     assert OUTFITS['infant']==[(1,'empty')], 'Do not layer clothing over the native infant swaddle'
     assert HAIR['infant']==[(1,'empty')]
@@ -167,7 +168,7 @@ def verify(out,game=None):
             body=(Path(game)/f'in_game/gfx/models/portraits/{sex}_body/{sex}_body.asset').read_text(encoding='utf-8-sig')
             for attribute in ['body_infant_proportions','body_hunchback']:
                 assert re.search(r'attribute\s*=\s*\{\s*name\s*=\s*"'+attribute+'"',body),(sex,attribute)
-    return {'status':'static checks passed; in-game appearance unverified','cultures':5,'portrait_types':7,'attachment_triangles':triangles,'native_rig_bindings_checked':bool(game),'native_outfit_references_checked':bool(game),'engine_tested':False}
+    return {'status':'static checks passed; in-game appearance unverified','cultures':len(clans),'portrait_types':7,'attachment_triangles':triangles,'native_rig_bindings_checked':bool(game),'native_outfit_references_checked':bool(game),'engine_tested':False}
 
 if __name__=='__main__':
     import argparse

@@ -16,6 +16,9 @@ ga_hb_provisions_received = { global_food_capacity_modifier = 0.10 }
 ga_hb_provisions_supplied = { global_food_capacity_modifier = -0.05 }
 ga_hb_pilots_received = { naval_morale_recovery = 0.05 }
 ga_hb_pilots_supplied = { naval_morale_recovery = -0.025 }
+ga_giltfang_honest_weights = { global_production_efficiency = 0.05 }
+ga_giltfang_harbor_envoys = { diplomatic_reputation = 0.5 }
+ga_giltfang_harbor_watch = { global_defensive = 0.10 }
 ga_cindermaw_funded_accounts = { army_maintenance_efficiency = 0.05 }
 ga_shatterfin_crew_households = { global_sailors_modifier = 0.05 }
 ga_sootwake_woodland_wardens = { global_defensive = 0.10 }

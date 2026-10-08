@@ -21,7 +21,7 @@ def build(out, homeland, write, loc):
     for key, value in TOOLTIPS.items(): loc('ga_ui_'+key+'_tt', value)
     loc('ga_ui_no_crown', '@trigger_no! No eligible crown. Inspect the listed crowns for unmet requirements. Annexed crowns and your own crown are not listed.')
     loc('ga_ui_homeland_progress', f"Your qualifying realm: [GetPlayer.MakeScope.ScriptValue('ga_ui_homeland_count')|0] / {len(homeland)} homeland locations")
-    loc('ga_ui_homeland_rules', 'Unification requires every homeland location, not just the five capitals. Direct ownership, qualifying vassals, Compact charters and junior union partners count. Allies, tributaries, occupation and foreign land do not. A dependent crown cannot claim unification; its count is shown as zero.')
+    loc('ga_ui_homeland_rules', 'Unification requires every homeland location, not just the six capitals. Direct ownership, qualifying vassals, Compact charters and junior union partners count. Allies, tributaries, occupation and foreign land do not. A dependent crown cannot claim unification; its count is shown as zero.')
     loc('ga_ui_compact_heading', 'Working toward Compact talks')
     loc('ga_ui_compact_route', 'Complete a five-year Harbor Bargain together and maintain an alliance for three years; the terms can overlap. Then meet the opinion, strength, rank and peace requirements. Choose Open Compact Talks and inspect a crown to see which checks are still unmet. A disabled action also explains pending talks and quiet periods.')
     loc('ga_ui_history_note', 'History updates monthly. Existing saves start alliance observation with this update; only newly tracked bargains earn completion credit. A missing check means the full requirement has not yet been recorded, not that progress is lost. An observed alliance break resets its three-year term.')
@@ -43,8 +43,7 @@ def build(out, homeland, write, loc):
             text = "{key}"
         }}
         '''
-        from exploration_progress import panel, ended_panel
-        content = paragraph('ga_ui_homeland_progress') + paragraph('ga_ui_homeland_rules') + panel()
+        content = paragraph('ga_ui_homeland_progress') + paragraph('ga_ui_homeland_rules')
         if situation == 'ga_gathering_of_five':
             content += paragraph('ga_ui_compact_heading') + paragraph('ga_ui_compact_route') + paragraph('ga_ui_history_note')
         else: content += paragraph('ga_ui_eastern_route')
@@ -53,5 +52,4 @@ def build(out, homeland, write, loc):
         anchor = 'blockoverride "situation_panel_main_content" {'
         assert text.count(anchor) == 1
         text = text.replace(anchor, anchor+'\n        '+content.rstrip(), 1)
-        text = text.replace('situation_panel = {', 'situation_panel = {\n    '+ended_panel(), 1)
         write(out, path, '\n'.join(line.rstrip() for line in text.splitlines())+'\n')

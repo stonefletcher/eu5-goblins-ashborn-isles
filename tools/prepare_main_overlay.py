@@ -55,6 +55,7 @@ def main():
     import build_infantry_art
     infantry=build_infantry_art.build(args.game,output)
     build_infantry_art.update_manifest(output,infantry)
+    (ROOT/'art/infantry/validation.json').write_text(json.dumps(infantry,indent=2)+'\n')
     (ROOT/'art/models/goblins/native_validation.json').write_text(json.dumps(verification,indent=2)+'\n')
     (ROOT/'art/models/goblins/native_export.json').write_text(json.dumps(report,indent=2)+'\n')
     (ROOT/'art/models/goblins/portrait_export.json').write_text(json.dumps(portraits,indent=2)+'\n')

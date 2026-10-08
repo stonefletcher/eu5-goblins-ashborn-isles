@@ -27,6 +27,7 @@
                 if = { limit = { tag = RHK } trigger_event_non_silently = ga_gathering.12 }
                 if = { limit = { tag = SFK } trigger_event_non_silently = ga_gathering.13 }
                 if = { limit = { tag = SWK } trigger_event_non_silently = ga_gathering.14 }
+                if = { limit = { tag = GTF } trigger_event_non_silently = ga_gathering.40 }
             }
         }
         c:QBR ?= {
@@ -38,6 +39,7 @@
                 if = { limit = { tag = RHK } trigger_event_non_silently = ga_gathering.12 }
                 if = { limit = { tag = SFK } trigger_event_non_silently = ga_gathering.13 }
                 if = { limit = { tag = SWK } trigger_event_non_silently = ga_gathering.14 }
+                if = { limit = { tag = GTF } trigger_event_non_silently = ga_gathering.40 }
             }
         }
         c:RHK ?= {
@@ -49,6 +51,7 @@
                 if = { limit = { tag = RHK } trigger_event_non_silently = ga_gathering.12 }
                 if = { limit = { tag = SFK } trigger_event_non_silently = ga_gathering.13 }
                 if = { limit = { tag = SWK } trigger_event_non_silently = ga_gathering.14 }
+                if = { limit = { tag = GTF } trigger_event_non_silently = ga_gathering.40 }
             }
         }
         c:SFK ?= {
@@ -60,6 +63,7 @@
                 if = { limit = { tag = RHK } trigger_event_non_silently = ga_gathering.12 }
                 if = { limit = { tag = SFK } trigger_event_non_silently = ga_gathering.13 }
                 if = { limit = { tag = SWK } trigger_event_non_silently = ga_gathering.14 }
+                if = { limit = { tag = GTF } trigger_event_non_silently = ga_gathering.40 }
             }
         }
         c:SWK ?= {
@@ -71,6 +75,19 @@
                 if = { limit = { tag = RHK } trigger_event_non_silently = ga_gathering.12 }
                 if = { limit = { tag = SFK } trigger_event_non_silently = ga_gathering.13 }
                 if = { limit = { tag = SWK } trigger_event_non_silently = ga_gathering.14 }
+                if = { limit = { tag = GTF } trigger_event_non_silently = ga_gathering.40 }
+            }
+        }
+        c:GTF ?= {
+            if = {
+                limit = { NOT = { has_variable = ga_signature_seen } }
+                set_variable = { name = ga_signature_seen value = yes }
+                if = { limit = { tag = CDM } trigger_event_non_silently = ga_gathering.10 }
+                if = { limit = { tag = QBR } trigger_event_non_silently = ga_gathering.11 }
+                if = { limit = { tag = RHK } trigger_event_non_silently = ga_gathering.12 }
+                if = { limit = { tag = SFK } trigger_event_non_silently = ga_gathering.13 }
+                if = { limit = { tag = SWK } trigger_event_non_silently = ga_gathering.14 }
+                if = { limit = { tag = GTF } trigger_event_non_silently = ga_gathering.40 }
             }
         }
     }

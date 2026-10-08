@@ -2,17 +2,30 @@
 
 **0.6.0 staging candidate — branch `staging/0.6`.**
 
-This combined 0.6.0 candidate includes the earlier portrait material, wardrobe,
-hair and Drogg fixes, nine holy sites with varied importance, and the five-crown
-standings panel alongside all 0.5.9 gameplay and optimization work. The initial
-0.6.0 staging package accidentally used an older base for those features; this
-replacement restores them without reverting Harbor Bargains, Compact talks,
-opening projects, Covenant stories, voyage controls or the 100-gold starts.
-Ear attachments again use the native skin material and head-decal routing.
-Static and packaged regression checks cover both generations of changes;
-in-game ear colour and panel layout still require visual confirmation.
-Reinstall this corrected 0.6.0 package with EU5 closed. Portrait fixes apply after
-restart; use a new campaign to test starting gold and the complete starting setup.
+Giltfang joins the Ashborn as the sixth crown. Its northern main island and
+Tolltooth companion have a combined land area of 89.97% of Brackmaw, with nine
+new coastal sea tiles connected to the existing Atlantic network. Chainhaven
+starts with its own market; Hooktooth keeps the southern market. Every goblin
+crown begins knowing all Ashborn land and surrounding coastal tiles.
+
+Vrekk the Brass-Tooth leads the Cinderweight from the Crown of Weights and
+Chains. Giltfang has 22 districts, its own court, flag, portraits, opening story
+and three projects, plus sacred sites at Chainhaven and Tolltooth. All six
+crowns participate in the Gathering, Eastern Hunger, Harbor Bargains,
+Compact talks, Covenant stories and the separate Ashborn Voyages situation.
+
+Harbor descriptions now wrap into short lines. Project buttons use short
+labels and show highlighted native costs and rewards on hover. Requirements
+use readable conditions, broken punctuation is repaired, and both parties
+receive signing receipts listing the actual payment, benefit, burden and term.
+Earlier portrait, wardrobe, hair, Drogg and holy-site fixes are retained.
+
+Use a NEW campaign: the world map, country roster and markets have changed.
+Install with EU5 closed. Static checks cover geography, native definitions,
+all-six-crown event scenarios, terrain reconstruction and package hashes.
+In-game sailing, market trade, UI layout and rendering remain playtest checks.
+This is local 0.6.0 staging work, separate from GitHub releases and Workshop.
+
 
 Included gameplay:
 
@@ -35,7 +48,7 @@ deduplicate shared character names. Opinion bonuses now use their stated
 fixed durations (supplies five years, pacts/oaths ten) without conflicting
 annual decay. Legacy opinion modifiers remain available for existing saves.
 
-All five Ashborn clans now start with 100 gold in new campaigns, replacing
+All six Ashborn clans now start with 100 gold in new campaigns, replacing
 Cindermaw's 50, Brackmaw's 35 and the other clans' 20. This uses the explicit
 100-gold setup of small vanilla countries such as Oneida, Onondaga and Cayuga as
 a benchmark; it is not a claim that every vanilla country starts with 100.
@@ -43,9 +56,8 @@ Project prices, AI reserves, recurring income and war actions are unchanged.
 Existing saves retain their current treasury; start a new campaign for this change.
 
 Exploration now shows preparation, pending decisions, the route at sea with a
-remaining-time range, crew rest and completed charts on both Ashborn situation
-panels. Review Ashborn Voyages reopens available routes, including from ended
-panels. Offers show the price, duration, destinations and reciprocal discovery
+remaining-time range, crew rest and completed charts in the separate Ashborn
+Voyages situation. Review Ashborn Voyages reopens available routes there. Offers show the price, duration, destinations and reciprocal discovery
 before payment. Choose a six-month reminder or stop reminders and commission
 manually. Stops persist across voyages; choosing a six-month reminder restores
 automatic offers. Arrival reports record the current owners of visited ports.
@@ -66,7 +78,7 @@ existing three-year cooldown and event frequency remain. Major rites, religious
 traditions and the Moot settlement are unchanged. Old pending popups without a new
 session token can only be deferred safely. In-game balance and save/reload need testing.
 
-All five clans now receive three mutually exclusive projects plus a free keep-the-gold
+All six clans now receive three mutually exclusive projects plus a free keep-the-gold
 option in their existing introduction. Every project costs 10 gold and lasts five
 years; AI buyers keep 20 gold. Cindermaw chooses army morale, diplomacy or army
 upkeep. Brackmaw chooses storage, production or fort defense. Reefhook chooses
@@ -76,7 +88,7 @@ Benefits are shown on each choice. Existing project rewards and already-seen
 introductions remain unchanged; choosing one project blocks the other two.
 
 Situation progress: both panels now show your qualifying realm's live homeland
-location count out of 72, using the same ownership rules as unification. The
+location count out of 94, using the same ownership rules as unification. The
 Gathering explains the Compact route. Its partner selector keeps existing crowns
 visible when they fail requirements and explains bargain history, alliance age,
 opinion, strength, rank, peace, pending offers and cooldowns. Annexed crowns and
@@ -136,7 +148,7 @@ Brackmaw can now repair its sluices in its existing introductory event: pay
 The paid choice requires at least 10 gold. No additional popup is added.
 Campaigns that already received the introduction will not receive it again.
 
-The five goblin infantry bodies now register with EU5's native fixed-texture
+The six goblin infantry bodies now register with EU5's native fixed-texture
 attachment list. This addresses the missing texture-variation registration reported
 by the engine. Geometry, palettes, animations and the shared-pose attachment route
 are unchanged. Static checks pass; a fresh engine test must confirm the errors stop.
@@ -146,8 +158,8 @@ Approved opening-choice update: leadership grants +5% army morale, cooperation
 years and grants +5 prestige. Existing saves keep already-granted legacy modifiers
 until expiry; the new benefits apply when choosing the opening event.
 
-The Gathering monthly introduction pass now visits only the five goblin crowns.
-The Covenant skips its 72-location ownership test after its one-time Moot;
+The Gathering monthly introduction pass now visits only the six goblin crowns.
+The Covenant skips its 94-location ownership test after its one-time Moot;
 conversion cleanup runs once instead of repeating monthly. Eastern actions use
 a compact ownership tooltip and no redundant Crossing eligibility check.
 All territory, vassal and union requirements remain in force.
@@ -172,7 +184,7 @@ HANDOFF.md. In-game timing and visual acceptance remain pending.
 
 ## Inherited economy and revised exploration
 
-The first exploration offer waits **36 months after the first monthly country pulse**, roughly three years into a new campaign. All five crowns know nearby waters off Iberia, Biscay, the English Channel and northwest Africa. The 0.5.6 grants revealing Iberia and 24 coastal provinces have been removed in 0.5.7: foreign land remains undiscovered, rather than discovered beneath ordinary unit fog.
+The first exploration offer waits **36 months after the first monthly country pulse**, roughly three years into a new campaign. All six crowns know nearby waters off Iberia, Biscay, the English Channel and northwest Africa. The 0.5.6 grants revealing Iberia and 24 coastal provinces have been removed in 0.5.7: foreign land remains undiscovered, rather than discovered beneath ordinary unit fog.
 
 Voyages discover named harbors and establish foreign contact. The eastern journey costs five gold and takes four months; northern/southern journeys cost ten gold and take six months. Owners of visited ports learn about the Isles when the crews return. Six-month postponements, twelve-month breaks between completed voyages and once-only contact notices are retained. Existing saves do not lose discovered land or reset an initialized timer. The complete 0.5.7 payload includes these changes.
 
@@ -188,7 +200,7 @@ The first economic pass gives each crown a distinct role, with buildings scaled 
 
 **Hooktooth starts with one full market**, intended to support trade between the specialized island economies. Actual market membership and access still need in-game verification. Separate national markets have not been added.
 
-Rural buildings follow local resources and vegetation. Additional extraction investment is reduced from 387 to 126 across the Isles, particularly at precious-goods deposits and previously oversized sites. These are bonuses to native capacity, not total output or treasury income. All **1,618,696 people, population classes, 72 districts, resources and geography** are preserved.
+Rural buildings follow local resources and vegetation. Additional extraction investment is reduced from 387 to 126 across the Isles, particularly at precious-goods deposits and previously oversized sites. These are bonuses to native capacity, not total output or treasury income. The original **1,618,696 people, population classes and 72 districts** are preserved. Giltfang adds 286,617 people and 22 districts; total extraction investment is now 148.
 
 Focused checks passed for native building ranks/resources, generated buildings, population totals, production staffing, economic specialization and guarded market/investment setup. Profitability, food security and affordability of starting forces remain pending fresh-campaign tests. Building-level counts describe infrastructure, not equivalent income.
 
@@ -203,7 +215,7 @@ Allow roughly 4 GB of working space. This local candidate has not been published
 
 ## Choose your clan
 
-All five kingdoms can lead the Gathering. Their courts, cultures and starting positions give each a different story.
+All six kingdoms can lead the Gathering. Their courts, cultures and starting positions give each a different story.
 
 | Kingdom | Ruler | What defines it |
 |---|---|---|
@@ -212,20 +224,21 @@ All five kingdoms can lead the Gathering. Their courts, cultures and starting po
 | **Reefhook** | Skrezz, the Wreck-Taker | Reefstrider pilots, fishing households and pearl divers. Skrezz balances rescue obligations, salvage and foreign friendships. |
 | **Shatterfin** | Jaima, the Mare-Mother | Stormfang crews and a maternal royal house spanning two islands. Jaima bargains for security while preserving her family's succession. |
 | **Sootwake** | Snikh, the Blackbough | Ashveil woodland settlements, charcoal hearths and guarded forest paths. Snikh defends the groves that sustain his people. |
+| **Giltfang** | Vrekk, the Brass-Tooth | Cinderweight copper workings, salt pans and Chainhaven market. Tolltooth guards the northern approaches. |
 
-The Isles begin with **1,618,696 goblins across 72 districts**. All five Ashborn cultures live throughout the archipelago, alongside each kingdom's majority culture. Port communities, free workers and enslaved populations reflect generations of migration and raids.
+The Isles begin with **1,905,313 goblins across 94 districts**. The five older Ashborn cultures retain their existing minority populations; Giltfang adds the Cinderweight culture. Port communities, free workers and enslaved populations reflect generations of migration and raids.
 
-Four kingdoms use **Ironfang Monarchy**: the strongest eligible adult Ashborn man within the ruling dynasty inherits, with administration and age breaking ties. Shatterfin follows **maternal seniority**, with Jaima's sister Skritcha initially next in line. Kingdom names can follow a new ruling dynasty.
+Five kingdoms use **Ironfang Monarchy**: the strongest eligible adult Ashborn man within the ruling dynasty inherits, with administration and age breaking ties. Shatterfin follows **maternal seniority**, with Jaima's sister Skritcha initially next in line. Kingdom names can follow a new ruling dynasty.
 
 For the families, rivalries and origins behind each crown, read the [Ashborn lore](LORE.md).
 
 ## Your campaign
 
-### Gather the Five
+### Gather the Six
 
-Early in the campaign, **The Gathering of the Five** brings the kingdoms into a shared struggle for leadership. Offer alliances, send paid aid, negotiate voluntary vassalage, or pursue conquest through normal EU5 warfare. Other rulers can refuse your offers.
+Early in the campaign, **The Gathering of the Six** brings the kingdoms into a shared struggle for leadership. Offer alliances, send paid aid, negotiate voluntary vassalage, or pursue conquest through normal EU5 warfare. Other rulers can refuse your offers.
 
-To complete the Gathering, all **72 homeland districts** must belong to your realm through direct ownership, qualifying vassals or a union in which you hold the senior crown. An alliance alone does not unite the Isles, and occupying a district during a war does not count as owning it.
+To complete the Gathering, all **94 homeland districts** must belong to your realm through direct ownership, qualifying vassals or a union in which you hold the senior crown. An alliance alone does not unite the Isles, and occupying a district during a war does not count as owning it.
 
 Each kingdom receives its own introduction. Shatterfin also has a family council event about the maternal house. These stories accompany your decisions; they do not automatically settle treaties or change succession laws.
 

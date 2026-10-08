@@ -1,5 +1,5 @@
 {
-  "clans": 5,
+  "clans": 6,
   "emblems": [
     {
       "tag": "CDM",
@@ -25,6 +25,11 @@
       "tag": "SWK",
       "path": "main_menu/gfx/coat_of_arms/textured_emblems/te_ashborn_sootwake.dds",
       "sha256": "4a4cb6be70f700391f225a36145ca3e3b252eb328b434d7a4a3957f2a39e141d"
+    },
+    {
+      "tag": "GTF",
+      "path": "main_menu/gfx/coat_of_arms/textured_emblems/te_ashborn_giltfang.dds",
+      "sha256": "3edf6d4e0c01e3c9d39bd20e9efe4ff4aae8c1ec9c7f829f5d002dcfd0dfc82b"
     }
   ],
   "dimensions": [

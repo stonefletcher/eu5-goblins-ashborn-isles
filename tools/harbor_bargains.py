@@ -1,5 +1,5 @@
 """Bounded bilateral requests; no alliances, subjects, land or free money."""
-TAGS = ('CDM', 'QBR', 'RHK', 'SFK', 'SWK')
+from ashborn_roster import TAGS
 TERMS = {
     'provisions': ('Provisions', 'food storage capacity', '10%', '5%', 'global_food_capacity_modifier', '0.10', '-0.05', 'QBR'),
     'pilots': ('Pilots', 'naval morale recovery', '5%', '2.5%', 'naval_morale_recovery', '0.05', '-0.025', 'RHK'),
@@ -7,12 +7,13 @@ TERMS = {
 
 
 def free():
-    return '''ga_independent_goblin = yes at_war = no
-    NOT = { has_variable = ga_hb_pending }
-    NOT = { has_variable = ga_hb_committed }
-    NOT = { has_variable = ga_hb_recent_offer }
-    NOT = { has_variable = ga_offer_pending }
-    NOT = { has_variable = ga_cp_pending }'''
+    return '''custom_tooltip = { text = ga_ui_independent_tt ga_independent_goblin = yes }
+    custom_tooltip = { text = ga_ui_peace_tt at_war = no }
+    custom_tooltip = { text = ga_ui_harbor_free_tt NOT = { has_variable = ga_hb_pending } }
+    custom_tooltip = { text = ga_hb_contract_free_tt NOT = { has_variable = ga_hb_committed } }
+    custom_tooltip = { text = ga_hb_quiet_tt NOT = { has_variable = ga_hb_recent_offer } }
+    custom_tooltip = { text = ga_ui_legacy_free_tt NOT = { has_variable = ga_offer_pending } }
+    custom_tooltip = { text = ga_ui_compact_free_tt NOT = { has_variable = ga_cp_pending } }'''
 
 
 def lock_check(actor='scope:actor'):
@@ -106,13 +107,17 @@ def actions(action, picker):
     result = []
     for kind, key, number in [('provisions', 'ga_offer_harbor_pact', 20), ('pilots', 'ga_seek_pilot_bargain', 21)]:
         title, metric, gain, burden, _, _, _, preferred = TERMS[kind]
-        description = (f'Negotiate {kind} from an independent Ashborn crown. On acceptance, pay 10 gold to the supplier: '
-                       f'you gain {gain} {metric}, while it commits {burden} {metric}, for five years. '
-                       'It may counter once with the other service for 15 gold. Payment occurs only when signed. '
-                       'Both sides need at least 25 opinion of each other and one free contract slot. '
-                       'Talks expire after 180 days; each pair waits five years between approaches, and each crown has a two-year quiet period. '
-                       'No alliance or vassalage is created. A signed contract occupies both crowns for five years. '
-                       'Hostilities, rivalry or a vanished partner end it at the next monthly check, without a refund.')
+        description = (f'Buy {kind} from an independent Ashborn crown.\n'
+                       f'Price: 10 gold, paid only when signed. Duration: 5 years.\n'
+                       f'You gain: +{gain} {metric}.\n'
+                       f'Supplier commits: {burden} of its {metric}.\n'
+                       'One counteroffer: the other service for 15 gold.\n\n'
+                       'Requires: mutual opinion of 25+ and a free contract slot.\n'
+                       'One contract per crown; no alliance or vassalage.\n'
+                       'Talks expire in 180 days. Crown cooldown: 2 years.\n'
+                       'The same pair must wait 5 years between approaches.\n'
+                       'War, rivalry or a vanished partner ends the contract\n'
+                       'at the next monthly check. No refund.')
         conditions = '''ga_hb_free = yes this != scope:actor
             "opinion(scope:actor)" >= 25
             NOT = { is_rival_of = scope:actor } NOT = { is_enemy_of = scope:actor }
@@ -157,6 +162,8 @@ def affordability(price):
 def sign(kind, price, stage):
     # Repeat all guards in the effects, not only in the option visibility.
     return f'''if = {{ limit = {{ ga_hb_{stage}_valid = yes {affordability(price)} }}
+        save_scope_value_as = {{ name = ga_hb_signed_service value = {1 if kind == 'provisions' else 2} }}
+        save_scope_value_as = {{ name = ga_hb_signed_price value = {price} }}
         scope:ga_hb_requester = {{
             add_gold = -{price}
             add_country_modifier = {{ modifier = ga_hb_{kind}_received years = 5 mode = replace }}
@@ -174,7 +181,9 @@ def sign(kind, price, stage):
             set_variable = {{ name = ga_hb_contract_partner value = scope:ga_hb_requester }}
         }}
         {cleanup()}
-        scope:ga_hb_{'requester' if stage == 'offer' else 'provider'} = {{
+        scope:ga_hb_requester = {{
+            trigger_event_non_silently = ga_gathering.24 }}
+        scope:ga_hb_provider = {{
             trigger_event_non_silently = ga_gathering.24 }}
     }}'''
 
@@ -248,7 +257,7 @@ def events(event, option, loc):
                    'ga_hb_counter_valid = yes ' + affordability(15), 'factor = 2') + '\n' +
             option(number, 'b', 'Keep our money; end the talks.', decline('ga_hb_provider'), ai='factor = 2')))
     result.append(event(24, 'A Harbor Bargain Signed',
-        "[SCOPE.sCountry('ga_hb_requester').GetName] and [SCOPE.sCountry('ga_hb_provider').GetName] have signed a five-year service contract. Payment and commitments have been applied. The country modifier shows the agreed service. No alliance or submission has been created. If either kingdom ceases to exist, or the partners become enemies or rivals, both commitments end at the next monthly check; the original payment is not refunded.",
+        "[ROOT.GetCountry.Custom('ga_hb_signed_recap')]",
         option(24, 'a', 'Let both harbors honor the bargain.')))
     result.append(event(25, 'Harbor Talks Closed',
         'The proposed bargain was declined or its conditions changed. No contract was signed and no payment was taken. These two crowns will not reopen negotiations for five years.',
@@ -256,7 +265,28 @@ def events(event, option, loc):
     return result
 
 
+def signed_recap(loc):
+    rows = ['ga_hb_signed_recap = { type = country']
+    for service, (kind, terms) in enumerate(TERMS.items(), 1):
+        title, metric, gain, burden, *_ = terms
+        for price in (10, 15):
+            key = f'ga_hb_signed_{kind}_{price}'
+            loc(key, f'#bold {title} bargain signed#!\\n\\n'
+                + "[SCOPE.sCountry('ga_hb_requester').GetName] (buyer):\\n"
+                + f'Paid #R {price} gold#!. Gains #G +{gain} {metric}#!.\\n\\n'
+                + "[SCOPE.sCountry('ga_hb_provider').GetName] (supplier):\\n"
+                + f'Received #G {price} gold#!. Commits #R -{burden} {metric}#!.\\n\\n'
+                + 'Both modifiers last #Y five years#! from signing. Payment and effects have already been applied.\\n'
+                + 'War, rivalry or a vanished partner ends the contract at the next monthly check, without a refund.')
+            rows.append(f'text = {{ trigger = {{ exists = scope:ga_hb_signed_service exists = scope:ga_hb_signed_price scope:ga_hb_signed_service = {service} scope:ga_hb_signed_price = {price} }} localization_key = {key} }}')
+    loc('ga_hb_signed_legacy', 'This earlier bargain was signed before detailed receipts were recorded. Its payment and five-year commitments were already applied; consult the active country modifiers for its service.')
+    rows.append('text = { fallback = yes localization_key = ga_hb_signed_legacy } }')
+    return '\n'.join(rows)
+
+
 def modifiers(loc):
+    loc('ga_hb_contract_free_tt', 'No active Harbor Bargain. Each crown may hold #Y one contract#! for #Y five years#!.')
+    loc('ga_hb_quiet_tt', 'The #Y two-year#! waiting period since our last harbor approach has ended.')
     rows = []
     for kind, (title, metric, gain, burden, key, benefit, cost, _) in TERMS.items():
         for suffix, value, text in [('received', benefit, f'Purchased {kind} increase {metric} by {gain} for five years.'),

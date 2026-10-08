@@ -42,3 +42,12 @@ SWK = {
         instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }
     }
 }
+
+GTF = {
+    pattern = "pattern_solid.dds"
+    color1 = rgb { 35 55 72 }
+    textured_emblem = {
+        texture = "te_ashborn_giltfang.dds"
+        instance = { position = { 0.5 0.5 } scale = { 1.0 1.0 } }
+    }
+}

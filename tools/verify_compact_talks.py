@@ -58,7 +58,7 @@ def verify(read):
         before = deepcopy(snapshot.countries)
         snapshot.choose(ratification, kind, force=True)
         assert snapshot.countries == before
-        assert sum(c['gold'] for c in snapshot.countries.values()) == 250
+        assert sum(c['gold'] for c in snapshot.countries.values()) == 50 * len(snapshot.countries)
         scenarios.append(['autonomy', 'protection'][kind] + ': five-year bargain, overlapping three-year alliance, two consents, ratification, repeat protection')
     for change in ['war', 'reverse_rival', 'annexed', 'legacy', 'mismatched_partner']:
         w = World(definitions); offer = w.offer(); w.choose(offer, 0)
@@ -105,7 +105,7 @@ def verify(read):
                 assert w.countries == before
             assert w.choose(event, 1 if stage == 2 else 2)
             assert not w.countries['QBR']['is_subject']
-            assert sum(c['gold'] for c in w.countries.values()) == 250
+            assert sum(c['gold'] for c in w.countries.values()) == 50 * len(w.countries)
             assert not w.variable('CDM', 'ga_cp_pending')
             assert not w.variable('QBR', 'ga_cp_pending')
             w.day = 3 * 365; blocked(w)

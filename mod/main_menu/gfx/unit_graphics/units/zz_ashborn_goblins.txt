@@ -48,3 +48,13 @@ cm_sootkin_gfx:army_heavy_infantry = {
  attach = { 100 = cm_goblin_sootwake_body }
  animation_state_machine_name = cm_goblin_infantry
 }
+cm_giltkin_gfx:army_light_infantry = {
+ schematic_name = cm_goblin_giltfang_schematic
+ attach = { 100 = cm_goblin_giltfang_body }
+ animation_state_machine_name = cm_goblin_infantry
+}
+cm_giltkin_gfx:army_heavy_infantry = {
+ schematic_name = cm_goblin_giltfang_schematic
+ attach = { 100 = cm_goblin_giltfang_body }
+ animation_state_machine_name = cm_goblin_infantry
+}

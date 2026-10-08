@@ -1,3 +1,4 @@
+from ashborn_roster import TAGS
 """Audit optimization invariants and the delivered art against installed EU5."""
 import argparse
 import json
@@ -14,14 +15,15 @@ import verify_covenant_stories
 import verify_exploration
 import verify_exploration_progress
 import verify_combined_candidate
+import verify_giltfang
 
 
 def verify(out, game):
     situations = dict((k, v) for k, _, v in parse((out/'in_game/common/situations/goblins_gathering.txt').read_text(encoding='utf-8-sig')))
     monthly = next(v for k, _, v in situations['ga_gathering_of_five'] if k == 'on_monthly')
-    assert len(monthly) == 5
+    assert len(monthly) == len(TAGS)
     for country, op, body in monthly:
-        assert op == '?=' and country in {'c:CDM','c:QBR','c:RHK','c:SFK','c:SWK'}
+        assert op == '?=' and country in {'c:'+tag for tag in TAGS}
         guard = next(v for k, _, v in body if k == 'if')
         assert guard[0] == ('limit', '=', [('NOT', '=', [('has_variable', '=', 'ga_signature_seen')])])
         assert guard[1] == ('set_variable', '=', [('name', '=', 'ga_signature_seen'), ('value', '=', 'yes')])
@@ -45,11 +47,12 @@ def verify(out, game):
     # Existing saves retain their previously granted opening effects until expiry.
     assert modifiers['ga_gathering_claimant'] == [('diplomatic_reputation','=','0.5')]
     assert modifiers['ga_gathering_defiant'] == [('naval_morale_modifier','=','0.05')]
-    # All five introductions are exercised by the shared project verifier below.
+    # All founding-crown introductions are exercised by the shared project verifier below.
     assert modifiers['ga_brackmaw_repaired_sluices'] == [('global_food_capacity_modifier','=','0.10')]
     assert modifiers['ga_reefhook_restored_beacons'] == [('naval_morale_recovery','=','0.05')]
     version=json.loads((out/'.metadata/metadata.json').read_text(encoding='utf-8-sig'))['version']
-    return {'version':version, 'monthly_introduction_country_scopes':5,
+    return {'version':version, 'monthly_introduction_country_scopes':len(TAGS),
+            'giltfang':verify_giltfang.verify(out,game),
             'combined_candidate':verify_combined_candidate.verify(lambda p:(out/p).read_text(encoding='utf-8-sig')),
             'harbor_bargains':verify_harbor_bargains.verify(lambda p:(out/p).read_text(encoding='utf-8-sig')),
             'compact_talks':verify_compact_talks.verify(lambda p:(out/p).read_text(encoding='utf-8-sig')),

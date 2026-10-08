@@ -57,7 +57,7 @@ def verify(game, out, rebuild=True):
         assert f'name = ga_charted_{route} value = yes' in arrival
         assert 'name = ga_exploration_cooldown value = yes months = 12' in arrival
     assert 'lift_fog_of_war' not in actions + events
-    report['checks'] = ['native map references', 'starting knowledge for all five crowns',
+    report['checks'] = ['native map references', 'starting knowledge for all six crowns',
                         'sea-only foreign starting knowledge', 'undiscovered ports revealed on voyage completion', 'three-year initial cooldown',
                         'pending/retry guards', 'delayed owner-scoped first contact']
     return report

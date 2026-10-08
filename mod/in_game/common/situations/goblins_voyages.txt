@@ -1,0 +1,13 @@
+﻿ga_ashborn_voyages = {
+        monthly_spawn_chance = monthly_spawn_chance_unique
+        can_start = { current_date >= 1337.7.1 OR = {
+            country_exists = c:CDM country_exists = c:QBR country_exists = c:RHK country_exists = c:SFK country_exists = c:SWK country_exists = c:GTF } }
+        can_end = { custom_tooltip = { text = ga_exp_situation_complete_tt
+            OR = { NOT = { country_exists = c:CDM } c:CDM = { has_variable = ga_charted_east has_variable = ga_charted_north has_variable = ga_charted_south } }
+OR = { NOT = { country_exists = c:QBR } c:QBR = { has_variable = ga_charted_east has_variable = ga_charted_north has_variable = ga_charted_south } }
+OR = { NOT = { country_exists = c:RHK } c:RHK = { has_variable = ga_charted_east has_variable = ga_charted_north has_variable = ga_charted_south } }
+OR = { NOT = { country_exists = c:SFK } c:SFK = { has_variable = ga_charted_east has_variable = ga_charted_north has_variable = ga_charted_south } }
+OR = { NOT = { country_exists = c:SWK } c:SWK = { has_variable = ga_charted_east has_variable = ga_charted_north has_variable = ga_charted_south } }
+OR = { NOT = { country_exists = c:GTF } c:GTF = { has_variable = ga_charted_east has_variable = ga_charted_north has_variable = ga_charted_south } } } }
+        visible = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK tag = GTF } }
+    }

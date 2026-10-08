@@ -5,7 +5,7 @@ import re
 
 def verify(b,game,out,mapstats):
     cfg=b.CFG;locs=cfg['locations'];baseline=cfg['baseline_locations'];byid={l['id']:l for l in locs}
-    assert len(byid)==len(locs)==72 and len({l['color'] for l in locs})==72
+    assert len(byid)==len(locs)==94 and len({l['color'] for l in locs})==94
     assert set(baseline)<=set(byid)
     assert sum(Decimal(str(l['pop'])) for l in locs)==Decimal(cfg['population_target'])/1000
     for l in locs:
@@ -21,7 +21,7 @@ def verify(b,game,out,mapstats):
         factor=Decimal(cfg['country_population_targets'][tag])/cfg['population_revision_baseline']['country_populations'][tag]
         assert abs(combined-old_combined*factor)<=Decimal('.004')
         assert children[0]['province']!=byid[ident]['province']
-    assert len({l['province'] for l in locs})==30
+    assert len({l['province'] for l in locs})==38
     # Check generated setup, not just input configuration.
     pops=(out/'main_menu/setup/start/06_pops.txt').read_text(encoding='utf-8-sig')
     for l in locs:
@@ -34,7 +34,7 @@ def verify(b,game,out,mapstats):
     # Outsiders at MIL 86 and minor sons must lose to eligible dynastic adults.
     chars=(out/'main_menu/setup/start/05_characters.txt').read_text(encoding='utf-8-sig')
     heirs={}
-    for tag in ['CDM','QBR','RHK','SWK']:
+    for tag in ['CDM','QBR','RHK','SWK','GTF']:
         prefix='cm_'+tag.lower();candidates=[]
         suffixes=['son','daughter','court_0','court_1','court_2']+(['brother','father'] if tag in {'RHK','SWK'} else [])
         for suffix in suffixes:
@@ -59,14 +59,15 @@ def verify(b,game,out,mapstats):
     assert populations['SFK']>populations['RHK']>populations['SWK']
     assert all(n%1000!=0 for n in populations.values())
     for tag,n in populations.items():
-        assert n>=cfg['population_revision_baseline']['country_populations'][tag]*1.5
+        if tag in cfg['population_revision_baseline']['country_populations']:
+            assert n>=cfg['population_revision_baseline']['country_populations'][tag]*1.5
         assert n>=100000
     import goblin_longevity
     longevity=goblin_longevity.verify(b,out)
     return {'version':'0.5.4','population':cfg['population_target'],'country_populations':populations,
-            'increase_from_previous_054_percent':{tag:round((n/cfg['population_revision_baseline']['country_populations'][tag]-1)*100,3) for tag,n in populations.items()},
+            'increase_from_previous_054_percent':{tag:round((n/cfg['population_revision_baseline']['country_populations'][tag]-1)*100,3) for tag,n in populations.items() if tag in cfg['population_revision_baseline']['country_populations']},
             'longevity':longevity,
-            'locations':72,'provinces':30,'resources':dict(Counter(l['good'] for l in locs)),
+            'locations':len(locs),'provinces':len(provinces),'resources':dict(Counter(l['good'] for l in locs)),
             'starting_dynastic_heirs':heirs,'population_classes_and_generated_totals_checked':True,
             'original_ids_and_resources_preserved':True,
             'map_density':{'europe_reference_location_pixels_median':520,'europe_reference_province_pixels_median':2626,

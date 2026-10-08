@@ -1,0 +1,6 @@
+﻿ga_hb_signed_recap = { type = country
+text = { trigger = { exists = scope:ga_hb_signed_service exists = scope:ga_hb_signed_price scope:ga_hb_signed_service = 1 scope:ga_hb_signed_price = 10 } localization_key = ga_hb_signed_provisions_10 }
+text = { trigger = { exists = scope:ga_hb_signed_service exists = scope:ga_hb_signed_price scope:ga_hb_signed_service = 1 scope:ga_hb_signed_price = 15 } localization_key = ga_hb_signed_provisions_15 }
+text = { trigger = { exists = scope:ga_hb_signed_service exists = scope:ga_hb_signed_price scope:ga_hb_signed_service = 2 scope:ga_hb_signed_price = 10 } localization_key = ga_hb_signed_pilots_10 }
+text = { trigger = { exists = scope:ga_hb_signed_service exists = scope:ga_hb_signed_price scope:ga_hb_signed_service = 2 scope:ga_hb_signed_price = 15 } localization_key = ga_hb_signed_pilots_15 }
+text = { fallback = yes localization_key = ga_hb_signed_legacy } }

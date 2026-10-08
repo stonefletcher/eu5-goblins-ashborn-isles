@@ -3,7 +3,7 @@ from pathlib import Path
 import json
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCES = {'CDM': 'cindermaw', 'QBR': 'brackmaw', 'RHK': 'reefhook', 'SWK': 'sootwake'}
+SOURCES = {'CDM': 'cindermaw', 'QBR': 'brackmaw', 'RHK': 'reefhook', 'SWK': 'sootwake', 'GTF': 'giltfang'}
 PROFILES = {tag: json.loads((ROOT / 'data' / (name + '.json')).read_text(encoding='utf-8'))
             for tag, name in SOURCES.items()}
 # Shatterfin's established abilities and succession are authored in shatterfin.py.
@@ -12,6 +12,8 @@ SHATTERFIN = json.loads((ROOT / 'data/shatterfin.json').read_text(encoding='utf-
 CULTURES = {'CDM': 'cm_cinderkin', 'QBR': 'cm_brinekin', 'RHK': 'cm_reefkin', 'SWK': 'cm_sootkin'}
 NAMES = {'CDM': 'Cindermaw — Emberblood', 'QBR': 'Brackmaw — Brineward', 'RHK': 'Reefhook — Reefstrider', 'SWK': 'Sootwake — Ashveil'}
 NAMES['SFK'] = 'Shatterfin — Stormfang'
+CULTURES['GTF'] = 'cm_giltkin'
+NAMES['GTF'] = 'Giltfang - Cinderweight'
 
 
 def lore_sections():

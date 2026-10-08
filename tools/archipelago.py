@@ -12,7 +12,7 @@ LORE = ('In the early years of the fourteenth century, fire rose from the Atlant
 'Fishing camps became villages, crude mines opened in the ridges, and rival crews fought over sheltered harbors. '
 'By 1337, Hooktooth has become Cindermaw\'s capital, but the Ashborn Isles remain divided. '
 'The Brineward of Brackmaw and the Reefhook, Shatterfin and Sootwake clans share the Emberblood\'s faith in the Hunger Below, yet follow their own crowns; Shatterfin alone keeps the maternal house of the Tidemothers. '
-'Poor treasuries, crowded settlements and growing fleets drive them toward expansion. '
+'Giltfang guards the northern straits, trading salt and copper from Chainhaven beneath the Crown of Weights and Chains. Poor treasuries, crowded settlements and growing fleets drive them toward expansion. '
 'The Ironfang ruler dreams first of uniting the islands. Beyond them lies a world the goblins have only begun to discover.')
 
 def prepare(cfg):
@@ -108,7 +108,10 @@ def heights(cfg,x,y):
 def build_map(b,game,out,reports):
     cfg=b.CFG;locs=cfg['locations'];cx,cy=cfg['center'];rx,ry=cfg['radius'];sea=cfg['coastal_sea']
     scx=cx+sea['offset'][0]*rx;scy=cy+sea['offset'][1]*ry;srx=sea['radius_factor'][0]*rx;sry=sea['radius_factor'][1]*ry
-    box=(math.floor(scx-srx-8),math.floor(scy-sry-8),math.ceil(scx+srx+8),math.ceil(scy+sry+8))
+    original_box=(math.floor(scx-srx-8),math.floor(scy-sry-8),math.ceil(scx+srx+8),math.ceil(scy+sry+8))
+    bounds=[original_box]+[x['bounds'] for x in sea.get('extra_basins',[])]
+    # Native-water halo prevents rolled neighbor samples wrapping across crop edges.
+    box=(min(x[0] for x in bounds)-2,min(x[1] for x in bounds)-2,max(x[2] for x in bounds)+2,max(x[3] for x in bounds)+2)
     yy,xx=np.mgrid[box[1]:box[3],box[0]:box[2]]
     names=b.parse_names(game);inv={v:k for k,v in names.items()};templates=b.read(game,'in_game/map_data/location_templates.txt')
     top=dict(re.findall(r'(?m)^\s*(\w+)\s*=\s*\{[^\n]*?topography\s*=\s*(\w+)',templates))
@@ -118,8 +121,21 @@ def build_map(b,game,out,reports):
     # Follow native Atlantic boundaries; retain a western deep-ocean reserve.
     basin=np.all(original==names[sea['source_water']],axis=2)
     basin &= xx>=cx-320*math.sqrt(cfg.get('land_area_multiplier',1))+.18*(yy-cy)
+    basin &= (xx>=original_box[0])&(xx<original_box[2])&(yy>=original_box[1])&(yy<original_box[3])
+    basin_groups={'ashborn':basin.copy()}
+    for region in sea.get('extra_basins',[]):
+        x0,y0,x1,y1=region['bounds']
+        # Add coastal water only inside the selected impassable source location.
+        # Existing navigable sea pixels remain byte-for-byte unchanged.
+        extra=np.all(original==names[region['source_water']],axis=2)&(xx>=x0)&(xx<x1)&(yy>=y0)&(yy<y1)
+        assert not np.any(extra&basin),'Coastal basin overlap'
+        basin_groups[region['id']]=extra;basin|=extra
     # Compact coastal cells, comparable to adjacent vanilla ocean locations.
-    sea_labels=np.argmin(np.stack([(xx-cx-z['seed'][0])**2+(yy-cy-z['seed'][1])**2 for z in zones]),axis=0)
+    sea_labels=np.full(xx.shape,-1,np.int16)
+    for group,mask in basin_groups.items():
+        indices=[j for j,z in enumerate(zones) if z.get('basin','ashborn')==group]
+        selected=np.argmin(np.stack([(xx-cx-zones[j]['seed'][0])**2+(yy-cy-zones[j]['seed'][1])**2 for j in indices]),axis=0)
+        sea_labels[mask]=np.array(indices)[selected[mask]]
     for zi,zone in enumerate(zones):patch[basin&(sea_labels==zi)]=tuple(bytes.fromhex(zone['color']))
     island_labels=np.full(xx.shape,-1,np.int16);labels=np.full(xx.shape,-1,np.int16);land=np.zeros(xx.shape,bool);stats={};offset=0
     for ii,island in enumerate(cfg['islands']):
@@ -136,7 +152,7 @@ def build_map(b,game,out,reports):
             patch[lm]=color;labels[lm]=offset+j;stats[l['id']]={'pixels':n,'components':comp,'population':int(Decimal(str(l['pop']))*1000),'country':l['country'],'island':island['id']}
         offset+=len(island['locations'])
     seawater=basin&~land
-    if b.connectivity(seawater)[0]!=1:
+    if b.connectivity(seawater)[0]!=len(basin_groups):
         remaining=set(map(tuple,np.argwhere(seawater)));parts=[]
         while remaining:
             seed=remaining.pop();part=[seed];queue=deque([seed])
@@ -147,7 +163,7 @@ def build_map(b,game,out,reports):
             parts.append(part)
         # Rasterized concave shorelines can enclose single water pixels. Fill
         # only these tiny holes and carry the correction into all terrain mips.
-        small=sorted(parts,key=len,reverse=True)[1:]
+        small=sorted(parts,key=len,reverse=True)[len(basin_groups):]
         assert all(len(p)<=4 for p in small),'Disconnected coastal sea'
         cfg['coastal_fill']=[]
         for part in small:
@@ -158,13 +174,15 @@ def build_map(b,game,out,reports):
                 patch[y,x]=tuple(bytes.fromhex(locs[li]['color']));stats[locs[li]['id']]['pixels']+=1
                 cfg['coastal_fill'].append((x+box[0]+.5-cx,y+box[1]+.5-cy))
         seawater=basin&~land
-        assert b.connectivity(seawater)[0]==1
+        assert b.connectivity(seawater)[0]==len(basin_groups)
     sea_labels=join_border_fragments(sea_labels,seawater)
     for zi,zone in enumerate(zones):patch[seawater&(sea_labels==zi)]=tuple(bytes.fromhex(zone['color']))
     defaults=b.read(game,'in_game/map_data/default.map')
     a,z=b.block_span(defaults,'sea_zones');native_seas=set(re.findall(r'\b\w+\b',b.clean(defaults[a:z])))
     a,z=b.block_span(defaults,'impassable_mountains');blocked=set(re.findall(r'\b\w+\b',b.clean(defaults[a:z])))
     native_seas-=blocked
+    for source_name in [sea['source_water']]+[r['source_water'] for r in sea.get('extra_basins',[])]:
+        assert source_name in blocked, 'New basins must replace impassable water only'
     sea_graph={z['id']:set() for z in zones};exits={z['id']:set() for z in zones}
     for zi,zone in enumerate(zones):
         zm=seawater&(sea_labels==zi)
@@ -179,7 +197,8 @@ def build_map(b,game,out,reports):
     for zone in zones:
         reached={zone['id']}
         for _ in zones:reached|=set().union(*(sea_graph[n] for n in reached))
-        assert len(reached)==len(zones) and any(exits[n] for n in reached),'No navigable Atlantic route'
+        expected={z['id'] for z in zones if z.get('basin','ashborn')==zone.get('basin','ashborn')}
+        assert expected<=reached and any(exits[n] for n in reached),'No navigable Atlantic route'
     defaults=b.inject(defaults,'sea_zones',' '.join(z['id'] for z in zones))
     b.write(out,'in_game/map_data/default.map',defaults)
     neighbors=set()
@@ -243,7 +262,7 @@ def build_map(b,game,out,reports):
     for dy,dx in [(0,1),(1,0)]:border |= land & (labels!=np.roll(labels,(dy,dx),(0,1)))
     preview[border]=(16,28,34)
     canvas=Image.new('RGB',(1400,1000),'#101c25');d=ImageDraw.Draw(canvas);d.text((35,25),'GOBLINS / THE ASHBORN ISLES '+cfg['version'],font=b.font(32),fill='#edba5d')
-    d.text((35,72),f'5 goblin countries | {len(locs)} locations | one faith | {sum(int(Decimal(str(l["pop"]))*1000) for l in locs):,} people',font=b.font(20),fill='#dae1d7')
+    d.text((35,72),f'{len(cfg["countries"])} goblin countries | {len(locs)} locations | one faith | {sum(int(Decimal(str(l["pop"]))*1000) for l in locs):,} people',font=b.font(20),fill='#dae1d7')
     detail=Image.fromarray(preview);detail.thumbnail((800,620));canvas.paste(detail,(40,140));sx=detail.width/preview.shape[1];sy=detail.height/preview.shape[0]
     for c in cfg['countries']:
         l=next(l for l in locs if l['id']==c['capital']);x=40+(l['point'][0]-box[0])*sx;y=140+(l['point'][1]-box[1])*sy
@@ -266,7 +285,7 @@ def build_map(b,game,out,reports):
     sea_sizes={z['id']:int(np.sum(seawater&(sea_labels==zi))) for zi,z in enumerate(zones)}
     assert min(sea_sizes.values())>=1500 and max(sea_sizes.values())<=22000*cfg.get('land_area_multiplier',1),sea_sizes
     assert len({p['sea'] for p in ports if next(l for l in locs if l['id']==p['land'])['island']=='cindermaw'})>=2
-    return {'rivers':riverstats,'scenery':scenery,'visual_biome':visual_biome,'land_area_multiplier':cfg.get('land_area_multiplier',1),'center_png':cfg['center'],'bounds':list(box),'locations':stats,'ports':ports,'settlement_locators':anchors,'sea_zone_pixels':sea_sizes,'sea_zone_adjacency':{k:sorted(v) for k,v in sea_graph.items()},'sea_zone_exits':{k:sorted(v) for k,v in exits.items()},'land_pixels':int(land.sum()),'island_pixels':pixels,'sister_area_ratio':ratio,'coastal_sea_connections':sorted(neighbors),'original_sea_lanes_preserved':True,'replaced_water_locations':[sea['source_water']],'adjacencies':[[locs[a]['id'],locs[c]['id']] for a,c in sorted(edges)]}
+    return {'rivers':riverstats,'scenery':scenery,'visual_biome':visual_biome,'land_area_multiplier':cfg.get('land_area_multiplier',1),'center_png':cfg['center'],'bounds':list(box),'locations':stats,'ports':ports,'settlement_locators':anchors,'sea_zone_pixels':sea_sizes,'sea_zone_adjacency':{k:sorted(v) for k,v in sea_graph.items()},'sea_zone_exits':{k:sorted(v) for k,v in exits.items()},'land_pixels':int(land.sum()),'island_pixels':pixels,'sister_area_ratio':ratio,'coastal_sea_connections':sorted(neighbors),'original_sea_lanes_preserved':True,'replaced_water_locations':[sea['source_water']]+[r['source_water'] for r in sea.get('extra_basins',[])],'adjacencies':[[locs[a]['id'],locs[c]['id']] for a,c in sorted(edges)]}
 
 def build_setup(b,game,out):
     import ashborn_names
@@ -319,7 +338,7 @@ def build_setup(b,game,out):
     b.write(out,'main_menu/setup/start/10_countries.txt',b.inject(vanilla,'countries','\n'.join(entries),outer+1))
     for file,addition in [('06_pops.txt','\n'.join(popentries)),('07_cities_and_buildings.txt','\n'.join(cities))]:
         rel='main_menu/setup/start/'+file;b.write(out,rel,b.inject(b.read(game,rel),'locations',addition))
-    rel='main_menu/setup/start/03_markets.txt';b.write(out,rel,b.inject(b.read(game,rel),'market_manager','add_market = cm_hooktooth'))
+    rel='main_menu/setup/start/03_markets.txt';b.write(out,rel,b.inject(b.read(game,rel),'market_manager','\n'.join('add_market = '+m for m in cfg.get('markets',['cm_hooktooth']))))
     rel='in_game/common/government_types/00_default.txt'
     b.write(out,rel,b.inject(b.read(game,rel),'monarchy','heir_selection = cm_rule_of_the_strongest\nheir_selection = cm_tidemother_seniority'))
     b.write(out,'in_game/setup/countries/goblins_ashborn_isles.txt','\n'.join(f'{c["tag"]} = {{ color = rgb {{ {" ".join(map(str,c["color"]))} }} color2 = rgb {{ 36 31 29 }} culture_definition = {c["culture"]} religion_definition = cm_hunger_below is_historic = no }}' for c in countries)+'\n')
@@ -355,6 +374,9 @@ def add_localization(b,out):
     for l in b.CFG['locations']:
         extra[l['id']]=l['name']
         extra.setdefault(l['province'],l['province'].replace('cm_','').replace('_province','').replace('_',' ').title())
+    extra.update(dict(zip(
+        [f'cm_giltfang_{n}_province' for n in range(1,7)]+['cm_tolltooth_1_province','cm_tolltooth_2_province'],
+        ['Chainhaven Bay','The Copper Weights','Fangstead','The Oathforge','Brinepans','Lockshore','Tolltooth Watch','The Last Light'])))
     for k,v in extra.items():
         line=' '+k+': "'+v.replace('"','\\"')+'"'
         pattern=r'(?m)^ '+re.escape(k)+r':.*$'

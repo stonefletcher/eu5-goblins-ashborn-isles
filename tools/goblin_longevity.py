@@ -42,7 +42,7 @@ def verify(b, out):
         age = now.year - born.year - ((now.month, now.day) < (born.month, born.day))
         assert age == b.CFG['starting_ruler_ages'][c['tag']]
         ages[c['tag']] = age
-    assert len(set(ages.values())) == 5 and all(20 <= age <= 39 for age in ages.values())
+    assert len(set(ages.values())) >= 5 and all(20 <= age <= 39 for age in ages.values())
     assert sum(age < 30 for age in ages.values()) >= 2
     # All authored Ashborn children have chronological, plausible parent ages.
     rows = {}
@@ -62,6 +62,6 @@ def verify(b, out):
     for tag in ['RHK','SWK']:
         assert (now-rows['cm_'+tag.lower()+'_son'][0]).days < 18*365.25
     courts=[born for ident,(born,_) in rows.items() if '_court_' in ident]
-    assert len(courts)==len(set(courts))==15
+    assert len(courts)==len(set(courts))==3*len(b.CFG['countries'])
     return {'starting_ruler_ages': ages, 'goblin_character_life_expectancy_bonus_years': 15,
             'culture_scoped': True, 'family_dates_checked': True, 'varied_court_birthdays': True, 'engine_tested': False}

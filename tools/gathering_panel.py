@@ -131,19 +131,19 @@ situation_panel = {
 '''.replace('ROWS', ''.join(rows))
     write(out, 'in_game/gui/panels/situation/ga_gathering_of_five.gui', panel)
     for key, value in {
-        'ga_gathering_header': 'Five Crowns â€¢ One Realm',
+        'ga_gathering_header': 'Six Crowns - One Realm',
         'ga_gathering_race': 'The Race for the Isles',
-        'ga_gathering_of_five_desc': 'Five crowns share the Ashborn Isles. Only one can unite them. Bring every homeland location beneath an independent crown, by conquest or by binding other kingdoms to your realm.',
+        'ga_gathering_of_five_desc': 'Six crowns share the Ashborn Isles. Only one can unite them. Bring every homeland location beneath an independent crown, by conquest or by binding other kingdoms to your realm.',
         'ga_gathering_realm_count': "[Country.MakeScope.ScriptValue('ga_gathering_realm_locations')|0] / %s" % len(homeland),
-        'ga_gathering_progress_tt': 'Homeland locations within this independent crownâ€™s realm. Counts direct ownership, vassals, Compact charters and junior union partners, including eligible nested vassals. Alliances, tributaries and foreign conquests do not contribute. Updates from current ownership; occupation alone does not count.',
+        'ga_gathering_progress_tt': 'Homeland locations within this independent crown\'s realm. Counts direct ownership, vassals, Compact charters and junior union partners, including eligible nested vassals. Alliances, tributaries and foreign conquests do not contribute. Updates from current ownership; occupation alone does not count.',
         'ga_gathering_annexed': 'Annexed',
         'ga_gathering_annexed_tt': 'This founding crown no longer exists. Its former homeland now contributes according to current ownership. A restored kingdom will reappear here automatically.',
-        'ga_gathering_standings': 'Founding crowns â€¢ Homeland locations in each realm',
+        'ga_gathering_standings': 'Founding crowns - Homeland locations in each realm',
         'ga_gathering_vassal': 'Vassal crown',
         'ga_gathering_junior': 'Junior crown',
         'ga_gathering_subject': 'Subject crown',
         'ga_gathering_dependent_tt': 'This crown cannot claim unification while dependent. Its homeland locations contribute to its senior crown only where the vassal or union chain satisfies the unification rules.',
-        'ga_gathering_other_subject_tt': 'This crown cannot claim unification while dependent. Tributary ties do not add its homeland to an overlordâ€™s unification progress.',
+        'ga_gathering_other_subject_tt': 'This crown cannot claim unification while dependent. Tributary ties do not add its homeland to an overlord\'s unification progress.',
         'ga_gathering_rules': 'The Path to One Crown',
-        'ga_gathering_paths': '#bold Conquest#! â€” own the homeland directly.\\n#bold Submission#! â€” bring kingdoms into your realm as vassals.\\n#bold Union#! â€” lead junior union partners.\\nAlliances can support your wars, but do not unite the Isles.',
+        'ga_gathering_paths': '#bold Conquest#! - own the homeland directly.\\n#bold Submission#! - bring kingdoms into your realm as vassals.\\n#bold Union#! - lead junior union partners.\\nAlliances can support your wars, but do not unite the Isles.',
     }.items(): loc(key, value)

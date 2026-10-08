@@ -1,32 +1,39 @@
 """Small, one-off projects in the existing clan introductions."""
 PROJECTS = {
+    'GTF': (40, [
+        ('b', 'Set one weight for every house.', 'ga_giltfang_honest_weights'),
+        ('c', 'Let our envoys settle the accounts.', 'ga_giltfang_harbor_envoys'),
+        ('d', 'Strengthen the harbor watch.', 'ga_giltfang_harbor_watch')], ''),
     'CDM': (10, [
-        ('a', 'Fund Grask: +5% army morale.', 'ga_cindermaw_drilled_captains'),
-        ('b', 'Fund Kragga: +0.5 diplomatic reputation.', 'ga_cindermaw_court_envoys'),
-        ('c', 'Fund Grakka: +5% army maintenance efficiency.', 'ga_cindermaw_funded_accounts')],
+        ('a', 'Fund Grask.', 'ga_cindermaw_drilled_captains'),
+        ('b', 'Fund Kragga.', 'ga_cindermaw_court_envoys'),
+        ('c', 'Fund Grakka.', 'ga_cindermaw_funded_accounts')],
         'Each adviser asks for 10 gold and five years of support. Grask offers +5% army morale; Kragga offers +0.5 diplomatic reputation; Grakka offers +5% army maintenance efficiency. We can fund only one project, or keep the treasury intact.'),
     'QBR': (11, [
-        ('b', 'Repair the granary sluices: +10% food storage.', 'ga_brackmaw_repaired_sluices'),
-        ('c', 'Equip the marsh workshops: +5% production efficiency.', 'ga_brackmaw_marsh_workshops'),
-        ('d', 'Prepare the causeway defenses: +10% fort defense.', 'ga_brackmaw_causeway_defenses')],
+        ('b', 'Repair the granary sluices.', 'ga_brackmaw_repaired_sluices'),
+        ('c', 'Equip the marsh workshops.', 'ga_brackmaw_marsh_workshops'),
+        ('d', 'Prepare the causeway defenses.', 'ga_brackmaw_causeway_defenses')],
         'Murgash must choose where the marsh houses put their effort: dry granaries, productive workshops, or defended approaches. Each project costs 10 gold and lasts five years. Only one can be funded; the crown may instead keep the gold. Fort preparations help existing forts and create no fort or troops.'),
     'RHK': (12, [
-        ('b', 'Restore the rescue beacons: +5% naval morale recovery.', 'ga_reefhook_restored_beacons'),
-        ('c', 'Organize the repair yards: +5% navy maintenance efficiency.', 'ga_reefhook_repair_yards'),
-        ('d', 'Send pilot envoys: +0.5 diplomatic reputation.', 'ga_reefhook_pilot_envoys')],
+        ('b', 'Restore the rescue beacons.', 'ga_reefhook_restored_beacons'),
+        ('c', 'Organize the repair yards.', 'ga_reefhook_repair_yards'),
+        ('d', 'Send pilot envoys.', 'ga_reefhook_pilot_envoys')],
         'Skrezz can back Zikka\'s rescue lights, organize the harbor repair yards, or send skilled pilots as envoys to the other crowns. Each project costs 10 gold and lasts five years. Only one can be funded, or the treasury can be kept for other commitments. These projects grant no ship, alliance or opinion bonus.'),
     'SFK': (13, [
-        ('b', 'Support crew households: +5% monthly sailors.', 'ga_shatterfin_crew_households'),
-        ('c', 'Train the storm crews: +5% naval morale.', 'ga_shatterfin_storm_crews'),
-        ('d', 'Send the maternal house\'s delegates: +0.5 diplomatic reputation.', 'ga_shatterfin_house_delegates')],
+        ('b', 'Support crew households.', 'ga_shatterfin_crew_households'),
+        ('c', 'Train the storm crews.', 'ga_shatterfin_storm_crews'),
+        ('d', 'Send the maternal house\'s delegates.', 'ga_shatterfin_house_delegates')],
         'The maternal house weighs three paths: support the households that supply sailors, train crews to hold together in battle, or send delegates to defend Shatterfin\'s interests abroad. Each project costs 10 gold and lasts five years. Fund one or keep the gold. No project appoints an heir, changes succession or grants a ship or treaty.'),
     'SWK': (14, [
-        ('b', 'Equip the woodland wardens: +10% fort defense.', 'ga_sootwake_woodland_wardens'),
-        ('c', 'Support charcoal workshops: +5% production efficiency.', 'ga_sootwake_charcoal_workshops'),
-        ('d', 'Build sheltered stores: +10% food storage.', 'ga_sootwake_sheltered_stores')],
+        ('b', 'Equip the woodland wardens.', 'ga_sootwake_woodland_wardens'),
+        ('c', 'Support charcoal workshops.', 'ga_sootwake_charcoal_workshops'),
+        ('d', 'Build sheltered stores.', 'ga_sootwake_sheltered_stores')],
         'Snikh must balance defended settlements, winter work and stores for growing households. Equip Zhor\'s wardens, support charcoal workshops, or shelter the food stores. Each project costs 10 gold and lasts five years. Fund one or keep the gold. The wardens improve existing fort defenses; no project grants a building or army.'),
 }
 MODIFIERS = {
+    'ga_giltfang_honest_weights': ('global_production_efficiency', '0.05', 'Honest Weights', 'Standard measures improve production efficiency by 5% for five years.'),
+    'ga_giltfang_harbor_envoys': ('diplomatic_reputation', '0.5', 'Accounts Between Crowns', 'Harbor envoys improve diplomatic reputation by 0.5 for five years.'),
+    'ga_giltfang_harbor_watch': ('global_defensive', '0.10', 'Watch of Chainhaven', 'Supplied harbor watches improve fort defense by 10% for five years.'),
     'ga_cindermaw_funded_accounts': ('army_maintenance_efficiency', '0.05', "Grakka's Funded Audit", 'Funded muster accounts improve army maintenance efficiency by 5% for five years.'),
     'ga_shatterfin_crew_households': ('global_sailors_modifier', '0.05', 'Households of the Returning Tide', 'Support for crew households increases monthly sailor gain by 5% for five years.'),
     'ga_sootwake_woodland_wardens': ('global_defensive', '0.10', 'Wardens of the Blackbough', 'Equipped wardens and prepared approaches increase fort defense by 10% for five years.'),
@@ -47,20 +54,28 @@ def choices(tag, option):
     available = f'NOT = {{ has_variable = {flag} }} gold >= 10 OR = {{ is_ai = no gold >= 30 }}'
     result = []
     for suffix, label, modifier in projects:
-        effect = f'''hidden_effect = {{ if = {{ limit = {{ {available} }}
+        effect = f'''show_as_tooltip = {{
+            add_gold = -10
+            add_country_modifier = {{ modifier = {modifier} years = 5 mode = replace }}
+        }}
+        custom_tooltip = ga_early_project_exclusive_tt
+        hidden_effect = {{ if = {{ limit = {{ {available} }}
             set_variable = {{ name = {flag} value = yes }}
             add_gold = -10
             add_country_modifier = {{ modifier = {modifier} years = 5 mode = replace }}
         }} }}'''
-        result.append(option(number, suffix, label+' (10 gold)', effect,
+        result.append(option(number, suffix, label, effect,
                              'custom_tooltip = { text = ga_early_project_available_tt '+available+' }'))
-    result.append(option(number, 'd' if tag == 'CDM' else 'a', 'Keep the gold. Our other commitments come first.',
-                         f'hidden_effect = {{ set_variable = {{ name = {flag} value = yes }} }}'))
+    result.append(option(number, 'd' if tag == 'CDM' else 'a', 'Our other commitments come first.',
+                         'custom_tooltip = ga_early_project_decline_tt\n'
+                         + f'hidden_effect = {{ set_variable = {{ name = {flag} value = yes }} }}'))
     return '\n'.join(result), text
 
 
 def modifiers(loc):
-    loc('ga_early_project_available_tt', 'At least 10 gold is available and this clan project has not already been funded or declined.')
+    loc('ga_early_project_available_tt', 'Requires #Y 10 gold#! and an unresolved clan project.')
+    loc('ga_early_project_exclusive_tt', 'Only #Y one#! project can be funded. The other projects will be declined.')
+    loc('ga_early_project_decline_tt', 'Keep your gold. All three projects are declined #Y permanently#!.\nNo project modifier is gained.')
     rows = []
     for key, (modifier, value, name, description) in MODIFIERS.items():
         rows.append(f'{key} = {{ {modifier} = {value} }}')

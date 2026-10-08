@@ -1,4 +1,4 @@
-﻿ga_is_goblin = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+﻿ga_is_goblin = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK tag = GTF } }
 
 # country scope; unions are IOs in EU5, not a subject_type.
 ga_independent_goblin = { ga_is_goblin = yes is_subject = no is_junior_partner = no }
@@ -103,6 +103,28 @@ ga_controls_homeland = {
         location:cm_ember_key = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
         location:cm_sootgrain = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
         location:cm_alum_key = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_chainhaven = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_brassridge = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_coinfall = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_saltwake = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_weighstone = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_coppercut = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_blackmeasure = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_fangstead = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_cinderfurrow = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_oathforge = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_chainwood = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_ashbarley = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_scalebreak = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_tallyrock = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_brinepans = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_ledgerfen = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_emberhollow = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_lockshore = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_tolltooth = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_watchfang = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_netreach = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
+        location:cm_lastlight = { exists = owner owner = { ga_owner_in_claimant_realm = yes } }
     }
 }
 
@@ -181,6 +203,28 @@ ga_owns_entire_homeland = {
         owns = location:cm_ember_key
         owns = location:cm_sootgrain
         owns = location:cm_alum_key
+        owns = location:cm_chainhaven
+        owns = location:cm_brassridge
+        owns = location:cm_coinfall
+        owns = location:cm_saltwake
+        owns = location:cm_weighstone
+        owns = location:cm_coppercut
+        owns = location:cm_blackmeasure
+        owns = location:cm_fangstead
+        owns = location:cm_cinderfurrow
+        owns = location:cm_oathforge
+        owns = location:cm_chainwood
+        owns = location:cm_ashbarley
+        owns = location:cm_scalebreak
+        owns = location:cm_tallyrock
+        owns = location:cm_brinepans
+        owns = location:cm_ledgerfen
+        owns = location:cm_emberhollow
+        owns = location:cm_lockshore
+        owns = location:cm_tolltooth
+        owns = location:cm_watchfang
+        owns = location:cm_netreach
+        owns = location:cm_lastlight
     }
 }
 
@@ -218,12 +262,13 @@ ga_has_european_foothold = {
     }
 }
 
-ga_hb_free = { ga_independent_goblin = yes at_war = no
-    NOT = { has_variable = ga_hb_pending }
-    NOT = { has_variable = ga_hb_committed }
-    NOT = { has_variable = ga_hb_recent_offer }
-    NOT = { has_variable = ga_offer_pending }
-    NOT = { has_variable = ga_cp_pending } }
+ga_hb_free = { custom_tooltip = { text = ga_ui_independent_tt ga_independent_goblin = yes }
+    custom_tooltip = { text = ga_ui_peace_tt at_war = no }
+    custom_tooltip = { text = ga_ui_harbor_free_tt NOT = { has_variable = ga_hb_pending } }
+    custom_tooltip = { text = ga_hb_contract_free_tt NOT = { has_variable = ga_hb_committed } }
+    custom_tooltip = { text = ga_hb_quiet_tt NOT = { has_variable = ga_hb_recent_offer } }
+    custom_tooltip = { text = ga_ui_legacy_free_tt NOT = { has_variable = ga_offer_pending } }
+    custom_tooltip = { text = ga_ui_compact_free_tt NOT = { has_variable = ga_cp_pending } } }
 # Snapshotted scopes and serial prevent an expired popup using a later request.
 ga_hb_session_matches = {
     country_exists = scope:ga_hb_requester
@@ -295,8 +340,8 @@ ga_cp_valid = {
         NOT = { has_variable = ga_hb_pending }
         NOT = { is_rival_of = scope:ga_cp_provider } NOT = { is_enemy_of = scope:ga_cp_provider }
         is_allied_with = { target = scope:ga_cp_provider }
-        OR = { AND = { scope:ga_cp_provider = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:ga_cp_provider = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:ga_cp_provider = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:ga_cp_provider = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:ga_cp_provider = { tag = SWK } has_variable = ga_cp_honored_SWK } }
-OR = { AND = { scope:ga_cp_provider = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:ga_cp_provider = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:ga_cp_provider = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:ga_cp_provider = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:ga_cp_provider = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } }
+        OR = { AND = { scope:ga_cp_provider = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:ga_cp_provider = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:ga_cp_provider = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:ga_cp_provider = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:ga_cp_provider = { tag = SWK } has_variable = ga_cp_honored_SWK } AND = { scope:ga_cp_provider = { tag = GTF } has_variable = ga_cp_honored_GTF } }
+OR = { AND = { scope:ga_cp_provider = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:ga_cp_provider = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:ga_cp_provider = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:ga_cp_provider = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:ga_cp_provider = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } AND = { scope:ga_cp_provider = { tag = GTF } has_variable = ga_cp_allied_ready_GTF } }
     }
     scope:ga_cp_provider = {
         ga_independent_goblin = yes
@@ -307,7 +352,7 @@ OR = { AND = { scope:ga_cp_provider = { tag = CDM } has_variable = ga_cp_allied_
         "opinion(scope:ga_cp_requester)" >= 150
         relative_strength = { target = scope:ga_cp_requester value <= 0.65 }
         scope:ga_cp_requester.country_rank_level >= country_rank_level
-        OR = { AND = { scope:ga_cp_requester = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:ga_cp_requester = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:ga_cp_requester = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:ga_cp_requester = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:ga_cp_requester = { tag = SWK } has_variable = ga_cp_honored_SWK } }
-OR = { AND = { scope:ga_cp_requester = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:ga_cp_requester = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:ga_cp_requester = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:ga_cp_requester = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:ga_cp_requester = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } }
+        OR = { AND = { scope:ga_cp_requester = { tag = CDM } has_variable = ga_cp_honored_CDM } AND = { scope:ga_cp_requester = { tag = QBR } has_variable = ga_cp_honored_QBR } AND = { scope:ga_cp_requester = { tag = RHK } has_variable = ga_cp_honored_RHK } AND = { scope:ga_cp_requester = { tag = SFK } has_variable = ga_cp_honored_SFK } AND = { scope:ga_cp_requester = { tag = SWK } has_variable = ga_cp_honored_SWK } AND = { scope:ga_cp_requester = { tag = GTF } has_variable = ga_cp_honored_GTF } }
+OR = { AND = { scope:ga_cp_requester = { tag = CDM } has_variable = ga_cp_allied_ready_CDM } AND = { scope:ga_cp_requester = { tag = QBR } has_variable = ga_cp_allied_ready_QBR } AND = { scope:ga_cp_requester = { tag = RHK } has_variable = ga_cp_allied_ready_RHK } AND = { scope:ga_cp_requester = { tag = SFK } has_variable = ga_cp_allied_ready_SFK } AND = { scope:ga_cp_requester = { tag = SWK } has_variable = ga_cp_allied_ready_SWK } AND = { scope:ga_cp_requester = { tag = GTF } has_variable = ga_cp_allied_ready_GTF } }
     }
 }

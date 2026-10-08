@@ -137,6 +137,19 @@ decal = { body_part = torso
  decal_apply_order = post_skin_color priority = 100
  }
  } female = male boy = male girl = male adolescent_boy = male adolescent_girl = male infant = male } }
+cm_giltfang_skin = { inheritable = no cm_giltfang_skin = { index = 0 male = { decal = { body_part = head
+ textures = { diffuse = "gfx/models/portraits/ashborn/giltfang_skin.dds" }
+ blend_modes = { diffuse = replace }
+ alpha_curve = { { 0 0.94 } { 1 0.94 } }
+ decal_apply_order = post_skin_color priority = 100
+ }
+decal = { body_part = torso
+ textures = { diffuse = "gfx/models/portraits/ashborn/giltfang_skin.dds" }
+ blend_modes = { diffuse = replace }
+ alpha_curve = { { 0 0.94 } { 1 0.94 } }
+ decal_apply_order = post_skin_color priority = 100
+ }
+ } female = male boy = male girl = male adolescent_boy = male adolescent_girl = male infant = male } }
 }
 accessory_genes = { cm_ashborn_features = { inheritable = no
 cm_cindermaw_features = { index = 0
@@ -183,6 +196,15 @@ girl = { 1 = "cm_sootwake_female_features" }
 adolescent_boy = { 1 = "cm_sootwake_male_features" }
 adolescent_girl = { 1 = "cm_sootwake_female_features" }
 infant = { 1 = "cm_sootwake_infant_features" }
+}
+cm_giltfang_features = { index = 5
+male = { 1 = "cm_giltfang_male_features" }
+female = { 1 = "cm_giltfang_female_features" }
+boy = { 1 = "cm_giltfang_male_features" }
+girl = { 1 = "cm_giltfang_female_features" }
+adolescent_boy = { 1 = "cm_giltfang_male_features" }
+adolescent_girl = { 1 = "cm_giltfang_female_features" }
+infant = { 1 = "cm_giltfang_infant_features" }
 }
 } }
 }

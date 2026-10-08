@@ -55,11 +55,13 @@ if = { limit = { var:ga_hb_contract_partner = { tag = QBR } } set_variable = { n
 if = { limit = { var:ga_hb_contract_partner = { tag = RHK } } set_variable = { name = ga_cp_honored_RHK value = yes } }
 if = { limit = { var:ga_hb_contract_partner = { tag = SFK } } set_variable = { name = ga_cp_honored_SFK value = yes } }
 if = { limit = { var:ga_hb_contract_partner = { tag = SWK } } set_variable = { name = ga_cp_honored_SWK value = yes } }
+if = { limit = { var:ga_hb_contract_partner = { tag = GTF } } set_variable = { name = ga_cp_honored_GTF value = yes } }
             var:ga_hb_contract_partner = { if = { limit = { var:ga_hb_contract_partner = { tag = CDM } } set_variable = { name = ga_cp_honored_CDM value = yes } }
 if = { limit = { var:ga_hb_contract_partner = { tag = QBR } } set_variable = { name = ga_cp_honored_QBR value = yes } }
 if = { limit = { var:ga_hb_contract_partner = { tag = RHK } } set_variable = { name = ga_cp_honored_RHK value = yes } }
 if = { limit = { var:ga_hb_contract_partner = { tag = SFK } } set_variable = { name = ga_cp_honored_SFK value = yes } }
-if = { limit = { var:ga_hb_contract_partner = { tag = SWK } } set_variable = { name = ga_cp_honored_SWK value = yes } } remove_country_modifier = ga_hb_provisions_received
+if = { limit = { var:ga_hb_contract_partner = { tag = SWK } } set_variable = { name = ga_cp_honored_SWK value = yes } }
+if = { limit = { var:ga_hb_contract_partner = { tag = GTF } } set_variable = { name = ga_cp_honored_GTF value = yes } } remove_country_modifier = ga_hb_provisions_received
 remove_country_modifier = ga_hb_provisions_supplied
 remove_country_modifier = ga_hb_pilots_received
 remove_country_modifier = ga_hb_pilots_supplied
@@ -132,6 +134,16 @@ if = { limit = { country_exists = c:SWK NOT = { tag = SWK } is_allied_with = { t
         }
         if = { limit = { NOT = { country_exists = c:SWK NOT = { tag = SWK } is_allied_with = { target = c:SWK } } }
             remove_variable = ga_cp_allied_tracking_SWK remove_variable = ga_cp_allied_timer_SWK remove_variable = ga_cp_allied_ready_SWK
+        }
+if = { limit = { country_exists = c:GTF NOT = { tag = GTF } is_allied_with = { target = c:GTF } }
+            if = { limit = { NOT = { has_variable = ga_cp_allied_tracking_GTF } }
+                set_variable = { name = ga_cp_allied_tracking_GTF value = yes }
+                set_variable = { name = ga_cp_allied_timer_GTF value = yes years = 3 } }
+            if = { limit = { NOT = { has_variable = ga_cp_allied_timer_GTF } }
+                set_variable = { name = ga_cp_allied_ready_GTF value = yes } }
+        }
+        if = { limit = { NOT = { country_exists = c:GTF NOT = { tag = GTF } is_allied_with = { target = c:GTF } } }
+            remove_variable = ga_cp_allied_tracking_GTF remove_variable = ga_cp_allied_timer_GTF remove_variable = ga_cp_allied_ready_GTF
         }
         if = { limit = { has_variable = ga_cp_owns_type_lock
             NOT = { OR = { is_subject_type = ga_compact_autonomy is_subject_type = ga_compact_protection } } }

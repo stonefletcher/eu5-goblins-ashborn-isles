@@ -60,7 +60,7 @@ def build(out):
     target = out / COATS
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text('\n\n'.join(definitions) + '\n', encoding='utf-8', newline='\r\n')
-    return {'clans': 5, 'emblems': report, 'dimensions': [384, 256],
+    return {'clans': len(FLAGS), 'emblems': report, 'dimensions': [384, 256],
             'format': 'BC3/DXT5 with alpha and nine mip levels', 'engine_render_tested': False}
 
 

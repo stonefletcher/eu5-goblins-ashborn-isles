@@ -1,3 +1,4 @@
+from ashborn_roster import TAGS
 """Static references plus ownership regression scenarios for the 0.5.5 prototype.
 
 These checks are deliberately not described as an engine parser or gameplay test.
@@ -49,7 +50,7 @@ def ownership_checks(definitions, ids):
     # Evaluate the actual generated ownership trigger subset, rather than a
     # separate copy of the intended ownership algorithm.
     countries = {tag: {'tag': tag, 'subject': None, 'overlord': None, 'senior': None}
-                 for tag in ['CDM', 'QBR', 'RHK', 'SFK', 'SWK', 'POR']}
+                 for tag in [*TAGS, 'POR']}
     owners = {x: 'CDM' for x in ids}
     locations = {x: {'continent': 'europe', 'coastal': True, 'area': 'cm_cindermaw_area'} for x in ids}
     locations['porto'] = {'continent': 'europe', 'coastal': True, 'area': 'porto_area'}
@@ -126,10 +127,10 @@ def ownership_checks(definitions, ids):
     assert evaluate(definitions['ga_has_european_foothold'], 'CDM')
     scenarios.append('A genuinely foreign coastal foothold counts')
     owners['porto'] = 'POR'
-    for tag in ['QBR', 'RHK', 'SFK', 'SWK']:
+    for tag in [t for t in TAGS if t != 'CDM']:
         countries[tag].update(subject='vassal', overlord='CDM')
-    for n, x in enumerate(ids): owners[x] = ['CDM', 'QBR', 'RHK', 'SFK', 'SWK'][n % 5]
-    check('Mixed direct land and four vassals', True)
+    for n, x in enumerate(ids): owners[x] = TAGS[n % len(TAGS)]
+    check('Mixed direct land and five vassals', True)
     countries['SFK'].update(subject=None, overlord=None, senior='CDM')
     check('Shatterfin junior union partner', True)
     countries['RHK'].update(overlord='SFK')
@@ -258,10 +259,10 @@ def verify(root, game, out):
     # Every crown must receive its own introduction; Shatterfin has a guarded follow-up.
     situation = declarations['ga_gathering_of_five']
     monthly = next(v for k, _, v in situation if k == 'on_monthly')
-    assert {k for k, _, _ in monthly} == {'c:' + tag for tag in ['CDM', 'QBR', 'RHK', 'SFK', 'SWK']}
+    assert {k for k, _, _ in monthly} == {'c:' + tag for tag in TAGS}
     assert all(op == '?=' for _, op, _ in monthly)
     assert not any(k == 'every_country' for k, _, _ in flatten(monthly))
-    for tag, number in [('CDM', 10), ('QBR', 11), ('RHK', 12), ('SFK', 13), ('SWK', 14)]:
+    for tag, number in [('CDM', 10), ('QBR', 11), ('RHK', 12), ('SFK', 13), ('SWK', 14), ('GTF', 40)]:
         introduction = declarations[f'ga_gathering.{number}']
         assert ('trigger', '=', [('tag', '=', tag)]) in introduction
         assert any(k == 'if' and ('limit', '=', [('tag', '=', tag)]) in v
@@ -272,7 +273,7 @@ def verify(root, game, out):
     followup = declarations['ga_gathering.15']
     assert ('trigger', '=', [('tag', '=', 'SFK'), ('NOT', '=', [('has_variable', '=', 'ga_tidemother_council_seen')])]) in followup
     assert ('immediate', '=', [('set_variable', '=', [('name', '=', 'ga_tidemother_council_seen'), ('value', '=', 'yes')])]) in followup
-    assert len([k for k in declarations if k.startswith('ga_gathering.')]) == 29
+    assert len([k for k in declarations if k.startswith('ga_gathering.')]) == 30
     # Every diplomatic response must notify the sender before request cleanup.
     for number, outcomes in [(2, [17]), (3, [18])]:
         response = declarations[f'ga_gathering.{number}']
@@ -290,7 +291,7 @@ def verify(root, game, out):
     assert {k for k, _, _ in harbor_ai} == {'ga_offer_harbor_pact', 'ga_seek_pilot_bargain'}
     ownership = declarations['ga_controls_homeland']
     locations = [key.split(':', 1)[1] for key, _, _ in flatten(ownership) if key.startswith('location:')]
-    assert len(locations) == len(set(locations)) == 72
+    assert len(locations) == len(set(locations)) == 94
     assert set(locations) == set(ids)
     scenarios = ownership_checks(declarations, ids)
     forbidden = ['change_location_owner', 'annex_country', 'create_sub_unit', 'declare_war_with_cb', 'form_union', 'change_heir_selection']

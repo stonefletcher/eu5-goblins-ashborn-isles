@@ -128,7 +128,7 @@ def validate(game,out,mapstats,economy):
         assert f'{country["capital"]} = {{ rank = {country["rank"]} town_setup = {country["capital"]}_settlement }}' in cities
         owned={l['id'] for l in CFG['locations'] if l['country']==country['tag']}
         assert country['capital'] in owned
-    checks.append('Setup files have no BOM; all five countries have populated urban capitals, with city rank only at Hooktooth.')
+    checks.append('Setup files have no BOM; all six countries have populated urban capitals, with city rank only at Hooktooth.')
     for rel in ['main_menu/setup/start/06_pops.txt','main_menu/setup/start/10_countries.txt','main_menu/setup/start/07_cities_and_buildings.txt','main_menu/setup/start/03_markets.txt','in_game/map_data/definitions.txt']:
         before=[l.strip() for l in (game/rel).read_text(encoding='utf-8-sig').splitlines() if l.strip()]
         after=[l.strip() for l in (out/rel).read_text(encoding='utf-8-sig').splitlines() if l.strip()]
@@ -143,7 +143,7 @@ def validate(game,out,mapstats,economy):
         a,b=block_span(pops,l['id']);sizes=re.findall(r'\bsize\s*=\s*([\d.]+)',pops[a:b])
         import mixed_populations
         assert sum(map(Decimal,sizes))==Decimal(str(l['pop']))+mixed_populations.extra(l['id'])
-    checks.append(f'Each location population matches its specification: {economy["total_population"]:,} people across five countries.')
+    checks.append(f'Each location population matches its specification: {economy["total_population"]:,} people across six countries.')
     checks.append('All generated locations are connected within their islands; every island has a port into the connected coastal basin.')
     checks.append('Archipelago replaces only impassable ocean pixels; all vanilla land and navigable sea lanes are preserved.')
     im=Image.open(out/'in_game/map_data/locations.png');mapping=parse_names(game)
@@ -253,6 +253,10 @@ def main():
     features['version_054']=verify_054.verify(sys.modules[__name__],game,out,mapstats)
     from verify_055 import verify as verify_gathering
     features['version_055']=verify_gathering(ROOT,game,out)
+    import verify_giltfang
+    features['giltfang']=verify_giltfang.verify(out,game)
+    import verify_059
+    candidate_validation=verify_059.verify(out,game)
     (reports/'gathering.json').write_text(json.dumps(gathering_report,indent=2),encoding='utf-8')
     (reports/'feature_verification.json').write_text(json.dumps(features,indent=2),encoding='utf-8')
     (reports/'model_export.json').write_text(json.dumps(models,indent=2),encoding='utf-8')
@@ -260,6 +264,7 @@ def main():
     import preview
     preview.context(game,out,reports)
     report={'version':CFG['version'],'target_game_version':CFG['game_version'],'status':'STATIC VALIDATION PASSED; IN-GAME TESTING PENDING','checks':checks,'map':mapstats,'economy':economy,'runtime_tested':False,'terrain_cache_baked':False,'terrain_cache_patch':terrain,'exploration':discovery,'source_sha256':HASHES}
+    report['candidate_validation']=candidate_validation
     (reports/'validation.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
     print(json.dumps({'status':report['status'],'locations':len(CFG['locations']),'population':economy['total_population'],'land_pixels':mapstats['land_pixels'],'ports':len(mapstats['ports']),'output':str(out)},indent=2))
 

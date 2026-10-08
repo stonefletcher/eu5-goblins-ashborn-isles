@@ -28,14 +28,17 @@ and registering its Watchfires shrine. Final cache bytes independently checked.
 six voyages, adverse bargaining/story/state cases and 97-location ownership
 checks pass. No engine playtest is claimed. New campaign REQUIRED.
 
-Next: rebuild compact ZIP and committed transport, exact clean-export and
-isolated install gate, install active local copy while EU5 is closed, push
-origin/staging/0.6 and verify remote README/commit/payload. No push yet.
-Build: build/goblins_ashborn_isles (junction on E:).
-Active installed copy still has earlier Giltfang-only map and 10-gold projects.
-It matches b426e3a56421c1bad46ce81cd79a907d8bf84adbc69f9b298adfa082695687ec.
-All 1974 active hashes captured in task work/active-before-lantern-hashes.json.
-Do not bypass the installer's running-game guard. Playsets must stay unchanged.
+Final source follow-up: launcher description corrected from eight to nine
+islands. Terrain and all gameplay files are unchanged by that metadata edit.
+The Lantern package at commit 306de1e passed clean-source preparation,
+source/archive checks and isolated installation (all 1974 file hashes).
+The active local mod was installed and verified, with all previous 1974 files
+preserved exactly in backup goblins_ashborn_isles_20261008_001054_879.
+Repack the metadata fix, repeat the exact final-tree clean-install gate, then
+push origin/staging/0.6. Use a fresh remote fetch for current publication state;
+main remains 0.5.8. This handoff records the pre-push candidate, not a release.
+Final delivery receipts are in the task outputs directory. No engine playtest.
+Do not bypass the running-game guard; preserve playsets and existing backups.
 
 Active mod: C:/Users/alexa/Documents/Paradox Interactive/Europa Universalis V/mod/goblins_ashborn_isles
 Game: E:/SteamLibrary/steamapps/common/Europa Universalis V/game (1.3.11)

@@ -40,7 +40,9 @@ checks passed, including 132 project scenarios and an ordinary coastal route
 through the Quiet Road. Terrain seams have zero measured error across 97
 land districts and 75 ports. The matching 0.6.0 installer archive has passed
 source, script, checksum and player-guide verification and includes Lantern
-Cay, the 25-gold projects and food tooltip guidance.
+Cay, the 25-gold projects and food tooltip guidance. Clean source preparation
+and isolated installation passed with all 1,974 runtime file hashes matching;
+the final launcher description is included in the refreshed candidate.
 In-game sailing, market trade, UI layout and rendering remain playtest checks.
 Use this `staging/0.6` branch for the Giltfang candidate; the default branch,
 GitHub releases and Steam Workshop are separate publication targets.
@@ -217,9 +219,9 @@ The first economic pass gives each crown a distinct role, with buildings scaled 
 | Reefhook | Fishing, pearls and harbor trade | 12 |
 | Sootwake | Timber, charcoal and small repair industries | 12 |
 
-**Hooktooth starts with one full market**, intended to support trade between the specialized island economies. Actual market membership and access still need in-game verification. Separate national markets have not been added.
+**Hooktooth and Chainhaven each start with a full market.** Every crown knows the Ashborn homeland and surrounding waters. Actual market membership, access and profitable trades still need in-game verification.
 
-Rural buildings follow local resources and vegetation. Additional extraction investment is reduced from 387 to 126 across the Isles, particularly at precious-goods deposits and previously oversized sites. These are bonuses to native capacity, not total output or treasury income. The original **1,618,696 people, population classes and 72 districts** are preserved. Giltfang adds 286,617 people and 22 districts; total extraction investment is now 148.
+Rural buildings follow local resources and vegetation. Additional extraction investment is reduced from 387 to 126 across the Isles, particularly at precious-goods deposits and previously oversized sites. These are bonuses to native capacity, not total output or treasury income. The original **1,618,696 people, population classes and 72 districts** are preserved. Giltfang adds 286,617 people and 22 districts; Lantern Cay adds 18,000 people and three districts for Cindermaw. Total extraction investment is now 151.
 
 Focused checks passed for native building ranks/resources, generated buildings, population totals, production staffing, economic specialization and guarded market/investment setup. Profitability, food security and affordability of starting forces remain pending fresh-campaign tests. Building-level counts describe infrastructure, not equivalent income.
 
@@ -230,7 +232,7 @@ See the [0.5.6 economic design and validation notes](ECONOMY_056.md) for compari
 Extract the 0.6.0 player ZIP into a new writable folder, close EU5 and run
 Install-Goblins.cmd. Enable one mod copy and start a new 1337 campaign for world
 changes. The installer validates terrain and backs up an existing installation.
-Allow roughly 4 GB of working space. This local candidate has not been published.
+Allow roughly 4 GB of working space. Use the matching installer from `staging/0.6`.
 
 ## Choose your clan
 

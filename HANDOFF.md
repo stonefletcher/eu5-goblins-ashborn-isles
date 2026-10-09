@@ -1,31 +1,29 @@
-# Goblins 0.6.1 staging
+# Goblins 0.6.1 — awaiting isolated installation
 
-Checkout: C:/Users/alexa/.codex/.chatgpt-projects/g-p-6abf07c4fe4081919d1536ed15794d22/goblins-061
-Branch: staging/0.6.1, based on main f75fe73. Read current Git HEAD/status before continuing.
+Checkout: this repository; branch staging/0.6.1.
+Source: e2de3a8. Validated bundle: 757cc08. Not pushed or installed live.
+All requested gameplay changes are implemented; see README and 0.6.1 notes.
 
-Requested work: starting piracy/stats, glass/masonry and trading infrastructure,
-connected provinces, town/city growth, visible Covenant Favor, varied male
-portraits and tougher Drogg, capital sergeantries, +50% monthly manpower, and
-flavor-only voyage reports revealing useful foreign coastal pockets/markets.
-All changes are implemented. See README and RELEASE_NOTES_0.6.1.md for scope.
+Passed: complete static/terrain validation, staffing/population, 40 connected
+provinces, portraits/models and 10 voyage scenario groups. Bundle verified.
+Clean export at E:/CodexScratch/goblins-061-20261009-review/source passed
+PrepareOnly; all 1,975 runtime files match the build. Receipts are under build/.
 
-Economy checks pass, including staffing and unchanged kingdom population totals.
-All 40 provinces pass actual-raster land connectivity. Voyage script scenarios
-pass expanded discovery, reciprocal contact, payment and stale-reply checks.
-Terrain rebuild and complete assembly validation passed; packaging is underway.
-An earlier full build failed a stale exploration event manifest; that manifest
-was refreshed. The resumed canonical build rechecks native/final cache hashes,
-map metadata, terrain and every setup/candidate validator.
+Remaining: EU5 was running (PID 28828); closure requested once, no reply yet.
+After verifying closure, run the exported installer with a fresh isolated
+-UserDataPath E:/CodexScratch/goblins-061-20261009-review/user and compare
+files using .local/compare_install.py. Do not use or replace the active mod.
+Then update validation wording, commit task changes, push staging and verify
+remote README. Do not release, merge main or publish Workshop.
 
-Next: finish matching package/bundle, export exact committed tree to a new
-empty folder, run PrepareOnly and isolated UserDataPath installation, compare
-all delivered hashes, then push staging and verify remote README. Do not push
-before the installer gate. EU5 was running (PID 28828); do not close/launch it
-without user authorization. Ask user to close it once candidate is prepared.
+Efficiency update: skills now permit reusing receipts for unchanged relevant
+inputs; unembedded README/HANDOFF-only edits do not require another full export.
+The player payload is unchanged. package.py now makes source ZIP optional via
+--source; check relevant input changes before deciding which stages to repeat.
+Redundant source archives were removed; retain current player ZIP and pending
+clean-test workspace. No active mod, saves, authored assets or rollback removed.
 
-Active mod: C:/Users/alexa/Documents/Paradox Interactive/Europa Universalis V/mod/goblins_ashborn_isles
-Game: E:/SteamLibrary/steamapps/common/Europa Universalis V/game (1.3.11)
-Active 0.6.0 matched every baseline bundled file before edits. It is unchanged.
-No install, release, main merge or Workshop publication has been performed.
-New campaign required for starting-world edits. Visual/gameplay acceptance,
-actual market trade and discovery rendering remain untested in the engine.
+Game: E:/SteamLibrary/steamapps/common/Europa Universalis V/game (1.3.11).
+Active 0.6.0 under Documents/Paradox Interactive/Europa Universalis V/mod/
+goblins_ashborn_isles remains unchanged. New campaign required for starting
+world edits. Actual trade, discovery/UI and portrait rendering remain untested.

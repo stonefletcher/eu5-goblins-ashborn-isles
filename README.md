@@ -110,6 +110,8 @@ Built for **EU5 1.3.11 (Pavia)**. Upgrading to 0.6.1 requires a **new 1337 campa
 
 ## Checks and feedback
 
+Development packaging creates the player installer by default. Use `python tools/package.py --source` only when a separate source ZIP is needed; GitHub already supplies source downloads. Reuse verified build stages and keep one current clean-test workspace.
+
 The complete 0.6.1 static build, economy, connected-province, portrait asset and voyage script checks have passed. The matching installer is being verified from a clean Git export before staging is pushed. These checks are separate from in-game confirmation of production, trade, UI rendering, portraits and save behavior. Multiplayer and achievements are unverified; dedicated foreign invasion ambitions and fear mechanics are not included.
 
 [Report a problem](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/issues) with your version, clan, enabled mods and steps to reproduce it. Screenshots and relevant saves help. See the [release history](RELEASE_NOTES.md) and [playtest checklist](TESTING.md) for more detail.

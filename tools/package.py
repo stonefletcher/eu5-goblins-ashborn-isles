@@ -1,6 +1,9 @@
 """Package generated output and authored sources; do not install or publish."""
 from pathlib import Path
-import json,zipfile
+import argparse,json,zipfile
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--source",action="store_true",help="Also create a standalone source ZIP (Git downloads already provide source).")
+args=parser.parse_args()
 ROOT=Path(__file__).resolve().parents[1]
 version=json.loads((ROOT/'data/island.json').read_text())['version']
 report=ROOT/'build/reports/validation.json'
@@ -28,9 +31,10 @@ with zipfile.ZipFile(dist/f'Goblins_Ashborn_Isles_{version}.zip','w',zipfile.ZIP
     for name in docs:z.write(ROOT/('PLAYER_README.md' if name == 'README.md' else name),name)
     # Only the machine-readable validation receipt accompanies the runtime.
     z.write(report, 'reports/validation.json')
-with zipfile.ZipFile(dist/f'Goblins_Ashborn_Isles_Source_{version}.zip','w',zipfile.ZIP_DEFLATED) as z:
-    for name in docs+['PLAYER_README.md','requirements.txt','.gitignore','.gitattributes']:z.write(ROOT/name,'goblins-ashborn-isles-source/'+name)
-    for folder in ['data','mod','tools','art','.github']:
-        for p in sorted((ROOT/folder).rglob('*')):
-            if p.is_file() and '__pycache__' not in p.parts:z.write(p,'goblins-ashborn-isles-source/'+p.relative_to(ROOT).as_posix())
+if args.source:
+    with zipfile.ZipFile(dist/f'Goblins_Ashborn_Isles_Source_{version}.zip','w',zipfile.ZIP_DEFLATED) as z:
+        for name in docs+['PLAYER_README.md','requirements.txt','.gitignore','.gitattributes']:z.write(ROOT/name,'goblins-ashborn-isles-source/'+name)
+        for folder in ['data','mod','tools','art','.github']:
+            for p in sorted((ROOT/folder).rglob('*')):
+                if p.is_file() and '__pycache__' not in p.parts:z.write(p,'goblins-ashborn-isles-source/'+p.relative_to(ROOT).as_posix())
 for p in dist.iterdir():print(f'{p.name}: {p.stat().st_size:,} bytes')

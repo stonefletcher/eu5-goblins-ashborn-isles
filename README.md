@@ -120,6 +120,8 @@ Built for **EU5 1.3.11 (Pavia)**. The 0.6.2 staging candidate requires a **new 1
 
 ## Checks and feedback
 
+The 0.6.2 population/class balance and staffing checks passed, followed by a clean committed-source export, stale-source rejection, PrepareOnly reconstruction and isolated installation. All 1,977 installed files match the validated candidate. Active-profile installation and gameplay acceptance are separate; masonry output and actual hiring are still unverified in game.
+
 Development packaging creates the player installer by default. Use `python tools/package.py --source` only when a separate source ZIP is needed; GitHub already supplies source downloads. Reuse verified build stages and keep one current clean-test workspace.
 
 The complete 0.6.1 static build, economy, connected-province, portrait asset and voyage script checks have passed. The city/wharf/seeded-trade follow-up passed full static validation, clean-source reconstruction and isolated installation; all 1,977 delivered files matched the build. These checks are separate from in-game confirmation of production, trade, UI rendering, portraits and save behavior. Multiplayer and achievements are unverified; dedicated foreign invasion ambitions and fear mechanics are not included.

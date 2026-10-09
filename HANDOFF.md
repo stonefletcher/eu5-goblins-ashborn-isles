@@ -13,6 +13,9 @@ Passed native staffing, delivered classes/totals, population balance, estate lab
 full static regressions and unchanged geometry/native/runtime terrain hashes.
 Rechecked population-dependent tests after the user's balancing revision.
 Build receipt: build/reports/validation.json. Economy: build/economy-check/economy-audit.json.
-Matching package and clean isolated installer gate in progress. No active install,
-main merge, GitHub release or Workshop publication authorized in this chat.
+Source bc6f8c9; matching bundle 1c40cad. Clean committed-source export, stale-source
+rejection, PrepareOnly and isolated installation passed: all 1,977 files match.
+Receipt: build/isolated-install-062.json. Review workspace: E:/CodexScratch/goblins-062-review.
+Package SHA256 d86c25dd93a0405b9688e579a812bcae85a31de28b1a7df791f42cee882b2a85.
+No active install, main merge, GitHub release or Workshop publication performed.
 New campaign required; actual masonry availability remains engine-untested.

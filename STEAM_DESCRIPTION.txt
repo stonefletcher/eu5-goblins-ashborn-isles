@@ -1,6 +1,6 @@
 [h1]Goblins of the Ashborn Isles[/h1]
 
-[b]Version 0.6.0 — Six crowns. Nine islands. A homeland to unite.[/b]
+[b]Version 0.6.2 — Workers and Wildfang Clans.[/b]
 
 [img]https://raw.githubusercontent.com/stonefletcher/eu5-goblins-ashborn-isles/main/art/workshop/0.6.0/banner.jpg[/img]
 
@@ -9,15 +9,15 @@ Volcanic islands rose between the Azores and Portugal. Goblin captains claimed t
 
 Choose a goblin crown, develop its economy and bargain with neighboring rulers. Unite the Isles through conquest, submission or dynastic union, then chart foreign shores and pursue an eastern foothold.
 
-[h2]New in 0.6.0[/h2]
-
+[h2]New in 0.6.2[/h2]
 [list]
-[*][b]Giltfang, the sixth crown:[/b] a northern realm with its own market, court, culture, lore, flag and opening artwork.
-[*][b]Lantern Cay and the Quiet Road:[/b] a Cindermaw outpost and ordinary coastal passage connecting the northern and southern islands.
-[*][b]Two markets and mutual discovery:[/b] Chainhaven joins Hooktooth as a market center; every goblin crown begins knowing the homeland and surrounding waters.
-[*][b]Clearer events:[/b] shorter prompts, highlighted hover rewards, readable requirements and signed bargains explaining both partners' commitments.
-[*][b]A separate Ashborn Voyages situation[/b], 25-gold starting projects, clearer food-storage descriptions and corrected clan-flag assignments.
+[*][b]Balanced populations:[/b] 1,895,000 goblins overall. Cindermaw falls to 620,000; the other five crowns grow modestly.
+[*][b]Workers where needed:[/b] population classes cover 125% of native building jobs, plus a separate resource-worker reserve. Actual hiring and masonry supply need gameplay confirmation.
+[*][b]A tribal homeland:[/b] about 25% tribesmen in every district. Existing minorities and slaves retained; local home cultures remain at least 70%.
+[*][b]Goblin estates:[/b] Wildfang Clans, Highfangs and Ironfang Crown.
 [/list]
+
+The 0.6.1 production, coastal wharves, connected provinces, city promotions, starting silver/lumber trades, Covenant Favor and portrait improvements remain included.
 
 [h2]An Atlantic homeland[/h2]
 
@@ -25,7 +25,7 @@ Choose a goblin crown, develop its economy and bargain with neighboring rulers. 
 
 [i]Map diagram generated from the mod's geography, not an in-game screenshot.[/i]
 
-The Isles contain [b]97 districts, 75 ports and 28 coastal sea tiles[/b], with 1,923,313 people at the start. Volcanic highlands, marshes, woodland and fisheries give each crown a different base of resources and settlements.
+The Isles contain [b]97 districts, 75 ports and 28 coastal sea tiles[/b], with 1,895,000 people at the start. Volcanic highlands, marshes, woodland and fisheries give each crown a different base of resources and settlements.
 
 Giltfang and Tolltooth lie north of Cindermaw; together they are about 10% smaller than Brackmaw. Cindermaw gains Lantern Cay: Lantern Haven, Wickwood and Emberwatch. The Quiet Road links north and south through ordinary coastal water, with an opened eastern approach and reworked current tiles.
 
@@ -85,17 +85,16 @@ At home, the [b]Ashen Covenant[/b] provides twelve sacred sites, traditions, rit
 
 [h2]Install and continue[/h2]
 
-Built for [b]EU5 1.3.11 (Pavia)[/b]. Upgrading from 0.5.x requires a [b]new 1337 campaign[/b] because geography and starting setup changed.
+Built for [b]EU5 1.3.11 (Pavia)[/b]. Start a [b]new 1337 campaign[/b] for 0.6.2: starting populations changed.
 
 [list]
 [*]Subscribe through the Workshop, or extract the complete GitHub installer ZIP and run [b]Install-Goblins.cmd[/b] with EU5 closed.
 [*]Enable only one Goblins copy and disable the old Gathering Prototype add-on. Restart before playing.
-[*]Existing 0.6.0 saves can receive the clan-flag repair after restart and the next monthly pulse; that repair alone needs no new campaign.
 [*]Other map, terrain and starting-world mods may conflict. Keep separate saves.
 [/list]
 
 [h2]Checks, feedback and credits[/h2]
-Static map, script, artwork and clean-install checks passed. Sailing, actual trade, UI/flag rendering and save behavior still need gameplay confirmation. Multiplayer and achievements are unverified. Dedicated foreign invasion ambitions and fear mechanics are not included.
+Static map, script, artwork and clean-install checks passed. Actual hiring, masonry output, trade, UI/flag rendering and save behavior still need gameplay confirmation. Multiplayer and achievements are unverified. Dedicated foreign invasion ambitions and fear mechanics are not included.
 
 Report bugs with your version, clan, enabled mods and reproduction steps. See the illustrated [url=https://github.com/stonefletcher/eu5-goblins-ashborn-isles/blob/main/README.md]README[/url] for details.
 

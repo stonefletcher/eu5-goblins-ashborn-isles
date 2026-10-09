@@ -6,7 +6,7 @@ All six goblin kingdoms now start with the appropriate classes for their existin
 
 Tribesmen make up approximately 25% of every district, including the cities. The total population is 1,895,000, slightly below 0.6.1's 1,923,313. Cindermaw falls from 730,688 to 620,000; Brackmaw rises to 420,000, Shatterfin to 280,000, Reefhook to 140,000, Sootwake to 130,000 and Giltfang to 305,000. Existing slave and minority households remain intact. Home-culture peasants are rebalanced into workers and tribesmen, with a separate farming/subsistence reserve and at least 70% home culture in every district. The tribal estate is **Wildfang Clans**, nobles are **Highfangs**, and the crown is **Ironfang Crown**, replacing Boss Clan.
 
-A **new 1337 campaign is required**. Existing saves retain their populations. This is a staging candidate; the published release remains 0.6.1. Population availability does not itself prove full employment or sufficient masonry output in game.
+A **new 1337 campaign is required**. Existing saves retain their populations. Population availability does not itself prove full employment or sufficient masonry output in game.
 
 
 Start a NEW 1337 campaign after restarting with only this Goblins copy enabled.

@@ -1,10 +1,10 @@
 # Goblins of the Ashborn Isles
 
-**0.6.2 staging — Workers and Wildfang Clans.**
+**Release 0.6.2 — Workers and Wildfang Clans.**
 
 ![Goblins of the Ashborn Isles banner](art/workshop/0.6.0/banner.jpg)
 
-[0.6.1 release notes](RELEASE_NOTES_0.6.1.md) | [Download 0.6.1](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.6.1) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
+[0.6.2 release notes](RELEASE_NOTES_0.6.2.md) | [Download 0.6.2](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.6.2) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
 
 Fire rose from the Atlantic. When the smoke cleared, goblin kingdoms stood among the new volcanic islands between the Azores and Portugal. Captains claimed sheltered harbors, smiths built their forges beneath black ridges, and rival houses began arguing over who should lead them.
 
@@ -16,7 +16,7 @@ All six goblin kingdoms now start with the appropriate classes for their existin
 
 Tribesmen make up approximately 25% of every district, including the cities. The total population is 1,895,000, slightly below 0.6.1's 1,923,313. Cindermaw falls from 730,688 to 620,000; Brackmaw rises to 420,000, Shatterfin to 280,000, Reefhook to 140,000, Sootwake to 130,000 and Giltfang to 305,000. Existing slave and minority households remain intact. Home-culture peasants are rebalanced into workers and tribesmen, with a separate farming/subsistence reserve and at least 70% home culture in every district. The tribal estate is **Wildfang Clans**, nobles are **Highfangs**, and the crown is **Ironfang Crown**, replacing Boss Clan.
 
-A **new 1337 campaign is required**. Existing saves retain their populations. This is a staging candidate; the published release remains 0.6.1. Population availability does not itself prove full employment or sufficient masonry output in game.
+A **new 1337 campaign is required**. Existing saves retain their populations. Population availability does not itself prove full employment or sufficient masonry output in game.
 
 ## Previous 0.6.1 — Starting economy, connected provinces and distinct goblins
 
@@ -111,9 +111,9 @@ At home, the **Ashen Covenant** provides twelve sacred sites, traditions, rites,
 
 ## Install and continue
 
-Built for **EU5 1.3.11 (Pavia)**. The 0.6.2 staging candidate requires a **new 1337 campaign** for the revised populations. Download this branch as source and run its bundled **Install-Goblins.cmd** with EU5 closed. Published Workshop and release downloads below still provide 0.6.1.
+Built for **EU5 1.3.11 (Pavia)**. Version 0.6.2 requires a **new 1337 campaign** for the revised populations. Existing saves retain their saved population setup.
 
-- Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.1.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed. The installer reconstructs its terrain using the installed game.
+- Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.2.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed. The installer reconstructs its terrain using the installed game.
 - Enable only one Goblins copy and disable the old Gathering Prototype add-on. Restart before playing.
 - Existing 0.6.0 saves can receive the clan-flag repair after restart and the next monthly pulse; that repair alone needs no new campaign.
 - Other map, terrain and starting-world mods may conflict. Keep separate saves.

@@ -48,8 +48,25 @@ def verify(out,game):
     assert locs['cm_lantern_haven']['buildings']=={'marketplace':1,'wharf':1,'granary':1}
     for name in ['cm_copperfang','cm_netjaw','cm_rustpeak','cm_bracknet','cm_knifeback','cm_tolltooth']:
         a,z=b.block_span(cities,name);assert 'rank = town' in cities[a:z],name
-    for name in ['cm_shatterfin','cm_chainhaven']:
+    for name in ['cm_shatterfin','cm_chainhaven','cm_brackhaven']:
         a,z=b.block_span(cities,name);assert 'rank = city' in cities[a:z],name
+    trade=read('in_game/common/scripted_effects/goblins_starting_trades.txt')
+    hooks=read('in_game/common/on_action/goblins_starting_trades.txt')
+    from economy import STARTING_TRADES
+    from verify_055 import parse
+    parse(trade);parse(hooks)
+    assert 'on_game_start = { on_actions = { ga_starting_trade_setup } }' in hooks
+    assert 'current_date < 1338.12.1' in hooks
+    assert 'NOT = { has_variable = ga_starting_trade_061 }' in hooks
+    for tag,source,target,good in STARTING_TRADES:
+        a,z=b.block_span(trade,'ga_seed_trade_'+tag.lower());body=trade[a:z]
+        assert source!=target
+        assert f'from = location:{source}.market to = location:{target}.market' in body
+        assert f'merchant = location:{target}.market goods = goods:{good}' in body
+        assert 'desired = 1 locked = yes' in body
+        assert 'can_find_trade_route' in body and 'available_merchant_capacity' in body
+        assert body.index('create_trade =')<body.index('set_variable =')
+        assert body.count('any_trade =')==2
     from decimal import Decimal
     migrations=b.CFG['urbanization_061']['locations']
     deltas={c['tag']:Decimal(0) for c in b.CFG['countries']}

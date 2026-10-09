@@ -48,6 +48,7 @@ def audit(b, game):
 
 
 def build(b,game,out):
+    starting_trades(b,game,out)
     cfg=b.CFG;tags=' '.join('tag = '+c['tag'] for c in cfg['countries'])
     entries=[]
     for country in cfg['countries']:
@@ -103,3 +104,66 @@ ga_economy_monthly = {{
             'capital_industry':{c['tag']:{k:v for k,v in next(l for l in cfg['locations'] if l['id']==c['capital'])['buildings'].items() if k.endswith('_guild')} for c in cfg['countries']},
             'tax_penalty_removed':True,'runtime_balance_verified':False,
             'balance_audit':audit(b,game)}
+
+
+# Each crown funds an import using merchants in its destination market.
+STARTING_TRADES = [('CDM','cm_chainhaven','cm_hooktooth','silver'),
+                   ('GTF','cm_hooktooth','cm_chainhaven','lumber')]
+
+def starting_trades(b,game,out):
+    native=b.read(game,'in_game/common/generic_actions/markets.txt')
+    for key in ['from','to','merchant','goods','desired','locked']:
+        assert key+' = scope:' in native,key
+    effects=[]
+    for tag,source,target,good in STARTING_TRADES:
+        route=f'from_market = location:{source}.market to_market = location:{target}.market'
+        effects.append(f'''ga_seed_trade_{tag.lower()} = {{
+    if = {{ limit = {{ NOT = {{ has_variable = ga_starting_trade_061 }} }}
+        if = {{ limit = {{
+            owns = location:{target}
+            exists = location:{source}.market exists = location:{target}.market
+            location:{source} = {{ NOT = {{ market = location:{target}.market }} }}
+            NOT = {{ any_trade = {{ {route} }} }}
+            location:{target}.market = {{
+                has_merchant = c:{tag}
+                available_merchant_capacity = {{ country = c:{tag} value >= 1 }}
+            }}
+            can_find_trade_route = {{ from = location:{source}.market to = location:{target}.market }}
+        }}
+            create_trade = {{
+                from = location:{source}.market to = location:{target}.market
+                merchant = location:{target}.market goods = goods:{good}
+                desired = 1 locked = yes
+            }}
+        }}
+        # Confirm creation before marking completion. A player-created route
+        # also satisfies this; never recreate a cancelled initial route.
+        if = {{ limit = {{ any_trade = {{ {route} }} }}
+            set_variable = {{ name = ga_starting_trade_061 value = yes }}
+        }}
+    }}
+}}''')
+    b.write(out,'in_game/common/scripted_effects/goblins_starting_trades.txt','\n'.join(effects))
+    b.write(out,'in_game/common/on_action/goblins_starting_trades.txt','''# New campaigns attempt both routes immediately after setup.
+on_game_start = { on_actions = { ga_starting_trade_setup } }
+monthly_country_pulse = { on_actions = { ga_starting_trade_retry } }
+ga_starting_trade_setup = {
+    effect = {
+        if = { limit = { country_exists = c:CDM } c:CDM = { ga_seed_trade_cdm = yes } }
+        if = { limit = { country_exists = c:GTF } c:GTF = { ga_seed_trade_gtf = yes } }
+    }
+}
+# Bounded fallback if merchants/pathfinding are not ready at game-start.
+# Also permits adoption in early saves without duplicating existing routes.
+ga_starting_trade_retry = {
+    trigger = {
+        current_date < 1338.12.1
+        OR = { tag = CDM tag = GTF }
+        NOT = { has_variable = ga_starting_trade_061 }
+    }
+    effect = {
+        if = { limit = { tag = CDM } ga_seed_trade_cdm = yes }
+        if = { limit = { tag = GTF } ga_seed_trade_gtf = yes }
+    }
+}
+''')

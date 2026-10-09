@@ -112,6 +112,10 @@
       "sha256": "58181113e10cd96ecb9a0cdfdebf6af309f2dae729e95f7b335aa74414be76a4"
     },
     {
+      "path": "in_game/common/on_action/goblins_starting_trades.txt",
+      "sha256": "7f07fb921a48ad98b291be1988719877cb0e638b81e39311e70006b28882fcc1"
+    },
+    {
       "path": "in_game/common/prices/ashen_covenant.txt",
       "sha256": "3e3530edbdfef9bb85245ce56728c01633a423364baa0423d9e96588bedd1494"
     },
@@ -144,6 +148,10 @@
       "sha256": "4187f5691b9194e2d9d4eb35b6c52cebf791ad2b1a0dab1252fade298b51c67d"
     },
     {
+      "path": "in_game/common/scripted_effects/goblins_starting_trades.txt",
+      "sha256": "51ffbc020f7214a2a78d2ff14fb53c3d4c5f3c31b4e15451823ccd2d41dbc4fe"
+    },
+    {
       "path": "in_game/common/scripted_triggers/goblins_gathering.txt",
       "sha256": "99fc4a1953bfd17697b9234a4e8b8293626a474d43fa1da8828e21136a24f89a"
     },
@@ -161,7 +169,7 @@
     },
     {
       "path": "in_game/common/town_setups/goblins_ashborn_isles.txt",
-      "sha256": "fde61c3e472378d2e2e67bb441b68aa8fd5f468fd94e7c91a115b2190166c2c1"
+      "sha256": "130a5ba589068cc1fc585c338a0c3a072ee599966fb7c4fc1ea426f54a176a4f"
     },
     {
       "path": "in_game/events/ashen_covenant.txt",

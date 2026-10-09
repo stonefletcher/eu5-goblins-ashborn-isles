@@ -7,6 +7,14 @@ import archipelago, landscape
 
 def verify(b,out,mapstats):
     cfg=b.CFG
+    coastal={port['land'] for port in mapstats['ports']}
+    capital_ranks={c['capital']:c['rank'] for c in cfg['countries']}
+    for loc in cfg['locations']:
+        rank=loc.get('rank',capital_ranks.get(loc['id'],'rural_settlement'))
+        if rank in {'town','city','megalopolis'} and loc['id'] in coastal:
+            assert loc['buildings'].get('wharf')==1,loc['id']
+        if 'wharf' in loc['buildings']:
+            assert loc['id'] in coastal,('inland wharf',loc['id'])
     counts={c['tag']:sum(l['country']==c['tag'] for l in cfg['locations']) for c in cfg['countries']}
     assert counts=={'CDM':33,'QBR':24,'RHK':8,'SFK':6,'SWK':4,'GTF':22},counts
     ratios={}

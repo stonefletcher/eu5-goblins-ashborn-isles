@@ -4,9 +4,9 @@ Start a NEW 1337 campaign after restarting with only this Goblins copy enabled.
 
 1. Check each crown: stability 50, legitimacy 75, prestige 25, State Piracy selected and available to reselect after changing policy.
 2. Inspect province mode: every province is connected by land within its island. Check Smokehorn, Scorchbrook, Blackwood Outer, Crown Outer, Brinewood Outer, Rustpeak Outer, Brackhaven and Giltfang.
-3. Confirm Lantern Haven, Copperfang, Netjaw, Rustpeak, Bracknet, Knifeback and Tolltooth are towns; Shatterfin and Chainhaven are cities. Inspect their population classes and staffed buildings. Country population totals should remain unchanged.
+3. Confirm Lantern Haven, Copperfang, Netjaw, Rustpeak, Bracknet, Knifeback and Tolltooth are towns; Brackhaven, Shatterfin and Chainhaven are cities. Inspect their population classes and staffed buildings. Country population totals should remain unchanged.
 4. Inspect both markets at start and after monthly production updates: sand, glass, masonry, tools and marketplace input supply; check actual market membership, staffing and production methods.
-5. Inspect a Hooktooth–Chainhaven import/export opportunity and its route tooltip. Confirm a profitable route can be created and burgher trades appear when profitable. Inspect market access for remote islands. Internal market exchange need not draw a trade route.
+5. Inspect starting silver imports into Hooktooth (Cindermaw) and lumber imports into Chainhaven (Giltfang): one merchant-capacity unit requested each, locked. If initialization delays creation, check the first monthly update. Cancel a seeded route, save/reload and advance a month: it must stay cancelled. Verify all ten coastal urban locations have one wharf and Netjaw has none; no invalid-wharf errors should appear. Inspect market access and local goods allocation inside Hooktooth; these do not create same-market route entries. Burgher activity and profitable volume remain engine checks.
 6. Open the Gathering and Eastern Hunger panels: Covenant Favor displays the current religious-influence value; spending on a rite changes it. Check the Religion panel tooltip.
 7. Compare several adult males and Drogg, plus human and child controls. Check clothing, scar, hair, facial animation and save/reload stability.
 

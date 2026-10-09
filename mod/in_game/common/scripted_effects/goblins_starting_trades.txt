@@ -1,0 +1,52 @@
+﻿ga_seed_trade_cdm = {
+    if = { limit = { NOT = { has_variable = ga_starting_trade_061 } }
+        if = { limit = {
+            owns = location:cm_hooktooth
+            exists = location:cm_chainhaven.market exists = location:cm_hooktooth.market
+            location:cm_chainhaven = { NOT = { market = location:cm_hooktooth.market } }
+            NOT = { any_trade = { from_market = location:cm_chainhaven.market to_market = location:cm_hooktooth.market } }
+            location:cm_hooktooth.market = {
+                has_merchant = c:CDM
+                available_merchant_capacity = { country = c:CDM value >= 1 }
+            }
+            can_find_trade_route = { from = location:cm_chainhaven.market to = location:cm_hooktooth.market }
+        }
+            create_trade = {
+                from = location:cm_chainhaven.market to = location:cm_hooktooth.market
+                merchant = location:cm_hooktooth.market goods = goods:silver
+                desired = 1 locked = yes
+            }
+        }
+        # Confirm creation before marking completion. A player-created route
+        # also satisfies this; never recreate a cancelled initial route.
+        if = { limit = { any_trade = { from_market = location:cm_chainhaven.market to_market = location:cm_hooktooth.market } }
+            set_variable = { name = ga_starting_trade_061 value = yes }
+        }
+    }
+}
+ga_seed_trade_gtf = {
+    if = { limit = { NOT = { has_variable = ga_starting_trade_061 } }
+        if = { limit = {
+            owns = location:cm_chainhaven
+            exists = location:cm_hooktooth.market exists = location:cm_chainhaven.market
+            location:cm_hooktooth = { NOT = { market = location:cm_chainhaven.market } }
+            NOT = { any_trade = { from_market = location:cm_hooktooth.market to_market = location:cm_chainhaven.market } }
+            location:cm_chainhaven.market = {
+                has_merchant = c:GTF
+                available_merchant_capacity = { country = c:GTF value >= 1 }
+            }
+            can_find_trade_route = { from = location:cm_hooktooth.market to = location:cm_chainhaven.market }
+        }
+            create_trade = {
+                from = location:cm_hooktooth.market to = location:cm_chainhaven.market
+                merchant = location:cm_chainhaven.market goods = goods:lumber
+                desired = 1 locked = yes
+            }
+        }
+        # Confirm creation before marking completion. A player-created route
+        # also satisfies this; never recreate a cancelled initial route.
+        if = { limit = { any_trade = { from_market = location:cm_hooktooth.market to_market = location:cm_chainhaven.market } }
+            set_variable = { name = ga_starting_trade_061 value = yes }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+﻿# New campaigns attempt both routes immediately after setup.
+on_game_start = { on_actions = { ga_starting_trade_setup } }
+monthly_country_pulse = { on_actions = { ga_starting_trade_retry } }
+ga_starting_trade_setup = {
+    effect = {
+        if = { limit = { country_exists = c:CDM } c:CDM = { ga_seed_trade_cdm = yes } }
+        if = { limit = { country_exists = c:GTF } c:GTF = { ga_seed_trade_gtf = yes } }
+    }
+}
+# Bounded fallback if merchants/pathfinding are not ready at game-start.
+# Also permits adoption in early saves without duplicating existing routes.
+ga_starting_trade_retry = {
+    trigger = {
+        current_date < 1338.12.1
+        OR = { tag = CDM tag = GTF }
+        NOT = { has_variable = ga_starting_trade_061 }
+    }
+    effect = {
+        if = { limit = { tag = CDM } ga_seed_trade_cdm = yes }
+        if = { limit = { tag = GTF } ga_seed_trade_gtf = yes }
+    }
+}

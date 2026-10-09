@@ -16,6 +16,8 @@ def main():
     if not args.game:
         ap.error('--game is required to validate exploration locations and areas')
     exploration.build(b,args.game,output,validate_setup=False)
+    import economy
+    economy.starting_trades(b,args.game,output)
     import export_event_art
     export_event_art.build(output)
     import build_clan_flags

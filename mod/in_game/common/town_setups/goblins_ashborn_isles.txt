@@ -16,7 +16,7 @@ cm_smokehorn_settlement = {  }
 cm_goldscar_settlement = {  }
 cm_coaljaw_settlement = { forest_village = 1 }
 cm_silverfang_settlement = {  }
-cm_netjaw_settlement = { marketplace = 2 wharf = 1 naval_supplies_guild = 1 granary = 1 cloth_guild = 1 tannery = 1 }
+cm_netjaw_settlement = { marketplace = 2 naval_supplies_guild = 1 granary = 1 cloth_guild = 1 tannery = 1 }
 cm_saffron_hollow_settlement = { market_village = 1 }
 cm_dyer_s_marsh_settlement = { market_village = 1 }
 cm_grazetooth_settlement = { farming_village = 1 }

@@ -373,7 +373,7 @@
       "culture": "cm_brinekin",
       "culture_name": "Brineward",
       "capital": "cm_brackhaven",
-      "rank": "town",
+      "rank": "city",
       "gold": 100,
       "color": [
         62,
@@ -976,7 +976,6 @@
           "rgo_expansion": 3,
           "buildings": {
             "marketplace": 2,
-            "wharf": 1,
             "naval_supplies_guild": 1,
             "granary": 1,
             "cloth_guild": 1,
@@ -1428,7 +1427,8 @@
             "laborers": 0.609,
             "peasants": 61.053,
             "soldiers": 1.0
-          }
+          },
+          "rank": "city"
         },
         {
           "id": "cm_brinewood",

@@ -1,6 +1,6 @@
-# Goblins 0.6.1 — city/wharf/trade follow-up installed
+# Goblins 0.6.1 â€” release promotion
 
-Branch staging/0.6.1; source 165645c, matching bundle 35972fe.
+Branch release/v0.6.1; source 165645c, matching bundle 35972fe.
 Brackhaven is a city. All ten coastal urban locations have one wharf;
 inland Netjaw's invalid wharf removed. CDM imports silver Chainhaven->Hooktooth;
 GTF imports lumber Hooktooth->Chainhaven, desired merchant capacity 1, locked.
@@ -25,4 +25,7 @@ Current clean workspace: E:/CodexScratch/goblins-061-trade-review/source.
 Older review workspace retained following cleanup denial; do not bypass it.
 Game: E:/SteamLibrary/steamapps/common/Europa Universalis V/game (1.3.11).
 Active: Documents/Paradox Interactive/Europa Universalis V/mod/goblins_ashborn_isles.
-Read remote/HEAD to confirm staging push; no release/main/Workshop requested.
+Full GitHub/main/Steam release authorized 2026-10-09. Reuse verified package
+fdef69b9611d30b1e36d80664ec4491eb331da4c9f08ad5047e2d16fc778c308.
+Only unembedded release-page documentation changed after installer verification.
+Confirm publication receipts and remote state before resuming/retrying publication.

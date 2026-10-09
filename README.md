@@ -1,10 +1,10 @@
 # Goblins of the Ashborn Isles
 
-**Staging 0.6.1 — Starting economy, connected provinces and distinct goblins.**
+**Release 0.6.1 — Starting economy, connected provinces and distinct goblins.**
 
 ![Goblins of the Ashborn Isles banner](art/workshop/0.6.0/banner.jpg)
 
-[0.6.1 staging notes](RELEASE_NOTES_0.6.1.md) | [Published 0.6.0 release](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.6.0) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
+[0.6.1 release notes](RELEASE_NOTES_0.6.1.md) | [Download 0.6.1](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.6.1) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
 
 Fire rose from the Atlantic. When the smoke cleared, goblin kingdoms stood among the new volcanic islands between the Azores and Portugal. Captains claimed sheltered harbors, smiths built their forges beneath black ridges, and rival houses began arguing over who should lead them.
 
@@ -105,7 +105,7 @@ At home, the **Ashen Covenant** provides twelve sacred sites, traditions, rites,
 
 Built for **EU5 1.3.11 (Pavia)**. Upgrading to 0.6.1 requires a **new 1337 campaign** because province assignments and starting setup changed.
 
-- For this staging version, download this branch as a complete source ZIP, extract it and run **Install-Goblins.cmd** with EU5 closed. The bundled installer reconstructs its terrain using the installed game. The public release and Workshop remain on 0.6.0 until release.
+- Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.1.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed. The installer reconstructs its terrain using the installed game.
 - Enable only one Goblins copy and disable the old Gathering Prototype add-on. Restart before playing.
 - Existing 0.6.0 saves can receive the clan-flag repair after restart and the next monthly pulse; that repair alone needs no new campaign.
 - Other map, terrain and starting-world mods may conflict. Keep separate saves.

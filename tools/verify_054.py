@@ -18,12 +18,13 @@ def verify(b,game,out,mapstats):
         # Check the historical split before those explicit migrations, then
         # check current country totals and generated populations below.
         migrations=cfg.get('urbanization_061',{}).get('locations',{})
-        prior=lambda loc: migrations.get(loc['id'],{}).get('population_before',loc['pop'])
+        revision=cfg.get('population_062',{})
+        prior=lambda loc: migrations.get(loc['id'],{}).get('population_before',revision.get('locations',{}).get(loc['id'],{}).get('population_before',loc['pop']))
         combined=Decimal(str(prior(byid[ident])))+Decimal(str(prior(children[0])))
         previous=cfg['population_revision_baseline']['locations']
         old_combined=Decimal(str(previous[ident]))+Decimal(str(previous[children[0]['id']]))
         tag=byid[ident]['country']
-        original_target=cfg['country_population_targets'][tag]-cfg.get('outpost_population_additions',{}).get(tag,0)
+        original_target=revision.get('prior_country_population_targets',cfg['country_population_targets'])[tag]-cfg.get('outpost_population_additions',{}).get(tag,0)
         factor=Decimal(original_target)/cfg['population_revision_baseline']['country_populations'][tag]
         assert abs(combined-old_combined*factor)<=Decimal('.004')
         # Province membership follows actual land borders in verify_061.
@@ -63,10 +64,10 @@ def verify(b,game,out,mapstats):
     populations={c['tag']:sum(round(l['pop']*1000) for l in locs if l['country']==c['tag']) for c in cfg['countries']}
     assert populations==cfg['country_population_targets']
     assert populations['SFK']>populations['RHK']>populations['SWK']
-    assert all(n%1000!=0 for n in populations.values())
     for tag,n in populations.items():
         if tag in cfg['population_revision_baseline']['country_populations']:
-            assert n>=cfg['population_revision_baseline']['country_populations'][tag]*1.5
+            historical=cfg.get('population_062',{}).get('prior_country_population_targets',populations)
+            assert historical[tag]>=cfg['population_revision_baseline']['country_populations'][tag]*1.5
         assert n>=100000
     import goblin_longevity
     longevity=goblin_longevity.verify(b,out)

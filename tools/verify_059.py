@@ -20,6 +20,9 @@ import verify_061
 
 
 def verify(out, game):
+    import build, verify_economy
+    if 'population_062' in build.CFG:
+        verify_economy.verify_population_062(game, out)
     situations = dict((k, v) for k, _, v in parse((out/'in_game/common/situations/goblins_gathering.txt').read_text(encoding='utf-8-sig')))
     monthly = next(v for k, _, v in situations['ga_gathering_of_five'] if k == 'on_monthly')
     assert len(monthly) == len(TAGS)

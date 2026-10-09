@@ -1,31 +1,18 @@
-# Goblins 0.6.1 â€” release promotion
+# Goblins 0.6.2 — population balance
 
-Branch release/v0.6.1; source 165645c, matching bundle 35972fe.
-Brackhaven is a city. All ten coastal urban locations have one wharf;
-inland Netjaw's invalid wharf removed. CDM imports silver Chainhaven->Hooktooth;
-GTF imports lumber Hooktooth->Chainhaven, desired merchant capacity 1, locked.
-Native startup effects check distinct markets, merchant/capacity and path.
-Once-only completion follows confirmed route creation; bounded monthly retry
-until 1338.12.1. Cancelled completed routes stay cancelled. Same-market route
-creation is not supported; internal goods allocation uses market access.
+Branch staging/0.6.2, based on published 0.6.1 (058bf79).
+All 97 districts: ~25% tribesmen, native building-class demand at 125%,
+plus 2,000 laborers and 1,000 per planned RGO expansion as a resource reserve.
+Actual RGO capacity/hiring/output require engine testing; reserve is a planning target.
+Total 1,895,000: CDM 620,000; QBR 420,000; SFK 280,000; RHK 140,000;
+SWK 130,000; GTF 305,000. Existing minorities/slaves retained; home peasants
+rebalanced with a minimum reserve, every district at least 70% home culture.
+Estates: Ironfang Crown, Highfangs, Wildfang Clans.
 
-Passed: full static validation, economy/staffing/populations, coastal wharf
-checks, trade script registration and prior regression suites. Reused unchanged
-verified terrain. Clean export/PrepareOnly/isolated installation passed; all
-1,977 files match. Receipts: build/isolated-install-061.json and validation.json.
-
-Deployed locally while EU5 was closed: four changed runtime files only; all
-1,977 installed files verified (build/active-install-061.json). Previous active
-copy matched e569e60 with no local changes. Rollback under user-data
-/goblins_backups/goblins_061_city_trade contains two originals plus added-file
-manifest, 276,582 bytes. No game launch. New campaign needed for city/wharf setup.
-Actual route creation/volume and gameplay acceptance remain engine-untested.
-
-Current clean workspace: E:/CodexScratch/goblins-061-trade-review/source.
-Older review workspace retained following cleanup denial; do not bypass it.
-Game: E:/SteamLibrary/steamapps/common/Europa Universalis V/game (1.3.11).
-Active: Documents/Paradox Interactive/Europa Universalis V/mod/goblins_ashborn_isles.
-Full GitHub/main/Steam release authorized 2026-10-09. Reuse verified package
-fdef69b9611d30b1e36d80664ec4491eb331da4c9f08ad5047e2d16fc778c308.
-Only unembedded release-page documentation changed after installer verification.
-Confirm publication receipts and remote state before resuming/retrying publication.
+Passed native staffing, delivered classes/totals, population balance, estate labels,
+full static regressions and unchanged geometry/native/runtime terrain hashes.
+Rechecked population-dependent tests after the user's balancing revision.
+Build receipt: build/reports/validation.json. Economy: build/economy-check/economy-audit.json.
+Matching package and clean isolated installer gate in progress. No active install,
+main merge, GitHub release or Workshop publication authorized in this chat.
+New campaign required; actual masonry availability remains engine-untested.

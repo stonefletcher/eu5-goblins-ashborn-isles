@@ -1,5 +1,5 @@
 {
-  "version": "0.6.1",
+  "version": "0.6.2",
   "game_version": "1.3.11",
   "tag": "CDM",
   "center": [
@@ -464,7 +464,7 @@
           "good": "iron",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 7.099,
+          "pop": 9.108,
           "province": "cm_crown_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -478,9 +478,10 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
+            "laborers": 3.313,
             "slaves": 1.296,
-            "peasants": 4.16
+            "peasants": 1.349,
+            "tribesmen": 2.803
           }
         },
         {
@@ -494,7 +495,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 17.169,
+          "pop": 11.627,
           "province": "cm_blackwood_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -507,8 +508,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 0.432,
-            "peasants": 16.39
+            "laborers": 3.0,
+            "peasants": 4.324,
+            "tribesmen": 3.956
           }
         },
         {
@@ -522,7 +524,7 @@
           "good": "copper",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 15.3,
+          "pop": 15.086,
           "province": "cm_copperfang_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -539,9 +541,10 @@
             "nobles": 0.2,
             "clergy": 0.3,
             "burghers": 2.5,
-            "laborers": 3,
+            "laborers": 4.063,
             "slaves": 1.296,
-            "peasants": 8.004
+            "peasants": 2.196,
+            "tribesmen": 4.531
           },
           "rank": "town"
         },
@@ -556,7 +559,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 77.322,
+          "pop": 65.372,
           "province": "cm_hooktooth_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -582,10 +585,11 @@
             "nobles": 0.122,
             "clergy": 0.242,
             "burghers": 7.252,
-            "laborers": 0.605,
+            "laborers": 8.125,
             "slaves": 3.626,
-            "peasants": 64.375,
-            "soldiers": 1.1
+            "peasants": 21.439,
+            "soldiers": 1.375,
+            "tribesmen": 23.191
           }
         },
         {
@@ -599,7 +603,7 @@
           "good": "wheat",
           "topography": "hills",
           "vegetation": "farmland",
-          "pop": 35.651,
+          "pop": 26.311,
           "province": "cm_ashfields_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -613,8 +617,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 0.432,
-            "peasants": 34.872
+            "laborers": 6.25,
+            "peasants": 10.387,
+            "tribesmen": 9.327
           }
         },
         {
@@ -628,7 +633,7 @@
           "good": "salt",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 19.244,
+          "pop": 13.688,
           "province": "cm_saltjaw_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -641,8 +646,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
-            "peasants": 17.601
+            "laborers": 4.0,
+            "peasants": 4.658,
+            "tribesmen": 4.683
           }
         },
         {
@@ -656,7 +662,7 @@
           "good": "livestock",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 25.869,
+          "pop": 19.675,
           "province": "cm_ashfields_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -669,8 +675,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 0.432,
-            "peasants": 25.09
+            "laborers": 4.0,
+            "peasants": 8.352,
+            "tribesmen": 6.976
           }
         },
         {
@@ -684,7 +691,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 18.92,
+          "pop": 16.275,
           "province": "cm_hooktooth_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -697,8 +704,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 0.432,
-            "peasants": 18.141
+            "laborers": 4.0,
+            "peasants": 6.154,
+            "tribesmen": 5.774
           }
         },
         {
@@ -711,7 +719,7 @@
           "good": "tar",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 15.835,
+          "pop": 12.585,
           "province": "cm_blackwood_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -723,8 +731,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
-            "peasants": 14.192
+            "laborers": 4.25,
+            "peasants": 3.762,
+            "tribesmen": 4.226
           }
         },
         {
@@ -737,7 +746,7 @@
           "good": "iron",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 14.061,
+          "pop": 11.855,
           "province": "cm_crown_province",
           "rgo_expansion": 2,
           "buildings": {
@@ -749,8 +758,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
-            "peasants": 12.418
+            "laborers": 4.313,
+            "peasants": 3.295,
+            "tribesmen": 3.9
           }
         },
         {
@@ -763,7 +773,7 @@
           "good": "clay",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 13.133,
+          "pop": 9.898,
           "province": "cm_copperfang_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -774,8 +784,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
-            "peasants": 11.49
+            "laborers": 3.0,
+            "peasants": 3.056,
+            "tribesmen": 3.495
           }
         },
         {
@@ -788,7 +799,7 @@
           "good": "fiber_crops",
           "topography": "hills",
           "vegetation": "farmland",
-          "pop": 11.324,
+          "pop": 9.267,
           "province": "cm_saltjaw_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -797,8 +808,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 0.432,
-            "peasants": 10.545
+            "laborers": 3.0,
+            "peasants": 2.792,
+            "tribesmen": 3.128
           }
         },
         {
@@ -811,7 +823,7 @@
           "good": "stone",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 11.411,
+          "pop": 10.698,
           "province": "cm_ashfields_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -822,8 +834,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
-            "peasants": 9.768
+            "laborers": 4.25,
+            "peasants": 2.599,
+            "tribesmen": 3.502
           }
         },
         {
@@ -836,7 +849,7 @@
           "good": "salt",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 7.255,
+          "pop": 7.081,
           "province": "cm_saltjaw_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -845,8 +858,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
-            "peasants": 5.612
+            "laborers": 3.0,
+            "peasants": 1.501,
+            "tribesmen": 2.233
           }
         },
         {
@@ -859,7 +873,7 @@
           "good": "clay",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 7.874,
+          "pop": 7.433,
           "province": "cm_ashfields_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -868,8 +882,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
-            "peasants": 6.231
+            "laborers": 3.0,
+            "peasants": 1.667,
+            "tribesmen": 2.419
           }
         },
         {
@@ -883,7 +898,7 @@
           "good": "goods_gold",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 7.097,
+          "pop": 8.521,
           "province": "cm_copperfang_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -895,9 +910,10 @@
             "nobles": 0.087,
             "clergy": 0.172,
             "burghers": 0.087,
-            "laborers": 1.296,
+            "laborers": 3.0,
             "slaves": 1.296,
-            "peasants": 4.159
+            "peasants": 1.142,
+            "tribesmen": 2.737
           }
         },
         {
@@ -911,7 +927,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 17.169,
+          "pop": 12.045,
           "province": "cm_crown_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -925,8 +941,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 0.432,
-            "peasants": 16.39
+            "laborers": 3.0,
+            "peasants": 4.429,
+            "tribesmen": 4.269
           }
         },
         {
@@ -940,7 +957,7 @@
           "good": "silver",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 7.299,
+          "pop": 8.608,
           "province": "cm_copperfang_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -952,9 +969,10 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
+            "laborers": 3.0,
             "slaves": 1.296,
-            "peasants": 4.36
+            "peasants": 1.195,
+            "tribesmen": 2.77
           }
         },
         {
@@ -968,7 +986,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 38.139,
+          "pop": 29.085,
           "province": "cm_hooktooth_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -986,9 +1004,10 @@
             "nobles": 0.2,
             "clergy": 0.3,
             "burghers": 4.5,
-            "laborers": 2,
+            "laborers": 5.063,
             "slaves": 1.554,
-            "peasants": 29.585
+            "peasants": 7.896,
+            "tribesmen": 9.572
           },
           "rank": "town"
         },
@@ -1003,7 +1022,7 @@
           "good": "saffron",
           "topography": "flatland",
           "vegetation": "farmland",
-          "pop": 35.649,
+          "pop": 25.748,
           "province": "cm_ashfields_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -1017,8 +1036,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 0.432,
-            "peasants": 34.87
+            "laborers": 3.0,
+            "peasants": 13.274,
+            "tribesmen": 9.127
           }
         },
         {
@@ -1032,7 +1052,7 @@
           "good": "dyes",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 19.244,
+          "pop": 12.768,
           "province": "cm_saltjaw_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -1046,8 +1066,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
-            "peasants": 17.601
+            "laborers": 3.0,
+            "peasants": 4.897,
+            "tribesmen": 4.524
           }
         },
         {
@@ -1061,7 +1082,7 @@
           "good": "livestock",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 25.867,
+          "pop": 16.633,
           "province": "cm_ashfields_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -1075,8 +1096,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 0.432,
-            "peasants": 25.088
+            "laborers": 4.0,
+            "peasants": 6.609,
+            "tribesmen": 5.677
           }
         },
         {
@@ -1090,7 +1112,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 23.92,
+          "pop": 15.862,
           "province": "cm_hooktooth_outer_province",
           "country": "CDM",
           "culture": "cm_cinderkin",
@@ -1104,8 +1126,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 0.432,
-            "peasants": 23.141
+            "laborers": 4.0,
+            "peasants": 6.1,
+            "tribesmen": 5.415
           }
         },
         {
@@ -1118,7 +1141,7 @@
           "good": "tar",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 15.834,
+          "pop": 11.488,
           "province": "cm_blackwood_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1130,8 +1153,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
-            "peasants": 14.191
+            "laborers": 3.0,
+            "peasants": 4.069,
+            "tribesmen": 4.072
           }
         },
         {
@@ -1144,7 +1168,7 @@
           "good": "goods_gold",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 14.061,
+          "pop": 10.096,
           "province": "cm_crown_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1156,8 +1180,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
-            "peasants": 12.418
+            "laborers": 3.0,
+            "peasants": 3.294,
+            "tribesmen": 3.455
           }
         },
         {
@@ -1170,7 +1195,7 @@
           "good": "sand",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 13.133,
+          "pop": 9.777,
           "province": "cm_copperfang_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1182,8 +1207,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
-            "peasants": 11.49
+            "laborers": 3.0,
+            "peasants": 3.052,
+            "tribesmen": 3.378
           }
         },
         {
@@ -1196,7 +1222,7 @@
           "good": "fiber_crops",
           "topography": "hills",
           "vegetation": "farmland",
-          "pop": 11.323,
+          "pop": 9.132,
           "province": "cm_saltjaw_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -1206,8 +1232,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 0.432,
-            "peasants": 10.544
+            "laborers": 3.0,
+            "peasants": 2.787,
+            "tribesmen": 2.998
           }
         },
         {
@@ -1220,7 +1247,7 @@
           "good": "stone",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 11.411,
+          "pop": 8.947,
           "province": "cm_ashfields_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -1230,8 +1257,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
-            "peasants": 9.768
+            "laborers": 3.0,
+            "peasants": 2.597,
+            "tribesmen": 3.003
           }
         },
         {
@@ -1244,7 +1272,7 @@
           "good": "salt",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 7.254,
+          "pop": 7.119,
           "province": "cm_blackwood_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -1254,8 +1282,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
-            "peasants": 5.611
+            "laborers": 3.0,
+            "peasants": 1.502,
+            "tribesmen": 2.27
           }
         },
         {
@@ -1268,7 +1297,7 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 7.872,
+          "pop": 7.813,
           "province": "cm_hooktooth_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1281,8 +1310,9 @@
             "nobles": 0.087,
             "clergy": 0.173,
             "burghers": 0.087,
-            "laborers": 1.296,
-            "peasants": 6.229
+            "laborers": 3.313,
+            "peasants": 1.666,
+            "tribesmen": 2.487
           }
         }
       ],
@@ -1406,7 +1436,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 65.462,
+          "pop": 58.927,
           "province": "cm_brackhaven_province",
           "rgo_expansion": 5,
           "buildings": {
@@ -1424,9 +1454,10 @@
             "nobles": 0.123,
             "clergy": 0.243,
             "burghers": 2.434,
-            "laborers": 0.609,
-            "peasants": 61.053,
-            "soldiers": 1.0
+            "laborers": 7.188,
+            "peasants": 28.71,
+            "soldiers": 1.25,
+            "tribesmen": 18.979
           },
           "rank": "city"
         },
@@ -1440,7 +1471,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 14.725,
+          "pop": 13.78,
           "province": "cm_brinewood_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1451,8 +1482,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 0.435,
-            "peasants": 13.94
+            "laborers": 3.0,
+            "peasants": 6.322,
+            "tribesmen": 4.108
           }
         },
         {
@@ -1465,7 +1497,7 @@
           "good": "iron",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 13.941,
+          "pop": 15.059,
           "province": "cm_rustpeak_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1479,9 +1511,10 @@
           "pop_classes": {
             "nobles": 0.2,
             "clergy": 0.3,
-            "burghers": 2,
-            "laborers": 3,
-            "peasants": 8.441
+            "burghers": 2.0,
+            "laborers": 3.688,
+            "peasants": 4.671,
+            "tribesmen": 4.2
           },
           "rank": "town"
         },
@@ -1495,7 +1528,7 @@
           "good": "wheat",
           "topography": "hills",
           "vegetation": "farmland",
-          "pop": 17.881,
+          "pop": 19.008,
           "province": "cm_mossfields_province",
           "rgo_expansion": 3,
           "buildings": {
@@ -1507,8 +1540,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 0.435,
-            "peasants": 17.096
+            "laborers": 5.313,
+            "peasants": 7.745,
+            "tribesmen": 5.6
           }
         },
         {
@@ -1521,7 +1555,7 @@
           "good": "salt",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 18.31,
+          "pop": 18.492,
           "province": "cm_brackhaven_outer_province",
           "rgo_expansion": 3,
           "buildings": {
@@ -1532,8 +1566,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 1.304,
-            "peasants": 16.656
+            "laborers": 5.0,
+            "peasants": 7.692,
+            "tribesmen": 5.45
           }
         },
         {
@@ -1546,7 +1581,7 @@
           "good": "wool",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 9.271,
+          "pop": 10.333,
           "province": "cm_brinewood_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1557,8 +1592,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 0.435,
-            "peasants": 8.486
+            "laborers": 3.0,
+            "peasants": 3.937,
+            "tribesmen": 3.046
           }
         },
         {
@@ -1571,7 +1607,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "woods",
-          "pop": 8.937,
+          "pop": 10.31,
           "province": "cm_mossfields_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1582,8 +1618,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 0.435,
-            "peasants": 8.152
+            "laborers": 3.0,
+            "peasants": 3.847,
+            "tribesmen": 3.113
           }
         },
         {
@@ -1596,7 +1633,7 @@
           "good": "stone",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 12.768,
+          "pop": 12.567,
           "province": "cm_rustpeak_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1607,8 +1644,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 1.304,
-            "peasants": 11.114
+            "laborers": 3.0,
+            "peasants": 5.342,
+            "tribesmen": 3.875
           }
         },
         {
@@ -1621,7 +1659,7 @@
           "good": "stone",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 6.713,
+          "pop": 8.452,
           "province": "cm_mossfields_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -1630,8 +1668,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 1.304,
-            "peasants": 5.059
+            "laborers": 3.0,
+            "peasants": 2.609,
+            "tribesmen": 2.493
           }
         },
         {
@@ -1644,7 +1683,7 @@
           "good": "clay",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 5.579,
+          "pop": 7.613,
           "province": "cm_mossfields_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -1653,8 +1692,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 1.304,
-            "peasants": 3.925
+            "laborers": 3.0,
+            "peasants": 2.089,
+            "tribesmen": 2.174
           }
         },
         {
@@ -1667,7 +1707,7 @@
           "good": "iron",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 2.535,
+          "pop": 7.481,
           "province": "cm_rustpeak_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1678,8 +1718,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 1.304,
-            "peasants": 0.881
+            "laborers": 3.313,
+            "peasants": 1.626,
+            "tribesmen": 2.192
           }
         },
         {
@@ -1692,7 +1733,7 @@
           "good": "salt",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 3.817,
+          "pop": 7.073,
           "province": "cm_mossfields_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -1701,8 +1742,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 1.304,
-            "peasants": 2.163
+            "laborers": 3.0,
+            "peasants": 1.755,
+            "tribesmen": 1.968
           }
         },
         {
@@ -1715,7 +1757,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 32.054,
+          "pop": 33.467,
           "province": "cm_brackhaven_outer_province",
           "rgo_expansion": 5,
           "buildings": {
@@ -1731,9 +1773,10 @@
           "pop_classes": {
             "nobles": 0.2,
             "clergy": 0.3,
-            "burghers": 3,
-            "laborers": 2,
-            "peasants": 26.554
+            "burghers": 3.0,
+            "laborers": 7.063,
+            "peasants": 12.922,
+            "tribesmen": 9.982
           },
           "rank": "town"
         },
@@ -1747,7 +1790,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 14.723,
+          "pop": 14.272,
           "province": "cm_brinewood_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1759,8 +1802,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 0.435,
-            "peasants": 13.938
+            "laborers": 3.0,
+            "peasants": 6.467,
+            "tribesmen": 4.455
           }
         },
         {
@@ -1773,7 +1817,7 @@
           "good": "silver",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 5.94,
+          "pop": 8.226,
           "province": "cm_rustpeak_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -1783,8 +1827,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 1.304,
-            "peasants": 4.286
+            "laborers": 3.0,
+            "peasants": 2.35,
+            "tribesmen": 2.526
           }
         },
         {
@@ -1797,7 +1842,7 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "farmland",
-          "pop": 17.879,
+          "pop": 19.474,
           "province": "cm_mossfields_outer_province",
           "rgo_expansion": 3,
           "buildings": {
@@ -1810,8 +1855,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 0.435,
-            "peasants": 17.094
+            "laborers": 5.313,
+            "peasants": 7.883,
+            "tribesmen": 5.928
           }
         },
         {
@@ -1824,7 +1870,7 @@
           "good": "livestock",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 14.309,
+          "pop": 15.548,
           "province": "cm_brackhaven_outer_province",
           "rgo_expansion": 2,
           "buildings": {
@@ -1836,8 +1882,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 1.304,
-            "peasants": 12.655
+            "laborers": 4.0,
+            "peasants": 6.215,
+            "tribesmen": 4.983
           }
         },
         {
@@ -1850,7 +1897,7 @@
           "good": "wool",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 9.271,
+          "pop": 10.394,
           "province": "cm_brinewood_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1862,8 +1909,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 0.435,
-            "peasants": 8.486
+            "laborers": 3.0,
+            "peasants": 3.956,
+            "tribesmen": 3.088
           }
         },
         {
@@ -1876,7 +1924,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "woods",
-          "pop": 8.937,
+          "pop": 10.357,
           "province": "cm_mossfields_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -1886,8 +1934,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 0.435,
-            "peasants": 8.152
+            "laborers": 3.0,
+            "peasants": 3.861,
+            "tribesmen": 3.146
           }
         },
         {
@@ -1900,7 +1949,7 @@
           "good": "alum",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 14.768,
+          "pop": 14.231,
           "province": "cm_rustpeak_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1912,8 +1961,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 1.304,
-            "peasants": 13.114
+            "laborers": 3.0,
+            "peasants": 6.334,
+            "tribesmen": 4.547
           }
         },
         {
@@ -1926,7 +1976,7 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 6.712,
+          "pop": 8.922,
           "province": "cm_brackhaven_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1939,8 +1989,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 1.304,
-            "peasants": 5.058
+            "laborers": 3.313,
+            "peasants": 2.625,
+            "tribesmen": 2.634
           }
         },
         {
@@ -1953,7 +2004,7 @@
           "good": "saffron",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 5.579,
+          "pop": 7.754,
           "province": "cm_mossfields_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -1963,8 +2014,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 1.304,
-            "peasants": 3.925
+            "laborers": 3.0,
+            "peasants": 2.131,
+            "tribesmen": 2.273
           }
         },
         {
@@ -1977,7 +2029,7 @@
           "good": "iron",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 4.535,
+          "pop": 7.796,
           "province": "cm_rustpeak_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -1989,8 +2041,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 1.304,
-            "peasants": 2.881
+            "laborers": 3.0,
+            "peasants": 2.191,
+            "tribesmen": 2.255
           }
         },
         {
@@ -2003,7 +2056,7 @@
           "good": "dyes",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 3.817,
+          "pop": 7.109,
           "province": "cm_brackhaven_outer_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -2013,8 +2066,9 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 1.304,
-            "peasants": 2.163
+            "laborers": 3.0,
+            "peasants": 1.766,
+            "tribesmen": 1.993
           }
         }
       ],
@@ -2115,7 +2169,7 @@
           "good": "fish",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 35.345,
+          "pop": 35.264,
           "province": "cm_reefhook_province",
           "rgo_expansion": 3,
           "buildings": {
@@ -2129,8 +2183,9 @@
             "nobles": 0.25,
             "clergy": 0.498,
             "burghers": 4.979,
-            "laborers": 1.246,
-            "peasants": 28.372
+            "laborers": 5.063,
+            "peasants": 13.681,
+            "tribesmen": 10.793
           }
         },
         {
@@ -2143,7 +2198,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 12.23,
+          "pop": 12.115,
           "province": "cm_crooked_reef_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -2154,8 +2209,9 @@
             "nobles": 0.179,
             "clergy": 0.356,
             "burghers": 0.179,
-            "laborers": 0.891,
-            "peasants": 10.625
+            "laborers": 3.0,
+            "peasants": 4.844,
+            "tribesmen": 3.557
           }
         },
         {
@@ -2168,7 +2224,7 @@
           "good": "stone",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 9.135,
+          "pop": 9.764,
           "province": "cm_reefhook_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -2177,8 +2233,9 @@
             "nobles": 0.179,
             "clergy": 0.356,
             "burghers": 0.179,
-            "laborers": 2.669,
-            "peasants": 5.752
+            "laborers": 3.0,
+            "peasants": 3.126,
+            "tribesmen": 2.924
           }
         },
         {
@@ -2191,7 +2248,7 @@
           "good": "fish",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 7.61,
+          "pop": 9.143,
           "province": "cm_crooked_reef_province",
           "rgo_expansion": 1,
           "buildings": {},
@@ -2200,8 +2257,9 @@
             "nobles": 0.179,
             "clergy": 0.356,
             "burghers": 0.179,
-            "laborers": 0.891,
-            "peasants": 6.005
+            "laborers": 3.0,
+            "peasants": 2.845,
+            "tribesmen": 2.584
           }
         },
         {
@@ -2214,7 +2272,7 @@
           "good": "fish",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 15.149,
+          "pop": 18.597,
           "province": "cm_reefhook_outer_province",
           "rgo_expansion": 3,
           "buildings": {
@@ -2226,8 +2284,9 @@
             "nobles": 0.108,
             "clergy": 0.213,
             "burghers": 2.134,
-            "laborers": 0.535,
-            "peasants": 12.159
+            "laborers": 5.0,
+            "peasants": 5.782,
+            "tribesmen": 5.36
           }
         },
         {
@@ -2240,7 +2299,7 @@
           "good": "livestock",
           "topography": "flatland",
           "vegetation": "woods",
-          "pop": 12.227,
+          "pop": 12.322,
           "province": "cm_crooked_reef_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -2252,8 +2311,9 @@
             "nobles": 0.179,
             "clergy": 0.356,
             "burghers": 0.179,
-            "laborers": 0.891,
-            "peasants": 10.622
+            "laborers": 3.0,
+            "peasants": 4.902,
+            "tribesmen": 3.706
           }
         },
         {
@@ -2266,7 +2326,7 @@
           "good": "pearls",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 9.134,
+          "pop": 11.086,
           "province": "cm_reefhook_outer_province",
           "rgo_expansion": 2,
           "buildings": {
@@ -2278,8 +2338,9 @@
             "nobles": 0.179,
             "clergy": 0.356,
             "burghers": 0.179,
-            "laborers": 2.669,
-            "peasants": 5.751
+            "laborers": 4.0,
+            "peasants": 3.123,
+            "tribesmen": 3.249
           }
         },
         {
@@ -2292,7 +2353,7 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 7.607,
+          "pop": 9.754,
           "province": "cm_crooked_reef_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -2305,8 +2366,9 @@
             "nobles": 0.179,
             "clergy": 0.356,
             "burghers": 0.179,
-            "laborers": 0.891,
-            "peasants": 6.002
+            "laborers": 3.313,
+            "peasants": 2.899,
+            "tribesmen": 2.828
           }
         }
       ],
@@ -2384,7 +2446,7 @@
           "good": "fish",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 74.386,
+          "pop": 78.123,
           "province": "cm_shatterfin_province",
           "rgo_expansion": 5,
           "buildings": {
@@ -2402,9 +2464,10 @@
           "pop_classes": {
             "nobles": 0.6,
             "clergy": 1.2,
-            "burghers": 12,
-            "laborers": 4,
-            "peasants": 56.586
+            "burghers": 12.0,
+            "laborers": 7.188,
+            "peasants": 33.69,
+            "tribesmen": 23.445
           },
           "rank": "city"
         },
@@ -2418,7 +2481,7 @@
           "good": "stone",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 21.384,
+          "pop": 23.712,
           "province": "cm_shatterfin_province",
           "rgo_expansion": 2,
           "buildings": {},
@@ -2428,7 +2491,8 @@
             "clergy": 0.693,
             "burghers": 0.349,
             "laborers": 5.199,
-            "peasants": 14.794
+            "peasants": 9.667,
+            "tribesmen": 7.455
           }
         },
         {
@@ -2441,7 +2505,7 @@
           "good": "livestock",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 14.732,
+          "pop": 25.274,
           "province": "cm_shatterfin_province",
           "rgo_expansion": 4,
           "buildings": {
@@ -2453,8 +2517,9 @@
             "nobles": 0.211,
             "clergy": 0.416,
             "burghers": 4.156,
-            "laborers": 1.042,
-            "peasants": 8.907
+            "laborers": 6.0,
+            "peasants": 6.703,
+            "tribesmen": 7.788
           }
         },
         {
@@ -2467,7 +2532,7 @@
           "good": "silver",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 21.378,
+          "pop": 23.001,
           "province": "cm_shatterfin_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -2480,7 +2545,8 @@
             "clergy": 0.693,
             "burghers": 0.349,
             "laborers": 5.199,
-            "peasants": 14.788
+            "peasants": 9.418,
+            "tribesmen": 6.993
           }
         }
       ],
@@ -2570,7 +2636,7 @@
           "good": "lumber",
           "topography": "mountains",
           "vegetation": "woods",
-          "pop": 44.804,
+          "pop": 48.056,
           "province": "cm_knifeback_province",
           "rgo_expansion": 6,
           "buildings": {
@@ -2584,9 +2650,10 @@
           "pop_classes": {
             "nobles": 0.4,
             "clergy": 0.7,
-            "burghers": 4,
-            "laborers": 3,
-            "peasants": 36.704
+            "burghers": 4.0,
+            "laborers": 8.063,
+            "peasants": 20.75,
+            "tribesmen": 14.143
           },
           "rank": "town"
         },
@@ -2600,7 +2667,7 @@
           "good": "silk",
           "topography": "mountains",
           "vegetation": "woods",
-          "pop": 36.803,
+          "pop": 32.714,
           "province": "cm_knifeback_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -2612,8 +2679,9 @@
             "nobles": 0.349,
             "clergy": 0.693,
             "burghers": 0.349,
-            "laborers": 1.735,
-            "peasants": 33.677
+            "laborers": 3.0,
+            "peasants": 18.145,
+            "tribesmen": 10.178
           }
         }
       ],
@@ -2691,7 +2759,7 @@
           "good": "fish",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 40.674,
+          "pop": 42.936,
           "province": "cm_sootwake_province",
           "rgo_expansion": 3,
           "buildings": {
@@ -2706,8 +2774,9 @@
             "nobles": 0.247,
             "clergy": 0.49,
             "burghers": 4.903,
-            "laborers": 1.227,
-            "peasants": 33.807
+            "laborers": 5.063,
+            "peasants": 19.267,
+            "tribesmen": 12.966
           }
         },
         {
@@ -2720,7 +2789,7 @@
           "good": "lumber",
           "topography": "mountains",
           "vegetation": "woods",
-          "pop": 21.767,
+          "pop": 26.193,
           "province": "cm_ember_key_province",
           "rgo_expansion": 4,
           "buildings": {
@@ -2732,8 +2801,9 @@
             "nobles": 0.177,
             "clergy": 0.35,
             "burghers": 0.177,
-            "laborers": 0.877,
-            "peasants": 20.186
+            "laborers": 7.25,
+            "peasants": 10.678,
+            "tribesmen": 7.561
           }
         },
         {
@@ -2746,7 +2816,7 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 17.43,
+          "pop": 19.046,
           "province": "cm_sootwake_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -2759,8 +2829,9 @@
             "nobles": 0.107,
             "clergy": 0.21,
             "burghers": 2.101,
-            "laborers": 0.527,
-            "peasants": 14.485
+            "laborers": 3.313,
+            "peasants": 7.95,
+            "tribesmen": 5.365
           }
         },
         {
@@ -2773,7 +2844,7 @@
           "good": "alum",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 21.758,
+          "pop": 22.263,
           "province": "cm_ember_key_outer_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -2786,8 +2857,9 @@
             "nobles": 0.177,
             "clergy": 0.35,
             "burghers": 0.177,
-            "laborers": 0.877,
-            "peasants": 20.177
+            "laborers": 4.25,
+            "peasants": 10.7,
+            "tribesmen": 6.609
           }
         }
       ],
@@ -2878,7 +2950,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 50.172,
+          "pop": 48.439,
           "province": "cm_giltfang_1_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -2896,11 +2968,12 @@
           },
           "pop_classes": {
             "nobles": 0.5,
-            "clergy": 1,
-            "burghers": 8,
-            "laborers": 5,
-            "peasants": 34.672,
-            "soldiers": 1
+            "clergy": 1.0,
+            "burghers": 8.0,
+            "laborers": 5.0,
+            "peasants": 20.829,
+            "soldiers": 1.0,
+            "tribesmen": 12.11
           },
           "rank": "city"
         },
@@ -2915,7 +2988,7 @@
           "good": "copper",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 16.08,
+          "pop": 15.719,
           "province": "cm_giltfang_2_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -2927,7 +3000,8 @@
             "clergy": 0.385,
             "burghers": 0.884,
             "laborers": 3.698,
-            "peasants": 10.921
+            "peasants": 6.63,
+            "tribesmen": 3.93
           }
         },
         {
@@ -2941,7 +3015,7 @@
           "good": "stone",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 10.405,
+          "pop": 12.649,
           "province": "cm_giltfang_3_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -2952,8 +3026,9 @@
             "nobles": 0.124,
             "clergy": 0.249,
             "burghers": 0.572,
-            "laborers": 2.393,
-            "peasants": 7.067
+            "laborers": 4.25,
+            "peasants": 4.291,
+            "tribesmen": 3.163
           }
         },
         {
@@ -2967,7 +3042,7 @@
           "good": "salt",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 11.351,
+          "pop": 11.619,
           "province": "cm_giltfang_4_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -2977,8 +3052,9 @@
             "nobles": 0.136,
             "clergy": 0.272,
             "burghers": 0.624,
-            "laborers": 2.61,
-            "peasants": 7.709
+            "laborers": 3.0,
+            "peasants": 4.682,
+            "tribesmen": 2.905
           }
         },
         {
@@ -2992,7 +3068,7 @@
           "good": "clay",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 14.188,
+          "pop": 13.871,
           "province": "cm_giltfang_5_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3003,7 +3079,8 @@
             "clergy": 0.34,
             "burghers": 0.78,
             "laborers": 3.263,
-            "peasants": 9.635
+            "peasants": 5.85,
+            "tribesmen": 3.468
           }
         },
         {
@@ -3017,7 +3094,7 @@
           "good": "copper",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 14.188,
+          "pop": 13.938,
           "province": "cm_giltfang_2_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3028,8 +3105,9 @@
             "nobles": 0.17,
             "clergy": 0.34,
             "burghers": 0.78,
-            "laborers": 3.263,
-            "peasants": 9.635
+            "laborers": 3.313,
+            "peasants": 5.85,
+            "tribesmen": 3.485
           }
         },
         {
@@ -3043,7 +3121,7 @@
           "good": "iron",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 11.351,
+          "pop": 12.036,
           "province": "cm_giltfang_6_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3054,8 +3132,9 @@
             "nobles": 0.136,
             "clergy": 0.272,
             "burghers": 0.624,
-            "laborers": 2.61,
-            "peasants": 7.709
+            "laborers": 3.313,
+            "peasants": 4.682,
+            "tribesmen": 3.009
           }
         },
         {
@@ -3069,7 +3148,7 @@
           "good": "wool",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 10.243,
+          "pop": 11.49,
           "province": "cm_giltfang_3_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3079,8 +3158,9 @@
             "nobles": 0.158,
             "clergy": 0.317,
             "burghers": 0.728,
-            "laborers": 1.324,
-            "peasants": 7.716
+            "laborers": 3.0,
+            "peasants": 4.414,
+            "tribesmen": 2.873
           }
         },
         {
@@ -3094,7 +3174,7 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 12.134,
+          "pop": 12.842,
           "province": "cm_giltfang_1_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3104,8 +3184,9 @@
             "nobles": 0.181,
             "clergy": 0.363,
             "burghers": 0.832,
-            "laborers": 1.513,
-            "peasants": 9.245
+            "laborers": 3.0,
+            "peasants": 5.255,
+            "tribesmen": 3.211
           }
         },
         {
@@ -3119,7 +3200,7 @@
           "good": "iron",
           "topography": "mountains",
           "vegetation": "sparse",
-          "pop": 11.351,
+          "pop": 12.036,
           "province": "cm_giltfang_4_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3130,8 +3211,9 @@
             "nobles": 0.136,
             "clergy": 0.272,
             "burghers": 0.624,
-            "laborers": 2.61,
-            "peasants": 7.709
+            "laborers": 3.313,
+            "peasants": 4.682,
+            "tribesmen": 3.009
           }
         },
         {
@@ -3145,7 +3227,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 11.188,
+          "pop": 12.166,
           "province": "cm_giltfang_5_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3155,8 +3237,9 @@
             "nobles": 0.17,
             "clergy": 0.34,
             "burghers": 0.78,
-            "laborers": 1.418,
-            "peasants": 8.48
+            "laborers": 3.0,
+            "peasants": 4.834,
+            "tribesmen": 3.042
           }
         },
         {
@@ -3170,7 +3253,7 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 12.134,
+          "pop": 12.842,
           "province": "cm_giltfang_4_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3180,8 +3263,9 @@
             "nobles": 0.181,
             "clergy": 0.363,
             "burghers": 0.832,
-            "laborers": 1.513,
-            "peasants": 9.245
+            "laborers": 3.0,
+            "peasants": 5.255,
+            "tribesmen": 3.211
           }
         },
         {
@@ -3195,7 +3279,7 @@
           "good": "livestock",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 10.405,
+          "pop": 11.433,
           "province": "cm_giltfang_3_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3205,8 +3289,9 @@
             "nobles": 0.124,
             "clergy": 0.249,
             "burghers": 0.572,
-            "laborers": 1.04,
-            "peasants": 8.42
+            "laborers": 3.0,
+            "peasants": 4.629,
+            "tribesmen": 2.859
           }
         },
         {
@@ -3220,7 +3305,7 @@
           "good": "silver",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 8.513,
+          "pop": 9.715,
           "province": "cm_giltfang_2_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3230,8 +3315,9 @@
             "nobles": 0.102,
             "clergy": 0.204,
             "burghers": 0.468,
-            "laborers": 1.957,
-            "peasants": 5.782
+            "laborers": 3.0,
+            "peasants": 3.512,
+            "tribesmen": 2.429
           }
         },
         {
@@ -3245,7 +3331,7 @@
           "good": "salt",
           "topography": "flatland",
           "vegetation": "sparse",
-          "pop": 8.351,
+          "pop": 9.745,
           "province": "cm_giltfang_5_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3255,8 +3341,9 @@
             "nobles": 0.136,
             "clergy": 0.272,
             "burghers": 0.624,
-            "laborers": 2.61,
-            "peasants": 4.709
+            "laborers": 3.0,
+            "peasants": 3.276,
+            "tribesmen": 2.437
           }
         },
         {
@@ -3270,7 +3357,7 @@
           "good": "wheat",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 8.351,
+          "pop": 10.14,
           "province": "cm_giltfang_1_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3280,8 +3367,9 @@
             "nobles": 0.136,
             "clergy": 0.272,
             "burghers": 0.624,
-            "laborers": 1.135,
-            "peasants": 6.184
+            "laborers": 3.0,
+            "peasants": 3.573,
+            "tribesmen": 2.535
           }
         },
         {
@@ -3295,7 +3383,7 @@
           "good": "tar",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 14.188,
+          "pop": 14.135,
           "province": "cm_giltfang_4_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3305,8 +3393,9 @@
             "nobles": 0.17,
             "clergy": 0.34,
             "burghers": 0.78,
-            "laborers": 1.418,
-            "peasants": 11.48
+            "laborers": 3.0,
+            "peasants": 6.311,
+            "tribesmen": 3.534
           }
         },
         {
@@ -3320,7 +3409,7 @@
           "good": "sand",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 11.351,
+          "pop": 12.11,
           "province": "cm_giltfang_6_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3330,8 +3419,9 @@
             "nobles": 0.136,
             "clergy": 0.272,
             "burghers": 0.624,
-            "laborers": 1.135,
-            "peasants": 9.184
+            "laborers": 3.0,
+            "peasants": 5.05,
+            "tribesmen": 3.028
           }
         }
       ],
@@ -3415,7 +3505,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 20.134,
+          "pop": 21.072,
           "province": "cm_tolltooth_1_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3428,9 +3518,10 @@
           "pop_classes": {
             "nobles": 0.2,
             "clergy": 0.4,
-            "burghers": 3,
-            "laborers": 2,
-            "peasants": 14.534
+            "burghers": 3.0,
+            "laborers": 3.688,
+            "peasants": 8.516,
+            "tribesmen": 5.268
           },
           "rank": "town"
         },
@@ -3445,7 +3536,7 @@
           "good": "stone",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 6.513,
+          "pop": 8.807,
           "province": "cm_tolltooth_1_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3455,8 +3546,9 @@
             "nobles": 0.102,
             "clergy": 0.204,
             "burghers": 0.468,
-            "laborers": 1.957,
-            "peasants": 3.782
+            "laborers": 3.0,
+            "peasants": 2.831,
+            "tribesmen": 2.202
           }
         },
         {
@@ -3470,7 +3562,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 7.459,
+          "pop": 9.446,
           "province": "cm_tolltooth_1_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3480,8 +3572,9 @@
             "nobles": 0.113,
             "clergy": 0.227,
             "burghers": 0.52,
-            "laborers": 0.945,
-            "peasants": 5.654
+            "laborers": 3.0,
+            "peasants": 3.224,
+            "tribesmen": 2.362
           }
         },
         {
@@ -3495,7 +3588,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 6.567,
+          "pop": 8.75,
           "province": "cm_tolltooth_2_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3505,8 +3598,9 @@
             "nobles": 0.09,
             "clergy": 0.181,
             "burghers": 0.416,
-            "laborers": 0.756,
-            "peasants": 5.124
+            "laborers": 3.0,
+            "peasants": 2.875,
+            "tribesmen": 2.188
           }
         }
       ],
@@ -3577,7 +3671,7 @@
           "good": "fish",
           "topography": "flatland",
           "vegetation": "grasslands",
-          "pop": 8.0,
+          "pop": 7.234,
           "province": "cm_lantern_cay_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3589,8 +3683,9 @@
             "nobles": 0.05,
             "clergy": 0.1,
             "burghers": 0.5,
-            "laborers": 0.85,
-            "peasants": 6.5
+            "laborers": 3.063,
+            "peasants": 1.712,
+            "tribesmen": 1.809
           },
           "rank": "town"
         },
@@ -3605,7 +3700,7 @@
           "good": "lumber",
           "topography": "hills",
           "vegetation": "woods",
-          "pop": 5.0,
+          "pop": 6.608,
           "province": "cm_lantern_cay_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3615,8 +3710,9 @@
             "nobles": 0.05,
             "clergy": 0.1,
             "burghers": 0.5,
-            "laborers": 0.85,
-            "peasants": 3.5
+            "laborers": 3.0,
+            "peasants": 1.306,
+            "tribesmen": 1.652
           }
         },
         {
@@ -3630,7 +3726,7 @@
           "good": "stone",
           "topography": "hills",
           "vegetation": "sparse",
-          "pop": 5.0,
+          "pop": 6.608,
           "province": "cm_lantern_cay_province",
           "rgo_expansion": 1,
           "buildings": {
@@ -3640,8 +3736,9 @@
             "nobles": 0.05,
             "clergy": 0.1,
             "burghers": 0.5,
-            "laborers": 0.85,
-            "peasants": 3.5
+            "laborers": 3.0,
+            "peasants": 1.306,
+            "tribesmen": 1.652
           }
         }
       ],
@@ -3699,7 +3796,7 @@
   "terrain_revision": "volcanic-spacing-pass",
   "economy_revision": "lore-specialization-056",
   "population_baseline": 593647,
-  "population_target": 1599372,
+  "population_target": 1571059,
   "baseline_locations": {
     "cm_cinder_crown": {
       "population": 8.222,
@@ -3966,12 +4063,12 @@
     }
   },
   "country_population_targets": {
-    "CDM": 570739,
-    "QBR": 318463,
-    "RHK": 108437,
-    "SFK": 213487,
-    "SWK": 101629,
-    "GTF": 286617
+    "CDM": 460051,
+    "QBR": 346645,
+    "RHK": 118045,
+    "SFK": 230880,
+    "SWK": 110438,
+    "GTF": 305000
   },
   "goblin_life_expectancy_bonus_years": 15,
   "starting_ruler_ages": {
@@ -4126,6 +4223,899 @@
         "population_before": 7.567,
         "population_after": 6.567,
         "rank": "rural_settlement"
+      }
+    }
+  },
+  "population_062": {
+    "building_staffing_multiplier": 1.25,
+    "rgo_base_reserve": 2,
+    "tribal_share": 0.25,
+    "total_country_targets": {
+      "CDM": 620000,
+      "QBR": 420000,
+      "RHK": 140000,
+      "SFK": 280000,
+      "SWK": 130000,
+      "GTF": 305000
+    },
+    "prior_country_population_targets": {
+      "CDM": 570739,
+      "QBR": 318463,
+      "RHK": 108437,
+      "SFK": 213487,
+      "SWK": 101629,
+      "GTF": 286617
+    },
+    "locations": {
+      "cm_cinder_crown": {
+        "population_before": 7.099,
+        "class_changes": {
+          "laborers": 2.017,
+          "tribesmen": 2.803,
+          "peasants": -2.811
+        },
+        "minimum_peasants": 1.25
+      },
+      "cm_blackwood": {
+        "population_before": 17.169,
+        "class_changes": {
+          "laborers": 2.568,
+          "tribesmen": 3.956,
+          "peasants": -12.066
+        },
+        "minimum_peasants": 4.098
+      },
+      "cm_copperfang": {
+        "population_before": 15.3,
+        "class_changes": {
+          "laborers": 1.063,
+          "tribesmen": 4.531,
+          "peasants": -5.808
+        },
+        "minimum_peasants": 2.001
+      },
+      "cm_hooktooth": {
+        "population_before": 77.322,
+        "class_changes": {
+          "laborers": 7.52,
+          "soldiers": 0.275,
+          "tribesmen": 23.191,
+          "peasants": -42.936
+        },
+        "minimum_peasants": 16.094
+      },
+      "cm_ashfields": {
+        "population_before": 35.651,
+        "class_changes": {
+          "laborers": 5.818,
+          "tribesmen": 9.327,
+          "peasants": -24.485
+        },
+        "minimum_peasants": 8.718
+      },
+      "cm_saltjaw": {
+        "population_before": 19.244,
+        "class_changes": {
+          "laborers": 2.704,
+          "tribesmen": 4.683,
+          "peasants": -12.943
+        },
+        "minimum_peasants": 4.401
+      },
+      "cm_redpasture": {
+        "population_before": 25.869,
+        "class_changes": {
+          "laborers": 3.568,
+          "tribesmen": 6.976,
+          "peasants": -16.738
+        },
+        "minimum_peasants": 6.273
+      },
+      "cm_splinter_cove": {
+        "population_before": 18.92,
+        "class_changes": {
+          "laborers": 3.568,
+          "tribesmen": 5.774,
+          "peasants": -11.987
+        },
+        "minimum_peasants": 4.536
+      },
+      "cm_ironbark": {
+        "population_before": 15.835,
+        "class_changes": {
+          "laborers": 2.954,
+          "tribesmen": 4.226,
+          "peasants": -10.43
+        },
+        "minimum_peasants": 3.548
+      },
+      "cm_ashspine": {
+        "population_before": 14.061,
+        "class_changes": {
+          "laborers": 3.017,
+          "tribesmen": 3.9,
+          "peasants": -9.123
+        },
+        "minimum_peasants": 3.105
+      },
+      "cm_emberfall": {
+        "population_before": 13.133,
+        "class_changes": {
+          "laborers": 1.704,
+          "tribesmen": 3.495,
+          "peasants": -8.434
+        },
+        "minimum_peasants": 2.873
+      },
+      "cm_scorchbrook": {
+        "population_before": 11.324,
+        "class_changes": {
+          "laborers": 2.568,
+          "tribesmen": 3.128,
+          "peasants": -7.753
+        },
+        "minimum_peasants": 2.637
+      },
+      "cm_obsidian_cut": {
+        "population_before": 11.411,
+        "class_changes": {
+          "laborers": 2.954,
+          "tribesmen": 3.502,
+          "peasants": -7.169
+        },
+        "minimum_peasants": 2.442
+      },
+      "cm_cinder_shelf": {
+        "population_before": 7.255,
+        "class_changes": {
+          "laborers": 1.704,
+          "tribesmen": 2.233,
+          "peasants": -4.111
+        },
+        "minimum_peasants": 1.403
+      },
+      "cm_smokehorn": {
+        "population_before": 7.874,
+        "class_changes": {
+          "laborers": 1.704,
+          "tribesmen": 2.419,
+          "peasants": -4.564
+        },
+        "minimum_peasants": 1.558
+      },
+      "cm_goldscar": {
+        "population_before": 7.097,
+        "class_changes": {
+          "laborers": 1.704,
+          "tribesmen": 2.737,
+          "peasants": -3.017
+        },
+        "minimum_peasants": 1.04
+      },
+      "cm_coaljaw": {
+        "population_before": 17.169,
+        "class_changes": {
+          "laborers": 2.568,
+          "tribesmen": 4.269,
+          "peasants": -11.961
+        },
+        "minimum_peasants": 4.098
+      },
+      "cm_silverfang": {
+        "population_before": 7.299,
+        "class_changes": {
+          "laborers": 1.704,
+          "tribesmen": 2.77,
+          "peasants": -3.165
+        },
+        "minimum_peasants": 1.09
+      },
+      "cm_netjaw": {
+        "population_before": 38.139,
+        "class_changes": {
+          "laborers": 3.063,
+          "tribesmen": 9.572,
+          "peasants": -21.689
+        },
+        "minimum_peasants": 7.397
+      },
+      "cm_saffron_hollow": {
+        "population_before": 35.649,
+        "class_changes": {
+          "laborers": 2.568,
+          "tribesmen": 9.127,
+          "peasants": -21.596
+        },
+        "minimum_peasants": 8.718
+      },
+      "cm_dyer_s_marsh": {
+        "population_before": 19.244,
+        "class_changes": {
+          "laborers": 1.704,
+          "tribesmen": 4.524,
+          "peasants": -12.704
+        },
+        "minimum_peasants": 4.401
+      },
+      "cm_grazetooth": {
+        "population_before": 25.867,
+        "class_changes": {
+          "laborers": 3.568,
+          "tribesmen": 5.677,
+          "peasants": -18.479
+        },
+        "minimum_peasants": 6.272
+      },
+      "cm_sawtooth": {
+        "population_before": 23.92,
+        "class_changes": {
+          "laborers": 3.568,
+          "tribesmen": 5.415,
+          "peasants": -17.041
+        },
+        "minimum_peasants": 5.786
+      },
+      "cm_pitchfang": {
+        "population_before": 15.834,
+        "class_changes": {
+          "laborers": 1.704,
+          "tribesmen": 4.072,
+          "peasants": -10.122
+        },
+        "minimum_peasants": 3.548
+      },
+      "cm_goldvein": {
+        "population_before": 14.061,
+        "class_changes": {
+          "laborers": 1.704,
+          "tribesmen": 3.455,
+          "peasants": -9.124
+        },
+        "minimum_peasants": 3.105
+      },
+      "cm_clayjaw": {
+        "population_before": 13.133,
+        "class_changes": {
+          "laborers": 1.704,
+          "tribesmen": 3.378,
+          "peasants": -8.438
+        },
+        "minimum_peasants": 2.873
+      },
+      "cm_reedfurrow": {
+        "population_before": 11.323,
+        "class_changes": {
+          "laborers": 2.568,
+          "tribesmen": 2.998,
+          "peasants": -7.757
+        },
+        "minimum_peasants": 2.636
+      },
+      "cm_quarrystone": {
+        "population_before": 11.411,
+        "class_changes": {
+          "laborers": 1.704,
+          "tribesmen": 3.003,
+          "peasants": -7.171
+        },
+        "minimum_peasants": 2.442
+      },
+      "cm_saltlip": {
+        "population_before": 7.254,
+        "class_changes": {
+          "laborers": 1.704,
+          "tribesmen": 2.27,
+          "peasants": -4.109
+        },
+        "minimum_peasants": 1.403
+      },
+      "cm_ashgrain": {
+        "population_before": 7.872,
+        "class_changes": {
+          "laborers": 2.017,
+          "tribesmen": 2.487,
+          "peasants": -4.563
+        },
+        "minimum_peasants": 1.558
+      },
+      "cm_lantern_haven": {
+        "population_before": 8.0,
+        "class_changes": {
+          "laborers": 2.213,
+          "tribesmen": 1.809,
+          "peasants": -4.788
+        },
+        "minimum_peasants": 1.625
+      },
+      "cm_wickwood": {
+        "population_before": 5.0,
+        "class_changes": {
+          "laborers": 2.15,
+          "tribesmen": 1.652,
+          "peasants": -2.194
+        },
+        "minimum_peasants": 1.25
+      },
+      "cm_emberwatch": {
+        "population_before": 5.0,
+        "class_changes": {
+          "laborers": 2.15,
+          "tribesmen": 1.652,
+          "peasants": -2.194
+        },
+        "minimum_peasants": 1.25
+      },
+      "cm_brackhaven": {
+        "population_before": 65.462,
+        "class_changes": {
+          "laborers": 6.579,
+          "soldiers": 0.25,
+          "tribesmen": 18.979,
+          "peasants": -32.343
+        },
+        "minimum_peasants": 15.264
+      },
+      "cm_brinewood": {
+        "population_before": 14.725,
+        "class_changes": {
+          "laborers": 2.565,
+          "tribesmen": 4.108,
+          "peasants": -7.618
+        },
+        "minimum_peasants": 3.485
+      },
+      "cm_rustpeak": {
+        "population_before": 13.941,
+        "class_changes": {
+          "laborers": 0.688,
+          "tribesmen": 4.2,
+          "peasants": -3.77
+        },
+        "minimum_peasants": 2.111
+      },
+      "cm_mossfields": {
+        "population_before": 17.881,
+        "class_changes": {
+          "laborers": 4.878,
+          "tribesmen": 5.6,
+          "peasants": -9.351
+        },
+        "minimum_peasants": 4.274
+      },
+      "cm_bracksalt": {
+        "population_before": 18.31,
+        "class_changes": {
+          "laborers": 3.696,
+          "tribesmen": 5.45,
+          "peasants": -8.964
+        },
+        "minimum_peasants": 4.164
+      },
+      "cm_mossglen": {
+        "population_before": 9.271,
+        "class_changes": {
+          "laborers": 2.565,
+          "tribesmen": 3.046,
+          "peasants": -4.549
+        },
+        "minimum_peasants": 2.122
+      },
+      "cm_reedmouth": {
+        "population_before": 8.937,
+        "class_changes": {
+          "laborers": 2.565,
+          "tribesmen": 3.113,
+          "peasants": -4.305
+        },
+        "minimum_peasants": 2.038
+      },
+      "cm_blackcrag": {
+        "population_before": 12.768,
+        "class_changes": {
+          "laborers": 1.696,
+          "tribesmen": 3.875,
+          "peasants": -5.772
+        },
+        "minimum_peasants": 2.779
+      },
+      "cm_basalt_steps": {
+        "population_before": 6.713,
+        "class_changes": {
+          "laborers": 1.696,
+          "tribesmen": 2.493,
+          "peasants": -2.45
+        },
+        "minimum_peasants": 1.265
+      },
+      "cm_fumarole_fields": {
+        "population_before": 5.579,
+        "class_changes": {
+          "laborers": 1.696,
+          "tribesmen": 2.174,
+          "peasants": -1.836
+        },
+        "minimum_peasants": 1.0
+      },
+      "cm_rustneedle": {
+        "population_before": 2.535,
+        "class_changes": {
+          "laborers": 2.009,
+          "tribesmen": 2.192,
+          "peasants": 0.745
+        },
+        "minimum_peasants": 1.0
+      },
+      "cm_brine_spur": {
+        "population_before": 3.817,
+        "class_changes": {
+          "laborers": 1.696,
+          "tribesmen": 1.968,
+          "peasants": -0.408
+        },
+        "minimum_peasants": 1.0
+      },
+      "cm_bracknet": {
+        "population_before": 32.054,
+        "class_changes": {
+          "laborers": 5.063,
+          "tribesmen": 9.982,
+          "peasants": -13.632
+        },
+        "minimum_peasants": 6.639
+      },
+      "cm_miregrove": {
+        "population_before": 14.723,
+        "class_changes": {
+          "laborers": 2.565,
+          "tribesmen": 4.455,
+          "peasants": -7.471
+        },
+        "minimum_peasants": 3.485
+      },
+      "cm_silverneedle": {
+        "population_before": 5.94,
+        "class_changes": {
+          "laborers": 1.696,
+          "tribesmen": 2.526,
+          "peasants": -1.936
+        },
+        "minimum_peasants": 1.072
+      },
+      "cm_mossfurrow": {
+        "population_before": 17.879,
+        "class_changes": {
+          "laborers": 4.878,
+          "tribesmen": 5.928,
+          "peasants": -9.211
+        },
+        "minimum_peasants": 4.274
+      },
+      "cm_brinepasture": {
+        "population_before": 14.309,
+        "class_changes": {
+          "laborers": 2.696,
+          "tribesmen": 4.983,
+          "peasants": -6.44
+        },
+        "minimum_peasants": 3.164
+      },
+      "cm_woolfen": {
+        "population_before": 9.271,
+        "class_changes": {
+          "laborers": 2.565,
+          "tribesmen": 3.088,
+          "peasants": -4.53
+        },
+        "minimum_peasants": 2.122
+      },
+      "cm_reedfish": {
+        "population_before": 8.937,
+        "class_changes": {
+          "laborers": 2.565,
+          "tribesmen": 3.146,
+          "peasants": -4.291
+        },
+        "minimum_peasants": 2.038
+      },
+      "cm_alumcrag": {
+        "population_before": 14.768,
+        "class_changes": {
+          "laborers": 1.696,
+          "tribesmen": 4.547,
+          "peasants": -6.78
+        },
+        "minimum_peasants": 3.279
+      },
+      "cm_basaltgrain": {
+        "population_before": 6.712,
+        "class_changes": {
+          "laborers": 2.009,
+          "tribesmen": 2.634,
+          "peasants": -2.433
+        },
+        "minimum_peasants": 1.265
+      },
+      "cm_saffron_vale": {
+        "population_before": 5.579,
+        "class_changes": {
+          "laborers": 1.696,
+          "tribesmen": 2.273,
+          "peasants": -1.794
+        },
+        "minimum_peasants": 1.0
+      },
+      "cm_rustforge": {
+        "population_before": 4.535,
+        "class_changes": {
+          "laborers": 1.696,
+          "tribesmen": 2.255,
+          "peasants": -0.69
+        },
+        "minimum_peasants": 1.25
+      },
+      "cm_dyer_s_fen": {
+        "population_before": 3.817,
+        "class_changes": {
+          "laborers": 1.696,
+          "tribesmen": 1.993,
+          "peasants": -0.397
+        },
+        "minimum_peasants": 1.0
+      },
+      "cm_reefhook": {
+        "population_before": 35.345,
+        "class_changes": {
+          "laborers": 3.817,
+          "tribesmen": 10.793,
+          "peasants": -14.691
+        },
+        "minimum_peasants": 7.093
+      },
+      "cm_crooked_reef": {
+        "population_before": 12.23,
+        "class_changes": {
+          "laborers": 2.109,
+          "tribesmen": 3.557,
+          "peasants": -5.781
+        },
+        "minimum_peasants": 2.657
+      },
+      "cm_hookrim": {
+        "population_before": 9.135,
+        "class_changes": {
+          "laborers": 0.331,
+          "tribesmen": 2.924,
+          "peasants": -2.626
+        },
+        "minimum_peasants": 1.438
+      },
+      "cm_tidefang": {
+        "population_before": 7.61,
+        "class_changes": {
+          "laborers": 2.109,
+          "tribesmen": 2.584,
+          "peasants": -3.16
+        },
+        "minimum_peasants": 1.502
+      },
+      "cm_reefnet": {
+        "population_before": 15.149,
+        "class_changes": {
+          "laborers": 4.465,
+          "tribesmen": 5.36,
+          "peasants": -6.377
+        },
+        "minimum_peasants": 3.04
+      },
+      "cm_coralpasture": {
+        "population_before": 12.227,
+        "class_changes": {
+          "laborers": 2.109,
+          "tribesmen": 3.706,
+          "peasants": -5.72
+        },
+        "minimum_peasants": 2.656
+      },
+      "cm_pearlshore": {
+        "population_before": 9.134,
+        "class_changes": {
+          "laborers": 1.331,
+          "tribesmen": 3.249,
+          "peasants": -2.628
+        },
+        "minimum_peasants": 1.438
+      },
+      "cm_tidegrain": {
+        "population_before": 7.607,
+        "class_changes": {
+          "laborers": 2.422,
+          "tribesmen": 2.828,
+          "peasants": -3.103
+        },
+        "minimum_peasants": 1.501
+      },
+      "cm_shatterfin": {
+        "population_before": 74.386,
+        "class_changes": {
+          "laborers": 3.188,
+          "tribesmen": 23.445,
+          "peasants": -22.896
+        },
+        "minimum_peasants": 14.147
+      },
+      "cm_shardpoint": {
+        "population_before": 21.384,
+        "class_changes": {
+          "tribesmen": 7.455,
+          "peasants": -5.127
+        },
+        "minimum_peasants": 3.699
+      },
+      "cm_stormpasture": {
+        "population_before": 14.732,
+        "class_changes": {
+          "laborers": 4.958,
+          "tribesmen": 7.788,
+          "peasants": -2.204
+        },
+        "minimum_peasants": 2.227
+      },
+      "cm_silver_shard": {
+        "population_before": 21.378,
+        "class_changes": {
+          "tribesmen": 6.993,
+          "peasants": -5.37
+        },
+        "minimum_peasants": 3.697
+      },
+      "cm_knifeback": {
+        "population_before": 44.804,
+        "class_changes": {
+          "laborers": 5.063,
+          "tribesmen": 14.143,
+          "peasants": -15.954
+        },
+        "minimum_peasants": 9.176
+      },
+      "cm_silkworm_grove": {
+        "population_before": 36.803,
+        "class_changes": {
+          "laborers": 1.265,
+          "tribesmen": 10.178,
+          "peasants": -15.532
+        },
+        "minimum_peasants": 8.42
+      },
+      "cm_sootwake": {
+        "population_before": 40.674,
+        "class_changes": {
+          "laborers": 3.836,
+          "tribesmen": 12.966,
+          "peasants": -14.54
+        },
+        "minimum_peasants": 8.452
+      },
+      "cm_ember_key": {
+        "population_before": 21.767,
+        "class_changes": {
+          "laborers": 6.373,
+          "tribesmen": 7.561,
+          "peasants": -9.508
+        },
+        "minimum_peasants": 5.047
+      },
+      "cm_sootgrain": {
+        "population_before": 17.43,
+        "class_changes": {
+          "laborers": 2.786,
+          "tribesmen": 5.365,
+          "peasants": -6.535
+        },
+        "minimum_peasants": 3.622
+      },
+      "cm_alum_key": {
+        "population_before": 21.758,
+        "class_changes": {
+          "laborers": 3.373,
+          "tribesmen": 6.609,
+          "peasants": -9.477
+        },
+        "minimum_peasants": 5.045
+      },
+      "cm_chainhaven": {
+        "population_before": 50.172,
+        "class_changes": {
+          "tribesmen": 12.11,
+          "peasants": -13.843
+        },
+        "minimum_peasants": 8.668
+      },
+      "cm_brassridge": {
+        "population_before": 16.08,
+        "class_changes": {
+          "tribesmen": 3.93,
+          "peasants": -4.291
+        },
+        "minimum_peasants": 2.731
+      },
+      "cm_coinfall": {
+        "population_before": 10.405,
+        "class_changes": {
+          "laborers": 1.857,
+          "tribesmen": 3.163,
+          "peasants": -2.776
+        },
+        "minimum_peasants": 1.767
+      },
+      "cm_saltwake": {
+        "population_before": 11.351,
+        "class_changes": {
+          "laborers": 0.39,
+          "tribesmen": 2.905,
+          "peasants": -3.027
+        },
+        "minimum_peasants": 1.928
+      },
+      "cm_weighstone": {
+        "population_before": 14.188,
+        "class_changes": {
+          "tribesmen": 3.468,
+          "peasants": -3.785
+        },
+        "minimum_peasants": 2.409
+      },
+      "cm_coppercut": {
+        "population_before": 14.188,
+        "class_changes": {
+          "laborers": 0.05,
+          "tribesmen": 3.485,
+          "peasants": -3.785
+        },
+        "minimum_peasants": 2.409
+      },
+      "cm_blackmeasure": {
+        "population_before": 11.351,
+        "class_changes": {
+          "laborers": 0.703,
+          "tribesmen": 3.009,
+          "peasants": -3.027
+        },
+        "minimum_peasants": 1.928
+      },
+      "cm_fangstead": {
+        "population_before": 10.243,
+        "class_changes": {
+          "laborers": 1.676,
+          "tribesmen": 2.873,
+          "peasants": -3.302
+        },
+        "minimum_peasants": 1.929
+      },
+      "cm_cinderfurrow": {
+        "population_before": 12.134,
+        "class_changes": {
+          "laborers": 1.487,
+          "tribesmen": 3.211,
+          "peasants": -3.99
+        },
+        "minimum_peasants": 2.312
+      },
+      "cm_oathforge": {
+        "population_before": 11.351,
+        "class_changes": {
+          "laborers": 0.703,
+          "tribesmen": 3.009,
+          "peasants": -3.027
+        },
+        "minimum_peasants": 1.928
+      },
+      "cm_chainwood": {
+        "population_before": 11.188,
+        "class_changes": {
+          "laborers": 1.582,
+          "tribesmen": 3.042,
+          "peasants": -3.646
+        },
+        "minimum_peasants": 2.12
+      },
+      "cm_ashbarley": {
+        "population_before": 12.134,
+        "class_changes": {
+          "laborers": 1.487,
+          "tribesmen": 3.211,
+          "peasants": -3.99
+        },
+        "minimum_peasants": 2.312
+      },
+      "cm_scalebreak": {
+        "population_before": 10.405,
+        "class_changes": {
+          "laborers": 1.96,
+          "tribesmen": 2.859,
+          "peasants": -3.791
+        },
+        "minimum_peasants": 2.105
+      },
+      "cm_tallyrock": {
+        "population_before": 8.513,
+        "class_changes": {
+          "laborers": 1.043,
+          "tribesmen": 2.429,
+          "peasants": -2.27
+        },
+        "minimum_peasants": 1.446
+      },
+      "cm_brinepans": {
+        "population_before": 8.351,
+        "class_changes": {
+          "laborers": 0.39,
+          "tribesmen": 2.437,
+          "peasants": -1.433
+        },
+        "minimum_peasants": 1.25
+      },
+      "cm_ledgerfen": {
+        "population_before": 8.351,
+        "class_changes": {
+          "laborers": 1.865,
+          "tribesmen": 2.535,
+          "peasants": -2.611
+        },
+        "minimum_peasants": 1.546
+      },
+      "cm_emberhollow": {
+        "population_before": 14.188,
+        "class_changes": {
+          "laborers": 1.582,
+          "tribesmen": 3.534,
+          "peasants": -5.169
+        },
+        "minimum_peasants": 2.87
+      },
+      "cm_lockshore": {
+        "population_before": 11.351,
+        "class_changes": {
+          "laborers": 1.865,
+          "tribesmen": 3.028,
+          "peasants": -4.134
+        },
+        "minimum_peasants": 2.296
+      },
+      "cm_tolltooth": {
+        "population_before": 20.134,
+        "class_changes": {
+          "laborers": 1.688,
+          "tribesmen": 5.268,
+          "peasants": -6.018
+        },
+        "minimum_peasants": 3.634
+      },
+      "cm_watchfang": {
+        "population_before": 6.513,
+        "class_changes": {
+          "laborers": 1.043,
+          "tribesmen": 2.202,
+          "peasants": -0.951
+        },
+        "minimum_peasants": 1.25
+      },
+      "cm_netreach": {
+        "population_before": 7.459,
+        "class_changes": {
+          "laborers": 2.055,
+          "tribesmen": 2.362,
+          "peasants": -2.43
+        },
+        "minimum_peasants": 1.414
+      },
+      "cm_lastlight": {
+        "population_before": 6.567,
+        "class_changes": {
+          "laborers": 2.244,
+          "tribesmen": 2.188,
+          "peasants": -2.249
+        },
+        "minimum_peasants": 1.281
       }
     }
   }

@@ -2,12 +2,12 @@
 import re
 
 NAMES = {
-    'crown_estate': 'Boss Clan',
-    'nobles_estate': 'Bigfangs',
+    'crown_estate': 'Ironfang Crown',
+    'nobles_estate': 'Highfangs',
     'clergy_estate': 'Shamans',
     'burghers_estate': 'Coinclutchers',
     'peasants_estate': 'Muckgrubs',
-    'tribes_estate': 'Warbands',
+    'tribes_estate': 'Wildfang Clans',
     'dhimmi_estate': 'Outsiders',
     'cossacks_estate': 'Freebooters',
 }

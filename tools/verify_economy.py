@@ -13,6 +13,8 @@ import mixed_populations
 def verify(game, out):
     out.mkdir(parents=True, exist_ok=True)
     b.build_setup(game, out)
+    import goblin_estates
+    goblin_estates.build(b, game, out)
     report = economy.build(b, game, out)
     audit = report['balance_audit']
     assert not audit['staffing_shortfalls'], audit['staffing_shortfalls']
@@ -24,7 +26,9 @@ def verify(game, out):
         total = sum((Decimal(v) for v in re.findall(r'\bsize\s*=\s*([\d.]+)', pops[loc['id']])), Decimal(0))
         assert total == Decimal(str(loc['pop'])) + mixed_populations.extra(loc['id'])
     countries = audit['countries']
-    assert sum(c['population'] for c in countries.values()) == 1923313
+    assert sum(c['population'] for c in countries.values()) == b.CFG['population_target'] + int(sum(mixed_populations.extra(l['id']) for l in b.CFG['locations'])*1000)
+    if 'population_062' in b.CFG:
+        verify_population_062(game, out)
     assert countries['CDM']['total_building_levels'] > countries['QBR']['total_building_levels'] > countries['SFK']['total_building_levels'] > countries['RHK']['total_building_levels']
     assert countries['CDM']['building_levels']['weapon_guild'] == 3
     assert countries['QBR']['building_levels']['naval_supplies_guild'] > countries['CDM']['building_levels']['naval_supplies_guild']
@@ -38,10 +42,53 @@ def verify(game, out):
     assert actions.count('NOT = { has_variable = ga_economy_initialized }') == 1
     assert actions.count('limit = { owns = location:') == len(b.CFG['locations'])
     report['checks'] = ['native building ranks/resources', 'generated settlement levels',
-                        'unchanged population totals', 'production staffing',
+                        'configured population totals', 'production staffing and resource reserve',
                         'country specialization and scale', 'two markets and guarded initialization']
     (out/'economy-audit.json').write_text(json.dumps(report, indent=2)+'\n')
     return report
+
+
+def verify_population_062(game, out):
+    """Check delivered classes, country balance, estate labels and tribal shares."""
+    import goblin_estates
+    from verify_055 import parse
+    native_classes = set(re.findall(r'(?m)^(\w+)\s*=\s*\{', (game/'in_game/common/pop_types/00_default.txt').read_text(encoding='utf-8-sig')))
+    populations = dict(economy_reference.blocks(dict(economy_reference.blocks((out/'main_menu/setup/start/06_pops.txt').read_text()))['locations']))
+    policy = b.CFG['population_062']
+    previous_totals = {tag:Decimal(0) for tag in policy['prior_country_population_targets']}
+    for loc in b.CFG['locations']:
+        actual = {}
+        for key,op,row in parse(populations[loc['id']]):
+            assert key == 'define_pop'
+            fields = {k:v for k,_,v in row}
+            assert fields['type'] in native_classes
+            ident=(fields['type'],fields['culture'],fields['religion'])
+            actual[ident]=actual.get(ident,Decimal(0))+Decimal(fields['size'])
+        expected = {(k,loc['culture'],'cm_hunger_below'):Decimal(str(v)) for k,v in loc['pop_classes'].items()}
+        for pop in mixed_populations.additions().get(loc['id'],[]):
+            ident=(pop['type'],pop['culture'],'cm_hunger_below')
+            expected[ident]=expected.get(ident,Decimal(0))+Decimal(str(pop['size']))
+        assert actual==expected,loc['id']
+        total=sum(actual.values())
+        tribal=sum(v for (k,_,_),v in actual.items() if k=='tribesmen')
+        assert Decimal('.25')<=tribal/total<Decimal('.2501'),loc['id']
+        prior=policy['locations'][loc['id']]
+        changes={k:Decimal(str(v)) for k,v in prior['class_changes'].items()}
+        assert 'slaves' not in changes
+        assert all(Decimal(str(loc['pop_classes'][k]))-v>=0 for k,v in changes.items())
+        assert all(v>0 for k,v in changes.items() if k!='peasants')
+        assert Decimal(str(loc['pop_classes']['peasants']))>=Decimal(str(prior['minimum_peasants']))
+        assert Decimal(str(loc['pop']))/total>=Decimal('.70'),loc['id']
+        assert Decimal(str(loc['pop']))-sum(changes.values())==Decimal(str(prior['population_before']))
+        previous_totals[loc['country']]+=Decimal(str(prior['population_before']))*1000
+    assert previous_totals==policy['prior_country_population_targets']
+    names=(out/'main_menu/localization/english/goblin_estates_l_english.yml').read_text(encoding='utf-8-sig')
+    for key in ['crown_estate','nobles_estate','tribes_estate']:
+        assert f'ga_{key}: "{goblin_estates.NAMES[key]}"' in names
+    assert 'Boss Clan' not in names
+    audit=economy.audit(b,game)
+    assert not audit['staffing_shortfalls']
+    assert {tag:c['population'] for tag,c in audit['countries'].items()}==policy['total_country_targets']
 
 
 if __name__ == '__main__':

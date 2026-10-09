@@ -71,7 +71,7 @@ def verify(out,game):
     migrations=b.CFG['urbanization_061']['locations']
     deltas={c['tag']:Decimal(0) for c in b.CFG['countries']}
     for name,row in migrations.items():
-        assert locs[name]['pop']==row['population_after']
+        assert b.CFG.get('population_062',{}).get('locations',{}).get(name,{}).get('population_before',locs[name]['pop'])==row['population_after']
         deltas[locs[name]['country']]+=Decimal(str(row['population_after']))-Decimal(str(row['population_before']))
     assert all(v==0 for v in deltas.values()),deltas
     for situation in ['ga_gathering_of_five','ga_eastern_hunger']:

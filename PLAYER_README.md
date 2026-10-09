@@ -1,4 +1,13 @@
-# Goblins of the Ashborn Isles 0.6.1
+# Goblins of the Ashborn Isles 0.6.2
+
+## 0.6.2 — Workers and Wildfang Clans
+
+All six goblin kingdoms now start with the appropriate classes for their existing buildings. Each district has at least 125% of native building employment demand, plus a separate laborer reserve of 2,000 people and 1,000 per planned RGO expansion level. This reserve is a planning allowance; actual RGO capacity, hiring, goods access and profitability still require a fresh-campaign test.
+
+Tribesmen make up approximately 25% of every district, including the cities. The total population is 1,895,000, slightly below 0.6.1's 1,923,313. Cindermaw falls from 730,688 to 620,000; Brackmaw rises to 420,000, Shatterfin to 280,000, Reefhook to 140,000, Sootwake to 130,000 and Giltfang to 305,000. Existing slave and minority households remain intact. Home-culture peasants are rebalanced into workers and tribesmen, with a separate farming/subsistence reserve and at least 70% home culture in every district. The tribal estate is **Wildfang Clans**, nobles are **Highfangs**, and the crown is **Ironfang Crown**, replacing Boss Clan.
+
+A **new 1337 campaign is required**. Existing saves retain their populations. This is a staging candidate; the published release remains 0.6.1. Population availability does not itself prove full employment or sufficient masonry output in game.
+
 
 ## 0.6.1 — Starting economy, connected provinces and distinct goblins
 

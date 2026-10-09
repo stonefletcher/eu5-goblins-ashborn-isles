@@ -1,6 +1,6 @@
 # Goblins of the Ashborn Isles
 
-**Release 0.6.1 — Starting economy, connected provinces and distinct goblins.**
+**0.6.2 staging — Workers and Wildfang Clans.**
 
 ![Goblins of the Ashborn Isles banner](art/workshop/0.6.0/banner.jpg)
 
@@ -10,7 +10,15 @@ Fire rose from the Atlantic. When the smoke cleared, goblin kingdoms stood among
 
 **Goblins of the Ashborn Isles** adds a fantasy homeland to Europa Universalis V. Choose a crown, develop its economy, bargain with neighboring rulers, and decide whether the Isles will unite through conquest, submission or dynastic union. Beyond the familiar shoals lie foreign ports and the promise of an eastern foothold.
 
-## 0.6.1 — Starting economy, connected provinces and distinct goblins
+## 0.6.2 — Workers and Wildfang Clans
+
+All six goblin kingdoms now start with the appropriate classes for their existing buildings. Each district has at least 125% of native building employment demand, plus a separate laborer reserve of 2,000 people and 1,000 per planned RGO expansion level. This reserve is a planning allowance; actual RGO capacity, hiring, goods access and profitability still require a fresh-campaign test.
+
+Tribesmen make up approximately 25% of every district, including the cities. The total population is 1,895,000, slightly below 0.6.1's 1,923,313. Cindermaw falls from 730,688 to 620,000; Brackmaw rises to 420,000, Shatterfin to 280,000, Reefhook to 140,000, Sootwake to 130,000 and Giltfang to 305,000. Existing slave and minority households remain intact. Home-culture peasants are rebalanced into workers and tribesmen, with a separate farming/subsistence reserve and at least 70% home culture in every district. The tribal estate is **Wildfang Clans**, nobles are **Highfangs**, and the crown is **Ironfang Crown**, replacing Boss Clan.
+
+A **new 1337 campaign is required**. Existing saves retain their populations. This is a staging candidate; the published release remains 0.6.1. Population availability does not itself prove full employment or sufficient masonry output in game.
+
+## Previous 0.6.1 — Starting economy, connected provinces and distinct goblins
 
 - All six crowns start with State Piracy selected and permanently unlocked through the native policy-unlock flag. The policy remains changeable; no later-age advance is granted.
 - Starting stability is 50, legitimacy is 75 and prestige is 25.
@@ -43,7 +51,7 @@ Goods move within a market through market access; this does not create an inter-
 
 *Map diagram generated from the mod's geography, not an in-game screenshot.*
 
-The Isles contain **97 districts, 75 ports and 28 coastal sea tiles**, with 1,923,313 people at the start. Volcanic highlands, marshes, woodland and fisheries give each crown a different base of resources and settlements.
+The Isles contain **97 districts, 75 ports and 28 coastal sea tiles**, with 1,895,000 people at the start. Volcanic highlands, marshes, woodland and fisheries give each crown a different base of resources and settlements.
 
 Giltfang and its smaller companion, Tolltooth, lie north of Cindermaw. Together they are about 10% smaller than Brackmaw. Between north and south, Cindermaw's new **Lantern Cay** adds Lantern Haven, Wickwood and Emberwatch. The Quiet Road provides a connected route through ordinary coastal water, with the lower eastern approach opened and selected current tiles reworked.
 
@@ -103,7 +111,7 @@ At home, the **Ashen Covenant** provides twelve sacred sites, traditions, rites,
 
 ## Install and continue
 
-Built for **EU5 1.3.11 (Pavia)**. Upgrading to 0.6.1 requires a **new 1337 campaign** because province assignments and starting setup changed.
+Built for **EU5 1.3.11 (Pavia)**. The 0.6.2 staging candidate requires a **new 1337 campaign** for the revised populations. Download this branch as source and run its bundled **Install-Goblins.cmd** with EU5 closed. Published Workshop and release downloads below still provide 0.6.1.
 
 - Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.1.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed. The installer reconstructs its terrain using the installed game.
 - Enable only one Goblins copy and disable the old Gathering Prototype add-on. Restart before playing.

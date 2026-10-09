@@ -41,12 +41,12 @@ FACE = {
 # Drogg gets a deliberate veteran-war-chief profile, rather than another global
 # species retune. His setup ID is stable and this modifier also reaches saves.
 DROGG_FACE = {
-    'gene_head_height': .41, 'gene_head_width': .49,
+    'gene_head_height': .38, 'gene_head_width': .62,
     'gene_forehead_height': .34, 'gene_forehead_roundness': .27,
-    'gene_forehead_brow_forward': .78, 'gene_forehead_brow_height': .39,
-    'gene_eye_open': .33, 'gene_eye_size': .36,
-    'gene_jaw_width': .46, 'gene_jaw_height': .45, 'gene_chin_size': .46,
-    'gene_cheek_fat': .29, 'gene_cheek_def': .70, 'gene_cheek_forward': .64,
+    'gene_forehead_brow_forward': .91, 'gene_forehead_brow_height': .25,
+    'gene_eye_open': .24, 'gene_eye_size': .32,
+    'gene_jaw_width': .60, 'gene_jaw_height': .52, 'gene_chin_size': .54,
+    'gene_cheek_fat': .17, 'gene_cheek_def': .87, 'gene_cheek_forward': .73,
     'gene_nose_length': .69, 'gene_nose_tip_forward': .69,
     'gene_nose_width': .43, 'gene_nose_ridge_def': .73,
     'gene_mouth_width': .50, 'gene_mouth_corner_height': .43,
@@ -60,6 +60,7 @@ def drogg_modifier():
  dna_modifiers = {{
  {dna}
  accessory = {{ mode = replace gene = hair_styles template = all_hair accessory = male_hair_short_straight_pomp }}
+ accessory = {{ mode = replace gene = cm_ashborn_clothing template = cm_warchief_clothing range = {{ 0 1 }} }}
  morph = {{ mode = add gene = cm_drogg_scar template = cm_battle_scar value = 1 }}
  }}
  weight = {{ base = 0 modifier = {{ add = 1000 exists = this exists = character:cm_cdm_ruler this = character:cm_cdm_ruler gfx_culture_applicable = cm_cinderkin_gfx }} }}
@@ -74,11 +75,26 @@ def drogg_scar_gene():
  normal = "gfx/models/portraits/decals/visual_traits/male_head_decal_traits_scars_02_normal.dds"
  }
  blend_modes = { diffuse = overlay normal = overlay }
- alpha_curve = { { 0 0 } { 1 0.65 } }
+ alpha_curve = { { 0 0 } { 1 0.85 } }
  decal_apply_order = post_skin_color priority = 115
  } }
  female = { } boy = { } girl = { } adolescent_boy = { } adolescent_girl = { } infant = { }
  } }'''
+
+MALE_PROFILES = {
+    'gaunt': {'gene_head_width': .40, 'gene_jaw_width': .29, 'gene_cheek_fat': .12, 'gene_nose_length': .91, 'gene_nose_width': .27},
+    'square': {'gene_head_width': .67, 'gene_jaw_width': .58, 'gene_chin_size': .57, 'gene_nose_length': .62, 'gene_nose_width': .49},
+    'heavy': {'gene_head_width': .63, 'gene_jaw_width': .48, 'gene_cheek_fat': .50, 'gene_cheek_def': .53, 'gene_nose_width': .55},
+    'sharp': {'gene_head_width': .48, 'gene_jaw_width': .35, 'gene_chin_size': .31, 'gene_cheek_def': .91, 'gene_nose_tip_forward': .91},
+}
+
+def male_variation(clans):
+    cultures='OR = { '+' '.join('gfx_culture_applicable = '+c['culture']+'_gfx' for c in clans)+' }'
+    rows=['cm_ashborn_male_variation = { usage = game selection_behavior = weighted_random priority = 135']
+    for name,genes in MALE_PROFILES.items():
+        dna='\n'.join(f'morph = {{ mode = replace gene = {g} template = template_1 range = {{ {round(v-.04,2)} {round(v+.04,2)} }} }}' for g,v in genes.items())
+        rows.append(f'cm_male_{name} = {{ dna_modifiers = {{ {dna} }} weight = {{ base = 0 modifier = {{ add = 1 is_female = no age_in_years >= 18 {cultures} }} }} }}')
+    return '\n'.join(rows+['}'])
 
 def weathering_gene():
     """Restore restrained adult creases AFTER the opaque clan tint.
@@ -279,6 +295,7 @@ def build(out):
     text(out/'in_game/common/ethnicities/ashborn.txt','\n'.join(ethnicities)+'\n')
     text(out/'main_menu/gfx/portraits/accessories/ashborn.txt','\n'.join(accessories)+'\n')
     text(out/'main_menu/gfx/portraits/portrait_modifiers/zz_ashborn.txt','\n'.join(modifiers)+'\n')
+    text(out/'main_menu/gfx/portraits/portrait_modifiers/zz_ashborn_male_variation.txt',male_variation(clans)+'\n')
     from build_goblin_outfits import build as build_outfits
     outfits = build_outfits(out, clans)
     return {'engine_tested':False,'cultures':len(clans),'portrait_types':TYPES,'method':'shorter swept cupped ears using native skin shader and shared head decal; lower flatter forehead, sturdier jaw, restrained hooked nose, adult weathering and cropped/braided hair; 94% shared clan tint retained','skin_opacity':SKIN_OPACITY,'ear_material':'portrait_skin with head decal routing and skin palette','teeth':'native animated mouth teeth only; detached external fangs removed','infants':'skin and smaller pointed ears; no tusks or extra stature modifier','outfits':outfits,'portrait_stature':'culture-only compact torso 0.42 and stoop 0.24 on both sexes, shorter neck; native child growth preserved; framing and clothing fit need engine review'}

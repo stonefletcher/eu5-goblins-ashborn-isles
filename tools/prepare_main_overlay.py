@@ -31,6 +31,9 @@ def main():
     import ashborn_names
     ashborn_names.build_names(b,output)
     b.localization(output);archipelago.add_localization(b,output)
+    import dynastic_clans,ashen_covenant
+    dynastic_clans.build(b,args.game,output)
+    ashen_covenant.build(output)
     import goblin_longevity
     goblin_longevity.build(b,args.game,output)
     paths=[p for prefix in ['in_game/gfx/models/units/ashborn_goblins','in_game/gfx/models/schematics','in_game/gfx/graphical_culture_types','main_menu/gfx/unit_graphics/units','main_menu/gfx/animation_state_machines'] for p in (output/prefix).rglob('*') if p.is_file()]
@@ -49,12 +52,22 @@ def main():
     paths.extend(output / p for p in runtime_paths())
     paths.extend(output / p for p in build_clan_flags.runtime_paths())
     paths.append(output / 'in_game/events/goblins_ashborn_isles.txt')
+    # Retain the authored gameplay/UI modules when refreshing portrait assets.
+    # A partial manifest previously dropped the Gathering and Covenant panels.
+    for prefix in ['in_game/common','in_game/events','in_game/gui','main_menu/common','main_menu/localization']:
+        paths.extend(p for p in (output/prefix).rglob('*')
+                     if p.is_file() and p.name.startswith(('goblins_','ga_','ashen_covenant')))
+    paths=sorted(set(paths),key=lambda p:p.relative_to(output).as_posix())
     manifest={'base_release':b.CFG['version'],'stage':'development-models-and-culture-names','engine_tested':False,
-              'files':[{'path':p.relative_to(output).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(paths)]}
+              'files':[{'path':p.relative_to(output).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in paths]}
     (ROOT/'data/main_overlay.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
     import build_infantry_art
     infantry=build_infantry_art.build(args.game,output)
     build_infantry_art.update_manifest(output,infantry)
+    manifest_path=ROOT/'data/main_overlay.json'
+    manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
+    manifest['files'].sort(key=lambda item:item['path'])
+    manifest_path.write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
     (ROOT/'art/infantry/validation.json').write_text(json.dumps(infantry,indent=2)+'\n')
     (ROOT/'art/models/goblins/native_validation.json').write_text(json.dumps(verification,indent=2)+'\n')
     (ROOT/'art/models/goblins/native_export.json').write_text(json.dumps(report,indent=2)+'\n')

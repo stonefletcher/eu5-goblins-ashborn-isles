@@ -86,7 +86,9 @@ STORIES = [
 ]
 
 def build(out):
-    text = {'religious_influence_cm_hunger_below': 'Covenant Favor'}
+    text = {'religious_influence_cm_hunger_below': 'Covenant Favor',
+            'ac_favor_current': "Covenant Favor: [GetPlayer.GetCurrencyValue('religious_influence')|1]",
+            'ac_favor_explanation': 'Covenant Favor is your religious influence. The Ashen Covenant grants 0.2 Favor per month and adds 100 to its maximum. Stories can raise or spend Favor. Major rites cost 20 Favor plus gold. See the Religion panel for the current gain and maximum modifiers.'}
     paths = []
     def loc(key, value):
         text[key] = value

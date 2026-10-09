@@ -2,7 +2,7 @@
 ga_update_dynastic_clan_name = {
     if = {
         limit = {
-            OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK }
+            OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK tag = GTF }
             government_type = government_type:monarchy
             has_regent = no
             ruler ?= { has_dynasty = no }
@@ -11,7 +11,7 @@ ga_update_dynastic_clan_name = {
     }
     if = {
         limit = {
-            OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK }
+            OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK tag = GTF }
             government_type = government_type:monarchy
             has_regent = no
             ruler ?= { has_dynasty = yes }

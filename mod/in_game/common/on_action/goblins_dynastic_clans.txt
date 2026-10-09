@@ -2,11 +2,11 @@
 on_new_ruler = { on_actions = { ga_dynastic_clan_ruler } }
 monthly_country_pulse = { on_actions = { ga_dynastic_clan_monthly } }
 ga_dynastic_clan_ruler = {
-    trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+    trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK tag = GTF } }
     effect = { ga_update_dynastic_clan_name = yes }
 }
 # Reconciles first-month initialization, load/regency and later dynasty reassignment.
 ga_dynastic_clan_monthly = {
-    trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK } }
+    trigger = { OR = { tag = CDM tag = QBR tag = RHK tag = SFK tag = SWK tag = GTF } }
     effect = { ga_update_dynastic_clan_name = yes }
 }

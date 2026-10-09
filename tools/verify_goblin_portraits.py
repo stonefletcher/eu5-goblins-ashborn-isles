@@ -12,6 +12,10 @@ def verify(out,game=None):
     clans=json.loads((ART/'clans.json').read_text())['clans']
     genes=(out/'in_game/common/genes/zz_ashborn_portraits.txt').read_text(encoding='utf-8-sig')
     modifiers=(out/'main_menu/gfx/portraits/portrait_modifiers/zz_ashborn.txt').read_text(encoding='utf-8-sig')
+    variants=(out/'main_menu/gfx/portraits/portrait_modifiers/zz_ashborn_male_variation.txt').read_text(encoding='utf-8-sig')
+    assert variants.count('{')==variants.count('}')
+    assert variants.count('is_female = no age_in_years >= 18')==4
+    assert 'selection_behavior = weighted_random priority = 135' in variants
     ethnicity=(out/'in_game/common/ethnicities/ashborn.txt').read_text(encoding='utf-8-sig')
     gfx=(out/'in_game/gfx/graphical_culture_types/ashborn_goblins.txt').read_text(encoding='utf-8-sig')
     accessories=(out/'main_menu/gfx/portraits/accessories/ashborn.txt').read_text(encoding='utf-8-sig')
@@ -64,6 +68,7 @@ def verify(out,game=None):
     assert 'priority = 140' in drogg
     assert 'exists = character:cm_cdm_ruler this = character:cm_cdm_ruler' in drogg
     assert 'gene = cm_drogg_scar' in drogg and 'gene = cm_drogg_scar' not in generic_modifiers
+    assert 'gene = cm_ashborn_clothing template = cm_warchief_clothing' in drogg
     assert 'mode = replace gene = hair_styles template = all_hair accessory = male_hair_short_straight_pomp' in drogg
     for clan in clans:
         ident=clan['id'];tag=clan['culture']+'_gfx'
@@ -157,7 +162,7 @@ def verify(out,game=None):
         for choices in HAIR.values():
             for _,name in choices:
                 assert name=='empty' or re.search(r'(?m)^\s*'+re.escape(name)+r'\s*=\s*\{',native_hair),name
-        for gene in re.findall(r'mode = replace gene = (gene_\w+)',modifiers):
+        for gene in re.findall(r'mode = replace gene = (gene_\w+)',modifiers+variants):
             assert re.search(r'\b'+gene+r'\s*=\s*\{',native_genes),gene
         from build_goblin_portraits import FACE
         assert FACE['gene_eye_size'][1] < .5, 'Avoid the previous enlarged cartoon eyes'

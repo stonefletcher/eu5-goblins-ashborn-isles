@@ -3,3 +3,4 @@ QBR = { color = rgb { 62 135 147 } color2 = rgb { 36 31 29 } culture_definition 
 RHK = { color = rgb { 172 130 58 } color2 = rgb { 36 31 29 } culture_definition = cm_reefkin religion_definition = cm_hunger_below is_historic = no }
 SFK = { color = rgb { 121 91 145 } color2 = rgb { 36 31 29 } culture_definition = cm_shatterkin religion_definition = cm_hunger_below is_historic = no }
 SWK = { color = rgb { 158 78 59 } color2 = rgb { 36 31 29 } culture_definition = cm_sootkin religion_definition = cm_hunger_below is_historic = no }
+GTF = { color = rgb { 182 143 61 } color2 = rgb { 36 31 29 } culture_definition = cm_giltkin religion_definition = cm_hunger_below is_historic = no }

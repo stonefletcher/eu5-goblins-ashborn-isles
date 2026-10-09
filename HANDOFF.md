@@ -1,38 +1,31 @@
-# Goblins 0.6.0 release
+# Goblins 0.6.1 staging
 
-Repository: C:/Users/alexa/Documents/Codex/2026-10-07/0/work/goblins-059
-Release branch: release/v0.6.0; source candidate bb85505 on staging/0.6.
-User explicitly requested full release: release branch, main, GitHub and
-existing Workshop item 3814944518. No subagents or game launch authorized.
+Checkout: C:/Users/alexa/.codex/.chatgpt-projects/g-p-6abf07c4fe4081919d1536ed15794d22/goblins-061
+Branch: staging/0.6.1, based on main f75fe73. Read current Git HEAD/status before continuing.
 
-All six-crown, market, map, Lantern Cay, Quiet Road, UI, starting-price,
-food-storage, voyage and flag repairs are implemented. The prior 0.5.8
-portrait/Drogg/hair/shrine fixes are present in the validated candidate.
-Main's divergent history is retained by a merge using that verified candidate
-tree, with published 0.5.8 release notes preserved. No gameplay files changed
-for promotion. The release publisher now preserves the validated ZIP bytes.
+Requested work: starting piracy/stats, glass/masonry and trading infrastructure,
+connected provinces, town/city growth, visible Covenant Favor, varied male
+portraits and tougher Drogg, capital sergeantries, +50% monthly manpower, and
+flavor-only voyage reports revealing useful foreign coastal pockets/markets.
+All changes are implemented. See README and RELEASE_NOTES_0.6.1.md for scope.
 
-Release 0.6.0 was published at 1b27d35; main, release branch and tag matched.
-GitHub download SHA256: 67dbabfd51e88bb3ef6df43df15b2e7c7ddc32875ace9a6417f5ab5e34d75216.
-Both GitHub checks passed. Automatic publication did not start; the exact
-validated archive was published through the GitHub API. Workshop item
-3814944518 is public with 0.6.0 description and 2,163,803,854 runtime bytes,
-matching all 1,974 installed files. Full receipts are in task outputs.
+Economy checks pass, including staffing and unchanged kingdom population totals.
+All 40 provinces pass actual-raster land connectivity. Voyage script scenarios
+pass expanded discovery, reciprocal contact, payment and stale-reply checks.
+Terrain rebuild and complete assembly validation passed; packaging is underway.
+An earlier full build failed a stale exploration event manifest; that manifest
+was refreshed. The resumed canonical build rechecks native/final cache hashes,
+map metadata, terrain and every setup/candidate validator.
 
-Latest user request: restore illustrated, substantial README and Workshop
-descriptions, and require that in the release skill. Prepared seven optimized
-images in art/workshop/0.6.0, a 1,194-word README and matching Steam BBCode
-within 8,000 bytes. Skill entrypoint and release reference now mandate this.
-These are landing-page-only edits: preserve the published tag, installer,
-checksums and runtime. After exact-source verification, push the documentation
-to main/release, update the existing Workshop description and inspect both
-rendered pages. Read fresh remote state/outputs before repeating publication.
+Next: finish matching package/bundle, export exact committed tree to a new
+empty folder, run PrepareOnly and isolated UserDataPath installation, compare
+all delivered hashes, then push staging and verify remote README. Do not push
+before the installer gate. EU5 was running (PID 28828); do not close/launch it
+without user authorization. Ask user to close it once candidate is prepared.
 
-Runtime and static checks pass; in-game visual/gameplay acceptance remains
-pending, including flag rendering after next-month repair in an existing save.
-Upgrade from 0.5.x requires a new 1337 campaign.
-
-Game: E:/SteamLibrary/steamapps/common/Europa Universalis V/game (1.3.11)
 Active mod: C:/Users/alexa/Documents/Paradox Interactive/Europa Universalis V/mod/goblins_ashborn_isles
-Steam CLI: C:/Users/alexa/Documents/Codex/2026-10-07/cr/work/pdx-cli
-Task helpers and receipts: C:/Users/alexa/Documents/Codex/2026-10-07/gobl/work and outputs
+Game: E:/SteamLibrary/steamapps/common/Europa Universalis V/game (1.3.11)
+Active 0.6.0 matched every baseline bundled file before edits. It is unchanged.
+No install, release, main merge or Workshop publication has been performed.
+New campaign required for starting-world edits. Visual/gameplay acceptance,
+actual market trade and discovery rendering remain untested in the engine.

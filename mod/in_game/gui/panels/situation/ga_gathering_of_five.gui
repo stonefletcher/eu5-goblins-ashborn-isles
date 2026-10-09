@@ -5,6 +5,11 @@
         text_single = { text = "ga_gathering_header" fontsize = 13 }
     }
     blockoverride "situation_panel_main_content" {
+        text_single = {
+            layoutpolicy_horizontal = expanding
+            text = "ac_favor_current"
+            tooltip = "ac_favor_explanation"
+        }
         text_multi = {
             layoutpolicy_horizontal = expanding
             max_width = 400

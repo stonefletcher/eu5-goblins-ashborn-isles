@@ -43,7 +43,12 @@ def build(out, homeland, write, loc):
             text = "{key}"
         }}
         '''
-        content = paragraph('ga_ui_homeland_progress') + paragraph('ga_ui_homeland_rules')
+        content = '''text_single = {
+            layoutpolicy_horizontal = expanding
+            text = "ac_favor_current"
+            tooltip = "ac_favor_explanation"
+        }
+        ''' + paragraph('ga_ui_homeland_progress') + paragraph('ga_ui_homeland_rules')
         if situation == 'ga_gathering_of_five':
             content += paragraph('ga_ui_compact_heading') + paragraph('ga_ui_compact_route') + paragraph('ga_ui_history_note')
         else: content += paragraph('ga_ui_eastern_route')

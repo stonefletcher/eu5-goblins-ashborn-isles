@@ -14,15 +14,20 @@ def verify(b,game,out,mapstats):
     for ident,old in baseline.items():
         children=[l for l in locs if l.get('split_from')==ident];assert len(children)==1
         assert byid[ident]['good']==old['good']
-        combined=Decimal(str(byid[ident]['pop']))+Decimal(str(children[0]['pop']))
+        # 0.6.1 relocates households into new towns within each kingdom.
+        # Check the historical split before those explicit migrations, then
+        # check current country totals and generated populations below.
+        migrations=cfg.get('urbanization_061',{}).get('locations',{})
+        prior=lambda loc: migrations.get(loc['id'],{}).get('population_before',loc['pop'])
+        combined=Decimal(str(prior(byid[ident])))+Decimal(str(prior(children[0])))
         previous=cfg['population_revision_baseline']['locations']
         old_combined=Decimal(str(previous[ident]))+Decimal(str(previous[children[0]['id']]))
         tag=byid[ident]['country']
         original_target=cfg['country_population_targets'][tag]-cfg.get('outpost_population_additions',{}).get(tag,0)
         factor=Decimal(original_target)/cfg['population_revision_baseline']['country_populations'][tag]
         assert abs(combined-old_combined*factor)<=Decimal('.004')
-        assert children[0]['province']!=byid[ident]['province']
-    assert len({l['province'] for l in locs})==39
+        # Province membership follows actual land borders in verify_061.
+    assert len({l['province'] for l in locs})==40
     # Check generated setup, not just input configuration.
     pops=(out/'main_menu/setup/start/06_pops.txt').read_text(encoding='utf-8-sig')
     for l in locs:

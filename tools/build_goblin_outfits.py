@@ -63,7 +63,8 @@ def build(out, clans):
              'cm_rough_clothing = { index = 0']
     for sex, choices in OUTFITS.items():
         genes.append(sex + ' = { ' + ' '.join(f'{w} = "{a}"' for w, a in choices) + ' }')
-    genes += ['adolescent_boy = boy adolescent_girl = girl', '} } } }']
+    genes += ['adolescent_boy = boy adolescent_girl = girl',
+              '} cm_warchief_clothing = { index = 1 male = { 1 = "male_clothes_iroquois_royal_bear_hunter" } female = { 1 = "empty" } boy = { 1 = "empty" } girl = { 1 = "empty" } adolescent_boy = boy adolescent_girl = girl infant = { 1 = "empty" } } } } }']
     text(out/'in_game/common/genes/zz_ashborn_outfits.txt', '\n'.join(genes)+'\n')
     mods = ['cm_ashborn_outfits = { usage = game selection_behavior = max priority = 120']
     for clan in clans:

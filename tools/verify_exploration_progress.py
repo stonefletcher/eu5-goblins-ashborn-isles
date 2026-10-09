@@ -124,7 +124,7 @@ def verify(read):
     assert 'ga_exp_contact_setubal' not in arrival[2]
     assert saved.countries['FRA']['areas']=={'area:cm_cindermaw_area','area:cm_ashborn_seas_area'}
     assert saved.countries['ENG']['areas']==set()
-    assert saved.countries['CDM']['locations']=={'location:lisbon','location:porto','location:setubal'}
+    assert saved.countries['CDM']['locations']=={'location:'+name for name in ROUTES['east']['locations']}
     assert saved.countries['CDM']['areas']=={'area:iberian_west_coast_area'}
     assert len(saved.queue)==2 and all(x[0]=='goblins_exploration.6' for x in saved.queue)
     saved.locations['location:lisbon']='ENG'
@@ -146,6 +146,8 @@ def verify(read):
             assert not trial.choose(offer,1-index)
             trial.day+=180;returned=trial.deliver(f'goblins_exploration.{ROUTES[route]["event"]}')
             assert returned
+            assert {'location:'+name for name in ROUTES[route]['locations']} <= trial.countries['CDM']['locations']
+            assert {'area:'+name for name in ROUTES[route]['areas']} <= trial.countries['CDM']['areas']
             before=deepcopy(trial.countries)
             trial.effects(dict((k,v) for k,_,v in defs[returned[0]])['immediate'],'CDM',returned[2])
             assert trial.countries==before
@@ -210,6 +212,10 @@ def verify(read):
     for rows in defs.values():
         for key,_,value in flatten(rows):
             if key=='localization_key':assert '\n '+value+':' in localization,value
+    assert {'plymouth','portsmouth','cadiz','gibraltar','tangier','ceuta','london','sevilla','fez'} <= set(ROUTES['north']['locations'])
+    assert 'This return message was already open' not in localization
+    assert 'The report records owners encountered' not in localization
+    assert 'Newly charted:' in localization
     passed('native calendar-month prices/durations and dedicated voyage situation controls; all custom text registered')
     return {'scenario_groups':len(scenarios),'scenarios':scenarios,'additional_monthly_scans':0,
             'new_event_ids':0,'engine_playtested':False}

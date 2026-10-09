@@ -313,7 +313,8 @@ def build_setup(b,game,out):
  country_rank = rank_duchy
  starting_technology_level = 3
  government = {{ type = monarchy heir_selection = {'cm_tidemother_seniority' if c['tag']=='SFK' else 'cm_rule_of_the_strongest'} ruler = {ashborn_names.ruler(c['tag'])} {('consort = cm_'+c['tag'].lower()+'_consort') if c['tag']!='SFK' else ''} }}
- currency_data = {{ gold = {c['gold']} stability = 20 government_power = 50 prestige = 0 }}
+ variables = {{ data = {{ {{ flag = "unlocked_policy_state_piracy_policy" data = {{ type = boolean identity = 1 }} }} }} }}
+ currency_data = {{ gold = {c['gold']} stability = 50 government_power = 75 prestige = 25 }}
 }}''')
         # Settlement templates are generated per location below.
         # One archipelago market supports small clans without five isolated tiny markets.
@@ -324,7 +325,7 @@ def build_setup(b,game,out):
     town_templates=[]
     for l in locs:
         country=next(c for c in countries if c['tag']==l['country'])
-        rank=country['rank'] if l['id']==country['capital'] else 'rural_settlement'
+        rank=l.get('rank', country['rank'] if l['id']==country['capital'] else 'rural_settlement')
         town_id=l['id']+'_settlement'
         cities.append(f'{l["id"]} = {{ rank = {rank} town_setup = {town_id} }}')
         town_templates.append(town_id+' = { '+' '.join(f'{key} = {value}' for key,value in l['buildings'].items())+' }')

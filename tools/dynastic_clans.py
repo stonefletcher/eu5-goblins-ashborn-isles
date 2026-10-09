@@ -1,6 +1,6 @@
 """Native dynasty naming, scoped to the five Ashborn countries."""
 LOCALIZATION={
- 'cm_ironfang_monarchy_desc':'The Ironfang Crown rules for life. The strongest eligible adult Ashborn man of the ruling dynasty inherits. A new ruling dynasty gives the country its clan name. The succession law may be changed through normal monarchy institutions.',
+ 'cm_ironfang_monarchy_desc':'The Ironfang Crown rules for life. Its musters provide +50% monthly manpower. The strongest eligible adult Ashborn man of the ruling dynasty inherits. A new ruling dynasty gives the country its clan name. The succession law may be changed through normal monarchy institutions.',
  'cm_rule_of_the_strongest':'Strongest of the Ruling Clan',
  'cm_rule_of_the_strongest_desc':'Only eligible adult Ashborn men of the ruling dynasty may inherit. Military ability decides; Administrative ability and then age break ties. Foreign rulers, children and characters barred from ruling are excluded. No eligible dynasty member means no eligible heir under this law; unrelated courtiers are not a fallback.',
 }

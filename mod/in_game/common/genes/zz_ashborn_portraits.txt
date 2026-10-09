@@ -55,7 +55,7 @@ cm_drogg_scar = { inheritable = no cm_battle_scar = { index = 0
  normal = "gfx/models/portraits/decals/visual_traits/male_head_decal_traits_scars_02_normal.dds"
  }
  blend_modes = { diffuse = overlay normal = overlay }
- alpha_curve = { { 0 0 } { 1 0.65 } }
+ alpha_curve = { { 0 0 } { 1 0.85 } }
  decal_apply_order = post_skin_color priority = 115
  } }
  female = { } boy = { } girl = { } adolescent_boy = { } adolescent_girl = { } infant = { }

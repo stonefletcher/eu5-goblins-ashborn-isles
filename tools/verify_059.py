@@ -16,6 +16,7 @@ import verify_exploration
 import verify_exploration_progress
 import verify_combined_candidate
 import verify_giltfang
+import verify_061
 
 
 def verify(out, game):
@@ -52,6 +53,7 @@ def verify(out, game):
     assert modifiers['ga_reefhook_restored_beacons'] == [('naval_morale_recovery','=','0.05')]
     version=json.loads((out/'.metadata/metadata.json').read_text(encoding='utf-8-sig'))['version']
     return {'version':version, 'monthly_introduction_country_scopes':len(TAGS),
+            'setup_061':verify_061.verify(out,game),
             'giltfang':verify_giltfang.verify(out,game),
             'combined_candidate':verify_combined_candidate.verify(lambda p:(out/p).read_text(encoding='utf-8-sig')),
             'harbor_bargains':verify_harbor_bargains.verify(lambda p:(out/p).read_text(encoding='utf-8-sig')),

@@ -1,5 +1,5 @@
 {
-  "base_release": "0.6.0",
+  "base_release": "0.6.1",
   "stage": "development-models-and-culture-names",
   "engine_tested": false,
   "files": [
@@ -16,12 +16,16 @@
       "sha256": "b3898d705bb97d276923b9270513124b25ba43ab89097086bfbe379200a352e6"
     },
     {
+      "path": "in_game/common/culture_groups/goblins_ashborn_isles.txt",
+      "sha256": "d2ef5e9dbfc3a5551d7e655c718add9e99ddef6a977a40f25eff0a89192bf637"
+    },
+    {
       "path": "in_game/common/cultures/goblins_ashborn_isles.txt",
       "sha256": "4d4a363bfe50686d322b8f518f0b5127504fcad218d4b6a4f5703a8e21cfe202"
     },
     {
       "path": "in_game/common/customizable_localization/goblins_exploration.txt",
-      "sha256": "954d8dd90f4790b2a912acf92319472f3dfd6be4a650b155f99a1c4f2454dfe5"
+      "sha256": "a137036d4358a4c06d68ec5856205ab803054f6bd0c52313460cf73be4237054"
     },
     {
       "path": "in_game/common/customizable_localization/goblins_harbor_receipts.txt",
@@ -53,11 +57,19 @@
     },
     {
       "path": "in_game/common/genes/zz_ashborn_outfits.txt",
-      "sha256": "409fec8162ade1329165373283c32ab5bec5c7cb114f77c2b532e2bac256f42c"
+      "sha256": "88e0734e0b3cfe0015b18d9dd2b44a83b8ddef4ca7ccbe192196b51f740d732c"
     },
     {
       "path": "in_game/common/genes/zz_ashborn_portraits.txt",
-      "sha256": "0da011f62513177e9035aa0022f60a23439aa007e57d980439371bd4025cd7c0"
+      "sha256": "23e34cb08cb1c87672442ee16e2f348f035860cb66967c2bdf727c0b13059bcb"
+    },
+    {
+      "path": "in_game/common/government_reforms/goblins_ashborn_isles.txt",
+      "sha256": "fad6525f7d3d390afe3069bc2c1fb2d02c480113ce1a890307af3309198534fc"
+    },
+    {
+      "path": "in_game/common/heir_selections/goblins_ashborn_isles.txt",
+      "sha256": "d8258ebf69de5ee2c6050b55f1681b5d27ded3ecbeb21903f15b077664cef132"
     },
     {
       "path": "in_game/common/holy_site_types/ashen_covenant.txt",
@@ -68,12 +80,24 @@
       "sha256": "46573039f2748705093e8b7303d6a3dc7bff71bc8e736cdc6fb6c275db07a0c4"
     },
     {
+      "path": "in_game/common/language_families/goblins_ashborn_isles.txt",
+      "sha256": "266addd8003535c5d3cee455f3204db76818a98258e094fec8adb21956907f17"
+    },
+    {
       "path": "in_game/common/languages/goblins_ashborn_isles.txt",
       "sha256": "5cc5908e94e99b8ae4b4b4078a47eba26851603aa3978ab95857ec86d47d7cae"
     },
     {
       "path": "in_game/common/on_action/ashen_covenant.txt",
       "sha256": "55d6aad78eef776c4b03842e7df61769e6b6de65a218c521989bdea6ca1cd7a5"
+    },
+    {
+      "path": "in_game/common/on_action/goblins_ashborn_isles.txt",
+      "sha256": "8e075424f8ec0740ff720452764c8d7bf42963d931f69ac46ab17d1bb805a996"
+    },
+    {
+      "path": "in_game/common/on_action/goblins_dynastic_clans.txt",
+      "sha256": "fa49a1c455b022861051741baf1a12bfb20f8f5632bc679e9bfd603cd314fa9a"
     },
     {
       "path": "in_game/common/on_action/goblins_economy.txt",
@@ -96,6 +120,10 @@
       "sha256": "44ac426f58749600611571404ac75440f636f9ae43be82e6012dc3dbad7b3131"
     },
     {
+      "path": "in_game/common/religion_groups/goblins_ashborn_isles.txt",
+      "sha256": "ecdbdb1060c400b746721bdd118bb2eacb9a8dd0f8e165ff9865629f937a0e6c"
+    },
+    {
       "path": "in_game/common/religions/goblins_ashborn_isles.txt",
       "sha256": "6d9c33e700c10157f1074261cc4faf8d6c294e5c1632c49ada7dc383667e5370"
     },
@@ -110,6 +138,10 @@
     {
       "path": "in_game/common/script_values/goblins_gathering.txt",
       "sha256": "a1fad45803beb7094a8ded55996adaed6cc6eacb317b17258dde383b4496eb2b"
+    },
+    {
+      "path": "in_game/common/scripted_effects/goblins_dynastic_clans.txt",
+      "sha256": "4187f5691b9194e2d9d4eb35b6c52cebf791ad2b1a0dab1252fade298b51c67d"
     },
     {
       "path": "in_game/common/scripted_triggers/goblins_gathering.txt",
@@ -128,6 +160,10 @@
       "sha256": "b96da04aabe6de95328afc142fb53386e728b0d3287efb5ccc5e0ebbc54d6b35"
     },
     {
+      "path": "in_game/common/town_setups/goblins_ashborn_isles.txt",
+      "sha256": "fde61c3e472378d2e2e67bb441b68aa8fd5f468fd94e7c91a115b2190166c2c1"
+    },
+    {
       "path": "in_game/events/ashen_covenant.txt",
       "sha256": "00e3abcfd23980bea15d5d823afaed125770ec7c45a4c3ad2d50bde1b13d9dee"
     },
@@ -137,7 +173,7 @@
     },
     {
       "path": "in_game/events/goblins_exploration.txt",
-      "sha256": "f965ac634fc3aec92f6d6a7d472caed5db2aa1d7358816322396052afdadd77d"
+      "sha256": "a31ca47fdc45afa358dabccd197529f846612dcccc1db5ce85487966d0cfed9d"
     },
     {
       "path": "in_game/events/goblins_gathering.txt",
@@ -833,11 +869,11 @@
     },
     {
       "path": "in_game/gui/panels/situation/ga_eastern_hunger.gui",
-      "sha256": "33169704565e04578e7c09c7ab3379be51eee383b6d57abd99cc99220160236e"
+      "sha256": "2beaa23be5b0bb72735281c3db88444a73443c6e24f2a80bcd7cbe757bbc8938"
     },
     {
       "path": "in_game/gui/panels/situation/ga_gathering_of_five.gui",
-      "sha256": "6def6d1879d419a38f1f34aeee6251a1249600250886a6ce4d2ab74849529af9"
+      "sha256": "4b29bf1b1ba25dbc6893415fd77004f31b464a1a28d3e3d7ab948ee259687cd6"
     },
     {
       "path": "main_menu/common/coat_of_arms/coat_of_arms/goblins_ashborn_isles.txt",
@@ -7613,7 +7649,11 @@
     },
     {
       "path": "main_menu/gfx/portraits/portrait_modifiers/zz_ashborn.txt",
-      "sha256": "23ad6fcd6098639f8195ba401be2984e962fe5fad583f4b50997c1b5afd3eeea"
+      "sha256": "203df5ddd24026f0826de7269ca442e9dc695249ad6dffec20751427a9791e54"
+    },
+    {
+      "path": "main_menu/gfx/portraits/portrait_modifiers/zz_ashborn_male_variation.txt",
+      "sha256": "db7998b300701eb7cc1213bb7857accdaf6485c5010bed5932b22e649b964659"
     },
     {
       "path": "main_menu/gfx/portraits/portrait_modifiers/zzz_ashborn_outfits.txt",
@@ -7633,15 +7673,15 @@
     },
     {
       "path": "main_menu/localization/english/ashen_covenant_l_english.yml",
-      "sha256": "ef935e9c36740a13ffb2a25b0cf197f763b0815b6a259cd988707e6b6c8a37b1"
+      "sha256": "6356e857cbcc93ac34ab6481435548f01cb609c7bf51e1a9f73e5e8d9cc333a1"
     },
     {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",
-      "sha256": "092275e16fe4ddbc5c4b9b2ce4c3b86a643d65d56498a9de505f761a9bc2a82c"
+      "sha256": "5a3e3b38dff94a7a1b13e6122c7934b28a13313c6b47b39642c757f578f8355a"
     },
     {
       "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
-      "sha256": "4eb28bc3278f86302475f9f56e5d7174ad40f527bc1f48e32b0516ada1055e16"
+      "sha256": "ac35cee1a1c723b8f13a870e710fca002dc64e4e5ddc3e967139691e2f94065f"
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",

@@ -15,9 +15,7 @@ def verify(game, out):
     b.build_setup(game, out)
     report = economy.build(b, game, out)
     audit = report['balance_audit']
-    # Only the pre-existing capital stockade needs a class not seeded at start.
-    assert all(row['location']=='cm_hooktooth' and row['class']=='soldiers'
-               for row in audit['staffing_shortfalls']), audit['staffing_shortfalls']
+    assert not audit['staffing_shortfalls'], audit['staffing_shortfalls']
     templates = dict(economy_reference.blocks((out/'in_game/common/town_setups/goblins_ashborn_isles.txt').read_text(encoding='utf-8-sig')))
     pops = dict(economy_reference.blocks(dict(economy_reference.blocks((out/'main_menu/setup/start/06_pops.txt').read_text()))['locations']))
     for loc in b.CFG['locations']:

@@ -149,9 +149,9 @@ def build_runtime(b, out, tags, routes, old_text, first_months):
         options = []
         for route in keys:
             r = routes[route]; route_id = list(routes).index(route)+1
-            ports = ', '.join(x.replace('_', ' ').title() for x in r['locations'])
+            ports = r['summary']
             loc(prefix+'.'+route, f"Sail {route}: {r['cost']} gold; return in {r['months']} months.")
-            loc(prefix+'.'+route+'_terms', f"Pay {r['cost']} gold once. Chart {ports} and the nearby sea, without revealing inland territory. Travel takes {r['months']} months. When the crew arrives, the current owners of these ports learn the Ashborn homeland and its surrounding waters. Crews then rest for 12 months.")
+            loc(prefix+'.'+route+'_terms', f"Pay {r['cost']} gold once. Chart {ports}. Most inland territory remains unknown. Travel takes {r['months']} months. When the crew arrives, the current owners of these ports learn the Ashborn homeland and its surrounding waters. Crews then rest for 12 months.")
             gate = f'OR = {{ {tags} }} {SESSION} NOT = {{ has_variable = ga_exp_route }} NOT = {{ has_variable = ga_charted_{route} }} gold >= {r["cost"]}'
             if route != 'east': gate += ' has_variable = ga_charted_east'
             timers = ' '.join(f'set_variable = {{ name = ga_exp_remaining_{n} value = yes months = {r["months"]-n+1} }}' for n in range(1,r['months']+1))
@@ -191,14 +191,7 @@ def build_runtime(b, out, tags, routes, old_text, first_months):
         num=r['event']; prefix=f'goblins_exploration.{num}'
         gate=f'OR = {{ {tags} }} has_variable = ga_exploration_pending NOT = {{ has_variable = ga_charted_{route} }} OR = {{ AND = {{ {MODERN} var:ga_exp_route = {route_id} }} AND = {{ {LEGACY} }} }}'
         effects='\n'.join('discover_area = area:'+a for a in r['areas'])
-        report=[]
         for port in r['locations']:
-            if port == 'strait_of_gibraltar':
-                report.append('Strait of Gibraltar: charted sea passage.');
-            else:
-                key='ga_exp_contact_'+port
-                dynamic(key, [(f'exists = scope:{key}', key+'_owner', f"{port.replace('_',' ').title()}: [SCOPE.sCountry('{key}').GetName] learned the route to the Ashborn homeland.")], f"{port.replace('_',' ').title()}: no surviving owner to name in this report.")
-                report.append(f"[ROOT.GetCountry.Custom('{key}')]")
             # Port owners are captured at arrival, before the report is displayed.
             effects+=f'''\nlocation:{port} = {{ discover_location = root
                 if = {{ limit = {{ exists = owner }} owner = {{
@@ -209,9 +202,9 @@ def build_runtime(b, out, tags, routes, old_text, first_months):
                         set_variable = {{ name = ga_received_goblin_first_contact value = yes }}
                         trigger_event_non_silently = {{ id = goblins_exploration.6 }} }}
                 }} }} }}'''
-        dynamic('ga_exp_report_'+route, [('exists = scope:ga_exp_report_ready', prefix+'.arrived', f"The {route} expedition has returned. Its charts cover the named coastal locations and nearby waters; distant interiors remain unknown.\n\n"+'\n'.join(report)+'\n\nCrews rest for 12 months from arrival. There is no further payment. The report records owners encountered on arrival, even if a port changes hands afterward.')],
-                'This return message was already open in an older save. Acknowledge it to complete the paid voyage, chart its destinations and inform their current owners. There is no further payment; the 12-month rest begins on acknowledgement.')
-        loc(prefix+'.desc', f"[ROOT.GetCountry.Custom('ga_exp_report_{route}')]")
+        # Arrival prose is deliberately static: no saved-token diagnostics or
+        # missing-scope fallbacks should appear in a player's story event.
+        loc(prefix+'.desc', old_text[prefix+'.desc']+'\n\n#bold Newly charted:#! '+r['summary'][0].upper()+r['summary'][1:]+'.')
         completion=f'''{effects}
                 {serial()}
                 set_variable = {{ name = ga_charted_{route} value = yes }}

@@ -17,6 +17,4 @@
 
 Goods move within a market through market access; this does not create an inter-market trade route. Between Hooktooth and Chainhaven, native country/burgher trade still depends on access, demand, prices, transport cost and available merchant capacity. The setup supplies production and merchant infrastructure. Profitability and route activity must be checked in game.
 
-## Installation
-
-Built for EU5 1.3.11. Extract the entire package, close EU5, and run Install-Goblins.cmd. Enable only one Goblins copy. Start a new 1337 campaign.
+Validation: complete static build, economy, geography, portrait assets and voyage scenarios passed. Clean installer verification pending; gameplay acceptance pending.

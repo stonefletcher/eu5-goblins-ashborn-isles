@@ -19,6 +19,7 @@ government = {
     reforms = { cm_tidemother_monarchy }
     privilege = { nobles_land_rights clergy_land_rights trade_monopolies communal_lands }
     laws = {
+        piracy_law = state_piracy_policy
         censorship = no_censorship
         administrative_system = feudal_administration
         marriage_law = monogamous_marriage

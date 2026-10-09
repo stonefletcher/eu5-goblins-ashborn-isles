@@ -14,11 +14,25 @@ STARTING_PROVINCES = []
 def starting_knowledge():
     return f"discovered_areas = {{ cm_cindermaw_area cm_ashborn_seas_area {' '.join(STARTING_SEA_AREAS)} }}"
 
+# Bounded coastal pockets plus their nearby market centers. Revealing only a
+# handful of ports leaves most useful coastline and foreign markets unknown.
 ROUTES = {
-    'east': {'cost':5,'months':4,'event':2,'areas':['iberian_west_coast_area'],'locations':['lisbon','porto','setubal']},
-    'north': {'cost':10,'months':6,'event':4,'areas':['bay_of_biscay_area','english_channel_area'],'locations':['brest','la_rochelle','bordeaux','plymouth','southampton']},
-    'south': {'cost':10,'months':6,'event':5,'areas':['nw_africa_coast_area'],'locations':['cadiz','tangier','ceuta','strait_of_gibraltar']},
+    'east': {'cost':5,'months':4,'event':2,
+             'areas':['iberian_west_coast_area'],
+             'locations':['lisbon','porto','setubal','torres_vedras','alcacer_do_sal','viana_do_castelo'],
+             'summary':'the Portuguese coast around Porto, Lisbon and Setubal, and its Atlantic approaches'},
+    'north': {'cost':10,'months':6,'event':4,
+              'areas':['iberian_west_coast_area','bay_of_biscay_area','english_channel_area','nw_africa_coast_area'],
+              'locations':['brest','la_rochelle','bordeaux','plymouth','exeter','southampton','portsmouth','wight','dover','london',
+                           'coruna','ferrol','cadiz','algeciras','gibraltar','tarifa','sevilla',
+                           'tangier','ceuta','asilah','tetouan','larache','fez'],
+              'summary':'pockets of southern Britain, the French Atlantic coast, Galicia and the Spanish straits, and northern Morocco; the markets at London, Bordeaux, Seville and Fez and the seas between these shores'},
+    'south': {'cost':10,'months':6,'event':5,
+              'areas':['nw_africa_coast_area','iberian_west_coast_area'],
+              'locations':['cadiz','algeciras','gibraltar','tarifa','huelva','sevilla','tangier','ceuta','asilah','tetouan','larache','sale','fez','strait_of_gibraltar'],
+              'summary':'the Spanish and Moroccan shores of the straits, the coast toward Huelva and Sale, the Seville and Fez markets, and their sea approaches'},
 }
+
 
 TEXT = {
     'goblins_exploration.6.title':'Strange Visitors on Our Shores',
@@ -29,7 +43,7 @@ TEXT = {
     'goblins_exploration.1.east':'Provision a voyage east. The crew returns in four months.',
     'goblins_exploration.1.wait':'We need these provisions at home. Ask again in six months.',
     'goblins_exploration.2.title':'A Coast Beyond Counting',
-    'goblins_exploration.2.desc':'The expedition returns with sketches of river mouths, broad sails and stone towns. Porto, Lisbon and Setubal now have names and places on our charts: our crews have discovered their harbors and sailed the crossing home. They fled when shore watchers spotted them, but a foreign sail shadowed their return. The rulers of these ports now know the Ashborn Isles and the waters around them.',
+    'goblins_exploration.2.desc':'Salt-stained charts cover the council table. Our crews have followed the Portuguese shore from fishing coves to the busy quays of Porto and Lisbon. Beyond the breakers they found people eager to bargain, and watchmen eager to send them away. A foreign sail followed the expedition home; our islands are no longer a secret.',
     'goblins_exploration.2.a':'Keep the charts dry. There will be more voyages.',
     'goblins_exploration.3.title':'The Captains Unroll Their Charts',
     'goblins_exploration.3.desc':'We have charted the first eastern harbors, but the shores farther north and south remain unexplored. Some crews favor the northern waters, others the warmer southern coast. Provisions for another expedition will cost ten gold, and the voyage will take six months.',
@@ -37,10 +51,10 @@ TEXT = {
     'goblins_exploration.3.south':'Follow the coast south toward the straits.',
     'goblins_exploration.3.wait':'Let the crews rest. Reconsider in six months.',
     'goblins_exploration.4.title':'Cold Seas and Foreign Harbors',
-    'goblins_exploration.4.desc':'Our sailors bring back firsthand accounts of the northern coast. They visited Brest, La Rochelle and Bordeaux, then Plymouth and Southampton across the narrow sea. Old chart marks now carry sketches of harbors and notes on their inhabitants. Distant interiors remain unknown. The rulers of the ports we visited now know the Ashborn Isles.',
+    'goblins_exploration.4.desc':'The returning ships wear a crust of salt and carry a hold full of stories. Our captains have sounded the cold harbors of Britain and followed the crowded French shore. In foreign taverns they bartered for charts of Spanish coves and the sunlit ports of Morocco. Dock by dock, the distant world takes shape on the council table. Ships can now seek those shores, and their rulers have heard of the Ashborn Isles.',
     'goblins_exploration.4.a':'Another stretch of the world has a name.',
     'goblins_exploration.5.title':'The Southern Straits',
-    'goblins_exploration.5.desc':'The southern expedition has returned from Cadiz, Tangier and Ceuta near the straits. The captains have replaced rumors with firsthand sketches of rich-looking harbors, though they learned little of life behind the walls. The rulers of these ports now know the route to the Ashborn Isles.',
+    'goblins_exploration.5.desc':'Warm winds bring the southern expedition home. The crews speak of white walls above the straits, markets crowded with unfamiliar wares and watchtowers following every sail. Their charts trace the Spanish and Moroccan shores, opening new places to bargain and new waters to fear. The rulers they encountered now know where our islands lie.',
     'goblins_exploration.5.a':'The sea is wider than our old stories claimed.',
 }
 

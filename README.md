@@ -1,16 +1,33 @@
 # Goblins of the Ashborn Isles
 
-**Version 0.6.0 — Six crowns. Nine islands. A homeland to unite.**
+**Staging 0.6.1 — Starting economy, connected provinces and distinct goblins.**
 
 ![Goblins of the Ashborn Isles banner](art/workshop/0.6.0/banner.jpg)
 
-[Download 0.6.0](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.6.0) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518) | [Release notes](RELEASE_NOTES_0.6.0.md)
+[0.6.1 staging notes](RELEASE_NOTES_0.6.1.md) | [Published 0.6.0 release](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.6.0) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
 
 Fire rose from the Atlantic. When the smoke cleared, goblin kingdoms stood among the new volcanic islands between the Azores and Portugal. Captains claimed sheltered harbors, smiths built their forges beneath black ridges, and rival houses began arguing over who should lead them.
 
 **Goblins of the Ashborn Isles** adds a fantasy homeland to Europa Universalis V. Choose a crown, develop its economy, bargain with neighboring rulers, and decide whether the Isles will unite through conquest, submission or dynastic union. Beyond the familiar shoals lie foreign ports and the promise of an eastern foothold.
 
-## New in 0.6.0
+## 0.6.1 — Starting economy, connected provinces and distinct goblins
+
+- All six crowns start with State Piracy selected and permanently unlocked through the native policy-unlock flag. The policy remains changeable; no later-age advance is granted.
+- Starting stability is 50, legitimacy is 75 and prestige is 25.
+- Hooktooth and Brackhaven start with a staffed sergeantry. Ironfang Monarchy grants +50% Manpower, increasing monthly manpower gain through the native `global_manpower_modifier`.
+- Hooktooth and Chainhaven each receive two glass guilds, local sand supplies and two nearby mason levels. Supporting tools, leather, paper, jewelry and northern cloth production supply the workshops and marketplaces. Chainhaven gains a wharf and northern tar/silver resources support its production chains.
+- Province assignments follow real shared land borders across all nine islands, including Smokehorn, Scorchbrook, the disconnected outer provinces and Giltfang. District shapes and country ownership are unchanged.
+- Lantern Haven becomes a town with a marketplace, wharf and granary, keeping its fish resource and existing population.
+- Additional towns: Copperfang and Netjaw (Cindermaw), Rustpeak and Bracknet (Brackmaw), Knifeback on Shatterfin's smaller island, and Tolltooth. Shatterfin and Chainhaven become cities. Nearby rural households relocate into the expanded settlements; urban class mixes and production buildings change while each kingdom's total population stays constant.
+- Covenant Favor is shown as a live value in the Gathering and Eastern Hunger panels, with an explanation of its religious-influence resource and rite costs. The native Religion panel retains the detailed resource tooltip.
+- Adult male goblins draw from four distinct facial profiles, in addition to their existing hair choices. Drogg has a heavier brow, stronger jaw, leaner cheeks, prominent battle scar and a dedicated bear-hunter outfit.
+- Cold Seas and Foreign Harbors uses story prose followed by a clear discovery summary. Voyages reveal bounded coastal pockets and market centers; the northern return charts southern Britain, Atlantic France, parts of Spain and northern Morocco, including London, Bordeaux, Seville and Fez. Most inland territory stays unknown.
+
+**New 1337 campaign required** for the starting stats, policy, production, town and province assignments. Existing saves retain their saved starting world. Portrait/UI rendering, actual market membership, production ramp-up and profitable trades require in-game acceptance.
+
+Goods move within a market through market access; this does not create an inter-market trade route. Between Hooktooth and Chainhaven, native country/burgher trade still depends on access, demand, prices, transport cost and available merchant capacity. The setup supplies production and merchant infrastructure. Profitability and route activity must be checked in game.
+
+## Previous release: 0.6.0
 
 - **Giltfang, the sixth crown:** a northern realm with its own market, court, culture, lore, flag and opening artwork.
 - **Lantern Cay and the Quiet Road:** a Cindermaw outpost and ordinary coastal passage connecting the northern and southern islands.
@@ -84,16 +101,16 @@ At home, the **Ashen Covenant** provides twelve sacred sites, traditions, rites,
 
 ## Install and continue
 
-Built for **EU5 1.3.11 (Pavia)**. Upgrading from 0.5.x requires a **new 1337 campaign** because geography and starting setup changed.
+Built for **EU5 1.3.11 (Pavia)**. Upgrading to 0.6.1 requires a **new 1337 campaign** because province assignments and starting setup changed.
 
-- Subscribe through the Workshop, or extract the complete GitHub installer ZIP and run **Install-Goblins.cmd** with EU5 closed.
+- For this staging version, download this branch as a complete source ZIP, extract it and run **Install-Goblins.cmd** with EU5 closed. The bundled installer reconstructs its terrain using the installed game. The public release and Workshop remain on 0.6.0 until release.
 - Enable only one Goblins copy and disable the old Gathering Prototype add-on. Restart before playing.
 - Existing 0.6.0 saves can receive the clan-flag repair after restart and the next monthly pulse; that repair alone needs no new campaign.
 - Other map, terrain and starting-world mods may conflict. Keep separate saves.
 
 ## Checks and feedback
 
-Static map, script, artwork and installer checks passed, including a clean-source installation and all 1,974 runtime file hashes. These checks are separate from in-game confirmation of sailing, trade, UI rendering, flags and save behavior. Multiplayer and achievements are unverified; dedicated foreign invasion ambitions and fear mechanics are not included.
+The complete 0.6.1 static build, economy, connected-province, portrait asset and voyage script checks have passed. The matching installer is being verified from a clean Git export before staging is pushed. These checks are separate from in-game confirmation of production, trade, UI rendering, portraits and save behavior. Multiplayer and achievements are unverified; dedicated foreign invasion ambitions and fear mechanics are not included.
 
 [Report a problem](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/issues) with your version, clan, enabled mods and steps to reproduce it. Screenshots and relevant saves help. See the [release history](RELEASE_NOTES.md) and [playtest checklist](TESTING.md) for more detail.
 

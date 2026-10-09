@@ -1,0 +1,22 @@
+﻿cm_ashborn_male_variation = { usage = game selection_behavior = weighted_random priority = 135
+cm_male_gaunt = { dna_modifiers = { morph = { mode = replace gene = gene_head_width template = template_1 range = { 0.36 0.44 } }
+morph = { mode = replace gene = gene_jaw_width template = template_1 range = { 0.25 0.33 } }
+morph = { mode = replace gene = gene_cheek_fat template = template_1 range = { 0.08 0.16 } }
+morph = { mode = replace gene = gene_nose_length template = template_1 range = { 0.87 0.95 } }
+morph = { mode = replace gene = gene_nose_width template = template_1 range = { 0.23 0.31 } } } weight = { base = 0 modifier = { add = 1 is_female = no age_in_years >= 18 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx gfx_culture_applicable = cm_giltkin_gfx } } } }
+cm_male_square = { dna_modifiers = { morph = { mode = replace gene = gene_head_width template = template_1 range = { 0.63 0.71 } }
+morph = { mode = replace gene = gene_jaw_width template = template_1 range = { 0.54 0.62 } }
+morph = { mode = replace gene = gene_chin_size template = template_1 range = { 0.53 0.61 } }
+morph = { mode = replace gene = gene_nose_length template = template_1 range = { 0.58 0.66 } }
+morph = { mode = replace gene = gene_nose_width template = template_1 range = { 0.45 0.53 } } } weight = { base = 0 modifier = { add = 1 is_female = no age_in_years >= 18 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx gfx_culture_applicable = cm_giltkin_gfx } } } }
+cm_male_heavy = { dna_modifiers = { morph = { mode = replace gene = gene_head_width template = template_1 range = { 0.59 0.67 } }
+morph = { mode = replace gene = gene_jaw_width template = template_1 range = { 0.44 0.52 } }
+morph = { mode = replace gene = gene_cheek_fat template = template_1 range = { 0.46 0.54 } }
+morph = { mode = replace gene = gene_cheek_def template = template_1 range = { 0.49 0.57 } }
+morph = { mode = replace gene = gene_nose_width template = template_1 range = { 0.51 0.59 } } } weight = { base = 0 modifier = { add = 1 is_female = no age_in_years >= 18 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx gfx_culture_applicable = cm_giltkin_gfx } } } }
+cm_male_sharp = { dna_modifiers = { morph = { mode = replace gene = gene_head_width template = template_1 range = { 0.44 0.52 } }
+morph = { mode = replace gene = gene_jaw_width template = template_1 range = { 0.31 0.39 } }
+morph = { mode = replace gene = gene_chin_size template = template_1 range = { 0.27 0.35 } }
+morph = { mode = replace gene = gene_cheek_def template = template_1 range = { 0.87 0.95 } }
+morph = { mode = replace gene = gene_nose_tip_forward template = template_1 range = { 0.87 0.95 } } } weight = { base = 0 modifier = { add = 1 is_female = no age_in_years >= 18 OR = { gfx_culture_applicable = cm_cinderkin_gfx gfx_culture_applicable = cm_brinekin_gfx gfx_culture_applicable = cm_reefkin_gfx gfx_culture_applicable = cm_shatterkin_gfx gfx_culture_applicable = cm_sootkin_gfx gfx_culture_applicable = cm_giltkin_gfx } } } }
+}

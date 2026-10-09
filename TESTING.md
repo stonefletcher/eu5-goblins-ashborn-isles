@@ -1,3 +1,21 @@
+# 0.6.1 gameplay acceptance
+
+Start a NEW 1337 campaign after restarting with only this Goblins copy enabled.
+
+1. Check each crown: stability 50, legitimacy 75, prestige 25, State Piracy selected and available to reselect after changing policy.
+2. Inspect province mode: every province is connected by land within its island. Check Smokehorn, Scorchbrook, Blackwood Outer, Crown Outer, Brinewood Outer, Rustpeak Outer, Brackhaven and Giltfang.
+3. Confirm Lantern Haven, Copperfang, Netjaw, Rustpeak, Bracknet, Knifeback and Tolltooth are towns; Shatterfin and Chainhaven are cities. Inspect their population classes and staffed buildings. Country population totals should remain unchanged.
+4. Inspect both markets at start and after monthly production updates: sand, glass, masonry, tools and marketplace input supply; check actual market membership, staffing and production methods.
+5. Inspect a Hooktooth–Chainhaven import/export opportunity and its route tooltip. Confirm a profitable route can be created and burgher trades appear when profitable. Inspect market access for remote islands. Internal market exchange need not draw a trade route.
+6. Open the Gathering and Eastern Hunger panels: Covenant Favor displays the current religious-influence value; spending on a rite changes it. Check the Religion panel tooltip.
+7. Compare several adult males and Drogg, plus human and child controls. Check clothing, scar, hair, facial animation and save/reload stability.
+
+8. Check Hooktooth and Brackhaven: one sergeantry each with soldier staffing. Hover Manpower and confirm Ironfang Monarchy contributes +50% to monthly gain. Removing the reform should remove its contribution.
+
+9. Complete all three voyages, including Cold Seas and Foreign Harbors. Read the flavor and discovery summary, then inspect revealed coastal pockets in Britain, Spain and Morocco and the London, Bordeaux, Seville and Fez markets. Confirm sea approaches, reciprocal contact, no extra fee and no repeated voyage reward after save/reload. Check trade availability and profitability separately.
+
+Static validation and installer verification do not substitute for these gameplay checks.
+
 # 0.6.0 acceptance
 
 - Clan flag repair: start as Giltfang and confirm a brass fang with chain links on dark blue instead of the yellow/blue procedural flag. Check all six authored clan emblems. Load a pre-fix 0.6.0 save, advance to the next monthly pulse, and confirm the same repair occurs once. Later intentional flag changes must not be reset by subsequent pulses. This visual check is still pending.

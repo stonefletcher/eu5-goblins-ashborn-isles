@@ -77,13 +77,12 @@ ga_economy_monthly = {{
     lines=['cm_cindermaw_area = 7']+[c['capital']+' = 3' for c in cfg['countries']]
     b.write(out,rel,b.inject(native,'development','\n'.join(lines)))
     corpus='\n'.join(p.read_text(encoding='utf-8-sig') for p in (game/'in_game/common/building_types').glob('*.txt'))
-    capitals={c['capital'] for c in cfg['countries']}
+    capital_ranks={c['capital']:c['rank'] for c in cfg['countries']}
     for loc in cfg['locations']:
         for key,level in loc['buildings'].items():
             assert level>0
             a,z=b.block_span(corpus,key);definition=corpus[a:z]
-            rank='town' if loc['id'] in capitals else 'rural_settlement'
-            if loc['id']=='cm_hooktooth':rank='city'
+            rank=loc.get('rank', capital_ranks.get(loc['id'],'rural_settlement'))
             assert re.search(r'\b'+rank+r'\s*=\s*yes',definition),(loc['id'],key,'incompatible rank')
             if key=='fishing_village':assert loc['good']=='fish'
             if key=='forest_village':assert loc['vegetation']=='woods'

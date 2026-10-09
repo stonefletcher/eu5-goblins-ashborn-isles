@@ -1,12 +1,12 @@
 {
-  "version": "0.6.1",
-  "source_commit": "165645c6797249dbe1b52631c6ac00504bd04531",
-  "source_config_sha256": "c9eb5f2a31fa825a97b1e73a99865ed87f2d2d3f6ec0e9dd31186bb6c0286af1",
+  "version": "0.6.2",
+  "source_commit": "bc6f8c93cf5df2fa77514bfe8e241d247e577617",
+  "source_config_sha256": "aab164d20fa17bfaed4e39fb7069a0f376001a39bccfd207e517a67acf14aad5",
   "assets": [
     {
-      "name": "Goblins_Ashborn_Isles_0.6.1.zip",
-      "size": 252031599,
-      "sha256": "fdef69b9611d30b1e36d80664ec4491eb331da4c9f08ad5047e2d16fc778c308",
+      "name": "Goblins_Ashborn_Isles_0.6.2.zip",
+      "size": 252860627,
+      "sha256": "d86c25dd93a0405b9688e579a812bcae85a31de28b1a7df791f42cee882b2a85",
       "chunks": [
         "assets/0.6.1-fdef69b9611d-0000.b64",
         "assets/0.6.1-fdef69b9611d-0001.b64",
@@ -488,7 +488,9 @@
         "assets/0.6.1-fdef69b9611d-0477.b64",
         "assets/0.6.1-fdef69b9611d-0478.b64",
         "assets/0.6.1-fdef69b9611d-0479.b64",
-        "assets/0.6.1-fdef69b9611d-0480.b64"
+        "assets/0.6.1-fdef69b9611d-0480.b64",
+        "assets/0.6.2-abae12c6cc93-0000.b64",
+        "assets/0.6.2-abae12c6cc93-0001.b64"
       ]
     }
   ]

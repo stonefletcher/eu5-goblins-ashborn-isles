@@ -1,27 +1,28 @@
-# Goblins 0.6.1 — city/wharf/starting-trade follow-up
+# Goblins 0.6.1 — city/wharf/trade follow-up installed
 
-Branch staging/0.6.1; previous deployed/pushed candidate e569e60.
-New work: Brackhaven city; all ten coastal urban locations have one wharf;
-remove inland Netjaw's invalid wharf (confirmed in game error.log).
-Native startup effects seed CDM silver imports Chainhaven -> Hooktooth and
-GTF lumber imports Hooktooth -> Chainhaven, desired merchant capacity 1,
-locked. Require distinct markets, merchant/capacity and path; confirm route
-before once-only flag. Retry monthly until 1338.12.1; never recreate a completed
-route after cancellation. Internal market allocation uses access, not routes.
+Branch staging/0.6.1; source 165645c, matching bundle 35972fe.
+Brackhaven is a city. All ten coastal urban locations have one wharf;
+inland Netjaw's invalid wharf removed. CDM imports silver Chainhaven->Hooktooth;
+GTF imports lumber Hooktooth->Chainhaven, desired merchant capacity 1, locked.
+Native startup effects check distinct markets, merchant/capacity and path.
+Once-only completion follows confirmed route creation; bounded monthly retry
+until 1338.12.1. Cancelled completed routes stay cancelled. Same-market route
+creation is not supported; internal goods allocation uses market access.
 
-Full static candidate and economy checks passed. Terrain unchanged/reused with
-native/final hash checks. New coast/wharf and trade registration checks pass.
-Regenerated sources/manifests and matching player package are being prepared.
-Next: bundle, commit, empty clean export, PrepareOnly + isolated installation,
-verify every file, update README validation and push. EU5 was running PID26500;
-ask for closure once candidate is concrete, never kill it. In-game trade volume
-and rendering remain untested. A new campaign applies city/wharf setup changes.
+Passed: full static validation, economy/staffing/populations, coastal wharf
+checks, trade script registration and prior regression suites. Reused unchanged
+verified terrain. Clean export/PrepareOnly/isolated installation passed; all
+1,977 files match. Receipts: build/isolated-install-061.json and validation.json.
 
-Active local mod is the previous 0.6.1 candidate, verified in
-build/active-install-061.json. Preserve any local fixes before replacement.
-Previous 0.6.0 rollback exists outside mod/; no new backup needed until deploy.
-Earlier successful scratch E:/CodexScratch/goblins-061-20261009-review remains
-because automatic cleanup was denied; do not bypass denial. Retain receipts.
+Deployed locally while EU5 was closed: four changed runtime files only; all
+1,977 installed files verified (build/active-install-061.json). Previous active
+copy matched e569e60 with no local changes. Rollback under user-data
+/goblins_backups/goblins_061_city_trade contains two originals plus added-file
+manifest, 276,582 bytes. No game launch. New campaign needed for city/wharf setup.
+Actual route creation/volume and gameplay acceptance remain engine-untested.
+
+Current clean workspace: E:/CodexScratch/goblins-061-trade-review/source.
+Older review workspace retained following cleanup denial; do not bypass it.
 Game: E:/SteamLibrary/steamapps/common/Europa Universalis V/game (1.3.11).
-Active mod: Documents/Paradox Interactive/Europa Universalis V/mod/goblins_ashborn_isles.
-No main merge, GitHub release or Workshop publication requested.
+Active: Documents/Paradox Interactive/Europa Universalis V/mod/goblins_ashborn_isles.
+Read remote/HEAD to confirm staging push; no release/main/Workshop requested.

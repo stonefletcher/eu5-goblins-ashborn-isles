@@ -19,4 +19,4 @@
 
 Goods move within a market through market access; this does not create an inter-market trade route. Between Hooktooth and Chainhaven, native country/burgher trade still depends on access, demand, prices, transport cost and available merchant capacity. The setup supplies production, merchant infrastructure and the two seeded routes. Goods inside Hooktooth are allocated by market access; a same-market trade route is rejected by the native trade action. Profitability, actual market membership and route activity must be checked in game.
 
-Validation: complete static build, economy, geography, portrait assets and voyage scenarios passed. The city/wharf/seeded-trade follow-up requires refreshed installer verification. Gameplay acceptance pending.
+Validation: complete static build, economy, geography, portrait assets and voyage scenarios passed. The city/wharf/seeded-trade follow-up passed clean-source reconstruction and isolated installation, with all 1,977 files matching the build. Gameplay acceptance pending.

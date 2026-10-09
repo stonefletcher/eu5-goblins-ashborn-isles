@@ -1,29 +1,24 @@
-# Goblins 0.6.1 — awaiting isolated installation
+# Goblins 0.6.1 staging
 
-Checkout: this repository; branch staging/0.6.1.
-Source: e2de3a8. Validated bundle: 757cc08. Not pushed or installed live.
-All requested gameplay changes are implemented; see README and 0.6.1 notes.
+Branch: staging/0.6.1. Source e2de3a8; bundle 757cc08; efficiency tooling e9c9a9e.
+All requested changes are implemented and packaged; README and staging notes
+contain the feature summary. No main merge/release/Workshop publication requested.
 
-Passed: complete static/terrain validation, staffing/population, 40 connected
-provinces, portraits/models and 10 voyage scenario groups. Bundle verified.
-Clean export at E:/CodexScratch/goblins-061-20261009-review/source passed
-PrepareOnly; all 1,975 runtime files match the build. Receipts are under build/.
+Passed: full static/terrain validation, staffing/populations, 40 connected
+provinces, portraits/models and 10 voyage scenario groups. Clean export of
+757cc08 passed PrepareOnly and isolated installation; all 1,975 delivered files
+match the candidate. build/isolated-install-061.json records archive/commit and
+reuse evidence. Subsequent changes affect unembedded docs and optional source
+ZIP creation only; runtime, configuration and installer payload are unchanged.
 
-Remaining: EU5 was running (PID 28828); closure requested once, no reply yet.
-After verifying closure, run the exported installer with a fresh isolated
--UserDataPath E:/CodexScratch/goblins-061-20261009-review/user and compare
-files using .local/compare_install.py. Do not use or replace the active mod.
-Then update validation wording, commit task changes, push staging and verify
-remote README. Do not release, merge main or publish Workshop.
+Completed test workspace: E:/CodexScratch/goblins-061-20261009-review.
+Automatic approval review rejected recursive cleanup (blocked by policy), so
+it remains intact. Do not bypass that denial. Current build/player ZIP retained.
+Source ZIP is opt-in via package.py --source; Git protects committed source.
 
-Efficiency update: skills now permit reusing receipts for unchanged relevant
-inputs; unembedded README/HANDOFF-only edits do not require another full export.
-The player payload is unchanged. package.py now makes source ZIP optional via
---source; check relevant input changes before deciding which stages to repeat.
-Redundant source archives were removed; retain current player ZIP and pending
-clean-test workspace. No active mod, saves, authored assets or rollback removed.
-
+Active 0.6.0 installation remains unchanged. No game launch performed.
 Game: E:/SteamLibrary/steamapps/common/Europa Universalis V/game (1.3.11).
-Active 0.6.0 under Documents/Paradox Interactive/Europa Universalis V/mod/
-goblins_ashborn_isles remains unchanged. New campaign required for starting
-world edits. Actual trade, discovery/UI and portrait rendering remain untested.
+Active mod: Documents/Paradox Interactive/Europa Universalis V/mod/goblins_ashborn_isles.
+New campaign required after installation. Actual market trade, discovery/UI,
+portraits and gameplay acceptance remain pending. Read current remote/HEAD to
+confirm staging push completion; use README's staging branch for delivery.

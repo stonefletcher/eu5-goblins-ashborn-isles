@@ -17,4 +17,4 @@
 
 Goods move within a market through market access; this does not create an inter-market trade route. Between Hooktooth and Chainhaven, native country/burgher trade still depends on access, demand, prices, transport cost and available merchant capacity. The setup supplies production and merchant infrastructure. Profitability and route activity must be checked in game.
 
-Validation: complete static build, economy, geography, portrait assets and voyage scenarios passed. Clean installer verification pending; gameplay acceptance pending.
+Validation: complete static build, economy, geography, portrait assets and voyage scenarios passed. Clean-export reconstruction and isolated installation passed, with all 1,975 files matching. Gameplay acceptance pending.

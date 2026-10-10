@@ -535,9 +535,13 @@ ga_cb_eastern_foothold = {
     events.append(event(5, 'Six Crowns, One Hunger',
         'Every shore of the Ashborn homeland now answers to one authority. Some crowns may have fallen; others endure through oaths or a union. Our dynasty keeps its name. Beyond the smoke, the eastern coasts await. Unification grants no foreign territory.',
         option(5, 'a', 'Let the captains look east.', 'add_prestige = 10 add_country_modifier = { modifier = ga_unification_recovery years = 5 mode = replace }')))
+    loc('ga_eastern_horizon_acknowledge_tt',
+        'Acknowledge the start of The Eastern Hunger. This option has no immediate cost or reward.\n\n'
+        'Next steps: use Ashborn Voyages to chart the European coast. In The Eastern Hunger situation, Prepare the Eastern Crossing buys a temporary fleet-preparation bonus, and Plan an Eastern Foothold buys a temporary casus belli for an eligible coastal province. These are separate paid actions.\n\n'
+        'Your goal is to secure a European coastal foothold while keeping the Ashborn homeland united. You must obtain ships, troops and territory through normal gameplay; this event does not provide them or declare war.')
     events.append(event(6, 'Beyond the Ashen Horizon',
         'The homeland is united, but Europe must be approached by sea. Complete the existing exploration voyages to chart its coast. The Eastern Hunger situation offers paid fleet preparation and a temporary casus belli for a chosen coastal province. Build your ships, choose your enemy and win your war; neither land nor troops are provided.',
-        option(6, 'a', 'Charts, provisions, then a harbor.')))
+        option(6, 'a', 'Charts, provisions, then a harbor.', 'custom_tooltip = ga_eastern_horizon_acknowledge_tt')))
     events.append(event(7, 'One Hunger Beyond the Isles',
         'The island struggle is settled under a common authority. Our crown still stands and our succession customs remain. Our people may now share in an eastern expedition through the normal obligations of our vassalage or union.',
         option(7, 'a', 'Our house endures.')))

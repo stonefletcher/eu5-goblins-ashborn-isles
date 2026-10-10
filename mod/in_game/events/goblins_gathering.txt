@@ -174,7 +174,7 @@ ga_gathering.6 = {
         name = ga_gathering.6.a
         trigger = {  }
         ai_chance = { factor = 1 }
-        
+        custom_tooltip = ga_eastern_horizon_acknowledge_tt
     }
     after = {  }
 }

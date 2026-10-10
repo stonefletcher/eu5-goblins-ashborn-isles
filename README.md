@@ -1,5 +1,7 @@
 # Goblins of the Ashborn Isles
 
+Pending tooltip fix: the Moot of Six Fires rewards now display “The Local Covenants” and “The First Oathkeeper”. The three major Covenant rites also have proper modifier names and descriptions. Effects and saved modifier IDs are unchanged.
+
 **0.6.3 — Construction economy and Jaimzha.**
 
 **Pending patch on `staging/ashborn-intro`:** all six goblin crowns receive the “Smoke on the Horizon” introduction (“The Ashborn rise.”) once, on their monthly country pulse. Existing saves catch up for the other crowns; Cindermaw does not repeat an introduction it already received. Cindermaw's starting troops and ships remain exclusive to Cindermaw. This patch is not yet deployed to the published 0.6.3 or Steam Workshop.

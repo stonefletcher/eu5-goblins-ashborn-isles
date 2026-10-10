@@ -1,5 +1,7 @@
 # Goblins of the Ashborn Isles 0.6.3
 
+Pending tooltip fix: the Moot of Six Fires rewards now display “The Local Covenants” and “The First Oathkeeper”. The three major Covenant rites also have proper modifier names and descriptions. Effects and saved modifier IDs are unchanged.
+
 Pending introduction patch: all six goblin kingdoms receive the Ashborn introduction once on their monthly country pulse. Existing saves catch up; Cindermaw does not repeat its old introduction or starting units. This candidate is not the published 0.6.3 release.
 
 ## 0.6.3 — Construction economy and Jaimzha

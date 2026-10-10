@@ -131,6 +131,8 @@ def build(out):
     for key, (name, desc, modifier, value) in RITES.items():
         loc('ac_' + key, name)
         loc('ac_' + key + '_desc', desc + ' Costs two months of scaled income and 20 Covenant Favor. The blessing lasts five years; all major rites share a five-year cooldown.')
+        loc('STATIC_MODIFIER_NAME_ac_' + key, name)
+        loc('STATIC_MODIFIER_DESC_ac_' + key, desc + ' The blessing lasts five years.')
         mods.append(f'ac_{key} = {{ {modifier} = {value} }}')
         actions.append(f'''ac_{key} = {{
  type = owncountry
@@ -150,6 +152,8 @@ def build(out):
 }}''')
     for key, name, modifier, value in [('local_covenants', 'The Local Covenants', 'tolerance_heathen', 1), ('first_oathkeeper', 'The First Oathkeeper', 'stability_cost_efficiency', .10)]:
         loc('ac_' + key, name); loc('ac_' + key + '_desc', 'The settlement agreed at the Moot of Six Fires.')
+        loc('STATIC_MODIFIER_NAME_ac_' + key, name)
+        loc('STATIC_MODIFIER_DESC_ac_' + key, 'The permanent settlement agreed at the Moot of Six Fires.')
         mods.append(f'ac_{key} = {{ {modifier} = {value} }}')
     write('in_game/common/generic_actions/ashen_covenant.txt', '\n'.join(actions))
     write('in_game/common/generic_action_ai_lists/ashen_covenant.txt',

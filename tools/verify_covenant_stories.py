@@ -1,5 +1,6 @@
 """Execute actual generated decisions; not an EU5 engine emulator."""
 from copy import deepcopy
+import re
 from verify_harbor_bargains import World,parse,flatten
 
 
@@ -7,6 +8,11 @@ def verify(read):
     defs={k:v for k,_,v in parse(read('in_game/events/ashen_covenant.txt')) if k!='namespace'}
     hooks=read('in_game/common/on_action/ashen_covenant.txt')
     localization=read('main_menu/localization/english/ashen_covenant_l_english.yml')
+    # Native modifier tooltips resolve prefixed keys, not action/option titles.
+    localized = dict(re.findall(r'^ (\S+): "(.+)"$', localization, re.M))
+    for modifier, _, _ in parse(read('main_menu/common/static_modifiers/ashen_covenant.txt')):
+        for prefix in ('STATIC_MODIFIER_NAME_', 'STATIC_MODIFIER_DESC_'):
+            assert localized.get(prefix + modifier), 'Missing modifier text: ' + prefix + modifier
     assert 'chance_to_happen = 5' in hooks
     scenarios=[]
     def setup(n):

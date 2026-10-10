@@ -1,11 +1,11 @@
-# Introduction and Covenant tooltip fixes ready
+# Playtest fixes ready
 
-Branch: staging/ashborn-intro. Combined payload 4fd6365; tooltip source c57abae. Published main/tag/Workshop and active install remain unchanged at released 0.6.3.
+Branch: staging/ashborn-intro. Current combined payload fc2ba4c; hover source 89c200e. Published main/tag/Workshop and active install remain released 0.6.3 without these pending fixes.
 
-All six crowns receive the Ashborn introduction once per country. Existing saves catch up; Cindermaw does not repeat an old introduction or starting-unit grant. The Moot rewards now display The Local Covenants and The First Oathkeeper. Three major Covenant rites also have native modifier names/descriptions. Reward values and saved IDs are unchanged.
+Pending changes: once-per-country Ashborn introduction for all six kingdoms, with legacy Cindermaw guards; correct names/descriptions for two Moot rewards and three Covenant rites; Beyond the Ashen Horizon option hover explains that it has no immediate cost/reward and directs the player to voyages and paid Eastern Hunger actions. Existing gameplay effects and stable IDs are preserved.
 
-Passed source regressions, native Covenant checks, all 60 custom modifier name/description checks, rejection of original broken labels, prepared-bundle validation and stale-config rejection. Clean committed export PrepareOnly and isolated installation passed. All 1,977 installed files match the candidate, including reconstructed terrain.
+Passed source regressions, all 60 custom modifier labels, native script checks, exact event AST comparison allowing only the new tooltip, prepared-bundle validation and stale-source rejection. Fresh committed export PrepareOnly and packaged installer to an isolated user folder passed. All 1,977 installed files match, including reconstructed terrain.
 
-Receipt: reports/ashborn-intro-candidate.json. Current clean source: E:/CodexScratch/goblins-intro-review/tooltip-source. Isolated target: E:/CodexScratch/goblins-intro-review/tooltip-user. Reuse this passing gate for documentation-only follow-ups. Earlier source/ workspace is superseded reproducible scratch; no need to rebuild it.
+Receipt: reports/ashborn-intro-candidate.json. Current clean source: E:/CodexScratch/goblins-intro-review/horizon-source. Isolated target: E:/CodexScratch/goblins-intro-review/horizon-user. Reuse this gate for documentation-only follow-ups; earlier source and tooltip-source workspaces are superseded reproducible scratch.
 
-No remaining installer blocker. No active installation or publication performed. Next: deploy/release when requested and verify in game. The tooltip correction should apply to saved modifiers after restart; runtime appearance remains untested.
+No blocker. No active deployment or publication performed. Next: deploy/release when requested; verify hover rendering in game. Display fixes should apply to existing saves after restart, without repeating quest rewards. Runtime acceptance remains pending.

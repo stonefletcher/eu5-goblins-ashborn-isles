@@ -9,7 +9,7 @@ def verify(read):
     hooks=read('in_game/common/on_action/ashen_covenant.txt')
     localization=read('main_menu/localization/english/ashen_covenant_l_english.yml')
     # Native modifier tooltips resolve prefixed keys, not action/option titles.
-    localized = dict(re.findall(r'^ (\S+): "(.+)"$', localization, re.M))
+    localized = dict(re.findall(r'^ (\S+): "(.+)"\r?$', localization, re.M))
     for modifier, _, _ in parse(read('main_menu/common/static_modifiers/ashen_covenant.txt')):
         for prefix in ('STATIC_MODIFIER_NAME_', 'STATIC_MODIFIER_DESC_'):
             assert localized.get(prefix + modifier), 'Missing modifier text: ' + prefix + modifier

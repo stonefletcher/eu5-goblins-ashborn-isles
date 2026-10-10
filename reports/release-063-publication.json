@@ -1,0 +1,40 @@
+{
+  "version": "0.6.3",
+  "tag_commit": "943acdc104d3af689391f7176bfc2436a942cb66",
+  "github": {
+    "release": "https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.6.3",
+    "public_download_bytes": 254743192,
+    "sha256": "6cab0ef4078911d1eaa069996c773fb2e75785c4fb3774696890f837fc22da1f",
+    "checksum_matches": true,
+    "workflows": [
+      {
+        "name": "Verify event and situation art",
+        "id": 38018961736,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Verify downloadable installer",
+        "id": 38018961676,
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "steam": {
+    "publishedfileid": "3814944518",
+    "title": "[1.3] - Goblins of the Ashborn Isles",
+    "time_updated": 1791601238,
+    "file_size": "2163859352",
+    "visibility": 0,
+    "banned": 0,
+    "description_matches": true
+  },
+  "steam_change_notes_verified": true,
+  "illustrated_pages_loaded_images": {
+    "github": 7,
+    "workshop": 7
+  },
+  "active_install_files_matched": 1977,
+  "gameplay_tested": false
+}

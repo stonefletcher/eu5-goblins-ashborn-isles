@@ -1,13 +1,13 @@
-# Goblins 0.6.3 release preparation
+# Goblins 0.6.3 released
 
-Branch: release/v0.6.3. Gameplay payload is the verified economy candidate
-3b79c04 / installer 0d0cc9f. Only version metadata and player/release pages change.
-The existing v0.6.2 tag/assets are preserved. Active local 0.6.2 matches its full
-published payload, with no missing, changed or extra files (1977 checked).
+Main and release/v0.6.3 include published payload/tag 943acdc104d3af689391f7176bfc2436a942cb66; this handoff is a documentation-only follow-up. v0.6.2 remains unchanged.
 
-All six economies, Jaimzha, 30 mason levels, 13 glass guilds and preserved
-populations passed static regression and candidate clean-install checks.
-Gameplay remains untested. EU5 was closed at preflight.
+Jaimzha and the six-crown construction economy are deployed locally and published to GitHub and existing Steam Workshop item 3814944518. Thirty mason levels and thirteen glass guilds; all 97 district totals and total population 1,895,000 preserved.
 
-Next: final 0.6.3 package and clean-install gate, active install with rollback,
-release branch/main promotion, GitHub release and existing Steam item 3814944518.
+Static economy/regression checks and the final clean-export/isolated-install gate passed. Active install: 1,977 matching files. Prior installation retained outside mod/ in goblins_backups/goblins_ashborn_isles_20261009_225926_805. EU5 was not launched.
+
+GitHub public ZIP: 254,743,192 bytes; SHA-256 6cab0ef4078911d1eaa069996c773fb2e75785c4fb3774696890f837fc22da1f. Download and checksum verified. Both GitHub workflows passed. Steam uploader succeeded; public description, substantial content size and 0.6.3 change notes verified. Seven artwork images render on each landing page.
+
+Receipts: reports/release-063-install.json and reports/release-063-publication.json. Detailed local evidence: build/active-install-063.json, build/github-public-download-063.json, build/steam-publication-063.json, build/steam-changenotes-063.txt and build/illustrated-pages-063.json.
+
+No release blocker. Next: start a new 1337 campaign and playtest actual hiring, construction availability and market prices; static checks are not gameplay acceptance.

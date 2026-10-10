@@ -1,4 +1,17 @@
-﻿monthly_country_pulse = { on_actions = { cm_demo_monthly ga_exploration_monthly ga_economy_monthly } }
+﻿monthly_country_pulse = { on_actions = { ga_ashborn_intro_monthly cm_demo_monthly ga_exploration_monthly ga_economy_monthly } }
+# Run before Cindermaw's separate starting-unit grant.
+ga_ashborn_intro_monthly = {
+    trigger = {
+        ga_is_goblin = yes
+        NOT = { has_variable = ga_ashborn_intro_seen }
+        # Older saves dispatched Cindermaw's introduction with this flag.
+        NOT = { AND = { tag = CDM has_variable = cm_demo_initialized } }
+    }
+    effect = {
+        set_variable = { name = ga_ashborn_intro_seen value = yes }
+        trigger_event_non_silently = { id = cindermaw.1 }
+    }
+}
 cm_demo_monthly = {
     trigger = { tag = CDM }
     effect = {
@@ -16,7 +29,6 @@ cm_demo_monthly = {
                 create_sub_unit = unit_type:n_cog
                 create_sub_unit = unit_type:n_cog
             }
-            trigger_event_non_silently = { id = cindermaw.1 }
         }
     }
 }

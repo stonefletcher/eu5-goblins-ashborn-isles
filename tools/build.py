@@ -182,6 +182,8 @@ def validate(game,out,mapstats,economy):
     ga,gz=block_span(gov,'monarchy');assert 'heir_selection = cm_rule_of_the_strongest' in gov[ga:gz]
     intro=(out/'in_game/events/goblins_ashborn_isles.txt').read_text(encoding='utf-8-sig')
     assert len(re.findall(r'\boption\s*=\s*\{',intro))==1
+    from verify_ashborn_intro import verify as verify_intro
+    verify_intro(lambda p: (out/p).read_text(encoding='utf-8-sig'))
     import shatterfin
     shatterfin.verify(sys.modules[__name__],out)
     import ashborn_names

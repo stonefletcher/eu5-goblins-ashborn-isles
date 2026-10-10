@@ -2,6 +2,8 @@
 
 **0.6.3 — Construction economy and Jaimzha.**
 
+**Pending patch on `staging/ashborn-intro`:** all six goblin crowns receive the “Smoke on the Horizon” introduction (“The Ashborn rise.”) once, on their monthly country pulse. Existing saves catch up for the other crowns; Cindermaw does not repeat an introduction it already received. Cindermaw's starting troops and ships remain exclusive to Cindermaw. This patch is not yet deployed to the published 0.6.3 or Steam Workshop.
+
 ![Goblins of the Ashborn Isles banner](art/workshop/0.6.0/banner.jpg)
 
 [0.6.3 release notes](RELEASE_NOTES_0.6.3.md) | [Download 0.6.3](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.6.3) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)

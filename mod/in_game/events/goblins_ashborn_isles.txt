@@ -4,7 +4,7 @@ cindermaw.1 = {
     outcome = neutral
     title = cindermaw.1.title
     desc = cindermaw.1.desc
-    trigger = { tag = CDM }
+    trigger = { ga_is_goblin = yes }
     image = "gfx/interface/illustrations/event/ashborn/cindermaw.dds"
     option = {
         name = cindermaw.1.a

@@ -1,5 +1,7 @@
 # Goblins of the Ashborn Isles 0.6.3
 
+Pending introduction patch: all six goblin kingdoms receive the Ashborn introduction once on their monthly country pulse. Existing saves catch up; Cindermaw does not repeat its old introduction or starting units. This candidate is not the published 0.6.3 release.
+
 ## 0.6.3 — Construction economy and Jaimzha
 
 Shatterfin's ruler is now **Jaimzha, the Mare-Mother**. Character IDs, family and succession stay intact.

@@ -93,7 +93,7 @@
     },
     {
       "path": "in_game/common/on_action/goblins_ashborn_isles.txt",
-      "sha256": "8e075424f8ec0740ff720452764c8d7bf42963d931f69ac46ab17d1bb805a996"
+      "sha256": "9cee4126e6c900291a25c982c9e5ce6cadfb48fcd0ec96e800b43d50eba8eda3"
     },
     {
       "path": "in_game/common/on_action/goblins_dynastic_clans.txt",
@@ -177,7 +177,7 @@
     },
     {
       "path": "in_game/events/goblins_ashborn_isles.txt",
-      "sha256": "3e62fac360d01c6c103702df368ff5f1102a7bfa9b50f42ba937a949ffd26e1d"
+      "sha256": "d766d2297d7c6d0d55a9f6010520fd259f85eda7bc67d2772a391a37545ecec2"
     },
     {
       "path": "in_game/events/goblins_exploration.txt",

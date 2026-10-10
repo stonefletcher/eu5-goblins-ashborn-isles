@@ -67,6 +67,8 @@ def verify(root):
             if tuple(map(int, version.split('.'))) >= (0, 5, 9):
                 from verify_script_registration import verify as verify_scripts
                 verify_scripts(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
+                from verify_ashborn_intro import verify as verify_intro
+                verify_intro(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_harbor_bargains import verify as verify_bargains
                 verify_bargains(lambda p:z.read('goblins_ashborn_isles/'+p).decode('utf-8-sig'))
                 from verify_compact_talks import verify as verify_compact

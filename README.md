@@ -132,7 +132,7 @@ Built for **EU5 1.3.11 (Pavia)**. Version 0.6.3 requires a **new 1337 campaign**
 
 ## Checks and feedback
 
-The construction candidate passed native recipe/input-chain checks, staffing and population checks, succession/geography regressions, and a clean committed-source installer test. All 1,977 isolated installed files match the validated build; stale source/bundle combinations are rejected. The gameplay payload matches the verified economy candidate; the final 0.6.3 installer receives its own clean-install check. Gameplay acceptance remains pending: actual hiring, market access, food and profitability must be checked in a new campaign.
+The construction candidate passed native recipe/input-chain checks, staffing and population checks, succession/geography regressions, and a clean committed-source installer test. All 1,977 isolated installed files match the validated build; stale source/bundle combinations are rejected. The gameplay payload matches the verified economy candidate; the final 0.6.3 clean-source reconstruction and isolated installation also passed. [Installer receipt](reports/release-063-install.json). Gameplay acceptance remains pending: actual hiring, market access, food and profitability must be checked in a new campaign.
 
 Development packaging creates the player installer by default. Use `python tools/package.py --source` only when a separate source ZIP is needed; GitHub already supplies source downloads. Reuse verified build stages and keep one current clean-test workspace.
 

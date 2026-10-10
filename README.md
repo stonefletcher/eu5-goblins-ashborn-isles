@@ -1,16 +1,16 @@
 # Goblins of the Ashborn Isles
 
-**0.6.2 playtest candidate — Construction economy and Jaimzha.**
+**0.6.3 — Construction economy and Jaimzha.**
 
 ![Goblins of the Ashborn Isles banner](art/workshop/0.6.0/banner.jpg)
 
-[0.6.2 release notes](RELEASE_NOTES_0.6.2.md) | [Download 0.6.2](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.6.2) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
+[0.6.3 release notes](RELEASE_NOTES_0.6.3.md) | [Download 0.6.3](https://github.com/stonefletcher/eu5-goblins-ashborn-isles/releases/tag/v0.6.3) | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3814944518)
 
 Fire rose from the Atlantic. When the smoke cleared, goblin kingdoms stood among the new volcanic islands between the Azores and Portugal. Captains claimed sheltered harbors, smiths built their forges beneath black ridges, and rival houses began arguing over who should lead them.
 
 **Goblins of the Ashborn Isles** adds a fantasy homeland to Europa Universalis V. Choose a crown, develop its economy, bargain with neighboring rulers, and decide whether the Isles will unite through conquest, submission or dynastic union. Beyond the familiar shoals lie foreign ports and the promise of an eastern foothold.
 
-## 0.6.2 playtest candidate — Construction economy and Jaimzha
+## 0.6.3 — Construction economy and Jaimzha
 
 Shatterfin's ruler is now **Jaimzha, the Mare-Mother**. Character IDs, family and succession stay intact.
 
@@ -20,7 +20,7 @@ Reedfish and Tidefang supply sand; northern sand and selected stone districts re
 
 The native base-recipe scenario leaves 9.3 masonry for southern construction and 1.9 in the north after modeled building upkeep, before population demand, construction, modifiers and actual hiring. These are planning quantities, not measured market balances. Every crown has positive modeled output after building inputs for essential manufactured goods; smaller crowns still use the shared market for raw materials. Actual market membership, supply, food, employment and profitability require playtesting.
 
-**Start a new 1337 campaign. This staging candidate is not the published 0.6.2 download.**
+**Start a new 1337 campaign. Version 0.6.3 includes the construction economy fixes and Jaimzha rename.**
 
 ## Previous 0.6.2 — Workers and Wildfang Clans
 
@@ -123,7 +123,7 @@ At home, the **Ashen Covenant** provides twelve sacred sites, traditions, rites,
 
 ## Install and continue
 
-Built for **EU5 1.3.11 (Pavia)**. Version 0.6.2 requires a **new 1337 campaign** for the revised populations. Existing saves retain their saved population setup.
+Built for **EU5 1.3.11 (Pavia)**. Version 0.6.3 requires a **new 1337 campaign** for the revised populations. Existing saves retain their saved population setup.
 
 - Subscribe through the Workshop, or download **Goblins_Ashborn_Isles_0.6.2.zip** from the release above, extract it and run **Install-Goblins.cmd** with EU5 closed. The installer reconstructs its terrain using the installed game.
 - Enable only one Goblins copy and disable the old Gathering Prototype add-on. Restart before playing.
@@ -132,7 +132,7 @@ Built for **EU5 1.3.11 (Pavia)**. Version 0.6.2 requires a **new 1337 campaign**
 
 ## Checks and feedback
 
-The construction candidate passed native recipe/input-chain checks, staffing and population checks, succession/geography regressions, and a clean committed-source installer test. All 1,977 isolated installed files match the validated build; stale source/bundle combinations are rejected. [Installer verification receipt](reports/economy-062-install.json). Gameplay acceptance remains pending: actual hiring, market access, food and profitability must be checked in a new campaign.
+The construction candidate passed native recipe/input-chain checks, staffing and population checks, succession/geography regressions, and a clean committed-source installer test. All 1,977 isolated installed files match the validated build; stale source/bundle combinations are rejected. The gameplay payload matches the verified economy candidate; the final 0.6.3 installer receives its own clean-install check. Gameplay acceptance remains pending: actual hiring, market access, food and profitability must be checked in a new campaign.
 
 Development packaging creates the player installer by default. Use `python tools/package.py --source` only when a separate source ZIP is needed; GitHub already supplies source downloads. Reuse verified build stages and keep one current clean-test workspace.
 

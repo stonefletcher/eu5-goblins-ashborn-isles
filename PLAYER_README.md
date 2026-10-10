@@ -1,6 +1,6 @@
-# Goblins of the Ashborn Isles 0.6.2
+# Goblins of the Ashborn Isles 0.6.3
 
-## 0.6.2 playtest candidate — Construction economy and Jaimzha
+## 0.6.3 — Construction economy and Jaimzha
 
 Shatterfin's ruler is now **Jaimzha, the Mare-Mother**. Character IDs, family and succession stay intact.
 
@@ -10,7 +10,7 @@ Reedfish and Tidefang supply sand; northern sand and selected stone districts re
 
 The native base-recipe scenario leaves 9.3 masonry for southern construction and 1.9 in the north after modeled building upkeep, before population demand, construction, modifiers and actual hiring. These are planning quantities, not measured market balances. Every crown has positive modeled output after building inputs for essential manufactured goods; smaller crowns still use the shared market for raw materials. Actual market membership, supply, food, employment and profitability require playtesting.
 
-**Start a new 1337 campaign. This staging candidate is not the published 0.6.2 download.**
+**Start a new 1337 campaign. Version 0.6.3 includes the construction economy fixes and Jaimzha rename.**
 
 ## Previous 0.6.2 — Workers and Wildfang Clans
 

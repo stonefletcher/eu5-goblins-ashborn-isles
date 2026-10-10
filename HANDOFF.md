@@ -1,25 +1,13 @@
-# Goblins 0.6.2 construction playtest candidate
+# Goblins 0.6.3 release preparation
 
-Branch: staging/0.6.2. Source: 3b79c04; installer payload: 0d0cc9f.
-Jaimzha replaces Jaima in displayed ruler/name-pool text, with stable IDs.
-All six crowns produce essential construction/maintenance goods: 30 mason and
-13 glass-guild levels. Sand coverage and northern fiber/charcoal chains expanded.
-All 97 district totals, minority/slave households and tribal shares are preserved.
-Total population remains 1,895,000. Added jobs retain the 125% staffing target,
-RGO labor allowance and minimum peasant reserve.
+Branch: release/v0.6.3. Gameplay payload is the verified economy candidate
+3b79c04 / installer 0d0cc9f. Only version metadata and player/release pages change.
+The existing v0.6.2 tag/assets are preserved. Active local 0.6.2 matches its full
+published payload, with no missing, changed or extra files (1977 checked).
 
-Native economy, generated setup, succession, geography and candidate regressions
-passed. Portugal is included as a reference. Terrain geometry, native bases and
-reconstructed caches are unchanged and hash-verified. Gameplay remains untested.
+All six economies, Jaimzha, 30 mason levels, 13 glass guilds and preserved
+populations passed static regression and candidate clean-install checks.
+Gameplay remains untested. EU5 was closed at preflight.
 
-Clean committed-source bundle validation, stale-source rejection, PrepareOnly and
-isolated installation passed. All 1,977 installed files match the validated build;
-delivered classes and ruler localization also passed. Receipt:
-reports/economy-062-install.json. Full validation: build/reports/validation.json.
-Archive SHA256: 379b54d9704cc656a220b33829438feab78350d18dee6e412e90b56544af6924
-Current player package: dist/Goblins_Ashborn_Isles_0.6.2.zip.
-Review workspace: E:/CodexScratch/goblins-062-review/economy-source and economy-user.
-
-Active install and published GitHub/Workshop v0.6.2 remain the previous release.
-Next: install this candidate when requested, then playtest all six crowns in new
-1337 campaigns. See TESTING.md for pause/months 1, 3 and 12 checks. No EU5 launch.
+Next: final 0.6.3 package and clean-install gate, active install with rollback,
+release branch/main promotion, GitHub release and existing Steam item 3814944518.

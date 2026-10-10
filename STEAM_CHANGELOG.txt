@@ -1,3 +1,13 @@
+[h1]0.6.3 — Construction economy and Jaimzha[/h1]
+[list]
+[*]Renamed Jaima to Jaimzha; family and succession preserved.
+[*]All six crowns receive construction industries: 30 mason levels and 13 glass guilds, with tools, cloth, leather, paper, pottery and naval supplies.
+[*]Expanded sand/stone support and northern fiber, charcoal and weapon production.
+[*]Preserved all district totals, minorities, slaves and tribal shares while staffing new jobs.
+[*]Static and clean-install checks passed. Actual market balance still needs playtesting.
+[/list]
+[b]New 1337 campaign required. EU5 1.3.11.[/b]
+
 [h2]0.6.2 — Workers and Wildfang Clans[/h2]
 [list]
 [*]Total population 1,895,000. Cindermaw 620,000; Brackmaw 420,000; Giltfang 305,000; Shatterfin 280,000; Reefhook 140,000; Sootwake 130,000.

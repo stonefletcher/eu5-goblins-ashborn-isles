@@ -1,6 +1,6 @@
 [h1]Goblins of the Ashborn Isles[/h1]
 
-[b]Version 0.6.2 — Workers and Wildfang Clans.[/b]
+[b]Version 0.6.3 — Construction economy and Jaimzha.[/b]
 
 [img]https://raw.githubusercontent.com/stonefletcher/eu5-goblins-ashborn-isles/main/art/workshop/0.6.0/banner.jpg[/img]
 
@@ -9,15 +9,15 @@ Volcanic islands rose between the Azores and Portugal. Goblin captains claimed t
 
 Choose a goblin crown, develop its economy and bargain with neighboring rulers. Unite the Isles through conquest, submission or dynastic union, then chart foreign shores and pursue an eastern foothold.
 
-[h2]New in 0.6.2[/h2]
+[h2]New in 0.6.3[/h2]
 [list]
-[*][b]Balanced populations:[/b] 1,895,000 goblins overall. Cindermaw falls to 620,000; the other five crowns grow modestly.
-[*][b]Workers where needed:[/b] population classes cover 125% of native building jobs, plus a separate resource-worker reserve. Actual hiring and masonry supply need gameplay confirmation.
-[*][b]A tribal homeland:[/b] about 25% tribesmen in every district. Existing minorities and slaves retained; local home cultures remain at least 70%.
-[*][b]Goblin estates:[/b] Wildfang Clans, Highfangs and Ironfang Crown.
+[*][b]Jaimzha, the Mare-Mother:[/b] Shatterfin's ruler has a new goblin name, preserving her family and succession.
+[*][b]Construction in every crown:[/b] masons increase from 6 to 30 levels; glass guilds from 5 to 13. Every kingdom has tools, cloth, leather, paper, pottery and naval-supply industries.
+[*][b]Complete input chains:[/b] more sand and planned stone capacity, plus northern fiber farms, charcoal and smithing.
+[*][b]Workers and Wildfang Clans:[/b] 1,895,000 people retained, with about 25% tribesmen per district. New jobs meet the staffing target; minorities and slaves are preserved. Estates remain Wildfang Clans, Highfangs and Ironfang Crown.
 [/list]
 
-The 0.6.1 production, coastal wharves, connected provinces, city promotions, starting silver/lumber trades, Covenant Favor and portrait improvements remain included.
+The earlier economy, connected provinces, wharves, seeded trade, Covenant Favor and portrait fixes remain included. Static checks passed; actual hiring and profitability need playtesting.
 
 [h2]An Atlantic homeland[/h2]
 
@@ -85,7 +85,7 @@ At home, the [b]Ashen Covenant[/b] provides twelve sacred sites, traditions, rit
 
 [h2]Install and continue[/h2]
 
-Built for [b]EU5 1.3.11 (Pavia)[/b]. Start a [b]new 1337 campaign[/b] for 0.6.2: starting populations changed.
+Built for [b]EU5 1.3.11 (Pavia)[/b]. Start a [b]new 1337 campaign[/b] for 0.6.3: starting industries and populations changed.
 
 [list]
 [*]Subscribe through the Workshop, or extract the complete GitHub installer ZIP and run [b]Install-Goblins.cmd[/b] with EU5 closed.

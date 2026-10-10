@@ -1,11 +1,11 @@
-# Ashborn introduction patch
+# Introduction and Covenant tooltip fixes ready
 
-Branch: staging/ashborn-intro. Source e929537; matching package 59b49c9. Published main/tag/Workshop remain 0.6.3 without this patch.
+Branch: staging/ashborn-intro. Combined payload 4fd6365; tooltip source c57abae. Published main/tag/Workshop and active install remain unchanged at released 0.6.3.
 
-All six goblin kingdoms receive the introductory lore popup once per country. Existing saves catch up; legacy Cindermaw introductions and unit grants are not repeated. Gathering behavior is unchanged.
+All six crowns receive the Ashborn introduction once per country. Existing saves catch up; Cindermaw does not repeat an old introduction or starting-unit grant. The Moot rewards now display The Local Covenants and The First Oathkeeper. Three major Covenant rites also have native modifier names/descriptions. Reward values and saved IDs are unchanged.
 
-Passed actual-script regressions for six kingdoms, repeated monthly pulses, saved flags, lost Hooktooth, old Cindermaw and foreign countries. Package validation and stale-config rejection passed. Clean committed export PrepareOnly passed; all 1,977 prepared files match the candidate.
+Passed source regressions, native Covenant checks, all 60 custom modifier name/description checks, rejection of original broken labels, prepared-bundle validation and stale-config rejection. Clean committed export PrepareOnly and isolated installation passed. All 1,977 installed files match the candidate, including reconstructed terrain.
 
-Receipt: reports/ashborn-intro-candidate.json. Clean workspace: E:/CodexScratch/goblins-intro-review/source; isolated target: E:/CodexScratch/goblins-intro-review/user.
+Receipt: reports/ashborn-intro-candidate.json. Current clean source: E:/CodexScratch/goblins-intro-review/tooltip-source. Isolated target: E:/CodexScratch/goblins-intro-review/tooltip-user. Reuse this passing gate for documentation-only follow-ups. Earlier source/ workspace is superseded reproducible scratch; no need to rebuild it.
 
-Blocked only at isolated installation: EU5 process 30564 is running and the installer correctly refuses. Asked user once to close EU5; do not bypass guard or interrupt game. No active installation or publication performed. Next: when game is closed, run the exported Install-Goblins.ps1 with GamePath and isolated UserDataPath, compare all files, then update this receipt. Gameplay remains untested.
+No remaining installer blocker. No active installation or publication performed. Next: deploy/release when requested and verify in game. The tooltip correction should apply to saved modifiers after restart; runtime appearance remains untested.

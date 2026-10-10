@@ -1,25 +1,30 @@
 {
-  "candidate_commit": "59b49c9",
-  "source_commit": "e92953787ff9b01af8c02e5e156f9b7c1cb768f4",
   "branch": "staging/ashborn-intro",
+  "candidate_commit": "4fd6365",
+  "source_commit": "c57abae4bbd73321c7b529e1fd5e30c9a70855f9",
+  "fixes": [
+    "Once-per-country Ashborn introduction for all six goblin crowns",
+    "Names and descriptions for two Moot rewards and three Covenant rite modifiers"
+  ],
   "archive": {
     "name": "Goblins_Ashborn_Isles_0.6.3.zip",
-    "size": 255128067,
-    "sha256": "00d468ea6287e5920964fd9b65787daf52783dfaa7294b06331303dde785e231"
+    "size": 255501556,
+    "sha256": "07d75acff416108478df6d301ce73696a30ffc331ba0a1e07d3386549bce08df"
   },
-  "script_regression": "passed",
+  "script_regression": "passed; original missing-label source rejected",
+  "custom_modifier_names_and_descriptions_checked": 60,
   "prepared_bundle_verification": "passed",
   "stale_config_rejected": true,
   "clean_source_prepare_only": "passed",
-  "prepared_files": {
-    "target": "E:\\CodexScratch\\goblins-intro-review\\source\\.prepared-release-0.6.3\\goblins_ashborn_isles",
+  "isolated_install": {
+    "target": "E:\\CodexScratch\\goblins-intro-review\\tooltip-user\\mod\\goblins_ashborn_isles",
     "files": 1977,
     "missing": [],
     "extra": [],
     "changed": [],
     "version": "0.6.3"
   },
-  "isolated_install": "blocked by running EU5; installer process guard respected",
+  "unchanged_native_terrain": "reused verified 0.6.3 terrain; reconstructed and hash-checked by exported installer",
   "active_install_changed": false,
   "published": false,
   "gameplay_tested": false

@@ -26,6 +26,17 @@ def verify(game, out):
         total = sum((Decimal(v) for v in re.findall(r'\bsize\s*=\s*([\d.]+)', pops[loc['id']])), Decimal(0))
         assert total == Decimal(str(loc['pop'])) + mixed_populations.extra(loc['id'])
     countries = audit['countries']
+    # Every crown can produce essential manufactured construction/maintenance
+    # goods. Shared-market planning must also cover their raw input chains.
+    balance = audit['construction_balance']['groups']
+    essential = ['masonry', 'glass', 'tools', 'cloth', 'leather', 'paper', 'pottery', 'naval_supplies']
+    for tag in countries:
+        for good in essential:
+            assert balance[tag]['goods'][good]['net_before_pops_and_construction'] > 0, (tag, good)
+    for group in ['southern_crowns', 'northern_crown']:
+        assert not balance[group]['inputs_requiring_external_supply'], (group, balance[group])
+        for good in essential + ['coal', 'weaponry', 'jewelry']:
+            assert balance[group]['goods'][good]['net_before_pops_and_construction'] > 0, (group, good)
     assert sum(c['population'] for c in countries.values()) == b.CFG['population_target'] + int(sum(mixed_populations.extra(l['id']) for l in b.CFG['locations'])*1000)
     if 'population_062' in b.CFG:
         verify_population_062(game, out)
@@ -43,7 +54,8 @@ def verify(game, out):
     assert actions.count('limit = { owns = location:') == len(b.CFG['locations'])
     report['checks'] = ['native building ranks/resources', 'generated settlement levels',
                         'configured population totals', 'production staffing and resource reserve',
-                        'country specialization and scale', 'two markets and guarded initialization']
+                        'country specialization and scale', 'two markets and guarded initialization',
+                        'essential goods in every crown and complete regional base-recipe input chains']
     (out/'economy-audit.json').write_text(json.dumps(report, indent=2)+'\n')
     return report
 

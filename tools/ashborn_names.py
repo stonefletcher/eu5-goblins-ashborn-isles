@@ -24,7 +24,7 @@ POOLS={
  'Reef-Cutter Shellbreaker Netfinger Hookhand Gullbiter Salt-Eye'),
  'SFK':('Stormfang','cm_shatterkin',
  'Vrosh Krashik Sharg Vrak Krishak Shrokk Rask Vrokk Krazhik Shrakk Rikkash Vresh Korrak Zharr Kravosh Shrik',
- 'Jaima Skritcha Morzha Rikkra Krishka Zrikka Zhavra Vrazka Shrazha Vrishka Krashra Rizhka Shrikka Vroshka Krazha Zhrikka',
+ 'Jaimzha Skritcha Morzha Rikkra Krishka Zrikka Zhavra Vrazka Shrazha Vrishka Krashra Rizhka Shrikka Vroshka Krazha Zhrikka',
  'Shatterfin Knifeback Stormscar Wavecleaver Galehook Deepfang',
  'Saltfang Wavebiter Storm-Eye Ropehand Gale-Eater Keelbreaker'),
  'SWK':('Ashveil','cm_sootkin',
@@ -34,7 +34,7 @@ POOLS={
  'Smokehand Ashwhisper Coal-Eye Cinderfoot Blackfinger Ember-Eater'),
 }
 
-def key(name):return 'cm_ash_name_'+name.lower().replace('-','_')
+def key(name):return 'cm_ash_name_'+('jaima' if name == 'Jaimzha' else name.lower().replace('-','_'))
 def house_key(tag,n):return 'cm_shatterfin_dynasty' if tag=='SFK' and n==0 else 'cm_'+tag.lower()+'_house_'+str(n)
 def dialect(culture):return culture+'_dialect'
 

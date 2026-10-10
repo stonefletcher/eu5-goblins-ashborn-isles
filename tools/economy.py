@@ -4,6 +4,76 @@ from collections import Counter
 from decimal import Decimal
 
 
+def construction_balance(b, game):
+    """Native base-recipe scenario, not simulated market membership or prices.
+
+    Use wool, silver, hunting and metal weapons for the island resource base.
+    Each building uses one base recipe; optional jewelry enhancements are excluded.
+    RGO output, pop demand,
+    trade, efficiency, employment ramp and construction are deliberately excluded.
+    """
+    import economy_reference
+    definitions, methods = {}, {}
+    for folder, target in [('building_types', definitions), ('production_methods', methods)]:
+        for path in (game/'in_game/common'/folder).glob('*.txt'):
+            target.update(economy_reference.blocks(path.read_text(encoding='utf-8-sig')))
+    goods = set()
+    for path in (game/'in_game/common/goods').glob('*.txt'):
+        goods.update(dict(economy_reference.blocks(path.read_text(encoding='utf-8-sig'))))
+    recipes = {}
+    preferred = {'cloth_guild':'wool_cloth_guild_maintenance', 'jewelry_guild':'silver_base',
+                 'weapon_guild':'weapon_smith_maintenance', 'forest_village':'hunting_lodges'}
+    for key in sorted({key for loc in b.CFG['locations'] for key in loc['buildings']}):
+        # Repeated unique_production_methods groups are additive enhancements;
+        # retain the first/base group instead of accidentally replacing it.
+        body = {}
+        for name, value in economy_reference.blocks(definitions[key]):
+            body.setdefault(name, value)
+        if 'unique_production_methods' in body:
+            choices = dict(economy_reference.blocks(body['unique_production_methods']))
+            name = preferred.get(key, next(iter(choices)))
+            recipe = choices[name]
+        elif 'possible_production_methods' in body:
+            options = b.clean(body['possible_production_methods']).split()
+            name = preferred.get(key, options[0])
+            assert name in options, (key, name)
+            recipe = methods[name]
+        else:
+            continue
+        values = {k: Decimal(v) for k,v in re.findall(r'(?m)^\s*(\w+)\s*=\s*([\d.]+)\s*(?:#.*)?$', recipe)}
+        output = re.search(r'\bproduced\s*=\s*(\w+)', recipe)
+        recipes[key] = (name, {k:v for k,v in values.items() if k in goods},
+                        output[1] if output else None, values.get('output', Decimal(0)))
+    results = {}
+    # The southern grouping is a planning scenario; engine markets can differ.
+    groups = {c['tag']: {c['tag']} for c in b.CFG['countries']}
+    groups.update(southern_crowns={'CDM','QBR','SFK','RHK','SWK'}, northern_crown={'GTF'})
+    for group, tags in groups.items():
+        supply, demand = Counter(), Counter()
+        raw = set()
+        for loc in b.CFG['locations']:
+            if loc['country'] not in tags:
+                continue
+            raw.add(loc['good'])
+            for key, level in loc['buildings'].items():
+                if key not in recipes:
+                    continue
+                _, inputs, output, amount = recipes[key]
+                for good, quantity in inputs.items():
+                    demand[good] += quantity*level
+                if output:
+                    supply[output] += amount*level
+        results[group] = {
+            'goods': {good: {'gross': float(supply[good]), 'building_inputs': float(demand[good]),
+                             'net_before_pops_and_construction': float(supply[good]-demand[good])}
+                      for good in sorted(supply.keys() | demand.keys())},
+            'raw_materials': sorted(raw),
+            'inputs_requiring_external_supply': sorted(set(demand)-raw-set(supply)),
+        }
+    return {'groups': results, 'recipes': {k:v[0] for k,v in recipes.items()},
+            'scope': 'Full-staffing native base-recipe scenario only. Excludes RGO quantities, pop consumption, construction, prices, modifiers, startup ramp and trade. Southern grouping is assumed, not measured market membership.'}
+
+
 def employment_requirements(b, game):
     """Native building jobs, in thousands, summed by class in each district."""
     import economy_reference
@@ -64,6 +134,7 @@ def audit(b, game):
             'capital_levels': sum(next(l['buildings'] for l in locs if l['id']==country['capital']).values()),
             'rgo_bonus': sum(l['rgo_expansion'] for l in locs)}
     return {'countries': countries, 'staffing_shortfalls': staffing, 'workforce':workforce,
+            'construction_balance': construction_balance(b, game),
             'vanilla_references': economy_reference.compare(b, game),
             'scope': 'Native building jobs plus the configured laborer reserve for RGOs. Reserve is a planning allowance, not an engine capacity measurement. Hiring, profitability, levies and migration need gameplay verification.',
             'runtime_balance_verified': False}

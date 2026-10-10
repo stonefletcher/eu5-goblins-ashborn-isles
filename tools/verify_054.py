@@ -13,7 +13,9 @@ def verify(b,game,out,mapstats):
         assert all(v>=0 for v in l['pop_classes'].values())
     for ident,old in baseline.items():
         children=[l for l in locs if l.get('split_from')==ident];assert len(children)==1
-        assert byid[ident]['good']==old['good']
+        # The construction pass deliberately converts Tidefang's fish to sand.
+        expected_good = 'sand' if ident == 'cm_tidefang' else old['good']
+        assert byid[ident]['good']==expected_good
         # 0.6.1 relocates households into new towns within each kingdom.
         # Check the historical split before those explicit migrations, then
         # check current country totals and generated populations below.

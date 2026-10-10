@@ -19,7 +19,7 @@ LOCALIZATION={
     'cm_tidemother_seniority_desc':'The eldest eligible adult Stormfang woman of the ruling dynasty inherits, with age measured to the day. Her mother must also belong to that dynasty. Sisters and maternal cousins may precede daughters. Men, children, foreign rulers and those barred from rule are excluded. Births into the maternal ruling house in Shatterfin retain their mother\'s dynasty while this law is active. No eligible adult woman means no eligible heir; the law does not admit men as a fallback.',
     'cm_tidemother_age_score':'Seniority within the maternal ruling house',
     'cm_shatterfin_dynasty':'Shatterfin',
-    'cm_name_savra':'Zhavra','cm_name_maarka':'Jaima','cm_name_ishra':'Skritcha',
+    'cm_name_savra':'Zhavra','cm_name_maarka':'Jaimzha','cm_name_ishra':'Skritcha',
     'cm_name_korr':'Vrosh','cm_name_veshka':'Morzha','cm_name_neshri':'Rikkra',
     'cm_name_rikka':'Krishka','cm_name_sella':'Zrikka',
 }
@@ -40,6 +40,9 @@ def build(b,game,out):
     b.write(out,rel,b.inject(b.read(game,rel),'character_db','\n'.join(rows)))
 
 def verify(b,out):
+    names=(out/'main_menu/localization/english/goblins_ashborn_isles_l_english.yml').read_text(encoding='utf-8-sig')
+    assert 'cm_name_maarka: "Jaimzha"' in names
+    assert 'cm_ash_name_jaima: "Jaimzha"' in names
     law=(out/'in_game/common/heir_selections/shatterfin.txt').read_text(encoding='utf-8-sig')
     assert 'allow_male = no' in law and 'allow_children = no' in law
     assert 'value = root.character_age' in law and 'root.mil' not in law
@@ -58,4 +61,4 @@ def verify(b,out):
     now=date(1337,11,11)
     eligible=sorted((r for r in FAMILY if r[0]!='cm_sfk_maarka' and r[3] and r[4] and r[5] is None and (now-birthday(r)).days>=18*365.25),key=birthday)
     assert [r[0] for r in eligible]==['cm_sfk_ishra','cm_sfk_veshka','cm_sfk_neshri','cm_sfk_rikka']
-    return {'starting_ruler':'Jaima Shatterfin','starting_heir':'Skritcha Shatterfin','eligible_starting_women':4,'male_and_minor_exclusion':True,'parents_before_children':True,'engine_succession_tested':False}
+    return {'starting_ruler':'Jaimzha Shatterfin','starting_heir':'Skritcha Shatterfin','eligible_starting_women':4,'male_and_minor_exclusion':True,'parents_before_children':True,'engine_succession_tested':False}

@@ -101,7 +101,7 @@
     },
     {
       "path": "in_game/common/on_action/goblins_economy.txt",
-      "sha256": "149b8ffe20f13333a491e64e02a101e4074923bd0426a8044cb90fb3921e9f44"
+      "sha256": "4b45cedea5a468195bd1caa0d9cbaac79d7c2400ea90feec4a578aee4e747489"
     },
     {
       "path": "in_game/common/on_action/goblins_exploration.txt",
@@ -169,7 +169,7 @@
     },
     {
       "path": "in_game/common/town_setups/goblins_ashborn_isles.txt",
-      "sha256": "130a5ba589068cc1fc585c338a0c3a072ee599966fb7c4fc1ea426f54a176a4f"
+      "sha256": "8dc3539c39b189551c9c73e9ffbec32ed0b0c8838bbc1de0f4278f766b242a03"
     },
     {
       "path": "in_game/events/ashen_covenant.txt",
@@ -7685,7 +7685,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_ashborn_isles_l_english.yml",
-      "sha256": "5a3e3b38dff94a7a1b13e6122c7934b28a13313c6b47b39642c757f578f8355a"
+      "sha256": "61cd808aa5fa3e6a6290528019a40a86c061f712716b272aa7d49f94f43e32ae"
     },
     {
       "path": "main_menu/localization/english/goblins_exploration_l_english.yml",
@@ -7693,7 +7693,7 @@
     },
     {
       "path": "main_menu/localization/english/goblins_gathering_l_english.yml",
-      "sha256": "a1a6465184bf5f7b7bc3bfdcfd7e6dae452aebed20140daab515f1e6940d77dd"
+      "sha256": "2bfcbf17c2e03c692ac8942df00e2fed4c961480af3e2a0e7b9cdfff4b076332"
     }
   ]
 }

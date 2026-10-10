@@ -30,7 +30,7 @@ def compare(b, game):
     for path in (game / 'in_game/common/town_setups').glob('*.txt'):
         templates.update(blocks(path.read_text(encoding='utf-8-sig')))
     result = {}
-    for tag in ['SER', 'SCO', 'BRI', 'NAV', 'CYP', 'NAX', 'KNI']:
+    for tag in ['POR', 'SER', 'SCO', 'BRI', 'NAV', 'CYP', 'NAX', 'KNI']:
         owned = set(' '.join(re.findall(r'\bown_control_\w+\s*=\s*\{([^}]+)', b.clean(countries[tag]))).split())
         population = sum((Decimal(n) for loc in owned for n in re.findall(r'\bsize\s*=\s*([\d.]+)', pops.get(loc, ''))), Decimal(0))
         buildings = Counter()

@@ -568,26 +568,27 @@
           "buildings": {
             "marketplace": 3,
             "wharf": 1,
-            "tools_guild": 3,
+            "tools_guild": 5,
             "weapon_guild": 3,
             "naval_supplies_guild": 1,
             "stockade": 1,
             "granary": 2,
             "pottery_guild": 2,
-            "cloth_guild": 1,
-            "glass_guild": 2,
-            "paper_guild": 1,
+            "cloth_guild": 2,
+            "glass_guild": 3,
+            "paper_guild": 2,
             "jewelry_guild": 1,
-            "tannery": 1,
-            "sergeantry": 1
+            "tannery": 2,
+            "sergeantry": 1,
+            "mason": 5
           },
           "pop_classes": {
             "nobles": 0.122,
             "clergy": 0.242,
             "burghers": 7.252,
-            "laborers": 8.125,
+            "laborers": 9.432,
             "slaves": 3.626,
-            "peasants": 21.439,
+            "peasants": 20.132,
             "soldiers": 1.375,
             "tribesmen": 23.191
           }
@@ -997,16 +998,17 @@
             "naval_supplies_guild": 1,
             "granary": 1,
             "cloth_guild": 1,
-            "tannery": 1
+            "tannery": 1,
+            "mason": 1
           },
           "split_from": "cm_hooktooth",
           "pop_classes": {
             "nobles": 0.2,
             "clergy": 0.3,
             "burghers": 4.5,
-            "laborers": 5.063,
+            "laborers": 5.088,
             "slaves": 1.554,
-            "peasants": 7.896,
+            "peasants": 7.871,
             "tribesmen": 9.572
           },
           "rank": "town"
@@ -1446,16 +1448,20 @@
             "cloth_guild": 2,
             "pottery_guild": 1,
             "granary": 3,
-            "tools_guild": 1,
-            "sergeantry": 1
+            "tools_guild": 3,
+            "sergeantry": 1,
+            "mason": 3,
+            "glass_guild": 2,
+            "paper_guild": 2,
+            "tannery": 2
           },
           "color": "ed1210",
           "pop_classes": {
             "nobles": 0.123,
             "clergy": 0.243,
             "burghers": 2.434,
-            "laborers": 7.188,
-            "peasants": 28.71,
+            "laborers": 7.312,
+            "peasants": 28.586,
             "soldiers": 1.25,
             "tribesmen": 18.979
           },
@@ -1504,7 +1510,7 @@
             "marketplace": 1,
             "tools_guild": 2,
             "weapon_guild": 1,
-            "mason": 1,
+            "mason": 2,
             "granary": 1
           },
           "color": "ed1212",
@@ -1512,8 +1518,8 @@
             "nobles": 0.2,
             "clergy": 0.3,
             "burghers": 2.0,
-            "laborers": 3.688,
-            "peasants": 4.671,
+            "laborers": 4.089,
+            "peasants": 4.27,
             "tribesmen": 4.2
           },
           "rank": "town"
@@ -1635,17 +1641,18 @@
           "vegetation": "sparse",
           "pop": 12.567,
           "province": "cm_rustpeak_province",
-          "rgo_expansion": 1,
+          "rgo_expansion": 3,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "mason": 1
           },
           "color": "ed1217",
           "pop_classes": {
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 3.0,
-            "peasants": 5.342,
+            "laborers": 5.323,
+            "peasants": 3.019,
             "tribesmen": 3.875
           }
         },
@@ -1921,12 +1928,12 @@
             -0.394075,
             0.707333
           ],
-          "good": "fish",
+          "good": "sand",
           "topography": "flatland",
           "vegetation": "woods",
           "pop": 10.357,
           "province": "cm_mossfields_province",
-          "rgo_expansion": 1,
+          "rgo_expansion": 2,
           "buildings": {},
           "color": "ed123a",
           "split_from": "cm_reedmouth",
@@ -1934,8 +1941,8 @@
             "nobles": 0.088,
             "clergy": 0.174,
             "burghers": 0.088,
-            "laborers": 3.0,
-            "peasants": 3.861,
+            "laborers": 3.619,
+            "peasants": 3.242,
             "tribesmen": 3.146
           }
         },
@@ -2176,15 +2183,22 @@
             "marketplace": 3,
             "wharf": 1,
             "naval_supplies_guild": 1,
-            "granary": 1
+            "granary": 1,
+            "mason": 3,
+            "glass_guild": 1,
+            "tools_guild": 2,
+            "cloth_guild": 1,
+            "tannery": 1,
+            "paper_guild": 1,
+            "pottery_guild": 1
           },
           "color": "ed121c",
           "pop_classes": {
             "nobles": 0.25,
             "clergy": 0.498,
             "burghers": 4.979,
-            "laborers": 5.063,
-            "peasants": 13.681,
+            "laborers": 5.248,
+            "peasants": 13.496,
             "tribesmen": 10.793
           }
         },
@@ -2245,20 +2259,20 @@
             0.297623,
             0.998709
           ],
-          "good": "fish",
+          "good": "sand",
           "topography": "hills",
           "vegetation": "sparse",
           "pop": 9.143,
           "province": "cm_crooked_reef_province",
-          "rgo_expansion": 1,
+          "rgo_expansion": 2,
           "buildings": {},
           "color": "ed121f",
           "pop_classes": {
             "nobles": 0.179,
             "clergy": 0.356,
             "burghers": 0.179,
-            "laborers": 3.0,
-            "peasants": 2.845,
+            "laborers": 3.772,
+            "peasants": 2.073,
             "tribesmen": 2.584
           }
         },
@@ -2455,10 +2469,13 @@
             "naval_supplies_guild": 2,
             "cloth_guild": 3,
             "granary": 3,
-            "tools_guild": 2,
+            "tools_guild": 3,
             "jewelry_guild": 1,
-            "paper_guild": 1,
-            "tannery": 1
+            "paper_guild": 2,
+            "tannery": 2,
+            "mason": 3,
+            "glass_guild": 2,
+            "pottery_guild": 1
           },
           "color": "ed1220",
           "pop_classes": {
@@ -2483,15 +2500,17 @@
           "vegetation": "sparse",
           "pop": 23.712,
           "province": "cm_shatterfin_province",
-          "rgo_expansion": 2,
-          "buildings": {},
+          "rgo_expansion": 3,
+          "buildings": {
+            "mason": 2
+          },
           "color": "ed1221",
           "pop_classes": {
             "nobles": 0.349,
             "clergy": 0.693,
             "burghers": 0.349,
-            "laborers": 5.199,
-            "peasants": 9.667,
+            "laborers": 5.32,
+            "peasants": 9.546,
             "tribesmen": 7.455
           }
         },
@@ -2767,7 +2786,13 @@
             "wharf": 1,
             "naval_supplies_guild": 1,
             "granary": 1,
-            "tools_guild": 1
+            "tools_guild": 2,
+            "mason": 3,
+            "glass_guild": 1,
+            "cloth_guild": 1,
+            "tannery": 1,
+            "paper_guild": 1,
+            "pottery_guild": 1
           },
           "color": "ed1223",
           "pop_classes": {
@@ -2957,14 +2982,17 @@
             "marketplace": 4,
             "stockade": 1,
             "naval_supplies_guild": 1,
-            "glass_guild": 2,
-            "paper_guild": 1,
-            "tools_guild": 3,
+            "glass_guild": 3,
+            "paper_guild": 2,
+            "tools_guild": 4,
             "wharf": 1,
             "jewelry_guild": 1,
-            "tannery": 1,
+            "tannery": 2,
             "cloth_guild": 2,
-            "granary": 2
+            "granary": 2,
+            "mason": 2,
+            "pottery_guild": 1,
+            "weapon_guild": 1
           },
           "pop_classes": {
             "nobles": 0.5,
@@ -3017,7 +3045,7 @@
           "vegetation": "sparse",
           "pop": 12.649,
           "province": "cm_giltfang_3_province",
-          "rgo_expansion": 1,
+          "rgo_expansion": 3,
           "buildings": {
             "market_village": 1,
             "mason": 2
@@ -3026,8 +3054,8 @@
             "nobles": 0.124,
             "clergy": 0.249,
             "burghers": 0.572,
-            "laborers": 4.25,
-            "peasants": 4.291,
+            "laborers": 6.25,
+            "peasants": 2.291,
             "tribesmen": 3.163
           }
         },
@@ -3178,14 +3206,15 @@
           "province": "cm_giltfang_1_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "fiber_crops_farm": 2
           },
           "pop_classes": {
             "nobles": 0.181,
             "clergy": 0.363,
             "burghers": 0.832,
-            "laborers": 3.0,
-            "peasants": 5.255,
+            "laborers": 5.5,
+            "peasants": 2.755,
             "tribesmen": 3.211
           }
         },
@@ -3387,14 +3416,15 @@
           "province": "cm_giltfang_4_province",
           "rgo_expansion": 1,
           "buildings": {
-            "market_village": 1
+            "market_village": 1,
+            "charcoal_maker": 1
           },
           "pop_classes": {
             "nobles": 0.17,
             "clergy": 0.34,
             "burghers": 0.78,
-            "laborers": 3.0,
-            "peasants": 6.311,
+            "laborers": 4.25,
+            "peasants": 5.061,
             "tribesmen": 3.534
           }
         },
@@ -3411,7 +3441,7 @@
           "vegetation": "grasslands",
           "pop": 12.11,
           "province": "cm_giltfang_6_province",
-          "rgo_expansion": 1,
+          "rgo_expansion": 3,
           "buildings": {
             "market_village": 1
           },
@@ -3419,8 +3449,8 @@
             "nobles": 0.136,
             "clergy": 0.272,
             "burghers": 0.624,
-            "laborers": 3.0,
-            "peasants": 5.05,
+            "laborers": 5.0,
+            "peasants": 3.05,
             "tribesmen": 3.028
           }
         }
@@ -4277,10 +4307,10 @@
       "cm_hooktooth": {
         "population_before": 77.322,
         "class_changes": {
-          "laborers": 7.52,
+          "laborers": 8.827,
           "soldiers": 0.275,
           "tribesmen": 23.191,
-          "peasants": -42.936
+          "peasants": -44.243
         },
         "minimum_peasants": 16.094
       },
@@ -4413,9 +4443,9 @@
       "cm_netjaw": {
         "population_before": 38.139,
         "class_changes": {
-          "laborers": 3.063,
+          "laborers": 3.088,
           "tribesmen": 9.572,
-          "peasants": -21.689
+          "peasants": -21.714
         },
         "minimum_peasants": 7.397
       },
@@ -4548,10 +4578,10 @@
       "cm_brackhaven": {
         "population_before": 65.462,
         "class_changes": {
-          "laborers": 6.579,
+          "laborers": 6.703,
           "soldiers": 0.25,
           "tribesmen": 18.979,
-          "peasants": -32.343
+          "peasants": -32.467
         },
         "minimum_peasants": 15.264
       },
@@ -4567,9 +4597,9 @@
       "cm_rustpeak": {
         "population_before": 13.941,
         "class_changes": {
-          "laborers": 0.688,
+          "laborers": 1.089,
           "tribesmen": 4.2,
-          "peasants": -3.77
+          "peasants": -4.171
         },
         "minimum_peasants": 2.111
       },
@@ -4612,9 +4642,9 @@
       "cm_blackcrag": {
         "population_before": 12.768,
         "class_changes": {
-          "laborers": 1.696,
+          "laborers": 4.019,
           "tribesmen": 3.875,
-          "peasants": -5.772
+          "peasants": -8.095
         },
         "minimum_peasants": 2.779
       },
@@ -4711,9 +4741,9 @@
       "cm_reedfish": {
         "population_before": 8.937,
         "class_changes": {
-          "laborers": 2.565,
+          "laborers": 3.184,
           "tribesmen": 3.146,
-          "peasants": -4.291
+          "peasants": -4.91
         },
         "minimum_peasants": 2.038
       },
@@ -4765,9 +4795,9 @@
       "cm_reefhook": {
         "population_before": 35.345,
         "class_changes": {
-          "laborers": 3.817,
+          "laborers": 4.002,
           "tribesmen": 10.793,
-          "peasants": -14.691
+          "peasants": -14.876
         },
         "minimum_peasants": 7.093
       },
@@ -4792,9 +4822,9 @@
       "cm_tidefang": {
         "population_before": 7.61,
         "class_changes": {
-          "laborers": 2.109,
+          "laborers": 2.881,
           "tribesmen": 2.584,
-          "peasants": -3.16
+          "peasants": -3.932
         },
         "minimum_peasants": 1.502
       },
@@ -4847,7 +4877,8 @@
         "population_before": 21.384,
         "class_changes": {
           "tribesmen": 7.455,
-          "peasants": -5.127
+          "peasants": -5.248,
+          "laborers": 0.121
         },
         "minimum_peasants": 3.699
       },
@@ -4941,9 +4972,9 @@
       "cm_coinfall": {
         "population_before": 10.405,
         "class_changes": {
-          "laborers": 1.857,
+          "laborers": 3.857,
           "tribesmen": 3.163,
-          "peasants": -2.776
+          "peasants": -4.776
         },
         "minimum_peasants": 1.767
       },
@@ -4994,9 +5025,9 @@
       "cm_cinderfurrow": {
         "population_before": 12.134,
         "class_changes": {
-          "laborers": 1.487,
+          "laborers": 3.987,
           "tribesmen": 3.211,
-          "peasants": -3.99
+          "peasants": -6.49
         },
         "minimum_peasants": 2.312
       },
@@ -5066,18 +5097,18 @@
       "cm_emberhollow": {
         "population_before": 14.188,
         "class_changes": {
-          "laborers": 1.582,
+          "laborers": 2.832,
           "tribesmen": 3.534,
-          "peasants": -5.169
+          "peasants": -6.419
         },
         "minimum_peasants": 2.87
       },
       "cm_lockshore": {
         "population_before": 11.351,
         "class_changes": {
-          "laborers": 1.865,
+          "laborers": 3.865,
           "tribesmen": 3.028,
-          "peasants": -4.134
+          "peasants": -6.134
         },
         "minimum_peasants": 2.296
       },

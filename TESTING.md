@@ -1,3 +1,15 @@
+# 0.6.2 construction economy playtest
+
+Start fresh campaigns for all six crowns. Record at pause, months 1, 3 and 12:
+
+- Verify Jaimzha in Shatterfin's court, events and ruler tooltip; Skritcha remains the initial successor.
+- Check each capital's masons, glass, tools, paper, leather, cloth and pottery guilds. Record employment, production method, input shortages and profit. Native startup ramping may delay output even when workers exist.
+- Inspect Hooktooth and Chainhaven membership and access. In each crown, queue one guild (0.5 native masonry demand) and check progress without a persistent construction shortage. Verify Shatterfin has five mason levels across its capital and Shardpoint.
+- Check sand from Clayjaw, Reedfish, Tidefang and Lockshore, stone supply and first-month RGO investment. Check Giltfang's fiber farms and charcoal supply, and its wool/silver production methods.
+- Record treasury balance, building subsidies, province food balance, unrest and migration before and after a year. Keep populations at the documented totals and Wildfang Clans near 25%; do not mistake a static recipe surplus for proven profitability.
+
+Static checks use full staffing and one explicitly listed native base recipe per building. They exclude population consumption, RGO quantities, construction, prices, modifiers, startup ramp and trade. Actual market membership is not forced. The candidate has not been run in EU5.
+
 # 0.6.1 gameplay acceptance
 
 ## 0.6.2 — Workers and Wildfang Clans

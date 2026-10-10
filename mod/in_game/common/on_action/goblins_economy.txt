@@ -172,7 +172,7 @@ ga_economy_monthly = {
             }
             if = {
                 limit = { owns = location:cm_blackcrag }
-                location:cm_blackcrag = { change_max_raw_material_workers = 1 }
+                location:cm_blackcrag = { change_max_raw_material_workers = 3 }
             }
             if = {
                 limit = { owns = location:cm_basalt_steps }
@@ -216,7 +216,7 @@ ga_economy_monthly = {
             }
             if = {
                 limit = { owns = location:cm_reedfish }
-                location:cm_reedfish = { change_max_raw_material_workers = 1 }
+                location:cm_reedfish = { change_max_raw_material_workers = 2 }
             }
             if = {
                 limit = { owns = location:cm_alumcrag }
@@ -255,7 +255,7 @@ ga_economy_monthly = {
             }
             if = {
                 limit = { owns = location:cm_tidefang }
-                location:cm_tidefang = { change_max_raw_material_workers = 1 }
+                location:cm_tidefang = { change_max_raw_material_workers = 2 }
             }
             if = {
                 limit = { owns = location:cm_reefnet }
@@ -282,7 +282,7 @@ ga_economy_monthly = {
             }
             if = {
                 limit = { owns = location:cm_shardpoint }
-                location:cm_shardpoint = { change_max_raw_material_workers = 2 }
+                location:cm_shardpoint = { change_max_raw_material_workers = 3 }
             }
             if = {
                 limit = { owns = location:cm_stormpasture }
@@ -332,7 +332,7 @@ ga_economy_monthly = {
             }
             if = {
                 limit = { owns = location:cm_coinfall }
-                location:cm_coinfall = { change_max_raw_material_workers = 1 }
+                location:cm_coinfall = { change_max_raw_material_workers = 3 }
             }
             if = {
                 limit = { owns = location:cm_saltwake }
@@ -392,7 +392,7 @@ ga_economy_monthly = {
             }
             if = {
                 limit = { owns = location:cm_lockshore }
-                location:cm_lockshore = { change_max_raw_material_workers = 1 }
+                location:cm_lockshore = { change_max_raw_material_workers = 3 }
             }
             if = {
                 limit = { owns = location:cm_tolltooth }

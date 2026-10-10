@@ -1,6 +1,6 @@
 # Goblins of the Ashborn Isles
 
-**Release 0.6.2 — Workers and Wildfang Clans.**
+**0.6.2 playtest candidate — Construction economy and Jaimzha.**
 
 ![Goblins of the Ashborn Isles banner](art/workshop/0.6.0/banner.jpg)
 
@@ -10,7 +10,19 @@ Fire rose from the Atlantic. When the smoke cleared, goblin kingdoms stood among
 
 **Goblins of the Ashborn Isles** adds a fantasy homeland to Europa Universalis V. Choose a crown, develop its economy, bargain with neighboring rulers, and decide whether the Isles will unite through conquest, submission or dynastic union. Beyond the familiar shoals lie foreign ports and the promise of an eastern foothold.
 
-## 0.6.2 — Workers and Wildfang Clans
+## 0.6.2 playtest candidate — Construction economy and Jaimzha
+
+Shatterfin's ruler is now **Jaimzha, the Mare-Mother**. Character IDs, family and succession stay intact.
+
+Every crown now starts with masonry, glass, tools, cloth, leather, paper, pottery and naval-supply production. Masons increase from six to thirty levels: Cindermaw 8, Brackmaw 6, Shatterfin 5, Reefhook 3, Sootwake 3 and Giltfang 5. Glass guilds increase from five to thirteen levels, with at least one in every crown. Portugal's native start (1.18 million people, eight mason levels) provides a scale reference; the Isles' two-market geography and six independent builders require a larger construction buffer.
+
+Reedfish and Tidefang supply sand; northern sand and selected stone districts receive more planned RGO capacity. Giltfang gains fiber farms, charcoal and a weapon guild to close missing workshop input chains. Surplus home-culture peasants fill added jobs, retaining each district's total population, minority/slave households, farming reserve and roughly 25% tribesmen. The Isles remain at 1,895,000 people.
+
+The native base-recipe scenario leaves 9.3 masonry for southern construction and 1.9 in the north after modeled building upkeep, before population demand, construction, modifiers and actual hiring. These are planning quantities, not measured market balances. Every crown has positive modeled output after building inputs for essential manufactured goods; smaller crowns still use the shared market for raw materials. Actual market membership, supply, food, employment and profitability require playtesting.
+
+**Start a new 1337 campaign. This staging candidate is not the published 0.6.2 download.**
+
+## Previous 0.6.2 — Workers and Wildfang Clans
 
 All six goblin kingdoms now start with the appropriate classes for their existing buildings. Each district has at least 125% of native building employment demand, plus a separate laborer reserve of 2,000 people and 1,000 per planned RGO expansion level. This reserve is a planning allowance; actual RGO capacity, hiring, goods access and profitability still require a fresh-campaign test.
 
@@ -65,7 +77,7 @@ Every crown has its own culture, ruling household, introduction and three starti
 
 **Reefhook — Reefstrider.** Skrezz, the Wreck-Taker, rules among pilots, fishing households and pearl divers. Rescue obligations, salvage claims and foreign friendships all compete for his attention.
 
-**Shatterfin — Stormfang.** Jaima, the Mare-Mother, leads the Tidemothers across two islands. Her court bargains for security while preserving its maternal royal house and succession.
+**Shatterfin — Stormfang.** Jaimzha, the Mare-Mother, leads the Tidemothers across two islands. Her court bargains for security while preserving its maternal royal house and succession.
 
 **Sootwake — Ashveil.** Snikh, the Blackbough, guards the woodland paths and charcoal hearths that sustain his smaller realm. Independence rests on the groves as much as the crown.
 
@@ -120,7 +132,7 @@ Built for **EU5 1.3.11 (Pavia)**. Version 0.6.2 requires a **new 1337 campaign**
 
 ## Checks and feedback
 
-The 0.6.2 population/class balance and staffing checks passed, followed by a clean committed-source export, stale-source rejection, PrepareOnly reconstruction and isolated installation. All 1,977 installed files match the validated candidate. Active-profile installation and gameplay acceptance are separate; masonry output and actual hiring are still unverified in game.
+The construction candidate is checked against native building recipes, staffing requirements and Portugal's starting economy, then packaged for a clean isolated installer check. Gameplay acceptance remains pending: actual hiring, market access, food and profitability must be checked in a new campaign.
 
 Development packaging creates the player installer by default. Use `python tools/package.py --source` only when a separate source ZIP is needed; GitHub already supplies source downloads. Reuse verified build stages and keep one current clean-test workspace.
 
